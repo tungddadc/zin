@@ -192,28 +192,3 @@ class MY_Lang extends CI_Lang {
 	}
 	
 }
-
-// --------------------------------------------------------------------
-// The method below was used with phpunit to ensure correctness of the above.
-//	public function test_fallback()
-//	{
-//		// system target language file
-//		$this->ci_vfs_create('system/language/martian/number_lang.php', "<?php \$lang['fruit'] = 'Apfel';");
-//		$this->assertTrue($this->lang->load('number', 'martian'));
-//		$this->assertEquals('Apfel', $this->lang->language['fruit']);
-//		$this->assertEquals('Bytes', $this->lang->language['bytes']);
-//
-//		// application target language file
-//		$this->ci_vfs_create('application/language/klingon/number_lang.php', "<?php \$lang['fruit'] = 'Apfel';");
-//		$this->assertTrue($this->lang->load('number', 'klingon'));
-//		$this->assertEquals('Apfel', $this->lang->language['fruit']);
-//		$this->assertEquals('Bytes', $this->lang->language['bytes']);
-//
-//		// both system & application language files
-//		$this->ci_vfs_create('system/language/romulan/number_lang.php', "<?php \$lang['apple'] = 'Core';");
-//		$this->ci_vfs_create('application/language/romulan/number_lang.php', "<?php \$lang['fruit'] = 'Cherry';");
-//		$this->assertTrue($this->lang->load('number', 'romulan'));
-//		$this->assertEquals('Cherry', $this->lang->language['fruit']);
-//		$this->assertEquals('Bytes', $this->lang->language['bytes']);
-//		$this->assertEquals('Core', $this->lang->language['apple']);
-//	}
