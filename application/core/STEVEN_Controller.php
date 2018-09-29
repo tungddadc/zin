@@ -12,6 +12,10 @@ class STEVEN_Controller extends CI_Controller
     public $template_path = '';
     public $template_main = '';
     public $templates_assets = '';
+    public $settings = array();
+    public $_controller;
+    public $_method;
+    public $_message = array();
 
     public function __construct()
     {
@@ -25,8 +29,8 @@ class STEVEN_Controller extends CI_Controller
         $this->load->database();
         if(DEBUG_MODE == TRUE) {
             //Load third party
-            $this->load->add_package_path(APPPATH.'third_party', 'codeigniter-debugbar');
-            $this->output->enable_profiler(TRUE);
+            //$this->load->add_package_path(APPPATH.'third_party', 'codeigniter-debugbar');
+            //$this->output->enable_profiler(TRUE);
         }
     }
 
@@ -88,6 +92,7 @@ class Admin_Controller extends STEVEN_Controller
         $this->config->load('seo');
         $this->config->load('permission');
 
+
         $configMinify['assets_dir'] = 'public/admin';
         $configMinify['assets_dir_css'] = 'public/admin/css';
         $configMinify['assets_dir_js'] = 'public/admin/js';
@@ -141,10 +146,6 @@ class Admin_Controller extends STEVEN_Controller
 
 class Public_Controller extends STEVEN_Controller
 {
-    public $settings = array();
-    public $_message = array();
-    public $_controller;
-    public $_method;
     public function __construct()
     {
         parent::__construct();
@@ -155,7 +156,7 @@ class Public_Controller extends STEVEN_Controller
         $this->templates_assets = base_url();
 
         //load cache driver
-        $this->load->driver('cache',array('adapter'=>'file'));
+        if(CACHE_MODE == TRUE) $this->load->driver('cache', array('adapter' => 'file'));
 
         //tải thư viện
         $this->load->library(array('minify','cart','breadcrumbs'));
@@ -166,42 +167,16 @@ class Public_Controller extends STEVEN_Controller
         //Detect mobile
         //$this->detectMobile = new Mobile_Detect();
 
-        //Language
-        $lang_code = $this->input->get('lang');
-        $lang_cnf = $this->config->item('cms_lang_cnf');
-        //set session language
-        if(!empty($lang_code) && array_key_exists($lang_code,$lang_cnf)){
-            $this->session->public_lang_code = $lang_code;
-            $this->session->public_lang_full = $lang_cnf[$lang_code];
-        }
-        if(empty($this->session->public_lang_code)) {
-            //không có lang code thì mặc định hiển thị tiếng việt
-            $this->session->public_lang_code = 'vi';
-            $this->session->public_lang_full = 'vietnamese';
-        }
-
-        $this->config->set_item('language', $this->session->public_lang_full);
-        $this->lang->load(array('auth','ion_auth','frontend'));
-
-        //đọc file setting
-        $dataSetting = file_get_contents(FCPATH.'config'.DIRECTORY_SEPARATOR.'settings.cfg');
-        $dataSetting = $dataSetting ? json_decode($dataSetting,true) : array();
-        if(!empty($dataSetting)) foreach ($dataSetting as $key => $item){
-            if($key === 'meta'){
-                $oneMeta = $item[$this->session->public_lang_code];
-                if(!empty($oneMeta)) foreach ($oneMeta as $keyMeta => $value){
-                    $this->settings[$keyMeta] = str_replace('"','\'',$value);
-                }
-            } else
-                $this->settings[$key] = $item;
-        }
-        //Set flash message
-        $this->_message = $this->session->flashdata('message');
-        if (MAINTAIN_MODE == TRUE) $this->load->view('public/coming_soon');
-        $this->minify->enabled = FALSE;
-
         $this->_controller = $this->router->fetch_class();
         $this->_method = $this->router->fetch_method();
+
+        //đọc file setting
+
+        //Set flash message
+        $this->_message = $this->session->flashdata('message');
+        if (MAINTAIN_MODE == TRUE) $this->load->view('coming_soon');
+        $this->minify->enabled = FALSE;
+
 
         $configBreadcrumb['crumb_divider'] = $this->config->item('frontend_crumb_divider');
         $configBreadcrumb['tag_open'] = $this->config->item('frontend_tag_open');
@@ -211,6 +186,12 @@ class Public_Controller extends STEVEN_Controller
         $configBreadcrumb['crumb_close'] = $this->config->item('frontend_crumb_close');
         $this->breadcrumbs->init($configBreadcrumb);
 
+    }
+
+    public function switchLanguage($language = "") {
+        $language = !empty($language) ? $language : $this->config->item('language');
+        $this->session->set_userdata('public_lang_code', $language);
+        redirect($_SERVER['HTTP_REFERER']);
     }
 
 }
