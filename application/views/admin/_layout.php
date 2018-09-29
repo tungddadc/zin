@@ -7,62 +7,39 @@
  */
 defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 <!DOCTYPE html>
-<html>
+<html lang="en" >
+<!-- begin::Head -->
 <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
+    <title>
+        Metronic | Dashboard
+    </title>
+    <meta name="description" content="Latest updates and statistic charts">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title><?php echo !empty($heading_title) ? $heading_title : 'CMS' ?> | Apecsoft CMS</title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <link rel="icon" href="<?php echo $this->templates_assets ?>/favicon.ico" type="image/x-icon">
-    <?php $asset_css[] = '../bower_components/bootstrap/dist/css/bootstrap.min.css'; ?>
-    <?php $asset_css[] = '../bower_components/font-awesome/css/font-awesome.min.css'; ?>
-    <?php $asset_css[] = '../bower_components/Ionicons/css/ionicons.min.css'; ?>
-
-    <?php $asset_css[] = '../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css'; ?>
-    <?php $asset_css[] = '../bower_components/datatables.net-buttons-bs/css/buttons.bootstrap.min.css'; ?>
-    <?php $asset_css[] = '../bower_components/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css'; ?>
-    <?php $asset_css[] = '../bower_components/datatables.net-rowreorder-bs/css/rowReorder.bootstrap.min.css'; ?>
-
-    <?php /*$asset_css[] = '../bower_components/morris.js/morris.css'; */?><!--
-    <?php /*$asset_css[] = '../bower_components/jvectormap/jquery-jvectormap.css'; */?>
-    <?php /*$asset_css[] = '../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css'; */?>
-    <?php /*$asset_css[] = '../bower_components/bootstrap-daterangepicker/daterangepicker.css'; */?>
-    --><?php /*$asset_css[] = '../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css'; */?>
-
-    <?php $asset_css[] = '../bower_components/fancybox/dist/jquery.fancybox.min.css'; ?>
-    <?php $asset_css[] = '../plugins/pace/pace.min.css'; ?>
-    <?php $asset_css[] = '../plugins/iCheck/all.css'; ?>
-    <?php $asset_css[] = '../bower_components/bootstrap-sweetalert/dist/sweetalert.css'; ?>
-    <?php $asset_css[] = '../bower_components/toastr/toastr.min.css'; ?>
-
-
-    <?php $asset_css[] = '../bower_components/select2/dist/css/select2.min.css'; ?>
-    <?php $asset_css[] = '../bower_components/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.min.css'; ?>
-    <?php $asset_css[] = '../bower_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.css'; ?>
-
-    <?php $asset_css[] = 'AdminLTE.min.css'; ?>
-    <?php $asset_css[] = 'skins/_all-skins.min.css'; ?>
-    <?php $asset_css[] = 'custom.css'; ?>
-    <?php
-        $this->minify->css($asset_css);
-        echo $this->minify->deploy_css(TRUE);
-    ?>
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- Google Font -->
-    <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--begin::Web font -->
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+    <script>
+        WebFont.load({
+            google: {"families":["Poppins:300,400,500,600,700","Roboto:300,400,500,600,700"]},
+            active: function() {
+                sessionStorage.fonts = true;
+            }
+        });
+    </script>
+    <!--end::Web font -->
+    <!--begin::Base Styles -->
+    <!--begin::Page Vendors -->
+    <link href="<?php echo $this->templates_assets ?>assets/vendors/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
+    <!--end::Page Vendors -->
+    <link href="<?php echo $this->templates_assets ?>assets/vendors/base/vendors.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo $this->templates_assets ?>assets/demo/default/base/style.bundle.css" rel="stylesheet" type="text/css" />
+    <!--end::Base Styles -->
+    <link rel="shortcut icon" href="<?php echo $this->templates_assets ?>assets/demo/default/media/img/logo/favicon.ico" />
 </head>
-<!--<style>
-    .modal-footer-top-button{position:unset!important}
-</style>-->
-<body class="hold-transition skin-red sidebar-mini fixed">
+<!-- end::Head -->
+
+<body class="m-page--fluid m--skin- m-content--skin-light2 m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--skin-dark m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default"  >
 <script>
     var base_url = '<?php echo base_url();?>',
         current_url = '<?php echo current_url(); ?>',
@@ -87,100 +64,59 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     lang_cnf['<?php echo $lang_code;?>'] = '<?php echo $lang_name;?>';
     <?php } ?>
 </script>
-<div class="wrapper">
+
+<!-- begin:: Page -->
+<div class="m-grid m-grid--hor m-grid--root m-page">
+    <!-- BEGIN: Header -->
     <?php $this->load->view($this->template_path.'_header') ?>
-    <!-- Left side column. contains the logo and sidebar -->
-    <?php $this->load->view($this->template_path.'_sidebar') ?>
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <h1>
-                <?php echo !empty($heading_title)?$heading_title:'' ?>
-                <small><?php echo !empty($heading_description)?$heading_description:'' ?></small>
-            </h1>
-            <?php echo !empty($breadcrumbs)?$breadcrumbs:''; ?>
-        </section>
-        <?php echo !empty($main_content)?$main_content:'' ?>
+    <!-- END: Header -->
+    <div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body">
+        <!-- BEGIN: Left Aside -->
+        <?php $this->load->view($this->template_path.'_sidebar') ?>
+        <!-- END: Left Aside -->
+        <div class="m-grid__item m-grid__item--fluid m-wrapper">
+        <!-- begin::Body -->
+            <div class="m-grid__item m-grid__item--fluid m-wrapper">
+                <!-- BEGIN: Subheader -->
+                <div class="m-subheader ">
+                    <div class="d-flex align-items-center">
+                        <div class="mr-auto">
+                            <h3 class="m-subheader__title ">
+                                <?php echo !empty($heading_title)?$heading_title:'' ?>
+                            </h3>
+                        </div>
+                        <small><?php echo !empty($heading_description)?$heading_description:'' ?></small>
+                    </div>
+                </div>
+                <!-- END: Subheader -->
+                <?php echo !empty($main_content)?$main_content:'' ?>
+            </div>
+        <!-- end:: Body -->
+        </div>
     </div>
-    <!-- /.content-wrapper -->
+    <!-- begin::Footer -->
     <?php $this->load->view($this->template_path.'_footer') ?>
-    <!-- Add the sidebar's background. This div must be placed
-         immediately after the control sidebar -->
-    <div class="control-sidebar-bg"></div>
+    <!-- end::Footer -->
 </div>
-<!-- ./wrapper -->
+<!-- end:: Page -->
+<!-- begin::Quick Sidebar -->
 
+<!-- end::Quick Sidebar -->
+<!-- begin::Scroll Top -->
+<div id="m_scroll_top" class="m-scroll-top">
+    <i class="la la-arrow-up"></i>
+</div>
+<!-- end::Scroll Top -->
 
-<?php $asset_jquery[] = '../bower_components/jquery/dist/jquery.min.js'; ?>
-<?php $asset_jquery[] = '../bower_components/jquery-ui/jquery-ui.min.js'; ?>
-<?php $this->minify->js($asset_jquery); echo $this->minify->deploy_js();  ?>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-    $.widget.bridge('uibutton', $.ui.button);
-</script>
-<?php $asset_js[] = '../bower_components/bootstrap/dist/js/bootstrap.min.js'; ?>
-<?php $asset_js[] = '../bower_components/datatables.net/js/jquery.dataTables.min.js'; ?>
-<?php $asset_js[] = '../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js'; ?>
-<?php $asset_js[] = '../bower_components/datatables.net-rowreorder/js/dataTables.rowReorder.min.js'; ?>
-<?php $asset_js[] = '../bower_components/datatables.net-buttons/js/dataTables.buttons.min.js'; ?>
-<?php $asset_js[] = '../bower_components/datatables.net-buttons-bs/js/buttons.bootstrap.min.js'; ?>
-<?php $asset_js[] = '../bower_components/datatables.net-buttons/js/buttons.print.min.js'; ?>
-<?php $asset_js[] = '../bower_components/datatables.net-buttons/js/buttons.html5.min.js'; ?>
-<?php $asset_js[] = '../bower_components/datatables.net-buttons/js/buttons.flash.min.js'; ?>
-<?php $asset_js[] = '../bower_components/datatables.net-buttons/js/buttons.colVis.min.js'; ?>
-
-
-<?php /*$asset_js[] = '../bower_components/raphael/raphael.min.js'; */?><!--
-<?php /*$asset_js[] = '../bower_components/morris.js/morris.min.js'; */?>
-<?php /*$asset_js[] = '../bower_components/jquery-sparkline/dist/jquery.sparkline.min.js'; */?>
-<?php /*$asset_js[] = '../plugins/jvectormap/jquery-jvectormap-1.2.2.min.js'; */?>
-<?php /*$asset_js[] = '../plugins/jvectormap/jquery-jvectormap-world-mill-en.js'; */?>
---><?php /*$asset_js[] = '../bower_components/jquery-knob/dist/jquery.knob.min.js'; */?>
-
-
-
-<?php $asset_js[] = '../bower_components/moment/min/moment.min.js'; ?>
-<?php $asset_js[] = '../bower_components/bootstrap-daterangepicker/daterangepicker.js'; ?>
-<?php $asset_js[] = '../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js'; ?>
-<?php $asset_js[] = '../bower_components/select2/dist/js/select2.min.js'; ?>
-<?php $asset_js[] = '../bower_components/bootstrap-switch/dist/js/bootstrap-switch.min.js'; ?>
-<?php $asset_js[] = '../bower_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js'; ?>
-<?php $asset_js[] = 'jquery.nestable.js'; ?>
-
-
-<?php //$asset_js[] = '../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js'; ?>
-<?php $asset_js[] = '../bower_components/jquery-slimscroll/jquery.slimscroll.min.js'; ?>
-<?php $asset_js[] = '../bower_components/fastclick/lib/fastclick.js'; ?>
-
-
-<?php $asset_js[] = '../bower_components/fancybox/dist/jquery.fancybox.min.js'; ?>
-<?php $asset_js[] = '../bower_components/PACE/pace.min.js'; ?>
-<?php $asset_js[] = '../plugins/iCheck/icheck.min.js'; ?>
-<?php $asset_js[] = '../bower_components/toastr/toastr.min.js'; ?>
-<?php $asset_js[] = '../bower_components/bootstrap-sweetalert/dist/sweetalert.min.js'; ?>
-
-<?php $asset_js[] = 'adminlte.min.js'; ?>
-<?php $asset_js[] = 'demo.js'; ?>
-
-<?php $asset_js[] = '../plugins/tinymce/tinymce.min.js'; ?>
-<?php $asset_js[] = '../plugins/moxiemanager/js/moxman.loader.min.js'; ?>
-
-<?php $asset_js[] = 'main.js'; ?>
-<?php if(!empty($controller)) $asset_js[] = "pages/$controller.js"; ?>
-
-<?php $this->minify->js($asset_js); echo $this->minify->deploy_js();  ?>
-<script type="text/javascript">
-    toastr.options.escapeHtml = true;
-    toastr.options.closeButton = true;
-    toastr.options.positionClass = "toast-bottom-right";
-    toastr.options.timeOut = 5000;
-    toastr.options.showMethod = 'fadeIn';
-    toastr.options.hideMethod = 'fadeOut';
-    toastr.options.progressBar = true;
-    <?php if($this->session->flashdata('message')): $message = $this->session->flashdata('message'); ?>
-    <?php if(!empty($message['type'])) echo "toastr['".$message['type']."']('".trim(strip_tags($message['message']))."');" ?>
-    <?php endif; ?>
-</script>
+<!--begin::Base Scripts -->
+<script src="<?php echo $this->templates_assets ?>assets/vendors/base/vendors.bundle.js" type="text/javascript"></script>
+<script src="<?php echo $this->templates_assets ?>assets/demo/default/base/scripts.bundle.js" type="text/javascript"></script>
+<!--end::Base Scripts -->
+<!--begin::Page Vendors -->
+<script src="<?php echo $this->templates_assets ?>assets/vendors/custom/fullcalendar/fullcalendar.bundle.js" type="text/javascript"></script>
+<!--end::Page Vendors -->
+<!--begin::Page Snippets -->
+<script src="<?php echo $this->templates_assets ?>assets/app/js/dashboard.js" type="text/javascript"></script>
+<!--end::Page Snippets -->
 </body>
 </html>

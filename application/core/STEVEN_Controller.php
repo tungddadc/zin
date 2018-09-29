@@ -109,7 +109,7 @@ class Admin_Controller extends STEVEN_Controller
         //set đường dẫn template
         $this->template_path = 'admin/';
         $this->template_main = $this->template_path.'_layout';
-        $this->templates_assets = base_url().'admin/';
+        $this->templates_assets = base_url().'backend/';
 
         //fix language admin tiếng việt
         $this->session->admin_lang = 'vi';

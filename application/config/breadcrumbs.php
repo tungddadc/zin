@@ -14,11 +14,12 @@
 | Defaults provided for twitter bootstrap 2.0
 */
 
-$config['crumb_divider'] = '';
-$config['tag_open'] = '<ol class="breadcrumb">';
-$config['tag_close'] = '</ol>';
-$config['crumb_open'] = '<li typeof="v:Breadcrumb">';
-$config['crumb_last_open'] = '<li class="active" property="v:title">';
+$config['crumb_divider'] = '<li class="m-nav__separator"> - </li>';
+$config['tag_open'] = '<ul class="m-subheader__breadcrumbs m-nav m-nav--inline">';
+$config['tag_close'] = '</ul>';
+$config['crumb_open'] = '<li class="m-nav__item">';
+$config['crumb_first_open'] = '<li class="m-nav__item m-nav__item--home">';
+$config['crumb_last_open'] = '<li class="m-nav__item">';
 $config['crumb_close'] = '</li>';
 
 $config['frontend_crumb_divider'] = '';
