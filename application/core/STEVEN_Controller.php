@@ -174,7 +174,9 @@ class Public_Controller extends STEVEN_Controller
 
         //Set flash message
         $this->_message = $this->session->flashdata('message');
-        if (MAINTAIN_MODE == TRUE) $this->load->view('coming_soon');
+        if (MAINTAIN_MODE == TRUE) {
+            $this->load->view('public/coming_soon');
+        }
         $this->minify->enabled = FALSE;
 
 
