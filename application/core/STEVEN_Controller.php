@@ -27,11 +27,42 @@ class STEVEN_Controller extends CI_Controller
         $this->config->load('languages');
         //Load database
         $this->load->database();
+
+        $this->_controller = $this->router->fetch_class();
+        $this->_method = $this->router->fetch_method();
+
         if(DEBUG_MODE == TRUE) {
             //Load third party
             //$this->load->add_package_path(APPPATH.'third_party', 'codeigniter-debugbar');
             //$this->output->enable_profiler(TRUE);
         }
+    }
+
+    public function checkRequestGetAjax(){
+        if(empty($_SERVER['HTTP_X_REQUESTED_WITH']) || (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) !== 'xmlhttprequest'))
+            return false;
+    }
+
+    public function checkRequestPostAjax(){
+        if($this->input->server('REQUEST_METHOD') !== 'POST'
+            || empty($_SERVER['HTTP_X_REQUESTED_WITH'])
+            || (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) !== 'xmlhttprequest'))
+            return false;
+    }
+
+    public function returnJson($data = null){
+        if($this->config->item('csrf_protection') == TRUE) {
+            $csrf = [
+                'csrf_form' => [
+                    'csrf_name'  => $this->security->get_csrf_token_name(),
+                    'csrf_value' => $this->security->get_csrf_hash()
+                ]
+            ];
+            $data = array_merge($csrf,(array) $data);
+        }
+        $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode($data));
     }
 
     public function toSlug($doc)
@@ -115,11 +146,11 @@ class Admin_Controller extends STEVEN_Controller
     }
 
     public function check_auth(){
-        if (!$this->ion_auth->logged_in()) {
+        if (($this->_controller !== 'user' || ($this->_controller === 'user' && !in_array($this->_method,['login','ajax_login']))) && !$this->ion_auth->logged_in()) {
             //chưa đăng nhập thì chuyển về page login
-            redirect(BASE_ADMIN_URL.'auth/login?url='.urlencode(current_url()), 'refresh');
+            redirect(BASE_ADMIN_URL.'user/login?url='.urlencode(current_url()), 'refresh');
         }else{
-            if($this->ion_auth->in_group(1) != true){
+            /*if($this->ion_auth->in_group(1) != true){
                 if(!$this->session->admin_permission){
                     $this->load->model('Groups_model','group');
                     $groupModel = new Groups_model();
@@ -138,7 +169,7 @@ class Admin_Controller extends STEVEN_Controller
                 }
             }else{
                 $this->session->admin_group_id = 1;//ID nhóm admin
-            }
+            }*/
         }
     }
 
@@ -166,9 +197,6 @@ class Public_Controller extends STEVEN_Controller
 
         //Detect mobile
         //$this->detectMobile = new Mobile_Detect();
-
-        $this->_controller = $this->router->fetch_class();
-        $this->_method = $this->router->fetch_method();
 
         //đọc file setting
 

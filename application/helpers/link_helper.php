@@ -1,4 +1,10 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+if ( ! function_exists('site_admin_url')) {
+    function site_admin_url($uri = '')
+    {
+        return BASE_ADMIN_URL . $uri;
+    }
+}
 if (!function_exists('getUrlCateNews')) {
     function getUrlCateNews($optional){
         if(is_object($optional)) $optional = (array) $optional;

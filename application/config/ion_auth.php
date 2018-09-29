@@ -98,6 +98,7 @@ $config['admin_email']                = "admin@domain.com"; // Admin Email, admi
 $config['default_group']              = 'members';           // Default group, use name
 $config['admin_group']                = 'Admin';             // Default administrators group, use name
 $config['identity']                   = 'email';             // You can use any unique column in your table as identity column. The values in this column, alongside password, will be used for login purposes
+$config['identity_alt']               = 'username';
 $config['min_password_length']        = 8;                   // Minimum Required Length of Password
 $config['max_password_length']        = 20;                  // Maximum Allowed Length of Password
 $config['email_activation']           = FALSE;               // Email Activation for registration

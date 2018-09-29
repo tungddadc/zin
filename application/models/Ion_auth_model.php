@@ -201,6 +201,7 @@ class Ion_auth_model extends CI_Model
 
 		// initialize data
 		$this->identity_column = $this->config->item('identity', 'ion_auth');
+        $this->identity_alt_column = $this->config->item('identity_alt', 'ion_auth');
 		$this->store_salt = $this->config->item('store_salt', 'ion_auth');
 		$this->salt_length = $this->config->item('salt_length', 'ion_auth');
 		$this->join = $this->config->item('join', 'ion_auth');
@@ -1041,9 +1042,9 @@ class Ion_auth_model extends CI_Model
 		}
 
 		$this->trigger_events('extra_where');
-
-		$query = $this->db->select($this->identity_column . ', email, id, password, active, last_login')
-						  ->where($this->identity_column, $identity)
+        $identity_column = filter_var($identity, FILTER_VALIDATE_EMAIL)? $this->identity_column : $this->identity_alt_column;
+        $query = $this->db->select($this->identity_column .', ' . $this->identity_alt_column. ', id, password, active, last_login')
+						  ->where($identity_column, $identity)
 						  ->limit(1)
 						  ->order_by('id', 'desc')
 						  ->get($this->tables['users']);
