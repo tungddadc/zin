@@ -93,13 +93,13 @@ class Admin_Controller extends STEVEN_Controller
         $this->config->load('permission');
 
 
-        $configMinify['assets_dir'] = 'public/admin';
+        /*$configMinify['assets_dir'] = 'public/admin';
         $configMinify['assets_dir_css'] = 'public/admin/css';
         $configMinify['assets_dir_js'] = 'public/admin/js';
         $configMinify['css_dir'] = 'public/admin/css';
         $configMinify['js_dir'] = 'public/admin/js';
         $this->load->library('minify', $configMinify);
-        $this->minify->enabled = FALSE;
+        $this->minify->enabled = FALSE;*/
 
         $this->check_auth();
     }
