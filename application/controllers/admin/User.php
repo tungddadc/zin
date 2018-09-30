@@ -34,6 +34,7 @@ class User extends Admin_Controller
 
     public function ajax_login(){
         $this->checkRequestPostAjax();
+
         $identity = $this->input->post('identity');
         $rules[] = array(
             'field' => 'identity',
@@ -80,7 +81,7 @@ class User extends Admin_Controller
                 $this->session->set_userdata('moxiemanager.storage.path', MEDIA_PATH);
                 $this->session->set_userdata("identity", $this->input->post('identity'));
                 //redirect them back to the home page
-                $url_redirect = $this->input->post('url_redirect') ? $this->input->post('url_redirect') : BASE_ADMIN_URL;
+                $url_redirect = $this->input->post('url_redirect') ? $this->input->post('url_redirect') : site_admin_url();
                 $message['type'] = 'success';
                 $message['message'] = $this->ion_auth->messages();
                 $message['url_redirect'] = $url_redirect;
@@ -100,5 +101,10 @@ class User extends Admin_Controller
             $message['validation'] = $valid;
             $this->returnJson($message);
         }
+    }
+
+    public function logout(){
+        $this->ion_auth->logout();
+        redirect(site_admin_url('user/login'), 'refresh');
     }
 }

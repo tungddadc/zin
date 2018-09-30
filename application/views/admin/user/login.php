@@ -156,7 +156,6 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     }
 
     function showError(jqXHR, exception) {
-
         toastr['error']("The action you have requested is not allowed.");
     }
 </script>

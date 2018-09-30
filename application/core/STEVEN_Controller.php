@@ -32,20 +32,23 @@ class STEVEN_Controller extends CI_Controller
         $this->_method = $this->router->fetch_method();
 
         if(DEBUG_MODE == TRUE) {
-            $this->output->enable_profiler(TRUE);
+            if(empty($_SERVER['HTTP_X_REQUESTED_WITH']) || (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) !== 'xmlhttprequest')){
+                $this->load->add_package_path(APPPATH.'third_party', 'codeigniter-debugbar');
+                $this->output->enable_profiler(TRUE);
+            }
         }
     }
 
     public function checkRequestGetAjax(){
         if(empty($_SERVER['HTTP_X_REQUESTED_WITH']) || (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) !== 'xmlhttprequest'))
-            return false;
+            exit;
     }
 
     public function checkRequestPostAjax(){
         if($this->input->server('REQUEST_METHOD') !== 'POST'
             || empty($_SERVER['HTTP_X_REQUESTED_WITH'])
             || (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) !== 'xmlhttprequest'))
-            return false;
+            exit;
     }
 
     public function returnJson($data = null){
@@ -181,9 +184,8 @@ class Admin_Controller extends STEVEN_Controller
         $this->template_main = $this->template_path.'_layout';
         $this->templates_assets = base_url().'backend/';
 
-        //fix language admin tiếng việt
-        $this->session->admin_lang = 'vi';
-
+        //Language
+        $this->switchLanguage($this->input->get('lang'));
 
         //tải thư viện
         $this->load->library(array('ion_auth','breadcrumbs'));
@@ -205,20 +207,10 @@ class Admin_Controller extends STEVEN_Controller
         $this->check_auth();
     }
 
-    // add log action
-    public function addLogAction($action, $note){
-        $this->load->model("Log_action_model");
-        $logActionModel = new Log_action_model();
-        $data['action'] = $action;
-        $data['note']   = $note;
-        $data['uid']    = $this->session->user_id;
-        $logActionModel->save($data);
-    }
-
     public function check_auth(){
         if (($this->_controller !== 'user' || ($this->_controller === 'user' && !in_array($this->_method,['login','ajax_login']))) && !$this->ion_auth->logged_in()) {
             //chưa đăng nhập thì chuyển về page login
-            redirect(BASE_ADMIN_URL.'user/login?url='.urlencode(current_url()), 'refresh');
+            redirect(site_admin_url('user/login') . '?url='.urlencode(current_url()), 'refresh');
         }else{
             /*if($this->ion_auth->in_group(1) != true){
                 if(!$this->session->admin_permission){
@@ -243,6 +235,24 @@ class Admin_Controller extends STEVEN_Controller
         }
     }
 
+    public function switchLanguage($lang_code = "") {
+        $language_code = !empty($lang_code) ? $lang_code : $this->config->item('language_default');
+        $this->session->set_userdata('admin_lang', $language_code);
+        $languageFolder = $this->config->item('language_folder')[$language_code];
+        $this->session->set_userdata('admin_lang_folder', $languageFolder);
+        if(!empty($lang_code)) redirect($_SERVER['HTTP_REFERER']);
+    }
+
+    // add log action
+    public function addLogAction($action, $note){
+        $this->load->model("Log_action_model");
+        $logActionModel = new Log_action_model();
+        $data['action'] = $action;
+        $data['note']   = $note;
+        $data['uid']    = $this->session->user_id;
+        $logActionModel->save($data);
+    }
+
 }
 
 class Public_Controller extends STEVEN_Controller
@@ -264,6 +274,9 @@ class Public_Controller extends STEVEN_Controller
 
         //load helper
         $this->load->helper(array('cookie','link','title','format','image'));
+
+        //Language
+        $this->switchLanguage($this->input->get('lang'));
 
         //Detect mobile
         //$this->detectMobile = new Mobile_Detect();
@@ -288,10 +301,12 @@ class Public_Controller extends STEVEN_Controller
 
     }
 
-    public function switchLanguage($language = "") {
-        $language = !empty($language) ? $language : $this->config->item('language');
-        $this->session->set_userdata('public_lang_code', $language);
-        redirect($_SERVER['HTTP_REFERER']);
+    public function switchLanguage($lang_code = "") {
+        $language_code = !empty($lang_code) ? $lang_code : $this->config->item('language_default');
+        $this->session->set_userdata('public_lang_code', $language_code);
+        $languageFolder = $this->config->item('public_lang_folder')[$language_code];
+        $this->session->set_userdata('admin_lang_folder', $languageFolder);
+        if(!empty($lang_code)) redirect($_SERVER['HTTP_REFERER']);
     }
 
 }

@@ -19,5 +19,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 $config['language_name'] = array('vi'=>'Tiếng Việt','en' => 'English');
-$config['language_code'] = array('vi'=>'vietnamese','en' => 'english');
+$config['language_folder'] = array('vi'=>'vietnamese','en' => 'english');
 $config['language_default'] = 'vi';

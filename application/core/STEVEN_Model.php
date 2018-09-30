@@ -76,7 +76,7 @@ class STEVEN_Model extends CI_Model
 
 		if(!empty($this->table_trans)){
 			$this->db->join($this->table_trans, "$this->table.id = $this->table_trans.id");
-			if(empty($lang_code)) $lang_code = $this->session->admin_lang;
+			if(empty($lang_code)) $lang_code = $this->session->userdata('admin_lang');
 			if(!empty($lang_code)) $this->db->where("$this->table_trans.language_code",$lang_code);
 		}
 
@@ -268,7 +268,7 @@ class STEVEN_Model extends CI_Model
 		$this->db->from($this->table);
 		if(!empty($this->table_trans)) {
 		    $this->db->join($this->table_trans,"$this->table.id = $this->table_trans.id");
-            $this->db->where("$this->table_trans.language_code",$this->session->admin_lang);
+            $this->db->where("$this->table_trans.language_code",$this->session->userdata('admin_lang'));
         }
 		if(is_array($ids)) $this->db->where_in("$this->table.id",$ids);
 		else $this->db->where("$this->table.id",$ids);
