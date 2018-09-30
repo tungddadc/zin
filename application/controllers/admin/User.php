@@ -29,6 +29,7 @@ class User extends Admin_Controller
     }
 
     public function login(){
+        if($this->ion_auth->logged_in() == true) redirect(site_admin_url());
         $this->load->view($this->template_path.'user/login');
     }
 
