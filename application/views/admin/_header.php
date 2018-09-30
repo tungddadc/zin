@@ -73,7 +73,7 @@
                                 <div class="m-dropdown__wrapper">
                                     <span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>
                                     <div class="m-dropdown__inner">
-                                        <div class="m-dropdown__header m--align-center" style="background: url(assets/app/media/img/misc/user_profile_bg.jpg); background-size: cover;">
+                                        <div class="m-dropdown__header m--align-center" style="background: url(<?php echo $this->templates_assets ?>assets/app/media/img/misc/user_profile_bg.jpg); background-size: cover;">
                                             <div class="m-card-user m-card-user--skin-dark">
                                                 <div class="m-card-user__pic">
                                                     <img src="<?php echo $this->templates_assets ?>assets/app/media/img/users/user4.jpg" class="m--img-rounded m--marginless" alt=""/>
@@ -97,7 +97,7 @@
 																	</span>
                                                     </li>
                                                     <li class="m-nav__item">
-                                                        <a href="header/profile.html" class="m-nav__link">
+                                                        <a href="<?php echo site_admin_url('user/profile') ?>" class="m-nav__link">
                                                             <i class="m-nav__link-icon flaticon-profile-1"></i>
                                                             <span class="m-nav__link-title">
 																			<span class="m-nav__link-wrap">
