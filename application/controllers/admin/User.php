@@ -16,15 +16,19 @@ class User extends Admin_Controller
     public function index(){
         $data['heading_title'] = "Quản lý thành viên";
         $data['heading_description'] = 'Danh sách thành viên';
-
         $data['main_content'] = $this->load->view($this->template_path . 'user/index', $data, TRUE);
         $this->load->view($this->template_main, $data);
     }
 
     public function profile(){
         $data['heading_title'] = "Thông tin của tôi";
-
         $data['main_content'] = $this->load->view($this->template_path . 'user/profile', $data, TRUE);
+        $this->load->view($this->template_main, $data);
+    }
+
+    public function activity(){
+        $data['heading_title'] = "Hoạt động của tôi";
+        $data['main_content'] = $this->load->view($this->template_path . 'user/activity', $data, TRUE);
         $this->load->view($this->template_main, $data);
     }
 

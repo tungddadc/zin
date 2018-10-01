@@ -6,4 +6,4 @@
  * Time: 1:09 AM
  */
 defined('BASEPATH') OR exit('No direct script access allowed');?>
-Thông tin của tôi
+Hoạt động của tôi
