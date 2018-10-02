@@ -13,9 +13,9 @@
             <div class="m-stack__item m-brand  m-brand--skin-dark ">
                 <div class="m-stack m-stack--ver m-stack--general">
                     <div class="m-stack__item m-stack__item--middle m-brand__logo">
-                        <a href="index.html" class="m-brand__logo-wrapper">
+                        <a href="<?php echo site_admin_url() ?>" class="m-brand__logo-wrapper">
                             <img alt=""
-                                 src="<?php echo $this->templates_assets ?>assets/demo/default/media/img/logo/logo_default_dark.png"/>
+                                 src="<?php echo $this->templates_assets ?>images/logo.png" width="140">
                         </a>
                     </div>
                     <div class="m-stack__item m-stack__item--middle m-brand__tools">
@@ -54,6 +54,65 @@
                     <i class="la la-close"></i>
                 </button>
                 <!-- END: Horizontal Menu -->
+                <div id="m_header_menu" class="m-header-menu m-aside-header-menu-mobile m-aside-header-menu-mobile--offcanvas  m-header-menu--skin-light m-header-menu--submenu-skin-light m-aside-header-menu-mobile--skin-dark m-aside-header-menu-mobile--submenu-skin-dark ">
+                    <ul class="m-menu__nav  m-menu__nav--submenu-arrow ">
+                        <li class="m-menu__item m-menu__item--submenu m-menu__item--rel" m-menu-submenu-toggle="click" m-menu-link-redirect="1" aria-haspopup="true">
+                            <a href="javascript:;" class="m-menu__link m-menu__toggle">
+                                <i class="m-menu__link-icon flaticon-business"></i>
+                                <span class="m-menu__link-text">
+                                    Quản lý đơn hàng
+                                </span>
+                                <i class="m-menu__hor-arrow la la-angle-down"></i>
+                                <i class="m-menu__ver-arrow la la-angle-right"></i>
+                            </a>
+                            <div class="m-menu__submenu m-menu__submenu--classic m-menu__submenu--left">
+                                <span class="m-menu__arrow m-menu__arrow--adjust" style="left: 73px;"></span>
+                                <ul class="m-menu__subnav">
+                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true">
+                                        <a href="<?php echo site_admin_url('order?is_status=2') ?>" class="m-menu__link ">
+                                            <i class="m-menu__link-icon flaticon-signs-1"></i>
+                                            <span class="m-menu__link-text">
+                                                Đơn hàng mới nhất
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true">
+                                        <a href="<?php echo site_admin_url('order?is_status=3') ?>" class="m-menu__link ">
+                                            <i class="m-menu__link-icon flaticon-signs-1"></i>
+                                            <span class="m-menu__link-text">
+                                                Đơn hàng chờ giao
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true">
+                                        <a href="<?php echo site_admin_url('order?is_status=1') ?>" class="m-menu__link ">
+                                            <i class="m-menu__link-icon flaticon-signs-1"></i>
+                                            <span class="m-menu__link-text">
+                                                Đơn hàng hoàn thành
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true">
+                                        <a href="<?php echo site_admin_url('order?is_status=0') ?>" class="m-menu__link ">
+                                            <i class="m-menu__link-icon flaticon-signs-1"></i>
+                                            <span class="m-menu__link-text">
+                                                Đơn hàng hủy
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="m-menu__item">
+                            <a href="<?php echo site_admin_url('menu') ?>" class="m-menu__link">
+                                <i class="m-menu__link-icon flaticon-menu-1"></i>
+                                <span class="m-menu__link-text">
+                                    Cấu hình menu
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
                 <!-- BEGIN: Topbar -->
                 <div id="m_header_topbar" class="m-topbar  m-stack m-stack--ver m-stack--general">
                     <div class="m-stack__item m-topbar__nav-wrapper">

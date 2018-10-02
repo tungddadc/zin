@@ -295,6 +295,7 @@ class Public_Controller extends STEVEN_Controller
         $configBreadcrumb['tag_open'] = $this->config->item('frontend_tag_open');
         $configBreadcrumb['tag_close'] = $this->config->item('frontend_tag_close');
         $configBreadcrumb['crumb_open'] = $this->config->item('frontend_crumb_open');
+        $configBreadcrumb['crumb_first_open'] = $this->config->item('frontend_crumb_first_open');
         $configBreadcrumb['crumb_last_open'] = $this->config->item('frontend_crumb_last_open');
         $configBreadcrumb['crumb_close'] = $this->config->item('frontend_crumb_close');
         $this->breadcrumbs->init($configBreadcrumb);

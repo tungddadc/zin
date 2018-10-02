@@ -12,7 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 <head>
     <meta charset="utf-8" />
     <title>
-        Metronic | Dashboard
+        Admin CMS | Dashboard
     </title>
     <meta name="description" content="Latest updates and statistic charts">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,7 +21,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
     <script>
         WebFont.load({
-            google: {"families":["Poppins:300,400,500,600,700","Roboto:300,400,500,600,700"]},
+            google: {"families":["Montserrat:300,400,500,600,700","Roboto:300,400,500,600,700"]},
             active: function() {
                 sessionStorage.fonts = true;
             }
@@ -35,7 +35,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     <link href="<?php echo $this->templates_assets ?>assets/vendors/base/vendors.bundle.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo $this->templates_assets ?>assets/demo/default/base/style.bundle.css" rel="stylesheet" type="text/css" />
     <!--end::Base Styles -->
-    <link rel="shortcut icon" href="<?php echo $this->templates_assets ?>assets/demo/default/media/img/logo/favicon.ico" />
+    <link rel="shortcut icon" href="<?php echo site_url() ?>favicon.ico" />
 </head>
 <!-- end::Head -->
 
