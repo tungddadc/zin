@@ -8,27 +8,35 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 class User extends Admin_Controller
 {
+    protected $_data;
+    protected $_data_group;
     public function __construct()
     {
         parent::__construct();
+        //tải thư viện
+        $this->load->library(array('ion_auth'));
+        //$this->lang->load('user');
+        $this->load->model(['users_model','groups_model']);
+        $this->_data = new Users_model();
+        $this->_data_group = new Groups_model();
     }
 
     public function index(){
         $data['heading_title'] = "Quản lý thành viên";
         $data['heading_description'] = 'Danh sách thành viên';
-        $data['main_content'] = $this->load->view($this->template_path . 'user/index', $data, TRUE);
+        $data['main_content'] = $this->load->view($this->template_path . $this->_controller . DIRECTORY_SEPARATOR . $this->_method, $data, TRUE);
         $this->load->view($this->template_main, $data);
     }
 
     public function profile(){
         $data['heading_title'] = "Thông tin của tôi";
-        $data['main_content'] = $this->load->view($this->template_path . 'user/profile', $data, TRUE);
+        $data['main_content'] = $this->load->view($this->template_path . $this->_controller . DIRECTORY_SEPARATOR . $this->_method, $data, TRUE);
         $this->load->view($this->template_main, $data);
     }
 
     public function activity(){
         $data['heading_title'] = "Hoạt động của tôi";
-        $data['main_content'] = $this->load->view($this->template_path . 'user/activity', $data, TRUE);
+        $data['main_content'] = $this->load->view($this->template_path . $this->_controller . DIRECTORY_SEPARATOR . $this->_method, $data, TRUE);
         $this->load->view($this->template_main, $data);
     }
 

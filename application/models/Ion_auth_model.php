@@ -1043,7 +1043,7 @@ class Ion_auth_model extends CI_Model
 
 		$this->trigger_events('extra_where');
         $identity_column = filter_var($identity, FILTER_VALIDATE_EMAIL)? $this->identity_column : $this->identity_alt_column;
-        $query = $this->db->select($this->identity_column .', ' . $this->identity_alt_column. ', id, password, active, last_login')
+        $query = $this->db->select('username, email, first_name, last_name, id, password, active, last_login')
 						  ->where($identity_column, $identity)
 						  ->limit(1)
 						  ->order_by('id', 'desc')
@@ -2023,12 +2023,16 @@ class Ion_auth_model extends CI_Model
 		$this->trigger_events('pre_set_session');
 
 		$session_data = array(
-		    'identity'             => $user->{$this->identity_column},
-		    $this->identity_column => $user->{$this->identity_column},
-		    'email'                => $user->email,
-		    'user_id'              => $user->id, //everyone likes to overwrite id so we'll use user_id
-		    'old_last_login'       => $user->last_login,
-		    'last_check'           => time(),
+		    'identity'                  => $user->{$this->identity_column},
+		    $this->identity_column      => $user->{$this->identity_column},
+		    $this->identity_alt_column  => $user->{$this->identity_alt_column},
+            'username'                  => $user->username,
+		    'email'                     => $user->email,
+		    'first_name'                => $user->first_name,
+		    'last_name'                 => $user->last_name,
+		    'user_id'                   => $user->id, //everyone likes to overwrite id so we'll use user_id
+		    'old_last_login'            => $user->last_login,
+		    'last_check'                => time(),
 		);
 
 		$this->session->set_userdata($session_data);
