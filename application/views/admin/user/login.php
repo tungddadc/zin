@@ -113,9 +113,35 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     $(document).ready(function () {
         $('form').ajaxForm({
             //target:        '#output1',   // target element(s) to be updated with server response
-            beforeSubmit: showRequest,  // pre-submit callback
-            success: showResponse,  // post-submit callback
-            error: showError,
+            beforeSubmit: function showRequest(formData, jqForm, options) {
+                jqForm.find('[type="submit"]').append('<i class="fa fa-spinner fa-spin ml-2" style="font-size:24px;color: #ffffff;"></i>');
+                let queryString = $.param(formData);
+                return true;
+            },  // pre-submit callback
+            success: function showResponse(response, statusText, xhr, $form) {
+                if(response.csrf_form) $form.find('input[name="' + response.csrf_form.csrf_name + '"]').val(response.csrf_form.csrf_value);
+                $form.find('.fa-spin').remove();
+                if (typeof response.type !== 'undefined') {
+                    toastr[response.type](response.message);
+                    if (response.type === "warning") {
+                        $form.find('.form-group').removeClass('has-danger');
+                        $form.find('.form-control-feedback').remove();
+                        $.each(response.validation, function (key, val) {
+                            $form.find('[name="' + key + '"]').after(val).parent().addClass('has-danger');
+                        });
+                    } else {
+                        $form.find('.form-group').removeClass('has-danger');
+                        $form.find('.form-control-feedback').remove();
+                        //$form.reset();
+                        setTimeout(function () {
+                            if(response.url_redirect) location.href = response.url_redirect;
+                        },2000);
+                    }
+                }
+            },  // post-submit callback
+            error: function showError(jqXHR, exception) {
+                toastr['error']("The action you have requested is not allowed.");
+            },
             type: 'POST',        // 'get' or 'post', override for form's 'method' attribute
             dataType: 'JSON'        // 'xml', 'script', or 'json' (expected server response type)
             //clearForm: true        // clear all form fields after successful submit
@@ -124,40 +150,6 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
             //timeout:   3000
         });
     });
-
-    // pre-submit callback
-    function showRequest(formData, jqForm, options) {
-        jqForm.find('[type="submit"]').append('<i class="fa fa-spinner fa-spin ml-2" style="font-size:24px;color: #ffffff;"></i>');
-        let queryString = $.param(formData);
-        return true;
-    }
-
-    // post-submit callback
-    function showResponse(response, statusText, xhr, $form) {
-        $form.find('input[name="' + response.csrf_form.csrf_name + '"]').val(response.csrf_form.csrf_value);
-        $form.find('.fa-spin').remove();
-        if (typeof response.type !== 'undefined') {
-            toastr[response.type](response.message);
-            if (response.type === "warning") {
-                $form.find('.form-group').removeClass('has-danger');
-                $form.find('.form-control-feedback').remove();
-                $.each(response.validation, function (key, val) {
-                    $form.find('[name="' + key + '"]').after(val).parent().addClass('has-danger');
-                });
-            } else {
-                $form.find('.form-group').removeClass('has-danger');
-                $form.find('.form-control-feedback').remove();
-                //$form.reset();
-                setTimeout(function () {
-                    if(response.url_redirect) location.href = response.url_redirect;
-                },2000);
-            }
-        }
-    }
-
-    function showError(jqXHR, exception) {
-        toastr['error']("The action you have requested is not allowed.");
-    }
 </script>
 </body>
 <!-- end::Body -->

@@ -18,13 +18,17 @@ class STEVEN_Model extends CI_Model
 	public $column_search;
 	public $order_default;
 
+	public $_dbprefix;
+
 	public $_args = array();
 	public $where_custom;
 
 	public function __construct()
 	{
 		parent::__construct();
-		$this->table            = str_replace('_model','',get_Class($this));
+		$this->_dbprefix = $this->db->dbprefix;
+
+		$this->table            = strtolower(str_replace('_model','',get_Class($this)));
 		$this->primary_key      = "$this->table.id";
 		$this->column_order     = array("$this->table.id","$this->table.id","$this->table_trans.title","$this->table.is_status","$this->table.updated_time","$this->table.created_time");
 		$this->column_search    = array("$this->table_trans.title");
@@ -35,34 +39,37 @@ class STEVEN_Model extends CI_Model
 	}
 
 	/*Hàm xử lý các tham số truyền từ Datatables Jquery*/
-    private function _get_datatables_query()
-	{
-        if (!empty($this->input->post('columns'))){
-            $i = 0;
-            foreach ($this->column_search as $item){
-                if ($this->input->post('search')['value']){
-                    $this->db->select('MATCH (`tb2`.title) AGAINST ('.$this->db->escape($this->input->post('search')['value']).' IN NATURAL LANGUAGE MODE) AS score_search');
-                    $this->db->where('MATCH (`tb2`.title) AGAINST ('.$this->db->escape($this->input->post('search')['value']).' IN NATURAL LANGUAGE MODE)', NULL, FALSE);
-                    $this->db->order_by('score_search','DESC');
-                    if ($i === 0){
-                        $this->db->or_group_start();
-                        $this->db->like($item, $this->input->post('search')['value']);
-                    } else {
-                        $this->db->or_like($item, $this->input->post('search')['value']);
-                    }
-
-                    if (count($this->column_search) - 1 == $i)
-                        $this->db->group_end();
+    private function _get_datatables_query(){
+        $query = $this->input->post('query');
+        if(!empty($query['generalSearch'])){
+            $keyword = $query['generalSearch'];
+            $fieldSearch = '';
+            foreach ($this->column_search as $i => $item){
+                if ($i === 0){
+                    $this->db->or_group_start();
+                    $this->db->like($item, $keyword);
+                } else {
+                    $this->db->or_like($item, $keyword);
                 }
-                $i++;
+
+                if (count($this->column_search) - 1 == $i)
+                    $this->db->group_end();
+
+                if($i != 0) $fieldSearch .= ',';
+                $fieldSearch .= $this->_dbprefix.$item;
             }
 
-            if ($this->input->post('order')) {
-                $this->db->order_by($this->column_order[$this->input->post('order')['0']['column']], $this->input->post('order')['0']['dir']);
-            } else if (isset($this->order_default)) {
-                $order = $this->order_default;
-                $this->db->order_by(key($order), $order[key($order)]);
-            }
+            $this->db->select('MATCH ('.$fieldSearch.') AGAINST ('.$this->db->escape($keyword).' IN NATURAL LANGUAGE MODE) AS score_search');
+            $this->db->where('MATCH ('.$fieldSearch.') AGAINST ('.$this->db->escape($keyword).' IN NATURAL LANGUAGE MODE)', NULL, FALSE);
+            $this->db->order_by('score_search','DESC');
+        }
+
+        if ($this->input->post('sort')) {
+            $sort = $this->input->post('sort');
+            $this->db->order_by($sort['field'], $sort['sort']);
+        } else if (isset($this->order_default)) {
+            $order = $this->order_default;
+            $this->db->order_by(key($order), $order[key($order)]);
         }
 	}
 
@@ -116,7 +123,7 @@ class STEVEN_Model extends CI_Model
 
 		extract($args);
 
-		$this->db->group_by("$this->table.$this->primary_key");
+		$this->db->group_by($this->primary_key);
 		//query for datatables jquery
 		$this->_get_datatables_query();
 

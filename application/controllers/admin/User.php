@@ -28,6 +28,44 @@ class User extends Admin_Controller
         $this->load->view($this->template_main, $data);
     }
 
+    public function ajax_list(){
+        $this->checkRequestPostAjax();
+        $data = array();
+        $pagination = $this->input->post('pagination');
+        $page = $pagination['page'];
+        $total_page = isset($pagination['pages']) ? $pagination['pages'] : 1;
+        $limit = !empty($pagination['perpage']) && $pagination['perpage'] > 0 ? $pagination['perpage'] : 1;
+        $params = [
+            'page'      => $page,
+            'limit'     => $limit
+        ];
+        $listData = $this->_data->getData($params);
+        if(!empty($listData)) foreach ($listData as $item) {
+            $row = array();
+            $row['id'] = $item->id;
+            $row['id'] = $item->id;
+            $row['username'] = $item->username;
+            $row['fullname'] = $item->fullname;
+            $row['is_status'] = $item->active;
+            $row['updated_time'] = $item->updated_time;
+            $row['created_time'] = $item->created_time;
+            $data[] = $row;
+        }
+
+        $output = [
+            "meta" => [
+                "page"      => $page,
+                "pages"     => $total_page,
+                "perpage"   => $limit,
+                "total"     => $this->_data->getTotal(),
+                "sort"      => "asc",
+                "field"     => "id"
+            ],
+            "data" =>  $data
+        ];
+        $this->returnJson($output);
+    }
+
     public function profile(){
         $data['heading_title'] = "Thông tin của tôi";
         $data['main_content'] = $this->load->view($this->template_path . $this->_controller . DIRECTORY_SEPARATOR . $this->_method, $data, TRUE);

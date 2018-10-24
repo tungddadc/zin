@@ -359,7 +359,7 @@
                                                 </div>
                                                 <div class="m-card-user__details">
                                                     <span class="m-card-user__name m--font-weight-500">
-                                                        <?php echo $this->session->userdata('username') ?>
+                                                        <?php echo $this->session->userdata('user_name') ?>
                                                     </span>
                                                     <a href="" class="m-card-user__email m--font-weight-300 m-link">
                                                         <?php echo $this->session->userdata('email') ?>

@@ -15,7 +15,9 @@ class Users_model extends STEVEN_Model
         $this->table            = "users";
         $this->table_user_group = "users_groups";
         $this->column_order     = array("$this->table.id", "$this->table.id", "$this->table.username","$this->table.email","$this->table.first_name","$this->table.active", "$this->table.created_time", "$this->table.updated_time");
-        $this->column_search    = array("$this->table.username","$this->table.email","$this->table.first_name","$this->table.last_name");
+        $this->column_search    = array("$this->table.username");
         $this->order_default    = array("$this->table.created_time" => "DESC");
     }
+
+
 }

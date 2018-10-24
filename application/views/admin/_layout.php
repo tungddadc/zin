@@ -17,6 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     <meta name="description" content="Latest updates and statistic charts">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta id="csrf_token" name="<?php echo $this->security->get_csrf_token_name(); ?>" content="<?php echo $this->security->get_csrf_hash() ?>">
     <!--begin::Web font -->
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
     <script>
@@ -50,15 +51,15 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
         language = {},
         lang_cnf = {}
     ;
-    <?php if(!empty($controller)): ?>
-        var url_ajax_list = '<?php echo site_url("admin/$controller/ajax_list")?>',
-            url_ajax_load = '<?php echo site_url("admin/$controller/ajax_load")?>',
-            url_ajax_add = '<?php echo site_url("admin/$controller/ajax_add")?>',
-            url_ajax_copy = '<?php echo site_url("admin/$controller/ajax_copy")?>',
-            url_ajax_edit = '<?php echo site_url("admin/$controller/ajax_edit")?>',
-            url_ajax_update = '<?php echo site_url("admin/$controller/ajax_update")?>',
-            url_ajax_update_field = '<?php echo site_url("admin/$controller/ajax_update_field")?>',
-            url_ajax_delete = '<?php echo site_url("admin/$controller/ajax_delete")?>';
+    <?php if(!empty($this->_controller)): ?>
+        var url_ajax_list = '<?php echo site_url("admin/$this->_controller/ajax_list")?>',
+            url_ajax_load = '<?php echo site_url("admin/$this->_controller/ajax_load")?>',
+            url_ajax_add = '<?php echo site_url("admin/$this->_controller/ajax_add")?>',
+            url_ajax_copy = '<?php echo site_url("admin/$this->_controller/ajax_copy")?>',
+            url_ajax_edit = '<?php echo site_url("admin/$this->_controller/ajax_edit")?>',
+            url_ajax_update = '<?php echo site_url("admin/$this->_controller/ajax_update")?>',
+            url_ajax_update_field = '<?php echo site_url("admin/$this->_controller/ajax_update_field")?>',
+            url_ajax_delete = '<?php echo site_url("admin/$this->_controller/ajax_delete")?>';
         <?php endif; ?>
     <?php if(!empty($this->config->item('cms_language'))) foreach ($this->config->item('cms_language') as $lang_code => $lang_name){ ?>
     lang_cnf['<?php echo $lang_code;?>'] = '<?php echo $lang_name;?>';
@@ -116,7 +117,8 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 <script src="<?php echo $this->templates_assets ?>assets/vendors/custom/fullcalendar/fullcalendar.bundle.js" type="text/javascript"></script>
 <!--end::Page Vendors -->
 <!--begin::Page Snippets -->
-<script src="<?php echo $this->templates_assets ?>assets/app/js/dashboard.js" type="text/javascript"></script>
+<script src="<?php echo $this->templates_assets ?>js/main.js" type="text/javascript"></script>
+<?php if(!empty($this->_controller)): ?><script src="<?php echo $this->templates_assets ?>js/page/<?php echo $this->_controller ?>.js" type="text/javascript"></script><?php endif; ?>
 <!--end::Page Snippets -->
 </body>
 </html>

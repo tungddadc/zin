@@ -23,7 +23,7 @@ class STEVEN_Controller extends CI_Controller
 
         //Load library
         $this->load->library(array('session','form_validation','user_agent'));
-        $this->load->helper(array('data','security','url','directory','file','form','datetime','language','debug'));
+        $this->load->helper(array('cookie','data','security','url','directory','file','form','datetime','language','debug'));
         $this->config->load('languages');
         //Load database
         $this->load->database();
@@ -41,14 +41,14 @@ class STEVEN_Controller extends CI_Controller
 
     public function checkRequestGetAjax(){
         if(empty($_SERVER['HTTP_X_REQUESTED_WITH']) || (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) !== 'xmlhttprequest'))
-            exit;
+            die('Not Allow');;
     }
 
     public function checkRequestPostAjax(){
         if($this->input->server('REQUEST_METHOD') !== 'POST'
             || empty($_SERVER['HTTP_X_REQUESTED_WITH'])
             || (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) !== 'xmlhttprequest'))
-            exit;
+            die('Not Allow');
     }
 
     public function returnJson($data = null){
@@ -273,7 +273,7 @@ class Public_Controller extends STEVEN_Controller
         $this->load->library(array('minify','cart','breadcrumbs'));
 
         //load helper
-        $this->load->helper(array('cookie','link','title','format','image'));
+        $this->load->helper(array('link','title','format','image'));
 
         //Language
         $this->switchLanguage($this->input->get('lang'));
