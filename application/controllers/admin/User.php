@@ -192,6 +192,8 @@ class User extends Admin_Controller
             $dataItem = $this->_data->getById($id);
             unset($dataItem->password);
             $output['data'] = $dataItem;
+            $oneGroup = $this->ion_auth->get_users_groups($id)->row();
+            $output['group'] = [['id' => $oneGroup->id,'text' => $oneGroup->name]];
             $this->returnJson($output);
         }
     }
@@ -256,7 +258,7 @@ class User extends Admin_Controller
             array(
                 'field' => 'email',
                 'label' => 'Email',
-                'rules' => 'trim|required|valid_email|is_unique['.$this->_data->_dbprefix.'users.email]',
+                'rules' => 'trim|required|valid_email'.($this->input->post('id') == 0 ? '|is_unique['.$this->_data->_dbprefix.'users.email]' : ''),
                 'errors' => array(
                     'required' => '%s đã tồn tại. Vui lòng chọn %s khác.',
                 )
@@ -269,7 +271,7 @@ class User extends Admin_Controller
             array(
                 'field' => 'username',
                 'label' => 'Username',
-                'rules' => 'trim|required|is_unique['.$this->_data->_dbprefix.'users.username]',
+                'rules' => 'trim|required'.($this->input->post('id') == 0 ? '|is_unique['.$this->_data->_dbprefix.'users.username]' : ''),
                 'errors' => array(
                     'required' => '%s đã tồn tại. Vui lòng chọn %s khác.',
                 )
@@ -277,12 +279,12 @@ class User extends Admin_Controller
             array(
                 'field' => 'password',
                 'label' => 'Password',
-                'rules' => 'trim|required'
+                'rules' => 'trim'.($this->input->post('id') == 0 ? '|required' : '')
             ),
             array(
                 'field' => 're-password',
                 'label' => 'Re Password',
-                'rules' => 'trim|required|matches[password]'
+                'rules' => 'trim|matches[password]'.($this->input->post('id') == 0 ? '|required' : '')
             ),
             array(
                 'field' => 'group_id',

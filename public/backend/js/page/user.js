@@ -86,6 +86,7 @@ $(function() {
                             $('[name="active"]').bootstrapSwitch('state', (value == 1 ? true : false));
                         }
                     });
+                    loadGroup(response.group);
                     modal_form.modal('show');
                 },
                 error: function (jqXHR, textStatus, errorThrown)
