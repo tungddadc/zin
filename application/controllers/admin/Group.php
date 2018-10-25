@@ -121,6 +121,22 @@ class Group extends Admin_Controller
         $this->returnJson($message);
     }
 
+    public function ajax_update_field(){
+        $this->checkRequestPostAjax();
+        $id = $this->input->post('id');
+        $field = $this->input->post('field');
+        $value = $this->input->post('value');
+        $response = $this->_data->update(['id' => $id], [$field => $value]);
+        if($response != false){
+            $message['type'] = 'success';
+            $message['message'] = "Cập nhật thành công !";
+        }else{
+            $message['type'] = 'error';
+            $message['message'] = "Cập nhật thất bại !";
+        }
+        $this->returnJson($message);
+    }
+
     public function ajax_delete(){
         $this->checkRequestPostAjax();
         $ids = (int)$this->input->post('id');
@@ -148,7 +164,7 @@ class Group extends Admin_Controller
             array(
                 'field' => 'name',
                 'label' => 'Tên nhóm',
-                'rules' => 'trim|required|is_unique['.$this->_data->_dbprefix.'groups.name]'
+                'rules' => 'trim|required'
             )
         );
         $this->form_validation->set_rules($rules);
@@ -167,6 +183,7 @@ class Group extends Admin_Controller
     private function _convertData(){
         $this->_validation();
         $data = $this->input->post();
+        if(!empty($data['active'])) $data['active'] = 1;else $data['active'] = 0;
         return $data;
     }
 }

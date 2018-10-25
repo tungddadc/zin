@@ -29,7 +29,7 @@ $(function() {
                 0: {title: "Disable", class: "m-badge--danger"},
                 1: {title: "Active", class: "m-badge--primary"},
             };
-            return '<span class="m-badge ' + e[t.is_status].class + ' m-badge--wide">' + e[t.is_status].title + "</span>"
+            return '<span data-field="is_status" data-value="'+(t.is_status == 1 ? 0 : 1)+'" class="m-badge ' + e[t.is_status].class + ' m-badge--wide btnUpdateField">' + e[t.is_status].title + "</span>"
         }
     }, {
         field: "updated_time",
@@ -73,7 +73,6 @@ $(function() {
                 data: {id:id},
                 dataType: "JSON",
                 success: function(response) {
-                    console.log(response);
                     $.each(response.data, function( key, value ) {
                         $('[name="'+key+'"]').val(value);
                     });

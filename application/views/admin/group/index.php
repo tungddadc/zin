@@ -12,7 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
             <!--begin: Search Form -->
             <div class="m-form m-form--label-align-right m--margin-top-20 m--margin-bottom-30">
                 <div class="row align-items-center">
-                    <div class="col-xl-9 order-2 order-xl-1">
+                    <div class="col-xl-8 order-2 order-xl-1">
                         <div class="form-group m-form__group row align-items-center">
                             <div class="col-md-4">
                                 <div class="m-form__group m-form__group--inline">
@@ -49,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-3 order-1 order-xl-2 m--align-right">
+                    <div class="col-xl-4 order-1 order-xl-2 m--align-right">
                         <a href="javascript:;" class="btn btn-primary m-btn m-btn--icon m-btn--air m-btn--pill btnAddForm">
                             <span>
                                 <i class="la la-plus"></i>
@@ -64,6 +64,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                 <span>
                                     Delete
                                 </span>
+                            </span>
+                        </a>
+                        <a href="javascript:;" class="btn btn-info m-btn m-btn--icon m-btn--air m-btn--pill btnReload">
+                            <span>
+                                <i class="la la-refresh"></i>
+                                <span>Refresh</span>
                             </span>
                         </a>
                         <div class="m-separator m-separator--dashed d-xl-none"></div>
@@ -88,89 +94,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                 <?php echo form_open('',['id'=>'','class'=>'m-form m-form--fit m-form--label-align-right m-form--group-seperator-dashed m-form--state']) ?>
                 <input type="hidden" name="id" value="0">
                 <div class="m-portlet__body">
-                    <div class="form-group m-form__group row">
-                        <div class="col-lg-6">
-                            <label>
-                                Full Name:
-                            </label>
-                            <input type="text" name="fullname" class="form-control m-input" placeholder="Full name">
-                        </div>
-                        <div class="col-lg-6">
-                            <label>
-                                Phone:
-                            </label>
-                            <div class="input-group m-input-group m-input-group--square">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">
-                                        <i class="la la-phone"></i>
-                                    </span>
-                                </div>
-                                <input type="tel" name="phone" class="form-control m-input" placeholder="Phone">
-                            </div>
-
-                        </div>
+                    <div class="form-group m-form__group">
+                        <label>
+                            Tên nhóm:
+                        </label>
+                        <input type="text" name="name" class="form-control m-input" placeholder="Tên nhóm">
                     </div>
-
-                    <div class="form-group m-form__group row">
-                        <div class="col-lg-6">
-                            <label>
-                                Email:
-                            </label>
-                            <div class="input-group m-input-group m-input-group--square">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">
-                                        <i class="la la-envelope"></i>
-                                    </span>
-                                </div>
-                                <input type="email" name="email" class="form-control m-input" placeholder="Email">
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <label>
-                                Username:
-                            </label>
-                            <div class="input-group m-input-group m-input-group--square">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">
-                                        <i class="la la-user"></i>
-                                    </span>
-                                </div>
-                                <input type="text" name="username" class="form-control m-input" placeholder="Username">
-                            </div>
-                        </div>
+                    <div class="form-group m-form__group">
+                        <label>
+                            Mô tả nhóm
+                        </label>
+                        <textarea name="description" class="form-control m-input" rows="3"></textarea>
                     </div>
-
-                    <div class="form-group m-form__group row">
-                        <div class="col-lg-6">
-                            <label>
-                                Password:
-                            </label>
-                            <input type="password" name="password" class="form-control m-input">
-                        </div>
-                        <div class="col-lg-6">
-                            <label>
-                                Re-Password:
-                            </label>
-                            <input type="password" name="re-password" class="form-control m-input">
-                        </div>
-                    </div>
-
-                    <div class="form-group m-form__group row">
-                        <div class="col-lg-6">
-                            <label>
-                                Active:
-                            </label>
-                            <div class="m-input">
-                                <input data-switch="true" type="checkbox" name="active" checked="checked">
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <label>
-                                Group:
-                            </label>
-                            <div class="m-input">
-                                <select name="group_id" data-placeholder="Chọn nhóm" class="form-control m-select2" style="width: 100%;"></select>
-                            </div>
+                    <div class="form-group m-form__group">
+                        <label>
+                            Active:
+                        </label>
+                        <div class="m-input">
+                            <input data-switch="true" type="checkbox" name="is_status" checked="checked">
                         </div>
                     </div>
                 </div>
