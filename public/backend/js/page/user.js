@@ -3,6 +3,7 @@ $(function() {
     datatables_columns = [{
         field: "checkID",
         title: "#",
+        width: 50,
         sortable: !1,
         textAlign: "center",
         selector: {class: "m-checkbox--solid m-checkbox--brand"}
@@ -21,6 +22,7 @@ $(function() {
     }, {
         field: "is_status",
         title: "Status",
+        width: 70,
         template: function (t) {
             var e = {
                 0: {title: "Disable", class: "m-badge--danger"},
@@ -64,6 +66,33 @@ $(function() {
 
     loadGroup();
     AJAX_CRUD_MODAL.init();
+
+    $(document).on('click','.btnEdit',function () {
+        let modal_form = $('#modal_form');
+        let id = $(this).closest('tr').find('input[type="checkbox"]').val();
+        console.log(id);
+        AJAX_CRUD_MODAL.edit(function () {
+            $.ajax({
+                url : url_ajax_edit,
+                type: "POST",
+                data: {id:id},
+                dataType: "JSON",
+                success: function(response) {
+                    console.log(response);
+                    $.each(response.data, function( key, value ) {
+                        $('[name="'+key+'"]').val(value);
+                    });
+                    modal_form.modal('show');
+                },
+                error: function (jqXHR, textStatus, errorThrown)
+                {
+                    console.log(errorThrown);
+                    console.log(textStatus);
+                    console.log(jqXHR);
+                }
+            });return false;
+        });
+    });
 });
 
 function loadGroup(dataSelected) {
@@ -71,7 +100,7 @@ function loadGroup(dataSelected) {
     selector.select2({
         placeholder: '',
         allowClear: !0,
-        multiple: !0,
+        multiple: !1,
         data: dataSelected,
         ajax: {
             url: url_ajax_load_group,

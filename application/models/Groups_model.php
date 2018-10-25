@@ -17,4 +17,13 @@ class Groups_model extends STEVEN_Model
         $this->order_default    = array("$this->table.created_time" => "DESC");
 
     }
+    public function _where_custom($args = array())
+    {
+        parent::_where_custom();
+        extract($args);
+
+        if(isset($is_status)){
+            $this->db->where("$this->table.is_status",$is_status);
+        }
+    }
 }

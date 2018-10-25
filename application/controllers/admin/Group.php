@@ -31,10 +31,14 @@ class Group extends Admin_Controller
         $page = $pagination['page'];
         $total_page = isset($pagination['pages']) ? $pagination['pages'] : 1;
         $limit = !empty($pagination['perpage']) && $pagination['perpage'] > 0 ? $pagination['perpage'] : 1;
+        $queryFilter = $this->input->post('query');
+
         $params = [
             'page'      => $page,
             'limit'     => $limit
         ];
+        if(isset($queryFilter['is_status']) && $queryFilter['is_status'] !== '')
+            $params = array_merge($params,['is_status' => $queryFilter['is_status']]);
         $listData = $this->_data->getData($params);
         if(!empty($listData)) foreach ($listData as $item) {
             $row = array();
@@ -42,7 +46,7 @@ class Group extends Admin_Controller
             $row['id'] = $item->id;
             $row['name'] = $item->name;
             $row['description'] = $item->description;
-            $row['is_status'] = $item->active;
+            $row['is_status'] = $item->is_status;
             $row['updated_time'] = $item->updated_time;
             $row['created_time'] = $item->created_time;
             $data[] = $row;

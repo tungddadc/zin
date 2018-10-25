@@ -191,7 +191,7 @@ var AJAX_CRUD_MODAL = {
         return false;
     },
     edit: function (func) {
-        return func;
+        return func();
     },
     save: function () {
         let modal_form = $('#modal_form');

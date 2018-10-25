@@ -22,6 +22,7 @@ class Users_model extends STEVEN_Model
 
     public function _where_custom($args = array())
     {
+        parent::_where_custom();
         extract($args);
         if(!empty($group_id)){
             $this->db->join($this->table_user_group,"$this->table.id = $this->table_user_group.user_id");

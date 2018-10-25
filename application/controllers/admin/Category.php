@@ -169,12 +169,10 @@ class User extends Admin_Controller
     public function ajax_add(){
         $this->checkRequestPostAjax();
         $data = $this->_convertData();
-        $identity = $data['username'];
-        $password = $data['password'];
-        $email = $data['email'];
-        $group_id = $data['group_id'];
+        $group_ids = $data['group_id'];
         unset($data['group_id']);
-        if($this->ion_auth->register($identity, $password, $email, $data, array('group_id' => $group_id)) !== false){
+        if($id = $this->_data->save($data)){
+            $this->saveGroup($id,$group_ids);
             $message['type'] = 'success';
             $message['message'] = "Thêm mới thành công !";
         }else{
@@ -182,6 +180,21 @@ class User extends Admin_Controller
             $message['message'] = "Thêm mới thất bại !";
         }
         $this->returnJson($message);
+    }
+
+    private function saveGroup($user_id, $group_ids){
+        $data = [];
+        if(is_array($group_ids)) {
+            foreach ($group_ids as $group_id){
+                $tmp['user_id'] = $user_id;
+                $tmp['group_id'] = $group_id;
+                $data[] = $tmp;
+            }
+            $this->_data->save($data, $this->_data_group);
+        }else{
+            $this->_data->save(['user_id' => $user_id, 'group_id' => $group_ids], $this->_data_group);
+        }
+
     }
 
     public function ajax_edit(){
@@ -198,7 +211,7 @@ class User extends Admin_Controller
     public function ajax_update(){
         $this->checkRequestPostAjax();
         $data = $this->_convertData();
-        if($this->ion_auth->update($data['id'],$data)){
+        if($this->_data->update(['id' => $data['id']],$data, $this->_data->table)){
             $message['type'] = 'success';
             $message['message'] = "Cập nhật thành công !";
         }else{
