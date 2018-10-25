@@ -62,4 +62,30 @@ $(function() {
     }), $('[name="is_status"]').selectpicker();
 
     AJAX_CRUD_MODAL.init();
+
+    $(document).on('click','.btnEdit',function () {
+        let modal_form = $('#modal_form');
+        let id = $(this).closest('tr').find('input[type="checkbox"]').val();
+        AJAX_CRUD_MODAL.edit(function () {
+            $.ajax({
+                url : url_ajax_edit,
+                type: "POST",
+                data: {id:id},
+                dataType: "JSON",
+                success: function(response) {
+                    console.log(response);
+                    $.each(response.data, function( key, value ) {
+                        $('[name="'+key+'"]').val(value);
+                    });
+                    modal_form.modal('show');
+                },
+                error: function (jqXHR, textStatus, errorThrown)
+                {
+                    console.log(errorThrown);
+                    console.log(textStatus);
+                    console.log(jqXHR);
+                }
+            });return false;
+        });
+    });
 });

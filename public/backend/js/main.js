@@ -143,7 +143,7 @@ var AJAX_DATATABLES = {
         });
     },
     reload: function () {
-        table.reload();
+        table.load();
     }
 };
 /*Function CRUD Modal*/
@@ -209,12 +209,23 @@ var AJAX_CRUD_MODAL = {
             type: "POST",
             data: modal_form.find('form').serialize(),
             dataType: "JSON",
+            beforeSend: function(){
+                $('div.form-control-feedback').remove();
+                $('.form-group').removeClass('has-danger');
+            },
             success: function(data){
+                console.log(data);
                 toastr[data.type](data.message);
                 if(data.type === "warning"){
-                    $('div.form-control-feedback').remove();
                     $.each(data.validation,function (i, val) {
-                        $('[name="'+i+'"]').addClass('form-control-danger').after(val);
+                        let input = $('[name="'+i+'"]');
+                        if(input.parent().hasClass('input-group')){
+                            input.closest('.input-group').after(val);
+                        }else{
+                            input.after(val);
+                        }
+                        input.addClass('form-control-danger');
+                        input.closest('.form-group').addClass('has-danger');
                     })
                 } else {
                     modal_form.modal('hide');
@@ -238,6 +249,11 @@ var AJAX_CRUD_MODAL = {
         AJAX_CRUD_MODAL.disable_close();
         AJAX_CRUD_MODAL.open();
         AJAX_CRUD_MODAL.close();
+
+        doc.on('click','.btnReload',function (e) {
+            e.preventDefault();
+            AJAX_DATATABLES.reload();
+        });
 
         doc.on('click','.btnAddForm',function (e) {
             e.preventDefault();
@@ -322,6 +338,31 @@ var AJAX_CRUD_MODAL = {
                     }
                 });
             })
+        });
+
+        doc.on('click','.btnUpdateField',function (ev) {
+            ev.preventDefault();
+            let id = $(this).closest('tr').find('input[type="checkbox"]').val();
+            let field = $(this).data('field');
+            let value = $(this).data('value');
+            $.ajax({
+                    url : url_ajax_update_field,
+                    type: "POST",
+                    data:{id:id,field:field,value:value},
+                    dataType: "JSON",
+                    success: function(data) {
+                        if(data.type){
+                            toastr[data.type](data.message);
+                        }
+                        AJAX_DATATABLES.reload();
+                    },
+                    error: function (jqXHR, textStatus, errorThrown)
+                    {
+                        console.log(errorThrown);
+                        console.log(textStatus);
+                        console.log(jqXHR);
+                    }
+                });
         });
         doc.on('click','.btnSave',function (e) {
             e.preventDefault();

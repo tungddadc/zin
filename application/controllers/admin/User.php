@@ -174,13 +174,14 @@ class User extends Admin_Controller
         $email = $data['email'];
         $group_id = $data['group_id'];
         unset($data['group_id']);
-        if($this->ion_auth->register($identity, $password, $email, $data, array('group_id' => $group_id)) !== false){
+        if($this->ion_auth->register($identity, $password, $email, $data, array('group_id' => $group_id)) != false){
             $message['type'] = 'success';
             $message['message'] = "Thêm mới thành công !";
         }else{
             $message['type'] = 'error';
             $message['message'] = "Thêm mới thất bại !";
         }
+
         $this->returnJson($message);
     }
 
@@ -208,10 +209,26 @@ class User extends Admin_Controller
         $this->returnJson($message);
     }
 
+    public function ajax_update_field(){
+        $this->checkRequestPostAjax();
+        $id = $this->input->post('id');
+        $field = $this->input->post('field');
+        $value = $this->input->post('value');
+        $response = $this->_data->update(['id' => $id], [$field => $value]);
+        if($response != false){
+            $message['type'] = 'success';
+            $message['message'] = "Cập nhật thành công !";
+        }else{
+            $message['type'] = 'error';
+            $message['message'] = "Cập nhật thất bại !";
+        }
+        $this->returnJson($message);
+    }
+
     public function ajax_delete(){
         $this->checkRequestPostAjax();
-        $ids = (int)$this->input->post('id');
-        if((is_array($ids) && in_array(1,$ids)) || $ids == 1){
+        $ids = $this->input->post('id');
+        if((is_array($ids) && array_search(1,$ids)) || $ids == 1){
             $message['type'] = 'error';
             $message['message'] = "Bạn không có quyền xóa Admin !";
             $this->returnJson($message);
@@ -230,7 +247,6 @@ class User extends Admin_Controller
     }
 
     private function _validation(){
-
         $rules = array(
             array(
                 'field' => 'fullname',
@@ -260,13 +276,18 @@ class User extends Admin_Controller
             ),
             array(
                 'field' => 'password',
-                'lable' => 'Password',
+                'label' => 'Password',
                 'rules' => 'trim|required'
             ),
             array(
                 'field' => 're-password',
-                'lable' => 'Re Password',
+                'label' => 'Re Password',
                 'rules' => 'trim|required|matches[password]'
+            ),
+            array(
+                'field' => 'group_id',
+                'label' => 'Nhóm',
+                'rules' => 'trim|required'
             )
         );
         $this->form_validation->set_rules($rules);
@@ -278,13 +299,14 @@ class User extends Admin_Controller
                 if(!empty(form_error($item['field']))) $valid[$item['field']] = form_error($item['field']);
             }
             $message['validation'] = $valid;
-            $this->returnJson($message);
+            $this->returnJson($message);exit;
         }
     }
 
     private function _convertData(){
         $this->_validation();
         $data = $this->input->post();
+        if(!empty($data['active'])) $data['active'] = 1;else $data['active'] = 0;
         unset($data['re-password']);
         return $data;
     }

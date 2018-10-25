@@ -24,11 +24,12 @@ $(function() {
         title: "Status",
         width: 70,
         template: function (t) {
+            console.log(t);
             var e = {
                 0: {title: "Disable", class: "m-badge--danger"},
                 1: {title: "Active", class: "m-badge--primary"},
             };
-            return '<span class="m-badge ' + e[t.is_status].class + ' m-badge--wide">' + e[t.is_status].title + "</span>"
+            return '<span data-field="active" data-value="'+(t.is_status == 1 ? 0 : 1)+'" class="m-badge ' + e[t.is_status].class + ' m-badge--wide btnUpdateField">' + e[t.is_status].title + "</span>"
         }
     }, {
         field: "updated_time",
@@ -81,6 +82,9 @@ $(function() {
                     console.log(response);
                     $.each(response.data, function( key, value ) {
                         $('[name="'+key+'"]').val(value);
+                        if(key === 'active'){
+                            $('[name="active"]').bootstrapSwitch('state', (value == 1 ? true : false));
+                        }
                     });
                     modal_form.modal('show');
                 },
@@ -98,7 +102,7 @@ $(function() {
 function loadGroup(dataSelected) {
     let selector = $('select[name="group_id"]');
     selector.select2({
-        placeholder: '',
+        placeholder: 'Chọn nhóm',
         allowClear: !0,
         multiple: !1,
         data: dataSelected,

@@ -82,4 +82,91 @@ class Group extends Admin_Controller
         }
         $this->returnJson($output);
     }
+
+    public function ajax_add(){
+        $this->checkRequestPostAjax();
+        $data = $this->_convertData();
+        unset($data['group_id']);
+        if($id = $this->_data->save($data)){
+            $message['type'] = 'success';
+            $message['message'] = "Thêm mới thành công !";
+        }else{
+            $message['type'] = 'error';
+            $message['message'] = "Thêm mới thất bại !";
+        }
+        $this->returnJson($message);
+    }
+
+    public function ajax_edit(){
+        $this->checkRequestPostAjax();
+        $id = $this->input->post('id');
+        if(!empty($id)){
+            $dataItem = $this->_data->getById($id);
+            unset($dataItem->password);
+            $output['data'] = $dataItem;
+            $this->returnJson($output);
+        }
+    }
+
+    public function ajax_update(){
+        $this->checkRequestPostAjax();
+        $data = $this->_convertData();
+        if($this->_data->update(['id' => $data['id']],$data, $this->_data->table)){
+            $message['type'] = 'success';
+            $message['message'] = "Cập nhật thành công !";
+        }else{
+            $message['type'] = 'error';
+            $message['message'] = "Cập nhật thất bại !";
+        }
+        $this->returnJson($message);
+    }
+
+    public function ajax_delete(){
+        $this->checkRequestPostAjax();
+        $ids = (int)$this->input->post('id');
+        if((is_array($ids) && in_array(1,$ids)) || $ids == 1){
+            $message['type'] = 'error';
+            $message['message'] = "Bạn không có quyền xóa Admin !";
+            $this->returnJson($message);
+        }else{
+            $response = $this->_data->deleteArray('id',$ids);
+            if($response != false){
+                $message['type'] = 'success';
+                $message['message'] = "Xóa thành công !";
+            }else{
+                $message['type'] = 'error';
+                $message['message'] = "Xóa thất bại !";
+                log_message('error',$response);
+            }
+            $this->returnJson($message);
+        }
+    }
+
+    private function _validation(){
+
+        $rules = array(
+            array(
+                'field' => 'name',
+                'label' => 'Tên nhóm',
+                'rules' => 'trim|required|is_unique['.$this->_data->_dbprefix.'groups.name]'
+            )
+        );
+        $this->form_validation->set_rules($rules);
+        if ($this->form_validation->run() == false) {
+            $message['type'] = "warning";
+            $message['message'] = "Vui lòng kiểm tra lại thông tin vừa nhập.";
+            $valid = array();
+            if(!empty($rules)) foreach ($rules as $item){
+                if(!empty(form_error($item['field']))) $valid[$item['field']] = form_error($item['field']);
+            }
+            $message['validation'] = $valid;
+            $this->returnJson($message);
+        }
+    }
+
+    private function _convertData(){
+        $this->_validation();
+        $data = $this->input->post();
+        return $data;
+    }
 }

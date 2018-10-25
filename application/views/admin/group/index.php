@@ -85,7 +85,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                 <h3 class="modal-title" id="formModalLabel">Form</h3>
             </div>
             <div class="modal-body">
-                <?php echo form_open('',['id'=>'','class'=>'m-form m-form--fit m-form--label-align-right m-form--group-seperator-dashed']) ?>
+                <?php echo form_open('',['id'=>'','class'=>'m-form m-form--fit m-form--label-align-right m-form--group-seperator-dashed m-form--state']) ?>
                 <input type="hidden" name="id" value="0">
                 <div class="m-portlet__body">
                     <div class="form-group m-form__group row">
@@ -96,7 +96,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                             <input type="text" name="fullname" class="form-control m-input" placeholder="Full name">
                         </div>
                         <div class="col-lg-6">
-                            <label class="">
+                            <label>
                                 Phone:
                             </label>
                             <div class="input-group m-input-group m-input-group--square">
@@ -113,7 +113,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 
                     <div class="form-group m-form__group row">
                         <div class="col-lg-6">
-                            <label class="">
+                            <label>
                                 Email:
                             </label>
                             <div class="input-group m-input-group m-input-group--square">
@@ -142,7 +142,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 
                     <div class="form-group m-form__group row">
                         <div class="col-lg-6">
-                            <label class="">
+                            <label>
                                 Password:
                             </label>
                             <input type="password" name="password" class="form-control m-input">

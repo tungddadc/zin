@@ -12,7 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
             <!--begin: Search Form -->
             <div class="m-form m-form--label-align-right m--margin-top-20 m--margin-bottom-30">
                 <div class="row align-items-center">
-                    <div class="col-xl-9 order-2 order-xl-1">
+                    <div class="col-xl-8 order-2 order-xl-1">
                         <div class="form-group m-form__group row align-items-center">
                             <div class="col-md-4">
                                 <div class="m-form__group m-form__group--inline">
@@ -62,7 +62,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-3 order-1 order-xl-2 m--align-right">
+                    <div class="col-xl-4 order-1 order-xl-2 m--align-right">
                         <a href="javascript:;" class="btn btn-primary m-btn m-btn--icon m-btn--air m-btn--pill btnAddForm">
                             <span>
                                 <i class="la la-plus"></i>
@@ -77,6 +77,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                 <span>
                                     Delete
                                 </span>
+                            </span>
+                        </a>
+                        <a href="javascript:;" class="btn btn-info m-btn m-btn--icon m-btn--air m-btn--pill btnReload">
+                            <span>
+                                <i class="la la-refresh"></i>
+                                <span>Refresh</span>
                             </span>
                         </a>
                         <div class="m-separator m-separator--dashed d-xl-none"></div>
@@ -98,7 +104,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                 <h3 class="modal-title" id="formModalLabel">Form</h3>
             </div>
             <div class="modal-body">
-                <?php echo form_open('',['id'=>'','class'=>'m-form m-form--fit m-form--label-align-right m-form--group-seperator-dashed']) ?>
+                <?php echo form_open('',['id'=>'','class'=>'m-form m-form--fit m-form--label-align-right m-form--group-seperator-dashed m-form--state']) ?>
                 <input type="hidden" name="id" value="0">
                 <div class="m-portlet__body">
                     <div class="form-group m-form__group row">
@@ -109,7 +115,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                             <input type="text" name="fullname" class="form-control m-input" placeholder="Full name">
                         </div>
                         <div class="col-lg-6">
-                            <label class="">
+                            <label>
                                 Phone:
                             </label>
                             <div class="input-group m-input-group m-input-group--square">
@@ -126,7 +132,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 
                     <div class="form-group m-form__group row">
                         <div class="col-lg-6">
-                            <label class="">
+                            <label>
                                 Email:
                             </label>
                             <div class="input-group m-input-group m-input-group--square">
@@ -155,7 +161,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 
                     <div class="form-group m-form__group row">
                         <div class="col-lg-6">
-                            <label class="">
+                            <label>
                                 Password:
                             </label>
                             <input type="password" name="password" class="form-control m-input">
@@ -170,7 +176,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 
                     <div class="form-group m-form__group row">
                         <div class="col-lg-6">
-                            <label>
+                            <label class="">
                                 Active:
                             </label>
                             <div class="m-input">
@@ -181,8 +187,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                             <label>
                                 Group:
                             </label>
-                            <div class="m-input">
-                                <select name="group_id" data-placeholder="Chọn nhóm" class="form-control m-select2" style="width: 100%;"></select>
+                            <div class="input-group">
+                                <select name="group_id" class="form-control m-select2" style="width: 100%;"></select>
                             </div>
                         </div>
                     </div>

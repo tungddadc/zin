@@ -61,9 +61,7 @@ class STEVEN_Controller extends CI_Controller
             ];
             $data = array_merge($csrf,(array) $data);
         }
-        $this->output
-            ->set_content_type('application/json')
-            ->set_output(json_encode($data));
+        die(json_encode($data));
     }
 
     public function toSlug($doc)

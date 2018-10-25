@@ -39,3 +39,8 @@
 .m-portlet .m-portlet__body {
     padding: 10px;
 }
+
+
+.btnUpdateField{
+    cursor: pointer;
+}
