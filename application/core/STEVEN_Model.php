@@ -300,76 +300,9 @@ class STEVEN_Model extends CI_Model
 			return false;
 		}else {
 			$id = $this->db->insert_id();
-
-			/*Xử lý bảng category nếu có*/
-			if(!empty($this->table_category) && !empty($data['category_id']) && is_array($data['category_id'])){
-				$dataCategory = $data['category_id'];
-				if(!empty($dataCategory)) foreach ($dataCategory as $item){
-					$tmpCategory[$this->table."_id"] = $id;
-					$tmpCategory["category_id"] = $item;
-					if(!$this->insert($tmpCategory, $this->table_category)) return false;
-					unset($tmpCategory);
-				}
-			}
-			if(isset($data['category_id'])) unset($data['category_id']);
-
-			/*Xử lý tags nếu có*/
-			if(!empty($this->table_tags) && !empty($data['tags']) && is_array($data['tags'])){
-				$dataTags = $data['tags'];
-				if(!empty($dataTags)) foreach ($dataTags as $item){
-					$tmpTags[$this->table."_id"] = $id;
-					$tmpTags["tag_id"] = $item;
-					if(!$this->insert($tmpTags, $this->table_tags)) return false;
-				}
-			}
-			if(isset($data['tags'])) unset($data['tags']);
-
-			/*Xử lý bảng property nếu có*/
-			if(!empty($this->table_property) && !empty($data['property']) && is_array($data['property'])){
-				$dataProperty = $data['property'];
-				$tmpProperty = array();
-				if(!empty($dataProperty)) foreach ($dataProperty as $type => $item){
-					if(is_array($item)) foreach ($item as $v){
-						$tmp[$this->table."_id"] = $id;
-						$tmp["type"] = $type;
-						$tmp["property_id"] = $v;
-						$tmpProperty[] = $tmp;
-					}else{
-						$tmp[$this->table."_id"] = $id;
-						$tmp["type"] = $type;
-						$tmp["property_id"] = $item;
-						$tmpProperty[] = $tmp;
-					}
-				}
-				if(!$this->insertMultiple($tmpProperty, $this->table_property)) return false;
-				unset($tmpProperty);
-			}
-			if(isset($data['property'])) unset($data['property']);
-
-			/*Xử lý bảng detail nếu có*/
-			if(!empty($this->table_detail) && !empty($data['detail']) && is_array($data['detail'])){
-				$dataDetail = $data['detail'];
-				$tmpDetail = array();
-				if(!empty($dataDetail)) foreach ($dataDetail as $item){
-                    $tmpd[$this->table."_id"] = $id;
-				    if(!empty($item)) foreach ($item as $key => $value){
-                        if(is_array($value)){
-                            $tmpd[$key] = json_encode($value);
-                        }else{
-                            $tmpd[$key] = $value;
-                        }
-                        if($key === 'is_in_stock') $tmpd['is_in_stock'] = true;
-                    }
-                    $tmpDetail[] = $tmpd;
-				}
-				if(!$this->insertMultiple($tmpDetail, $this->table_detail)) return false;
-				unset($tmpDetail);
-			}
-			if(isset($data['detail'])) unset($data['detail']);
-
-			/*Xử lý bảng translate nếu có*/
+			/*Xử lý bảng translations nếu có*/
 			if(!empty($this->table_trans)){
-				//thêm vào bảng product_translation
+				//thêm vào bảng table_translations
 				foreach ($this->config->item('cms_language') as $lang_code => $lang_name) {
 					$data_trans = array();
 					$data_trans['id'] = $id;
@@ -609,6 +542,20 @@ class STEVEN_Model extends CI_Model
 		$this->db->where($conditions);
 		if(!$this->db->delete($tablename)){
 			log_message('info',json_encode($conditions));
+			log_message('info',json_encode($tablename));
+			log_message('error',json_encode($this->db->error()));
+		}
+		$this->cache->clean();
+		return $this->db->affected_rows();
+	}
+
+	public function deleteArray($field, $value = array(),$tablename = '')
+	{
+		if ($tablename == '') {
+			$tablename = $this->table;
+		}
+		$this->db->where_in($field,$value);
+		if(!$this->db->delete($tablename)){
 			log_message('info',json_encode($tablename));
 			log_message('error',json_encode($this->db->error()));
 		}

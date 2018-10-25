@@ -79,7 +79,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                         </div>
                     </div>
                     <div class="col-xl-4 order-1 order-xl-2 m--align-right">
-                        <a href="#" class="btn btn-primary m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
+                        <a href="javascript:;" class="btn btn-primary m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill btnAddForm">
                             <span>
                                 <i class="la la-plus"></i>
                                 <span>
@@ -87,7 +87,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                 </span>
                             </span>
                         </a>
-                        <a href="#" class="btn btn-danger m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
+                        <a href="#" class="btn btn-danger m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill btnDeleteAll">
                             <span>
                                 <i class="la la-remove"></i>
                                 <span>
@@ -106,6 +106,112 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="modal_form" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="formModalLabel">Form</h3>
+            </div>
+            <div class="modal-body">
+                <?php echo form_open('',['id'=>'','class'=>'m-form m-form--fit m-form--label-align-right m-form--group-seperator-dashed']) ?>
+                <input type="hidden" name="id" value="0">
+                <div class="m-portlet__body">
+                    <div class="form-group m-form__group row">
+                        <div class="col-lg-6">
+                            <label>
+                                Full Name:
+                            </label>
+                            <input type="text" name="fullname" class="form-control m-input" placeholder="Full name">
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="">
+                                Phone:
+                            </label>
+                            <div class="input-group m-input-group m-input-group--square">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="la la-phone"></i>
+                                    </span>
+                                </div>
+                                <input type="tel" name="phone" class="form-control m-input" placeholder="Phone">
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group m-form__group row">
+                        <div class="col-lg-6">
+                            <label class="">
+                                Email:
+                            </label>
+                            <div class="input-group m-input-group m-input-group--square">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="la la-envelope"></i>
+                                    </span>
+                                </div>
+                                <input type="email" name="email" class="form-control m-input" placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <label>
+                                Username:
+                            </label>
+                            <div class="input-group m-input-group m-input-group--square">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="la la-user"></i>
+                                    </span>
+                                </div>
+                                <input type="text" name="username" class="form-control m-input" placeholder="Username">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group m-form__group row">
+                        <div class="col-lg-6">
+                            <label class="">
+                                Password:
+                            </label>
+                            <input type="password" name="password" class="form-control m-input">
+                        </div>
+                        <div class="col-lg-6">
+                            <label>
+                                Re-Password:
+                            </label>
+                            <input type="password" name="re-password" class="form-control m-input">
+                        </div>
+                    </div>
+
+                    <div class="form-group m-form__group row">
+                        <div class="col-lg-6">
+                            <label>
+                                Active:
+                            </label>
+                            <div class="m-input">
+                                <input data-switch="true" type="checkbox" name="active" checked="checked">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <label>
+                                Group:
+                            </label>
+                            <div class="m-input">
+                                <select name="group_id" data-placeholder="Chọn nhóm" class="form-control m-select2" style="width: 100%;"></select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php echo form_close() ?>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary btnSave">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
 <script type="text/javascript">
-    //var url_ajax_list = "https://keenthemes.com/metronic/themes/themes/metronic/dist/preview/inc/api/datatables/demos/default.php";
+    var url_ajax_load_group = '<?php echo site_admin_url('group/ajax_load') ?>';
 </script>

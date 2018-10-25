@@ -77,8 +77,10 @@ var FUNC = {
         return true;
     },
     ajaxShowResponse: function (response, statusText, xhr, $form) {
-        $form.find('input[name="' + response.csrf_form.csrf_name + '"]').val(response.csrf_form.csrf_value);
-        $('meta[name="csrf_form_token"]').attr('content',response.csrf_form.csrf_value);
+        if(response.csrf_form){
+            $form.find('input[name="' + response.csrf_form.csrf_name + '"]').val(response.csrf_form.csrf_value);
+            $('meta[name="csrf_form_token"]').attr('content',response.csrf_form.csrf_value);
+        }
         $form.find('.fa-spin').remove();
         if (typeof response.type !== 'undefined') {
             toastr[response.type](response.message);
@@ -147,7 +149,188 @@ var AJAX_DATATABLES = {
 
 /*Function CRUD Modal*/
 var AJAX_CRUD_MODAL = {
+    open: function(){
+        $('#modal_form').on('hidden.bs.modal', function(e){
+            window.onbeforeunload = null;
+            /*$(this).find('form').trigger('reset');
+            $(this).find('input[type=hidden]').val(0);
+            $('.form-group span.text-danger').remove();
+            $(".select2").empty().trigger('change');
+            $('#gallery').html('');
+            $('.alert').remove();
+            $('.help-block').empty();
+            $("input.tagsinput").tagsinput('removeAll');
+            $('input[name="is_featured"]').bootstrapSwitch('state',false);
+            for (var j = 0; j < tinyMCE.editors.length; j++){
+                tinymce.get(tinyMCE.editors[j].id).setContent('');
+            }*/
+        });
+    },
+    close: function(){
+        let modal_form = $('#modal_form');
+        modal_form.on('shown.bs.modal', function(e){
+            //initSEO();//Plugin SEO
+            body.append('<style>.modal-footer-top-button{position:fixed;z-index:999999;top:0;right:50px;}</style>');
+            let diaLogScroll = modal_form,
+                diaLogScrollHeight = diaLogScroll.find('.modal-header').height(),
+                diaLogScrollFooter = diaLogScroll.find('.modal-footer');
+            diaLogScroll.find('.modal-footer').addClass('modal-footer-top-button');
+            diaLogScroll.scroll(function(){
+                if(diaLogScroll.scrollTop() <= diaLogScrollHeight + 35){
+                    diaLogScrollFooter.addClass('modal-footer-top-button');
+                }else{
+                    diaLogScrollFooter.removeClass('modal-footer-top-button');
+                }
+            });
+        });
+    },
+    disable_close: function(){
+        $('#modal_form').modal({backdrop: 'static', keyboard: false,show: false});
+    },
+    add: function () {
+        $('#modal_form').modal('show');
+        return false;
+    },
+    edit: function (func) {
+        return func;
+    },
+    save: function () {
+        let modal_form = $('#modal_form');
+        let url;
 
+        modal_form.find('.btnSave').attr('disabled',true);
+        if(modal_form.find('input[name="id"]').val() == 0) {
+            url = url_ajax_add;
+        } else {
+            url = url_ajax_update;
+        }
+
+        $.ajax({
+            url : url,
+            type: "POST",
+            data: modal_form.find('form').serialize(),
+            dataType: "JSON",
+            success: function(data){
+                toastr[data.type](data.message);
+                if(data.type === "warning"){
+                    $('div.form-control-feedback').remove();
+                    $.each(data.validation,function (i, val) {
+                        $('[name="'+i+'"]').addClass('form-control-danger').after(val);
+                    })
+                } else {
+                    modal_form.modal('hide');
+                    AJAX_DATATABLES.reload();
+                }
+                modal_form.find('.btnSave').attr('disabled',false);
+            },
+            error: function (jqXHR, textStatus, errorThrown)
+            {
+                console.log(jqXHR);
+                console.log(textStatus);
+                console.log(errorThrown);
+                modal_form.find('.btnSave').attr('disabled',false);
+            }
+        });return false;
+    },
+    delete: function () {
+        return false;
+    },
+    init: function () {
+        AJAX_CRUD_MODAL.disable_close();
+
+        AJAX_CRUD_MODAL.open();
+        AJAX_CRUD_MODAL.close();
+
+        doc.on('click','.btnAddForm',function (e) {
+            e.preventDefault();
+            AJAX_CRUD_MODAL.add();
+        });
+        doc.on('click','.btnDeleteAll',function (ev) {
+            ev.preventDefault();
+            let listChecked = table.getSelectedRecords();
+            if(listChecked.length == 0){
+                toastr.warning('Vui lòng chọn bản ghi bạn muốn xóa !');
+                return false;
+            }
+            swal({
+                title: "Bạn có chắc chắn xóa những bản ghi này ?",
+                text: "Bạn không thể khôi phục những bản ghi này sau khi xóa!",
+                type: "warning",
+                showCancelButton: !0,
+                confirmButtonText: "Đúng, Xóa ngay !",
+                cancelButtonText: "Không, Hủy nó !",
+                reverseButtons: !0
+            }).then(function(e) {
+                let ids = [];
+                $.each(listChecked, function (i,v) {
+                    ids.push($(v).find('input[type="checkbox"]').val());
+                });
+                if(ids){
+                    $.ajax({
+                        url : url_ajax_delete,
+                        type: "POST",
+                        data: {id:ids},
+                        dataType: "JSON",
+                        success: function(data) {
+                            if(data.type){
+                                toastr[data.type](data.message);
+                            }
+                            if(data.type === 'success'){
+                                e.value ? swal("Xóa thành công!", "Những bản ghi bạn chọn đã được xóa.", "success") : "cancel" === e.dismiss && swal("Hủy bỏ thành công !", "Các bản ghi của bạn đã được an toàn :)", "error")
+                            }
+                            AJAX_DATATABLES.reload();
+                        },
+                        error: function (jqXHR, textStatus, errorThrown)
+                        {
+                            console.log(errorThrown);
+                            console.log(textStatus);
+                            console.log(jqXHR);
+                        }
+                    });
+                }
+            })
+        });
+        doc.on('click','.btnDelete',function (ev) {
+            ev.preventDefault();
+            let id = $(this).closest('tr').find('input[type="checkbox"]').val();
+            swal({
+                title: "Bạn có chắc chắn xóa bản ghi này ?",
+                text: "Bạn không thể khôi phục bản ghi này sau khi xóa!",
+                type: "warning",
+                showCancelButton: !0,
+                confirmButtonText: "Đúng, Xóa ngay !",
+                cancelButtonText: "Không, Hủy nó !",
+                reverseButtons: !0
+            }).then(function(e) {
+                $.ajax({
+                    url : url_ajax_delete,
+                    type: "POST",
+                    data:{id:id},
+                    dataType: "JSON",
+                    success: function(data) {
+                        if(data.type){
+                            toastr[data.type](data.message);
+                        }
+                        if(data.type === 'success'){
+                            e.value ? swal("Xóa thành công!", "Bản ghi đã được xóa.", "success") : "cancel" === e.dismiss && swal("Hủy bỏ thành công !", "Bản ghi của bạn đã được an toàn :)", "error")
+                        }
+                        AJAX_DATATABLES.reload();
+                    },
+                    error: function (jqXHR, textStatus, errorThrown)
+                    {
+                        console.log(errorThrown);
+                        console.log(textStatus);
+                        console.log(jqXHR);
+                    }
+                });
+            })
+        });
+
+        doc.on('click','.btnSave',function (e) {
+            e.preventDefault();
+            AJAX_CRUD_MODAL.save();
+        });
+    }
 };
 /*Function CRUD Modal*/
 
@@ -169,10 +352,15 @@ var UI = {
             //timeout:   3000
         });
     },
+
+    bootstrapSwitch: function(){
+        $("[data-switch=true]").bootstrapSwitch();
+    },
     /*Cái nào cần load luôn thì gọi ở đây*/
     init: function(){
         UI.activeMenu();
-        UI.ajaxFormSubmit();
+        //UI.ajaxFormSubmit();
+        UI.bootstrapSwitch();
     },
 };
 jQuery(function($) {

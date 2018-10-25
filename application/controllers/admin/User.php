@@ -28,6 +28,23 @@ class User extends Admin_Controller
         $this->load->view($this->template_main, $data);
     }
 
+    public function profile(){
+        $data['heading_title'] = "Thông tin của tôi";
+        $data['main_content'] = $this->load->view($this->template_path . $this->_controller . DIRECTORY_SEPARATOR . $this->_method, $data, TRUE);
+        $this->load->view($this->template_main, $data);
+    }
+
+    public function activity(){
+        $data['heading_title'] = "Hoạt động của tôi";
+        $data['main_content'] = $this->load->view($this->template_path . $this->_controller . DIRECTORY_SEPARATOR . $this->_method, $data, TRUE);
+        $this->load->view($this->template_main, $data);
+    }
+
+    public function login(){
+        if($this->ion_auth->logged_in() == true) redirect(site_admin_url());
+        $this->load->view($this->template_path.'user/login');
+    }
+
     public function ajax_list(){
         $this->checkRequestPostAjax();
         $data = array();
@@ -65,23 +82,6 @@ class User extends Admin_Controller
         ];
 
         $this->returnJson($output);
-    }
-
-    public function profile(){
-        $data['heading_title'] = "Thông tin của tôi";
-        $data['main_content'] = $this->load->view($this->template_path . $this->_controller . DIRECTORY_SEPARATOR . $this->_method, $data, TRUE);
-        $this->load->view($this->template_main, $data);
-    }
-
-    public function activity(){
-        $data['heading_title'] = "Hoạt động của tôi";
-        $data['main_content'] = $this->load->view($this->template_path . $this->_controller . DIRECTORY_SEPARATOR . $this->_method, $data, TRUE);
-        $this->load->view($this->template_main, $data);
-    }
-
-    public function login(){
-        if($this->ion_auth->logged_in() == true) redirect(site_admin_url());
-        $this->load->view($this->template_path.'user/login');
     }
 
     public function ajax_login(){
@@ -158,5 +158,104 @@ class User extends Admin_Controller
     public function logout(){
         $this->ion_auth->logout();
         redirect(site_admin_url('user/login'), 'refresh');
+    }
+
+    public function ajax_add(){
+        $this->checkRequestPostAjax();
+        $data = $this->_convertData();
+        if($this->_data->save($data)){
+            $message['type'] = 'success';
+            $message['message'] = "Thêm mới thành công !";
+        }else{
+            $message['type'] = 'error';
+            $message['message'] = "Thêm mới thất bại !";
+        }
+        $this->returnJson($message);
+    }
+
+    public function ajax_edit(){
+        $this->checkRequestPostAjax();
+
+    }
+
+    public function ajax_update(){
+        $this->checkRequestPostAjax();
+
+    }
+
+    public function ajax_delete(){
+        $this->checkRequestPostAjax();
+        $ids = $this->input->post('id');
+        $response = $this->_data->deleteArray('id',$ids);
+        if($response != false){
+            $message['type'] = 'success';
+            $message['message'] = "Xóa thành công !";
+        }else{
+            $message['type'] = 'error';
+            $message['message'] = "Xóa thất bại !";
+            $message['error'] = $response;
+            log_message('error',$response);
+        }
+        die(json_encode($message));
+    }
+
+    private function _validation(){
+
+        $rules = array(
+            array(
+                'field' => 'fullname',
+                'label' => 'Họ và tên',
+                'rules' => 'trim'
+            ),
+            array(
+                'field' => 'email',
+                'label' => 'Email',
+                'rules' => 'trim|required|valid_email|is_unique['.$this->_data->_dbprefix.'.users.email]',
+                'errors' => array(
+                    'required' => '%s đã tồn tại. Vui lòng chọn %s khác.',
+                )
+            ),
+            array(
+                'field' => 'phone',
+                'label' => 'Số điện thoại',
+                'rules' => 'trim|regex_match[/^[0-9.-]{0,18}+$/]'
+            ),
+            array(
+                'field' => 'username',
+                'label' => 'Username',
+                'rules' => 'trim|required|is_unique['.$this->_data->_dbprefix.'.users.username]',
+                'errors' => array(
+                    'required' => '%s đã tồn tại. Vui lòng chọn %s khác.',
+                )
+            ),
+            array(
+                'field' => 'password',
+                'lable' => 'Password',
+                'rules' => 'trim|required'
+            ),
+            array(
+                'field' => 're-password',
+                'lable' => 'Re Password',
+                'rules' => 'trim|required|matches[password]'
+            )
+        );
+        $this->form_validation->set_rules($rules);
+        if ($this->form_validation->run() == false) {
+            $message['type'] = "warning";
+            $message['message'] = "Vui lòng kiểm tra lại thông tin vừa nhập.";
+            $valid = array();
+            if(!empty($rules)) foreach ($rules as $item){
+                if(!empty(form_error($item['field']))) $valid[$item['field']] = form_error($item['field']);
+            }
+            $message['validation'] = $valid;
+            $this->returnJson($message);
+        }
+    }
+
+    private function _convertData(){
+        $this->_validation();
+        $data = $this->input->post();
+        unset($data['re-password']);
+        return $data;
     }
 }

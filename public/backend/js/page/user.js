@@ -48,14 +48,39 @@ $(function() {
         overflow: "visible",
         template: function (t, e, a) {
             return '' +
-                '<a href="#" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" title="Edit details">\t\t\t\t\t\t\t<i class="la la-edit"></i>\t\t\t\t\t\t</a>' +
-                '\t\t\t\t\t\t<a href="#" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill" title="Delete">\t\t\t\t\t\t\t<i class="la la-trash"></i>\t\t\t\t\t\t</a>\t\t\t\t\t'
+                '<a href="javascript:;" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill btnEdit" title="Edit"><i class="la la-edit"></i></a>' +
+                '<a href="javascript:;" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill btnDelete" title="Delete"><i class="la la-trash"></i></a>'
         }
     }];
     AJAX_DATATABLES.init();
+
     $("#m_form_status").on("change", function () {
         table.search($(this).val(), "Status")
     }), $("#m_form_type").on("change", function () {
         table.search($(this).val(), "Type")
-    }), $("#m_form_status, #m_form_type").selectpicker()
+    }), $("#m_form_status, #m_form_type").selectpicker();
+
+    loadGroup();
+    AJAX_CRUD_MODAL.init();
 });
+
+function loadGroup(dataSelected) {
+    let selector = $('select[name="group_id"]');
+    selector.select2({
+        allowClear: true,
+        multiple: true,
+        data: dataSelected,
+        ajax: {
+            url: url_ajax_load_group,
+            dataType: 'json',
+            delay: 250,
+            processResults: function (data) {
+                return {
+                    results: data
+                };
+            },
+            cache: true
+        }
+    });
+    if (typeof dataSelected !== 'undefined') selector.find('> option').prop("selected", "selected").trigger("change");
+}

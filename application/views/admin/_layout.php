@@ -35,6 +35,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     <!--end::Page Vendors -->
     <link href="<?php echo $this->templates_assets ?>assets/vendors/base/vendors.bundle.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo $this->templates_assets ?>assets/demo/default/base/style.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo $this->templates_assets ?>css/custom.css" rel="stylesheet" type="text/css" />
     <!--end::Base Styles -->
     <link rel="shortcut icon" href="<?php echo site_url() ?>favicon.ico" />
 </head>
