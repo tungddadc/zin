@@ -45,7 +45,7 @@ class STEVEN_Model extends CI_Model
             $keyword = $query['generalSearch'];
             $fieldSearch = '';
             foreach ($this->column_search as $i => $item){
-                if ($i === 0){
+                /*if ($i == 0){
                     $this->db->or_group_start();
                     $this->db->like($item, $keyword);
                 } else {
@@ -53,12 +53,11 @@ class STEVEN_Model extends CI_Model
                 }
 
                 if (count($this->column_search) - 1 == $i)
-                    $this->db->group_end();
+                    $this->db->group_end();*/
 
                 if($i != 0) $fieldSearch .= ',';
                 $fieldSearch .= $this->_dbprefix.$item;
             }
-
             $this->db->select('MATCH ('.$fieldSearch.') AGAINST ('.$this->db->escape($keyword).' IN NATURAL LANGUAGE MODE) AS score_search');
             $this->db->where('MATCH ('.$fieldSearch.') AGAINST ('.$this->db->escape($keyword).' IN NATURAL LANGUAGE MODE)', NULL, FALSE);
             $this->db->order_by('score_search','DESC');
@@ -123,7 +122,7 @@ class STEVEN_Model extends CI_Model
 
 		extract($args);
 
-		$this->db->group_by($this->primary_key);
+		//$this->db->group_by($this->primary_key);
 		//query for datatables jquery
 		$this->_get_datatables_query();
 

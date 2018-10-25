@@ -1,18 +1,17 @@
 // Dom Ready
 $(function() {
     datatables_columns = [{
-        field: "id",
+        field: "checkID",
         title: "#",
         sortable: !1,
-        width: 40,
-        selector: !1,
-        textAlign: "center"
-    }, {
+        textAlign: "center",
+        selector: {class: "m-checkbox--solid m-checkbox--brand"}
+    },{
         field: "id",
         title: "ID",
+        width: 50,
         sortable: 'asc',
         filterable: !1,
-        width: 150,
     }, {
         field: "username",
         title: "User Name"
@@ -33,11 +32,13 @@ $(function() {
         field: "updated_time",
         title: "Updated Time",
         type: "date",
+        textAlign: "center",
         format: "MM/DD/YYYY"
     }, {
         field: "created_time",
         title: "Created Time",
         type: "date",
+        textAlign: "center",
         format: "MM/DD/YYYY"
     }, {
         field: "action",
@@ -46,16 +47,15 @@ $(function() {
         sortable: !1,
         overflow: "visible",
         template: function (t, e, a) {
-            return '\t\t\t\t\t\t<div class="dropdown ' + (a.getPageSize() - e <= 4 ? "dropup" : "") + '">' +
-                '\t\t\t\t\t\t\t<a href="#" class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" data-toggle="dropdown"><i class="la la-ellipsis-h"></i></a>' +
-                '\t\t\t\t\t\t  \t<div class="dropdown-menu dropdown-menu-right">\t\t\t\t\t\t    \t' +
-                '<a class="dropdown-item" href="#"><i class="la la-edit"></i> Edit Details</a>\t\t\t\t\t\t    \t' +
-                '<a class="dropdown-item" href="#"><i class="la la-leaf"></i> Update Status</a>\t\t\t\t\t\t    \t' +
-                '<a class="dropdown-item" href="#"><i class="la la-print"></i> Generate Report</a>\t\t\t\t\t\t  \t' +
-                '</div>\t\t\t\t\t\t</div>\t\t\t\t\t\t' +
+            return '' +
                 '<a href="#" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" title="Edit details">\t\t\t\t\t\t\t<i class="la la-edit"></i>\t\t\t\t\t\t</a>' +
                 '\t\t\t\t\t\t<a href="#" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill" title="Delete">\t\t\t\t\t\t\t<i class="la la-trash"></i>\t\t\t\t\t\t</a>\t\t\t\t\t'
         }
     }];
     AJAX_DATATABLES.init();
+    $("#m_form_status").on("change", function () {
+        table.search($(this).val(), "Status")
+    }), $("#m_form_type").on("change", function () {
+        table.search($(this).val(), "Type")
+    }), $("#m_form_status, #m_form_type").selectpicker()
 });

@@ -42,7 +42,7 @@ class User extends Admin_Controller
         $listData = $this->_data->getData($params);
         if(!empty($listData)) foreach ($listData as $item) {
             $row = array();
-            $row['id'] = $item->id;
+            $row['checkID'] = $item->id;
             $row['id'] = $item->id;
             $row['username'] = $item->username;
             $row['fullname'] = $item->fullname;
@@ -63,6 +63,7 @@ class User extends Admin_Controller
             ],
             "data" =>  $data
         ];
+
         $this->returnJson($output);
     }
 

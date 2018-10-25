@@ -103,9 +103,9 @@ var FUNC = {
     }
 };
 /*Đây là các Function liên quan Datatables*/
+var table;
 var AJAX_DATATABLES = {
     init: function () {
-        var table;
         table = $("#ajax_data").mDatatable({
             data: {
                 type: "remote",
@@ -144,10 +144,17 @@ var AJAX_DATATABLES = {
         table.reload();
     }
 };
+
+/*Function CRUD Modal*/
+var AJAX_CRUD_MODAL = {
+
+};
+/*Function CRUD Modal*/
+
 /*Đây là các Event Function để dùng chung*/
 var UI = {
     activeMenu: function(){
-        $('ul>li a[href="' + window.location.href + '"]').addClass('active').parent().addClass('active');
+        $('ul>li a[href="' + window.location.origin + window.location.pathname + '"]').parent().addClass('m-menu__item--active').closest('.m-menu__item--submenu').addClass('m-menu__item--open m-menu__item--expanded');
     },
     ajaxFormSubmit: function(){
         $('form[method="post"]').ajaxForm({
