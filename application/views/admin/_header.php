@@ -15,7 +15,7 @@
                     <div class="m-stack__item m-stack__item--middle m-brand__logo">
                         <a href="<?php echo site_admin_url() ?>" class="m-brand__logo-wrapper">
                             <img alt=""
-                                 src="<?php echo $this->templates_assets ?>images/logo.png" width="140">
+                                 src="<?php echo $this->templates_assets ?>images/logo.png" width="100">
                         </a>
                     </div>
                     <div class="m-stack__item m-stack__item--middle m-brand__tools">

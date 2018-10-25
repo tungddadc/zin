@@ -1,0 +1,41 @@
+@media (min-width: 1025px){
+    .m-header {
+        height: 50px;
+    }
+    .m-brand .m-brand__logo, .m-brand .m-brand__tools {
+        -webkit-transition: none;
+        -moz-transition: none;
+        -ms-transition: none;
+        -o-transition: none;
+        transition: none;
+        height: 50px!important;
+    }
+    .m-header--fixed .m-body {
+        padding-top: 50px!important;
+    }
+}
+.m-topbar .m-topbar__nav.m-nav>.m-nav__item>.m-nav__link .m-topbar__userpic img{
+    max-width: 30px!important;
+}
+.m-brand,.m-aside-left{
+    width: 240px;
+}
+.m-aside-menu .m-menu__nav {
+    padding: 10px 0 10px 0;
+}
+.m-aside-menu .m-menu__nav>.m-menu__section {
+    margin: 5px 0 0 0;
+}
+.m-aside-menu .m-menu__nav>.m-menu__item>.m-menu__link {
+    padding: 9px 10px;
+}
+.m-subheader {
+    padding: 5px 15px 0 15px;
+}
+.m-body .m-content {
+    padding: 15px;
+}
+
+.m-portlet .m-portlet__body {
+    padding: 10px;
+}

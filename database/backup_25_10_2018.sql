@@ -65,12 +65,15 @@ CREATE TABLE `st_groups` (
   `name` varchar(20) NOT NULL,
   `description` varchar(100) NOT NULL,
   `permission` mediumtext,
+  `is_status` tinyint(1) DEFAULT '1',
+  `created_time` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 /*Data for the table `st_groups` */
 
-insert  into `st_groups`(`id`,`name`,`description`,`permission`) values (1,'admin','Administrator',NULL),(2,'Biên tập viên','Nhóm biên tập quản trị nội dung web','{\"banner\":{\"add\":\"1\",\"edit\":\"1\",\"delete\":\"1\",\"import\":\"1\",\"export\":\"1\"},\"groups\":{\"view\":\"1\"},\"media\":{\"view\":\"1\",\"add\":\"1\",\"edit\":\"1\",\"delete\":\"1\",\"import\":\"1\",\"export\":\"1\"},\"menus\":{\"view\":\"1\",\"add\":\"1\",\"edit\":\"1\",\"delete\":\"1\",\"import\":\"1\",\"export\":\"1\"},\"page\":{\"view\":\"1\",\"add\":\"1\",\"edit\":\"1\",\"delete\":\"1\",\"import\":\"1\",\"export\":\"1\"},\"post\":{\"view\":\"1\",\"add\":\"1\",\"edit\":\"1\",\"delete\":\"1\",\"import\":\"1\",\"export\":\"1\"},\"setting\":{\"view\":\"1\",\"add\":\"1\",\"edit\":\"1\",\"delete\":\"1\",\"import\":\"1\",\"export\":\"1\"},\"users\":{\"view\":\"1\"}}'),(3,'Khách hàng','Cu li',NULL);
+insert  into `st_groups`(`id`,`name`,`description`,`permission`,`is_status`,`created_time`,`updated_time`) values (1,'admin','Administrator',NULL,1,'2018-10-25 17:16:59','2018-10-25 17:16:59'),(2,'Biên tập viên','Nhóm biên tập quản trị nội dung web','{\"banner\":{\"add\":\"1\",\"edit\":\"1\",\"delete\":\"1\",\"import\":\"1\",\"export\":\"1\"},\"groups\":{\"view\":\"1\"},\"media\":{\"view\":\"1\",\"add\":\"1\",\"edit\":\"1\",\"delete\":\"1\",\"import\":\"1\",\"export\":\"1\"},\"menus\":{\"view\":\"1\",\"add\":\"1\",\"edit\":\"1\",\"delete\":\"1\",\"import\":\"1\",\"export\":\"1\"},\"page\":{\"view\":\"1\",\"add\":\"1\",\"edit\":\"1\",\"delete\":\"1\",\"import\":\"1\",\"export\":\"1\"},\"post\":{\"view\":\"1\",\"add\":\"1\",\"edit\":\"1\",\"delete\":\"1\",\"import\":\"1\",\"export\":\"1\"},\"setting\":{\"view\":\"1\",\"add\":\"1\",\"edit\":\"1\",\"delete\":\"1\",\"import\":\"1\",\"export\":\"1\"},\"users\":{\"view\":\"1\"}}',1,'2018-10-25 17:16:59','2018-10-25 17:16:59'),(3,'Khách hàng','Cu li',NULL,1,'2018-10-25 17:16:59','2018-10-25 17:16:59');
 
 /*Table structure for table `st_log_action` */
 
@@ -115,7 +118,7 @@ CREATE TABLE `st_login_attempts` (
   `login` varchar(100) NOT NULL,
   `time` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `st_login_attempts` */
 
@@ -125,35 +128,36 @@ DROP TABLE IF EXISTS `st_users`;
 
 CREATE TABLE `st_users` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `oauth_uid` varchar(100) DEFAULT NULL,
-  `oauth_provider` varchar(50) DEFAULT NULL,
-  `ip_address` varchar(45) NOT NULL,
-  `username` varchar(100) DEFAULT NULL,
-  `password` varchar(255) NOT NULL,
-  `salt` varchar(255) DEFAULT NULL,
+  `oauth_uid` varchar(100) CHARACTER SET utf8 DEFAULT NULL,
+  `oauth_provider` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+  `ip_address` varchar(45) CHARACTER SET utf8 NOT NULL,
+  `username` varchar(100) CHARACTER SET utf8 DEFAULT NULL,
+  `password` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `salt` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `gender` tinyint(1) DEFAULT '0',
-  `email` varchar(254) NOT NULL,
-  `activation_code` varchar(40) DEFAULT NULL,
-  `forgotten_password_code` varchar(40) DEFAULT NULL,
+  `email` varchar(254) CHARACTER SET utf8 NOT NULL,
+  `activation_code` varchar(40) CHARACTER SET utf8 DEFAULT NULL,
+  `forgotten_password_code` varchar(40) CHARACTER SET utf8 DEFAULT NULL,
   `forgotten_password_time` int(11) unsigned DEFAULT NULL,
-  `remember_code` varchar(40) DEFAULT NULL,
+  `remember_code` varchar(40) CHARACTER SET utf8 DEFAULT NULL,
   `created_on` int(11) unsigned NOT NULL,
   `last_login` int(11) unsigned DEFAULT NULL,
   `active` tinyint(1) unsigned DEFAULT NULL,
-  `fullname` varchar(255) DEFAULT NULL,
-  `first_name` varchar(50) DEFAULT NULL,
-  `last_name` varchar(50) DEFAULT NULL,
-  `address_book` text,
-  `company` varchar(100) DEFAULT NULL,
-  `phone` varchar(20) DEFAULT NULL,
+  `fullname` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `first_name` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+  `last_name` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+  `address_book` text CHARACTER SET utf8,
+  `company` varchar(100) CHARACTER SET utf8 DEFAULT NULL,
+  `phone` varchar(20) CHARACTER SET utf8 DEFAULT NULL,
   `created_time` datetime DEFAULT CURRENT_TIMESTAMP,
   `updated_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`),
+  FULLTEXT KEY `FULLTEXT` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `st_users` */
 
-insert  into `st_users`(`id`,`oauth_uid`,`oauth_provider`,`ip_address`,`username`,`password`,`salt`,`gender`,`email`,`activation_code`,`forgotten_password_code`,`forgotten_password_time`,`remember_code`,`created_on`,`last_login`,`active`,`fullname`,`first_name`,`last_name`,`address_book`,`company`,`phone`,`created_time`,`updated_time`) values (1,NULL,NULL,'127.0.0.1','admin','$2y$08$ymVkNr.hcUFPFHIaOKWthuw4M4Y6TUW8UfYJYsGqjNNlBEw5nVZie','',0,'contact@apecsoft.asia','',NULL,NULL,NULL,1268889823,1540406314,1,NULL,'Admin','Cây Cảnh',NULL,'Cây Cảnh Ban Công','0999999999','2017-12-17 00:49:09','2018-10-25 01:38:34');
+insert  into `st_users`(`id`,`oauth_uid`,`oauth_provider`,`ip_address`,`username`,`password`,`salt`,`gender`,`email`,`activation_code`,`forgotten_password_code`,`forgotten_password_time`,`remember_code`,`created_on`,`last_login`,`active`,`fullname`,`first_name`,`last_name`,`address_book`,`company`,`phone`,`created_time`,`updated_time`) values (1,NULL,NULL,'127.0.0.1','admin','$2y$08$ymVkNr.hcUFPFHIaOKWthuw4M4Y6TUW8UfYJYsGqjNNlBEw5nVZie','',0,'contact@apecsoft.asia','',NULL,NULL,NULL,1268889823,1540444984,1,NULL,'Admin','Cây Cảnh',NULL,'Cây Cảnh Ban Công','0999999999','2017-12-17 00:49:09','2018-10-25 12:23:04');
 
 /*Table structure for table `st_users_groups` */
 
@@ -169,7 +173,7 @@ CREATE TABLE `st_users_groups` (
   KEY `fk_users_groups_groups1_idx` (`group_id`),
   CONSTRAINT `fk_users_groups_groups1` FOREIGN KEY (`group_id`) REFERENCES `st_groups` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   CONSTRAINT `fk_users_groups_users1` FOREIGN KEY (`user_id`) REFERENCES `st_users` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 /*Data for the table `st_users_groups` */
 
