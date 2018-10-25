@@ -54,11 +54,13 @@ $(function() {
     }];
     AJAX_DATATABLES.init();
 
-    $("#m_form_status").on("change", function () {
-        table.search($(this).val(), "Status")
-    }), $("#m_form_type").on("change", function () {
-        table.search($(this).val(), "Type")
-    }), $("#m_form_status, #m_form_type").selectpicker();
+    $('[name="is_status"]').on("change", function () {
+        table.search($(this).val(), "is_status")
+    }), $('[name="is_status"]').selectpicker();
+
+    $('select[name="group_id"]').on("change", function () {
+        table.search($(this).val(), "group_id")
+    });
 
     loadGroup();
     AJAX_CRUD_MODAL.init();
@@ -67,19 +69,29 @@ $(function() {
 function loadGroup(dataSelected) {
     let selector = $('select[name="group_id"]');
     selector.select2({
-        allowClear: true,
-        multiple: true,
+        placeholder: '',
+        allowClear: !0,
+        multiple: !0,
         data: dataSelected,
         ajax: {
             url: url_ajax_load_group,
             dataType: 'json',
             delay: 250,
-            processResults: function (data) {
+            data: function(e) {
                 return {
-                    results: data
-                };
+                    q: e.term,
+                    page: e.page
+                }
             },
-            cache: true
+            processResults: function(e, t) {
+                return t.page = t.page || 1, {
+                    results: e,
+                    pagination: {
+                        more: 30 * t.page < e.total_count
+                    }
+                }
+            },
+            cache: !0
         }
     });
     if (typeof dataSelected !== 'undefined') selector.find('> option').prop("selected", "selected").trigger("change");

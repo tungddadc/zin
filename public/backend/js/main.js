@@ -146,7 +146,6 @@ var AJAX_DATATABLES = {
         table.reload();
     }
 };
-
 /*Function CRUD Modal*/
 var AJAX_CRUD_MODAL = {
     open: function(){
@@ -237,7 +236,6 @@ var AJAX_CRUD_MODAL = {
     },
     init: function () {
         AJAX_CRUD_MODAL.disable_close();
-
         AJAX_CRUD_MODAL.open();
         AJAX_CRUD_MODAL.close();
 
@@ -325,7 +323,6 @@ var AJAX_CRUD_MODAL = {
                 });
             })
         });
-
         doc.on('click','.btnSave',function (e) {
             e.preventDefault();
             AJAX_CRUD_MODAL.save();

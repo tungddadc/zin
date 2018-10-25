@@ -12,28 +12,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
             <!--begin: Search Form -->
             <div class="m-form m-form--label-align-right m--margin-top-20 m--margin-bottom-30">
                 <div class="row align-items-center">
-                    <div class="col-xl-8 order-2 order-xl-1">
+                    <div class="col-xl-9 order-2 order-xl-1">
                         <div class="form-group m-form__group row align-items-center">
                             <div class="col-md-4">
                                 <div class="m-form__group m-form__group--inline">
                                     <div class="m-form__label">
                                         <label>
-                                            Status:
+                                            Trạng thái:
                                         </label>
                                     </div>
                                     <div class="m-form__control">
-                                        <select class="form-control m-bootstrap-select" id="m_form_status">
+                                        <select class="form-control m-bootstrap-select" name="is_status">
                                             <option value="">
                                                 All
                                             </option>
                                             <option value="1">
-                                                Pending
+                                                Kích hoạt
                                             </option>
-                                            <option value="2">
-                                                Delivered
-                                            </option>
-                                            <option value="3">
-                                                Canceled
+                                            <option value="0">
+                                                Khóa
                                             </option>
                                         </select>
                                     </div>
@@ -44,24 +41,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                 <div class="m-form__group m-form__group--inline">
                                     <div class="m-form__label">
                                         <label class="m-label m-label--single">
-                                            Type:
+                                            Nhóm:
                                         </label>
                                     </div>
                                     <div class="m-form__control">
-                                        <select class="form-control m-bootstrap-select" id="m_form_type">
-                                            <option value="">
-                                                All
-                                            </option>
-                                            <option value="1">
-                                                Online
-                                            </option>
-                                            <option value="2">
-                                                Retail
-                                            </option>
-                                            <option value="3">
-                                                Direct
-                                            </option>
-                                        </select>
+                                        <select data-placeholder="Tất cả" class="form-control m-bootstrap-select" data-multiple="false" name="group_id"></select>
                                     </div>
                                 </div>
                                 <div class="d-md-none m--margin-bottom-10"></div>
@@ -78,8 +62,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-4 order-1 order-xl-2 m--align-right">
-                        <a href="javascript:;" class="btn btn-primary m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill btnAddForm">
+                    <div class="col-xl-3 order-1 order-xl-2 m--align-right">
+                        <a href="javascript:;" class="btn btn-primary m-btn m-btn--icon m-btn--air m-btn--pill btnAddForm">
                             <span>
                                 <i class="la la-plus"></i>
                                 <span>
@@ -87,7 +71,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                 </span>
                             </span>
                         </a>
-                        <a href="#" class="btn btn-danger m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill btnDeleteAll">
+                        <a href="javascript:;" class="btn btn-danger m-btn m-btn--icon m-btn--air m-btn--pill btnDeleteAll">
                             <span>
                                 <i class="la la-remove"></i>
                                 <span>

@@ -52,10 +52,16 @@ class User extends Admin_Controller
         $page = $pagination['page'];
         $total_page = isset($pagination['pages']) ? $pagination['pages'] : 1;
         $limit = !empty($pagination['perpage']) && $pagination['perpage'] > 0 ? $pagination['perpage'] : 1;
+
+        $queryFilter = $this->input->post('query');
         $params = [
+            'group_id'  => !empty($queryFilter['group_id']) ? $queryFilter['group_id'] : '',
             'page'      => $page,
             'limit'     => $limit
         ];
+        if(isset($queryFilter['is_status']) && $queryFilter['is_status'] !== '')
+            $params = array_merge($params,['active' => $queryFilter['is_status']]);
+
         $listData = $this->_data->getData($params);
         if(!empty($listData)) foreach ($listData as $item) {
             $row = array();

@@ -20,4 +20,15 @@ class Users_model extends STEVEN_Model
     }
 
 
+    public function _where_custom($args = array())
+    {
+        extract($args);
+        if(!empty($group_id)){
+            $this->db->join($this->table_user_group,"$this->table.id = $this->table_user_group.user_id");
+            $this->db->where_in("$this->table_user_group.group_id",$group_id);
+        }
+        if(isset($active)){
+            $this->db->where("$this->table.active",$active);
+        }
+    }
 }
