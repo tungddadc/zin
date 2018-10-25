@@ -245,6 +245,9 @@ var AJAX_CRUD_MODAL = {
     delete: function () {
         return false;
     },
+    tinymce: function(){
+        tinymce.init(option_TinyMCE);
+    },
     init: function () {
         AJAX_CRUD_MODAL.disable_close();
         AJAX_CRUD_MODAL.open();

@@ -23,7 +23,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = BASE_URL;
+$server_port = $_SERVER['SERVER_PORT'];
+if ($server_port == 443)
+{
+    $server_name = "https://".$_SERVER['SERVER_NAME'];
+}
+else if ($server_port != 80) {
+    $server_name = "http://".$_SERVER['SERVER_NAME']. ':' . $_SERVER['SERVER_PORT'];
+}
+else {
+    $server_name = "http://".$_SERVER['SERVER_NAME'];
+}
+$config['base_url'] = $server_name.DIRECTORY_SEPARATOR;
 
 /*
 |--------------------------------------------------------------------------
