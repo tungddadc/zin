@@ -73,7 +73,10 @@ class Category extends Admin_Controller
     public function ajax_add(){
         $this->checkRequestPostAjax();
         $data = $this->_convertData();
+        $category_ids = $data['category_id'];
+        unset($data['category_id']);
         if($id = $this->_data->save($data)){
+            $this->saveCategory($id,$category_ids);
             $message['type'] = 'success';
             $message['message'] = "Thêm mới thành công !";
         }else{
@@ -83,11 +86,22 @@ class Category extends Admin_Controller
         $this->returnJson($message);
     }
 
+    private function saveCategory($user_id, $category_ids){
+        $data = [];
+        if(!empty($category_ids)) foreach ($category_ids as $group_id){
+            $tmp['user_id'] = $user_id;
+            $tmp['group_id'] = $group_id;
+            $data[] = $tmp;
+        }
+        $this->_data->save($data, $this->_data_category);
+    }
+
     public function ajax_edit(){
         $this->checkRequestPostAjax();
         $id = $this->input->post('id');
         if(!empty($id)){
             $dataItem = $this->_data->getById($id);
+            unset($dataItem->password);
             $output['data'] = $dataItem;
             $this->returnJson($output);
         }
@@ -109,16 +123,22 @@ class Category extends Admin_Controller
     public function ajax_delete(){
         $this->checkRequestPostAjax();
         $ids = (int)$this->input->post('id');
-        $response = $this->_data->deleteArray('id',$ids);
-        if($response != false){
-            $message['type'] = 'success';
-            $message['message'] = "Xóa thành công !";
-        }else{
+        if((is_array($ids) && in_array(1,$ids)) || $ids == 1){
             $message['type'] = 'error';
-            $message['message'] = "Xóa thất bại !";
-            log_message('error',$response);
+            $message['message'] = "Bạn không có quyền xóa Admin !";
+            $this->returnJson($message);
+        }else{
+            $response = $this->_data->deleteArray('id',$ids);
+            if($response != false){
+                $message['type'] = 'success';
+                $message['message'] = "Xóa thành công !";
+            }else{
+                $message['type'] = 'error';
+                $message['message'] = "Xóa thất bại !";
+                log_message('error',$response);
+            }
+            $this->returnJson($message);
         }
-        $this->returnJson($message);
     }
 
     private function _validation(){

@@ -29,6 +29,9 @@
 .m-aside-menu .m-menu__nav>.m-menu__item>.m-menu__link {
     padding: 9px 10px;
 }
+.m-aside-menu .m-menu__nav>.m-menu__item>.m-menu__submenu .m-menu__subnav>.m-menu__item>.m-menu__link{
+    padding-left: 25px;
+}
 .m-subheader {
     padding: 5px 15px 0 15px;
 }
