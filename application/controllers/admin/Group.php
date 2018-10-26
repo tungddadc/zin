@@ -102,7 +102,6 @@ class Group extends Admin_Controller
         $id = $this->input->post('id');
         if(!empty($id)){
             $dataItem = $this->_data->getById($id);
-            unset($dataItem->password);
             $output['data'] = $dataItem;
             $this->returnJson($output);
         }
@@ -183,7 +182,7 @@ class Group extends Admin_Controller
     private function _convertData(){
         $this->_validation();
         $data = $this->input->post();
-        if(!empty($data['active'])) $data['active'] = 1;else $data['active'] = 0;
+        if(!empty($data['is_status'])) $data['is_status'] = 1;else $data['is_status'] = 0;
         return $data;
     }
 }
