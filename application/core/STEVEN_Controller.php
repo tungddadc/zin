@@ -31,12 +31,12 @@ class STEVEN_Controller extends CI_Controller
         $this->_controller = $this->router->fetch_class();
         $this->_method = $this->router->fetch_method();
 
-        if(DEBUG_MODE == TRUE) {
+        /*if(DEBUG_MODE == TRUE) {
             if(empty($_SERVER['HTTP_X_REQUESTED_WITH']) || (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) !== 'xmlhttprequest')){
                 $this->load->add_package_path(APPPATH.'third_party', 'codeigniter-debugbar');
                 $this->output->enable_profiler(TRUE);
             }
-        }
+        }*/
     }
 
     public function checkRequestGetAjax(){
@@ -180,7 +180,7 @@ class Admin_Controller extends STEVEN_Controller
         //set đường dẫn template
         $this->template_path = 'admin/';
         $this->template_main = $this->template_path.'_layout';
-        $this->templates_assets = base_url().'public/admin/';
+        $this->templates_assets = base_url().'backend/';
 
         //Language
         $this->switchLanguage($this->input->get('lang'));

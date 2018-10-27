@@ -18,6 +18,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |    http://htmlhelp.com/reference/html40/entities/latin1.html
 |
 */
-$config['language_name'] = array('vi'=>'Tiếng Việt','en' => 'English');
-$config['language_folder'] = array('vi'=>'vietnamese','en' => 'english');
+$config['language_name'] = array('vi'=>'Tiếng Việt');
+$config['language_folder'] = array('vi'=>'vietnamese');
 $config['language_default'] = 'vi';

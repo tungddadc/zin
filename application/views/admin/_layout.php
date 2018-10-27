@@ -33,6 +33,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     <link href="<?php echo $this->templates_assets ?>assets/vendors/base/vendors.bundle.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo $this->templates_assets ?>assets/demo/default/base/style.bundle.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo $this->templates_assets ?>css/custom.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo $this->templates_assets ?>css/custom.css" rel="stylesheet" type="text/css" />
 
     <!--end::Base Styles -->
     <link rel="shortcut icon" href="<?php echo site_url() ?>favicon.ico" />
@@ -60,7 +61,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
             url_ajax_update_field = '<?php echo site_url("admin/$this->_controller/ajax_update_field")?>',
             url_ajax_delete = '<?php echo site_url("admin/$this->_controller/ajax_delete")?>';
         <?php endif; ?>
-    <?php if(!empty($this->config->item('cms_language'))) foreach ($this->config->item('cms_language') as $lang_code => $lang_name){ ?>
+    <?php if(!empty($this->config->item('language_name'))) foreach ($this->config->item('language_name') as $lang_code => $lang_name){ ?>
     lang_cnf['<?php echo $lang_code;?>'] = '<?php echo $lang_name;?>';
     <?php } ?>
 </script>

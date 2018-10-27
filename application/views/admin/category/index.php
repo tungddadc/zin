@@ -93,7 +93,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
             <div class="modal-body">
                 <?php echo form_open('',['id'=>'','class'=>'m-form m-form--fit m-form--label-align-right m-form--group-seperator-dashed m-form--state']) ?>
                 <input type="hidden" name="id" value="0">
-                <input type="hidden" name="type" value="<?php echo !empty($type) ? $type : '' ?>">
                 <div class="m-portlet--tabs">
                     <div class="m-portlet__head">
                         <div class="m-portlet__head-tools">
@@ -137,13 +136,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                                 <div class="m-portlet__body">
                                                     <div class="row">
                                                         <div class="col-sm-6 col-xs-12">
-                                                            <div class="form-group m-form__group">
+                                                            <div class="form-group">
                                                                 <label>Tiêu đề</label>
-                                                                <input name="title[<?php echo $lang_code;?>]" placeholder="Tiêu đề (<?php echo $lang_name ?>)" class="form-control" type="text" />
+                                                                <input name="language[<?php echo $lang_code;?>][title]" placeholder="Tiêu đề (<?php echo $lang_name ?>)" class="form-control" type="text" />
                                                             </div>
-                                                            <div class="form-group m-form__group">
+                                                            <div class="form-group">
                                                                 <label>Tóm tắt</label>
-                                                                <textarea name="description[<?php echo $lang_code;?>]" placeholder="Tóm tắt (<?php echo $lang_name ?>)" class="form-control"></textarea>
+                                                                <textarea name="language[<?php echo $lang_code;?>][description]" placeholder="Tóm tắt (<?php echo $lang_name ?>)" class="form-control"></textarea>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-6 col-xs-12">
@@ -159,27 +158,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                             <div class="tab-pane" id="tab_info" role="tabpanel">
                                 <div class="row">
                                     <div class="col-lg-6 col-12">
-                                        <div class="form-group m-form__group">
+                                        <div class="form-group">
                                             <label>Danh mục cha:</label>
                                             <div class="input-group">
-                                                <select name="parent_id" class="form-control m-select2" style="width: 100%;"></select>
+                                                <select name="parent_id" class="form-control m-select2 category" style="width: 100%;"></select>
                                             </div>
                                         </div>
-                                        <div class="form-group m-form__group">
+                                        <div class="form-group">
                                             <label>Layout style</label>
                                             <input name="layout" placeholder="Layout style" class="form-control" type="text" />
                                         </div>
-                                        <div class="form-group m-form__group">
+                                        <div class="form-group">
                                             <label>
                                                 Trạng thái:
                                             </label>
                                             <div class="m-input">
-                                                <input data-switch="true" type="checkbox" name="is_status" checked="checked">
+                                                <input data-switch="true" type="checkbox" name="is_status" class="switchBootstrap" checked="checked">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-12">
-                                        <div class="form-group m-form__group">
+                                        <div class="form-group">
                                             <label for="thumbnail">Ảnh đại diện</label>
                                             <div class="input-group m-input-group m-input-group--air">
                                                 <div class="input-group-prepend">
@@ -209,5 +208,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
     </div>
 </div>
 <script type="text/javascript">
-    var url_ajax_load_group = '<?php echo site_admin_url('group/ajax_load') ?>';
+    var url_ajax_load_category = '<?php echo site_admin_url('category/ajax_load') ?>';
 </script>

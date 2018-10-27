@@ -289,44 +289,15 @@ class STEVEN_Model extends CI_Model
 		if ($tablename == '') {
 			$tablename = $this->table;
 		}
-		$data_store = array();
-		if(!empty($data)) foreach ($data as $k=>$item){
-			if(!is_array($item)) $data_store[$k] = $item;
-		}
 
-		if(!$this->db->insert($tablename, $data_store)){
-			log_message('info',json_encode($data_store));
+		if(!$this->db->insert($tablename, $data)){
+			log_message('info',json_encode($data));
 			log_message('error',json_encode($this->db->error()));
 			return false;
-		}else {
-			$id = $this->db->insert_id();
-			/*Xử lý bảng translations nếu có*/
-			if(!empty($this->table_trans)){
-				//thêm vào bảng table_translations
-				foreach ($this->config->item('cms_language') as $lang_code => $lang_name) {
-					$data_trans = array();
-					$data_trans['id'] = $id;
-					$data_trans['language_code'] = $lang_code;
-					foreach ($data as $k => $item) {
-						if($lang_code !== 'vi') $lang_code_value = 'vi';
-						else $lang_code_value = $lang_code;
-						if (is_array($item)) {
-							if($k === 'title' || $k === 'meta_title') $data_trans[$k] = !empty($item[$lang_code_value]) ? addslashes($item[$lang_code_value]) : '';
-							else if(is_array($item[$lang_code_value])) $data_trans[$k] = !empty($item[$lang_code_value]) ? json_encode($item[$lang_code_value]) : '';
-							$data_trans[$k] = !empty($item[$lang_code_value]) ? $item[$lang_code_value] : '';
-						}
-						if(isset($item[$lang_code_value]) && is_array($item[$lang_code_value])) $data_trans[$k] = !empty($item[$lang_code_value]) ? json_encode($item[$lang_code_value]) : '';
-					}
-					if (!$this->db->insert($this->table_trans, $data_trans)) {
-						log_message('info', json_encode($data_trans));
-						log_message('error', json_encode($this->db->error()));
-						return false;
-					}
-				}
-			}
-			$this->cache->clean();
-			return $id;
 		}
+        $id = $this->db->insert_id();
+
+        return $id;
 	}
 
 
@@ -361,7 +332,7 @@ class STEVEN_Model extends CI_Model
 			$tablename = $this->table;
 		}
 		$this->db->insert($tablename, $data);
-		$this->cache->clean();
+
 		return $this->db->affected_rows();
 	}
 
@@ -372,7 +343,7 @@ class STEVEN_Model extends CI_Model
 			$tablename = $this->table;
 		}
 		$this->db->insert_batch($tablename, $data);
-		$this->cache->clean();
+
 		return $this->db->affected_rows();
 	}
 
@@ -392,7 +363,7 @@ class STEVEN_Model extends CI_Model
 			log_message('error',json_encode($this->db->error()));
 			return false;
 		}
-		$this->cache->clean();
+
 		return $this->db->affected_rows();
 	}
 
@@ -416,8 +387,8 @@ class STEVEN_Model extends CI_Model
 			log_message('error',json_encode($this->db->error()));
 			return false;
 		}
-		$this->cache->clean();
-		return $this->db->affected_rows();
+
+		return true;
 	}
 
 
@@ -432,7 +403,7 @@ class STEVEN_Model extends CI_Model
 			log_message('info',json_encode($tablename));
 			log_message('error',json_encode($this->db->error()));
 		}
-		$this->cache->clean();
+
 		return $this->db->affected_rows();
 	}
 
@@ -446,7 +417,7 @@ class STEVEN_Model extends CI_Model
 			log_message('info',json_encode($tablename));
 			log_message('error',json_encode($this->db->error()));
 		}
-		$this->cache->clean();
+
 		return $this->db->affected_rows();
 	}
 

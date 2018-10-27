@@ -24,6 +24,7 @@ class Category extends Admin_Controller
     }
 
     public function get_list($data){
+        $this->session->set_userdata('type',$this->_method);
         $data['main_content'] = $this->load->view($this->template_path . $this->_controller . DIRECTORY_SEPARATOR . 'index', $data, TRUE);
         $this->load->view($this->template_main, $data);
     }
@@ -31,14 +32,12 @@ class Category extends Admin_Controller
     public function post(){
         $data['heading_title'] = "Danh mục bài viết";
         $data['heading_description'] = "Danh sách danh mục";
-        $this->session->category_type = $data['type'] = $this->_method;
         $this->get_list($data);
     }
 
     public function product(){
         $data['heading_title'] = "Danh mục sản phẩm";
         $data['heading_description'] = "Danh sách danh mục";
-        $this->session->category_type = $data['type'] = $this->_method;
         $this->get_list($data);
     }
 
@@ -85,7 +84,8 @@ class Category extends Admin_Controller
 
         $queryFilter = $this->input->post('query');
         $params = [
-            'parent_id'  => !empty($queryFilter['category_id']) ? $queryFilter['category_id'] : '',
+            'parent_id' => !empty($queryFilter['category_id']) ? $queryFilter['category_id'] : '',
+            'type'      => $this->session->userdata('type'),
             'page'      => $page,
             'limit'     => $limit
         ];
@@ -93,12 +93,25 @@ class Category extends Admin_Controller
             $params = array_merge($params,['is_status' => $queryFilter['is_status']]);
 
         $listData = $this->_data->getData($params);
-        if(!empty($listData)) foreach ($listData as $item) {
+
+        if(empty($this->input->post('parent_id'))){
+            $this->_queue($listData);
+            $listData = $this->category_tree;
+        }
+
+        if(!empty($listData)) foreach ($listData as $category) {
+            if(empty($queryFilter['category_id'])){
+                $item = $category['value'];
+                $title = $category['title'];
+            }else{
+                $item = $category;
+                $title = $category->title;
+            }
             $row = array();
             $row['checkID'] = $item->id;
             $row['id'] = $item->id;
-            $row['title'] = $item->title;
-            $row['is_status'] = $item->active;
+            $row['title'] = $title;
+            $row['is_status'] = $item->is_status;
             $row['updated_time'] = $item->updated_time;
             $row['created_time'] = $item->created_time;
             $data[] = $row;
@@ -119,10 +132,45 @@ class Category extends Admin_Controller
         $this->returnJson($output);
     }
 
+    public function ajax_load($type = ''){
+        $term = $this->input->get("q");
+        $id = $this->input->get('id')?$this->input->get('id'):0;
+        if(empty($type)) $this->session->userdata('type');
+        $params = [
+            'type' => !(empty($type)) ? $type : null,
+            'is_status'=> 1,
+            'not_in' => ['id' => $id],
+            'search' => $term,
+            'limit'=> 10
+        ];
+        $list = $this->_data->getData($params);
+        $this->_queue_select($list);
+        $output = [];
+        if(!empty($this->category_tree)) foreach ($this->category_tree as $item) {
+            $item = (object) $item;
+            $output[] = ['id'=>$item->id, 'text'=>$item->title];
+        }
+        $this->returnJson($output);
+    }
+
+    private function save_language($id, $data){
+        if(!empty($data)) foreach ($data as $lang_code => $item){
+            $data_trans = array_merge($item,['id'=>$id]);
+            if(!$this->_data->insertOnUpdate($data_trans, $this->_data->table_trans)){
+                $message['type'] = 'error';
+                $message['message'] = "Thêm {$this->_data->table_trans} thất bại !";
+                log_message('error', $message['message'] . '=>' . json_encode($data_trans));
+                $this->returnJson($message);
+            }
+        }
+    }
     public function ajax_add(){
         $this->checkRequestPostAjax();
         $data = $this->_convertData();
+        $data_trans = $data['language'];
+        unset($data['language']);
         if($id = $this->_data->save($data)){
+            $this->save_language($id, $data_trans);
             $message['type'] = 'success';
             $message['message'] = "Thêm mới thành công !";
         }else{
@@ -145,7 +193,27 @@ class Category extends Admin_Controller
     public function ajax_update(){
         $this->checkRequestPostAjax();
         $data = $this->_convertData();
-        if($this->_data->update(['id' => $data['id']],$data, $this->_data->table)){
+        $id = $data['id'];
+        $data_trans = $data['language'];
+        unset($data['language']);
+        if($this->_data->update(['id' => $id],$data, $this->_data->table)){
+            $this->save_language($id, $data_trans);
+            $message['type'] = 'success';
+            $message['message'] = "Cập nhật thành công !";
+        }else{
+            $message['type'] = 'error';
+            $message['message'] = "Cập nhật thất bại !";
+        }
+        $this->returnJson($message);
+    }
+
+    public function ajax_update_field(){
+        $this->checkRequestPostAjax();
+        $id = $this->input->post('id');
+        $field = $this->input->post('field');
+        $value = $this->input->post('value');
+        $response = $this->_data->update(['id' => $id], [$field => $value]);
+        if($response != false){
             $message['type'] = 'success';
             $message['message'] = "Cập nhật thành công !";
         }else{
@@ -171,45 +239,37 @@ class Category extends Admin_Controller
     }
 
     private function _validation(){
-
-        $rules = array(
-            array(
-                'field' => 'fullname',
-                'label' => 'Họ và tên',
-                'rules' => 'trim'
-            ),
-            array(
-                'field' => 'email',
-                'label' => 'Email',
-                'rules' => 'trim|required|valid_email|is_unique['.$this->_data->_dbprefix.'users.email]',
-                'errors' => array(
-                    'required' => '%s đã tồn tại. Vui lòng chọn %s khác.',
-                )
-            ),
-            array(
-                'field' => 'phone',
-                'label' => 'Số điện thoại',
-                'rules' => 'trim|regex_match[/^[0-9.-]{0,18}+$/]'
-            ),
-            array(
-                'field' => 'username',
-                'label' => 'Username',
-                'rules' => 'trim|required|is_unique['.$this->_data->_dbprefix.'users.username]',
-                'errors' => array(
-                    'required' => '%s đã tồn tại. Vui lòng chọn %s khác.',
-                )
-            ),
-            array(
-                'field' => 'password',
-                'lable' => 'Password',
-                'rules' => 'trim|required'
-            ),
-            array(
-                'field' => 're-password',
-                'lable' => 'Re Password',
-                'rules' => 'trim|required|matches[password]'
-            )
-        );
+        $this->checkRequestPostAjax();
+        $language_rules = [];
+        if(!empty($this->config->item('language_name'))) foreach ($this->config->item('language_name') as $lang_code => $lang_name){
+            if ($lang_code === $this->config->item('language_default')) {
+                $language_rules = [
+                    [
+                        'field' => "language[$lang_code][title]",
+                        'label' => "Tiêu đề ($lang_name)",
+                        'rules' => "trim|required|min_length[2]|max_length[{$this->config->item('SEO_title_maxlength')}]"
+                    ],[
+                        'field' => "language[$lang_code][slug]",
+                        'label' => "Đường dẫn ($lang_name)",
+                        'rules' => "trim|required"
+                    ],[
+                        'field' => "language[$lang_code][description]",
+                        'label' => "Tóm tắt ($lang_name)",
+                        'rules' => 'trim|required'
+                    ],[
+                        'field' => "language[$lang_code][meta_title]",
+                        'label' => "Tiêu đề SEO ($lang_name)",
+                        'rules' => "trim|required|min_length[2]|max_length[{$this->config->item('SEO_title_maxlength')}]"
+                    ],[
+                        'field' => "language[$lang_code][meta_description]",
+                        'label' => "Mô tả SEO ($lang_name)",
+                        'rules' => "trim|required|min_length[2]|max_length[{$this->config->item('SEO_description_maxlength')}]"
+                    ]
+                ];
+            }
+        }
+        $rules = [];
+        $rules = array_merge($rules, $language_rules);
         $this->form_validation->set_rules($rules);
         if ($this->form_validation->run() == false) {
             $message['type'] = "warning";
@@ -226,7 +286,8 @@ class Category extends Admin_Controller
     private function _convertData(){
         $this->_validation();
         $data = $this->input->post();
-        unset($data['re-password']);
+        $data['type'] = $this->session->userdata('type');
+        if(!empty($data['is_status'])) $data['is_status'] = 1;else $data['is_status'] = 0;
         return $data;
     }
 }

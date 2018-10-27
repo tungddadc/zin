@@ -17,14 +17,14 @@ class Category_model extends STEVEN_Model
         $this->table_trans      = "category_translations";
         $this->column_order     = array("$this->table.id", "$this->table.id", "$this->table_trans.title", "$this->table.is_status", "$this->table.created_time", "$this->table.updated_time");
         $this->column_search    = array("$this->table_trans.title");
-        $this->order_default    = array("$this->table.created_time" => "DESC");
+        $this->order_default    = array("$this->table.id" => "ASC");
 
     }
     public function _where_custom($args = array()){
         parent::_where_custom();
         extract($args);
-        if(!empty($category_type)) $this->db->where("$this->table.type", $category_type);
-        if (isset($parent_id)) $this->db->where("$this->table.parent_id",$parent_id);
+        if(!empty($type)) $this->db->where("$this->table.type", $type);
+        if (!empty($parent_id)) $this->db->where("$this->table.parent_id",$parent_id);
 
     }
 
@@ -102,7 +102,7 @@ class Category_model extends STEVEN_Model
     }
 
     public function getRandomId($type = null){
-        if(empty($type)) $type = $this->session->category_type;
+        if(empty($type)) $type = $this->session->userdata('type');
         $this->db->select('id');
         $this->db->from($this->table);
         $this->db->where('type', $type);
@@ -175,7 +175,7 @@ class Category_model extends STEVEN_Model
         $this->db->select('order');
         $this->db->from($this->table);
         $this->db->where([
-            'type' => $this->session->category_type,
+            'type' => $this->session->userdata('type'),
             'parent_id' => $idParent,
         ]);
         $this->db->order_by('order','DESC');
