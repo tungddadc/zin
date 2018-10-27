@@ -133,7 +133,7 @@ class User extends Admin_Controller
             if ($this->ion_auth->login($this->input->post('identity'), $this->input->post('password'), $remember)) {
                 //if the login is successful
                 //Set session for Moxie Manager Image
-                $this->session->set_userdata('MyLoggedInKey', "true");
+                $this->session->set_userdata('MyLoggedInKey', true);
                 $this->session->set_userdata('CodeIgniterAuthenticator.environment', ENVIRONMENT);
                 $this->session->set_userdata('moxiemanager.filesystem.rootpath', MEDIA_PATH);
                 $this->session->set_userdata('moxiemanager.storage.path', MEDIA_PATH);
@@ -141,12 +141,12 @@ class User extends Admin_Controller
                 //redirect them back to the home page
                 $url_redirect = $this->input->post('url_redirect') ? $this->input->post('url_redirect') : site_admin_url();
                 $message['type'] = 'success';
-                $message['message'] = $this->ion_auth->messages();
+                $message['message'] = strip_tags($this->ion_auth->messages());
                 $message['url_redirect'] = $url_redirect;
                 $this->returnJson($message);
             } else {
                 $message['type'] = 'error';
-                $message['message'] = $this->ion_auth->errors();
+                $message['message'] = strip_tags($this->ion_auth->errors());
                 $this->returnJson($message);
             }
         }else{

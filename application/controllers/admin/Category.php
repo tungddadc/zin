@@ -9,22 +9,71 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Category extends Admin_Controller
 {
     protected $_data;
+    protected $category_tree;
+
+    const STATUS_CANCEL = 0;
+    const STATUS_ACTIVE = 1;
+    const STATUS_DRAFT = 2;
     public function __construct()
     {
         parent::__construct();
         //tải thư viện
         //$this->lang->load('category');
         $this->load->model(['category_model']);
-        $this->_data = new Users_model();
-        $this->_data_group = new Groups_model();
+        $this->_data = new Category_model();
     }
 
-    public function index(){
-        $data['heading_title'] = "Quản lý thành viên";
-        $data['heading_description'] = 'Danh sách thành viên';
-        $data['main_content'] = $this->load->view($this->template_path . $this->_controller . DIRECTORY_SEPARATOR . $this->_method, $data, TRUE);
+    public function get_list($data){
+        $data['main_content'] = $this->load->view($this->template_path . $this->_controller . DIRECTORY_SEPARATOR . 'index', $data, TRUE);
         $this->load->view($this->template_main, $data);
     }
+
+    public function post(){
+        $data['heading_title'] = "Danh mục bài viết";
+        $data['heading_description'] = "Danh sách danh mục";
+        $this->session->category_type = $data['type'] = $this->_method;
+        $this->get_list($data);
+    }
+
+    public function product(){
+        $data['heading_title'] = "Danh mục sản phẩm";
+        $data['heading_description'] = "Danh sách danh mục";
+        $this->session->category_type = $data['type'] = $this->_method;
+        $this->get_list($data);
+    }
+
+
+    public function _queue($categories, $parent_id = 0, $char = ''){
+        if(!empty($categories)) foreach ($categories as $key => $item)
+        {
+            if ($item->parent_id == $parent_id)
+            {
+                $tmp['title'] = $char.$item->title;
+                $tmp['value'] = $item;
+                $this->category_tree[] = $tmp;
+                unset($categories[$key]);
+                $this->_queue($categories,$item->id,$char.'  '.$item->title.' <i class="fa fa-fw fa-caret-right"></i> ');
+            }
+
+        }
+    }
+
+    public function _queue_select($categories, $parent_id = 0, $char = ''){
+        foreach ($categories as $key => $item)
+        {
+            if ($item->parent_id == $parent_id)
+            {
+                $tmp['title'] = $parent_id ? '  |--'.$char.$item->title : $char.$item->title;
+                $tmp['id'] = $item->id;
+                $tmp['thumbnail'] = $item->thumbnail;
+                $this->category_tree[] = $tmp;
+                unset($categories[$key]);
+                $this->_queue_select($categories,$item->id,$char.'--');
+            }
+        }
+    }
+
+
 
     public function ajax_list(){
         $this->checkRequestPostAjax();
@@ -36,7 +85,7 @@ class Category extends Admin_Controller
 
         $queryFilter = $this->input->post('query');
         $params = [
-            'group_id'  => !empty($queryFilter['group_id']) ? $queryFilter['group_id'] : '',
+            'parent_id'  => !empty($queryFilter['category_id']) ? $queryFilter['category_id'] : '',
             'page'      => $page,
             'limit'     => $limit
         ];

@@ -1,0 +1,121 @@
+.fixed {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    overflow: scroll;
+}
+
+@media (min-width: 1025px){
+    .m-header {
+        height: 50px;
+    }
+    .m-brand .m-brand__logo, .m-brand .m-brand__tools {
+        -webkit-transition: none;
+        -moz-transition: none;
+        -ms-transition: none;
+        -o-transition: none;
+        transition: none;
+        height: 50px!important;
+    }
+    .m-header--fixed .m-body {
+        padding-top: 50px!important;
+    }
+}
+.m-topbar .m-topbar__nav.m-nav>.m-nav__item>.m-nav__link .m-topbar__userpic img{
+    max-width: 30px!important;
+}
+.m-brand,.m-aside-left{
+    width: 240px;
+}
+.m-aside-menu .m-menu__nav {
+    padding: 10px 0 10px 0;
+}
+.m-aside-menu .m-menu__nav>.m-menu__section {
+    margin: 5px 0 0 0;
+}
+.m-aside-menu .m-menu__nav>.m-menu__item>.m-menu__link {
+    padding: 9px 10px;
+}
+.m-aside-menu .m-menu__nav>.m-menu__item>.m-menu__submenu .m-menu__subnav>.m-menu__item>.m-menu__link{
+    padding-left: 25px;
+}
+.m-subheader {
+    padding: 5px 15px 0 15px;
+}
+.m-body .m-content {
+    padding: 15px;
+}
+
+.m-portlet .m-portlet__body {
+    padding: 10px;
+}
+
+
+.btnUpdateField{
+    cursor: pointer;
+}
+
+.modal .modal-content .modal-footer {
+    padding: 1rem;
+}
+
+.modal-footer-top-button {
+    position: fixed;
+    z-index: 999999;
+    top: 0;
+    right: 0;
+}
+
+@media (min-width: 1360px){
+    .modal-lg {
+        max-width: 1200px;
+    }
+}
+
+/* == Google colors */
+.cgg span:nth-child(1){color: #4285f4;}
+.cgg span:nth-child(2){color: #EA4335;}
+.cgg span:nth-child(3){color: #FBBC05;}
+.cgg span:nth-child(4){color: #4285F4;}
+.cgg span:nth-child(5){color: #34A853;}
+.cgg span:nth-child(6){color: #EA4335;}
+.cgg span:nth-child(7){color: #4285f4;}
+/*For google*/
+.google{
+    word-break: break-all;
+    margin: 30px auto;
+    max-width: 632px;
+}
+.google .gg-result{
+    color: #23c5b4;
+    font-weight: bold;
+    border-color: #40e0d0;
+    border-width: 0 0 3px 0;
+    transition: all .2s ease-out;
+}
+.google .box{
+    padding: 5px 12px;
+    margin: 10px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0, .3);
+}
+.google h3{
+    color: #4285f4;
+    font-size: 18px;
+    line-height: 1.2;
+    letter-spacing: 1px;
+    font-weight: normal;
+}
+.google cite{
+    color: #009930;
+    display: block;
+    font-style: normal;
+    font-weight: normal;
+    letter-spacing: .8px;
+}
+.google .gg-desc{
+    display: block;
+    margin: 15px 0;
+    line-height: 28px;
+    letter-spacing: 1px;
+    word-wrap: break-word;
+}

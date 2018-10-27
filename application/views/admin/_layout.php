@@ -22,7 +22,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
     <script>
         WebFont.load({
-            google: {"families":["Montserrat:300,400,500,600,700","Roboto:300,400,500,600,700"]},
+            google: {"families":["Nunito Sans:300,400,500,600,700","Roboto:300,400,500,600,700"]},
             active: function() {
                 sessionStorage.fonts = true;
             }
@@ -32,7 +32,6 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     <!--begin::Base Styles -->
     <link href="<?php echo $this->templates_assets ?>assets/vendors/base/vendors.bundle.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo $this->templates_assets ?>assets/demo/default/base/style.bundle.css" rel="stylesheet" type="text/css" />
-    <link href="<?php echo $this->templates_assets ?>css/custom.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo $this->templates_assets ?>css/custom.css" rel="stylesheet" type="text/css" />
 
     <!--end::Base Styles -->

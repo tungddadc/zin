@@ -29,12 +29,12 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     </script>
     <!--end::Web font -->
     <!--begin::Base Styles -->
-    <link href="<?php echo base_url('backend/') ?>assets/vendors/base/vendors.bundle.css" rel="stylesheet"
+    <link href="<?php echo $this->templates_assets ?>assets/vendors/base/vendors.bundle.css" rel="stylesheet"
           type="text/css"/>
-    <link href="<?php echo base_url('backend/') ?>assets/demo/default/base/style.bundle.css" rel="stylesheet"
+    <link href="<?php echo $this->templates_assets ?>assets/demo/default/base/style.bundle.css" rel="stylesheet"
           type="text/css"/>
     <!--end::Base Styles -->
-    <link rel="shortcut icon" href="<?php echo base_url('backend/') ?>assets/demo/default/media/img/logo/favicon.ico"/>
+    <link rel="shortcut icon" href="<?php echo $this->templates_assets ?>assets/demo/default/media/img/logo/favicon.ico"/>
     <style>
         .g-recaptcha{
             margin: 15px 0 25px;
@@ -51,12 +51,12 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 <div class="m-grid m-grid--hor m-grid--root m-page">
     <div class="m-grid__item m-grid__item--fluid m-grid m-grid--hor m-login m-login--signin m-login--2 m-login-2--skin-3"
          id="m_login"
-         style="background-image: url(<?php echo base_url('backend/') ?>assets/app/media/img//bg/bg-2.jpg);">
+         style="background-image: url(<?php echo $this->templates_assets ?>assets/app/media/img//bg/bg-2.jpg);">
         <div class="m-grid__item m-grid__item--fluid	m-login__wrapper">
             <div class="m-login__container">
                 <div class="m-login__logo">
                     <a href="#">
-                        <img src="<?php echo base_url('backend/') ?>assets/app/media/img//logos/logo-1.png">
+                        <img src="<?php echo $this->templates_assets ?>assets/app/media/img//logos/logo-1.png">
                     </a>
                 </div>
                 <div class="m-login__signin">
@@ -103,8 +103,8 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 </div>
 <!-- end:: Page -->
 <!--begin::Base Scripts -->
-<script src="<?php echo base_url('backend/') ?>assets/vendors/base/vendors.bundle.js" type="text/javascript"></script>
-<script src="<?php echo base_url('backend/') ?>assets/demo/default/base/scripts.bundle.js"
+<script src="<?php echo $this->templates_assets ?>assets/vendors/base/vendors.bundle.js" type="text/javascript"></script>
+<script src="<?php echo $this->templates_assets ?>assets/demo/default/base/scripts.bundle.js"
         type="text/javascript"></script>
 <!--end::Base Scripts -->
 
