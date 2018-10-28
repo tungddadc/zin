@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 <div class="form-group">
     <label>Meta Title</label>
     <label for="title"><span class="count-title">0</span> / <?php echo $this->config->item('SEO_title_maxlength') ?></label>
-    <input value="" name="language[<?php echo $lang_code ?>][meta_title]" placeholder="Meta Title" class="form-control" type="text" maxlength="<?php echo $this->config->item('SEO_title_maxlength') ?>"/>
+    <input name="language[<?php echo $lang_code ?>][meta_title]" placeholder="Meta Title" class="form-control" type="text" maxlength="<?php echo $this->config->item('SEO_title_maxlength') ?>"/>
 </div>
 <div class="form-group">
     <label>Url</label>
@@ -19,7 +19,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 <div class="form-group">
     <label>Meta Description</label>
     <label for="desc"><span class="count-desc">0</span> / <?php echo $this->config->item('SEO_description_maxlength') ?></label>
-    <textarea name="language[<?php echo $lang_code ?>][meta_description]" placeholder="Meta Description" class="form-control content_product"></textarea>
+    <textarea name="language[<?php echo $lang_code ?>][meta_description]" placeholder="Meta Description" class="form-control content_product" rows="5"></textarea>
 </div>
 <div class="form-group">
     <label>Meta Keyword</label>

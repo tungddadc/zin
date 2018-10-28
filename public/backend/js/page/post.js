@@ -11,6 +11,7 @@ $(function() {
         field: "id",
         title: "ID",
         width: 50,
+        textAlign: "center",
         sortable: 'asc',
         filterable: !1,
     }, {
@@ -18,8 +19,17 @@ $(function() {
         title: "Tiêu đề",
         width: 300
     }, {
+        field: "is_featured",
+        title: "Nổi bật",
+        width: 70,
+        textAlign: "center",
+        template: function (t) {
+            return '<span data-field="is_featured" data-value="'+(t.is_featured == 1 ? 0 : 1)+'" class="btnUpdateField">' + (t.is_featured == 1 ? '<i class="la la-star"></i>' : '<i class="la la-star-o"></i>') + "</span>"
+        }
+    }, {
         field: "is_status",
         title: "Status",
+        textAlign: "center",
         width: 70,
         template: function (t) {
             var e = {
@@ -55,11 +65,20 @@ $(function() {
     AJAX_DATATABLES.init();
     loadCategory();
     AJAX_CRUD_MODAL.init();
+    AJAX_CRUD_MODAL.tinymce();
     SEO.init_slug();
 
     $('[name="is_status"]').on("change", function () {
         table.search($(this).val(), "is_status")
     }), $('[name="is_status"]').selectpicker();
+
+    $('select[name="category_id"]').on("change", function () {
+        table.search($(this).val(), "category_id")
+    });
+
+    $('#modal_form').on('shown.bs.modal', function(e){
+        loadCategory();
+    });
 
     $(document).on('click','.btnEdit',function () {
         let modal_form = $('#modal_form');
@@ -83,9 +102,14 @@ $(function() {
                         let lang_code = value.language_code;
                         $.each(value, function( key, val) {
                             let element = modal_form.find('[name="language['+lang_code+']['+key+']"]');
+                            if(element.hasClass('tinymce') && val){
+                                tinymce.get(element.attr('id')).setContent(val);
+                            }
                             element.val(val);
                         });
                     });
+
+                    loadCategory(response.data_category);
                     modal_form.modal('show');
                 },
                 error: function (jqXHR, textStatus, errorThrown)

@@ -37,7 +37,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                 </div>
                                 <div class="d-md-none m--margin-bottom-10"></div>
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-4">
+                                <div class="m-form__group m-form__group--inline">
+                                    <div class="m-form__label">
+                                        <label>
+                                            Danh mục:
+                                        </label>
+                                    </div>
+                                    <div class="m-form__control">
+                                        <select class="form-control m-bootstrap-select category" name="category_id" style="width: 100%"></select>
+                                    </div>
+                                </div>
+                                <div class="d-md-none m--margin-bottom-10"></div>
+                            </div>
+                            <div class="col-md-4">
                                 <div class="m-input-icon m-input-icon--left">
                                     <input type="text" class="form-control m-input" placeholder="Search..." id="generalSearch">
                                     <span class="m-input-icon__icon m-input-icon__icon--left">
@@ -99,14 +112,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                             <ul class="nav nav-tabs m-tabs-line m-tabs-line--primary m-tabs-line--2x" role="tablist">
                                 <li class="nav-item m-tabs__item">
                                     <a class="nav-link m-tabs__link active show" data-toggle="tab" href="#tab_language" role="tab" aria-selected="true">
-                                        <i class="la la-language"></i>
-                                        Nội dung SEO
+                                        <i class="la la-language"></i>Nội dung SEO
                                     </a>
                                 </li>
                                 <li class="nav-item m-tabs__item">
                                     <a class="nav-link m-tabs__link" data-toggle="tab" href="#tab_info" role="tab" aria-selected="false">
-                                        <i class="la la-info"></i>
-                                        Thông tin
+                                        <i class="la la-info"></i>Thông tin
                                     </a>
                                 </li>
                             </ul>
@@ -144,6 +155,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                                                 <label>Tóm tắt</label>
                                                                 <textarea name="language[<?php echo $lang_code;?>][description]" placeholder="Tóm tắt (<?php echo $lang_name ?>)" class="form-control" rows="5"></textarea>
                                                             </div>
+                                                            <div class="form-group">
+                                                                <label>Nội dung</label>
+                                                                <textarea name="language[<?php echo $lang_code;?>][content]" class="form-control tinymce"></textarea>
+                                                            </div>
                                                         </div>
                                                         <div class="col-sm-6 col-xs-12">
                                                             <?php $this->load->view($this->template_path.'_block/seo_meta',['lang_code'=>$lang_code]) ?>
@@ -159,19 +174,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                 <div class="row">
                                     <div class="col-lg-6 col-12">
                                         <div class="form-group">
-                                            <label>Danh mục cha:</label>
+                                            <label>Danh mục:</label>
                                             <div class="input-group">
-                                                <select name="parent_id" class="form-control m-select2 category" style="width: 100%;"></select>
+                                                <select name="category_id[]" class="form-control m-select2 category" style="width: 100%;"></select>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label>Layout style</label>
-                                            <input name="layout" placeholder="Layout style" class="form-control" type="text" />
+                                            <label>Nổi bật:</label>
+                                            <div class="m-input">
+                                                <input data-switch="true" type="checkbox" name="is_featured" class="switchBootstrap">
+                                            </div>
                                         </div>
                                         <div class="form-group">
-                                            <label>
-                                                Trạng thái:
-                                            </label>
+                                            <label>Trạng thái:</label>
                                             <div class="m-input">
                                                 <input data-switch="true" type="checkbox" name="is_status" class="switchBootstrap" checked="checked">
                                             </div>
@@ -208,5 +223,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
     </div>
 </div>
 <script type="text/javascript">
-    var url_ajax_load_category = '<?php echo site_admin_url('category/ajax_load') ?>';
+    var url_ajax_load_category = '<?php echo site_admin_url('category/ajax_load/post') ?>';
 </script>

@@ -159,22 +159,22 @@ var SEO = {
         $(".gg_1" ).html(cgg);
 
 
-        $('input[name^="meta_title"]').keyup( function(){
+        $('input[name$="[meta_title]"]').keyup( function(){
             SEO.meta_title($(this));
         });
-        $('input[name^="slug"]').keyup( function(){
+        $('input[name$="[slug]"]').keyup( function(){
             $(".gg-url").html(base_url+$(this).val());
         });
         $(".bootstrap-tagsinput input").keyup( function(){
             SEO.meta_keyword($(this));
         });
-        $('textarea[name^="meta_description"]').keyup( function(){
+        $('textarea[name$="[meta_description]"]').keyup( function(){
             SEO.meta_description($(this));
         });
 
-        $(".gg-url").html(base_url+$("input[name^='slug']").val());
-        if($("input[name^='meta_title']").length) SEO.meta_title("input[name^='meta_title']");
-        if($("input[name^='meta_description']").length) SEO.meta_description("textarea[name^='meta_description']");
+        $(".gg-url").html(base_url+$('input[name$="[slug]"]').val());
+        if($('input[name$="[meta_title]"]').length) SEO.meta_title('input[name$="[meta_title]"]');
+        if($('input[name$="[meta_description]"]').length) SEO.meta_description('textarea[name$="[meta_description]"]');
     }
 };
 
@@ -222,23 +222,6 @@ var AJAX_DATATABLES = {
 };
 /*Function CRUD Modal*/
 var AJAX_CRUD_MODAL = {
-    close: function(){
-        $('#modal_form').on('hidden.bs.modal', function(e){
-            body.removeClass('fixed');
-            window.onbeforeunload = null;
-            $(this).find('form').trigger('reset');
-            $(this).find('input[type=hidden]').val(0);
-            $(".select2").empty().trigger('change');
-            $('div.form-control-feedback').remove();
-            $('.form-group').removeClass('has-danger');
-            //$('#gallery').html('');
-            //$("input.tagsinput").tagsinput('removeAll');
-            $('input.switchBootstrap').bootstrapSwitch('state',false);
-            for (var j = 0; j < tinyMCE.editors.length; j++){
-                tinymce.get(tinyMCE.editors[j].id).setContent('');
-            }
-        });
-    },
     open: function(){
         let modal_form = $('#modal_form');
         modal_form.on('shown.bs.modal', function(e){
@@ -255,6 +238,23 @@ var AJAX_CRUD_MODAL = {
                     diaLogScrollFooter.removeClass('modal-footer-top-button');
                 }
             });
+        });
+    },
+    close: function(){
+        $('#modal_form').on('hidden.bs.modal', function(e){
+            body.removeClass('fixed');
+            window.onbeforeunload = null;
+            $(this).find('form').trigger('reset');
+            $(this).find('input[type=hidden]').val(0);
+            $(".m-select2").empty().trigger('change');
+            $('div.form-control-feedback').remove();
+            $('.form-group').removeClass('has-danger');
+            //$('#gallery').html('');
+            //$("input.tagsinput").tagsinput('removeAll');
+            $('input.switchBootstrap').bootstrapSwitch('state',false);
+            for (var j = 0; j < tinyMCE.editors.length; j++){
+                tinymce.get(tinyMCE.editors[j].id).setContent('');
+            }
         });
     },
     disable_close: function(){
@@ -276,6 +276,14 @@ var AJAX_CRUD_MODAL = {
             url = url_ajax_add;
         } else {
             url = url_ajax_update;
+        }
+
+        if(tinyMCE.editors.length > 0){
+            for (let j = 0; j < tinyMCE.editors.length; j++){
+                let idInput = tinyMCE.editors[j].id;
+                let content = tinymce.get(idInput).getContent();
+                $('[name="'+idInput+'"]').val(content);
+            }
         }
 
         $.ajax({

@@ -184,8 +184,8 @@ class Category extends Admin_Controller
         $this->checkRequestPostAjax();
         $id = $this->input->post('id');
         if(!empty($id)){
-            $dataItem = $this->_data->getById($id);
-            $output['data'] = $dataItem;
+            $output['data_info'] = $this->_data->single(['id' => $id],$this->_data->table);
+            $output['data_language'] = $this->_data->getDataAll(['id' => $id],$this->_data->table_trans);
             $this->returnJson($output);
         }
     }

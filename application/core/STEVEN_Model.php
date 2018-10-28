@@ -92,6 +92,9 @@ class STEVEN_Model extends CI_Model
 		if (isset($is_status))
 			$this->db->where("$this->table.is_status",$is_status);
 
+		if (!empty($id))
+			$this->db->where("$this->table.id",$id);
+
 		if (!empty($in))
 			$this->db->where_in("$this->table.id",$in);
 
@@ -326,6 +329,16 @@ class STEVEN_Model extends CI_Model
 		return $this->db->get($tablename)->row();
 	}
 
+    public function getDataAll($conditions, $tablename = '')
+    {
+        if ($tablename == '') {
+            $tablename = $this->table;
+        }
+        $this->db->where($conditions);
+
+        return $this->db->get($tablename)->result();
+    }
+
 	public function insert($data, $tablename = '')
 	{
 		if ($tablename == '') {
@@ -364,7 +377,7 @@ class STEVEN_Model extends CI_Model
 			return false;
 		}
 
-		return $this->db->affected_rows();
+		return true;
 	}
 
 	public function update($conditions, $data, $tablename = '')
@@ -373,15 +386,7 @@ class STEVEN_Model extends CI_Model
 			$tablename = $this->table;
 		}
 
-		$dataInfo = [];
-		if(!empty($data)) foreach ($data as $key => $value){
-			if(!is_array($value)) {
-				$dataInfo[$key] = $value;
-				unset($data[$key]);
-			}
-		}
-
-		if(!$this->db->update($tablename, $dataInfo, $conditions)){
+		if(!$this->db->update($tablename, $data, $conditions)){
 			log_message('info',json_encode($conditions));
 			log_message('info',json_encode($data));
 			log_message('error',json_encode($this->db->error()));
@@ -433,14 +438,5 @@ class STEVEN_Model extends CI_Model
 
 		$this->db->select('1');
 		return $this->db->get($tablename)->num_rows();
-	}
-
-	public function getpostAllLang($id){
-		$this->db->distinct();
-		$this->db->select(['slug','language_code']);
-		$this->db->from($this->table_trans);
-		$this->db->where('id',$id);
-		$query= $this->db->get()->result();
-		return $query;
 	}
 }
