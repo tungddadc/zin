@@ -104,7 +104,7 @@
                             </div>
                         </li>
                         <li class="m-menu__item">
-                            <a href="<?php echo site_admin_url('menu') ?>" class="m-menu__link">
+                            <a href="<?php echo site_admin_url('menus') ?>" class="m-menu__link">
                                 <i class="m-menu__link-icon flaticon-menu-1"></i>
                                 <span class="m-menu__link-text">
                                     Cấu hình menu

@@ -117,8 +117,13 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 <script src="<?php echo $this->templates_assets ?>assets/vendors/custom/fullcalendar/fullcalendar.bundle.js" type="text/javascript"></script>
 <!--end::Page Vendors -->
 <!--begin::Page Snippets -->
+<script src="<?php echo $this->templates_assets ?>js/jquery.nestable.js" type="text/javascript"></script>
+
+
 <script src="<?php echo $this->templates_assets ?>plugins/tinymce/tinymce.min.js" type="text/javascript"></script>
 <script src="<?php echo $this->templates_assets ?>plugins/moxiemanager/js/moxman.loader.min.js" type="text/javascript"></script>
+
+
 <script src="<?php echo $this->templates_assets ?>js/main.js" type="text/javascript"></script>
 <?php if(!empty($this->_controller)): ?><script src="<?php echo $this->templates_assets ?>js/page/<?php echo $this->_controller ?>.js" type="text/javascript"></script><?php endif; ?>
 <!--end::Page Snippets -->

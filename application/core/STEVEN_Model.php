@@ -154,7 +154,7 @@ class STEVEN_Model extends CI_Model
      * */
 	public function getAll($lang_code = null,$is_status = null){
 		$this->db->from($this->table);
-		if(!empty($this->table_trans)) $this->db->join($this->table_trans,"$this->table.$this->primary_key = $this->table_trans.$this->primary_key");
+		if(!empty($this->table_trans)) $this->db->join($this->table_trans,"$this->table.id = $this->table_trans.id");
 		if(!empty($lang_code)) $this->db->where("$this->table_trans.language_code",$lang_code);
 		if(!empty($is_status)) $this->db->where("$this->table.is_status",$is_status);
 		$query = $this->db->get();
