@@ -14,43 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                 <div class="row align-items-center">
                     <div class="col-xl-8 order-2 order-xl-1">
                         <div class="form-group m-form__group row align-items-center">
-                            <div class="col-md-4">
-                                <div class="m-form__group m-form__group--inline">
-                                    <div class="m-form__label">
-                                        <label>
-                                            Trạng thái:
-                                        </label>
-                                    </div>
-                                    <div class="m-form__control">
-                                        <select class="form-control m-bootstrap-select" name="is_status">
-                                            <option value="">
-                                                All
-                                            </option>
-                                            <option value="1">
-                                                Hoạt động
-                                            </option>
-                                            <option value="0">
-                                                Hủy
-                                            </option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="d-md-none m--margin-bottom-10"></div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="m-form__group m-form__group--inline">
-                                    <div class="m-form__label">
-                                        <label>
-                                            Danh mục:
-                                        </label>
-                                    </div>
-                                    <div class="m-form__control">
-                                        <select class="form-control m-bootstrap-select category" name="category_id" style="width: 100%"></select>
-                                    </div>
-                                </div>
-                                <div class="d-md-none m--margin-bottom-10"></div>
-                            </div>
-                            <div class="col-md-4">
+                            <div class="col-md-8">
                                 <div class="m-input-icon m-input-icon--left">
                                     <input type="text" class="form-control m-input" placeholder="Search..." id="generalSearch">
                                     <span class="m-input-icon__icon m-input-icon__icon--left">
@@ -174,16 +138,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                 <div class="row">
                                     <div class="col-lg-6 col-12">
                                         <div class="form-group">
-                                            <label>Danh mục:</label>
-                                            <div class="input-group">
-                                                <select name="category_id[]" class="form-control m-select2 category" style="width: 100%;"></select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Nổi bật:</label>
-                                            <div class="m-input">
-                                                <input data-switch="true" type="checkbox" name="is_featured" class="switchBootstrap">
-                                            </div>
+                                            <label>Layout:</label>
+                                            <input type="text" name="layout"  placeholder="Layout style" class="form-control">
                                         </div>
                                         <div class="form-group">
                                             <label>Trạng thái:</label>
@@ -202,6 +158,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                                     </span>
                                                 </div>
                                                 <input type="text" name="thumbnail" onclick="FUNC.chooseImage(this)" class="form-control m-input chooseImage" placeholder="Click để chọn ảnh" aria-describedby="input_thumbnail">
+                                            </div>
+                                            <div class="alert m-alert m-alert--default preview text-center mt-1" role="alert">
+                                                <img width="100" height="100" src="<?php echo getImageThumb('',100,100) ?>">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="thumbnail">Banner page</label>
+                                            <div class="input-group m-input-group m-input-group--air">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <i class="la la-picture-o"></i>
+                                                    </span>
+                                                </div>
+                                                <input type="text" name="banner" onclick="FUNC.chooseImage(this)" class="form-control m-input chooseImage" placeholder="Click để chọn ảnh">
                                             </div>
                                             <div class="alert m-alert m-alert--default preview text-center mt-1" role="alert">
                                                 <img width="100" height="100" src="<?php echo getImageThumb('',100,100) ?>">

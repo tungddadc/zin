@@ -17,7 +17,7 @@ class Page extends Admin_Controller
     {
         parent::__construct();
         //tải thư viện
-        $this->load->model(['post_model']);
+        $this->load->model(['page_model']);
         $this->_data = new Page_model();
     }
 
@@ -200,10 +200,6 @@ class Page extends Admin_Controller
                         'field' => "language[$lang_code][meta_description]",
                         'label' => "Mô tả SEO ($lang_name)",
                         'rules' => "trim|required|min_length[2]|max_length[{$this->config->item('SEO_description_maxlength')}]"
-                    ],[
-                        'field' => "language[$lang_code][content]",
-                        'label' => "Nội dung ($lang_name)",
-                        'rules' => "required"
                     ]
                 ];
             }

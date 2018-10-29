@@ -54,7 +54,7 @@ var win = $(window),
         ],
 
         external_plugins: {
-            "moxiemanager": base_url + "/plugins/moxiemanager/plugin.min.js"
+            "moxiemanager": base_url + "public/admin/plugins/moxiemanager/plugin.min.js"
         }
     },
     datatables_columns = [];
