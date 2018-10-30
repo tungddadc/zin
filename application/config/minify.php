@@ -36,10 +36,10 @@ $config['assets_dir_css'] = 'css';
 $config['assets_dir_js'] = 'js';
 
 // where to look for css files (default value: 'assets/css')
-$config['css_dir'] = 'public/css';
+$config['css_dir'] = 'css';
 
 // where to look for js files (default value: 'assets/js')
-$config['js_dir'] = 'public/js';
+$config['js_dir'] = 'js';
 
 // default file name for css (default value: 'style.css')
 $config['css_file'] = 'style_minified.min.css';

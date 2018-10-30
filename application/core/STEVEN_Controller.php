@@ -280,6 +280,17 @@ class Public_Controller extends STEVEN_Controller
         //$this->detectMobile = new Mobile_Detect();
 
         //đọc file setting
+        $dataSetting = file_get_contents(FCPATH.'config'.DIRECTORY_SEPARATOR.'settings.cfg');
+        $dataSetting = $dataSetting ? json_decode($dataSetting,true) : array();
+        if(!empty($dataSetting)) foreach ($dataSetting as $key => $item){
+            if($key === 'meta'){
+                $oneMeta = $item[$this->session->userdata('public_lang_code')];
+                if(!empty($oneMeta)) foreach ($oneMeta as $keyMeta => $value){
+                    $this->settings[$keyMeta] = str_replace('"','\'',$value);
+                }
+            } else
+                $this->settings[$key] = $item;
+        }
 
         //Set flash message
         $this->_message = $this->session->flashdata('message');
