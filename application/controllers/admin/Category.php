@@ -41,6 +41,12 @@ class Category extends Admin_Controller
         $this->get_list($data);
     }
 
+    public function brand(){
+        $data['heading_title'] = "Danh mục thương hiệu";
+        $data['heading_description'] = "Danh sách thương hiệu";
+        $this->get_list($data);
+    }
+
 
     public function _queue($categories, $parent_id = 0, $char = ''){
         if(!empty($categories)) foreach ($categories as $key => $item)

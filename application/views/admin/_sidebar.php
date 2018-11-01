@@ -197,6 +197,17 @@
                                 </span>
                             </a>
                         </li>
+
+                        <li class="m-menu__item " aria-haspopup="true">
+                            <a href="<?php echo site_admin_url('category/brand') ?>" class="m-menu__link ">
+                                <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                    <span></span>
+                                </i>
+                                <span class="m-menu__link-text">
+                                    Thương hiệu sản phẩm
+                                </span>
+                            </a>
+                        </li>
                         <li class="m-menu__item " aria-haspopup="true">
                             <a href="<?php echo site_admin_url('product') ?>" class="m-menu__link ">
                                 <i class="m-menu__link-bullet m-menu__link-bullet--dot">
