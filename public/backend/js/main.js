@@ -31,7 +31,7 @@ var win = $(window),
             {
                 title: 'Textbox',
                 description: 'Tạo Textbox',
-                url: base_url + 'public/admin/plugins/tinymce/templates/text-box.html'
+                url: base_url + 'backend/admin/plugins/tinymce/templates/text-box.html'
             }
         ],
 
@@ -54,7 +54,7 @@ var win = $(window),
         ],
 
         external_plugins: {
-            "moxiemanager": base_url + "public/admin/plugins/moxiemanager/plugin.min.js"
+            "moxiemanager": base_url + "backend/admin/plugins/moxiemanager/plugin.min.js"
         }
     },
     datatables_columns = [];
