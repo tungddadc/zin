@@ -161,7 +161,7 @@ class Category extends Admin_Controller
 
     private function save_language($id, $data){
         if(!empty($data)) foreach ($data as $lang_code => $item){
-            $data_trans = array_merge($item,['id'=>$id]);
+            $data_trans = array_merge($item,['id'=>$id,'language_code' => $lang_code]);
             if(!$this->_data->insertOnUpdate($data_trans, $this->_data->table_trans)){
                 $message['type'] = 'error';
                 $message['message'] = "Thêm {$this->_data->table_trans} thất bại !";
@@ -293,6 +293,7 @@ class Category extends Admin_Controller
     private function _convertData(){
         $this->_validation();
         $data = $this->input->post();
+        $data['type'] = $this->session->userdata('type');
         $data['type'] = $this->session->userdata('type');
         if(!empty($data['is_status'])) $data['is_status'] = 1;else $data['is_status'] = 0;
         if(empty($data['parent_id'])) $data['parent_id'] = 0;

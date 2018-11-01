@@ -249,6 +249,9 @@ var AJAX_CRUD_MODAL = {
             $(".m-select2").empty().trigger('change');
             $('div.form-control-feedback').remove();
             $('.form-group').removeClass('has-danger');
+
+            $('ul[role="tablist"] li a').removeClass('active show');
+            $('ul[role="tablist"] li:first-child a').trigger('click').addClass('active show');
             //$('#gallery').html('');
             //$("input.tagsinput").tagsinput('removeAll');
             $('input.switchBootstrap').bootstrapSwitch('state',false);

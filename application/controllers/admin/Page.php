@@ -90,7 +90,7 @@ class Page extends Admin_Controller
 
     private function save_language($id, $data){
         if(!empty($data)) foreach ($data as $lang_code => $item){
-            $data_trans = array_merge($item,['id'=>$id]);
+            $data_trans = array_merge($item,['id'=>$id,'language_code' => $lang_code]);
             if(!$this->_data->insertOnUpdate($data_trans, $this->_data->table_trans)){
                 $message['type'] = 'error';
                 $message['message'] = "Thêm {$this->_data->table_trans} thất bại !";

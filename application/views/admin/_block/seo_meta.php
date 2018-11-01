@@ -6,7 +6,6 @@
 * Time: 11:21 SA
 */
 defined('BASEPATH') OR exit('No direct script access allowed');?>
-<input type="hidden" name="language[<?php echo $lang_code ?>][language_code]" value="<?php echo $lang_code ?>">
 <div class="form-group">
     <label>Meta Title</label>
     <label for="title"><span class="count-title">0</span> / <?php echo $this->config->item('SEO_title_maxlength') ?></label>
