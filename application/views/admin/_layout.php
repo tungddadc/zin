@@ -19,14 +19,10 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta id="csrf_token" name="<?php echo $this->security->get_csrf_token_name(); ?>" content="<?php echo $this->security->get_csrf_hash() ?>">
     <!--begin::Web font -->
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>-->
     <script>
-        WebFont.load({
-            google: {"families":["Nunito Sans:300,400,500,600,700","Roboto:300,400,500,600,700"]},
-            active: function() {
-                sessionStorage.fonts = true;
-            }
-        });
+        WebFontConfig = {
+            google: { families: ["Nunito Sans:300,400,500,600,700","Roboto:300,400,500,600,700"] }
+        };
         (function() {
             var wf = document.createElement('script');
             wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';

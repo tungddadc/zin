@@ -86,6 +86,8 @@ $(function() {
                             element.val(val);
                         });
                     });
+
+                    loadCategory(response.data_category);
                     modal_form.modal('show');
                 },
                 error: function (jqXHR, textStatus, errorThrown)

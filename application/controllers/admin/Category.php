@@ -192,6 +192,7 @@ class Category extends Admin_Controller
         if(!empty($id)){
             $output['data_info'] = $this->_data->single(['id' => $id],$this->_data->table);
             $output['data_language'] = $this->_data->getDataAll(['id' => $id],$this->_data->table_trans);
+            $output['data_category'] = $this->_data->getSelect2($output['data_info']->parent_id);
             $this->returnJson($output);
         }
     }
@@ -294,6 +295,7 @@ class Category extends Admin_Controller
         $data = $this->input->post();
         $data['type'] = $this->session->userdata('type');
         if(!empty($data['is_status'])) $data['is_status'] = 1;else $data['is_status'] = 0;
+        if(empty($data['parent_id'])) $data['parent_id'] = 0;
         return $data;
     }
 }
