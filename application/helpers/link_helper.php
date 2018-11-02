@@ -28,14 +28,14 @@ if (!function_exists('getUrlNews')) {
         return $linkReturn;
     }
 }
-if (!function_exists('getUrlNewsBranch')) {
-    function getUrlNewsBranch($optional){
+if (!function_exists('getUrlBrand')) {
+    function getUrlBrand($optional){
         if(is_object($optional)) $optional = (array) $optional;
         $id = $optional['id'];
         $slug = $optional['slug'];
         $linkReturn = BASE_URL;
-        $linkReturn .= "$slug-cn$id";
-        // if(isset($optional['page'])) $linkReturn .= '/page/';
+        $linkReturn .= "$slug-b$id";
+        if(isset($optional['page'])) $linkReturn .= '/page/';
         return $linkReturn;
     }
 }

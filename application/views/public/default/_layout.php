@@ -69,6 +69,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     <?php $asset_css[] = 'jquery.mobile-menu.css'; ?>
     <?php $asset_css[] = 'style.css'; ?>
     <?php $asset_css[] = 'revslider.css'; ?>
+    <?php $asset_css[] = 'bootstrap-social.css'; ?>
 
     <?php //$asset_css[] = 'plugins/jssocials/dist/jssocials.css'; ?>
     <?php //$asset_css[] = 'plugins/jssocials/dist/jssocials-theme-flat.css'; ?>
@@ -110,6 +111,66 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     <?php echo !empty($main_content) ? $main_content : '' ?>
     <?php $this->load->view($this->template_path . '_footer') ?>
 </div>
+<!-- mobile menu -->
+<div id="mobile-menu">
+    <ul>
+        <li>
+            <div class="mm-search">
+                <form id="search1" name="search">
+                    <div class="input-group">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit"><i class="fa fa-search"></i> </button>
+                        </div>
+                        <input type="text" class="form-control simple" placeholder="Search ..." name="srch-term" id="srch-term">
+                    </div>
+                </form>
+            </div>
+        </li>
+    </ul>
+    <?php echo navMenuMain('mobile-menu') ?>
+    <div class="top-links">
+
+        <ul class="links">
+            <?php if($this->session->userdata('is_logged')): ?>
+                <li>
+                    <a title="Tài khoản" href="<?php echo base_url('account') ?>">
+                        <span class="hidden-xs">Tài khoản</span>
+                    </a>
+                </li>
+            <?php else: ?>
+                <li>
+                    <a href="<?php echo base_url('account/window/Facebook') ?>" title="Đăng nhập Facebook" class="btn btn-block btn-social btn-facebook">
+                        <span class="fa fa-facebook"></span>
+                        Đăng nhập Facebook
+                    </a>
+                </li>
+                <li>
+                    <a href="<?php echo base_url('account/window/Google') ?>" title="Đăng nhập Google" class="btn btn-block btn-social btn-google">
+                        <span class="fa fa-google-plus"></span>
+                        Đăng nhập Google
+                    </a>
+                </li>
+                <li>
+                    <a href="<?php echo base_url('account/login_zalo') ?>" title="Đăng nhập Zalo" class="btn btn-block btn-social btn-zalo">
+                        <span class="fa fa-zalo"></span>
+                        Đăng nhập Zalo
+                    </a>
+                </li>
+            <?php endif; ?>
+            <li>
+                <a title="Checkout" href="<?php echo base_url('wishlisht') ?>">
+                    <span class="hidden-xs">Sản phẩm yêu thích</span>
+                </a>
+            </li>
+            <li class="last">
+                <a title="Lịch sử đơn hàng" href="<?php echo base_url('cart/history') ?>">
+                    <span class="hidden-xs">Lịch sử đơn hàng</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
 <div id="preloader" class="d-none">
     <div id="loader"></div>
 </div>

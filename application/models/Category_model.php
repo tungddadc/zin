@@ -28,6 +28,36 @@ class Category_model extends STEVEN_Model
 
     }
 
+    public function _all_category($type = ''){
+        $data = '';
+        $lang_code = $this->session->userdata('public_lang_code');
+        if(CACHE_MODE == TRUE){
+            $key = '_all_category_'.$lang_code.'_'.$type;
+            $data = $this->cache->get($key);
+        }
+        if(empty($data)){
+            $params['type'] = $type;
+            $params['lang_code'] = $this->session->userdata('public_lang_code');
+            $data = $this->getData($params);
+        }
+        if(CACHE_MODE == TRUE) $this->cache->save($key,$data,3600);
+        return $data;
+
+    }
+
+    public function getListRecursive($type, $parent_id = 0){
+        $all = $this->_all_category($type);
+        $data = [];
+        if(!empty($all)) foreach ($all as $key => $item){
+            if($item->parent_id == $parent_id){
+                $tmp = $item;
+                $tmp->list_child = $this->getListChild($all,$item->id);
+                $data[] = $tmp;
+            }
+        }
+        return $data;
+    }
+
     /*Đệ quy lấy record parent id*/
     public function _recursive_one_parent($all, $id){
         if(!empty($all)) foreach ($all as $item){
@@ -38,6 +68,7 @@ class Category_model extends STEVEN_Model
         }
     }
     /*Đệ quy lấy record parent id*/
+
     /*Đệ quy lấy array list category con*/
     public function _recursive_child($all, $parentId = 0){
         if(!empty($all)) foreach ($all as $key => $item){
@@ -49,8 +80,9 @@ class Category_model extends STEVEN_Model
         }
     }
     /*Đệ quy lấy array list category con*/
-    /*Đệ quy lấy array list category con 1 level*/
-    public function getListChildLv1($all, $parentId = 0){
+
+    /*Đệ quy lấy array list category con*/
+    public function getListChild($all, $parentId = 0){
         $data = array();
         if(!empty($all)) foreach ($all as $key => $item){
             if($item->parent_id == $parentId){
@@ -59,7 +91,8 @@ class Category_model extends STEVEN_Model
         }
         return $data;
     }
-    /*Đệ quy lấy array list category  con 1 level*/
+    /*Đệ quy lấy array list category  con*/
+
     /*Đệ quy lấy list các ID*/
     public function _recursive_child_id($all, $parentId = 0){
         $this->_list_category_child_id[] = (int)$parentId;
@@ -86,7 +119,8 @@ class Category_model extends STEVEN_Model
     }
     /*Đệ quy lấy maps các ID cha*/
 
-    public function getByIdCached($allCategories, $id){
+    public function getByIdCached($id){
+        $allCategories = $this->_all_category();
         if(!empty($allCategories)) foreach ($allCategories as $key => $item){
             if($item->id == $id) return $item;
         }

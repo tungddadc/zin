@@ -1,0 +1,36 @@
+.block-company-wrapper .dropdown-menu li {
+    padding: 5px 15px;
+}
+.block-company-wrapper .dropdown-menu a{
+    padding: 6px 12px 6px 44px !important;
+    color: #fff !important;
+}
+.block-company-wrapper .dropdown-menu a:hover{
+    background: #545656 !important;
+    color: inherit !important;
+}
+
+header .our-features-box ul {
+    display: table;
+}
+
+header .our-features-box li {
+    float: none;
+    margin-bottom: 0px;
+    text-align: center;
+    width: inherit;
+    padding: 0;
+    display: table-cell;
+    text-transform: uppercase;
+}
+.features-block a:before{
+    content: none;
+}
+
+#mobile-menu .top-links ul.links a.btn-social{
+    color: #ffffff !important;
+    padding-left: 44px !important;
+}
+.btn-social>:first-child{
+    font-size: 1.2em;
+}

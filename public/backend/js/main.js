@@ -470,7 +470,7 @@ var FUNC = {
             oninsert: function(args) {
                 let element = $(_this);
                 let url=args.files[0].url;
-                let urlImageResponse=url.replace(script_name+media_name,'');
+                let urlImageResponse=url.replace('/'+script_name+media_name,'');
                 let image = args.files[0].meta.thumb_url;
                 element.val(urlImageResponse).closest('.form-group').find('.preview').children('img').attr('src',image);
 

@@ -271,7 +271,7 @@ class Public_Controller extends STEVEN_Controller
         $this->load->library(array('minify','cart','breadcrumbs'));
 
         //load helper
-        $this->load->helper(array('link','title','format','image'));
+        $this->load->helper(array('navmenus','link','title','format','image'));
 
         //Language
         $this->switchLanguage($this->input->get('lang'));

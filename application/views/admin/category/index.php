@@ -208,5 +208,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
     </div>
 </div>
 <script type="text/javascript">
-    var url_ajax_load_category = '<?php echo site_admin_url('category/ajax_load') ?>';
+    var url_ajax_load_category = '<?php echo site_admin_url('category/ajax_load/'.$this->_method) ?>';
 </script>

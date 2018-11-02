@@ -294,7 +294,6 @@ class Category extends Admin_Controller
         $this->_validation();
         $data = $this->input->post();
         $data['type'] = $this->session->userdata('type');
-        $data['type'] = $this->session->userdata('type');
         if(!empty($data['is_status'])) $data['is_status'] = 1;else $data['is_status'] = 0;
         if(empty($data['parent_id'])) $data['parent_id'] = 0;
         return $data;

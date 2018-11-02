@@ -147,7 +147,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                         <input type="text" name="homepage_thumbnail" value="<?php echo !empty($homepage_thumbnail) ? $homepage_thumbnail : '' ?>" onclick="FUNC.chooseImage(this)" class="form-control m-input chooseImage" placeholder="Click để chọn ảnh">
                                     </div>
                                     <div class="alert m-alert m-alert--default preview text-center mt-1" role="alert">
-                                        <img width="100" height="100" src="<?php echo !empty($homepage_thumbnail) ? getImageThumb($homepage_thumbnail,100,100) : '' ?>">
+                                        <img height="100" src="<?php echo !empty($homepage_thumbnail) ? getImageThumb($homepage_thumbnail,100,100) : '' ?>">
                                     </div>
                                 </div>
 
@@ -162,7 +162,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                         <input type="text" name="logo" value="<?php echo !empty($logo) ? $logo : '' ?>" onclick="FUNC.chooseImage(this)" class="form-control m-input chooseImage" placeholder="Click để chọn ảnh">
                                     </div>
                                     <div class="alert m-alert m-alert--default preview text-center mt-1" role="alert">
-                                        <img width="100" height="100" src="<?php echo !empty($logo) ? getImageThumb($logo,100,100) : '' ?>">
+                                        <img height="70" src="<?php echo !empty($logo) ? getImageThumb($logo,100,100) : '' ?>">
                                     </div>
                                 </div>
 

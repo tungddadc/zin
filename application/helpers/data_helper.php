@@ -1,5 +1,14 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
+if (!function_exists('getAllBrand')) {
+    function getAllBrand(){
+        $_this =& get_instance();
+        $_this->load->model('category_model');
+        $categoryModel = new Category_model();
+        return (object)$categoryModel->getListRecursive('brand',0);
+    }
+}
+
 if (!function_exists('countProductByCate')) {
     function countProductByCate($cateId){
         $_this =& get_instance();
@@ -79,7 +88,7 @@ if (!function_exists('getCategoryChildLv1')) {
             $_this->cache->save('_all_category_'.$_this->session->public_lang_code,$categoryModel->getAll($_this->session->public_lang_code),60*60*30);
         }
         $_all_category = $_this->cache->get('_all_category_'.$_this->session->public_lang_code);
-        $data = $categoryModel->getListChildLv1($_all_category, $parentId);
+        $data = $categoryModel->getListChild($_all_category, $parentId);
         return $data;
     }
 }

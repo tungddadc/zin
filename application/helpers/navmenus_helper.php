@@ -1,26 +1,30 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-function topNavBar($classname = '', $id = '', $submenuclass = ''){
-    return menus(1, $classname, $id, $submenuclass);
+if (!function_exists('navMenuTop')) {
+    function navMenuTop($classname = '', $id = '', $submenuclass = ''){
+        return menus(0, $classname, $id, $submenuclass);
+    }
+}
+if (!function_exists('navMenuMain')) {
+    function navMenuMain($classname = '', $id = '', $submenuclass = ''){
+
+        return menus(1, $classname, $id, $submenuclass);
+    }
 }
 
-function categoryNavBar($classname = '', $id = '', $submenuclass = ''){
-    return menus(2, $classname, $id, $submenuclass);
+if (!function_exists('navMenuFooter1')) {
+    function navMenuFooter1($classname = '', $id = '', $submenuclass = ''){
+
+        return menus(2, $classname, $id, $submenuclass);
+    }
 }
 
-function footer1NavBar($classname = '', $id = '', $submenuclass = '')
-{
-//return the bottom full nav bar
-
-    return menus(3, $classname, $id, $submenuclass);
+if (!function_exists('navMenuFooter2')) {
+    function navMenuFooter2($classname = '', $id = '', $submenuclass = ''){
+        return menus(3, $classname, $id, $submenuclass);
+    }
 }
 
-function footer2NavBar($classname = '', $id = '', $submenuclass = '')
-{
-//return the bottom full nav bar
-
-    return menus(4, $classname, $id, $submenuclass);
-}
 
 function menus($location, $classname, $id, $submenuclass){
     $ci =& get_instance();
