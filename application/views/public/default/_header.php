@@ -25,10 +25,17 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                             <?php if($this->session->userdata('is_logged')): ?>
                                 <div class="check">
                                     <a title="Tài khoản" href="<?php echo base_url('account') ?>">
+                                        <i class="fa fa-user-circle-o"></i>
                                         <span class="hidden-xs">Tài khoản</span>
                                     </a>
                                 </div>
                             <?php else: ?>
+                                <div class="check">
+                                    <a title="Đăng ký Tài khoản" href="<?php echo base_url('account/register') ?>">
+                                        <i class="fa fa-user-circle-o"></i>
+                                        <span class="hidden-xs">Đăng ký</span>
+                                    </a>
+                                </div>
                                 <div class="dropdown block-company-wrapper hidden-xs">
                                     <a class="block-company dropdown-toggle" role="button" href="#"
                                        data-toggle="dropdown" data-target="#"> Login <span class="caret"></span></a>

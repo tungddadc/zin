@@ -54,3 +54,15 @@ $route['404_override'] = 'page/_404';
 $route['translate_uri_dashes'] = FALSE;
 $route['sitemap.xml'] = 'seo/sitemap';
 $route['admin'] = 'admin/dashboard';
+
+/*Route post*/
+$route['(:any)-c(:num)']      = 'news/category/$2';
+$route['(:any)-c(:num)/page/(:num)']   = 'news/category/$2/$3';
+$route['(:any)-d(:num)'] ='news/detail/$2/';
+/*Route post*/
+/*Route product*/
+$route['(:any)-cp(:num)']      = 'product/category/$2';
+$route['(:any)-cp(:num)/page/(:num)']   = 'product/category/$2/$3';
+$route['(:any)-p(:num)'] ='product/detail/$2/';
+$route['download'] ='product/download';
+/*Route product*/

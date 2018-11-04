@@ -22,7 +22,7 @@ $config['crumb_first_open'] = '<li class="m-nav__item m-nav__item--home">';
 $config['crumb_last_open'] = '<li class="m-nav__item">';
 $config['crumb_close'] = '</li>';
 
-$config['frontend_crumb_divider'] = '';
+$config['frontend_crumb_divider'] = '<span>/</span>';
 $config['frontend_tag_open'] = '<ul vocab="http://schema.org/" typeof="BreadcrumbList">';
 $config['frontend_tag_close'] = '</ul>';
 $config['frontend_crumb_open'] = '<li property="itemListElement" typeof="ListItem">';

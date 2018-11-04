@@ -265,7 +265,7 @@ class Public_Controller extends STEVEN_Controller
         $this->templates_assets = base_url();
 
         //load cache driver
-        if(CACHE_MODE == TRUE) $this->load->driver('cache', array('adapter' => 'file'));
+        if(CACHE_MODE == TRUE) $this->load->driver('cache');
 
         //tải thư viện
         $this->load->library(array('minify','cart','breadcrumbs'));

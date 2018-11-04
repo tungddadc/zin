@@ -32,4 +32,21 @@ class Users_model extends STEVEN_Model
             $this->db->where("$this->table.active",$active);
         }
     }
+
+    public function check_oauth($field, $oauth)
+    {
+        $this->db->where($field,$oauth);
+
+        $tablename = $this->table;
+
+        $this->db->select('1');
+        return $this->db->get($tablename)->num_rows();
+    }
+
+    public function getUserByField($key,$value){
+        $this->db->select('*');
+        $this->db->where($this->table.'.'.$key,$value);
+        $this->db->group_by("$this->table.id");
+        return $this->db->get($this->table)->row();
+    }
 }

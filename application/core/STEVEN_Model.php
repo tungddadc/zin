@@ -269,7 +269,7 @@ class STEVEN_Model extends CI_Model
 		}
 		$this->db->from($tablename);
 		$this->db->where($field, $value);
-		return $this->db->count_all_results() > 0 ? true : false;
+		return $this->db->num_rows() > 0 ? true : false;
 	}
 
 	public function getSelect2($ids){
