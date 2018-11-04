@@ -30,16 +30,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $config['assets_dir'] = 'public';
 
 // optional - path where the compiled css files will be stored (default value: '' - for backward compatibility)
-$config['assets_dir_css'] = 'css';
+$config['assets_dir_css'] = 'public/css';
 
 // optional - path where the compiled js files will be stored (default value: '' - for backward compatibility)
-$config['assets_dir_js'] = 'js';
+$config['assets_dir_js'] = 'public/js';
 
 // where to look for css files (default value: 'assets/css')
-$config['css_dir'] = 'css';
+$config['css_dir'] = 'public/css';
 
 // where to look for js files (default value: 'assets/js')
-$config['js_dir'] = 'js';
+$config['js_dir'] = 'public/js';
 
 // default file name for css (default value: 'style.css')
 $config['css_file'] = 'style_minified.min.css';

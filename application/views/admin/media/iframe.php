@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta name="apple-mobile-web-app-capable" content="yes" />
 </head>
 <body onload="loadMoxman()">
-<script src="<?php echo $this->templates_assets ?>assets/vendors/base/vendors.bundle.js" type="text/javascript"></script>
+<script src="<?php echo $this->templates_assets ?>plugins/jquery/dist/jquery.min.js" type="text/javascript"></script>
 <script src="<?php echo $this->templates_assets;?>plugins/moxiemanager/js/moxman.loader.min.js"></script>
 <script src="<?php echo $this->templates_assets;?>js/page/media.js"></script>
 </body>

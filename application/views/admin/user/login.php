@@ -18,23 +18,27 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!--begin::Web font -->
-    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
     <script>
-        WebFont.load({
-            google: {"families": ["Poppins:300,400,500,600,700", "Roboto:300,400,500,600,700"]},
-            active: function () {
-                sessionStorage.fonts = true;
-            }
-        });
+        WebFontConfig = {
+            google: { families: ["Nunito Sans:300,400,500,600,700","Roboto:300,400,500,600,700"] }
+        };
+        (function() {
+            var wf = document.createElement('script');
+            wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+            wf.type = 'text/javascript';
+            wf.async = 'true';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(wf, s);
+        })();
     </script>
     <!--end::Web font -->
     <!--begin::Base Styles -->
-    <link href="<?php echo base_url('backend/') ?>assets/vendors/base/vendors.bundle.css" rel="stylesheet"
+    <link href="<?php echo $this->templates_assets ?>assets/vendors/base/vendors.bundle.css" rel="stylesheet"
           type="text/css"/>
-    <link href="<?php echo base_url('backend/') ?>assets/demo/default/base/style.bundle.css" rel="stylesheet"
+    <link href="<?php echo $this->templates_assets ?>assets/demo/default/base/style.bundle.css" rel="stylesheet"
           type="text/css"/>
     <!--end::Base Styles -->
-    <link rel="shortcut icon" href="<?php echo base_url('backend/') ?>assets/demo/default/media/img/logo/favicon.ico"/>
+    <link rel="shortcut icon" href="<?php echo $this->templates_assets ?>assets/demo/default/media/img/logo/favicon.ico"/>
     <style>
         .g-recaptcha{
             margin: 15px 0 25px;
@@ -51,12 +55,12 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 <div class="m-grid m-grid--hor m-grid--root m-page">
     <div class="m-grid__item m-grid__item--fluid m-grid m-grid--hor m-login m-login--signin m-login--2 m-login-2--skin-3"
          id="m_login"
-         style="background-image: url(<?php echo base_url('backend/') ?>assets/app/media/img//bg/bg-2.jpg);">
+         style="background-image: url(<?php echo $this->templates_assets ?>assets/app/media/img//bg/bg-2.jpg);">
         <div class="m-grid__item m-grid__item--fluid	m-login__wrapper">
             <div class="m-login__container">
                 <div class="m-login__logo">
                     <a href="#">
-                        <img src="<?php echo base_url('backend/') ?>assets/app/media/img//logos/logo-1.png">
+                        <img src="<?php echo $this->templates_assets ?>assets/app/media/img//logos/logo-1.png">
                     </a>
                 </div>
                 <div class="m-login__signin">
@@ -103,8 +107,8 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 </div>
 <!-- end:: Page -->
 <!--begin::Base Scripts -->
-<script src="<?php echo base_url('backend/') ?>assets/vendors/base/vendors.bundle.js" type="text/javascript"></script>
-<script src="<?php echo base_url('backend/') ?>assets/demo/default/base/scripts.bundle.js"
+<script src="<?php echo $this->templates_assets ?>assets/vendors/base/vendors.bundle.js" type="text/javascript"></script>
+<script src="<?php echo $this->templates_assets ?>assets/demo/default/base/scripts.bundle.js"
         type="text/javascript"></script>
 <!--end::Base Scripts -->
 

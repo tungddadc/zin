@@ -32,4 +32,4 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 /database/settings.cfg
 /config.php
 /public/media/*
-/public/backend/tools/node_modules/
+/public/admin/tools/node_modules/

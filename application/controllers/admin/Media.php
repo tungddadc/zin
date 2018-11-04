@@ -18,7 +18,7 @@ class Media extends Admin_Controller
         $this->breadcrumbs->push($data['heading_title'], '#');
         $data['breadcrumbs'] = $this->breadcrumbs->show();
         /*Breadcrumbs*/
-        $data['iframe'] = site_url('admin/media/iframe');
+        $data['iframe'] = site_admin_url('media/iframe');
         $data['main_content'] = $this->load->view($this->template_path . $this->_controller . DIRECTORY_SEPARATOR . $this->_method, $data, TRUE);
         $this->load->view($this->template_main, $data);
     }
