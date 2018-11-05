@@ -76,6 +76,21 @@ $(function() {
                     $.each(response.data, function( key, value ) {
                         $('[name="'+key+'"]').val(value);
                     });
+                    if(id == 1){
+                        check_all_per();
+                    }else{
+                        if(response.data.permission){
+                            //uncheck_all_per();
+                            $.each(JSON.parse(response.data.permission),function(key,value){
+                                //$('#per_'+key+' [name="name"]').prop('checked', true);
+                                $.each(value,function(per,val){
+                                    //if(val == 1){
+                                    $('#per_'+key+'_'+per).prop('checked', true);
+                                    //}
+                                });
+                            });
+                        }
+                    }
                     modal_form.modal('show');
                 },
                 error: function (jqXHR, textStatus, errorThrown)
@@ -88,3 +103,10 @@ $(function() {
         });
     });
 });
+function check_all_per(){
+    $('#tbl_per :checkbox').prop('checked', true);
+}
+
+function uncheck_all_per(){
+    $('#tbl_per :checkbox').prop('checked', false);
+}

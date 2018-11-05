@@ -248,6 +248,7 @@ var AJAX_CRUD_MODAL = {
             $(this).find('input[type=hidden]').val(0);
             $(".m-select2").empty().trigger('change');
             $('div.form-control-feedback').remove();
+            $('#modal_form [name="username"]').attr('disabled',false);
             $('.form-group').removeClass('has-danger');
 
             $('ul[role="tablist"] li a').removeClass('active show');

@@ -85,6 +85,7 @@ $(function() {
                         if(key === 'active'){
                             $('[name="active"]').bootstrapSwitch('state', (value == 1 ? true : false));
                         }
+                        modal_form.find('[name="username"]').attr('disabled',true);
                     });
                     loadGroup(response.group);
                     modal_form.modal('show');
