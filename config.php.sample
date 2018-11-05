@@ -7,23 +7,31 @@
  */
 
 $root = str_replace('\\','/',dirname(__FILE__));
-$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
-$domainName = $_SERVER['HTTP_HOST'].'/';
-$script_name = str_replace(basename($_SERVER['SCRIPT_NAME']), "", $_SERVER['SCRIPT_NAME']);
-$domain = $protocol.$domainName;
-define('BASE_URL', $domain);
+
+if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") {
+    $url = "https://";
+} else {
+    $url = "http://";
+}
+
+$url .= $_SERVER['HTTP_HOST'];
+
+if ($_SERVER['SERVER_PORT'] != 80) {
+    $url .= ':' . $_SERVER['SERVER_PORT'];
+}
+define('BASE_URL', $url.'/');
 define('BASE_ADMIN_URL', BASE_URL."admin/");
-define('BASE_SCRIPT_NAME', $script_name);
+define('BASE_SCRIPT_NAME', '');
 define('MEDIA_NAME',"public/media/"); //Tên đường dẫn lưu media
 define('MEDIA_PATH',$root.'/'.MEDIA_NAME); //Đường dẫn lưu media
 define('MEDIA_URL',BASE_URL . MEDIA_NAME);
 
 define('DB_DEFAULT_HOST','localhost'); //DB HOST
 define('DB_DEFAULT_USER','root'); //DB USER
-define('DB_DEFAULT_PASSWORD','Abcd1234@'); //DB PASSWORD
-define('DB_DEFAULT_NAME','core-new'); //DB NAME
+define('DB_DEFAULT_PASSWORD','Abc1234@'); //DB PASSWORD
+define('DB_DEFAULT_NAME','corefw'); //DB NAME
 
-define('MAINTAIN_MODE',TRUE); //Bảo trì
+define('MAINTAIN_MODE',FALSE); //Bảo trì
 define('DEBUG_MODE',TRUE);
 
 //Cache manager
@@ -38,5 +46,6 @@ define('FB_VER','v2.9');
 define('GG_API','778836651692-hn9srbboktca7kke49lg9uq88amq0cl7.apps.googleusercontent.com');
 define('GG_SECRET','P5BJVSsjeDkyvqm-mvZ-z-Mh');
 define('GG_KEY','AIzaSyCfmCVTjRI007pC1Yk2o2d_EhgkjTsFVN8');//AIzaSyAhR8OG9cUL1jDfAAc6i35nt5Ki1ZJnykA
+define('GG_CAPTCHA_MODE', FALSE);
 define('GG_CAPTCHA_SITE_KEY','6LevJWcUAAAAAMi7qfknK1bnVNd8sjQPcrShoZjC');
 define('GG_CAPTCHA_SECRET_KEY','6LevJWcUAAAAAHE2cjYE-Kfy5LiHEnSl7bpj_Ssq');
