@@ -6,6 +6,5 @@ function loadMoxman() {
         close: false,
         sort_by: 'lastModified',
         sort_order: 'desc',
-        skin: 'steven'
     });
 }
