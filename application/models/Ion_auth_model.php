@@ -1043,12 +1043,11 @@ class Ion_auth_model extends CI_Model
 
 		$this->trigger_events('extra_where');
         $identity_column = filter_var($identity, FILTER_VALIDATE_EMAIL)? $this->identity_column : $this->identity_alt_column;
-        $query = $this->db->select('username, email, first_name, last_name, id, password, active, last_login')
+    $query = $this->db->select('username, email, first_name, last_name, id, password, active, last_login')
 						  ->where($identity_column, $identity)
 						  ->limit(1)
 						  ->order_by('id', 'desc')
 						  ->get($this->tables['users']);
-
 		if ($this->is_max_login_attempts_exceeded($identity))
 		{
 			// Hash something anyway, just to take up time

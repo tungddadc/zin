@@ -31,7 +31,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                                 </div>
                             <?php else: ?>
                                 <div class="check">
-                                    <a title="Đăng ký Tài khoản" href="<?php echo base_url('account/register') ?>">
+                                    <a title="Đăng ký Tài khoản" href="<?php echo base_url('auth/register') ?>">
                                         <i class="fa fa-user-circle-o"></i>
                                         <span class="hidden-xs">Đăng ký</span>
                                     </a>
@@ -41,19 +41,25 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                                        data-toggle="dropdown" data-target="#"> Login <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
                                         <li role="presentation">
-                                            <a href="<?php echo base_url('account/window/Facebook') ?>" title="Đăng nhập bằng Facebook" class="btn btn-block btn-social btn-facebook">
+                                            <a href="<?php echo redirect_login() ?>" title="Đăng nhập bằng tài khoản" class="btn btn-block btn-social btn-warning">
+                                                <span class="fa fa-user"></span>
+                                                Đăng nhập bằng tài khoản
+                                            </a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a href="<?php echo base_url('auth/window/Facebook') ?>" title="Đăng nhập bằng Facebook" class="btn btn-block btn-social btn-facebook">
                                                 <span class="fa fa-facebook"></span>
                                                 Đăng nhập bằng Facebook
                                             </a>
                                         </li>
                                         <li role="presentation">
-                                            <a href="<?php echo base_url('account/window/Google') ?>" title="Đăng nhập bằng Google" class="btn btn-block btn-social btn-google">
+                                            <a href="<?php echo base_url('auth/window/Google') ?>" title="Đăng nhập bằng Google" class="btn btn-block btn-social btn-google">
                                                 <span class="fa fa-google-plus"></span>
                                                 Đăng nhập bằng Google
                                             </a>
                                         </li>
                                         <li role="presentation">
-                                            <a href="<?php echo base_url('account/login_zalo') ?>" title="Đăng nhập bằng Zalo" class="btn btn-block btn-social btn-zalo">
+                                            <a href="<?php echo base_url('auth/login_zalo') ?>" title="Đăng nhập bằng Zalo" class="btn btn-block btn-social btn-zalo">
                                                 <span class="fa fa-zalo"></span>
                                                 Đăng nhập bằng Zalo
                                             </a>

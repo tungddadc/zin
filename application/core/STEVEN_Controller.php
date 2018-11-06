@@ -218,7 +218,7 @@ class Admin_Controller extends STEVEN_Controller
       redirect(site_admin_url('user/login') . '?url=' . urlencode(current_url()), 'refresh');
 
     } else {
-      if($this->ion_auth->logged_in()){
+      if ($this->ion_auth->logged_in()) {
         if ($this->ion_auth->in_group(1) != true) {
           if (!$this->session->admin_permission) {
             $this->load->model('Groups_model', 'group');
@@ -269,6 +269,8 @@ class Admin_Controller extends STEVEN_Controller
 
 class Public_Controller extends STEVEN_Controller
 {
+  public $_user_login = array();
+
   public function __construct()
   {
     parent::__construct();
@@ -323,6 +325,10 @@ class Public_Controller extends STEVEN_Controller
     $configBreadcrumb['crumb_close'] = $this->config->item('frontend_crumb_close');
     $this->breadcrumbs->init($configBreadcrumb);
 
+    if (!empty($this->session->userdata['is_account_logged']) && $this->session->userdata['is_account_logged'] === true) {
+      $userModel = new Users_model();
+      $this->_user_login = $userModel->getUserByField('id', $this->session->userdata['account']['account_id']);
+    }
   }
 
   public function switchLanguage($lang_code = "")
