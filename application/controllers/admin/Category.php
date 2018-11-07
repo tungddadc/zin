@@ -128,7 +128,7 @@ class Category extends Admin_Controller
                 "page"      => $page,
                 "pages"     => $total_page,
                 "perpage"   => $limit,
-                "total"     => $this->_data->getTotal(),
+                "total"     => $this->_data->getTotal($params),
                 "sort"      => "asc",
                 "field"     => "id"
             ],
