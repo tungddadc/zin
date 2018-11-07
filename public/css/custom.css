@@ -34,3 +34,13 @@ header .our-features-box li {
 .btn-social>:first-child{
     font-size: 1.2em;
 }
+.has-danger .form-control-feedback {
+    color: #f4516c;
+    display: block;
+    position: relative;
+    width: 100%;
+    height: auto;
+    text-align: left;
+    line-height: 1;
+    margin-bottom: 10px;
+}

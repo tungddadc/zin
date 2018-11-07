@@ -97,7 +97,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-6">
-                    <div class="payment-accept"> <img alt="" src="images/payment-1.png"> <img alt="" src="images/payment-2.png"> <img alt="" src="images/payment-3.png"> <img alt="" src="images/payment-4.png"> </div>
+                    <div class="payment-accept"> <img alt="" src="<?php echo $this->templates_assets ?>images/payment-1.png"> <img alt="" src="<?php echo $this->templates_assets ?>images/payment-2.png"> <img alt="" src="<?php echo $this->templates_assets ?>images/payment-3.png"> <img alt="" src="<?php echo $this->templates_assets ?>images/payment-4.png"> </div>
                 </div>
             </div>
         </div>
