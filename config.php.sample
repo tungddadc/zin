@@ -38,6 +38,12 @@ define('DEBUG_MODE',TRUE);
 define('CACHE_MODE',TRUE);
 define('CACHE_TIMEOUT_LOGIN',1800);
 
+//Config zalo
+define('ZALO_APP_ID_CFG','837698574184996512');
+define('ZALO_APP_SECRET_KEY_CFG','1XXO6SCOkX8KaEO5BvZZ');
+define('ZALO_CAL_BACK',BASE_URL.'auth/loginzalo');
+//define('ZALO_OA_SECRET_KEY_CFG','APS_');
+//Config zalo
 
 define('FB_API','383863395372857');
 define('FB_SECRET','5d0fa0a80a67db2a6d0fd72bd27f7750');
