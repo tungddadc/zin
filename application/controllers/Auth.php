@@ -30,7 +30,6 @@ class Auth extends Public_Controller
   public function login()
   {
     $data = array();
-    $data['link_zalo'] = $this->getUrlLogin();
     $data['main_content'] = $this->load->view($this->template_path . 'auth/login', $data, TRUE);
     $this->load->view($this->template_main, $data);
   }
@@ -38,8 +37,6 @@ class Auth extends Public_Controller
   public function register()
   {
     $data = array();
-    $this->sb_register();
-    $data['link_zalo'] = $this->getUrlLogin();
     $data['main_content'] = $this->load->view($this->template_path . 'auth/register', $data, TRUE);
     $this->load->view($this->template_main, $data);
   }
@@ -47,9 +44,8 @@ class Auth extends Public_Controller
   public function ajax_login()
   {
     $data = array();
-
     $this->checkRequestPostAjax();
-    $redirect = !empty($this->input->get('url'))?urldecode($this->input->get('url')):site_url();
+    $redirect = !empty($this->input->get('url')) ? urldecode($this->input->get('url')) : site_url();
     // validate form input
     $message = array();
     $this->form_validation->set_rules('identity', 'Tài khoản hoặc email', 'required');
@@ -70,10 +66,11 @@ class Auth extends Public_Controller
       if ($account = $this->ion_auth->login($this->input->post('identity'), $this->input->post('password'), FALSE)) {
         //if the login is successful
         if ($account) {
+          $this->session->userdata['is_logged']=true;
           $this->_message = array(
             'message' => 'Đăng nhập thành công!',
             'type' => 'success',
-            'url_redirect'=>(!empty($redirect))?$redirect:site_url()
+            'url_redirect' => (!empty($redirect)) ? $redirect : site_url()
           );
 
         } else {
@@ -103,53 +100,37 @@ class Auth extends Public_Controller
     $this->returnJson($this->_message);
   }
 
-  public
-  function sb_register()
+  public function ajax_register()
   {
-    if ($this->input->server('REQUEST_METHOD') == 'POST') {
-      $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[account.email]');
-      $this->form_validation->set_rules('full_name', lang('txt_full_name'), 'required|min_length[3]|max_length[50]|callback_alpha_numeric_space');
-      $this->form_validation->set_rules('password', lang('txt_password'), 'required|min_length[6]|max_length[30]');
+    $this->checkRequestPostAjax();
+    $this->_validate();
+    //Check config setting reCaptcha
+    $remoteIp = $this->input->ip_address();
+    $identity = strip_tags(trim($this->input->post('username')));
 
-      //Check config setting reCaptcha
-      if ($this->form_validation->run() === TRUE) {
-
-        $remoteIp = $this->input->ip_address();
-
-        $identity = strip_tags(trim($this->input->post('email')));
-        $password = strip_tags(trim($this->input->post('password')));
-        $email = strip_tags(trim($this->input->post('email')));
-        if ($this->input->post('full_name')) {
-          $data_store['display_name'] = $data_store['full_name'] = strip_tags(trim($this->input->post('full_name')));
-
-        }
-        $data_store['active'] = 1;
-        $data_store['order'] = $this->_data->getLastOrder() + 1;
-        $id_user = $this->ion_auth->register($identity, $password, $email, $data_store, ['group_id' => 2]);
-        if ($id_user !== false) {
-          $this->session->userdata['account']['account_id'] = $id_user;
-          $this->session->userdata['account']['account_identity'] = $identity;
-          $data['id_user'] = $id_user;
-          $this->_data->resetAllOrder();
-
-          $this->session->set_flashdata('message', 'Đăng ký thành công!');
-          $this->session->set_flashdata('type', 'success');
-          redirect(base_url('login'), 'refresh');
-        } else {
-          $data['type'] = 'error';
-          $data['message'] = $this->lang->line('mess_add_unsuccess');
-          $this->session->set_flashdata('message', 'Vui lòng kiểm tra lại thông tin!');
-          $this->session->set_flashdata('type', 'warning');
-        }
-      } else {
-        $this->session->set_flashdata('message', 'Vui lòng kiểm tra lại thông tin !');
-        $this->session->set_flashdata('type', 'warning');
-      }
+    $password = strip_tags(trim($this->input->post('password')));
+    $email = strip_tags(trim($this->input->post('email')));
+    $data_store['fullname'] = strip_tags(trim($this->input->post('fullname')));
+    $data_store['address'] = strip_tags(trim($this->input->post('address')));
+    $data_store['phone'] = strip_tags(trim($this->input->post('phone')));
+    $data_store['active'] = 1;
+    $id_user = $this->ion_auth->register($identity, $password, $email, $data_store, ['group_id' => 2]);
+    if ($id_user !== false) {
+      $this->_message = array(
+        'message' => 'Đăng ký thành công!',
+        'type' => 'success',
+        'url_redirect' => site_url('auth/login')
+      );
+    } else {
+      $this->_message = array(
+        'message' => 'Vui lòng kiểm tra lại thông tin!',
+        'type' => 'warning',
+      );
     }
+    $this->returnJson($this->_message);
   }
 
-  public
-  function forgotPassword()
+  public function forgotPassword()
   {
     $data = array();
     if ($this->input->server('REQUEST_METHOD') == 'POST') {
@@ -551,4 +532,56 @@ class Auth extends Public_Controller
     }
   }
 
+  private function _validate()
+  {
+    $rules = array(
+      array(
+        'field' => 'username',
+        'label' => 'Tài khoản',
+        'rules' => 'required|trim|min_length[6]|alpha_numeric|max_length[15]|is_unique[users.username]'
+      ),
+      array(
+        'field' => 'email',
+        'label' => 'Email',
+        'rules' => 'required|trim|min_length[5]|max_length[50]|valid_email|is_unique[users.email]'
+      ),
+      array(
+        'field' => 'phone',
+        'label' => 'Số điện thoại',
+        'rules' => 'required|trim|min_length[6]|max_length[20]|numeric'
+      ),array(
+        'field' => 'fullname',
+        'label' => 'Họ và tên',
+        'rules' => 'required|trim|min_length[3]|max_length[50]'
+      ),array(
+        'field' => 'address',
+        'label' => 'Địa chỉ',
+        'rules' => 'required|trim|min_length[3]|max_length[70]'
+      ),
+      array(
+        'field' => 'password',
+        'label' => 'Mật khẩu',
+        'rules' => 'required|trim|min_length[8]|max_length[50]|matches[repassword]'
+      ), array(
+        'field' => 'repassword',
+        'label' => 'Nhập lại mật khẩu',
+        'rules' => 'required|trim|min_length[8]|max_length[50]'
+      ),
+    );
+    $this->form_validation->set_rules($rules);
+    if ($this->form_validation->run() == false) {
+      $message['type'] = "warning";
+      $message['message'] = $this->lang->line('mess_validation');
+      $valid = array();
+      if (!empty($rules)) foreach ($rules as $item) {
+        if (!empty(form_error($item['field']))) $valid[$item['field']] = form_error($item['field']);
+      }
+      $this->_message = array(
+        'type' => 'warning',
+        'message' => 'Vui long kiểm tra lại thông tin !',
+        'validation' => $valid,
+      );
+      $this->returnJson($this->_message);
+    }
+  }
 }
