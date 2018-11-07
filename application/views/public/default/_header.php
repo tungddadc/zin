@@ -24,9 +24,15 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                         <div class="links">
                             <?php if($this->session->userdata('is_logged')): ?>
                                 <div class="check">
-                                    <a title="Tài khoản" href="<?php echo base_url('account') ?>">
+                                    <a title="<?php echo $this->_user_login->username ?>" href="<?php echo base_url('account') ?>">
                                         <i class="fa fa-user-circle-o"></i>
-                                        <span class="hidden-xs">Tài khoản</span>
+                                        <span class="hidden-xs"><?php echo $this->_user_login->username ?></span>
+                                    </a>
+                                </div>
+                                <div class="check">
+                                    <a title="Đăng xuất" href="<?php echo base_url('auth/logout') ?>">
+                                        <i class="fa fa-user-circle-o"></i>
+                                        <span class="hidden-xs">Đăng xuất</span>
                                     </a>
                                 </div>
                             <?php else: ?>
@@ -184,7 +190,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                         <div class="mega-menu-title">
                             <h3><i class="fa fa-navicon"></i> Thương hiệu</h3>
                         </div>
-                        <div class="mega-menu-category">
+                        <div class="mega-menu-category" style="<?php if($this->_controller!='home') echo 'display:none';?>">
                             <?php $listBrandCategory = getAllBrand(); ?>
                             <ul class="nav">
                                 <?php if(!empty($listBrandCategory)) foreach ($listBrandCategory as $item): ?>

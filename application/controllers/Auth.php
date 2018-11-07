@@ -303,14 +303,15 @@ class Auth extends Public_Controller
   function logout($calback = '')
   {
     if (!empty($calback)) $calback = base_url();
-    $this->ion_auth->logout();
+
     // redirect them to the login page
-    $account = $this->_data->getById($this->session->userdata['account']['account_id']);
+    $account = $this->_data->getById($this->session->userdata['user_id']);
     if (!empty($account->oauth_provider) && $account->oauth_provider != 'Zalo') $this->hybridauth->HA->logoutAllProviders();
     if ($account->oauth_provider == 'Zalo') {
       delete_cookie("call_back_url");
       delete_cookie("access_token");
     }
+    $this->ion_auth->logout();
     $this->session->set_flashdata('message', $this->ion_auth->messages());
     $this->session->set_flashdata('type', 'success');
     redirect($calback, 'refresh');
