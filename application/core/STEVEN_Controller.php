@@ -271,7 +271,7 @@ class Admin_Controller extends STEVEN_Controller
 class Public_Controller extends STEVEN_Controller
 {
   public $_user_login = array();
-
+  public $zalo;
   public function __construct()
   {
     parent::__construct();
@@ -330,6 +330,10 @@ class Public_Controller extends STEVEN_Controller
       $userModel = new Users_model();
       $this->_user_login = $userModel->getUserByField('id', $this->session->userdata['user_id']);
     }
+
+    require_once(APPPATH . 'libraries/Zaloauth.php');
+
+    $this->zalo = new \Zalo\Zaloauth();
   }
 
   public function switchLanguage($lang_code = "")
@@ -339,6 +343,11 @@ class Public_Controller extends STEVEN_Controller
     $languageFolder = $this->config->item('public_lang_folder')[$language_code];
     $this->session->set_userdata('admin_lang_folder', $languageFolder);
     if (!empty($lang_code)) redirect($_SERVER['HTTP_REFERER']);
+  }
+  public function getUrlLogin()
+  {
+    $url = $this->zalo->getUrlLogin();
+    return $url;
   }
 
 }

@@ -22,9 +22,7 @@ class Auth extends Public_Controller
     $this->load->library(array('ion_auth', 'hybridauth'));
     $this->load->model(array('users_model'));
     $this->_data = new Users_model();
-    require_once(APPPATH . 'libraries/Zaloauth.php');
 
-    $this->zalo = new \Zalo\Zaloauth();
 
   }
 
@@ -370,7 +368,7 @@ class Auth extends Public_Controller
           $this->session->userdata['is_logged'] = true;
           $this->session->userdata['dentity'] = $identity;
           $this->session->userdata['user_id'] = $id_user;
-          $this->_data->resetAllOrder();
+
           $this->session->set_flashdata('message', 'Đăng nhập thành công!');
           $this->session->set_flashdata('type', 'success');
           redirect(base_url(), 'refresh');
@@ -431,13 +429,6 @@ class Auth extends Public_Controller
       redirect(site_url(), 'refresh');
     }
     $this->hybridauth->process();
-  }
-
-  public
-  function getUrlLogin()
-  {
-    $url = $this->zalo->getUrlLogin();
-    return $url;
   }
 
   public
