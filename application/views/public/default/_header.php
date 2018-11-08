@@ -65,7 +65,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                                             </a>
                                         </li>
                                         <li role="presentation">
-                                            <a href="<?php echo $this->getUrlLogin() ?>" title="Đăng nhập bằng Zalo" class="btn btn-block btn-social btn-zalo">
+                                            <a href="<?php echo getUrlLogin(); ?>" title="Đăng nhập bằng Zalo" class="btn btn-block btn-social btn-zalo">
                                                 <span class="fa fa-zalo"></span>
                                                 Đăng nhập bằng Zalo
                                             </a>

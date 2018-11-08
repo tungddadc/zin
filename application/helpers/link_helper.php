@@ -134,3 +134,10 @@ if (!function_exists('cutString')){
         }
     }
 }
+
+if (!function_exists('getUrlLogin')){
+    function getUrlLogin(){
+      $_this =& get_instance();
+      return $_this->getUrlLogin();
+    }
+}
