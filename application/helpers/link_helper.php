@@ -141,3 +141,12 @@ if (!function_exists('getUrlLogin')){
       return $_this->getUrlLogin();
     }
 }
+if (!function_exists('getUrlProfile')){
+  function getUrlProfile($slug=''){
+    $linkReturn = BASE_URL.'profile';
+    if(!empty($slug)) {
+      $linkReturn .= "/$slug";
+    }
+    return $linkReturn;
+  }
+}

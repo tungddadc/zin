@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                         <div class="links">
                             <?php if($this->session->userdata('is_logged')): ?>
                                 <div class="check">
-                                    <a title="<?php echo $this->_user_login->username ?>" href="<?php echo base_url('account') ?>">
+                                    <a title="<?php echo $this->_user_login->username ?>" href="<?php echo base_url('profile') ?>">
                                         <i class="fa fa-user-circle-o"></i>
                                         <span class="hidden-xs"><?php echo $this->_user_login->username ?></span>
                                     </a>
@@ -134,7 +134,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                                         <div class="item-inner">
                                             <a title="Retis lapen casen" class="product-image"
                                                                    href="<?php echo base_url() ?>_l"><img
-                                                        alt="Retis lapen casen" src="products-images/product4.jpg"> </a>
+                                                        alt="Retis lapen casen" src="<?php echo $this->templates_assets ?>products-images/product4.jpg"> </a>
                                             <div class="product-details">
                                                 <div class="access"><a title="Remove This Item" class="btn-remove1"
                                                                        href="#">Remove</a> <a title="Edit item"
@@ -149,7 +149,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                                     <li class="item last">
                                         <div class="item-inner"><a title="Retis lapen casen" class="product-image"
                                                                    href="product_detail.html"><img
-                                                        alt="Retis lapen casen" src="products-images/product3.jpg"> </a>
+                                                        alt="Retis lapen casen" src="<?php echo $this->templates_assets ?>products-images/product3.jpg"> </a>
                                             <div class="product-details">
                                                 <div class="access"><a title="Remove This Item" class="btn-remove1"
                                                                        href="#">Remove</a> <a title="Edit item"

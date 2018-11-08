@@ -63,6 +63,7 @@ class STEVEN_Controller extends CI_Controller
           'csrf_value' => $this->security->get_csrf_hash()
         ]
       ];
+      if(empty($data)) $data=$this->_message;
       $data = array_merge($csrf, (array)$data);
     }
     die(json_encode($data));
@@ -348,6 +349,41 @@ class Public_Controller extends STEVEN_Controller
   {
     $url = $this->zalo->getUrlLogin();
     return $url;
+  }
+  function alpha_numeric_space($str)
+  {
+    if (preg_match('/[\'\/~`\!@#\$%\^&\*\(\)_\+=\{\}\[\]\|;:"\<\>\.\?\\\]/', $str)) {
+      $this->form_validation->set_message('alpha_numeric_space', '%s không được chứa ký tự đặc biệt');
+      return false;
+    }
+    return true;
+  }
+
+
+  /**
+   * @return array A CSRF key-value pair
+   */
+  public function _get_csrf_nonce()
+  {
+    $this->load->helper('string');
+    $key = random_string('alnum', 8);
+    $value = random_string('alnum', 20);
+    $this->session->set_flashdata('csrfkey', $key);
+    $this->session->set_flashdata('csrfvalue', $value);
+    return array($key => $value);
+  }
+
+  /**
+   * @return bool Whether the posted CSRF token matches
+   */
+  public function _valid_csrf_nonce()
+  {
+    $csrfkey = $this->input->post($this->session->flashdata('csrfkey'));
+    if ($csrfkey && $csrfkey === $this->session->flashdata('csrfvalue')) {
+      return TRUE;
+    } else {
+      return FALSE;
+    }
   }
 
 }

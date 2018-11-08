@@ -12,7 +12,6 @@ class Auth extends Public_Controller
   protected $cid = 0;
   protected $_lang_code;
   protected $_all_agency;
-  protected $zalo;
   protected $_data;
 
   public function __construct()
@@ -23,11 +22,11 @@ class Auth extends Public_Controller
     $this->load->model(array('users_model'));
     $this->_data = new Users_model();
 
-
   }
 
   public function login()
   {
+    if (!empty($this->_user_login)) redirect(site_url());
     $data = array();
     $data['main_content'] = $this->load->view($this->template_path . 'auth/login', $data, TRUE);
     $this->load->view($this->template_main, $data);
@@ -35,6 +34,7 @@ class Auth extends Public_Controller
 
   public function register()
   {
+    if (!empty($this->_user_login)) redirect(site_url());
     $data = array();
     $data['main_content'] = $this->load->view($this->template_path . 'auth/register', $data, TRUE);
     $this->load->view($this->template_main, $data);
@@ -65,7 +65,7 @@ class Auth extends Public_Controller
       if ($account = $this->ion_auth->login($this->input->post('identity'), $this->input->post('password'), FALSE)) {
         //if the login is successful
         if ($account) {
-          $this->session->userdata['is_logged']=true;
+
           $this->_message = array(
             'message' => 'Đăng nhập thành công!',
             'type' => 'success',
@@ -132,18 +132,15 @@ class Auth extends Public_Controller
   public function forgotPassword()
   {
     $data = array();
-    if ($this->input->server('REQUEST_METHOD') == 'POST') {
-      $this->sbForgotPassword();
-    }
+    $this->sbForgotPassword();
     $data['main_content'] = $this->load->view($this->template_path . 'auth/forgot-password', $data, TRUE);
     $this->load->view($this->template_main, $data);
   }
 
   public
-  function resetPassword()
+  function reset_password($code)
   {
     $data = array();
-    $code = $this->input->get('key_forgotten');
 
     $user = $this->ion_auth->forgotten_password_check($code);
     if (empty($code)) redirect(site_url());
@@ -152,14 +149,14 @@ class Auth extends Public_Controller
       $data['new_password'] = array(
         'name' => 'new',
         'id' => 'new',
-        'class' => 'form-control',
+        'class' => 'input-text required-entry',
         'type' => 'password',
 //        'pattern' => '^.{' . $data['min_password_length'] . '}.*$',
       );
       $data['new_password_confirm'] = array(
         'name' => 'new_confirm',
         'id' => 'new_confirm',
-        'class' => 'form-control',
+        'class' => 'input-text required-entry',
         'type' => 'password',
 //        'pattern' => '^.{' . $data['min_password_length'] . '}.*$',
       );
@@ -186,70 +183,77 @@ class Auth extends Public_Controller
   private
   function sbForgotPassword()
   {
+    if ($this->input->server('REQUEST_METHOD') == 'POST') {
 
-    $message = array();
-    // setting validation rules by checking whether identity is username or email
-    if ($this->config->item('identity', 'ion_auth') != 'email') {
-      $this->form_validation->set_rules('identity', $this->lang->line('forgot_password_identity_label'), 'required');
-    } else {
-      $this->form_validation->set_rules('identity', $this->lang->line('forgot_password_validation_email_label'), 'required|valid_email');
-    }
-    if ($this->form_validation->run() === FALSE) {
-      $data['type'] = $this->config->item('identity', 'ion_auth');
-      // setup the input
-      $data['identity'] = array('name' => 'identity',
-        'id' => 'identity',
-      );
-
+      $message = array();
+      // setting validation rules by checking whether identity is username or email
       if ($this->config->item('identity', 'ion_auth') != 'email') {
-        $data['identity_label'] = $this->lang->line('forgot_password_identity_label');
+        $this->form_validation->set_rules('identity', $this->lang->line('forgot_password_identity_label'), 'required');
       } else {
-        $data['identity_label'] = $this->lang->line('forgot_password_email_identity_label');
+        $this->form_validation->set_rules('identity', $this->lang->line('forgot_password_validation_email_label'), 'required|valid_email');
       }
+      if ($this->form_validation->run() === FALSE) {
+        $data['type'] = $this->config->item('identity', 'ion_auth');
+        // setup the input
+        $data['identity'] = array('name' => 'identity',
+          'id' => 'identity',
+        );
 
-      $message['type'] = 'error';
-      $message['message'] = (validation_errors()) ? validation_errors('<span class="text-danger" style="margin-top: 10px; display: block">', '</span>') : $this->session->flashdata('message');
-    } else {
-      $identity_column = $this->config->item('identity', 'ion_auth');
-      $user_data = $this->_data->getUserByField($identity_column, $this->input->post('identity'));
-      if (empty($user_data)) {
-        $message['type'] = 'error';
-        $message['message'] = $identity_column . ' của bạn không tồn tại';
-        $this->session->set_flashdata('message', $message['message']);
-        $this->session->set_flashdata('type', 'warning');
-        redirect(base_url() . "forgot-password", 'refresh');
-      } else {
-        $identity = $this->ion_auth->where($identity_column, $this->input->post('identity'))->user($user_data->id)->row();
-        if (empty($identity)) {
-
-          if ($this->config->item('identity', 'ion_auth') != 'email') {
-            $this->ion_auth->set_error('forgot_password_identity_not_found');
-          } else {
-            $this->ion_auth->set_error('forgot_password_email_not_found');
-          }
-          $message['type'] = 'error';
-          $this->session->set_flashdata('message', $this->ion_auth->errors());
-
-        }
-        // run the forgotten password method to email an activation code to the user
-        $forgotten = $this->ion_auth->forgotten_password($identity->{$this->config->item('identity', 'ion_auth')});
-
-        if ($forgotten) {
-          // if there were no errors
-          $this->session->set_flashdata('message', $this->ion_auth->messages());
-          $this->session->set_flashdata('type', 'success');
-          redirect(base_url() . "login", 'refresh'); //we should display a confirmation page here instead of the login page
+        if ($this->config->item('identity', 'ion_auth') != 'email') {
+          $data['identity_label'] = $this->lang->line('forgot_password_identity_label');
         } else {
-          $this->session->set_flashdata('message', $this->ion_auth->errors());
-          $this->session->set_flashdata('type', 'error');
-//        redirect(base_url() . "forgot-password", 'refresh');
+          $data['identity_label'] = $this->lang->line('forgot_password_email_identity_label');
+        }
+        $this->_message = array(
+          'type' => 'error',
+          'message' => strip_tags(validation_errors())
+        );
+      } else {
+        $identity_column = $this->config->item('identity', 'ion_auth');
+        $user_data = $this->_data->getUserByField($identity_column, $this->input->post('identity'));
+        if (empty($user_data)) {
+          $this->_message = array(
+            'type' => 'error',
+            'message' => $identity_column . ' của bạn không tồn tại'
+          );
+        } else {
+          $identity = $this->ion_auth->where($identity_column, $this->input->post('identity'))->user($user_data->id)->row();
+          if (empty($identity)) {
+
+            if ($this->config->item('identity', 'ion_auth') != 'email') {
+              $this->ion_auth->set_error('forgot_password_identity_not_found');
+            } else {
+              $this->ion_auth->set_error('forgot_password_email_not_found');
+            }
+            $this->_message = array(
+              'type' => 'error',
+              'message' => strip_tags($this->ion_auth->errors())
+            );
+
+          }
+          // run the forgotten password method to email an activation code to the user
+          $forgotten = $this->ion_auth->forgotten_password($identity->{$this->config->item('identity', 'ion_auth')});
+
+          if ($forgotten) {
+            // if there were no errors
+            $this->_message = array(
+              'type' => 'success',
+              'message' => strip_tags($this->ion_auth->messages()),
+              'url_redirect' => base_url() . "auth/login", 'refresh'
+            );
+          } else {
+            $this->_message = array(
+              'type' => 'error',
+              'message' => strtotime($this->ion_auth->errors()),
+            );
+          }
         }
       }
+      $this->returnJson($this->_message);
     }
   }
 
-  private
-  function sbResetPassword($fullname)
+  private function sbResetPassword($fullname)
   {
     $data = array();
     $code = $this->input->post('key_forgotten');
@@ -269,33 +273,37 @@ class Auth extends Public_Controller
 //        dd($change);
         if ($change) {
           // if the password was successfully changed
-          $data['type'] = 'success';
-          $data['message'] = $this->ion_auth->messages();
-          $this->session->set_flashdata('message', $data['message']);
-          $this->session->set_flashdata('type', $data['type']);
-
-          // Gửi mail khi đổi mk thành công
-          $content = $this->load->view($this->template_path . 'auth/email/change_pass_success', ['fullname' => $fullname], true);
-          $this->sendMail($identity, 'Thay đổi mật khẩu thành công trên 84race', $content);
-
-          redirect(base_url() . "login", 'refresh');
+          $this->_message = array(
+            'type' => 'success',
+            'message' => strip_tags($this->ion_auth->messages()),
+            'url_redirect'=>site_url('auth/login')
+          );
         } else {
-
-          $data['type'] = 'error';
-          $data['message'] = $this->ion_auth->errors();
-
+          $this->_message = array(
+            'type' => 'error',
+            'message' => strip_tags($this->ion_auth->errors()),
+          );
         }
       } else {
-        $data['type'] = 'error';
-        $data['message'] = (validation_errors()) ? validation_errors() : '';
+        $val = array(
+          'new' => form_error('new'),
+          'new_confirm' => form_error('new_confirm'),
+        );
+        $this->_message = array(
+          'type' => 'error',
+          'message' => 'Vui lòng nhập thông tin chính xác',
+          'validation' => $val,
+        );
       }
 
     } else {
-      $data['type'] = 'error';
-      $data['message'] = $this->ion_auth->errors();
+      $this->_message = array(
+        'type' => 'error',
+        'message' => strip_tags($this->ion_auth->errors()),
+      );
     }
-    $this->session->set_flashdata('message', $data['message']);
-    $this->session->set_flashdata('type', $data['type']);
+    $this->returnJson($this->_message);
+
   }
 
   public
@@ -310,6 +318,7 @@ class Auth extends Public_Controller
       delete_cookie("call_back_url");
       delete_cookie("access_token");
     }
+
     $this->ion_auth->logout();
     $this->session->set_flashdata('message', $this->ion_auth->messages());
     $this->session->set_flashdata('type', 'success');
@@ -432,7 +441,7 @@ class Auth extends Public_Controller
   }
 
   public
-  function loginZalo()
+  function loginzalo()
   {
     $data = $this->zalo->renderLoginUrl();
     $message = [];
@@ -516,11 +525,11 @@ class Auth extends Public_Controller
         'field' => 'phone',
         'label' => 'Số điện thoại',
         'rules' => 'required|trim|min_length[6]|max_length[20]|numeric'
-      ),array(
+      ), array(
         'field' => 'fullname',
         'label' => 'Họ và tên',
         'rules' => 'required|trim|min_length[3]|max_length[50]'
-      ),array(
+      ), array(
         'field' => 'address',
         'label' => 'Địa chỉ',
         'rules' => 'required|trim|min_length[3]|max_length[70]'

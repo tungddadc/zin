@@ -36,17 +36,6 @@ $url_red = !empty($this->input->get('url')) ? site_url("auth/ajax_register?url="
                     <label for="email">Số điện thoại <span class="required">*</span></label>
                     <input name="phone" title="Số điện thoại" class="input-text required-entry" type="text" value="">
                   </li>
-                  <li>
-                    <label for="pass">Mật khẩu <span class="required">*</span></label>
-                    <input name="password" title="Mật khẩu" class="input-text required-entry validate-password"
-                           type="password">
-                  </li>
-                  <li>
-                    <label for="pass">Nhập lại mật khẩu <span class="required">*</span></label>
-                    <input name="repassword" title="Nhập lại mật khẩu"
-                           class="input-text required-entry validate-password"
-                           type="password">
-                  </li>
                 </ul>
                 <div class="buttons-set">
                   <button name="send" class="button login"  type="submit"><span>Đăng ký</span></button>
