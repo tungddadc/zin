@@ -13,6 +13,7 @@ class Auth extends Public_Controller
   protected $_lang_code;
   protected $_all_agency;
   protected $zalo;
+  protected $_data;
 
   public function __construct()
   {
@@ -177,7 +178,7 @@ class Auth extends Public_Controller
     }
 
     if ($this->input->server('REQUEST_METHOD') == 'POST') {
-      $this->sbResetPassword($user->full_name);
+      $this->sbResetPassword($user->fullname);
     }
 
     $data['main_content'] = $this->load->view($this->template_path . 'auth/reset_password', $data, TRUE);
@@ -250,7 +251,7 @@ class Auth extends Public_Controller
   }
 
   private
-  function sbResetPassword($full_name)
+  function sbResetPassword($fullname)
   {
     $data = array();
     $code = $this->input->post('key_forgotten');
@@ -276,7 +277,7 @@ class Auth extends Public_Controller
           $this->session->set_flashdata('type', $data['type']);
 
           // Gửi mail khi đổi mk thành công
-          $content = $this->load->view($this->template_path . 'auth/email/change_pass_success', ['full_name' => $full_name], true);
+          $content = $this->load->view($this->template_path . 'auth/email/change_pass_success', ['fullname' => $fullname], true);
           $this->sendMail($identity, 'Thay đổi mật khẩu thành công trên 84race', $content);
 
           redirect(base_url() . "login", 'refresh');
@@ -330,6 +331,7 @@ class Auth extends Public_Controller
     $params = array(
       'hauth_return_to' => site_url("auth/window/{$provider_id}"),
     );
+
     if (isset($_REQUEST['openid_identifier'])) {
       $params['openid_identifier'] = $_REQUEST['openid_identifier'];
     }
@@ -344,23 +346,9 @@ class Auth extends Public_Controller
       $check_phone = !(empty($profile->phone)) ? $this->_data->check_oauth('phone', $profile->phone) : 0;
       $data_store['oauth_provider'] = $provider_id;
       $data_store['oauth_uid'] = $profile->identifier;
-      $data_store['full_name'] = $profile->displayName;
+      $data_store['fullname'] = $profile->displayName;
       $data_store['avatar'] = $profile->photoURL;
-      $data_store['display_name'] = trim($profile->displayName);
       $data_store['phone'] = $profile->phone;
-      $data_store['order'] = $this->_data->getLastOrder() + 1;
-      switch ($profile->gender) {
-        case 'male':
-          $gender = 1;
-          break;
-        case 'female':
-          $gender = 2;
-          break;
-        default:
-          $gender = 3;
-          break;
-      }
-      $data_store['gender'] = $gender;
       if (!empty($profile->birthYear)) $data_store['birthday'] = $profile->birthYear . '-' . $profile->birthMonth . '-' . $profile->birthDay;
       $email = $profile->email;
       $file = $profile->photoURL;
@@ -379,9 +367,9 @@ class Auth extends Public_Controller
           $data_store['avatar'] = 'avatar/' . $profile->identifier . '.png';
           // End avatar
           $id_user = $this->ion_auth->register($identity, $profile->identifier, $email, $data_store, ['group_id' => $group_id]);
-          $this->session->userdata['is_account_logged'] = true;
-          $this->session->userdata['account']['account_identity'] = $identity;
-          $this->session->userdata['account']['account_id'] = $id_user;
+          $this->session->userdata['is_logged'] = true;
+          $this->session->userdata['dentity'] = $identity;
+          $this->session->userdata['user_id'] = $id_user;
           $this->_data->resetAllOrder();
           $this->session->set_flashdata('message', 'Đăng nhập thành công!');
           $this->session->set_flashdata('type', 'success');
@@ -389,7 +377,7 @@ class Auth extends Public_Controller
         } else {
           $this->hybridauth->HA->logoutAllProviders();
           unset($this->session->userdata['account']);
-          unset($this->session->userdata['is_account_logged']);
+          unset($this->session->userdata['is_logged']);
           $this->session->set_flashdata('message', 'Email hoặc số điện thoại của bạn đã được đăng ký rồi. vui lòng đăng ký tài khoản khác.');
           $this->session->set_flashdata('type', 'warning');
           redirect(base_url(), 'refresh');
@@ -402,10 +390,10 @@ class Auth extends Public_Controller
         //redirect them back to the home page
 
         if ($account->active == 1) {
-          $this->session->userdata['is_account_logged'] = true;
+          $this->session->userdata['is_logged'] = true;
 
-          $this->session->userdata['account']['account_id'] = $account->id;
-          $this->session->userdata['account']['account_identity'] = $account->username;
+          $this->session->userdata['user_id'] = $account->id;
+          $this->session->userdata['dentity'] = $account->username;
           if (empty($account->avatar)) {
             if (!is_dir($dir)) {
               mkdir('public/media/avatar', '0755');
@@ -459,31 +447,18 @@ class Auth extends Public_Controller
     $message = [];
     if (!empty($data)) {
       $identity = $this->toNormal($this->toSlug($data['name']));
-      switch ($data['gender']) {
-        case 'male':
-          $gender = 1;
-          break;
-        case 'female':
-          $gender = 2;
-          break;
-        default:
-          $gender = 3;
-          break;
-      }
+
       $birthdayNew = '';
       if (!empty($data['birthday'])) {
         $birthday = explode('/', $data['birthday']);
         $birthdayNew = $birthday[2] . '-' . $birthday[1] . '-' . $birthday[0];
       }
       $data_store = [
-        'display_name' => $data['name'],
-        'full_name' => $data['name'],
+        'fullname' => $data['name'],
         'active' => 1,
-        'gender' => $gender,
         'birthday' => $birthdayNew,
         'oauth_provider' => 'Zalo',
         'oauth_uid' => $data['id'],
-        'order' => $this->_data->getLastOrder() + 1
       ];
       $authId = $this->_data->check_oauth('oauth_uid', $data['id']);
       if ($authId <= 0) {
@@ -502,9 +477,9 @@ class Auth extends Public_Controller
         $data_store['avatar'] = 'avatar/' . $avatar;
         $id_user = $this->ion_auth->register($identity, time(), '', $data_store, ['group_id' => 2]);
 
-        $this->session->userdata['is_account_logged'] = true;
-        $this->session->userdata['account']['account_identity'] = $identity;
-        $this->session->userdata['account']['account_id'] = $id_user;
+        $this->session->userdata['is_logged'] = true;
+        $this->session->userdata['identity'] = $identity;
+        $this->session->userdata['user_id'] = $id_user;
         $this->session->set_flashdata('message', 'Đăng nhập thành công!');
         $this->session->set_flashdata('type', 'success');
         redirect(base_url(), 'refresh');
@@ -514,9 +489,9 @@ class Auth extends Public_Controller
         //if the login is successful
         //redirect them back to the home page
         if ($account->active == 1) {
-          $this->session->userdata['is_account_logged'] = true;
-          $this->session->userdata['account']['account_id'] = $account->id;
-          $this->session->userdata['account']['account_identity'] = $account->username;
+          $this->session->userdata['is_logged'] = true;
+          $this->session->userdata['user_id'] = $account->id;
+          $this->session->userdata['dentity'] = $account->username;
           $this->session->set_flashdata('message', 'Đăng nhập thành công!');
           $this->session->set_flashdata('type', 'success');
           redirect(base_url(), 'refresh');

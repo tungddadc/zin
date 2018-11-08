@@ -49,4 +49,11 @@ class Users_model extends STEVEN_Model
         $this->db->group_by("$this->table.id");
         return $this->db->get($this->table)->row();
     }
+
+  public function updateField($account_id, $key, $value)
+  {
+    $this->db->where($this->table . '.id', $account_id);
+    $this->db->update($this->table, array($this->table . '.' . $key => $value));
+    return true;
+  }
 }
