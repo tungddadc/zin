@@ -88,6 +88,7 @@ $(function() {
                     });
 
                     loadCategory(response.data_category);
+                    FUNC.showGallery('#list-album',response.data_info.banner);
                     modal_form.modal('show');
                 },
                 error: function (jqXHR, textStatus, errorThrown)

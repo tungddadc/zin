@@ -296,6 +296,10 @@ class Category extends Admin_Controller
         $data['type'] = $this->session->userdata('type');
         if(!empty($data['is_status'])) $data['is_status'] = 1;else $data['is_status'] = 0;
         if(empty($data['parent_id'])) $data['parent_id'] = 0;
+        if(isset($data['album'])) {
+            $data['banner'] = json_encode($data['album']);
+            unset($data['album']);
+        }
         return $data;
     }
 }

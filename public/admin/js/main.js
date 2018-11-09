@@ -253,7 +253,7 @@ var AJAX_CRUD_MODAL = {
 
             $('ul[role="tablist"] li a').removeClass('active show');
             $('ul[role="tablist"] li:first-child a').trigger('click').addClass('active show');
-            //$('#gallery').html('');
+            $('#list-album').html('');
             //$("input.tagsinput").tagsinput('removeAll');
             $('input.switchBootstrap').bootstrapSwitch('state',false);
             for (var j = 0; j < tinyMCE.editors.length; j++){
@@ -480,23 +480,41 @@ var FUNC = {
         return false;
     },
     chooseMultipleImage: function(_this){
+        let element = $(_this);
+        let count = parseInt(element.closest('.preview').find('.list-album').attr('data-id'));
         moxman.browse({
             view: 'thumbs',
             extensions:'jpg,jpeg,png,gif,ico',
             no_host: true,
             upload_auto_close: true,
             oninsert: function(args) {
-                let element = $(_this);
-                let arrImage = [];
                 $.each(args.files, function (i, val) {
+                    count+=1;
                     let urlImageResponse=val.url.replace('/'+script_name+media_name,'');
-                    let image = val.meta.thumb_url;
-                    arrImage[i] = val.path;
+                    //let image = val.meta.thumb_url;
+                    //arrImage[i] = urlImageResponse;
+                    let html = FUNC.itemGallery(count,urlImageResponse);
+                    element.closest('.preview').find('#list-album').append(html);
                 });
-                element.val(JSON.stringify(arrImage));
+                element.closest('.preview').find('.list-album').attr('data-id', element.closest('.preview').find('.item_gallery:last').data('count'));
+                //element.val(JSON.stringify(arrImage));
             }
         });
         return false;
+    },
+    showGallery: function(element,data){
+        if(data !== null && (data).length > 0) {
+            $.each(JSON.parse(data), function (i, v) {
+                $(element).append(FUNC.itemGallery(i + 1,v));
+            });
+        }
+    },
+    itemGallery: function(count,urlImageResponse) {
+        return html = "<div class='item_gallery item_"+count+"' data-count='"+count+"'>" +
+            "<img src='" +media_url +"/"+urlImageResponse+ "' id='item_"+count+"' height='120' class='img-thumbnail'>" +
+            "<input type='hidden' name='album[]' value='"+urlImageResponse+"' >" +
+            "<span class='fa fa-times removeInput' onclick='this.parentNode.remove()'></span>" +
+            "</div>";
     },
     getCookie: function(name){
         var value = "; " + document.cookie;

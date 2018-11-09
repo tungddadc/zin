@@ -194,17 +194,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="thumbnail">List slider</label>
-                                            <div class="input-group m-input-group m-input-group--air">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text">
-                                                        <i class="la la-picture-o"></i>
-                                                    </span>
-                                                </div>
-                                                <input type="text" name="thumbnail" onclick="FUNC.chooseMultipleImage(this)" class="form-control m-input chooseImage" placeholder="Click để chọn ảnh">
-                                            </div>
+                                            <label for="thumbnail">Ảnh slider</label>
                                             <div class="alert m-alert m-alert--default preview text-center mt-1" role="alert">
-                                                <img width="100" height="100" src="<?php echo getImageThumb('',100,100) ?>">
+                                                <div data-id="0" id="list-album"></div>
+                                                <div class="col-md-12">
+                                                    <button type="button" class="btn btn-primary btnAddMore" onclick="FUNC.chooseMultipleImage(this)">
+                                                        <i class="fa fa-plus"> Thêm ảnh </i>
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
