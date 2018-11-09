@@ -137,6 +137,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                 <?php endforeach; ?>
 
                                 <div class="form-group">
+                                    <label for="thumbnail">Favicon Website</label>
+                                    <div class="input-group m-input-group m-input-group--air">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="la la-picture-o"></i>
+                                            </span>
+                                        </div>
+                                        <input type="text" name="favicon" value="<?php echo !empty($favicon) ? $favicon : '' ?>" onclick="FUNC.chooseImage(this)" class="form-control m-input chooseImage" placeholder="Click để chọn ảnh">
+                                    </div>
+                                    <div class="alert m-alert m-alert--default preview text-center mt-1" role="alert">
+                                        <img height="100" src="<?php echo !empty($favicon) ? getImageThumb($favicon,100,100) : '' ?>">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
                                     <label for="thumbnail">Ảnh đại diện Website</label>
                                     <div class="input-group m-input-group m-input-group--air">
                                         <div class="input-group-prepend">

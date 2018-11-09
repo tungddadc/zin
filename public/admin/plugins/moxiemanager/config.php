@@ -18,7 +18,7 @@ $root = dirname(dirname(dirname(dirname(__FILE__))));
 	$moxieManagerConfig['filesystem.exclude_directory_pattern'] = '/^mcith$/i';
 	$moxieManagerConfig['filesystem.include_file_pattern'] = '';
 	$moxieManagerConfig['filesystem.exclude_file_pattern'] = '';
-	$moxieManagerConfig['filesystem.extensions'] = 'jpg,jpeg,png,gif,html,htm,txt,docx,doc,zip,pdf';
+	$moxieManagerConfig['filesystem.extensions'] = 'jpg,ico,jpeg,png,gif,html,htm,txt,docx,doc,zip,pdf';
 	$moxieManagerConfig['filesystem.readable'] = true;
 	$moxieManagerConfig['filesystem.writable'] = true;
 	$moxieManagerConfig['filesystem.overwrite_action'] = "";
@@ -86,7 +86,7 @@ $root = dirname(dirname(dirname(dirname(__FILE__))));
 	// View
 	$moxieManagerConfig['view.include_file_pattern'] = '';
 	$moxieManagerConfig['view.exclude_file_pattern'] = '';
-	$moxieManagerConfig['view.extensions'] = 'jpg,jpeg,png,gif,html,htm,txt,pdf';
+	$moxieManagerConfig['view.extensions'] = 'jpg,ico,jpeg,png,gif,html,htm,txt,pdf';
 	$moxieManagerConfig['view.allow_override'] = '*';
 
 	// Download

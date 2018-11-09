@@ -78,11 +78,11 @@ if (!function_exists('getImageThumb')) {
 
                 }
             }
-            return str_replace('\\','/',MEDIA_URL.DIRECTORY_SEPARATOR.'thumb'.DIRECTORY_SEPARATOR.$newImage);
+            return str_replace('\\','/',MEDIA_URL.'thumb'.DIRECTORY_SEPARATOR.$newImage);
         }
         else {
 
-            return str_replace('\\','/',MEDIA_URL.DIRECTORY_SEPARATOR.$image);
+            return str_replace('\\','/',MEDIA_URL.$image);
         }
     }
 }
