@@ -207,6 +207,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                                 <img width="100" height="100" src="<?php echo getImageThumb('',100,100) ?>">
                                             </div>
                                         </div>
+                                        <div class="form-group">
+                                            <label for="thumbnail">Album sản phẩm</label>
+                                            <div class="alert m-alert m-alert--default preview text-center mt-1" role="alert">
+                                                <div data-id="0" id="list-album"></div>
+                                                <div class="col-md-12">
+                                                    <button type="button" class="btn btn-primary btnAddMore" onclick="FUNC.chooseMultipleImage(this)">
+                                                        <i class="fa fa-plus"> Thêm ảnh </i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
