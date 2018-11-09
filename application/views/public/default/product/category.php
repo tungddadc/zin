@@ -6,7 +6,7 @@
  * Time: 5:26 CH
  */
 defined('BASEPATH') OR exit('No direct script access allowed');?>
-<?php if (!empty($oneItem)): ?>
+<?php if (!empty($oneItem)):?>
     <section class="main-container col2-left-layout">
         <div class="container">
             <div class="row">
@@ -23,12 +23,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                         <div class="slider-items-products">
                             <div id="category-desc-slider" class="product-flexslider hidden-buttons">
                                 <div class="slider-items slider-width-col1 owl-carousel owl-theme">
-
-                                    <!-- Item -->
-                                    <div class="item"> <a href="#"><img alt="" src="<?php echo $this->templates_assets ?>images/category-img1.jpg"></a> </div>
-                                    <!-- End Item -->
-                                    <div class="item"> <a href="#"><img alt="" src="<?php echo $this->templates_assets ?>images/category-img2.jpg"></a>
-                                    </div>
+                                    <?php if(!empty($oneItem->banner)) foreach (json_decode($oneItem->banner) as $item): ?>
+                                        <!-- Item -->
+                                        <div class="item">
+                                            <a href="javascript:;" title="<?php echo getTitle($oneItem) ?>">
+                                                <img alt="<?php echo getTitle($oneItem) ?>" src="<?php echo getImageThumb($item,850,200) ?>">
+                                            </a>
+                                        </div>
+                                        <!-- End Item -->
+                                    <?php endforeach; ?>
                                 </div>
                             </div>
                         </div>
@@ -84,7 +87,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                 <li class="item col-lg-3 col-md-4 col-sm-4 col-xs-6">
                                     <div class="item-inner">
                                         <div class="item-img">
-                                            <div class="item-img-info"><a href="product_detail.html" title="Retis lapen casen" class="product-image"><img src="products-images/product16.jpg" alt="Retis lapen casen"></a>
+                                            <div class="item-img-info"><a href="product_detail.html" title="Retis lapen casen" class="product-image"><img src="<?php echo $this->templates_assets ?>products-images/product16.jpg" alt="Retis lapen casen"></a>
                                                 <div class="new-label new-top-left">New</div>
                                                 <div class="box-hover">
                                                     <ul class="add-to-links">
@@ -124,7 +127,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                 <li class="item col-lg-3 col-md-4 col-sm-4 col-xs-6">
                                     <div class="item-inner">
                                         <div class="item-img">
-                                            <div class="item-img-info"><a href="product_detail.html" title="Retis lapen casen" class="product-image"><img src="products-images/product2.jpg" alt="Retis lapen casen"></a>
+                                            <div class="item-img-info"><a href="product_detail.html" title="Retis lapen casen" class="product-image"><img src="<?php echo $this->templates_assets ?>products-images/product2.jpg" alt="Retis lapen casen"></a>
                                                 <div class="box-hover">
                                                     <ul class="add-to-links">
                                                         <li><a class="link-quickview" href="quick_view.html"></a> </li>
@@ -160,7 +163,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                 <li class="item col-lg-3 col-md-4 col-sm-4 col-xs-6">
                                     <div class="item-inner">
                                         <div class="item-img">
-                                            <div class="item-img-info"><a href="product_detail.html" title="Retis lapen casen" class="product-image"><img src="products-images/product3.jpg" alt="Retis lapen casen"></a>
+                                            <div class="item-img-info"><a href="product_detail.html" title="Retis lapen casen" class="product-image"><img src="<?php echo $this->templates_assets ?>products-images/product3.jpg" alt="Retis lapen casen"></a>
                                                 <div class="box-hover">
                                                     <ul class="add-to-links">
                                                         <li><a class="link-quickview" href="quick_view.html"></a> </li>
@@ -196,7 +199,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                 <li class="item col-lg-3 col-md-4 col-sm-4 col-xs-6">
                                     <div class="item-inner">
                                         <div class="item-img">
-                                            <div class="item-img-info"><a href="product_detail.html" title="Retis lapen casen" class="product-image"><img src="products-images/product19.jpg" alt="Retis lapen casen"></a>
+                                            <div class="item-img-info"><a href="product_detail.html" title="Retis lapen casen" class="product-image"><img src="<?php echo $this->templates_assets ?>products-images/product19.jpg" alt="Retis lapen casen"></a>
                                                 <div class="new-label new-top-left">New</div>
                                                 <div class="box-hover">
                                                     <ul class="add-to-links">
@@ -236,7 +239,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                 <li class="item col-lg-3 col-md-4 col-sm-4 col-xs-6">
                                     <div class="item-inner">
                                         <div class="item-img">
-                                            <div class="item-img-info"><a href="product_detail.html" title="Retis lapen casen" class="product-image"><img src="products-images/product20.jpg" alt="Retis lapen casen"></a>
+                                            <div class="item-img-info"><a href="product_detail.html" title="Retis lapen casen" class="product-image"><img src="<?php echo $this->templates_assets ?>products-images/product20.jpg" alt="Retis lapen casen"></a>
                                                 <div class="box-hover">
                                                     <ul class="add-to-links">
                                                         <li><a class="link-quickview" href="quick_view.html"></a> </li>
@@ -272,7 +275,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                 <li class="item col-lg-3 col-md-4 col-sm-4 col-xs-6">
                                     <div class="item-inner">
                                         <div class="item-img">
-                                            <div class="item-img-info"><a href="product_detail.html" title="Retis lapen casen" class="product-image"><img src="products-images/product21.jpg" alt="Retis lapen casen"></a>
+                                            <div class="item-img-info"><a href="product_detail.html" title="Retis lapen casen" class="product-image"><img src="<?php echo $this->templates_assets ?>products-images/product21.jpg" alt="Retis lapen casen"></a>
                                                 <div class="box-hover">
                                                     <ul class="add-to-links">
                                                         <li><a class="link-quickview" href="quick_view.html"></a> </li>
@@ -308,7 +311,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                 <li class="item col-lg-3 col-md-4 col-sm-4 col-xs-6">
                                     <div class="item-inner">
                                         <div class="item-img">
-                                            <div class="item-img-info"><a href="product_detail.html" title="Retis lapen casen" class="product-image"><img src="products-images/product22.jpg" alt="Retis lapen casen"></a>
+                                            <div class="item-img-info"><a href="product_detail.html" title="Retis lapen casen" class="product-image"><img src="<?php echo $this->templates_assets ?>products-images/product22.jpg" alt="Retis lapen casen"></a>
                                                 <div class="new-label new-top-left">New</div>
                                                 <div class="box-hover">
                                                     <ul class="add-to-links">
@@ -348,7 +351,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                 <li class="item col-lg-3 col-md-4 col-sm-4 col-xs-6">
                                     <div class="item-inner">
                                         <div class="item-img">
-                                            <div class="item-img-info"><a href="product_detail.html" title="Retis lapen casen" class="product-image"><img src="products-images/product23.jpg" alt="Retis lapen casen"></a>
+                                            <div class="item-img-info"><a href="product_detail.html" title="Retis lapen casen" class="product-image"><img src="<?php echo $this->templates_assets ?>products-images/product23.jpg" alt="Retis lapen casen"></a>
                                                 <div class="box-hover">
                                                     <ul class="add-to-links">
                                                         <li><a class="link-quickview" href="quick_view.html"></a> </li>
@@ -384,7 +387,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                 <li class="item col-lg-3 col-md-4 col-sm-4 col-xs-6">
                                     <div class="item-inner">
                                         <div class="item-img">
-                                            <div class="item-img-info"><a href="product_detail.html" title="Retis lapen casen" class="product-image"><img src="products-images/product24.jpg" alt="Retis lapen casen"></a>
+                                            <div class="item-img-info"><a href="product_detail.html" title="Retis lapen casen" class="product-image"><img src="<?php echo $this->templates_assets ?>products-images/product24.jpg" alt="Retis lapen casen"></a>
                                                 <div class="box-hover">
                                                     <ul class="add-to-links">
                                                         <li><a class="link-quickview" href="quick_view.html"></a> </li>
@@ -420,7 +423,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                 <li class="item col-lg-3 col-md-4 col-sm-4 col-xs-6">
                                     <div class="item-inner">
                                         <div class="item-img">
-                                            <div class="item-img-info"><a href="product_detail.html" title="Retis lapen casen" class="product-image"><img src="products-images/product16.jpg" alt="Retis lapen casen"></a>
+                                            <div class="item-img-info"><a href="product_detail.html" title="Retis lapen casen" class="product-image"><img src="<?php echo $this->templates_assets ?>products-images/product16.jpg" alt="Retis lapen casen"></a>
                                                 <div class="new-label new-top-left">New</div>
                                                 <div class="box-hover">
                                                     <ul class="add-to-links">
@@ -460,7 +463,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                 <li class="item col-lg-3 col-md-4 col-sm-4 col-xs-6">
                                     <div class="item-inner">
                                         <div class="item-img">
-                                            <div class="item-img-info"><a href="product_detail.html" title="Retis lapen casen" class="product-image"><img src="products-images/product2.jpg" alt="Retis lapen casen"></a>
+                                            <div class="item-img-info"><a href="product_detail.html" title="Retis lapen casen" class="product-image"><img src="<?php echo $this->templates_assets ?>products-images/product2.jpg" alt="Retis lapen casen"></a>
                                                 <div class="box-hover">
                                                     <ul class="add-to-links">
                                                         <li><a class="link-quickview" href="quick_view.html"></a> </li>
@@ -496,7 +499,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                 <li class="item col-lg-3 col-md-4 col-sm-4 col-xs-6">
                                     <div class="item-inner">
                                         <div class="item-img">
-                                            <div class="item-img-info"><a href="product_detail.html" title="Retis lapen casen" class="product-image"><img src="products-images/product3.jpg" alt="Retis lapen casen"></a>
+                                            <div class="item-img-info"><a href="product_detail.html" title="Retis lapen casen" class="product-image"><img src="<?php echo $this->templates_assets ?>products-images/product3.jpg" alt="Retis lapen casen"></a>
                                                 <div class="box-hover">
                                                     <ul class="add-to-links">
                                                         <li><a class="link-quickview" href="quick_view.html"></a> </li>
@@ -532,7 +535,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                 <li class="item col-lg-3 col-md-4 col-sm-4 col-xs-6">
                                     <div class="item-inner">
                                         <div class="item-img">
-                                            <div class="item-img-info"><a href="product_detail.html" title="Retis lapen casen" class="product-image"><img src="products-images/product19.jpg" alt="Retis lapen casen"></a>
+                                            <div class="item-img-info"><a href="product_detail.html" title="Retis lapen casen" class="product-image"><img src="<?php echo $this->templates_assets ?>products-images/product19.jpg" alt="Retis lapen casen"></a>
                                                 <div class="new-label new-top-left">New</div>
                                                 <div class="box-hover">
                                                     <ul class="add-to-links">
@@ -572,7 +575,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                 <li class="item col-lg-3 col-md-4 col-sm-4 col-xs-6">
                                     <div class="item-inner">
                                         <div class="item-img">
-                                            <div class="item-img-info"><a href="product_detail.html" title="Retis lapen casen" class="product-image"><img src="products-images/product20.jpg" alt="Retis lapen casen"></a>
+                                            <div class="item-img-info"><a href="product_detail.html" title="Retis lapen casen" class="product-image"><img src="<?php echo $this->templates_assets ?>products-images/product20.jpg" alt="Retis lapen casen"></a>
                                                 <div class="box-hover">
                                                     <ul class="add-to-links">
                                                         <li><a class="link-quickview" href="quick_view.html"></a> </li>
@@ -608,7 +611,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                 <li class="item col-lg-3 col-md-4 col-sm-4 col-xs-6">
                                     <div class="item-inner">
                                         <div class="item-img">
-                                            <div class="item-img-info"><a href="product_detail.html" title="Retis lapen casen" class="product-image"><img src="products-images/product21.jpg" alt="Retis lapen casen"></a>
+                                            <div class="item-img-info"><a href="product_detail.html" title="Retis lapen casen" class="product-image"><img src="<?php echo $this->templates_assets ?>products-images/product21.jpg" alt="Retis lapen casen"></a>
                                                 <div class="box-hover">
                                                     <ul class="add-to-links">
                                                         <li><a class="link-quickview" href="quick_view.html"></a> </li>
@@ -644,7 +647,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                 <li class="item col-lg-3 col-md-4 col-sm-4 col-xs-6">
                                     <div class="item-inner">
                                         <div class="item-img">
-                                            <div class="item-img-info"><a href="product_detail.html" title="Retis lapen casen" class="product-image"><img src="products-images/product22.jpg" alt="Retis lapen casen"></a>
+                                            <div class="item-img-info"><a href="product_detail.html" title="Retis lapen casen" class="product-image"><img src="<?php echo $this->templates_assets ?>products-images/product22.jpg" alt="Retis lapen casen"></a>
                                                 <div class="box-hover">
                                                     <ul class="add-to-links">
                                                         <li><a class="link-quickview" href="quick_view.html"></a> </li>
@@ -781,14 +784,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                             </div>
                             <p class="block-subtitle">Recently added item(s) </p>
                             <ul>
-                                <li class="item"> <a href="shopping_cart.html" title="Fisher-Price Bubble Mower" class="product-image"><img src="products-images/product10.jpg" alt="Fisher-Price Bubble Mower"></a>
+                                <li class="item"> <a href="shopping_cart.html" title="Fisher-Price Bubble Mower" class="product-image"><img src="<?php echo $this->templates_assets ?>products-images/product10.jpg" alt="Fisher-Price Bubble Mower"></a>
                                     <div class="product-details">
                                         <div class="access"> <a href="shopping_cart.html" title="Remove This Item" class="btn-remove1"> <span class="icon"></span> Remove </a> </div>
                                         <strong>1</strong> x <span class="price">$19.99</span>
                                         <p class="product-name"> <a href="shopping_cart.html">Retis lapen casen...</a> </p>
                                     </div>
                                 </li>
-                                <li class="item last"> <a href="shopping_cart.html" title="Prince Lionheart Jumbo Toy Hammock" class="product-image"><img src="products-images/product1.jpg" alt="Prince Lionheart Jumbo Toy Hammock"></a>
+                                <li class="item last"> <a href="shopping_cart.html" title="Prince Lionheart Jumbo Toy Hammock" class="product-image"><img src="<?php echo $this->templates_assets ?>products-images/product1.jpg" alt="Prince Lionheart Jumbo Toy Hammock"></a>
                                     <div class="product-details">
                                         <div class="access"> <a href="shopping_cart.html" title="Remove This Item" class="btn-remove1"> <span class="icon"></span> Remove </a> </div>
                                         <strong>1</strong> x <span class="price">$8.00</span>

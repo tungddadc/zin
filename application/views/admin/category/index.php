@@ -194,7 +194,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="thumbnail">Ảnh slider</label>
+                                            <label for="thumbnail">Ảnh slider (W850 x H200)</label>
                                             <div class="alert m-alert m-alert--default preview text-center mt-1" role="alert">
                                                 <div data-id="0" id="list-album"></div>
                                                 <div class="col-md-12">
