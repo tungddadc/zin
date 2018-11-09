@@ -50,15 +50,15 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
   <?php endif; ?>
 
   <link rel="icon"
-        href="<?php echo !empty($this->settings['favicon']) ? getImageThumb($this->settings['favicon'], 32, 32) : base_url("favicon.ico"); ?>"
+        href="<?php echo !empty($this->settings['favicon']) ? getImageThumb($this->settings['favicon'], 32, 32) : $this->templates_assets."favicon.ico"; ?>"
         sizes="32x32">
   <link rel="icon"
-        href="<?php echo !empty($this->settings['favicon']) ? getImageThumb($this->settings['favicon'], 192, 192) : base_url("favicon.ico"); ?>"
+        href="<?php echo !empty($this->settings['favicon']) ? getImageThumb($this->settings['favicon'], 192, 192) : $this->templates_assets."favicon.ico"; ?>"
         sizes="192x192">
   <link rel="apple-touch-icon-precomposed"
-        href="<?php echo !empty($this->settings['favicon']) ? getImageThumb($this->settings['favicon'], 180, 180) : base_url("favicon.ico"); ?>">
+        href="<?php echo !empty($this->settings['favicon']) ? getImageThumb($this->settings['favicon'], 180, 180) : $this->templates_assets."favicon.ico"; ?>">
   <meta name="msapplication-TileImage"
-        content="<?php echo !empty($this->settings['favicon']) ? getImageThumb($this->settings['favicon'], 270, 270) : base_url("favicon.ico"); ?>">
+        content="<?php echo !empty($this->settings['favicon']) ? getImageThumb($this->settings['favicon'], 270, 270) : $this->templates_assets."favicon.ico"; ?>">
 
   <?php $asset_css[] = 'bootstrap.min.css'; ?>
   <?php $asset_css[] = 'font-awesome.min.css'; ?>
