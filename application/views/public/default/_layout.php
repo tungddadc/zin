@@ -104,7 +104,16 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
       ;
   </script>
 </head>
-<body class="cms-index-index cms-home-page">
+<?php
+switch ($this->_controller){
+    case 'product':
+        $classBody = $this->_method === 'category' ? 'grid-page' : 'category-page';
+        break;
+    default:
+        $classBody = 'cms-index-index cms-home-page';
+}
+?>
+<body class="<?php echo $classBody ?>">
 <div id="fb-root"></div>
 <div id="page">
   <?php $this->load->view($this->template_path . '_header') ?>
@@ -185,6 +194,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 <?php $asset_js[] = 'owl.carousel.min.js'; ?>
 <?php $asset_js[] = 'jquery.mobile-menu.min.js'; ?>
 <?php $asset_js[] = 'countdown.js'; ?>
+<?php $asset_js[] = 'cloud-zoom.js'; ?>
 <?php $asset_js[] = '../plugins/toastr/toastr.min.js'; ?>
 <?php //$asset_js[] = 'plugins/select2/dist/js/select2.min.js'; ?>
 <?php //$asset_js[] = 'plugins/jssocials/dist/jssocials.min.js'; ?>

@@ -145,14 +145,6 @@ class Product extends Public_Controller
         $data['property_reason'] = $propertyModel->getDataByPropertyType($_all_property,'reason');
 
 
-
-        /*List tags detail*/
-        $this->load->model('tag_model');
-        $tagModel = new Tag_model();
-        $data['list_tags'] = $tagModel->getTagByProduct($id);
-        /*List tags detail*/
-
-
         /*List product related*/
         $this->_data_category->_recursive_child_id($this->_all_category,$oneCategoryParent->id);
         $listCateId = $this->_data_category->_list_category_child_id;
