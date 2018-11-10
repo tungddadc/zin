@@ -36,6 +36,7 @@ define('DEBUG_MODE',TRUE);
 
 //Cache manager
 define('CACHE_MODE',TRUE);
+define('CACHE_PREFIX_NAME','THANHCHIMB_');
 define('CACHE_TIMEOUT_LOGIN',1800);
 
 //Config zalo

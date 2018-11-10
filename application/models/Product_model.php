@@ -50,4 +50,9 @@ class Product_model extends STEVEN_Model
         $data = $this->db->get()->result();
         return $data;
     }
+
+    public function getOneCateIdById($id){
+        $data = $this->getCategoryByProductId($id, $this->session->userdata('public_lang_code'));
+        return !empty($data)?$data[0]:null;
+    }
 }

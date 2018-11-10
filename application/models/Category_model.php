@@ -32,7 +32,7 @@ class Category_model extends STEVEN_Model
         $data = '';
         $lang_code = $this->session->userdata('public_lang_code');
         if(CACHE_MODE == TRUE){
-            $key = '_all_category_'.$lang_code.'_'.$type;
+            $key = CACHE_PREFIX_NAME . '_all_category_'.$lang_code.'_'.$type;
             $data = $this->cache->get($key);
         }
         if(empty($data)){
