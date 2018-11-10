@@ -19,21 +19,21 @@
                         <div class="product-view">
                             <div class="product-essential">
                                 <?php echo form_open('',['id' => 'product_addtocart_form']) ?>
-                                    <input name="form_key" value="6UbXroakyQlbfQzK" type="hidden">
+                                    <input name="id" value="<?php echo $oneItem->id ?>" type="hidden">
                                     <div class="product-img-box col-lg-4 col-sm-5 col-xs-12">
                                         <?php echo !empty($oneItem->is_new) ? '<div class="new-label new-top-left"> New </div>' : '' ?>
                                         <div class="product-image">
                                             <div class="product-full">
-                                                <img id="product-zoom" src="<?php echo getImageThumb($album[0],370,450) ?>" data-zoom-image="<?php echo getImageThumb($album[0],700,850) ?>" alt="product-image"/>
+                                                <img id="product-zoom" src="<?php echo getImageThumb($album[0],375,375, true) ?>" data-zoom-image="<?php echo getImageThumb($album[0]) ?>" alt="<?php echo getTitle($oneItem) ?>"/>
                                             </div>
                                             <div class="more-views">
                                                 <div class="slider-items-products">
                                                     <div id="gallery_01" class="product-flexslider hidden-buttons product-img-thumb">
                                                         <div class="slider-items slider-width-col4 block-content">
-                                                            <?php unset($album[0]); if(!empty($album)) foreach ($album as $item): ?>
+                                                            <?php if(!empty($album)) foreach ($album as $item): ?>
                                                                 <div class="more-views-items">
-                                                                    <a href="javascript:;" data-image="<?php echo getImageThumb($item) ?>" data-zoom-image="<?php echo getImageThumb($item) ?>" title="<?php echo getTitle($oneItem) ?>">
-                                                                        <img id="product-zoom"  src="<?php echo getImageThumb($item) ?>" alt="product-image"/>
+                                                                    <a href="javascript:;" data-image="<?php echo getImageThumb($item,375,375, true) ?>" data-zoom-image="<?php echo getImageThumb($item) ?>" title="<?php echo getTitle($oneItem) ?>">
+                                                                        <img id="product-zoom"  src="<?php echo getImageThumb($item,76,76) ?>" alt="<?php echo getTitle($oneItem) ?>"/>
                                                                     </a>
                                                                 </div>
                                                             <?php endforeach ?>
@@ -45,9 +45,16 @@
                                         <!-- end: more-images -->
                                     </div>
                                     <div class="product-shop col-lg-8 col-sm-7 col-xs-12">
-                                        <div class="product-next-prev"> <a class="product-next" href="#"><span></span></a> <a class="product-prev" href="#"><span></span></a> </div>
+                                        <div class="product-next-prev">
+                                            <?php if(!empty($oneNext)): ?>
+                                                <a class="product-next" href="<?php echo getUrlProduct($oneNext) ?>" title="<?php echo getTitle($oneNext) ?>"><span></span></a>
+                                            <?php endif; ?>
+                                            <?php if(!empty($onePrev)): ?>
+                                                <a class="product-prev" href="<?php echo getUrlProduct($onePrev) ?>" title="<?php echo getTitle($onePrev) ?>"><span></span></a>
+                                            <?php endif; ?>
+                                        </div>
                                         <div class="product-name">
-                                            <h1>Wholesale Charming Blouse</h1>
+                                            <h1><?php echo $oneItem->title ?></h1>
                                         </div>
                                         <div class="ratings">
                                             <div class="rating-box">

@@ -134,16 +134,8 @@ class Product extends Public_Controller
             $data['list_category_child'] = $this->_data_category->getCategoryChild($data['oneParent']->id,$this->session->public_lang_code);
         }
         $data['oneItem'] = $oneItem;
-
-
-        $this->load->model('property_model');
-        $propertyModel = new Property_model();
-        if(!$this->cache->get('_all_property_'.$this->session->public_lang_code)){
-            $this->cache->save('_all_property_'.$this->session->public_lang_code,$propertyModel->getAll($this->session->public_lang_code),60*60*30);
-        }
-        $_all_property = $this->cache->get('_all_property_'.$this->session->public_lang_code);
-        $data['property_reason'] = $propertyModel->getDataByPropertyType($_all_property,'reason');
-
+        $data['onePrev'] = $this->_data->getPrevById($oneItem->id,'',$this->_lang_code);
+        $data['oneNext'] = $this->_data->getNextById($oneItem->id,'',$this->_lang_code);
 
         /*List product related*/
         $this->_data_category->_recursive_child_id($this->_all_category,$oneCategoryParent->id);
