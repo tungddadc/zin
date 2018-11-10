@@ -24,10 +24,6 @@
           <input name="phone" title="Số điện thoại" class="input-text required-entry " type="text" value="<?php echo $this->_user_login->phone ?>">
         </li>
         <li>
-          <label for="">Tên cửa hàng đại lý</label>
-          <input name="agent" title="Tên cửa hàng đại lý" class="input-text required-entry " type="text" value="<?php echo $this->_user_login->agent ?>">
-        </li>
-        <li>
           <label for="email">Địa chỉ giao hàng</label>
           <input name="shipping_address" title="Địa chỉ giao hàng" class="input-text required-entry " type="text" value="<?php echo $this->_user_login->shipping_address ?>">
         </li>

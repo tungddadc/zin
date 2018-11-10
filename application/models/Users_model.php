@@ -8,7 +8,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 class Users_model extends STEVEN_Model
 {
-    protected $table_user_group;
+    public $table_user_group;
     public function __construct()
     {
         parent::__construct();

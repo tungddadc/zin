@@ -59,6 +59,17 @@ class Profile extends Public_Controller
     $this->load->view($this->template_main, $data);
   }
 
+  public function agency()
+  {
+    $data = array();
+    $this->sb_agency();
+
+    $data['main_profile'] = $this->load->view($this->template_path . 'auth/profile/agency', $data, TRUE);
+    $data['main_content'] = $this->load->view($this->template_path . 'auth/profile/index', $data, TRUE);
+
+    $this->load->view($this->template_main, $data);
+  }
+
   private function sb_change_password()
   {
 
@@ -72,7 +83,7 @@ class Profile extends Public_Controller
           'label' => 'Mật khẩu cũ',
           'rules' => 'required'
         ),
-       array(
+        array(
           'field' => 'new',
           'label' => 'Mật khẩu mới',
           'rules' => 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']|matches[new_confirm]'
@@ -90,15 +101,15 @@ class Profile extends Public_Controller
         if ($change) {
           //if the password was successfully changed
 
-          $this->_message=array(
-            'type'=>'success',
-            'message'=>'Đã thay đổi mật khẩu thành công',
-            'url_redirect'=>current_url()
+          $this->_message = array(
+            'type' => 'success',
+            'message' => 'Đã thay đổi mật khẩu thành công',
+            'url_redirect' => current_url()
           );
         } else {
-          $this->_message=array(
-            'type'=>'warning',
-            'message'=>strip_tags($this->ion_auth->errors()),
+          $this->_message = array(
+            'type' => 'warning',
+            'message' => strip_tags($this->ion_auth->errors()),
           );
         }
       } else {
@@ -107,10 +118,10 @@ class Profile extends Public_Controller
         if (!empty($rules)) foreach ($rules as $item) {
           if (!empty(form_error($item['field']))) $valid[$item['field']] = form_error($item['field']);
         }
-        $this->_message=array(
-          'type'=>'warning',
-          'message'=>'Vui lòng nhập thông tin chính xác!',
-          'validation'=>$valid
+        $this->_message = array(
+          'type' => 'warning',
+          'message' => 'Vui lòng nhập thông tin chính xác!',
+          'validation' => $valid
         );
       }
       $this->returnJson($this->_message);
@@ -129,25 +140,90 @@ class Profile extends Public_Controller
         }
         $responsive = $this->ion_auth->update($this->_user_login->id, $dataStore);
         if ($responsive === true) {
-          $this->_message=array(
-            'type'=>'success',
-            'message'=>'Cập nhật thành công!',
+          $this->_message = array(
+            'type' => 'success',
+            'message' => 'Cập nhật thành công!',
           );
         } else {
-          $this->_message=array(
-            'type'=>'warning',
-            'message'=>'Cập nhật không thành công!',
+          $this->_message = array(
+            'type' => 'warning',
+            'message' => 'Cập nhật không thành công!',
           );
         }
 
       } else {
-        $this->_message=array(
-          'type'=>'warning',
-          'message'=>'Cập nhật không thành công!',
+        $this->_message = array(
+          'type' => 'warning',
+          'message' => 'Cập nhật không thành công!',
         );
       }
       $this->returnJson($this->_message);
     }
+  }
+
+  private function sb_agency()
+  {
+    if ($this->input->server('REQUEST_METHOD') == 'POST') {
+      $rules = array(
+        array(
+          'field' => 'ac_name',
+          'label' => 'Tên đại lý',
+          'rules' => 'required|trim|min_length[3]|max_length[100]'
+        ),
+        array(
+          'field' => 'ac_address',
+          'label' => 'Địa chỉ đại lý',
+          'rules' => 'required|trim|min_length[3]|max_length[100]'
+        ),
+        array(
+          'field' => 'ac_shipping',
+          'label' => 'Địa chỉ giao hàng',
+          'rules' => 'required|trim|min_length[3]|max_length[100]'
+        )
+      , array(
+          'field' => 'ac_business',
+          'label' => 'Lĩnh vực kinh doanh',
+          'rules' => 'required|trim|min_length[3]|max_length[100]'
+        ),
+        array(
+          'field' => 'ac_hotline',
+          'label' => 'Hotline',
+          'rules' => 'required|trim|min_length[6]|max_length[20]|numeric'
+        )
+      );
+      $this->form_validation->set_rules($rules);
+      if ($this->form_validation->run() == false) {
+        $message['type'] = "warning";
+        $message['message'] = $this->lang->line('mess_validation');
+        $valid = array();
+        if (!empty($rules)) foreach ($rules as $item) {
+          if (!empty(form_error($item['field']))) $valid[$item['field']] = form_error($item['field']);
+        }
+        $this->_message = array(
+          'type' => 'warning',
+          'message' => 'Vui long kiểm tra lại thông tin !',
+          'validation' => $valid,
+        );
+        $this->returnJson($this->_message);
+      } else {
+        $data = $this->input->post();
+        if ($this->_data->update(array('id' => $this->_user_login->id), $data)) {
+          $this->_data->update(array('user_id' => $this->_user_login->id), array('group_id' => 3), $this->_data->table_user_group);
+          $this->_message = array(
+            'type' => 'success',
+            'message' => 'Đăng ký làm đại lý thành công. Chúng tôi sẽ xét duyệt sớm!',
+            'url_redirect' => current_url(),
+          );
+        }else{
+          $this->_message = array(
+            'type' => 'warning',
+            'message' => 'Đăng ký thất bại!',
+          );
+        }
+      }
+      $this->returnJson($this->_message);
+    }
+
   }
 
   public function do_upload()
@@ -185,6 +261,7 @@ class Profile extends Public_Controller
       return false;
     }
   }
+
   private function _validate()
   {
     $rules = array(
@@ -193,16 +270,16 @@ class Profile extends Public_Controller
         'field' => 'phone',
         'label' => 'Số điện thoại',
         'rules' => 'required|trim|min_length[6]|max_length[20]|numeric'
-      ),array(
+      ), array(
         'field' => 'fullname',
         'label' => 'Họ và tên',
         'rules' => 'required|trim|min_length[3]|max_length[50]'
-      ),array(
+      ), array(
         'field' => 'address',
         'label' => 'Địa chỉ',
         'rules' => 'required|trim|min_length[3]|max_length[70]'
       ),
-    array(
+      array(
         'field' => 'agent',
         'label' => 'Tên cửa hàng đại lý',
         'rules' => 'trim|min_length[3]|max_length[255]'
