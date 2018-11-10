@@ -9,37 +9,34 @@
 
                 <!-- Breadcrumbs -->
                 <div class="breadcrumbs">
-                    <ul>
-                        <li class="home"> <a href="index.html" title="Go to Home Page">Home</a> <span>/</span> </li>
-                        <li class="category1599"> <a href="grid.html" title="">Women</a> <span>/ </span> </li>
-                        <li class="category1600"> <a href="grid.html" title="">Styliest Bag</a> <span>/</span> </li>
-                        <li class="category1601"> <strong>Clutch Handbags</strong> </li>
-                    </ul>
+                    <?php echo !empty($breadcrumb) ? $breadcrumb : '' ?>
                 </div>
                 <!-- Breadcrumbs End -->
 
                 <div class="col-sm-12 col-xs-12">
 
-
-
                     <article class="col-main">
                         <div class="product-view">
                             <div class="product-essential">
-                                <form action="#" method="post" id="product_addtocart_form">
+                                <?php echo form_open('',['id' => 'product_addtocart_form']) ?>
                                     <input name="form_key" value="6UbXroakyQlbfQzK" type="hidden">
                                     <div class="product-img-box col-lg-4 col-sm-5 col-xs-12">
-                                        <div class="new-label new-top-left"> New </div>
+                                        <?php echo !empty($oneItem->is_new) ? '<div class="new-label new-top-left"> New </div>' : '' ?>
                                         <div class="product-image">
-                                            <div class="product-full"> <img id="product-zoom" src="<?php echo $this->templates_assets ?>products-images/product1.jpg" data-zoom-image="<?php echo $this->templates_assets ?>products-images/product1.jpg" alt="product-image"/> </div>
+                                            <div class="product-full">
+                                                <img id="product-zoom" src="<?php echo getImageThumb($album[0],370,450) ?>" data-zoom-image="<?php echo getImageThumb($album[0],700,850) ?>" alt="product-image"/>
+                                            </div>
                                             <div class="more-views">
                                                 <div class="slider-items-products">
                                                     <div id="gallery_01" class="product-flexslider hidden-buttons product-img-thumb">
                                                         <div class="slider-items slider-width-col4 block-content">
-                                                            <div class="more-views-items"> <a href="#" data-image="<?php echo $this->templates_assets ?>products-images/product2.jpg" data-zoom-image="<?php echo $this->templates_assets ?>products-images/product2.jpg"> <img id="product-zoom"  src="<?php echo $this->templates_assets ?>products-images/product2.jpg" alt="product-image"/> </a></div>
-                                                            <div class="more-views-items"> <a href="#" data-image="<?php echo $this->templates_assets ?>products-images/product3.jpg" data-zoom-image="<?php echo $this->templates_assets ?>products-images/product3.jpg"> <img id="product-zoom"  src="<?php echo $this->templates_assets ?>products-images/product3.jpg" alt="product-image"/> </a></div>
-                                                            <div class="more-views-items"> <a href="#" data-image="<?php echo $this->templates_assets ?>products-images/product4.jpg" data-zoom-image="<?php echo $this->templates_assets ?>products-images/product4.jpg"> <img id="product-zoom"  src="<?php echo $this->templates_assets ?>products-images/product4.jpg" alt="product-image"/> </a></div>
-                                                            <div class="more-views-items"> <a href="#" data-image="<?php echo $this->templates_assets ?>products-images/product5.jpg" data-zoom-image="<?php echo $this->templates_assets ?>products-images/product5.jpg"> <img id="product-zoom"  src="<?php echo $this->templates_assets ?>products-images/product5.jpg" alt="product-image"/> </a> </div>
-                                                            <div class="more-views-items"> <a href="#" data-image="<?php echo $this->templates_assets ?>products-images/product6.jpg" data-zoom-image="<?php echo $this->templates_assets ?>products-images/product6.jpg"> <img id="product-zoom"  src="<?php echo $this->templates_assets ?>products-images/product6.jpg" alt="product-image" /> </a></div>
+                                                            <?php unset($album[0]); if(!empty($album)) foreach ($album as $item): ?>
+                                                                <div class="more-views-items">
+                                                                    <a href="javascript:;" data-image="<?php echo getImageThumb($item) ?>" data-zoom-image="<?php echo getImageThumb($item) ?>" title="<?php echo getTitle($oneItem) ?>">
+                                                                        <img id="product-zoom"  src="<?php echo getImageThumb($item) ?>" alt="product-image"/>
+                                                                    </a>
+                                                                </div>
+                                                            <?php endforeach ?>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -107,7 +104,7 @@
                                             <li>Member Discount</li>
                                         </ul>
                                     </div>
-                                </form>
+                                <?php echo form_close() ?>
                             </div>
                             <div class="product-collateral">
                                 <div class="add_info">
@@ -409,7 +406,7 @@
                                                 <div class="item">
                                                     <div class="item-inner">
                                                         <div class="item-img">
-                                                            <div class="item-img-info"> <a class="product-image" title="Retis lapen casen" href="product_detail.html"> <img alt="Retis lapen casen" src="<?php echo $this->templates_assets ?>products-images/product2.jpg"> </a>
+                                                            <div class="item-img-info"> <a class="product-image" title="Retis lapen casen" href="product_detail.html"> <img alt="Retis lapen casen" src="<?php echo getImageThumb($item) ?>"> </a>
                                                                 <div class="box-hover">
                                                                     <ul class="add-to-links">
                                                                         <li><a class="link-quickview" href="quick_view.html"></a> </li>

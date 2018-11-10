@@ -110,6 +110,7 @@ $(function() {
                     });
 
                     loadCategory(response.data_category);
+                    FUNC.showGallery('#list-album',response.data_info.album);
                     modal_form.modal('show');
                 },
                 error: function (jqXHR, textStatus, errorThrown)

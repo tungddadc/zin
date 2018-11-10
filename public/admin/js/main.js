@@ -481,7 +481,7 @@ var FUNC = {
     },
     chooseMultipleImage: function(_this){
         let element = $(_this);
-        let count = parseInt(element.closest('.preview').find('.list-album').attr('data-id'));
+        let count = parseInt(element.closest('.preview').find('#list-album').attr('data-id'));
         moxman.browse({
             view: 'thumbs',
             extensions:'jpg,jpeg,png,gif,ico',

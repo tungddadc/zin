@@ -253,9 +253,8 @@ class Product extends Admin_Controller
         $data = $this->input->post();
         if(!empty($data['is_status'])) $data['is_status'] = 1;else $data['is_status'] = 0;
         if(!empty($data['is_featured'])) $data['is_featured'] = 1;else $data['is_featured'] = 0;
-        if(isset($data['album'])) {
+        if(!empty($data['album'])) {
             $data['album'] = json_encode($data['album']);
-            unset($data['album']);
         }
         return $data;
     }
