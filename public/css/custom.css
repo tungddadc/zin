@@ -44,3 +44,27 @@ header .our-features-box li {
     line-height: 1;
     margin-bottom: 10px;
 }
+
+.our-features-box .feature-box{
+    padding: 18px 10px;
+}
+
+.product-view .product-shop .sold{
+    font-size: 85%;
+    font-weight: normal;
+    color: #999999;
+}
+
+.product-view .product-shop .sold strong{
+    font-size: 14px;
+}
+.product-view .product-shop .ratings{
+    padding: 0;
+}
+.email-addto-box{
+    margin: 0;
+}
+
+.jssocials{
+   margin: 10px 0;
+}

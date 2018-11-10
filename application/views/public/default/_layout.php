@@ -71,11 +71,11 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
   <?php $asset_css[] = 'revslider.css'; ?>
   <?php $asset_css[] = 'bootstrap-social.css'; ?>
 
-  <?php //$asset_css[] = 'plugins/jssocials/dist/jssocials.css'; ?>
-  <?php //$asset_css[] = 'plugins/jssocials/dist/jssocials-theme-flat.css'; ?>
+  <?php $asset_css[] = '../plugins/jssocials/jssocials.css'; ?>
+  <?php $asset_css[] = '../plugins/jssocials/jssocials-theme-flat.css'; ?>
 
   <?php $asset_css[] = '../plugins/toastr/toastr.min.css'; ?>
-  <?php //$asset_css[] = 'plugins/select2/dist/select2.min.css'; ?>
+  <?php $asset_css[] = '../plugins/rateit/rateit.css'; ?>
   <?php $asset_css[] = 'custom.css'; ?>
 
   <?php
@@ -183,6 +183,28 @@ switch ($this->_controller){
   </div>
 </div>
 
+
+<div id="popup_newsletter" style="display: none;" class="popup1">
+    <div class="newsletter-sign-box">
+        <div class="newsletter"><a href="javascript:;" title="<?php echo $this->settings['title'] ?>" rel="nofollow"><img src="<?php echo $this->templates_assets ?>images/f-box-close-icon.png" alt="close" class="x" id="x"></a>
+            <?php echo form_open('contact/subscriber',['id' => 'popup-newsletter', 'class' => 'email-form']) ?>
+                <h3>Đăng ký nhận thông tin khuyến mại</h3>
+                <h4>Đăng ký email với chúng tôi để chúng tôi tự động thông báo chương trình khuyến mại một cách nhanh nhất.</h4>
+                <div class="newsletter-form">
+                    <div class="input-box">
+                        <input type="text" class="input-text required-entry validate-email" placeholder="Nhập email của bạn" id="newsletter2" name="email">
+                        <button class="button subscribe" title="Đăng ký" type="submit"><span>Đăng ký</span></button>
+                        <img style="display:none;margin-left:120px;margin-top:10px;" id="loader1" alt="Loading" src="<?php echo $this->templates_assets ?>images/loading.gif">
+                    </div>
+                </div>
+            <?php echo form_close() ?>
+            <label class="subscribe-bottom"><input type="checkbox" id="notshowpopup" name="notshowpopup">Không hiển thị lại cửa sổ này. </label>
+        </div>
+    </div>
+</div>
+<div id="overlay" style="display: none;"></div>
+
+
 <div id="preloader" class="d-none">
   <div id="loader"></div>
 </div>
@@ -196,8 +218,8 @@ switch ($this->_controller){
 <?php $asset_js[] = 'countdown.js'; ?>
 <?php $asset_js[] = 'cloud-zoom.js'; ?>
 <?php $asset_js[] = '../plugins/toastr/toastr.min.js'; ?>
-<?php //$asset_js[] = 'plugins/select2/dist/js/select2.min.js'; ?>
-<?php //$asset_js[] = 'plugins/jssocials/dist/jssocials.min.js'; ?>
+<?php $asset_js[] = '../plugins/rateit/jquery.rateit.min.js'; ?>
+<?php $asset_js[] = '../plugins/jssocials/jssocials.min.js'; ?>
 <?php $asset_js[] = 'jquery.form.min.js'; ?>
 <?php $asset_js[] = 'custom.js'; ?>
 <?php $asset_js[] = 'account.js'; ?>

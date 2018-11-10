@@ -44,7 +44,7 @@
                                         </div>
                                         <!-- end: more-images -->
                                     </div>
-                                    <div class="product-shop col-lg-8 col-sm-7 col-xs-12">
+                                    <div class="product-shop col-lg-5 col-sm-5 col-xs-12">
                                         <div class="product-next-prev">
                                             <?php if(!empty($oneNext)): ?>
                                                 <a class="product-next" href="<?php echo getUrlProduct($oneNext) ?>" title="<?php echo getTitle($oneNext) ?>"><span></span></a>
@@ -60,57 +60,51 @@
                                             <div class="rating-box">
                                                 <div style="width:60%" class="rating"></div>
                                             </div>
-                                            <p class="rating-links"> <a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Your Review</a> </p>
+                                            <p class="rating-links">
+                                                <a href="#">1 lượt phản hồi về sản phẩm này</a>
+                                            </p>
+                                            <div class="email-addto-box">
+                                                <ul class="add-to-links">
+                                                    <li> <a class="link-wishlist" href="javascript:;" title="Yêu thích sản phẩm này" rel="nofollow"><span>Yêu thích sản phẩm này</span></a></li>
+                                                    <li><span class="separator">|</span> <a class="link-compare" href="javascript:;" title="So sánh sản phẩm này" rel="nofollow"><span>So sánh sản phẩm này</span></a></li>
+                                                </ul>
+                                            </div>
                                         </div>
+
                                         <div class="price-block">
                                             <div class="price-box">
-                                                <p class="special-price"> <span class="price-label">Special Price</span> <span id="product-price-48" class="price"> $309.99 </span> </p>
-                                                <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> $315.99 </span> </p>
-                                                <p class="availability in-stock pull-right"><span>In Stock</span></p>
+                                                <p class="special-price"> <span class="price-label">Giá khuyến mại</span> <span id="product-price-48" class="price"> 99.000 đ </span> </p>
+                                                <p class="old-price"> <span class="price-label">Giá gốc:</span> <span class="price"> 130.000 đ </span> </p>
+                                                <p class="availability in-stock pull-right"><span>Còn hàng</span></p>
+                                                <p class="sold">Đã có <strong>0</strong> sản phẩm bán ra trong tháng này</p>
                                             </div>
                                         </div>
                                         <div class="add-to-box">
                                             <div class="add-to-cart">
                                                 <div class="pull-left">
-                                                    <div class="custom pull-left"> <span class="qty-label">QTY:</span>
-                                                        <button onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 0 ) result.value--;return false;" class="reduced items-count" type="button"><i class="fa fa-minus">&nbsp;</i></button>
+                                                    <div class="custom pull-left"> <span class="qty-label">Số lượng:</span>
+                                                        <button onClick="let result = document.getElementById('qty'); let qty = result.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 0 ) result.value--;return false;" class="reduced items-count" type="button"><i class="fa fa-minus">&nbsp;</i></button>
                                                         <input type="text" class="input-text qty" title="Qty" value="1" maxlength="12" id="qty" name="qty">
-                                                        <button onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty )) result.value++;return false;" class="increase items-count" type="button"><i class="fa fa-plus">&nbsp;</i></button>
+                                                        <button onClick="let result = document.getElementById('qty'); let qty = result.value; if( !isNaN( qty )) result.value++;return false;" class="increase items-count" type="button"><i class="fa fa-plus">&nbsp;</i></button>
                                                     </div>
                                                 </div>
-                                                <button onClick="productAddToCartForm.submit(this)" class="button btn-cart" title="Add to Cart" type="button">Add to Cart</button>
+                                                <button class="button btn-cart" title="Thêm vào giỏ hàng" type="submit">Thêm vào giỏ</button>
                                             </div>
 
                                         </div>
                                         <div class="short-description">
-                                            <h2>Quick Overview</h2>
+                                            <h2>Khuyến mãi</h2>
                                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla. Donec a neque libero. </p>
                                         </div>
-                                        <div class="email-addto-box">
-                                            <ul class="add-to-links">
-                                                <li> <a class="link-wishlist" href="wishlist.html"><span>Add to Wishlist</span></a></li>
-                                                <li><span class="separator">|</span> <a class="link-compare" href="compare.html"><span>Add to Compare</span></a></li>
-                                            </ul>
-                                            <p class="email-friend"><a href="#" class=""><span>Email to a Friend</span></a></p>
-                                        </div>
-                                        <div class="social">
-                                            <ul class="link">
-                                                <li class="fb"><a href="#"></a></li>
-                                                <li class="tw"><a href="#"></a></li>
-                                                <li class="googleplus"><a href="#"></a></li>
-                                                <li class="rss"><a href="#"></a></li>
-                                                <li class="pintrest"><a href="#"></a></li>
-                                                <li class="linkedin"><a href="#"></a></li>
-                                                <li class="youtube"><a href="#"></a></li>
-                                            </ul>
-                                        </div>
-
-                                        <ul class="shipping-pro">
-                                            <li>Free Wordwide Shipping</li>
-                                            <li>30 days return</li>
-                                            <li>Member Discount</li>
-                                        </ul>
+                                        <div id="social-share"></div>
                                     </div>
+                                <div class="product-buy col-lg-3 col-sm-2 col-xs-12">
+                                    <div>
+                                        <h3>Hãng: Apple</h3>
+                                        <h3>Mã sản phẩm: ZIN111</h3>
+                                    </div>
+                                    <?php $this->load->view($this->template_path . 'product/_box_features') ?>
+                                </div>
                                 <?php echo form_close() ?>
                             </div>
                             <div class="product-collateral">
@@ -156,44 +150,7 @@
                                                             <fieldset>
                                                                 <h4>How do you rate this product? <em class="required">*</em></h4>
                                                                 <span id="input-message-box"></span>
-                                                                <table id="product-review-table" class="data-table">
-                                                                    <thead>
-                                                                    <tr class="first last">
-                                                                        <th>&nbsp;</th>
-                                                                        <th><span class="nobr">1 *</span></th>
-                                                                        <th><span class="nobr">2 *</span></th>
-                                                                        <th><span class="nobr">3 *</span></th>
-                                                                        <th><span class="nobr">4 *</span></th>
-                                                                        <th><span class="nobr">5 *</span></th>
-                                                                    </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                    <tr class="first odd">
-                                                                        <th>Price</th>
-                                                                        <td class="value"><input type="radio" class="radio" value="11" id="Price_1" name="ratings[3]"></td>
-                                                                        <td class="value"><input type="radio" class="radio" value="12" id="Price_2" name="ratings[3]"></td>
-                                                                        <td class="value"><input type="radio" class="radio" value="13" id="Price_3" name="ratings[3]"></td>
-                                                                        <td class="value"><input type="radio" class="radio" value="14" id="Price_4" name="ratings[3]"></td>
-                                                                        <td class="value last"><input type="radio" class="radio" value="15" id="Price_5" name="ratings[3]"></td>
-                                                                    </tr>
-                                                                    <tr class="even">
-                                                                        <th>Value</th>
-                                                                        <td class="value"><input type="radio" class="radio" value="6" id="Value_1" name="ratings[2]"></td>
-                                                                        <td class="value"><input type="radio" class="radio" value="7" id="Value_2" name="ratings[2]"></td>
-                                                                        <td class="value"><input type="radio" class="radio" value="8" id="Value_3" name="ratings[2]"></td>
-                                                                        <td class="value"><input type="radio" class="radio" value="9" id="Value_4" name="ratings[2]"></td>
-                                                                        <td class="value last"><input type="radio" class="radio" value="10" id="Value_5" name="ratings[2]"></td>
-                                                                    </tr>
-                                                                    <tr class="last odd">
-                                                                        <th>Quality</th>
-                                                                        <td class="value"><input type="radio" class="radio" value="1" id="Quality_1" name="ratings[1]"></td>
-                                                                        <td class="value"><input type="radio" class="radio" value="2" id="Quality_2" name="ratings[1]"></td>
-                                                                        <td class="value"><input type="radio" class="radio" value="3" id="Quality_3" name="ratings[1]"></td>
-                                                                        <td class="value"><input type="radio" class="radio" value="4" id="Quality_4" name="ratings[1]"></td>
-                                                                        <td class="value last"><input type="radio" class="radio" value="5" id="Quality_5" name="ratings[1]"></td>
-                                                                    </tr>
-                                                                    </tbody>
-                                                                </table>
+                                                                <div class="rateit" data-id="<?php echo $oneItem->id ?>" data-rateit-value="<?php echo !empty($vote->avg) ? $vote->avg : 0 ?>" data-rateit-starwidth="16" data-rateit-starheight="16" data-rateit-min="0" data-rateit-max="10"></div>
                                                                 <input type="hidden" value="" class="validate-rating" name="validate_rating">
                                                                 <div class="review1">
                                                                     <ul class="form-list">

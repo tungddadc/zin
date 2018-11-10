@@ -8471,17 +8471,19 @@ ol#compare-items li.last {
 
 .product-view .short-description {
     font-size: 13px;
-    padding: 18px 0px 15px;
-    border-bottom: 1px #ddd dotted
+    padding: 10px;
+    border: 1px #eb2771 dotted;
+    text-align: justify;
 }
 
 .product-view .short-description h2 {
     font-size: 15px;
-    color: #333;
+    color: #eb2771;
     margin: 0px;
     margin-bottom: 10px;
     font-weight: 600;
     letter-spacing: 0.5px;
+    text-align: center;
 }
 
 .product-view .short-description p {
@@ -8499,7 +8501,6 @@ ol#compare-items li.last {
     overflow: hidden;
     text-align: left;
     margin: 1px 0 0 0;
-    border-bottom: 1px dotted #ddd;
     margin-bottom: 0px;
 }
 
@@ -12277,7 +12278,6 @@ a.button.wishlist {
     display: block;
     margin-left: 0px;
     margin-right: 0px;
-
     margin-top: 0;
     padding: 15px 12px;
     width: 100%;
@@ -12286,7 +12286,7 @@ a.button.wishlist {
     background: #fff;
     color: #666;
     border-radius: 0px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .newsletter-sign-box .subscribe {
@@ -12319,7 +12319,6 @@ a.button.wishlist {
     color: #999;
     font-size: 12px;
     line-height: 3px !important;
-    margin-top: 5px;
     text-align: left;
     display: block;
     font-weight: normal;
