@@ -119,8 +119,7 @@ class Product extends Public_Controller
 
     }
 
-    public function detail($id)
-    {
+    public function detail($id){
         $oneItem = $this->_data->getById($id,'', $this->_lang_code);
         if (empty($oneItem)) redirect('404');
         $this->flushView($id,$oneItem->viewed);

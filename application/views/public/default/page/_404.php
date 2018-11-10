@@ -6,25 +6,22 @@
  * Time: 4:19 CH
  */
 ?>
-<main>
-    <section class="page-contact">
-        <div class="container">
-            <div class="error-page">
-                <h2 class="headline text-yellow"> 404</h2>
-
-                <div class="error-content">
-                    <h3><i class="fa fa-warning text-yellow"></i> Oops! Page not found.</h3>
-
-                    <p>
-                        We could not find the page you were looking for.
-                        Meanwhile, you may <a href="<?php echo base_url() ?>">return to homepage</a>.
-                    </p>
-
-                </div>
-                <!-- /.error-content -->
+<section class="main-container col1-layout">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-xs-12">
+                <article class="col-main">
+                    <div class="content-wrapper">
+                        <div class="std">
+                            <div class="page-not-found">
+                                <h2>404</h2>
+                                <h3><img src="<?php echo $this->templates_assets ?>images/signal.png">Oops! The Page you requested was not found!</h3>
+                                <div><a href="<?php echo base_url() ?>" title="Trang chủ" class="btn-home"><span>Quay lại trang chủ</span></a></div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
             </div>
-            <!-- /.error-page -->
         </div>
-
-    </section>
-</main>
+    </div>
+</section>

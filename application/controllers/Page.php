@@ -21,6 +21,7 @@ class Page extends Public_Controller
     }
     public function _404(){
         $this->output->set_status_header('404');
-        $this->load->view($this->template_path . '_404');
+        $data['main_content'] = $this->load->view($this->template_path . 'page/_404', [], TRUE);
+        $this->load->view($this->template_main, $data);
     }
 }
