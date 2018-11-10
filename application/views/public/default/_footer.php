@@ -13,13 +13,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
             <div class="row">
                 <div class="col-xs-12">
                     <div class="newsletter">
-                        <form>
+                        <?php echo form_open('contact/subscriber') ?>
                             <div>
                                 <h4><span>newsletter</span></h4>
-                                <input name="email" title="Sign up for our newsletter" class="input-text" id="newsletter1" type="text" placeholder="Enter your email address">
-                                <button title="Subscribe" class="subscribe" type="submit"><span>Subscribe</span></button>
+                                <input name="email" title="Đăng ký để nhận tin khuyến mại" class="input-text" id="newsletter1" type="text" placeholder="Nhập email của bạn vào đây">
+                                <button class="subscribe" type="submit"><span>Đăng ký</span></button>
                             </div>
-                        </form>
+                        <?php echo form_close() ?>
                     </div>
                 </div>
             </div>

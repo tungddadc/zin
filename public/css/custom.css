@@ -68,3 +68,10 @@ header .our-features-box li {
 .jssocials{
    margin: 10px 0;
 }
+.newsletter .text-danger{
+    margin: auto;
+    text-align: center;
+    position: absolute;
+    right: 355px;
+    top: 10px;
+}

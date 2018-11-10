@@ -112,14 +112,14 @@ var
         if (typeof response.type !== 'undefined') {
             toastr[response.type](response.message);
             if (response.type === "warning") {
-                $form.find('.form-group').removeClass('has-danger');
-                $form.find('.form-control-feedback').remove();
+                $form.find('.form-group').removeClass('has-warning');
+                $form.find('.text-danger').remove();
                 $.each(response.validation, function (key, val) {
-                    $form.find('[name="' + key + '"]').after(val).parent().addClass('has-danger');
+                    $form.find('[name="' + key + '"]').after(val).parent().addClass('has-warning');
                 });
             } else {
-                $form.find('.form-group').removeClass('has-danger');
-                $form.find('.form-control-feedback').remove();
+                $form.find('.form-group').removeClass('has-warning');
+                $form.find('.text-danger').remove();
                 //$form.reset();
                 setTimeout(function () {
                     if (response.url_redirect) location.href = response.url_redirect;
