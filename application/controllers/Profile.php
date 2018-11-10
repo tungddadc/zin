@@ -201,7 +201,7 @@ class Profile extends Public_Controller
         }
         $this->_message = array(
           'type' => 'warning',
-          'message' => 'Vui long kiểm tra lại thông tin !',
+          'message' => 'Vui lòng kiểm tra lại thông tin !',
           'validation' => $valid,
         );
         $this->returnJson($this->_message);
@@ -300,7 +300,7 @@ class Profile extends Public_Controller
       }
       $this->_message = array(
         'type' => 'warning',
-        'message' => 'Vui long kiểm tra lại thông tin !',
+        'message' => 'Vui lòng kiểm tra lại thông tin !',
         'validation' => $valid,
       );
       $this->returnJson($this->_message);

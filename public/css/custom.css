@@ -34,7 +34,7 @@ header .our-features-box li {
 .btn-social>:first-child{
     font-size: 1.2em;
 }
-.has-danger .form-control-feedback {
+.has-warning .text-danger {
     color: #f4516c;
     display: block;
     position: relative;
