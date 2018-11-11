@@ -12,6 +12,7 @@
                             <ul class="add-to-links">
                                 <li><a class="link-quickview" href="javascript:;" rel="nofollow" title="Xem Quickview"></a> </li>
                                 <li><a class="link-wishlist" href="javascript:;" rel="nofollow" title="Yêu thích sản phẩm này"></a> </li>
+                                <li><a class="link-compare" href="javascript:;" rel="nofollow" title="So sánh sản phẩm này"></a> </li>
                             </ul>
                         </div>
                     </div>

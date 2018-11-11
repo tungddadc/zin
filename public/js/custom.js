@@ -1,7 +1,14 @@
 jQuery(document).ready(function () {
 
-    $('a[href*="#"]').click(function () {
-
+    $('a[href*="#"]').click(function (e) {
+        e.preventDefault();
+        let tabClick = $(this).attr('href');
+        $(this).tab('show');
+        setTimeout(function () {
+            $('html, body').animate({
+                scrollTop: $(tabClick).offset().top - 80
+            }, 1000);
+        },500);
     });
 
     if (localStorage.getItem('show_popup_subscriber') !== 'hide') {
@@ -79,22 +86,9 @@ jQuery(document).ready(function () {
 
     $('.rateit').bind('rated', function (e) {
         e.preventDefault();
-        var ri = $(this);
-        var value = ri.rateit('value');
-        var postID = ri.data('id');
-        console.log('Bạn đã đánh giá ' + value + ' sao cho sản phẩm có id là:' + postID);
-        $.ajax({
-            type: 'POST',
-            url: base_url + 'news/ajax_vote',
-            data: {vote: value, id: postID},
-            dataType: "json",
-            success: function (response) {
-                if (typeof response.type !== 'undefined') {
-                    toastr[response.type](response.message);
-                }
-                if (response.type === 'success') ri.rateit('readonly', true);
-            }
-        });
+        let ri = $(this);
+        let value = ri.rateit('value');
+        ri.closest('form').find('[name="vote"]').val(value);
     });
 });
 var ajaxShowRequest = function (formData, jqForm, options) {

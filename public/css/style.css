@@ -113,7 +113,7 @@ body {
     margin: auto;
     line-height: 1.55;
     margin: auto;
-    font-family: "Poppins", sans-serif;
+    font-family: "Nunito Sans", sans-serif;
 }
 
 h2, .h2 {
@@ -141,7 +141,7 @@ a:hover {
 small {
     font-size: 85%;
     font-weight: normal;
-    text-transform: lowercase;
+    text-transform: capitalize;
     color: #999999;
 }
 
@@ -151,15 +151,15 @@ input[type=checkbox], input[type=radio] {
 
 /* Fonts Style */
 .top-cart-contain .price, .product-view .product-shop .price, .top-cart-content .product-details, .add-to-cart .qty, .regular-price .price, .price, #limiter, .pages .pagination, .col-left .block-cart .block-content ul li .product-details strong, .timer-grid, .small-tag, .accordion-faq .panel-heading a, .mgk-wishlist {
-    font-family: "Poppins", sans-serif;
+    font-family: "Nunito Sans", sans-serif;
 }
 
 .top-cart-content .product-name a, .products-list .actions .add-to-links a.link-wishlist span, .products-list .product-shop button.button span, .products-list .actions .add-to-links a.link-compare span, .bottom-banner-img1.last h3, .bottom-banner-img1 h3, .one-page-checkout .active .step-title h3, .page-not-found .btn-home span {
-    font-family: "Poppins", sans-serif;
+    font-family: "Nunito Sans", sans-serif;
 }
 
 .mgk-wishlist .wishlist_count, .cart-collaterals h3 {
-    font-family: "Poppins", sans-serif;
+    font-family: "Nunito Sans", sans-serif;
 }
 
 /* Fonts Style End*/
@@ -269,7 +269,7 @@ button.button {
     text-transform: uppercase;
     border: 1px #e5e5e5 solid;
     border-radius: 3px;
-    font-family: "Poppins", sans-serif;
+    font-family: "Nunito Sans", sans-serif;
 }
 
 button.button:hover {
@@ -341,7 +341,7 @@ a.button:hover {
     text-transform: uppercase;
     border: 1px #e5e5e5 solid;
     line-height: 13px;
-    font-family: "Poppins", sans-serif;
+    font-family: "Nunito Sans", sans-serif;
     transition: color 300ms ease-in-out 0s, background-color 300ms ease-in-out 0s, background-position 300ms ease-in-out 0s;
     border-radius: 0px;
     text-shadow: none;
@@ -763,7 +763,7 @@ div.effect-sadie1 + div.effect-sadie1 {
     display: inline-block;
     padding: 0px;
     color: #bce9fd;
-    font-size: 12px;
+    font-size: 13px;
     padding-left: 13px;
     /*	font-weight: normal;  */
     text-decoration: none;
@@ -922,7 +922,7 @@ div.effect-sadie1 + div.effect-sadie1 {
 }
 
 .glyphicon-search:before {
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .cart-top .dropdown-menu {
@@ -1035,13 +1035,10 @@ div.effect-sadie1 + div.effect-sadie1 {
 .welcome-msg {
     text-align: left;
     display: inline-block;
-    padding: 0px;
-    margin: 0px 5px;
-    font-size: 12px;
+    padding: 7px 10px;
+    font-size: 13px;
     color: #bce9fd;
     vertical-align: top;
-    margin-top: 10px;
-    margin-right: 0px;
 
     font-weight: 300;
     letter-spacing: 0.5px;
@@ -1063,7 +1060,7 @@ div.effect-sadie1 + div.effect-sadie1 {
     box-shadow: none;
     border: none;
     color: #bce9fd;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 300;
     letter-spacing: 0.5px;
 }
@@ -1129,7 +1126,7 @@ a.block-language:focus {
     box-shadow: none;
     border: none;
     color: #bce9fd;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 300;
     letter-spacing: 0.5px;
 }
@@ -1283,14 +1280,14 @@ ul.currencies_list li a:hover {
 }
 
 .top-cart-content .product-name a {
-    font-size: 12px;
+    font-size: 13px;
     line-height: normal;
     font-weight: 300;
     letter-spacing: 0.5px;
 }
 
 .top-cart-content .product-name a:hover {
-    font-size: 12px;
+    font-size: 13px;
     color: #0083c1
 }
 
@@ -1299,7 +1296,7 @@ ul.currencies_list li a:hover {
     font-weight: 600;
     font-size: 14px;
     padding-top: 8px;
-    font-family: "Poppins", sans-serif;
+    font-family: "Nunito Sans", sans-serif;
     display: block;
 }
 
@@ -1307,7 +1304,7 @@ ul.currencies_list li a:hover {
     color: #333;
     font-weight: 600;
     text-transform: uppercase;
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .mini-cart {
@@ -1320,7 +1317,7 @@ ul.currencies_list li a:hover {
     color: #333;
     margin: 0px;
     line-height: 17px;
-    font-size: 12px;
+    font-size: 13px;
     letter-spacing: 0.5px;
     font-weight: 700;
     padding: 0px;
@@ -1349,13 +1346,13 @@ ul.currencies_list li a:hover {
 .mini-cart .basket a span.cart_count {
     display: block;
     color: #eb2771;
-    font-size: 12px;
+    font-size: 13px;
     text-align: left;
     margin-left: 5px;
     padding-left: 0px;
     font-weight: normal;
     text-transform: none;
-    font-family: "Poppins", sans-serif;
+    font-family: "Nunito Sans", sans-serif;
 }
 
 .mini-cart .basket a div.price {
@@ -1415,7 +1412,7 @@ ul.currencies_list li a:hover {
 
 .mgk-wishlist .title-wishlist {
     color: #fff;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -1458,7 +1455,7 @@ ul.currencies_list li a:hover {
     box-shadow: 0 0 15px -7px #666;
     width: 330px;
     border-radius: 0px;
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .table > tbody > tr:first-child td {
@@ -1640,7 +1637,7 @@ ul#cart-sidebar {
 .mini-cart .actions .btn-checkout {
     background: #fdd922;
     color: #333;
-    font-size: 12px;
+    font-size: 13px;
     text-transform: uppercase;
     font-weight: 700;
     padding: 10px 0px 8px;
@@ -1663,14 +1660,14 @@ ul#cart-sidebar {
 .mini-cart .actions .btn-checkout:before {
     content: "\f00c";
     font-family: FontAwesome;
-    font-size: 12px;
+    font-size: 13px;
     padding-right: 7px;
 }
 
 .mini-cart .view-cart {
     cursor: pointer;
     float: none;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 700;
     padding: 10px 0px 8px;
     text-decoration: none;
@@ -1694,7 +1691,7 @@ ul#cart-sidebar {
 .mini-cart .view-cart:before {
     content: '\f07a';
     font-family: FontAwesome;
-    font-size: 12px;
+    font-size: 13px;
     padding-right: 7px;
 }
 
@@ -1777,7 +1774,7 @@ nav {
 }
 
 /*.nav-icon {    color: #333;
-    font-family: "Poppins", sans-serif;
+    font-family: "Nunito Sans", sans-serif;
     text-transform: uppercase;
     font-size: 14px;
 
@@ -1791,7 +1788,7 @@ nav {
 .nav-icon a{ color:#333;}*/
 
 .mega-menu-title h3 {
-    font-family: "Poppins", sans-serif;
+    font-family: "Nunito Sans", sans-serif;
     text-transform: uppercase;
     font-size: 14px;
     font-weight: normal;
@@ -1817,7 +1814,7 @@ nav {
     font-weight: 300;
     padding: 15px 20px 11px;
     text-transform: uppercase;
-    font-size: 12px;
+    font-size: 13px;
     letter-spacing: 1px;
     border-bottom: 1px #eaeaea solid;
 }
@@ -1843,7 +1840,7 @@ nav {
     content: "\f105";
     font-family: FontAwesome;
     display: inline-block;
-    font-size: 12px;
+    font-size: 13px;
     position: absolute;
     right: 15px;
     top: 11px;
@@ -2063,7 +2060,7 @@ nav {
     text-align: center;
     background-color: #085170;
     color: #fff;
-    font-size: 12px;
+    font-size: 13px;
     letter-spacing: 0.5px;
 }
 
@@ -2221,7 +2218,7 @@ nav {
 }
 
 .our-features-box .feature-box h3 {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 300;
     margin-bottom: 0px;
     margin-top: 0px;
@@ -2234,7 +2231,7 @@ nav {
     text-align: left;
     text-transform: none;
     color: #999;
-    font-size: 12px;
+    font-size: 13px;
     letter-spacing: 0.5px
 }
 
@@ -2309,7 +2306,7 @@ nav {
 }
 
 .our-features-box .feature-box h3 {
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 600;
     letter-spacing: 1px;
     margin-bottom: 3px;
@@ -2321,7 +2318,7 @@ nav {
 .our-features-box .feature-box .content p {
     margin: 0px;
     color: #999;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 300;
     letter-spacing: 0.5px;
 }
@@ -2413,7 +2410,7 @@ nav {
     display: inline-block;
     margin-top: 10px;
     font-weight: 600;
-    font-size: 12px;
+    font-size: 13px;
     text-transform: uppercase;
     padding: 9px 14px 6px;
     background-color: #fdd922;
@@ -2544,7 +2541,7 @@ nav {
     background-color: #000;
     text-align: center;
     display: inline-block;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: bold;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -3555,7 +3552,7 @@ nav {
     width: auto;
     color: #FFF;
     padding: 2px 10px;
-    font-size: 12px;
+    font-size: 13px;
     -webkit-border-radius: 30px;
     -moz-border-radius: 30px;
     border-radius: 30px;
@@ -3764,7 +3761,7 @@ nav {
 }
 
 .home-block-inner .banner-content p {
-    font-size: 12px;
+    font-size: 13px;
     color: #fff;
     font-weight: normal;
     letter-spacing: 3px;
@@ -4068,7 +4065,7 @@ nav {
 .featured-pro .block-title {
     border-bottom: 1px solid #e5e5e5;
     color: #fff;
-    font-family: "Poppins", sans-serif;
+    font-family: "Nunito Sans", sans-serif;
     font-size: 26px;
     font-weight: 600;
     line-height: 28px;
@@ -4477,7 +4474,7 @@ nav {
 
 .category-product .navbar-nav > li > a {
     /*	color: #333;
-	font-size: 12px;
+	font-size: 13px;
 	letter-spacing: 1px;
 	padding: 7px 18px 5px 18px;
 	margin-top: 0px;
@@ -4491,11 +4488,11 @@ nav {
 	vertical-align:middle */
 
     color: #777;
-    font-size: 12px;
+    font-size: 13px;
     letter-spacing: 1px;
     padding: 8px 15px 5px 15px;
     margin-top: 0px;
-    font-family: "Poppins", "Helvetica", "Arial", "sans-serif";
+    font-family: "Nunito Sans", "Helvetica", "Arial", "sans-serif";
     text-transform: uppercase;
     font-weight: normal;
     background: #f2f2f2;
@@ -4568,7 +4565,7 @@ nav {
     margin: 0;
     background: none;
     font-weight: 700;
-    font-family: "Poppins", sans-serif;
+    font-family: "Nunito Sans", sans-serif;
     letter-spacing: 1px;
 }
 
@@ -4788,7 +4785,7 @@ nav {
     display: inline-block;
     padding: 8px 0px;
     text-transform: uppercase;
-    font-size: 12px;
+    font-size: 13px;
     letter-spacing: 5px;
     font-weight: normal;
 }
@@ -5040,7 +5037,7 @@ ul.products-grid {
     display: inline-block;
     padding: 8px 10px;
     height: 33px;
-    font-family: "Poppins", sans-serif;
+    font-family: "Nunito Sans", sans-serif;
     border-radius: 2px;
     top: 0px;
 }
@@ -5560,7 +5557,7 @@ li .list {
 }
 
 .add-to-links span {
-    font-size: 12px;
+    font-size: 13px;
     margin-left: 8px;
     /*	text-transform: uppercase;  */
 }
@@ -5600,7 +5597,7 @@ li .list {
 }
 
 .products-list .product-shop .btn-cart span {
-    font-size: 12px;
+    font-size: 13px;
     font-weight: normal;
     text-transform: uppercase;
 }
@@ -5713,7 +5710,7 @@ ul.products-grid {
 }
 
 a.button.detail-bnt span {
-    font-size: 12px;
+    font-size: 13px;
     text-transform: uppercase;
     padding: 0 2px;
     font-weight: 700;
@@ -5782,7 +5779,7 @@ a.button.detail-bnt span {
 }
 
 .product-view .rating-box {
-    width: 60px;
+    width: 120px;
     height: 10px;
     font-size: 0;
     line-height: 0;
@@ -5933,7 +5930,7 @@ a.button.detail-bnt span {
     display: inline;
     font-weight: bold;
     font-size: 13px;
-    font-family: "Poppins", sans-serif;
+    font-family: "Nunito Sans", sans-serif;
 }
 
 .special-price .price-label {
@@ -6057,14 +6054,14 @@ a.button.detail-bnt span {
     top: 10%;
     font-weight: normal;
     text-align: left;
-    font-size: 12px;
+    font-size: 13px;
     color: #999;
     margin-left: 0px;
     padding: 5px 0px;
 }
 
 .latest-blog .readmore {
-    font-size: 12px;
+    font-size: 13px;
     display: inline-block;
     padding: 5px 10px;
     border: 1px #d1d1d1 solid;
@@ -6248,7 +6245,7 @@ a.button.detail-bnt span {
     text-transform: none;
     font-weight: 300;
     letter-spacing: 0.5px;
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .fa {
@@ -6305,7 +6302,7 @@ a.button.detail-bnt span {
 }
 
 .blog-preview_title a {
-    font-family: "Poppins", sans-serif;
+    font-family: "Nunito Sans", sans-serif;
     font-size: 16px;
     font-weight: 600;
     letter-spacing: 0.5px;
@@ -6317,7 +6314,7 @@ a.button.detail-bnt span {
 
 .blog-preview_desc {
     color: #333;
-    font-size: 12px;
+    font-size: 13px;
     line-height: 20px;
     padding-bottom: 15px;
     letter-spacing: 0.5px;
@@ -6329,7 +6326,7 @@ a.button.detail-bnt span {
     padding: 8px 15px 8px;
     font-weight: 700;
     letter-spacing: 1px;
-    font-family: "Poppins", sans-serif;
+    font-family: "Nunito Sans", sans-serif;
     display: inline-block;
     background: #fff;
     color: #333;
@@ -6374,7 +6371,7 @@ a.button.detail-bnt span {
 
 .blog-preview_comments {
     float: right;
-    font-size: 12px;
+    font-size: 13px;
     padding-top: 3px;
     text-align: center;
 }
@@ -6567,7 +6564,7 @@ a.button.detail-bnt span {
 .breadcrumbs {
     padding: 0px 0px 12px;
     margin: 0px auto 5px;
-    font-size: 12px;
+    font-size: 13px;
     color: #333;
     text-align: right;
     z-index: 10;
@@ -6713,7 +6710,7 @@ figure.effect p {
 .button-checkout:before {
     content: "\f00c";
     font-family: FontAwesome;
-    font-size: 12px;
+    font-size: 13px;
     padding-right: 5px;
     font-weight: normal;
 }
@@ -6721,7 +6718,7 @@ figure.effect p {
 .button-compare:before {
     content: "\f012";
     font-family: FontAwesome;
-    font-size: 12px;
+    font-size: 13px;
     padding-right: 5px;
     font-weight: normal;
 }
@@ -6729,7 +6726,7 @@ figure.effect p {
 .button-clear:before {
     content: "\f12d";
     font-family: FontAwesome;
-    font-size: 12px;
+    font-size: 13px;
     padding-right: 5px;
     font-weight: normal;
 }
@@ -6737,7 +6734,7 @@ figure.effect p {
 .button-subscribe:before {
     content: "\f0e0";
     font-family: FontAwesome;
-    font-size: 12px;
+    font-size: 13px;
     padding-right: 5px;
     font-weight: normal;
 }
@@ -6745,7 +6742,7 @@ figure.effect p {
 .button-vote:before {
     content: "\f164";
     font-family: FontAwesome;
-    font-size: 12px;
+    font-size: 13px;
     padding-right: 5px;
     font-weight: normal;
 }
@@ -6990,7 +6987,7 @@ ul#magicat li .open-close, .block-layered-nav dt .toggleBtn {
     color: #333;
     text-transform: uppercase;
     display: block;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 700;
     letter-spacing: 1px;
 }
@@ -7022,7 +7019,7 @@ ul#magicat li .open-close, .block-layered-nav dt .toggleBtn {
     color: #0083c1;
     font-weight: 700;
     margin-bottom: 0;
-    font-size: 12px;
+    font-size: 13px;
     letter-spacing: 1px;
 }
 
@@ -7037,7 +7034,7 @@ ul#magicat li .open-close, .block-layered-nav dt .toggleBtn {
 
 .box-category > ul > li ul > li > a {
     border-bottom: 0 solid #EAEAEA;
-    font-size: 12px;
+    font-size: 13px;
     margin: 0;
     padding: 3px 16px;
     text-decoration: none;
@@ -7090,7 +7087,7 @@ ul#magicat li .open-close, .block-layered-nav dt .toggleBtn {
 }
 
 .sidebar .block dt {
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 600;
     color: #333;
     padding: 10px 0;
@@ -7142,7 +7139,7 @@ ul#magicat li .open-close, .block-layered-nav dt .toggleBtn {
     color: #222;
     /*	font-weight: 300;
     letter-spacing: 1px;  */
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .sidebar .block-layered-nav .price {
@@ -7152,12 +7149,12 @@ ul#magicat li .open-close, .block-layered-nav dt .toggleBtn {
 .sidebar .link-cart, .sidebar .link-reorder, .block .actions a {
     color: #CA0000;
     font-weight: bold;
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .sidebar .link-compare, .sidebar .link-wishlist {
     color: #aaa;
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .block-tags .actions a.view-all {
@@ -7451,13 +7448,13 @@ ul#magicat li .open-close, .block-layered-nav dt .toggleBtn {
 
 .col-left .block-cart .block-content ul li .product-name {
     margin: 0 0 2px;
-    font-size: 12px;
+    font-size: 13px;
     line-height: 17px;
     margin-top: 5px;
 }
 
 .col-left .block-cart .block-content ul li .product-name a {
-    font-size: 12px;
+    font-size: 13px;
     letter-spacing: 1px;
     font-weight: 300;
 }
@@ -7639,7 +7636,7 @@ ul#magicat li .open-close, .block-layered-nav dt .toggleBtn {
 }
 
 ol#compare-items li a.product-name {
-    font-size: 12px;
+    font-size: 13px;
     padding: 0px;
     margin: 0;
     font-weight: normal;
@@ -7762,7 +7759,7 @@ ol#compare-items li.last {
 
 #recently-viewed-items .product-name a {
     color: #222;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 300;
     text-decoration: none;
     padding: 0 0px;
@@ -7771,7 +7768,7 @@ ol#compare-items li.last {
 
 #recently-viewed-items .product-name a:hover {
     color: #000;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 300;
     text-decoration: none;
 }
@@ -7856,7 +7853,7 @@ ol#compare-items li.last {
     /*	overflow: hidden;  */
     text-overflow: ellipsis;
     white-space: nowrap;
-    font-size: 12px;
+    font-size: 13px;
     color: #222;
     font-weight: 300;
     letter-spacing: 1px;
@@ -8085,7 +8082,7 @@ ol#compare-items li.last {
     font-size: 32px;
     color: #fff;
     text-shadow: none;
-    font-family: "Poppins", sans-serif;
+    font-family: "Nunito Sans", sans-serif;
 }
 
 .hot-banner {
@@ -8162,7 +8159,7 @@ ol#compare-items li.last {
     margin-top: 20px;
     color: #fff;
     font-weight: bold;
-    font-size: 12px;
+    font-size: 13px;
     text-transform: uppercase;
     padding: 5px 10px
 }
@@ -8460,7 +8457,7 @@ ol#compare-items li.last {
 }
 
 .product-view .product-name h1 {
-    font-size: 32px;
+    font-size: 24px;
     margin: 0px;
     text-align: left;
     padding-bottom: 10px;
@@ -8565,7 +8562,7 @@ ol#compare-items li.last {
 }
 
 .product-view .email-friend {
-    font-size: 12px;
+    font-size: 13px;
     display: inline-block;
     margin-bottom: 0px;
     vertical-align: top;
@@ -8713,7 +8710,7 @@ ol#compare-items li.last {
 
 .availability.out-of-stock span {
     color: red;
-    font-size: 12px;
+    font-size: 13px;
     line-height: 16px;
     display: block;
     text-transform: uppercase;
@@ -8724,7 +8721,7 @@ ol#compare-items li.last {
     font-family: FontAwesome;
     display: inline-block;
     margin-right: 5px;
-    font-size: 12px;
+    font-size: 13px;
     vertical-align: middle
 }
 
@@ -8839,7 +8836,7 @@ ol#compare-items li.last {
 
 .custom button.items-count {
     transition: color 300ms ease-in-out 0s, background-color 300ms ease-in-out 0s, background-position 300ms ease-in-out 0s;
-    font-size: 12px;
+    font-size: 13px;
     line-height: 0px;
     padding: 13px 12px 9px 12px;
     height: 40px;
@@ -8934,7 +8931,7 @@ ol#compare-items li.last {
     color: #333;
     margin-right: 0px;
     text-decoration: none;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 400;
     transition: color 300ms ease-in-out 0s, background-color 300ms ease-in-out 0s, background-position 300ms ease-in-out 0s;
     padding: 0px;
@@ -8980,7 +8977,7 @@ ol#compare-items li.last {
     background-color: inherit;
     padding: 5px 0px 20px 0px;
     overflow: hidden;
-    font-size: 12px;
+    font-size: 13px;
     line-height: 20px;
     margin-top: 0px;
     letter-spacing: 0.5px;
@@ -9210,7 +9207,7 @@ a.button.view-all {
     display: inline-block;
     border: 0;
     background: #fff;
-    font-size: 12px;
+    font-size: 13px;
     text-align: center;
     white-space: nowrap;
     color: #333;
@@ -9246,13 +9243,13 @@ a.button.view-all {
 }
 
 .box-reviews textarea {
-    width: 95%;
+    width: 100%;
     margin-top: 4px;
     height: 8em;
 }
 
 .box-reviews .form-list input.input-text {
-    width: 80%;
+    width: 100%;
     padding: 10px;
     margin-bottom: 4px;
     line-height: 20px;
@@ -9261,7 +9258,7 @@ a.button.view-all {
 }
 
 .box-reviews .form-list input.input-text:focus {
-    width: 80%;
+    width: 100%;
     padding: 10px;
     margin-bottom: 4px;
     line-height: 20px;
@@ -9279,7 +9276,7 @@ a.button.view-all {
 
 .review1 {
     display: inline-block;
-    width: 45%;
+    width: 100%;
     float: left;
 }
 
@@ -9296,7 +9293,7 @@ a.button.view-all {
 
 #product-review-table th, #product-review-table td {
     text-align: left;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 700;
     line-height: 20px;
     padding: 8px;
@@ -9332,7 +9329,7 @@ label {
 }
 
 .box-reviews .form-list input.input-text {
-    width: 80%;
+    width: 100%;
     padding: 10px;
     margin-bottom: 4px;
     line-height: 20px;
@@ -9557,11 +9554,11 @@ button.button.submit:before {
 }
 
 #product-options-wrapper .price-notice .price {
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .product-view .product-shop .product-pricing .price {
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .product-view .product-shop ul.product-pricing {
@@ -9945,7 +9942,7 @@ a.shop-now-btn {
     color: #333;
     cursor: pointer;
     font-weight: bold;
-    font-size: 12px;
+    font-size: 13px;
     letter-spacing: 0.5px;
     line-height: 17px;
     margin-left: 10px;
@@ -10190,7 +10187,7 @@ a.shop-now-btn {
     font-weight: 300;
     letter-spacing: 0.5px;
     font-size: 13px;
-    font-family: "Poppins", sans-serif;
+    font-family: "Nunito Sans", sans-serif;
 }
 
 .footer-middle .col-md-3 {
@@ -10377,7 +10374,7 @@ a.buy-theme {
 .email-footer {
     overflow: hidden;
     margin-top: 15px;
-    font-size: 12px;
+    font-size: 13px;
     padding-bottom: 25px;
 }
 
@@ -10498,7 +10495,7 @@ ul.shipping-pro li {
 }
 
 #product-options-wrapper .options-list .price {
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .rhs4-banner-block {
@@ -10660,7 +10657,7 @@ ul.shipping-pro li {
 
 .cart .totals table th, .cart .totals table td strong {
     /*	font-weight: 900;
-	font-size: 12px; */
+	font-size: 13px; */
 
     font-weight: 700;
     font-size: 13px;
@@ -10909,7 +10906,7 @@ input#coupon_code {
 }
 
 #shopping-cart-table h4 {
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 900;
     font-family: Arial, Helvetica, sans-serif;
     text-transform: uppercase
@@ -10963,7 +10960,7 @@ button.button.btn-proceed-checkout {
     color: #333;
     width: 100%;
     border: none;
-    font-family: "Poppins", sans-serif;
+    font-family: "Nunito Sans", sans-serif;
     font-weight: bold;
     letter-spacing: 1px;
     height: inherit;
@@ -11279,17 +11276,17 @@ button.button.btn-proceed-checkout span {
     font-weight: normal;
     text-transform: none;
     padding: 10px 0;
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .block-progress dt.complete, .block-progress dd.complete {
-    font-size: 12px;
+    font-size: 13px;
     padding: 0;
     margin: 0;
 }
 
 .block-progress dt.complete a, .block-progress dd.complete a {
-    font-size: 12px;
+    font-size: 13px;
     font-weight: normal;
     text-decoration: underline;
     text-transform: none;
@@ -11297,7 +11294,7 @@ button.button.btn-proceed-checkout span {
 }
 
 .block-progress dt.complete a:hover, .block-progress dd.complete a:hover {
-    font-size: 12px;
+    font-size: 13px;
     font-weight: normal;
     text-decoration: underline;
     text-transform: none;
@@ -11376,7 +11373,7 @@ select#billing-address-select:focus {
     border: 1px solid #DDDDDD;
     color: #333333;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 12px;
+    font-size: 13px;
     outline: medium none;
     padding: 10px;
     vertical-align: middle;
@@ -11397,7 +11394,7 @@ select#shipping-address-select:focus {
     border: 1px solid #DDDDDD;
     color: #333333;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 12px;
+    font-size: 13px;
     outline: medium none;
     padding: 9px 7px 10px;
     vertical-align: middle;
@@ -11474,13 +11471,13 @@ select#shipping-address-select:focus {
     font-weight: bold;
     margin-bottom: auto;
     margin-top: auto;
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .one-page-checkout .buttons-set .f-right {
     margin-top: 13px;
     color: #626262;
-    font-size: 12px;
+    font-size: 13px;
     margin-left: 10px;
 }
 
@@ -11537,13 +11534,13 @@ form-list label.required em {
 .label {
     color: #333;
     display: inline-block;
-    font-size: 12px;
+    font-size: 13px;
     text-align: left;
     white-space: normal;
 }
 
 #product-options-wrapper .options-list .price {
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .product-options-bottom .sharing-links {
@@ -11753,7 +11750,7 @@ a.button.wishlist {
     text-transform: uppercase;
     background-color: #f2f2f2;
     text-transform: uppercase;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 600;
     display: inline-block;
     margin-right: -3px;
@@ -12029,7 +12026,7 @@ a.button.wishlist {
     text-align: center;
     text-decoration: none;
     text-transform: uppercase;
-    font-family: "Poppins", sans-serif;
+    font-family: "Nunito Sans", sans-serif;
 }
 
 /* 38. Delivery page*/
@@ -12240,7 +12237,7 @@ a.button.wishlist {
     margin-top: 50px;
     padding-bottom: 0px;
     letter-spacing: 1.2px;
-    font-family: "Poppins", sans-serif;
+    font-family: "Nunito Sans", sans-serif;
     text-transform: uppercase;
 }
 
@@ -12256,7 +12253,7 @@ a.button.wishlist {
     font-size: 14px;
     margin-bottom: 15px;
     width: 55%;
-    font-family: "Poppins", sans-serif;
+    font-family: "Nunito Sans", sans-serif;
 }
 
 .newsletter-sign-box .newsletter-form {
@@ -12317,7 +12314,7 @@ a.button.wishlist {
 
 .newsletter-sign-box .subscribe-bottom {
     color: #999;
-    font-size: 12px;
+    font-size: 13px;
     line-height: 3px !important;
     text-align: left;
     display: block;
@@ -12562,7 +12559,7 @@ a.button.wishlist {
 }
 
 .home-testimonials .customer-bio span {
-    font-size: 12px;
+    font-size: 13px;
     display: block;
     color: #8fdbf8;
     letter-spacing: 0.5px;
@@ -13968,7 +13965,7 @@ a.shop-now-btn {
     }
 
     button.button.btn-proceed-checkout span {
-        font-size: 12px;
+        font-size: 13px;
     }
 
     .crosssel h2 {
@@ -14055,7 +14052,7 @@ a.shop-now-btn {
     .top-banner-section h3 {
         margin-bottom: 20px;
         text-align: center;
-        font-size: 12px;
+        font-size: 13px;
         text-transform: uppercase;
         letter-spacing: 1.5px;
         margin-top: 10px;
@@ -14309,7 +14306,7 @@ a.shop-now-btn {
     }
 
     .category-product .navbar-nav > li > a {
-        font-size: 12px;
+        font-size: 13px;
         font-weight: normal;
         margin-top: 5px;
         padding: 8px;
@@ -14772,11 +14769,11 @@ a.shop-now-btn {
     }
 
     .post-meta li {
-        font-size: 12px;
+        font-size: 13px;
     }
 
     .blog-preview_desc {
-        font-size: 12px;
+        font-size: 13px;
     }
 
     .blog-preview_btn {
@@ -14931,7 +14928,7 @@ a.shop-now-btn {
     .breadcrumbs {
         color: #333;
         float: left;
-        font-size: 12px;
+        font-size: 13px;
         margin: 0 auto 5px;
         padding: 0 0 12px;
         position: relative;
@@ -15752,7 +15749,7 @@ a.shop-now-btn {
     .top-banner-section h3 {
         margin-bottom: 20px;
         text-align: center;
-        font-size: 12px;
+        font-size: 13px;
         text-transform: uppercase;
         letter-spacing: 1.5px;
         margin-top: 10px;
@@ -16820,7 +16817,7 @@ a.shop-now-btn {
 
     .mini-cart .basket a {
         min-width: 100% !important;
-        font-size: 12px;
+        font-size: 13px;
     }
 
     .caption.light1 {
@@ -17051,7 +17048,7 @@ a.shop-now-btn {
     }
 
     .cart-collaterals h3 {
-        font-size: 12px;
+        font-size: 13px;
     }
 
     .cart-collaterals .col-sm-4 {
@@ -17327,7 +17324,7 @@ a.shop-now-btn {
     }
 
     .blog-outer-container .block-title div {
-        font-size: 12px;
+        font-size: 13px;
         font-weight: normal;
         letter-spacing: normal;
     }
@@ -17441,7 +17438,7 @@ a.shop-now-btn {
     }
 
     .post-meta li, .blog-preview_desc {
-        font-size: 12px;
+        font-size: 13px;
     }
 
     #column-left .special-products .product-thumb .image {
@@ -17547,7 +17544,7 @@ a.shop-now-btn {
     }
 
     .our-features-box .feature-box h3 {
-        font-size: 12px;
+        font-size: 13px;
         letter-spacing: normal;
         line-height: 17px;
         margin-top: 10px;
@@ -17589,7 +17586,7 @@ a.shop-now-btn {
     }
 
     .home-custom-slider .carousel-caption p {
-        font-size: 12px;
+        font-size: 13px;
         letter-spacing: normal;
         padding: 0px;
     }
@@ -17954,7 +17951,7 @@ a.shop-now-btn {
     }
 
     #nav .nav-custom-link .header-nav-dropdown-wrapper p {
-        font-size: 12px;
+        font-size: 13px;
         min-height: 55px;
     }
 
@@ -18377,7 +18374,7 @@ a.shop-now-btn {
     }
 
     .bestsell-pro .block-title div {
-        font-size: 12px;
+        font-size: 13px;
         letter-spacing: normal;
     }
 
@@ -18446,7 +18443,7 @@ a.shop-now-btn {
     }
 
     .post-meta li, .blog-preview_desc {
-        font-size: 12px;
+        font-size: 13px;
     }
 
     #column-left .special-products .product-thumb .image {

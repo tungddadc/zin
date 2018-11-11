@@ -1868,7 +1868,7 @@ class Ion_auth_model extends CI_Model
       'old_last_login' => $user->last_login,
       'last_check' => time(),
       'is_logged' => true,
-      'is_agency' => ($_group->id == 3) ? true : false,
+      'is_agency' => (!empty($_group->id) && $_group->id == 3) ? true : false,
     );
     $this->session->set_userdata($session_data);
 
