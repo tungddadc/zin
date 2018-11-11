@@ -116,8 +116,8 @@ if (!function_exists('getPageById')) {
 if (!function_exists('getUserById')) {
     function getUserById($id){
         $_this =& get_instance();
-        $_this->load->model('account_model');
-        $dataModel = new Account_model();
+        $_this->load->model('users_model');
+        $dataModel = new Users_model();
         $data = $dataModel->getById($id,'',$_this->session->public_lang_code);
         return $data;
     }

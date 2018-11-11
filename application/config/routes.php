@@ -70,3 +70,8 @@ $route['(:any)-cp(:num)/page/(:num)'] = 'product/category/$2/$3';
 $route['(:any)-p(:num)'] = 'product/detail/$2/';
 $route['download'] = 'product/download';
 /*Route product*/
+
+
+//page
+$route['(:any)'] = 'page/index/$1';
+//page

@@ -22,4 +22,35 @@ class Page_model extends STEVEN_Model
         parent::_where_custom();
         extract($args);
     }
+
+  public function getBySlug($slug,$select='*',$lang_code = null){
+
+    $this->db->select($select);
+    $this->db->from($this->table);
+    if(!empty($this->table_trans)) $this->db->join($this->table_trans,"$this->table.id = $this->table_trans.id");
+    $this->db->where("$this->table_trans.slug",$slug);
+    if(empty($this->table_trans)){
+      $query = $this->db->get();
+      return $query->row();
+    }
+
+    if(!empty($lang_code)){
+      $this->db->where("$this->table_trans.language_code",$lang_code);
+      $query = $this->db->get();
+      return $query->row();
+    }else{
+      $query = $this->db->get();
+      return $query->result();
+    }
+  }
+
+  public function slugToId($slug){
+    $this->db->select('tb1.id');
+    $this->db->from($this->table.' AS tb1');
+    $this->db->join($this->table_trans.' AS tb2','tb1.id = tb2.id');
+    $this->db->where('tb2.slug',$slug);
+    $data = $this->db->get()->row();
+    //ddQuery($this->db);
+    return !empty($data)?$data->id:null;
+  }
 }

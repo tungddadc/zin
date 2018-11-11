@@ -11518,7 +11518,7 @@ input.radio {
     padding: 0;
 }
 
-form-list label.required em {
+.form-list label.required em {
     font-style: normal;
 }
 
@@ -11529,6 +11529,7 @@ form-list label.required em {
 .form-list label {
     color: #333;
     font-weight: 600;
+    display: block;
 }
 
 .label {
@@ -11901,7 +11902,7 @@ a.button.wishlist {
     padding: 0px 0px 20px;
 }
 
-.account-login .form-list input.input-text {
+.account-login .form-list input.input-text ,.account-login .form-list textarea.input-text{
     padding: 10px;
     width: 80%;
     margin-top: 5px;

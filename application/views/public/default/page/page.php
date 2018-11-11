@@ -2,7 +2,6 @@
     $url = getUrlPage($oneItem);
     ?>
 
-    <?php $this->load->view($this->template_path . 'account/_header') ?>
     <section class="page-faq">
         <div class="container">
             <div class="row">
