@@ -92,7 +92,19 @@ if (!function_exists('getCategoryChildLv1')) {
         return $data;
     }
 }
-
+if (!function_exists('getCategoryByType')) {
+  function getCategoryByType($parentId = 0,$type='post'){
+    $_this =& get_instance();
+    $_this->load->model('category_model');
+    $categoryModel = new Category_model();
+    if(!$_this->cache->get('_all_category_'.$_this->session->public_lang_code)){
+      $_this->cache->save('_all_category_'.$_this->session->public_lang_code,$categoryModel->getAll($_this->session->public_lang_code),60*60*30);
+    }
+    $_all_category = $_this->cache->get('_all_category_'.$_this->session->public_lang_code);
+    $data = $categoryModel->getAllCategoryByType($_this->session->public_lang_code, $type,$parentId);
+    return $data;
+  }
+}
 if (!function_exists('getCategoryById')) {
     function getCategoryById($id){
         $_this =& get_instance();
@@ -255,4 +267,18 @@ if(!function_exists('')){
         }
         return false;
     }
+}
+if(!function_exists('getPostNews')){
+  function getPostNews(){
+    $_this =& get_instance();
+    $_this->load->model('post_model');
+    $postModel=new Post_model();
+    $params = array(
+      'is_status' => 1, //0: Huỷ, 1: Hiển thị, 2: Nháp
+      'lang_code' => $_this->session->public_lang_code,
+      'limit' => 5,
+    );
+    $data=$postModel->getData($params);
+    return $data;
+  }
 }

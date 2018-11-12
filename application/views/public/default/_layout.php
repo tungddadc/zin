@@ -92,6 +92,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
   <?php $asset_css[] = '../plugins/toastr/toastr.min.css'; ?>
   <?php $asset_css[] = '../plugins/rateit/rateit.css'; ?>
+  <?php $asset_css[] = 'blogmate.css'; ?>
   <?php $asset_css[] = 'custom.css'; ?>
 
   <?php
@@ -262,7 +263,33 @@ echo $this->minify->deploy_js(); ?>
     <?php
     unset($_SESSION['message']);
     endif; ?>
+    sdkInit();
   });
+
+  function sdkInit() {
+    window.fbAsyncInit = function () {
+      FB.init({
+        appId: '<?php echo FB_API ?>',
+        cookie: true,
+        xfbml: true,
+        version: '<?php echo FB_VER ?>'
+      });
+
+      FB.AppEvents.logPageView();
+
+    };
+
+    (function (d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {
+        return;
+      }
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "https://connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  }
 </script>
 <script src='https://www.google.com/recaptcha/api.js'></script>
 </body>
