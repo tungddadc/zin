@@ -899,7 +899,7 @@ div.effect-sadie1 + div.effect-sadie1 {
     color: #fff;
     cursor: pointer;
     font-weight: bold;
-    height: 49px;
+    height: 47px;
     line-height: 17px;
     padding: 6px 5px;
     position: absolute;
@@ -909,7 +909,7 @@ div.effect-sadie1 + div.effect-sadie1 {
     width: 50px;
     border-left: 1px #eaeaea solid;
     border: 1px solid #e0bc27;
-    margin-top: -1px
+    margin-top: 0;
 }
 
 .search-btn-bg .glyphicon-search:before {
@@ -8678,12 +8678,18 @@ ol#compare-items li.last {
     color: #fff;
     font-size: 10px;
     line-height: 16px;
-    display: block;
+    display: inline-block;
     background: #6dbe14;
     text-transform: uppercase;
     padding: 3px 10px;
     border-radius: 999px;
 }
+
+.availability.in-stock span.agency {
+    color: #fff;
+    background: #be0700;
+}
+
 
 .availability.in-stock span:before {
     content: "\e080";
@@ -8694,6 +8700,9 @@ ol#compare-items li.last {
     vertical-align: middle
 }
 
+.availability.in-stock span.agency:before {
+    content: "\e005";
+}
 #super-product-table .availability.out-of-stock {
     padding: 3px 10px;
     top: 0px;
@@ -8962,7 +8971,7 @@ ol#compare-items li.last {
     border-radius: 3px 3px 0 0;
     color: #fff;
     font-weight: 300;
-    padding: 15px 15px 12px;
+    padding: 15px 10px 12px;
     border: 0px solid rgb(84, 86, 86);
 }
 
@@ -9145,10 +9154,7 @@ ol#compare-items li.last {
 }
 
 .box-reviews .review {
-    border-left: 1px solid #DFDFDF;
-    float: left;
-    padding-left: 2.5em;
-    width: 84%;
+    width: 100%;
     margin-bottom: 10px;
 }
 
@@ -9182,8 +9188,7 @@ ol#compare-items li.last {
 
 .box-reviews .actions {
     padding-top: 1.5em;
-    text-align: right;
-    float: right;
+    text-align: center;
 }
 
 #customer-reviews .form-list li label {
@@ -13999,12 +14004,6 @@ a.shop-now-btn {
         width: 100%;
     }
 
-    .box-reviews .review {
-        border-left: 0 solid #dfdfdf;
-        float: left;
-        padding-left: 0;
-        width: 95%;
-    }
 
     .related-slider {
         display: inline-block;
@@ -15698,12 +15697,6 @@ a.shop-now-btn {
         width: 100%;
     }
 
-    .box-reviews .review {
-        border-left: 0 solid #dfdfdf;
-        float: left;
-        padding-left: 0;
-        width: 95%;
-    }
 
     .related-slider {
         display: inline-block;
@@ -17138,10 +17131,6 @@ a.shop-now-btn {
 
     .product-view .product-shop img {
         width: 100%;
-    }
-
-    .box-reviews .review {
-        width: 80%;
     }
 
     .box-reviews2 .box.visible {
