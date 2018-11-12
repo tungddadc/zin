@@ -1,67 +1,68 @@
-<?php if (!empty($oneItem)): ?>
-    <?php $this->load->view($this->template_path . 'account/_header') ?>
-    <section class="page-contact">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-7">
-                    <div class="block-contact-form ">
-                        <div class="title-contact">
-                            <h4>Gửi thư liên hệ!</h4>
-                        </div>
-                        <?php echo form_open('contact/submit'); ?>
-                        <div class="row row8">
-                            <div class="form-group col-lg-6">
-                                <input type="text" name="fullname" class="form-control" placeholder="Họ và tên*">
-                            </div>
-                            <div class="form-group col-lg-6">
-                                <input type="text" name="email" class="form-control" placeholder="Email*">
-                            </div>
-                            <div class="form-group col-lg-6">
-                                <input type="text" name="title" class="form-control" placeholder="Tiêu đề">
-                            </div>
-                            <div class="form-group col-lg-6">
-                                <input type="tel" name="phone" class="form-control" placeholder="Số điện thoại">
-                            </div>
-                            <div class="form-group col-12">
-                                <textarea rows="5" name="content" class="form-control" placeholder="Nội dung*"></textarea>
-                            </div>
-                        </div>
-                        <div class="bottom-contact-form">
-                            <div class="captcha">
-                                <div class="g-recaptcha" data-sitekey="<?php echo GG_CAPTCHA_SITE_KEY ?>"></div>
-                                <?php echo form_error('g-recaptcha-response'); ?>
-                            </div>
-                            <button class="btn" type="submit">send</button>
-                        </div>
-                        <?php echo form_close(); ?>
-                    </div>
-                </div>
-                <div class="col-lg-5">
-                    <div class="block-contact-info">
-                        <div class="title-contact">
-                            <h4>Thông tin về chúng tôi</h4>
-                        </div>
-                        <div class="item-info">
-                            <i class="icon_mail"></i>
-                            <p><span>Email:</span> <?php echo $this->settings['email'] ?></p>
-                        </div>
-                        <div class="item-info">
-                            <i class="icon_phone"></i>
-                            <p><span>Phone:</span> <?php echo $this->settings['hotline'] ?></p>
-                        </div>
-                        <div class="item-info">
-                            <i class="icon_pin"></i>
-                            <p><span>Add:</span> <?php echo $this->settings['address'] ?></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!-- Main Container -->
+<section class="main-container col2-left-layout">
+  <div class="container">
+    <div class="row">
+
+
+      <div class="col-sm-9 col-sm-push-3">
+        <article class="col-main">
+          <div class="page-title">
+            <h2>Contact Us</h2>
+          </div>
+          <div class="static-contain">
+            <fieldset class="group-select account-login">
+              <form class="content sb_form" method="post" action="#">
+                <ul class="form-list">
+                  <li>
+                    <label for="full_name">Họ và tên <span class="required">*</span></label>
+                    <input name="full_name" title="Họ và tên" class="input-text required-entry"
+                           type="text" value="">
+                  </li>
+                  <li>
+                    <label for="email">Email <span class="required">*</span></label>
+                    <input name="email" title="Email" class="input-text required-entry" type="text" value="">
+                  </li>
+
+                  <li>
+                    <label for="phone">Số điện thoại</span></label>
+                    <input name="phone" title="Số điện thoại" class="input-text required-entry" type="text" value="">
+                  </li>
+                  <li>
+                    <label for="address">Địa chỉ</label>
+                    <input name="address" title="Địa chỉ" class="input-text required-entry" type="text" value="">
+                  </li>
+                  <li>
+                    <label for="content">Nội dung <span class="required">*</span></label>
+                    <textarea name="content" title="content" class="required-entry input-text" id="comment" rows="3"
+                              cols="5"></textarea>
+                  </li>
+
+
+                </ul>
+                <div class="buttons-set">
+                  <button name="send" class="button login" type="submit"><span>Gửi</span></button>
+              </form>
+            </fieldset>
+          </div>
+        </article>
+        <!--	///*///======    End article  ========= //*/// -->
+      </div>
+      <aside class="col-left sidebar col-sm-3 col-xs-12 col-sm-pull-9">
+        <div class="side-banner"><img alt="banner" src="images/side-banner.jpg"></div>
+        <div class="block block-company">
+          <div class="block-title">Company</div>
+          <div class="block-content">
+            <ol id="recently-viewed-items">
+              <li class="item odd"><a href="#">About Us</a></li>
+              <li class="item even"><a href="#">Sitemap</a></li>
+              <li class="item  odd"><a href="#">Terms of Service</a></li>
+              <li class="item even"><a href="#">Search Terms</a></li>
+              <li class="item last"><strong>Contact Us</strong></li>
+            </ol>
+          </div>
         </div>
-    </section>
-<script>
-    var google_maps_lat = '<?php echo $this->settings['contact']['maps_latitude'] ?>';
-    var google_maps_long = '<?php echo $this->settings['contact']['maps_longitude'] ?>';
-    var dataMap = {};
-</script>
-    <script src='https://www.google.com/recaptcha/api.js'></script>
-<?php endif ?>
+      </aside>
+    </div>
+  </div>
+</section>
+<!-- Main Container End -->

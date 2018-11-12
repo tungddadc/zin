@@ -1,41 +1,59 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: Steven Nguyen
- * Date: 16/03/2018
- * Time: 5:26 CH
- */
-defined('BASEPATH') OR exit('No direct script access allowed');?>
-<?php if (!empty($category)):
-    $oneItem = $category;
-    ?>
-    <?php $this->load->view($this->template_path . 'account/_header') ?>
-    <section class="page-faq">
-        <div class="container">
-            <h2 class="heading"><?php echo $oneItem->title ?></h2>
-            <div id="accordion-faq">
-                <?php if(!empty($data)) foreach ($data as $k => $item): ?>
-                <div class="card">
-                    <div class="card-header" id="question<?php echo $item->id ?>">
-                        <h5 class="mb-0">
-                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse<?php echo $item->id ?>" aria-expanded="true" aria-controls="collapse1">
-                                <i class="icon_question_alt"></i><?php echo $item->title ?>
-                            </button>
-                        </h5>
-                    </div>
-                    <div id="collapse<?php echo $item->id ?>" class="collapse" aria-labelledby="heading<?php echo $item->id ?>" data-parent="#accordion-faq">
-                        <div class="card-body">
-                            <?php echo $item->description ?>
-                            <?php echo $item->content ?>
+<section class="main-container col2-left-layout">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-sm-push-3">
+        <article class="col-main">
+          <div class="page-title">
+            <h1><?php echo $category->title ?></h1>
+          </div>
+          <div class="blog-wrapper" id="main">
+            <div class="site-content" id="primary">
+              <div id="content" role="main">
+                <?php
+                if (!empty($data)) foreach ($data as $item) {
+                  ?>
+                  <article class="blog_entry clearfix wow bounceInUp animated" id="post-<?php echo $item->id ?>">
+                    <div class="entry-content">
+                      <div class="featured-thumb">
+                        <a href="<?php echo getUrlNews($item) ?>" title="<?php echo getTitle($item) ?>">
+                          <img alt="blog-img3" src="<?php echo getImageThumb($item->thumbnail,850,395,true) ?>"
+                               alt="<?php echo getTitle($item) ?>">
+                        </a>
+                      </div>
+                      <header class="blog_entry-header clearfix">
+                        <div class="blog_entry-header-inner">
+                          <h2 class="blog_entry-title">
+                            <a href="<?php echo getUrlNews($item) ?>" itle="<?php echo getTitle($item) ?>" rel="bookmark">
+                              <?php echo $item->title ?>
+                            </a></h2>
                         </div>
+                        <!--blog_entry-header-inner-->
+                      </header>
+                      <div class="entry-content">
+                        <ul class="post-meta">
+                          <li><i class="fa fa-user"></i>Cập nhât bởi <a href="#">admin</a></li>
+                          <li><i class="fa fa-comments"></i><a href="#">8 comments</a></li>
+                          <li><i
+                              class="fa fa-clock-o"></i><?php echo date('d/m/Y', strtotime($item->created_time)) ?></span>
+                          </li>
+                        </ul>
+                        <p>
+                          <?php echo $item->description; ?>
+                        </p>
+                      </div>
+                      <p><a class="btn" href="<?php echo getUrlNews($item) ?>">Xem tiếp</a></p>
                     </div>
-                </div>
-                <?php endforeach; ?>
+                  </article>
+                  <?php
+                }
+                ?>
+              </div>
             </div>
-        </div>
-    </section>
-    <script>
-        var urlCurrentMenu = '<?php echo getUrlCateNews($oneParent) ?>';
-        var urlCurrent = '<?php echo getUrlCateNews($oneItem) ?>';
-    </script>
-<?php endif; ?>
+          </div>
+        </article>
+        <!--	///*///======    End article  ========= //*/// -->
+      </div>
+      <?php $this->load->view($this->template_path . 'news/sidebar') ?>
+    </div>
+  </div>
+</section>

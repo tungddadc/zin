@@ -50,4 +50,21 @@ class Post_model extends STEVEN_Model
         $data = $this->db->get()->result();
         return $data;
     }
+  public function getOneCateIdById($id)
+  {
+    $data = $this->getCategoryByPostId($id);
+    return !empty($data)?$data[0]:null;
+  }
+  public function getCateIdById($id)
+  {
+    $this->db->select('category_id');
+    $this->db->from($this->table_category);
+    $this->db->where('post_id', $id);
+    $data = $this->db->get()->result();
+    $listId = [];
+    if (!empty($data)) foreach ($data as $item) {
+      $listId[] = $item->category_id;
+    }
+    return $listId;
+  }
 }

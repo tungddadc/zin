@@ -13,6 +13,7 @@ class Auth extends Public_Controller
   protected $_lang_code;
   protected $_all_agency;
   protected $_data;
+  protected $zalo;
 
   public function __construct()
   {
@@ -21,7 +22,9 @@ class Auth extends Public_Controller
     $this->load->library(array('ion_auth', 'hybridauth'));
     $this->load->model(array('users_model'));
     $this->_data = new Users_model();
+    require_once(APPPATH . 'libraries/Zaloauth.php');
 
+    $this->zalo = new \Zalo\Zaloauth();
   }
 
   public function login()

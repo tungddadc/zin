@@ -65,7 +65,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                                             </a>
                                         </li>
                                         <li role="presentation">
-                                            <a href="<?php echo getUrlLogin(); ?>" title="Đăng nhập bằng Zalo" class="btn btn-block btn-social btn-zalo">
+                                            <a href="https://oauth.zaloapp.com/v3/auth?app_id=<?php echo ZALO_APP_ID_CFG ?>&redirect_uri=<?php echo urlencode(ZALO_CAL_BACK) ?>" title="Đăng nhập bằng Zalo" class="btn btn-block btn-social btn-zalo">
                                                 <span class="fa fa-zalo"></span>
                                                 Đăng nhập bằng Zalo
                                             </a>
