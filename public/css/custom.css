@@ -82,6 +82,15 @@ header .our-features-box li {
 .product-buy{
     padding: 0;
 }
+.product-buy .info{
+    overflow: hidden;
+    font-size: 14px;
+    color: #333;
+    line-height: 1.4em;
+    padding: 18px 15px;
+    background: #f2f2f2;
+    margin-bottom: 10px;
+}
 .product-buy .feature-box .content{
     width: 210px;
 }

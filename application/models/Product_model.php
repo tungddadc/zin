@@ -9,11 +9,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Product_model extends STEVEN_Model
 {
     public $table_category;
+    public $table_detail;
     public function __construct(){
         parent::__construct();
         $this->table            = "product";
         $this->table_trans      = "product_translations";
         $this->table_category   = "product_category";
+        $this->table_detail     = "product_detail";
         $this->column_order     = array("$this->table.id", "$this->table.id", "$this->table_trans.title", "$this->table.is_featured", "$this->table.is_status", "$this->table.created_time", "$this->table.updated_time");
         $this->column_search    = array("$this->table_trans.title");
         $this->order_default    = array("$this->table.id" => "ASC");
@@ -21,6 +23,12 @@ class Product_model extends STEVEN_Model
     public function _where_custom($args = array()){
         parent::_where_custom();
         extract($args);
+
+        if(!empty($quantity_begin) && !empty($quantity_end)){
+            $this->db->join($this->table_detail,"$this->table.id = $this->table_detail.{$this->table}_id");
+            $this->db->where("$this->table_detail.quantity_begin >=",$quantity_begin);
+            $this->db->where("$this->table_detail.quantity_end <=",$quantity_end);
+        }
 
         if(!empty($category_id)){
             $this->db->join($this->table_category,"$this->table.id = $this->table_category.{$this->table}_id");

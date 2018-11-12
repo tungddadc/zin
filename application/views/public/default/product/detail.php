@@ -190,10 +190,10 @@
                                     </div>-->
                                     <div id="social-share"></div>
                                 </div>
-                                <div class="product-buy col-lg-3 col-sm-3 col-xs-12">
-                                    <div>
-                                        <h3>Hãng: Apple</h3>
-                                        <h3>Mã sản phẩm: ZIN111</h3>
+                                <div class="product-buy sticky_box col-lg-3 col-sm-3 col-xs-12">
+                                    <div class="info">
+                                        <p>Hãng: <strong><a href="" title="Apple">Apple</a> </strong></p>
+                                        <p>Mã sản phẩm: <strong>ZIN111</strong></p>
                                     </div>
                                     <?php $this->load->view($this->template_path . 'product/_box_features') ?>
                                 </div>

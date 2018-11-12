@@ -28,17 +28,21 @@
                                     <div class="rating-box">
                                         <div style="width:80%" class="rating"></div>
                                     </div>
-                                    <p class="rating-links"> <a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>
+                                    <p class="rating-links"> <a href="<?php echo getUrlProduct($item).'#' ?>">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>
                                 </div>
                             </div>
                             <div class="item-price">
                                 <div class="price-box">
-                                    <p class="old-price"><span class="price-label">Regular Price:</span> <span class="price">$100.00 </span> </p>
-                                    <p class="special-price"><span class="price-label">Special Price</span> <span class="price">$90.00 </span> </p>
+                                    <?php if(!empty($item->price_sale)): ?>
+                                        <p class="old-price"><span class="price-label">Giá gốc:</span> <span class="price"><?php echo formatMoney($item->price) ?> </span> </p>
+                                        <p class="special-price"><span class="price-label">Giá khuyến mại</span> <span class="price"><?php echo formatMoney($item->price_sale) ?></span> </p>
+                                    <?php else: ?>
+                                        <p class="special-price"><span class="price-label">Giá</span> <span class="price"><?php echo formatMoney($item->price) ?></span> </p>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                             <div class="action">
-                                <button class="button btn-cart" type="button" title="" data-original-title="Add to Cart"><span>Add to Cart</span></button>
+                                <a href="javascript:;" data-id="<?php echo $item->id ?>" class="button btn-cart" title="Thêm vào giỏ hàng"><span>Thêm vào giỏ hàng</span></a>
                             </div>
                         </div>
                     </div>
