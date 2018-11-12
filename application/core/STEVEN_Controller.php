@@ -272,7 +272,6 @@ class Admin_Controller extends STEVEN_Controller
 class Public_Controller extends STEVEN_Controller
 {
   public $_user_login = array();
-  public $zalo;
 
   public function __construct()
   {
@@ -335,10 +334,6 @@ class Public_Controller extends STEVEN_Controller
       $userModel = new Users_model();
       $this->_user_login = $userModel->getUserByField('id', $this->session->userdata['user_id']);
     }
-
-    require_once(APPPATH . 'libraries/Zaloauth.php');
-
-    $this->zalo = new \Zalo\Zaloauth();
   }
 
   public function switchLanguage($lang_code = "")
