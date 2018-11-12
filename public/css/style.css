@@ -154,7 +154,7 @@ input[type=checkbox], input[type=radio] {
     font-family: "Nunito Sans", sans-serif;
 }
 
-.top-cart-content .product-name a, .products-list .actions .add-to-links a.link-wishlist span, .products-list .product-shop button.button span, .products-list .actions .add-to-links a.link-compare span, .bottom-banner-img1.last h3, .bottom-banner-img1 h3, .one-page-checkout .active .step-title h3, .page-not-found .btn-home span {
+.top-cart-content .product-name a, .products-list .actions .add-to-links a.link-wishlist span, .products-list .product-shop .button span, .products-list .actions .add-to-links a.link-compare span, .bottom-banner-img1.last h3, .bottom-banner-img1 h3, .one-page-checkout .active .step-title h3, .page-not-found .btn-home span {
     font-family: "Nunito Sans", sans-serif;
 }
 
@@ -184,7 +184,7 @@ button {
     color: #333
 }
 
-.button:hover, button.button.button-clear {
+.button:hover, .button.button-clear {
     background-color: #ff0000;
     border: 1px solid #ff0000;
     color: #fff;
@@ -328,7 +328,7 @@ a.button:hover {
     text-indent: -999em;
 }
 
-.col-main .category-products .products-grid .item button.button {
+.col-main .category-products .products-grid .item .button {
     background: none repeat scroll 0 0 #fff;
     color: #666;
     display: inline-block;
@@ -899,7 +899,7 @@ div.effect-sadie1 + div.effect-sadie1 {
     color: #fff;
     cursor: pointer;
     font-weight: bold;
-    height: 49px;
+    height: 47px;
     line-height: 17px;
     padding: 6px 5px;
     position: absolute;
@@ -909,7 +909,7 @@ div.effect-sadie1 + div.effect-sadie1 {
     width: 50px;
     border-left: 1px #eaeaea solid;
     border: 1px solid #e0bc27;
-    margin-top: -1px
+    margin-top: 0;
 }
 
 .search-btn-bg .glyphicon-search:before {
@@ -3065,7 +3065,7 @@ nav {
     color: #0062bd;
 }
 
-.bestseller-pro .item:hover .item-inner .item-info .info-inner .action button.button {
+.bestseller-pro .item:hover .item-inner .item-info .info-inner .action .button {
     background: #ffdc73;
     color: #000;
     border: 1px #ffdc73 solid;
@@ -5196,7 +5196,7 @@ ul.products-grid {
     color: #0083c1;
 }
 
-.products-grid .item:hover .item-inner .item-info .info-inner .action button.button {
+.products-grid .item:hover .item-inner .item-info .info-inner .action .button {
     background: #0083c1;
     color: #fff;
     border: 1px #0083c1 solid;
@@ -5562,7 +5562,7 @@ li .list {
     /*	text-transform: uppercase;  */
 }
 
-.products-list .product-shop button.button {
+.products-list .product-shop .button {
     font-size: 13px;
     text-transform: uppercase;
     margin-right: 8px;
@@ -5573,7 +5573,7 @@ li .list {
     font-family: 'FontAwesome';
 }
 
-.products-list .product-shop button.button span {
+.products-list .product-shop .button span {
     font-size: 11px;
     padding: 0px;
     text-transform: uppercase;
@@ -7526,7 +7526,7 @@ ul#magicat li .open-close, .block-layered-nav dt .toggleBtn {
     left: -1px
 }
 
-.related-slider button.button.btn-cart:before {
+.related-slider .button.btn-cart:before {
     content: "\f07a";
     font-family: 'FontAwesome';
 }
@@ -8391,13 +8391,13 @@ ol#compare-items li.last {
 }
 
 /* 15b. Product Shop */
-.product-view .product-shop .add-to-box button.button.btn-cart span {
+.product-view .product-shop .add-to-box .button.btn-cart span {
     background: none;
     margin-left: 5px;
     font-size: 14px;
 }
 
-.product-view .product-options-bottom button.button.btn-cart span {
+.product-view .product-options-bottom .button.btn-cart span {
     background: none;
     margin-left: 5px;
 }
@@ -8678,12 +8678,18 @@ ol#compare-items li.last {
     color: #fff;
     font-size: 10px;
     line-height: 16px;
-    display: block;
+    display: inline-block;
     background: #6dbe14;
     text-transform: uppercase;
     padding: 3px 10px;
     border-radius: 999px;
 }
+
+.availability.in-stock span.agency {
+    color: #fff;
+    background: #be0700;
+}
+
 
 .availability.in-stock span:before {
     content: "\e080";
@@ -8694,6 +8700,9 @@ ol#compare-items li.last {
     vertical-align: middle
 }
 
+.availability.in-stock span.agency:before {
+    content: "\e005";
+}
 #super-product-table .availability.out-of-stock {
     padding: 3px 10px;
     top: 0px;
@@ -8962,7 +8971,7 @@ ol#compare-items li.last {
     border-radius: 3px 3px 0 0;
     color: #fff;
     font-weight: 300;
-    padding: 15px 15px 12px;
+    padding: 15px 10px 12px;
     border: 0px solid rgb(84, 86, 86);
 }
 
@@ -9008,7 +9017,7 @@ ol#compare-items li.last {
     width: 100%;
 }
 
-.form-add-tags button.button {
+.form-add-tags .button {
     background: none repeat scroll 0 0 #fff;
     border: 1px solid #ccc;
     display: inline-block;
@@ -9018,7 +9027,7 @@ ol#compare-items li.last {
     transition: color 300ms ease-in-out 0s, background-color 300ms ease-in-out 0s, background-position 300ms ease-in-out 0s;
 }
 
-.form-add-tags button.button:hover {
+.form-add-tags .button:hover {
     display: inline;
     background: #0083c1;
     transition: all 0.3s linear;
@@ -9145,10 +9154,7 @@ ol#compare-items li.last {
 }
 
 .box-reviews .review {
-    border-left: 1px solid #DFDFDF;
-    float: left;
-    padding-left: 2.5em;
-    width: 84%;
+    width: 100%;
     margin-bottom: 10px;
 }
 
@@ -9182,8 +9188,7 @@ ol#compare-items li.last {
 
 .box-reviews .actions {
     padding-top: 1.5em;
-    text-align: right;
-    float: right;
+    text-align: center;
 }
 
 #customer-reviews .form-list li label {
@@ -9547,7 +9552,7 @@ button.button.submit:before {
     color: #fff;
 }
 
-.product-view .product-options-bottom button.button.btn-cart span {
+.product-view .product-options-bottom .button.btn-cart span {
     background: none;
     margin-left: 10px;
     font-size: 14px;
@@ -9570,7 +9575,7 @@ button.button.submit:before {
     z-index: 10000 !important;
 }
 
-.product-shop button.button.btn-cart:before {
+.product-shop .button.btn-cart:before {
     content: "\f07a";
     font-family: 'FontAwesome';
     margin-right: 10px;
@@ -11102,7 +11107,7 @@ button.button.btn-proceed-checkout span {
     display: none;
 }
 
-#wishlist-table button.button.remove-item {
+#wishlist-table .button.remove-item {
     text-decoration: none;
     float: none;
     background: none;
@@ -11124,7 +11129,7 @@ button.button.btn-proceed-checkout span {
     margin-left: 5px;
 }
 
-#wishlist-table button.button.remove-item:hover {
+#wishlist-table .button.remove-item:hover {
     text-decoration: none;
     float: none;
     background: none;
@@ -11145,7 +11150,7 @@ button.button.btn-proceed-checkout span {
     width: 30px;
 }
 
-#wishlist-table button.button.btn-cart {
+#wishlist-table .button.btn-cart {
     padding: 0px;
     color: #222;
     background-color: #fff;
@@ -11154,7 +11159,7 @@ button.button.btn-proceed-checkout span {
     margin: 0 0 10px !important;
 }
 
-#wishlist-table button.button.btn-cart span {
+#wishlist-table .button.btn-cart span {
     display: none;
 }
 
@@ -11162,7 +11167,7 @@ button.button.btn-proceed-checkout span {
     display: none;
 }
 
-#wishlist-table button.button.btn-cart:hover {
+#wishlist-table .button.btn-cart:hover {
     padding: 0px;
     color: #f23534;
     background-color: #fff;
@@ -11170,7 +11175,7 @@ button.button.btn-proceed-checkout span {
     transition: all 0.3s linear;
 }
 
-#wishlist-table button.button.btn-cart:before {
+#wishlist-table .button.btn-cart:before {
     content: "\f07a";
     font-family: 'FontAwesome';
     font-size: 16px
@@ -12301,7 +12306,7 @@ a.button.wishlist {
     width: 100%;
 }
 
-.newsletter-sign-box button.button span {
+.newsletter-sign-box .button span {
     color: #fff;
     font-size: 14px;
     text-transform: uppercase;
@@ -12309,7 +12314,7 @@ a.button.wishlist {
     letter-spacing: 1px;
 }
 
-.newsletter-sign-box button.button:hover span {
+.newsletter-sign-box .button:hover span {
     color: #fff;
 }
 
@@ -13720,7 +13725,7 @@ a.shop-now-btn {
         display: none;
     }
 
-    .actions button.button.btn-cart {
+    .actions .button.btn-cart {
         margin: 5px 5px 0 0px;
         padding: 9px 5px 9px 5px;
         line-height: 10px;
@@ -13857,7 +13862,7 @@ a.shop-now-btn {
         margin: 10px 0;
     }
 
-    .products-list .actions button.button.btn-cart {
+    .products-list .actions .button.btn-cart {
         padding: 10px 10px;
     }
 
@@ -13892,7 +13897,7 @@ a.shop-now-btn {
         display: none;
     }
 
-    .products-grid .actions button.button.btn-cart span {
+    .products-grid .actions .button.btn-cart span {
         font-size: 10px;
     }
 
@@ -13941,11 +13946,11 @@ a.shop-now-btn {
         font-size: 13px;
     }
 
-    .product-shop button.button.btn-cart:before {
+    .product-shop .button.btn-cart:before {
         margin-right: 5px;
     }
 
-    .product-view .product-shop .add-to-box button.button.btn-cart span {
+    .product-view .product-shop .add-to-box .button.btn-cart span {
         background: none;
         margin-left: 5px;
         font-size: 11px;
@@ -13965,7 +13970,7 @@ a.shop-now-btn {
         font-weight: normal;
     }
 
-    button.button.btn-proceed-checkout span {
+    .button.btn-proceed-checkout span {
         font-size: 13px;
     }
 
@@ -14000,12 +14005,6 @@ a.shop-now-btn {
         width: 100%;
     }
 
-    .box-reviews .review {
-        border-left: 0 solid #dfdfdf;
-        float: left;
-        padding-left: 0;
-        width: 95%;
-    }
 
     .related-slider {
         display: inline-block;
@@ -14830,7 +14829,7 @@ a.shop-now-btn {
         left: 0%;
     }
 
-    button.button, .btn, button.button:hover {
+    .button, .btn, .button:hover {
         padding: 10px 17px 6px !important;
         /*    border-radius: 3px ; */
     }
@@ -14950,7 +14949,7 @@ a.shop-now-btn {
         padding: 0px;
     }
 
-    .form-add-tags button.button, .form-add-tags button.button:hover {
+    .form-add-tags .button, .form-add-tags .button:hover {
         margin-left: 0px;
         padding: 8px 14px 25px;
     }
@@ -15454,7 +15453,7 @@ a.shop-now-btn {
         display: none;
     }
 
-    .actions button.button.btn-cart {
+    .actions .button.btn-cart {
         margin: 5px 5px 0 0px;
         padding: 9px 5px 9px 5px;
         line-height: 10px;
@@ -15569,7 +15568,7 @@ a.shop-now-btn {
         width: 60%;
     }
 
-    .products-list .actions button.button.btn-cart {
+    .products-list .actions .button.btn-cart {
         padding: 10px 9px;
     }
 
@@ -15602,7 +15601,7 @@ a.shop-now-btn {
         display: none;
     }
 
-    .products-grid .actions button.button.btn-cart span {
+    .products-grid .actions .button.btn-cart span {
         font-size: 10px;
     }
 
@@ -15664,7 +15663,7 @@ a.shop-now-btn {
         font-weight: normal;
     }
 
-    button.button.btn-proceed-checkout span {
+    .button.btn-proceed-checkout span {
         font-size: 16px;
     }
 
@@ -15699,12 +15698,6 @@ a.shop-now-btn {
         width: 100%;
     }
 
-    .box-reviews .review {
-        border-left: 0 solid #dfdfdf;
-        float: left;
-        padding-left: 0;
-        width: 95%;
-    }
 
     .related-slider {
         display: inline-block;
@@ -17141,10 +17134,6 @@ a.shop-now-btn {
         width: 100%;
     }
 
-    .box-reviews .review {
-        width: 80%;
-    }
-
     .box-reviews2 .box.visible {
         overflow: hidden;
     }
@@ -17295,7 +17284,7 @@ a.shop-now-btn {
         margin: 0 3px 0 0;
     }
 
-    .products-list .product-shop button.button {
+    .products-list .product-shop .button {
         margin-right: 2px;
     }
 
@@ -17461,7 +17450,7 @@ a.shop-now-btn {
         width: 95%;
     }
 
-    .magik-quickview .product-view .product-shop .add-to-box button.button.btn-cart span {
+    .magik-quickview .product-view .product-shop .add-to-box .button.btn-cart span {
         margin-left: 0px;
         font-size: 13px;
     }
@@ -18328,7 +18317,7 @@ a.shop-now-btn {
         font-size: 24px;
     }
 
-    button.button.button-clear {
+    .button.button-clear {
         margin-top: 8px;
     }
 

@@ -76,3 +76,34 @@ header .our-features-box li {
     width: auto;
     margin: 0 auto;
 }
+.buy-more .add-to-box{
+    padding: 0 !important;
+}
+.product-buy{
+    padding: 0;
+}
+.product-buy .info{
+    overflow: hidden;
+    font-size: 14px;
+    color: #333;
+    line-height: 1.4em;
+    padding: 18px 15px;
+    background: #f2f2f2;
+    margin-bottom: 10px;
+}
+.product-buy .feature-box .content{
+    width: 210px;
+}
+
+.product-buy .feature-box h3{
+    font-size: 15px;
+}
+.agency{margin-top: 10px;}
+
+.product-buy .agency{
+    margin-top: 10px;
+}
+
+.accessories .item{
+    padding: 0 5px 10px;
+}

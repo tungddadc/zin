@@ -246,6 +246,7 @@ switch ($this->_controller) {
 <?php $asset_js[] = '../plugins/rateit/jquery.rateit.min.js'; ?>
 <?php $asset_js[] = '../plugins/jssocials/jssocials.min.js'; ?>
 <?php $asset_js[] = 'jquery.form.min.js'; ?>
+<?php $asset_js[] = 'jquery.sticky-kit.min.js'; ?>
 <?php $asset_js[] = 'custom.js'; ?>
 <?php $asset_js[] = 'account.js'; ?>
 <?php $this->minify->js($asset_js);

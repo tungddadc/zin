@@ -90,14 +90,15 @@ jQuery(document).ready(function () {
         let value = ri.rateit('value');
         ri.closest('form').find('[name="vote"]').val(value);
     });
+
+    /*$('.sticky_box').stick_in_parent();*/
 });
 var ajaxShowRequest = function (formData, jqForm, options) {
     jqForm.find('[type="submit"]').append('<i class="fa fa-spinner fa-spin ml-2" style="color: #ffffff;"></i>');
     //let queryString = $.param(formData);
     return true;
 };
-var
-    ajaxShowResponse = function (response, statusText, xhr, $form) {
+var ajaxShowResponse = function (response, statusText, xhr, $form) {
         if (response.csrf_form) {
             $form.find('input[name="' + response.csrf_form.csrf_name + '"]').val(response.csrf_form.csrf_value);
             $('meta[name="csrf_form_token"]').attr('content', response.csrf_form.csrf_value);

@@ -145,8 +145,19 @@ class Product extends Public_Controller
         $params['not_in'] = $id;
         $params['limit'] = 8;
         $params['category_id'] = $listCateId;
-        $data['list_related'] = $this->_data->getData($params);
+        $data['listProductBrand'] = $this->_data->getData($params);
         /*List product related*/
+
+        /*List product viewed*/
+        $this->_updateLastViewed($id);
+        $listIdView = json_decode(get_cookie('last_viewed'), true);
+        $params['is_status'] = 1;
+        $params['lang_code'] = $this->_lang_code;
+        $params['in'] = $listIdView;
+        $params['not_in'] = $id;
+        $params['limit'] = 8;
+        $data['listProductViewed'] = $this->_data->getData($params);
+        /*List product viewed*/
 
 
         //add breadcrumbs
@@ -174,7 +185,18 @@ class Product extends Public_Controller
     private function flushView($id, $view){
         $this->_data->update(array('id' => $id),array('viewed'=>$view+1));
     }
-
+    private function _updateLastViewed($id){
+        $key = 'last_viewed';
+        $data = get_cookie($key);
+        if(!empty($data)){
+            $data = json_decode($data, true);
+            array_push($data,$id);
+            $data = array_unique($data);
+            set_cookie($key, json_encode($data), 0);
+        }else {
+            set_cookie($key, json_encode([$id]), 0);
+        }
+    }
     public function ajax_load_list(){
         if($this->input->server('REQUEST_METHOD') == 'POST' && !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
             $cateId = $this->input->post('id');
