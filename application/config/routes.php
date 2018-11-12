@@ -73,5 +73,6 @@ $route['download'] = 'product/download';
 
 
 //page
+$route['cart'] = 'cart/index';
 $route['(:any)'] = 'page/index/$1';
 //page
