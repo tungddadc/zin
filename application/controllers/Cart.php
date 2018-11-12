@@ -5,6 +5,7 @@ class Cart extends Public_Controller {
 
     public function __construct(){
         parent::__construct();
+        $this->cart->product_name_rules = '[:print:]';
     }
 
 
@@ -46,8 +47,14 @@ class Cart extends Public_Controller {
         echo json_encode($dataJson);exit;
     }
 
-    public function total(){
-        echo 'Hien tai co '.$this->cart->total_items().' san pham trong gio hang';
+    public function ajax_total(){
+        $this->checkRequestGetAjax();
+        $output = [
+            'total_item' => $this->cart->total_items(),
+            'total_money'=> $this->cart->total()
+        ];
+        $this->returnJson($output);
+
     }
     public function totalMoney(){
         return $this->cart->total() + $this->settings['ship'];
@@ -61,8 +68,7 @@ class Cart extends Public_Controller {
             $exist = false;
             if(!empty($listItem)) foreach ($listItem as $item){
                 if($item['id'] == $params['product_id']){
-                    //$data = array('rowid'=>$item['rowid'],'qty'=>$item['qty']+$params['quantity']);
-                    $data = array('rowid'=>$item['rowid'],'qty'=>1); //Đặc thù hệ thống này chỉ có số lượng = 1
+                    $data = array('rowid'=>$item['rowid'],'qty'=>$item['qty']+$params['quantity']);
                     $exist = true;
                     if ($this->cart->update($data)) {
                         $message['type'] = 'success';
@@ -78,9 +84,10 @@ class Cart extends Public_Controller {
                 $data = array(
                     array(
                         'id' => $params['product_id'],
-                        'qty' => $params['quantity'],
+                        'qty' => trim(preg_replace('/([^0-9])/i', '', $params['quantity'])),
                         'price' => $params['price'],
-                        'name' => $this->toSlug($params['name']),
+                        'slug' => $params['slug'],
+                        'name' => $params['name'],
                         'image' => $params['image'],
                         //'options' => array('model' => isset($params['model'])?$params['model']:'','size' => isset($params['size'])?$params['size']:'', 'color' => isset($params['color'])?$params['color']:'')
                     ),

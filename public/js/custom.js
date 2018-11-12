@@ -1,3 +1,20 @@
+var FUNC = {
+  formatMoney: function (money) {
+      return money.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.") + 'đ'
+  }
+};
+var CART = {
+    updateCountHeader: function () {
+        $.ajax({
+            type: 'GET',
+            url: base_url + 'cart/ajax_total',
+            dataType: 'json',
+            success: function (data) {
+                $('.mini-cart .cart_count').html(data.total_item + ' sản phẩm/' + FUNC.formatMoney(data.total_money))
+            }
+        })
+    }
+};
 jQuery(document).ready(function () {
 
     $('a[href*="#"]').click(function (e) {
@@ -116,9 +133,25 @@ var ajaxShowResponse = function (response, statusText, xhr, $form) {
                 $form.find('.form-group').removeClass('has-warning');
                 $form.find('.text-danger').remove();
                 //$form.reset();
-                setTimeout(function () {
-                    if (response.url_redirect) location.href = response.url_redirect;
-                }, 2000);
+                if(response.type === "success"){
+                    switch($form.attr('id')){
+                        case 'product_addtocart_form':
+                            CART.updateCountHeader();
+                            break;
+
+                        case 'form-order':
+                            setTimeout(function () {
+                                location.href = base_url;
+                            },2000);
+                            break;
+
+                        default:
+                            setTimeout(function () {
+                                if (response.url_redirect) location.href = response.url_redirect;
+                                else location.reload();
+                            }, 2000);
+                    }
+                }
             }
         }
     };

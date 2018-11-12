@@ -129,8 +129,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
           <div class="mini-cart">
             <div class="basket dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
               <a href="<?php echo base_url('cart') ?>"><span class="price hidden-xs">Giỏ hàng</span>
-                <span class="cart_count hidden-xs"><?php echo $this->cart->total_items() ?>
-                  Items/ <?php echo $this->cart->total() . ' đ' ?></span>
+                <span class="cart_count hidden-xs"><?php echo $this->cart->total_items() ?> sản phẩm/ <?php echo formatMoney($this->cart->total()) ?></span>
               </a>
             </div>
             <?php
@@ -143,15 +142,15 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                     <?php foreach ($this->cart->contents() as $item): ?>
                       <li class="item first">
                         <div class="item-inner">
-                          <a title="Retis lapen casen" class="product-image"
+                          <a title="<?php echo $item['name'] ?>" class="product-image"
                              href="<?php echo getUrlProduct(array('slug'=>$item['slug'],'id'=>$item['id'])) ?>">
-                            <img alt="Retis lapen casen" src="<?php echo getImageThumb($item['image'],65,80,true) ?>">
+                            <img alt="<?php echo $item['name'] ?>" src="<?php echo getImageThumb($item['image'],100,100,true) ?>">
                           </a>
                           <div class="product-details">
                             <div class="access">
                               <a title="Remove This Item" class="btn-remove1" href="#">Xóa</a>
                             </div>
-                            <!--access--><strong><?php echo $item['qty'] ?></strong> x <span class="price"><?php echo number_format($item['price']) ?> đ</span>
+                            <strong><?php echo $item['qty'] ?></strong> x <span class="price"><?php echo formatMoney($item['price']) ?></span>
                             <p class="product-name"><a href="<?php echo getUrlProduct(array('slug'=>$item['slug'],'id'=>$item['id'])) ?>"><?php echo $item['name'] ?></a></p>
                           </div>
                         </div>
