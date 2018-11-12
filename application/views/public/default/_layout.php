@@ -256,7 +256,7 @@ echo $this->minify->deploy_js(); ?>
     toastr.options.escapeHtml = true;
     toastr.options.closeButton = true;
     toastr.options.positionClass = "toast-bottom-right";
-    toastr.options.timeOut = 5000;
+    toastr.options.timeOut = 5000;  
     toastr.options.showMethod = 'fadeIn';
     toastr.options.hideMethod = 'fadeOut';
     <?php if(!empty($this->session->flashdata('message'))): ?>
