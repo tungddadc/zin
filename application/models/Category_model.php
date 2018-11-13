@@ -38,6 +38,7 @@ class Category_model extends STEVEN_Model
         if(empty($data)){
             $params['type'] = $type;
             $params['lang_code'] = $this->session->userdata('public_lang_code');
+            $params['limit'] = 2000;
             $data = $this->getData($params);
         }
         if(CACHE_MODE == TRUE) $this->cache->save($key,$data,3600);

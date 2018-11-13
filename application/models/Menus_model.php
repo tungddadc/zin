@@ -16,8 +16,12 @@ class Menus_model extends STEVEN_Model
     }
 
     public function getMenu($location, $lang_code, $parent_id = 0,$clear_cache = false){
-        $keyCache = "_cache_menu_{$lang_code}_{$location}_{$parent_id}";
-        $data = $this->cache->get($keyCache);
+        $data = '';
+        $lang_code = $this->session->userdata('public_lang_code');
+        if(CACHE_MODE == TRUE){
+            $key = CACHE_PREFIX_NAME . "_cache_menu_{$lang_code}_{$location}_{$parent_id}";
+            $data = $this->cache->get($key);
+        }
         if(empty($data) || $clear_cache == true){
             $this->db->select('*');
             $this->db->from($this->table);
@@ -26,8 +30,8 @@ class Menus_model extends STEVEN_Model
             $this->db->where('language_code',$lang_code);
             $query = $this->db->get();
             $data = $query->result_array();
-            $this->cache->save($keyCache,$data,60*60*30);
         }
+        if(CACHE_MODE == TRUE) $this->cache->save($key,$data,3600);
         return $data;
     }
 
