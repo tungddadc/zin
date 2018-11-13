@@ -72,7 +72,7 @@ class Product extends Public_Controller
                 $paramsFilter['order'] = ['created_time' => 'DESC'];
         }
 
-        $limit = $data['limit'] = 36;
+        $limit = $data['limit'] = 12;
         $data['page'] = $page;
         $params = [
             'is_status' => 1, //0: Huỷ, 1: Hiển thị, 2: Nháp

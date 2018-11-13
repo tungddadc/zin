@@ -124,12 +124,12 @@ html { /*background: url(../images/bg.png) repeat fixed 0 0 rgba(0, 0, 0, 0); */
 }
 
 a {
-    color: #0083c1;
+    color: rgb(190, 30, 45);
     cursor: pointer;
 }
 
 a:hover {
-    color: #0083c1;
+    color: rgb(190, 30, 45);
     text-decoration: none;
     transition: color 300ms ease-in-out 0s, background-color 300ms ease-in-out 0s, background-position 300ms ease-in-out 0s;
 }
@@ -170,7 +170,7 @@ input[type=checkbox], input[type=radio] {
 }
 
 .products-grid .item .actions a:hover, a.blog-title:hover, #recently-viewed-items .product-name a:hover, #recently-viewed-items .product-name a:hover, ol#compare-items li a.product-name:hover, .block-tags li a:hover, #limiter li a:hover, #sort-by li a:hover {
-    color: #0083c1;
+    color: rgb(190, 30, 45);
 }
 
 /* Buttons */
@@ -215,13 +215,13 @@ button {
 .pager .pages li a:hover {
     border: none;
     color: #fff;
-    background: #0083c1;
+    background: rgb(190, 30, 45);
 }
 
 .pages .pagination > .active > a, .pages .pagination > .active > span, .pages .pagination > .active > a:hover, .pages .pagination > .active > span:hover, .pages .pagination > .active > a:focus, .pages .pagination > .active > span:focus {
-    background-color: #0083c1;
+    background-color: rgb(190, 30, 45);
     color: #fff;
-    border: 1px solid #0083c1;
+    border: 1px solid rgb(190, 30, 45);
 }
 
 #limiter .button-asc {
@@ -229,7 +229,7 @@ button {
 }
 
 #limiter .button-asc:hover {
-    background-color: #0083c1;
+    background-color: rgb(190, 30, 45);
     color: #fff
 }
 
@@ -276,9 +276,9 @@ button.button:hover {
     transition: all 0.3s linear;
     -moz-transition: all 0.3s linear;
     -webkit-transition: all 0.3s linear;
-    background-color: #0083c1;
+    background-color: rgb(190, 30, 45);
     color: #fff;
-    border: 1px #0083c1 solid;
+    border: 1px rgb(190, 30, 45) solid;
 
 }
 
@@ -302,23 +302,23 @@ a.button:hover {
     -moz-transition: all 0.3s linear;
     -webkit-transition: all 0.3s linear;
     border-width: 2px;
-    background-color: #0083c1;
+    background-color: rgb(190, 30, 45);
     color: #fff;
-    border: 1px #0083c1 solid;
+    border: 1px rgb(190, 30, 45) solid;
 }
 
 .price, .breadcrumbs li strong, .product-details span.price, #recently-viewed-items .price-box .special-price .price, #recently-viewed-items .price-box .regular-price .price, .availability.out-of-stock span {
-    color: #0083c1;
+    color: rgb(190, 30, 45);
 }
 
 .button.coupon, .button.btn-continue, .button.continue, .button.login, button.btn-share, .button.create-account {
-    background-color: #0083c1;
+    background-color: rgb(190, 30, 45);
     color: #fff;
-    border: 1px #0083c1 solid;
+    border: 1px rgb(190, 30, 45) solid;
 }
 
 .multiple_addresses .button.btn-update:hover {
-    background-color: #0083c1;
+    background-color: rgb(190, 30, 45);
     color: #fff;
 }
 
@@ -351,7 +351,7 @@ a.button:hover {
 
 /* 2-Add to cart button */
 .product-view .product-shop .add-to-box .btn-cart {
-    background: #0083c1;
+    background: rgb(190, 30, 45);
     color: #fff;
 }
 
@@ -367,8 +367,8 @@ a.button:hover {
 }
 
 .custom button.items-count:hover {
-    background-color: #0083c1;
-    border: 1px #0083c1 solid;
+    background-color: rgb(190, 30, 45);
+    border: 1px rgb(190, 30, 45) solid;
     color: #fff;
 }
 
@@ -762,12 +762,12 @@ div.effect-sadie1 + div.effect-sadie1 {
 .toplinks div.links div a {
     display: inline-block;
     padding: 0px;
-    color: #bce9fd;
+    color: #333333;
     font-size: 13px;
     padding-left: 13px;
     /*	font-weight: normal;  */
     text-decoration: none;
-    font-weight: 300;
+    font-weight: 500;
     letter-spacing: 0.5px;
 }
 
@@ -824,7 +824,7 @@ div.effect-sadie1 + div.effect-sadie1 {
 
 .block-company-wrapper .dropdown-menu li:hover {
     background-color: #fff;
-    color: #0083c1;
+    color: rgb(190, 30, 45);
     transition: background-color 0.2s ease-in-out;
 }
 
@@ -836,7 +836,7 @@ div.effect-sadie1 + div.effect-sadie1 {
 }
 
 .block-company-wrapper .dropdown-menu a:hover {
-    color: #0083c1;
+    color: rgb(190, 30, 45);
 }
 
 /* top search*/
@@ -893,7 +893,7 @@ div.effect-sadie1 + div.effect-sadie1 {
 
 .search-btn-bg {
     -moz-appearance: button;
-    background: #fdd922 url("../images/search-icon.png") no-repeat scroll 15px 16px;
+    background: rgb(251, 175, 63) url("../images/search-icon.png") no-repeat scroll 15px 16px;
     border: none;
     border-radius: 0 2px 2px 0;
     color: #fff;
@@ -968,13 +968,13 @@ div.effect-sadie1 + div.effect-sadie1 {
     padding: 12px 18px 10px;
     float: right;
     display: inline-block;
-    background: #0083c1;
+    background: rgb(190, 30, 45);
     border: none;
     color: #fff;
 }
 
 #search button:hover {
-    background: #0083c1;
+    background: rgb(190, 30, 45);
     border: none;
     color: #fff
 }
@@ -1037,10 +1037,10 @@ div.effect-sadie1 + div.effect-sadie1 {
     display: inline-block;
     padding: 7px 10px;
     font-size: 13px;
-    color: #bce9fd;
+    color: #333333;
     vertical-align: top;
 
-    font-weight: 300;
+    font-weight: 500;
     letter-spacing: 0.5px;
 }
 
@@ -1059,7 +1059,7 @@ div.effect-sadie1 + div.effect-sadie1 {
     background: none;
     box-shadow: none;
     border: none;
-    color: #bce9fd;
+    color: #333333;
     font-size: 13px;
     font-weight: 300;
     letter-spacing: 0.5px;
@@ -1111,7 +1111,7 @@ a.block-language:focus {
 }
 
 .block-language-wrapper .dropdown-menu a:hover {
-    color: #0083c1;
+    color: rgb(190, 30, 45);
     background: none;
 }
 
@@ -1125,9 +1125,9 @@ a.block-language:focus {
     background: none;
     box-shadow: none;
     border: none;
-    color: #bce9fd;
+    color: #333333;
     font-size: 13px;
-    font-weight: 300;
+    font-weight: 500;
     letter-spacing: 0.5px;
 }
 
@@ -1178,7 +1178,7 @@ a.block-currency:focus {
 }
 
 .block-currency-wrapper .dropdown-menu a:hover {
-    color: #0083c1;
+    color: rgb(190, 30, 45);
     background: none;
 }
 
@@ -1247,7 +1247,7 @@ ul.currencies_list li a {
 }
 
 ul.currencies_list li a:hover {
-    color: #0083c1;
+    color: rgb(190, 30, 45);
     text-decoration: none;
 }
 
@@ -1288,7 +1288,7 @@ ul.currencies_list li a:hover {
 
 .top-cart-content .product-name a:hover {
     font-size: 13px;
-    color: #0083c1
+    color: rgb(190, 30, 45)
 }
 
 .top-cart-contain .price {
@@ -1335,7 +1335,7 @@ ul.currencies_list li a:hover {
     text-align: center;
     font-weight: normal;
     margin-right: 11px;
-    background: #eb2771;
+    background-color: rgb(190, 30, 45);
     padding: 15px 0px;
     border-radius: 5px;
     width: 50px;
@@ -1394,7 +1394,7 @@ ul.currencies_list li a:hover {
     margin-top: 12px;
     position: relative;
     margin-top: 0px;
-    background: #0083c1;
+    background: rgb(190, 30, 45);
     padding: 18px 16px;
     border-radius: 3px 3px 0px 0px;
     float: right;
@@ -1420,7 +1420,7 @@ ul.currencies_list li a:hover {
 }
 
 .mgk-wishlist .wishlist_count {
-    background: none repeat scroll 0 0 #0083c1;
+    background: none repeat scroll 0 0 rgb(190, 30, 45);
     border-radius: 20px;
     color: #fff;
     display: inline-block;
@@ -1517,7 +1517,7 @@ ul.currencies_list li a:hover {
     overflow: hidden;
     padding: 0px 5px;
     text-align: left;
-    background: #0083c1
+    background: rgb(190, 30, 45)
 }
 
 .top-cart-content .block-subtitle .price {
@@ -1589,7 +1589,7 @@ ul#cart-sidebar {
 }
 
 .button.btn-checkout:hover {
-    background: #0083c1;
+    background: rgb(190, 30, 45);
 }
 
 .button:btn-bag:hover {
@@ -1635,7 +1635,7 @@ ul#cart-sidebar {
 }
 
 .mini-cart .actions .btn-checkout {
-    background: #fdd922;
+    background: rgb(251, 175, 63);
     color: #333;
     font-size: 13px;
     text-transform: uppercase;
@@ -1653,7 +1653,7 @@ ul#cart-sidebar {
 }
 
 .mini-cart .actions .btn-checkout:hover {
-    background: #0083c1;
+    background: rgb(190, 30, 45);
     color: #fff;
 }
 
@@ -1674,7 +1674,7 @@ ul#cart-sidebar {
     text-transform: uppercase;
     text-align: center;
     display: inline-block;
-    background: #0083c1;
+    background: rgb(190, 30, 45);
     color: #fff;
     letter-spacing: 0.5px;
     width: 145px;
@@ -1738,7 +1738,7 @@ nav {
 
 .menu > li > a:hover, .menu > li > a:focus, .menu > li.active > a {
     text-decoration: none;
-    color: #0083c1;
+    color: rgb(190, 30, 45);
 }
 
 /* Mega Menu */
@@ -1756,7 +1756,7 @@ nav {
     color: #333;
     cursor: pointer;
     line-height: 63px;
-    background: #fdd922;
+    background-color: rgb(251, 175, 63);
     vertical-align: middle;
     padding: 15px 24px;
     font-weight: 300
@@ -1790,8 +1790,8 @@ nav {
 .mega-menu-title h3 {
     font-family: "Nunito Sans", sans-serif;
     text-transform: uppercase;
-    font-size: 14px;
-    font-weight: normal;
+    font-size: 15px;
+    font-weight: bold;
     letter-spacing: 1.5px;
     margin: auto;
 }
@@ -1943,7 +1943,7 @@ nav {
 }
 
 .popup .nav > li > a:hover, .popup .nav > li > a:focus {
-    color: #0083c1;
+    color: rgb(190, 30, 45);
     background-color: transparent;
 }
 
@@ -2014,7 +2014,7 @@ nav {
 }
 
 .box-banner a:hover {
-    color: #0083c1;
+    color: rgb(190, 30, 45);
 }
 
 .has-sep:before {
@@ -2027,7 +2027,7 @@ nav {
 
 /* Navbar */
 .navbar-primary {
-    background-color: #0083c1;
+    background-color: rgb(190, 30, 45);
     margin: 0;
     border: 0;
 }
@@ -2058,7 +2058,7 @@ nav {
     /*	padding: .78571rem 0;  */
     padding: 8px;
     text-align: center;
-    background-color: #085170;
+    background-color: #333333;
     color: #fff;
     font-size: 13px;
     letter-spacing: 0.5px;
@@ -2070,7 +2070,7 @@ nav {
 }
 
 .top-banners .banner span {
-    color: #fdd922
+    color: rgb(251, 175, 63)
 }
 
 header {
@@ -2079,14 +2079,14 @@ header {
 
 .header-container {
     transition: all 0.5s;
-    background: rgb(84, 86, 86);
+    background: rgb(251, 175, 63);
     border-bottom: 1px dotted rgba(182, 182, 172, 0.3);
     margin-bottom: 15px;
 }
 
 /*----- 5. Features Box ----------- */
 nav {
-    background: #eb2771;
+    background-color: rgb(190, 30, 45);
     height: 48px;
     width: 100%;
     margin: auto;
@@ -2117,6 +2117,10 @@ nav {
     padding-bottom: 13px;
     display: inline-block;
     font-size: 13px;
+}
+
+.features-block a:hover,.features-block li.active a{
+    color: rgb(251, 175, 63);
 }
 
 .features-block li:last-child a {
@@ -2413,7 +2417,7 @@ nav {
     font-size: 13px;
     text-transform: uppercase;
     padding: 9px 14px 6px;
-    background-color: #fdd922;
+    background-color: rgb(251, 175, 63);
     border: 1px solid #e0bc27;
     border-radius: 3px;
     color: #000;
@@ -2595,12 +2599,12 @@ nav {
     font-family: FontAwesome;
     display: inline-block !important;
     margin-left: 15px;
-    color: #0083c1;
+    color: rgb(190, 30, 45);
     font-size: 16px;
 }
 
 .offer-slider a.shop-now:hover {
-    color: #0083c1;
+    color: rgb(190, 30, 45);
     background-color: #fff;
 }
 
@@ -3628,7 +3632,7 @@ nav {
 .bestsell-pro .slider-items-products .owl-buttons a:hover {
     /*	text-decoration: none;
 	background: inherit;
-	color: #0083c1; */
+	color: rgb(190, 30, 45); */
 
     text-decoration: none;
     background: #fff;
@@ -3694,7 +3698,7 @@ nav {
 .slider-items-products .owl-buttons a:hover {
     /*	text-decoration: none;
 	background: #fff;
-	color: #0083c1; */
+	color: rgb(190, 30, 45); */
 
     text-decoration: none;
     border: 1px #00ADEF solid;
@@ -3769,7 +3773,7 @@ nav {
 }
 
 .home-block-inner .banner-content a.view-bnt {
-    background-color: #fdd922;
+    background-color: rgb(251, 175, 63);
     border: 1px solid #e0bc27;
     border-radius: 0 2px 2px 0;
     color: #000;
@@ -3896,8 +3900,8 @@ nav {
 }
 
 .bestsell-pro a.view_more_bnt:hover {
-    border: 1px #0083c1 solid;
-    background: #0083c1;
+    border: 1px rgb(190, 30, 45) solid;
+    background: rgb(190, 30, 45);
     color: #fff;
 }
 
@@ -4006,8 +4010,8 @@ nav {
 }
 
 .featured-add-inner .banner-content a.view-bnt {
-    background-color: #0083c1;
-    border: 1px solid #0083c1;
+    background-color: rgb(190, 30, 45);
+    border: 1px solid rgb(190, 30, 45);
     border-radius: 3px;
     color: #fff;
     cursor: pointer;
@@ -4504,7 +4508,7 @@ nav {
 	background: #fff;  */
 
     color: #333;
-    background: #fdd922;
+    background-color: rgb(251, 175, 63);
     border-radius: 25px;
     /* border-radius: 3px 3px 0px 0px; */
 
@@ -4512,7 +4516,7 @@ nav {
 
 .category-product .navbar-nav > li.active a:hover, .category-product .navbar-nav > li.active a:focus {
     color: #fff;
-    background: #0083c1;
+    background: rgb(190, 30, 45);
     /* border-radius: 3px 3px 0px 0px; */
 }
 
@@ -4557,7 +4561,7 @@ nav {
     height: 40px;
     display: block;
     font-size: 0;
-    color: #0083c1;
+    color: rgb(190, 30, 45);
     line-height: 40px;
     text-align: left;
     padding: 0;
@@ -4583,13 +4587,13 @@ nav {
 }
 
 .box-hover .add-to-links li a:hover {
-    background: #0083c1;
+    background: rgb(190, 30, 45);
     border-radius: 100px;
     color: #fff;
 }
 
 .box-hover .add-to-links li a:hover:after {
-    background: #0083c1;
+    background: rgb(190, 30, 45);
     border-radius: 100px;
     color: #fff;
 }
@@ -4650,7 +4654,7 @@ nav {
 }
 
 .new_title h2 strong {
-    color: #0083c1;
+    color: rgb(190, 30, 45);
     font-weight: 900;
 }
 
@@ -4855,9 +4859,9 @@ nav {
 }
 
 .category-description .slider-items-products .owl-buttons a:hover {
-    background: #0083c1;
+    background: rgb(190, 30, 45);
     opacity: 1;
-    border: 1px #0083c1 solid;
+    border: 1px rgb(190, 30, 45) solid;
     color: #fff;
 }
 
@@ -4985,7 +4989,7 @@ ul.products-grid {
     padding: 0px;
     width: 50px;
     height: 50px;
-    background: #0083c1;
+    background: rgb(190, 30, 45);
     text-align: center;
     line-height: 50px;
 }
@@ -5174,7 +5178,7 @@ ul.products-grid {
 }
 
 .products-grid .item .item-inner .item-info .info-inner .item-title a:hover {
-    color: #0083c1;
+    color: rgb(190, 30, 45);
 }
 
 .products-grid .item:hover .item-inner .item-img .item-img-info {
@@ -5182,7 +5186,7 @@ ul.products-grid {
 }
 
 .products-grid .item .item-inner .item-info .info-inner .item-title a:hover {
-    color: #0083c1;
+    color: rgb(190, 30, 45);
 }
 
 .products-grid .item:hover .item-inner .item-img .item-box-hover {
@@ -5193,13 +5197,13 @@ ul.products-grid {
 }
 
 .products-grid .item:hover .item-inner .item-info .info-inner .item-title a {
-    color: #0083c1;
+    color: rgb(190, 30, 45);
 }
 
 .products-grid .item:hover .item-inner .item-info .info-inner .action .button {
-    background: #0083c1;
+    background: rgb(190, 30, 45);
     color: #fff;
-    border: 1px #0083c1 solid;
+    border: 1px rgb(190, 30, 45) solid;
     transition: color 300ms ease-in-out 0s, background-color 300ms ease-in-out 0s, background-position 300ms ease-in-out 0s;
 }
 
@@ -5386,7 +5390,7 @@ ul.products-grid {
 .hot-label {
     font-size: 10px;
     color: #fff;
-    background: #eb2771;
+    background-color: rgb(190, 30, 45);
     text-transform: uppercase;
     padding: 3px 10px;
     text-align: center;
@@ -5431,7 +5435,7 @@ ul.products-grid {
 }
 
 .products-list .item a:hover {
-    color: #0083c1;
+    color: rgb(190, 30, 45);
     transition: all 0.3s linear;
     -moz-transition: all 0.3s linear;
     -webkit-transition: all 0.3s linear;
@@ -5582,9 +5586,9 @@ li .list {
 }
 
 .products-list .product-shop .btn-cart {
-    background-color: #fdd922;
+    background-color: rgb(251, 175, 63);
     color: #333;
-    border: 1px #fdd922 solid;
+    border: 1px rgb(251, 175, 63) solid;
     padding: 7px 15px 8px;
     float: left;
 }
@@ -5687,10 +5691,10 @@ li .list {
     font-size: 11px;
     font-weight: bold;
     text-decoration: none;
-    background-color: #0083c1;
+    background-color: rgb(190, 30, 45);
     color: #FFFFFF !important;
     display: inline-block;
-    border: 1px #0083c1 solid
+    border: 1px rgb(190, 30, 45) solid
 }
 
 .products-list .actions .add-to-links a.link-compare:hover {
@@ -5698,10 +5702,10 @@ li .list {
     font-size: 11px;
     font-weight: bold;
     text-decoration: none;
-    background-color: #0083c1;
+    background-color: rgb(190, 30, 45);
     color: #FFFFFF !important;
     display: inline-block;
-    border: 1px #0083c1 solid
+    border: 1px rgb(190, 30, 45) solid
 }
 
 ul.products-grid {
@@ -5743,7 +5747,7 @@ a.button.detail-bnt span {
 .ratings .rating-links a {
     margin: 0;
     text-decoration: none;
-    color: #0083c1;
+    color: rgb(190, 30, 45);
     font-size: 12px
 }
 
@@ -6072,7 +6076,7 @@ a.button.detail-bnt span {
 }
 
 .latest-blog .readmore:hover {
-    background: #0083c1;
+    background: rgb(190, 30, 45);
     color: #fff
 }
 
@@ -6210,7 +6214,7 @@ a.button.detail-bnt span {
     display: inline-block;
     text-decoration: none;
     padding: 7px 14px;
-    background: #0083c1;
+    background: rgb(190, 30, 45);
     color: #fff;
     font-weight: 700;
     font-size: 11px;
@@ -6219,7 +6223,7 @@ a.button.detail-bnt span {
 }
 
 .blog-img a.info:hover {
-    background: #0083c1;
+    background: rgb(190, 30, 45);
 }
 
 .blog-img {
@@ -6337,8 +6341,8 @@ a.button.detail-bnt span {
 
 .blog-preview_btn:focus, .blog-preview_btn:hover {
     color: #fff;
-    background: #0083c1;
-    border: 1px #0083c1 solid;
+    background: rgb(190, 30, 45);
+    border: 1px rgb(190, 30, 45) solid;
 }
 
 .blog-preview_posted {
@@ -6377,7 +6381,7 @@ a.button.detail-bnt span {
 }
 
 .blog-preview_comments i {
-    color: #0083c1;
+    color: rgb(190, 30, 45);
 }
 
 .blog-preview_image:hover .blog-preview_posted {
@@ -6510,7 +6514,7 @@ a.button.detail-bnt span {
     ms-transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
-    background: #0083c1;
+    background: rgb(190, 30, 45);
     padding: 12px 12px;
     ms-transform: translateX(-50%);
     -webkit-transform: translateX(-50%);
@@ -6574,12 +6578,12 @@ a.button.detail-bnt span {
 
 .breadcrumbs a {
     color: #666;
-    font-size: 11px;
+    font-size: 13px;
     font-weight: normal;
 }
 
 .breadcrumbs a:hover {
-    color: #0083c1;
+    color: rgb(190, 30, 45);
 }
 
 .category-page .breadcrumbs {
@@ -6608,7 +6612,7 @@ a.button.detail-bnt span {
 
 .breadcrumbs strong {
     font-weight: normal;
-    color: #0083c1;
+    color: rgb(190, 30, 45);
 }
 
 figure.effect img {
@@ -6909,7 +6913,7 @@ ul#magicat li .open-close, .block-layered-nav dt .toggleBtn {
     margin: 0;
     padding: 15px;
     text-transform: uppercase;
-    background: #0083c1;
+    background: rgb(190, 30, 45);
     border-radius: 3px 3px 0 0;
 }
 
@@ -7016,7 +7020,7 @@ ul#magicat li .open-close, .block-layered-nav dt .toggleBtn {
 }
 
 .box-category > ul > li > a.active {
-    color: #0083c1;
+    color: rgb(190, 30, 45);
     font-weight: 700;
     margin-bottom: 0;
     font-size: 13px;
@@ -7061,11 +7065,11 @@ ul#magicat li .open-close, .block-layered-nav dt .toggleBtn {
 }
 
 .box-category > ul > li ul > li ul > li a:hover {
-    color: #0083c1;
+    color: rgb(190, 30, 45);
 }
 
 .box-category > ul > li ul > li > a:hover {
-    color: #0083c1;
+    color: rgb(190, 30, 45);
 }
 
 .sidebar-left {
@@ -7225,7 +7229,7 @@ ul#magicat li .open-close, .block-layered-nav dt .toggleBtn {
 .block-account .block-content li a:hover {
     cursor: pointer;
     padding: 0 12px;
-    color: #0083c1;
+    color: rgb(190, 30, 45);
 }
 
 .sidebar .block-content li.current {
@@ -8277,7 +8281,7 @@ ol#compare-items li.last {
 .product-view .product-img-box .product-image .owl-next a, .product-view .product-img-box .product-image .owl-prev a {
     border: none;
     background: none;
-    color: #0083c1;
+    color: rgb(190, 30, 45);
 }
 
 .more-views .slider-items-products .owl-buttons .owl-next a:before, .more-views .slider-items-products .owl-buttons .owl-prev a:before {
@@ -9029,11 +9033,11 @@ ol#compare-items li.last {
 
 .form-add-tags .button:hover {
     display: inline;
-    background: #0083c1;
+    background: rgb(190, 30, 45);
     transition: all 0.3s linear;
     -moz-transition: all 0.3s linear;
     -webkit-transition: all 0.3s linear;
-    border: 1px #0083c1 solid;
+    border: 1px rgb(190, 30, 45) solid;
     color: #fff;
 }
 
@@ -9228,11 +9232,11 @@ a.button.view-all {
 }
 
 .button.view-all:hover {
-    background: #0083c1;
+    background: rgb(190, 30, 45);
     transition: all 0.3s linear;
     -moz-transition: all 0.3s linear;
     -webkit-transition: all 0.3s linear;
-    border: 1px solid #0083c1;
+    border: 1px solid rgb(190, 30, 45);
     color: #fff;
     text-decoration: none;
 }
@@ -9469,7 +9473,7 @@ button.button.submit:before {
 }
 
 .product-view .product-next-prev .product-next:hover, .product-shop .product-next-prev .product-prev:hover {
-    /*	color: #0083c1;
+    /*	color: rgb(190, 30, 45);
 	background: #fff;
 	text-decoration: none; */
 
@@ -9505,7 +9509,7 @@ button.button.submit:before {
 
 .product-view .product-next-prev a:hover {
     background: #fff;
-    color: #0083c1;
+    color: rgb(190, 30, 45);
 }
 
 .side-banner {
@@ -9548,7 +9552,7 @@ button.button.submit:before {
 }
 
 .product-view .product-shop .product-options-bottom .btn-cart:hover {
-    background: #0083c1;
+    background: rgb(190, 30, 45);
     color: #fff;
 }
 
@@ -9704,7 +9708,7 @@ button.button.submit:before {
     text-decoration: none;
     width: 45px;
     background: url(../images/to-top-arrow.png) no-repeat center;
-    background-color: #0083c1;
+    background-color: rgb(190, 30, 45);
     text-transform: uppercase;
     z-index: 100;
     border-radius: 2px;
@@ -9712,7 +9716,7 @@ button.button.submit:before {
 
 #toTop:hover {
     color: #fff;
-    background-color: #0083c1;
+    background-color: rgb(190, 30, 45);
 }
 
 /*18. bottom banner*/
@@ -9777,8 +9781,8 @@ button.button.submit:before {
     -o-transition: 0.4s;
     -webkit-transition: 0.4s;
     transition: 0.4s;
-    background-color: #0083c1;
-    border-color: #0083c1;
+    background-color: rgb(190, 30, 45);
+    border-color: rgb(190, 30, 45);
 }
 
 .bottom-banner-img .banner-overly {
@@ -9792,8 +9796,8 @@ button.button.submit:before {
 
 .bottom-banner-img:hover .shop-now-btn {
     opacity: 1;
-    background-color: #0083c1;
-    border-color: #0083c1;
+    background-color: rgb(190, 30, 45);
+    border-color: rgb(190, 30, 45);
     padding: 8px 12px;
     text-transform: uppercase;
     font-weight: 600;
@@ -9900,8 +9904,8 @@ button.button.submit:before {
 
 a.shop-now-btn {
     opacity: 1;
-    background-color: #0083c1;
-    border-color: #0083c1;
+    background-color: rgb(190, 30, 45);
+    border-color: rgb(190, 30, 45);
     padding: 8px 12px;
     text-transform: uppercase;
     font-weight: 600;
@@ -9942,7 +9946,7 @@ a.shop-now-btn {
 }
 
 .newsletter-wrap button.subscribe {
-    background-color: #fdd922 !important;
+    background-color: rgb(251, 175, 63) !important;
     border: none;
     color: #333;
     cursor: pointer;
@@ -10235,7 +10239,7 @@ a.shop-now-btn {
 }
 
 .footer-bottom a:hover {
-    color: #0083c1;
+    color: rgb(190, 30, 45);
 }
 
 .footer-bottom a:hover {
@@ -10307,7 +10311,7 @@ a.buy-theme {
 }
 
 .footer-middle .links li a:hover {
-    color: #0083c1;
+    color: rgb(190, 30, 45);
     text-decoration: none;
 }
 
@@ -10335,15 +10339,15 @@ a.buy-theme {
     text-align: center;
     margin-right: 10px;
     border-radius: 30px;
-    border: 1px solid #0083c1;
+    border: 1px solid rgb(190, 30, 45);
     border-radius: 25px;
-    background: #0083c1;
+    background: rgb(190, 30, 45);
 }
 
 .email-icon:before {
     content: "\f0e0";
-    background: none repeat scroll 0 0 #0083c1;
-    border: 1px solid #0083c1;
+    background: none repeat scroll 0 0 rgb(190, 30, 45);
+    border: 1px solid rgb(190, 30, 45);
     border-radius: 25px;
     color: #fff;
     display: inline-block;
@@ -10360,7 +10364,7 @@ a.buy-theme {
 
 .phone-icon:before {
     content: "\f095";
-    border: 1px solid #0083c1;
+    border: 1px solid rgb(190, 30, 45);
     border-radius: 25px;
     color: #fff;
     display: inline-block;
@@ -10373,7 +10377,7 @@ a.buy-theme {
     margin-right: 10px;
     text-align: center;
     width: 35px;
-    background: #0083c1;
+    background: rgb(190, 30, 45);
 }
 
 .email-footer {
@@ -10570,9 +10574,9 @@ ul.shipping-pro li {
 }
 
 .timer-grid .day.box-time-date {
-    background: #0083c1;
+    background: rgb(190, 30, 45);
     color: #fff;
-    border: 1px #0083c1 solid;
+    border: 1px rgb(190, 30, 45) solid;
 }
 
 .timer-grid .day.box-time-date span {
@@ -10948,7 +10952,7 @@ input#coupon_code {
 
 .checkout a {
     text-decoration: underline;
-    color: #0083c1;
+    color: rgb(190, 30, 45);
 }
 
 .checkout {
@@ -10961,7 +10965,7 @@ input#coupon_code {
 }
 
 button.button.btn-proceed-checkout {
-    background: #fdd922;
+    background-color: rgb(251, 175, 63);
     color: #333;
     width: 100%;
     border: none;
@@ -10973,7 +10977,7 @@ button.button.btn-proceed-checkout {
 }
 
 button.button.btn-proceed-checkout:hover {
-    background: #0083c1;
+    background: rgb(190, 30, 45);
     color: #fff;
 }
 
@@ -11295,7 +11299,7 @@ button.button.btn-proceed-checkout span {
     font-weight: normal;
     text-decoration: underline;
     text-transform: none;
-    color: #0083c1;
+    color: rgb(190, 30, 45);
 }
 
 .block-progress dt.complete a:hover, .block-progress dd.complete a:hover {
@@ -11322,7 +11326,7 @@ button.button.btn-proceed-checkout span {
 }
 
 .one-page-checkout .active .step-title h3 {
-    color: #0083c1;
+    color: rgb(190, 30, 45);
     font-size: 13px;
     font-weight: 600;
     letter-spacing: 1px;
@@ -11437,8 +11441,8 @@ select#shipping-address-select:focus {
 }
 
 .one-page-checkout .active .step-title .number {
-    background-color: #0083c1;
-    border: 1px solid #0083c1;
+    background-color: rgb(190, 30, 45);
+    border: 1px solid rgb(190, 30, 45);
     color: #fff;
 }
 
@@ -11768,7 +11772,7 @@ a.button.wishlist {
 }
 
 .checkout-progress li.active {
-    background-color: #0083c1;
+    background-color: rgb(190, 30, 45);
     color: #fff;
 }
 
@@ -12013,7 +12017,7 @@ a.button.wishlist {
 }
 
 .page-not-found .btn-home {
-    background-color: #0083c1;
+    background-color: rgb(190, 30, 45);
     border: medium none;
     border-radius: 2px 2px 2px 2px;
     color: #fff;
@@ -12083,7 +12087,7 @@ a.button.wishlist {
     color: #333;
     padding: 10px 5px 12px 15px;
     border-radius: 0;
-    border-right: 48px solid #0083c1;
+    border-right: 48px solid rgb(190, 30, 45);
     min-height: 50px;
     font-weight: 600;
 }
@@ -12293,8 +12297,8 @@ a.button.wishlist {
 }
 
 .newsletter-sign-box .subscribe {
-    background-color: #0083c1;
-    border: 1px solid #0083c1;
+    background-color: rgb(190, 30, 45);
+    border: 1px solid rgb(190, 30, 45);
     border-radius: 0px;
     display: block;
     font-size: 14px;
@@ -12434,7 +12438,7 @@ a.button.wishlist {
 	display: inline-block;
 	width: 100%;
 	background: #f8f8f8;
-	border-bottom: 4px #0083c1 solid */
+	border-bottom: 4px rgb(190, 30, 45) solid */
 
     margin: 0px;
     padding: 0px 0px;
@@ -12968,9 +12972,9 @@ a.shop-now-btn {
 }
 
 #sort-by .button-asc:hover {
-    background: #0083c1;
+    background: rgb(190, 30, 45);
     color: #fff;
-    border-color: #0083c1
+    border-color: rgb(190, 30, 45)
 }
 
 .top_arrow:before {
@@ -12995,11 +12999,12 @@ a.shop-now-btn {
     font-size: 13px;
 }
 
-#sort-by ul {
+#sort-by select{
     margin: 0;
-    padding: 0;
+    padding: 5px;
     list-style: none;
     display: inline;
+    width: 100px;
 }
 
 #sort-by a:link, #sort-by a:visited {
@@ -13007,14 +13012,13 @@ a.shop-now-btn {
     text-decoration: none;
 }
 
-#sort-by li {
+#sort-by option {
     background: none repeat scroll 0 0 #fff;
     cursor: pointer;
     margin: 0 auto;
     outline: medium none;
     padding: 4px 15px 0px;
     position: relative;
-    width: 100px;
     float: left;
     color: #333;
     border: 1px solid #e5e5e5;
@@ -13030,7 +13034,7 @@ a.shop-now-btn {
 }
 
 #sort-by li li a:hover {
-    color: #0083c1
+    color: rgb(190, 30, 45)
 }
 
 #sort-by li:hover {
@@ -13039,7 +13043,7 @@ a.shop-now-btn {
 
 #sort-by li li:hover {
     background-color: #fff;
-    color: #0083c1;
+    color: rgb(190, 30, 45);
 }
 
 #sort-by ul ul {
@@ -13081,9 +13085,9 @@ a.shop-now-btn {
     margin-top: 0px;
 }
 
-#limiter ul {
+#limiter select {
     margin: 0;
-    padding: 0;
+    padding: 5px 20px 5px 10px;
     list-style: none;
     display: inline;
 }
@@ -13098,7 +13102,7 @@ a.shop-now-btn {
     color: #999;
 }
 
-#limiter li {
+#limiter option {
     background: none repeat scroll 0 0 #fff;
     cursor: pointer;
     margin: 0 auto;
@@ -13124,7 +13128,7 @@ a.shop-now-btn {
 }
 
 #limiter li li a:hover {
-    color: #0083c1;
+    color: rgb(190, 30, 45);
 }
 
 #limiter li:hover {
@@ -14865,8 +14869,8 @@ a.shop-now-btn {
     }
 
     .card_wishlist_area {
-        background: #0083c1;
-        border-bottom: 2px solid #0083c1;
+        background: rgb(190, 30, 45);
+        border-bottom: 2px solid rgb(190, 30, 45);
     }
 
     .mini-cart .basket a:before {
@@ -16390,8 +16394,8 @@ a.shop-now-btn {
     }
 
     .card_wishlist_area {
-        background: #0083c1;
-        /*   border-bottom: 3px solid#0083c1; */
+        background: rgb(190, 30, 45);
+        /*   border-bottom: 3px solidrgb(190, 30, 45); */
     }
 
     div.figure.banner-width {
@@ -17541,7 +17545,7 @@ a.shop-now-btn {
     }
 
     .mega-menu-title {
-        /*	background: none repeat scroll 0 0#0083c1; */
+        /*	background: none repeat scroll 0 0rgb(190, 30, 45); */
         /* border-radius: 3px 3px 0 0; */
         /* color: #fff; */
         cursor: pointer;
