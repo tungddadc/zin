@@ -201,6 +201,8 @@ class User extends Admin_Controller
         $this->checkRequestPostAjax();
         $data = $this->_convertData();
         if($this->ion_auth->update($data['id'],$data)){
+            $this->ion_auth->remove_from_group(false, $data['id']);
+            $this->ion_auth->add_to_group($data['group_id'], $data['id']);
             $message['type'] = 'success';
             $message['message'] = "Cập nhật thành công !";
         }else{
@@ -257,9 +259,9 @@ class User extends Admin_Controller
             array(
                 'field' => 'email',
                 'label' => 'Email',
-                'rules' => 'trim|required|valid_email'.($this->input->post('id') == 0 ? '|is_unique['.$this->_data->_dbprefix.'users.email]' : ''),
+                'rules' => 'trim|required|valid_email'.($this->input->post('id') === 0 ? '|is_unique['.$this->_data->_dbprefix.'users.email]' : ''),
                 'errors' => array(
-                    'required' => '%s đã tồn tại. Vui lòng chọn %s khác.',
+                    'is_unique' => '%s đã tồn tại. Vui lòng chọn %s khác.',
                 )
             ),
             array(
@@ -272,7 +274,7 @@ class User extends Admin_Controller
                 'label' => 'Username',
                 'rules' => 'trim|required'.($this->input->post('id') == 0 ? '|is_unique['.$this->_data->_dbprefix.'users.username]' : ''),
                 'errors' => array(
-                    'required' => '%s đã tồn tại. Vui lòng chọn %s khác.',
+                    'is_unique' => '%s đã tồn tại. Vui lòng chọn %s khác.',
                 )
             ),
             array(

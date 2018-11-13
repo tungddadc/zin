@@ -45,7 +45,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                         </label>
                                     </div>
                                     <div class="m-form__control">
-                                        <select data-placeholder="Tất cả" class="form-control m-bootstrap-select" data-multiple="false" name="group_id"></select>
+                                        <select data-placeholder="Tất cả" class="form-control m-bootstrap-select" data-multiple="false" name="filter_group_id"></select>
                                     </div>
                                 </div>
                                 <div class="d-md-none m--margin-bottom-10"></div>

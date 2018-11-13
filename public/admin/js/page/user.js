@@ -65,6 +65,7 @@ $(function() {
         table.search($(this).val(), "group_id")
     });
 
+    loadGroup('',$('[name="filter_group_id"]'));
     loadGroup();
     AJAX_CRUD_MODAL.init();
 
@@ -85,7 +86,7 @@ $(function() {
                         if(key === 'active'){
                             $('[name="active"]').bootstrapSwitch('state', (value == 1 ? true : false));
                         }
-                        modal_form.find('[name="username"]').attr('disabled',true);
+                        modal_form.find('[name="username"]').attr('readonly',true);
                     });
                     loadGroup(response.group);
                     modal_form.modal('show');
@@ -101,8 +102,8 @@ $(function() {
     });
 });
 
-function loadGroup(dataSelected) {
-    let selector = $('select[name="group_id"]');
+function loadGroup(dataSelected,selector) {
+    if(!selector) selector = $('select[name="group_id"]');
     selector.select2({
         placeholder: 'Chọn nhóm',
         allowClear: !0,
