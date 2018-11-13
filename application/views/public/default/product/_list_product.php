@@ -49,5 +49,5 @@
                 </div>
             </div>
         </li>
-    <?php endforeach; ?>
+    <?php endforeach;else echo "<div class='text-center'>Nội dung đang được cập nhật !</div>" ?>
 </ul>
