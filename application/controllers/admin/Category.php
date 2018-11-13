@@ -147,12 +147,17 @@ class Category extends Admin_Controller
             'is_status'=> 1,
             'not_in' => ['id' => $id],
             'search' => $term,
-            'limit'=> 10
+            'limit'=> 1000
         ];
         $list = $this->_data->getData($params);
-        $this->_queue_select($list);
+        if($type === 'brand'){
+            $listTree = $list;
+        }else{
+            $this->_queue_select($list);
+            $listTree = $this->category_tree;
+        }
         $output = [];
-        if(!empty($this->category_tree)) foreach ($this->category_tree as $item) {
+        if(!empty($listTree)) foreach ($listTree as $item) {
             $item = (object) $item;
             $output[] = ['id'=>$item->id, 'text'=>$item->title];
         }

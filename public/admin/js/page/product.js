@@ -152,16 +152,18 @@ $(function() {
     });
 });
 function showPriceAgency(data) {
-    let container = $('fieldset.agency-container .quantity-range');
-    container.find('.row').not(':first').remove();
-    $.each(data, function (i,v) {
-        let itemClone = container.find('.row:first-child').clone();
-        $.each(v,function (name, value) {
-            itemClone.find('[name="data_detail[0]['+name+']"]').attr('name','data_detail['+i+']['+name+']').val(value);
+    if(data.length > 0){
+        let container = $('fieldset.agency-container .quantity-range');
+        container.find('.row').not(':first').remove();
+        $.each(data, function (i,v) {
+            let itemClone = container.find('.row:first-child').clone();
+            $.each(v,function (name, value) {
+                itemClone.find('[name="data_detail[0]['+name+']"]').attr('name','data_detail['+i+']['+name+']').val(value);
+            });
+            container.append(itemClone);
         });
-        container.append(itemClone);
-    });
-    container.find('.row:first-child').remove();
+        container.find('.row:first-child').remove();
+    }
 }
 function loadCategory(dataSelected) {
     let selector = $('select.category');
