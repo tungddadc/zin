@@ -39,7 +39,7 @@ class STEVEN_Model extends CI_Model
 	}
 
 	/*Hàm xử lý các tham số truyền từ Datatables Jquery*/
-    private function _get_datatables_query(){
+    public function _get_datatables_query(){
         $query = $this->input->post('query');
         if(!empty($query['generalSearch'])){
             $keyword = $query['generalSearch'];

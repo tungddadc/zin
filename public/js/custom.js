@@ -1,3 +1,55 @@
+var LOC = {
+    loadCity: function loadCity(dataSelected) {
+      let city_id=$('select[name="city_id"]');
+      if(city_id.length > 0){
+        city_id.select2({
+          allowClear: true,
+          placeholder: "Chọn tỉnh/thành phố",
+          data: dataSelected,
+          ajax: {
+            url: base_url + 'cart/ajax_load_city',
+            dataType: 'json',
+            delay: 250,
+            processResults: function (data) {
+              return {
+                results: data
+              };
+            },
+            cache: true
+          }
+        });
+
+      }
+      city_id.change(function () {
+        LOC.loadDistrict($(this).val());
+      });
+    },
+
+    loadDistrict: function loadDistrict(city_id, dataSelected) {
+      let district_id=$('select[name="district_id"]');
+      if(district_id.length > 0){
+        district_id.select2({
+          allowClear: true,
+
+          placeholder: "Chọn quận huyện",
+          data: dataSelected,
+          ajax: {
+            url: base_url + 'cart/ajax_load_district/' + city_id,
+            dataType: 'json',
+            delay: 250,
+            processResults: function (data) {
+              return {
+                results: data
+              };
+            },
+            cache: true
+          }
+        });
+      }
+
+    }
+
+  }
 var FUNC = {
   formatMoney: function (money) {
     return money.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.") + 'đ'
@@ -84,7 +136,7 @@ var CART = {
     CART.loadPriceAgency(product_id, qty + 1);
     return false;
   },
-  list_cart:function () {
+  list_cart: function () {
     $.ajax({
       url: base_url + 'cart/load_list_cart',
       type: 'post',
@@ -98,9 +150,9 @@ var CART = {
   hover_cart: function () {
 
     $('.mini-cart').hover(function () {
-      if($('.top-cart-content').length >0){
+      if ($('.top-cart-content').length > 0) {
         $('.top-cart-content').show();
-      }else{
+      } else {
         CART.list_cart();
       }
 
@@ -204,6 +256,9 @@ jQuery(document).ready(function () {
   });
 
   /*$('.sticky_box').stick_in_parent();*/
+
+  LOC.loadCity();
+  LOC.loadDistrict()
 });
 var ajaxShowRequest = function (formData, jqForm, options) {
   jqForm.find('[type="submit"]').append('<i class="fa fa-spinner fa-spin ml-2" style="color: #ffffff;"></i>');

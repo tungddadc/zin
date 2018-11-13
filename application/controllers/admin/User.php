@@ -248,7 +248,23 @@ class User extends Admin_Controller
             $this->returnJson($message);
         }
     }
-
+  public function ajax_load($type = '')
+  {
+    $this->checkRequestGetAjax();
+      $term = $this->input->get("q");
+      $params = [
+        'search' => $term,
+        'limit' => 100
+      ];
+      $list = $this->_data->getAccountSelect2($params);
+      $json = [];
+      if (!empty($list)) foreach ($list as $item) {
+        $item = (object)$item;
+        $json[] = ['id' => $item->id, 'text' => $item->email.'('.$item->fullname.')'];
+      }
+      print json_encode($json);
+    exit;
+  }
     private function _validation(){
         $rules = array(
             array(
