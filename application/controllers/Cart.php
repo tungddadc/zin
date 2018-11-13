@@ -21,6 +21,11 @@ class Cart extends Public_Controller {
         $this->load->view($this->template_main, $data);
     }
 
+    public function load_list_cart(){
+      $this->checkRequestPostAjax();
+      echo $this->load->view($this->template_path.'cart/ajax_list_cart',[],TRUE);
+      exit();
+    }
     public function ajax_load_city(){
         $this->load->model('location_model');
         $locationModel = new Location_model();
