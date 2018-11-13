@@ -117,17 +117,31 @@ class Product extends Admin_Controller
             }
         }
     }
+    private function save_detail($id, $data){
+        if(!empty($data)) foreach ($data as $item){
+            $data_detail = ["{$this->_data->table}_id" => $id, 'total_qty' => $item['total_qty'],'price_agency' => $item['price_agency']];
+            if(!$this->_data->insertOnUpdate($data_detail, $this->_data->table_detail)){
+                $message['type'] = 'error';
+                $message['message'] = "Thêm {$this->_data->table_detail} thất bại !";
+                log_message('error', $message['message'] . '=>' . json_encode($data_detail));
+                $this->returnJson($message);
+            }
+        }
+    }
     public function ajax_add(){
         $this->checkRequestPostAjax();
         $data = $this->_convertData();
         $data['viewed'] = rand(1000,9999);
         $data_trans = $data['language'];
         $data_category = $data['category_id'];
+        $data_detail = $data['data_detail'];
         unset($data['language']);
         unset($data['category_id']);
+        unset($data['data_detail']);
         if($id = $this->_data->save($data)){
             $this->save_language($id, $data_trans);
             $this->save_category($id, $data_category);
+            $this->save_detail($id, $data_detail);
             $message['type'] = 'success';
             $message['message'] = "Thêm mới thành công !";
         }else{
@@ -144,6 +158,7 @@ class Product extends Admin_Controller
             $output['data_info'] = $this->_data->single(['id' => $id],$this->_data->table);
             $output['data_language'] = $this->_data->getDataAll(['id' => $id],$this->_data->table_trans);
             $output['data_category'] = $this->_data->getSelect2Category($id, $this->session->userdata('admin_lang'));
+            $output['data_detail'] = $this->_data->getDetail($id);
             $this->returnJson($output);
         }
     }
@@ -154,11 +169,14 @@ class Product extends Admin_Controller
         $id = $data['id'];
         $data_trans = $data['language'];
         $data_category = $data['category_id'];
-        unset($data['category_id']);
+        $data_detail = $data['data_detail'];
         unset($data['language']);
+        unset($data['category_id']);
+        unset($data['data_detail']);
         if($this->_data->update(['id' => $id],$data, $this->_data->table)){
             $this->save_language($id, $data_trans);
             $this->save_category($id, $data_category);
+            $this->save_detail($id, $data_detail);
             $message['type'] = 'success';
             $message['message'] = "Cập nhật thành công !";
         }else{

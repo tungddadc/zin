@@ -442,3 +442,11 @@ a.cancelnavmenu {
     color: #da1e1e;
     cursor: pointer;
 }
+.agency-container .quantity-range .row{
+    position: relative;
+}
+.btn-remove{
+    position: absolute;
+    right: -5px;
+    top: 35px;
+}

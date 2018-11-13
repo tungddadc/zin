@@ -48,6 +48,14 @@ class Product_model extends STEVEN_Model
         $data = $this->db->get()->result();
         return $data;
     }
+
+    public function getDetail($id){
+        $this->db->select();
+        $this->db->from($this->table_detail);
+        $this->db->where($this->table_detail.".product_id", $id);
+        $data = $this->db->get()->result();
+        return $data;
+    }
     public function getSelect2Category($id, $lang_code = null){
         if(empty($lang_code)) $lang_code = $this->session->userdata('admin_lang') ? $this->session->userdata('admin_lang') : $this->session->userdata('public_lang_code');
         $this->db->select("$this->table_category.category_id AS id, category_translations.title AS text");

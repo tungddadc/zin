@@ -179,16 +179,65 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                                 <select name="category_id[]" class="form-control m-select2 category" style="width: 100%;"></select>
                                             </div>
                                         </div>
+
                                         <div class="form-group">
-                                            <label>Nổi bật:</label>
-                                            <div class="m-input">
-                                                <input data-switch="true" type="checkbox" name="is_featured" class="switchBootstrap">
+                                            <label>Thương hiệu:</label>
+                                            <div class="input-group">
+                                                <select name="brand" class="form-control m-select2 brand" style="width: 100%;"></select>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label>Trạng thái:</label>
-                                            <div class="m-input">
-                                                <input data-switch="true" type="checkbox" name="is_status" class="switchBootstrap" checked="checked">
+                                            <label>Mã sản phẩm</label>
+                                            <input name="model" placeholder="Mã sản phẩm" class="form-control" type="text" />
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col">
+                                                <label>Số lượng</label>
+                                                <input name="quantity" placeholder="Số lượng" value="0" class="form-control" type="text" />
+                                            </div>
+                                            <div class="col">
+                                                <label>Giá gốc</label>
+                                                <input name="price" placeholder="Giá gốc" class="form-control" type="text" />
+                                            </div>
+                                            <div class="col">
+                                                <label>Giá khuyến mại</label>
+                                                <input name="price_sale" placeholder="Giá khuyến mại" class="form-control" type="text" />
+                                            </div>
+                                        </div>
+                                        <div class="m-separator m-separator--dashed m-separator--lg"></div>
+                                        <fieldset class="form-group agency-container">
+                                            <legend>Giá cho đại lý</legend>
+                                            <div class="quantity-range">
+                                                <div class="form-group row">
+                                                    <div class="col">
+                                                        <label>Số lượng đến:</label>
+                                                        <input name="data_detail[0][total_qty]" placeholder="Số lượng đến" class="form-control" type="text" />
+                                                    </div>
+                                                    <div class="col">
+                                                        <label>Mức giá</label>
+                                                        <input name="data_detail[0][price_agency]" placeholder="Mức giá cho số lượng này" class="form-control" type="text" />
+                                                    </div>
+                                                    <a href="javascript:;" title="Xoá dòng này" class="text-danger btn-remove"><i class="fa fa-remove"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class=" text-center">
+                                                <button type="button" class="btn btn-info btn-add-agency">Thêm khoảng giá cho đại lý</button>
+                                            </div>
+                                        </fieldset>
+                                        <div class="m-separator m-separator--dashed m-separator--lg"></div>
+
+                                        <div class="form-group row">
+                                            <div class="col">
+                                                <label>Nổi bật:</label>
+                                                <div class="m-input">
+                                                    <input data-switch="true" type="checkbox" name="is_featured" class="switchBootstrap">
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <label>Trạng thái:</label>
+                                                <div class="m-input">
+                                                    <input data-switch="true" type="checkbox" name="is_status" class="switchBootstrap" checked="checked">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -234,5 +283,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
     </div>
 </div>
 <script type="text/javascript">
-    var url_ajax_load_category = '<?php echo site_admin_url('category/ajax_load/' . $this->_controller) ?>';
+    var url_ajax_load_category = '<?php echo site_admin_url('category/ajax_load/' . $this->_controller) ?>',
+        url_ajax_load_brand = '<?php echo site_admin_url('category/ajax_load/brand') ?>';
 </script>

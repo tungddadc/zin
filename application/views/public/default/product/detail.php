@@ -130,7 +130,7 @@
                                                 <?php echo $oneItem->quantity > 0 ? '<span>Còn hàng</span>' : '' ?>
                                             </p>
                                             <p class="sold">Đã bán <strong>90</strong> sản phẩm / tháng. </p>
-                                            <p class="sold">Lượt xem: <strong>1990</strong> đã xem. </p>
+                                            <p class="sold">Lượt xem: <strong><?php echo $oneItem->viewed ?></strong> đã xem. </p>
                                             <p class="sold">Tỷ lệ bảo hành: <strong> <5%</strong></p>
                                         </div>
                                     </div>

@@ -64,6 +64,7 @@ $(function() {
     }];
     AJAX_DATATABLES.init();
     loadCategory();
+    loadBrand();
     AJAX_CRUD_MODAL.init();
     AJAX_CRUD_MODAL.tinymce();
     SEO.init_slug();
@@ -76,12 +77,36 @@ $(function() {
         table.search($(this).val(), "category_id")
     });
 
-    $('#modal_form').on('shown.bs.modal', function(e){
+    var modalForm = $('#modal_form');
+    modalForm.on('shown.bs.modal', function(e){
         loadCategory();
     });
 
+    modalForm.on('click','.agency-container .btn-add-agency',function (e) {
+        e.preventDefault();
+        let container = $(this).closest('fieldset').find('.quantity-range');
+        let itemClone = container.find('.row:first-child').clone();
+        itemClone.find('input').val('');
+        container.append(itemClone);
+        container.find('.row').each(function (i) {
+            $(this).find('input').each(function () {
+                $(this).attr('name',$(this).attr('name').replace('[0]','['+i+']'));
+            });
+        });
+    });
+
+    modalForm.on('click','.quantity-range .btn-remove',function (e) {
+        e.preventDefault();
+        let elementCurrent = $(this).closest('.row');
+        if(elementCurrent.index() == 0){
+            toastr['warning']('Bạn không được phép xóa bản ghi này.');
+            return false;
+        }
+        elementCurrent.remove();
+    });
+
     $(document).on('click','.btnEdit',function () {
-        let modal_form = $('#modal_form');
+        let modal_form = modalForm;
         let id = $(this).closest('tr').find('input[type="checkbox"]').val();
         AJAX_CRUD_MODAL.edit(function () {
             $.ajax({
@@ -96,6 +121,7 @@ $(function() {
                         if(element.hasClass('switchBootstrap')){
                             element.bootstrapSwitch('state',(value == 1 ? true : false));
                         }
+                        if(key === 'thumbnail') element.closest('.form-group').find('img').attr('src',media_url + value);
                     });
 
                     $.each(response.data_language, function( i, value ) {
@@ -108,8 +134,10 @@ $(function() {
                             element.val(val);
                         });
                     });
-
+                    showPriceAgency(response.data_detail);
                     loadCategory(response.data_category);
+                    loadBrand(response.data_brand);
+
                     FUNC.showGallery('#list-album',response.data_info.album);
                     modal_form.modal('show');
                 },
@@ -123,7 +151,18 @@ $(function() {
         });
     });
 });
-
+function showPriceAgency(data) {
+    let container = $('fieldset.agency-container .quantity-range');
+    container.find('.row').not(':first').remove();
+    $.each(data, function (i,v) {
+        let itemClone = container.find('.row:first-child').clone();
+        $.each(v,function (name, value) {
+            itemClone.find('[name="data_detail[0]['+name+']"]').attr('name','data_detail['+i+']['+name+']').val(value);
+        });
+        container.append(itemClone);
+    });
+    container.find('.row:first-child').remove();
+}
 function loadCategory(dataSelected) {
     let selector = $('select.category');
     selector.select2({
@@ -133,6 +172,37 @@ function loadCategory(dataSelected) {
         data: dataSelected,
         ajax: {
             url: url_ajax_load_category,
+            dataType: 'json',
+            delay: 250,
+            data: function(e) {
+                return {
+                    q: e.term,
+                    page: e.page
+                }
+            },
+            processResults: function(e, t) {
+                return t.page = t.page || 1, {
+                    results: e,
+                    pagination: {
+                        more: 30 * t.page < e.total_count
+                    }
+                }
+            },
+            cache: !0
+        }
+    });
+    if (typeof dataSelected !== 'undefined') selector.find('> option').prop("selected", "selected").trigger("change");
+}
+
+function loadBrand(dataSelected) {
+    let selector = $('select.brand');
+    selector.select2({
+        placeholder: 'Chọn thương hiệu',
+        allowClear: !0,
+        multiple: !1,
+        data: dataSelected,
+        ajax: {
+            url: url_ajax_load_brand,
             dataType: 'json',
             delay: 250,
             data: function(e) {
