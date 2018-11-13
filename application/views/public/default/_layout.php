@@ -92,6 +92,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
   <?php $asset_css[] = '../plugins/toastr/toastr.min.css'; ?>
   <?php $asset_css[] = '../plugins/rateit/rateit.css'; ?>
+  <?php $asset_css[] = 'select2.min.css'; ?>
   <?php $asset_css[] = 'blogmate.css'; ?>
   <?php $asset_css[] = 'custom.css'; ?>
 
@@ -247,6 +248,7 @@ switch ($this->_controller) {
 <?php $asset_js[] = '../plugins/jssocials/jssocials.min.js'; ?>
 <?php $asset_js[] = 'jquery.form.min.js'; ?>
 <?php $asset_js[] = 'jquery.sticky-kit.min.js'; ?>
+<?php $asset_js[] = 'select2.min.js'; ?>
 <?php $asset_js[] = 'custom.js'; ?>
 <?php $asset_js[] = 'account.js'; ?>
 <?php $this->minify->js($asset_js);
