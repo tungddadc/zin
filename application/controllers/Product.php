@@ -136,6 +136,7 @@ class Product extends Public_Controller
         $data['oneItem'] = $oneItem;
         $data['onePrev'] = $this->_data->getPrevById($oneItem->id,'',$this->_lang_code);
         $data['oneNext'] = $this->_data->getNextById($oneItem->id,'',$this->_lang_code);
+        $data['data_detail'] = $this->_data->getDetail($id);
 
         /*List product related*/
         $this->_data_category->_recursive_child_id($this->_all_category,$oneCategoryParent->id);
@@ -158,7 +159,6 @@ class Product extends Public_Controller
         $params['limit'] = 8;
         $data['listProductViewed'] = $this->_data->getData($params);
         /*List product viewed*/
-
 
         //add breadcrumbs
         $this->breadcrumbs->push("Trang chủ", base_url());
@@ -196,6 +196,13 @@ class Product extends Public_Controller
         }else {
             set_cookie($key, json_encode([$id]), 0);
         }
+    }
+    public function ajax_get_detail(){
+        $this->checkRequestPostAjax();
+        $productId = $this->input->post('id');
+        $quantity = $this->input->post('quantity');
+        $data = $this->_data->getPriceAgency($productId,$quantity);
+        $this->returnJson(['price' => $data->price_agency]);
     }
     public function ajax_load_list(){
         if($this->input->server('REQUEST_METHOD') == 'POST' && !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {

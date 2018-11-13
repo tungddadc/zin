@@ -13,6 +13,22 @@ var FUNC = {
   }
 };
 var CART = {
+    delete: function(_this,id){
+        $.ajax({
+            type: 'POST',
+            url: base_url + 'cart/ajax_delete_item',
+            data: {id: id},
+            dataType: 'JSON',
+            success: function (response) {
+                if(typeof response.type !== 'undefined') {
+                    $(_this).closest('.item').remove();
+                    CART.updateCountHeader();
+                    toastr[response.type](response.message);
+                }
+            }
+        });
+        return false;
+    },
     updateCountHeader: function () {
         $.ajax({
             type: 'GET',
@@ -22,6 +38,47 @@ var CART = {
                 $('.mini-cart .cart_count').html(data.total_item + ' sản phẩm/' + FUNC.formatMoney(data.total_money))
             }
         })
+    },
+    loadPriceAgency: function(id,quantity){
+        let blockPrice = $('.price-block');
+        if(blockPrice.length > 0){
+            $.ajax({
+                type: 'POST',
+                url: base_url + 'product/ajax_get_detail',
+                data: {id:id,quantity:quantity},
+                dataType: 'json',
+                success: function (data) {
+                    blockPrice.find('.price').text(FUNC.formatMoney(data.price));
+                    blockPrice.find('input[name="price"]').val(data.price);
+                }
+            });
+        }
+    },
+    quantity_reduced: function (_this) {
+        let element = $(_this);
+        let result = element.closest('.add-to-cart').find('input[name="quantity"]');
+        let product_id = element.closest('.add-to-cart').data('id');
+        let qty = parseInt(result.val());
+        if( !isNaN( qty ) && qty > 1) result.val(qty-1);
+        CART.loadPriceAgency(product_id,qty-1);
+        return false;
+    },
+    quantity_increase: function (_this) {
+        let element = $(_this);
+        let result = element.closest('.add-to-cart').find('input[name="quantity"]');
+        let product_id = element.closest('.add-to-cart').data('id');
+        let qty = parseInt(result.val());
+        if( !isNaN( qty )) result.val(qty+1);
+        CART.loadPriceAgency(product_id,qty+1);
+        return false;
+    },
+    changeInputQuantity: function (_this) {
+        let element = $(_this);
+        let result = element.closest('.add-to-cart').find('input[name="quantity"]');
+        let product_id = element.closest('.add-to-cart').data('id');
+        let qty = parseInt(result.val());
+        CART.loadPriceAgency(product_id,qty+1);
+        return false;
     }
 };
 jQuery(document).ready(function () {

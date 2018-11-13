@@ -53,7 +53,19 @@ class Product_model extends STEVEN_Model
         $this->db->select();
         $this->db->from($this->table_detail);
         $this->db->where($this->table_detail.".product_id", $id);
+        $this->db->order_by($this->table_detail.".total_qty","ASC");
         $data = $this->db->get()->result();
+        return $data;
+    }
+
+    public function getPriceAgency($id, $quantity){
+        $this->db->select('price_agency');
+        $this->db->from($this->table_detail);
+        $this->db->where($this->table_detail.".product_id", $id);
+        $this->db->where($this->table_detail.".total_qty <=", $quantity);
+        $this->db->order_by($this->table_detail.".total_qty","DESC");
+        $this->db->limit(1);
+        $data = $this->db->get()->row();
         return $data;
     }
     public function getSelect2Category($id, $lang_code = null){

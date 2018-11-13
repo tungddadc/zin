@@ -110,7 +110,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
         </div>
         <!-- End Header Logo -->
       </div>
-      <div class="col-lg-7 col-md-6 col-sm-6 col-xs-3 hidden-xs category-search-form">
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3 hidden-xs category-search-form">
         <div class="search-box">
           <form id="search_mini_form" action="" method="get">
             <!-- Autocomplete End code -->
@@ -120,7 +120,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
           </form>
         </div>
       </div>
-      <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12 card_wishlist_area">
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 card_wishlist_area">
         <div class="mm-toggle-wrap">
           <div class="mm-toggle"><i class="fa fa-align-justify"></i><span class="mm-label">Menu</span></div>
         </div>
@@ -148,14 +148,13 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                           </a>
                           <div class="product-details">
                             <div class="access">
-                              <a title="Remove This Item" class="btn-remove1" href="#">Xóa</a>
+                              <a onclick="CART.delete('<?php echo $item['rowid'] ?>')" title="Bỏ sản phẩm này khỏi giỏ hàng" class="btn-remove1" href="javascript:;">Xóa</a>
                             </div>
                             <strong><?php echo $item['qty'] ?></strong> x <span class="price"><?php echo formatMoney($item['price']) ?></span>
                             <p class="product-name"><a href="<?php echo getUrlProduct(array('slug'=>$item['slug'],'id'=>$item['id'])) ?>"><?php echo $item['name'] ?></a></p>
                           </div>
                         </div>
                       </li>
-
                     <?php endforeach; ?>
                   </ul>
                   <!--actions-->

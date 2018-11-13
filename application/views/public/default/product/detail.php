@@ -108,22 +108,30 @@
                                     <input name="image" value="<?php echo getImageThumb($oneItem->thumbnail,100,100,true) ?>" type="hidden">
                                     <div class="price-block">
                                         <div class="price-box">
-                                            <?php if(!empty($oneItem->price_sale)): ?>
+                                            <?php if($this->session->userdata('is_agency') == true && !empty($data_detail)): ?>
                                                 <p class="special-price">
-                                                    <span class="price-label">Giá khuyến mại</span>
-                                                    <span id="product-price-48" class="price"><?php echo formatMoney($oneItem->price_sale) ?></span>
+                                                    <span class="price-label">Giá đại lý:</span>
+                                                    <span class="price"><?php echo formatMoney($data_detail[0]->price_agency) ?></span>
                                                 </p>
-                                                <p class="old-price">
-                                                    <span class="price-label">Giá gốc:</span>
-                                                    <span class="price"><?php echo formatMoney($oneItem->price) ?></span>
-                                                </p>
-                                                <input name="price" value="<?php echo $oneItem->price_sale ?>" type="hidden">
+                                                <input name="price" value="<?php echo $data_detail[0]->price_agency ?>" type="hidden">
                                             <?php else: ?>
-                                                <p class="special-price">
-                                                    <span class="price-label">Giá</span>
-                                                    <span id="product-price-48" class="price"><?php echo formatMoney($oneItem->price) ?></span>
-                                                </p>
-                                                <input name="price" value="<?php echo $oneItem->price ?>" type="hidden">
+                                                <?php if(!empty($oneItem->price_sale)): ?>
+                                                    <p class="special-price">
+                                                        <span class="price-label">Giá khuyến mại:</span>
+                                                        <span class="price"><?php echo formatMoney($oneItem->price_sale) ?></span>
+                                                    </p>
+                                                    <p class="old-price">
+                                                        <span class="price-label">Giá gốc:</span>
+                                                        <span class="price"><?php echo formatMoney($oneItem->price) ?></span>
+                                                    </p>
+                                                    <input name="price" value="<?php echo $oneItem->price_sale ?>" type="hidden">
+                                                <?php else: ?>
+                                                    <p class="special-price">
+                                                        <span class="price-label">Giá:</span>
+                                                        <span class="price"><?php echo formatMoney($oneItem->price) ?></span>
+                                                    </p>
+                                                    <input name="price" value="<?php echo $oneItem->price ?>" type="hidden">
+                                                <?php endif; ?>
                                             <?php endif; ?>
                                             <p class="availability in-stock pull-right">
                                                 <?php echo $this->session->userdata('is_agency') == true ? '<span class="agency">Đại lý</span>' : ''  ?>
@@ -135,18 +143,17 @@
                                         </div>
                                     </div>
                                     <div class="add-to-box">
-                                        <div class="add-to-cart">
+                                        <div class="add-to-cart" data-id="<?php echo $oneItem->id ?>">
                                             <div class="pull-left">
                                                 <div class="custom pull-left">
                                                     <span class="qty-label">Số lượng:</span>
-                                                    <button onClick="let result = document.getElementById('quantity'); let qty = result.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 0 ) result.value--;return false;"
-                                                            class="reduced items-count" type="button"><i
-                                                                class="fa fa-minus">&nbsp;</i></button>
-                                                    <input type="text" class="input-text qty" title="Số lượng" value="1"
-                                                           maxlength="12" id="quantity" name="quantity">
-                                                    <button onClick="let result = document.getElementById('quantity'); let qty = result.value; if( !isNaN( qty )) result.value++;return false;"
-                                                            class="increase items-count" type="button"><i
-                                                                class="fa fa-plus">&nbsp;</i></button>
+                                                    <button onClick="CART.quantity_reduced(this)" class="reduced items-count <?php echo $this->session->userdata('is_agency') == true ? 'is-agency' : ''  ?>" type="button">
+                                                        <i class="fa fa-minus">&nbsp;</i>
+                                                    </button>
+                                                    <input onkeyup="CART.changeInputQuantity(this)" type="text" class="input-text qty" title="Số lượng" value="1" maxlength="<?php echo $oneItem->quantity ?>" name="quantity">
+                                                    <button onClick="CART.quantity_increase(this)" class="increase items-count <?php echo $this->session->userdata('is_agency') == true ? 'is-agency' : ''  ?>" type="button">
+                                                        <i class="fa fa-plus">&nbsp;</i>
+                                                    </button>
                                                 </div>
                                             </div>
                                             <button class="button btn-cart" title="Thêm vào giỏ hàng" type="submit">Thêm vào giỏ</button>
@@ -164,36 +171,13 @@
                                                         <div class="pull-left">
                                                             <div class="custom pull-left"><span class="qty-label">Số lượng:</span>
                                                                 <button onClick="let result = document.getElementById('quantity_1'); let qty = result.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 0 ) result.value--;return false;"
-                                                                        class="reduced items-count" type="button"><i
+                                                                        class="reduced items-count <?php echo $this->session->userdata('is_agency') == true ? 'is-agency' : ''  ?>" type="button"><i
                                                                             class="fa fa-minus">&nbsp;</i></button>
                                                                 <input type="text" class="input-text qty" title="Qty"
                                                                        value="1"
                                                                        maxlength="12" id="quantity_1" name="qty">
                                                                 <button onClick="let result = document.getElementById('quantity_1'); let qty = result.value; if( !isNaN( qty )) result.value++;return false;"
-                                                                        class="increase items-count" type="button"><i
-                                                                            class="fa fa-plus">&nbsp;</i></button>
-                                                            </div>
-                                                        </div>
-                                                        <button class="button btn-cart pull-right"
-                                                                title="Thêm vào giỏ hàng" type="submit">Thêm
-                                                            vào giỏ
-                                                        </button>
-                                                    </div>
-
-                                                </div>
-
-                                                <div class="add-to-box">
-                                                    <div class="add-to-cart">
-                                                        <div class="pull-left">
-                                                            <div class="custom pull-left"><span class="qty-label">Số lượng:</span>
-                                                                <button onClick="let result = document.getElementById('quantity_2'); let qty = result.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 0 ) result.value--;return false;"
-                                                                        class="reduced items-count" type="button"><i
-                                                                            class="fa fa-minus">&nbsp;</i></button>
-                                                                <input type="text" class="input-text qty" title="Qty"
-                                                                       value="1"
-                                                                       maxlength="12" id="quantity_2" name="qty">
-                                                                <button onClick="let result = document.getElementById('quantity_2'); let qty = result.value; if( !isNaN( qty )) result.value++;return false;"
-                                                                        class="increase items-count" type="button"><i
+                                                                        class="increase items-count <?php echo $this->session->userdata('is_agency') == true ? 'is-agency' : ''  ?>" type="button"><i
                                                                             class="fa fa-plus">&nbsp;</i></button>
                                                             </div>
                                                         </div>
