@@ -204,10 +204,10 @@ switch ($this->_controller) {
 
 <div id="popup_newsletter" style="display: none;" class="popup1">
   <div class="newsletter-sign-box">
-    <div class="newsletter"><a href="javascript:;" title="<?php echo $this->settings['title'] ?>"
-                               rel="nofollow"><img
-          src="<?php echo $this->templates_assets ?>images/f-box-close-icon.png" alt="close" class="x"
-          id="x"></a>
+    <div class="newsletter">
+        <a href="javascript:;" title="<?php echo $this->settings['title'] ?>" rel="nofollow" class="x">
+            <img src="<?php echo $this->templates_assets ?>images/f-box-close-icon.png" alt="close">
+        </a>
       <?php echo form_open('contact/subscriber', ['id' => 'popup-newsletter', 'class' => 'email-form']) ?>
       <h3>Đăng ký nhận thông tin khuyến mại</h3>
       <h4>Đăng ký email với chúng tôi để chúng tôi tự động thông báo chương trình khuyến mại một cách nhanh
@@ -292,6 +292,8 @@ echo $this->minify->deploy_js(); ?>
     }(document, 'script', 'facebook-jssdk'));
   }
 </script>
+<?php if(GG_CAPTCHA_MODE == true): ?>
 <script src='https://www.google.com/recaptcha/api.js'></script>
+<?php endif; ?>
 </body>
 </html>

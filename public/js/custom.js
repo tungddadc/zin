@@ -1,6 +1,15 @@
 var FUNC = {
   formatMoney: function (money) {
       return money.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.") + 'đ'
+  },
+  showPopupNewsletter: function (show) {
+      if(show){
+          $('#popup_newsletter').show();
+          $('#overlay').show();
+      }else{
+          $('#popup_newsletter').hide();
+          $('#overlay').hide();
+      }
   }
 };
 var CART = {
@@ -29,18 +38,20 @@ jQuery(document).ready(function () {
     });
 
     if (localStorage.getItem('show_popup_subscriber') !== 'hide') {
-        $('#popup_newsletter').show();
-        $('#overlay').show();
+        FUNC.showPopupNewsletter(true);
     }
     $('input#notshowpopup').change(function () {
         if ($(this).val()) {
             setTimeout(function () {
                 localStorage.setItem('show_popup_subscriber', 'hide');
-                $('#popup_newsletter').hide();
-                $('#overlay').hide();
+                FUNC.showPopupNewsletter(false);
             },1000);
         }
     });
+    $('#popup_newsletter').on('click','a.x',function () {
+       FUNC.showPopupNewsletter(false);
+    });
+
 
     jQuery('#rev_slider_4').show().revolution({
         dottedOverlay: 'none',

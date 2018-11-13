@@ -12,7 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
-                    <div class="newsletter">
+                    <div class="newsletter newsletter-footer">
                         <?php echo form_open('contact/subscriber') ?>
                             <div>
                                 <h4><span>newsletter</span></h4>
