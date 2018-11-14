@@ -111,6 +111,15 @@
                                 </span>
                             </a>
                         </li>
+
+                        <li class="m-menu__item">
+                            <a href="javascript:;" onclick="FUNC.clearCache()" class="m-menu__link">
+                                <i class="m-menu__link-icon la la-eraser"></i>
+                                <span class="m-menu__link-text">
+                                    Clear Cache
+                                </span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <!-- BEGIN: Topbar -->

@@ -24,4 +24,12 @@ class Dashboard extends Admin_Controller
         $data['main_content'] = $this->load->view($this->template_path.'dashboard/index', $data, TRUE);
         $this->load->view($this->template_main, $data);
     }
+
+    public function clearCache(){
+        $this->cache->clean();
+        $this->returnJson([
+            'type' => 'success',
+            'message' => 'Xóa cache thành công !'
+            ]);
+    }
 }

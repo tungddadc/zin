@@ -557,6 +557,19 @@ var FUNC = {
     },
     ajaxShowError: function () {
         toastr['error']("The action you have requested is not allowed.");
+    },
+    clearCache: function () {
+        $.ajax({
+            type: 'GET',
+            url: base_admin_url + 'dashboard/clearCache',
+            dataType: 'json',
+            success: function (response) {
+                if (typeof response.type !== 'undefined') {
+                    toastr[response.type](response.message);
+                }
+            }
+        });
+        return false;
     }
 };
 /*Đây là các Event Function để dùng chung*/

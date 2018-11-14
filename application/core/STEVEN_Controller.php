@@ -30,6 +30,10 @@ class STEVEN_Controller extends CI_Controller
 
         $this->_controller = $this->router->fetch_class();
         $this->_method = $this->router->fetch_method();
+
+        //load cache driver
+        if (CACHE_MODE == TRUE) $this->load->driver('cache');
+
     }
 
     public function checkRequestGetAjax()
@@ -274,9 +278,6 @@ class Public_Controller extends STEVEN_Controller
         $this->template_path = 'public/default/';
         $this->template_main = $this->template_path . '_layout';
         $this->templates_assets = base_url() . 'public/';
-
-        //load cache driver
-        if (CACHE_MODE == TRUE) $this->load->driver('cache');
 
         //tải thư viện
         $this->load->library(array('minify', 'cart', 'breadcrumbs'));

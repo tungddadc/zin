@@ -86,6 +86,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
   <?php $asset_css[] = 'style.css'; ?>
   <?php $asset_css[] = 'revslider.css'; ?>
   <?php $asset_css[] = 'bootstrap-social.css'; ?>
+  <?php $asset_css[] = 'fancybox.css'; ?>
 
   <?php $asset_css[] = '../plugins/jssocials/jssocials.css'; ?>
   <?php $asset_css[] = '../plugins/jssocials/jssocials-theme-flat.css'; ?>
@@ -133,6 +134,7 @@ switch ($this->_controller) {
 ?>
 <body class="<?php echo $classBody ?>">
 <div id="fb-root"></div>
+<?php $this->load->view($this->template_path . 'product/_quick_view') ?>
 <div id="page">
   <?php $this->load->view($this->template_path . '_header') ?>
   <?php echo !empty($main_content) ? $main_content : '' ?>

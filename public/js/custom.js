@@ -314,6 +314,23 @@ jQuery(document).ready(function () {
         let url = form_parent.attr('action') + '?' + form_parent.serialize();
         FUNC.ajax_load_content_animation(url,'#content_ajax','#content_ajax');
     });
+
+
+    $(document).on('click','.link-quickview',function (e) {
+        e.preventDefault();
+        $('body').addClass('fixed');
+        $('#fancybox-overlay').show();
+        $('#fancybox-wrap').show();
+    });
+
+    $('#fancybox-wrap').on('click','#fancybox-close',function (e) {
+        e.preventDefault();
+        $('#fancybox-overlay').hide();
+        $('#fancybox-wrap').hide();
+        $('body').removeClass('fixed');
+    });
+
+
 });
 var ajaxShowRequest = function (formData, jqForm, options) {
     jqForm.find('[type="submit"]').append('<i class="fa fa-spinner fa-spin ml-2" style="color: #ffffff;"></i>');
