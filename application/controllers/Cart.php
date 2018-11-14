@@ -106,7 +106,7 @@ class Cart extends Public_Controller
         $price = !empty($oneProduct->price_sale) ? $oneProduct->price_sale : $oneProduct->price;
         if ($this->session->userdata('is_agency') == true) {
           $oneDetail = $productModel->getPriceAgency($params['product_id'], $params['quantity']);
-          $price = $oneDetail->price_agency;
+          if(!empty($oneDetail->price_agency)) $price = $oneDetail->price_agency;
         }
         $data = array(
           array(

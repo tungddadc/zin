@@ -76,4 +76,11 @@ class Users_model extends STEVEN_Model
         if(!$this->save($data,$this->table_user_favourite)) return false;
         return true;
     }
+
+    public function getDataIdFavourite($user_id){
+        $params = [
+            'account_id' => $user_id,
+        ];
+        return $this->getDataAll($params,$this->table_user_favourite);
+    }
 }

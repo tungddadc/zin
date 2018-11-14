@@ -11173,7 +11173,6 @@ button.button.btn-proceed-checkout span {
   background-color: #fff;
   border: none;
   transition: all 0.3s linear;
-  margin: 0 0 10px !important;
 }
 
 #wishlist-table .button.btn-cart span {
@@ -12430,6 +12429,7 @@ a.button.wishlist {
 .data-table tbody th, .data-table tbody td {
   border-bottom: 1px solid #eaeaea;
   padding: 10px;
+  vertical-align: middle;
 }
 
 .cart-table tbody th, .cart-table tbody td {

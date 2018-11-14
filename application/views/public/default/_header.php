@@ -15,11 +15,11 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     <div class="container">
       <div class="row">
         <!-- Header Language -->
-        <div class="col-xs-12 col-sm-4 col-md-6 col-lg-6 pull-left">
+        <div class="col-xs-12 col-sm-4 col-md-5 col-lg-5 pull-left">
           <div class="welcome-msg">Đặt hàng online gọi <?php echo $this->settings['hotline'] ?></div>
         </div>
         <!-- Header Top Links -->
-        <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6 pull-right hidden-xs">
+        <div class="col-xs-12 col-sm-8 col-md-7 col-lg-7 pull-right hidden-xs">
           <div class="toplinks">
             <div class="links">
               <?php if ($this->session->userdata('is_logged')): ?>
@@ -80,8 +80,14 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
               <?php endif; ?>
 
               <div class="check">
-                <a title="Checkout" href="<?php echo base_url('wishlisht') ?>">
+                <a title="Checkout" href="<?php echo base_url('wishlist') ?>">
                   <span class="hidden-xs">Sản phẩm yêu thích</span>
+                </a>
+              </div>
+
+                <div class="check">
+                <a title="Checkout" href="<?php echo base_url('so-sanh-san-pham') ?>">
+                  <span class="hidden-xs">So sánh sản phẩm</span>
                 </a>
               </div>
 

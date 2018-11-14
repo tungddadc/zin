@@ -72,7 +72,8 @@ $route['(:any)-b(:num)/page/(:num)'] = 'product/brand/$2/$3';
 $route['(:any)-cp(:num)'] = 'product/category/$2';
 $route['(:any)-cp(:num)/page/(:num)'] = 'product/category/$2/$3';
 $route['(:any)-p(:num)'] = 'product/detail/$2/';
-$route['download'] = 'product/download';
+$route['wishlist'] = 'product/wishlist';
+$route['so-sanh-san-pham'] = 'product/compare';
 /*Route product*/
 
 

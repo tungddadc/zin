@@ -223,6 +223,39 @@ class Product extends Public_Controller
 
     }
 
+    public function wishlist(){
+        if($this->session->userdata('is_logged') != true){
+            show_404();
+        }
+        $this->load->model('users_model');
+        $userModel = new Users_model();
+        $dataId = $userModel->getDataIdFavourite($this->session->userdata('user_id'));
+        $listProductId = [];
+        if(!empty($dataId)) foreach ($dataId as $item){
+            $listProductId[] = $item->product_id;
+        }
+        $params['is_status'] = 1;
+        $params['lang_code'] = $this->_lang_code;
+        $params['in'] = $listProductId;
+        $params['limit'] = 10;
+        $data['data'] = $this->_data->getData($params);
+        $data['main_content'] = $this->load->view($this->template_path . 'product/wishlist', $data, TRUE);
+        $this->load->view($this->template_main, $data);
+    }
+
+    public function compare(){
+        $key = 'product_compare';
+        $dataId = get_cookie($key);
+        $listProductId = json_decode($dataId, true);
+        $params['is_status'] = 1;
+        $params['lang_code'] = $this->_lang_code;
+        $params['in'] = $listProductId;
+        $params['limit'] = 10;
+        $data['data'] = $this->_data->getData($params);
+        $data['main_content'] = $this->load->view($this->template_path . 'product/compare', $data, TRUE);
+        $this->load->view($this->template_main, $data);
+    }
+
     public function detail($id){
         $oneItem = $this->_data->getById($id,'', $this->_lang_code);
         if (empty($oneItem)) redirect('404');
@@ -361,7 +394,7 @@ class Product extends Public_Controller
         exit;
     }
 
-    public function ajax_save_favourite(){
+    public function ajax_save_wishlist(){
         $this->checkRequestPostAjax();
         if($this->session->userdata('is_logged') != true){
             $message['type'] = 'error';
@@ -377,6 +410,30 @@ class Product extends Public_Controller
         }else{
             $message['type'] = 'error';
             $message['message'] = "Bạn đã yêu thích sản phẩm này rồi.";
+            $this->returnJson($message);
+        }
+    }
+
+    public function ajax_delete_wishlist(){
+        $this->checkRequestPostAjax();
+        if($this->session->userdata('is_logged') != true){
+            $message['type'] = 'error';
+            $message['message'] = "Bạn phải đăng nhập để thực hiện thao tác này !";
+            $this->returnJson($message);
+        }
+        $this->load->model('users_model');
+        $userModel = new Users_model();
+        $params = [
+            'account_id' => $this->session->userdata('user_id'),
+            'product_id' => $this->input->post('product_id')
+        ];
+        if($userModel->delete($params,$userModel->table_user_favourite)){
+            $message['type'] = 'success';
+            $message['message'] = "Bạn vừa xóa sản phẩm khỏi yêu thích thành công.";
+            $this->returnJson($message);
+        }else{
+            $message['type'] = 'error';
+            $message['message'] = "Xóa sản phẩm khỏi yêu thích thất bại.";
             $this->returnJson($message);
         }
     }

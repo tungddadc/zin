@@ -1,16 +1,18 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 if (!function_exists('getAllBrand')) {
-    function getAllBrand(){
+    function getAllBrand()
+    {
         $_this =& get_instance();
         $_this->load->model('category_model');
         $categoryModel = new Category_model();
-        return (object)$categoryModel->getListRecursive('brand',0);
+        return (object)$categoryModel->getListRecursive('brand', 0);
     }
 }
 
 if (!function_exists('countProductByCate')) {
-    function countProductByCate($cateId){
+    function countProductByCate($cateId)
+    {
         $_this =& get_instance();
         $_this->load->model('product_model');
         $catModel = new Product_model();
@@ -20,56 +22,72 @@ if (!function_exists('countProductByCate')) {
 }
 
 if (!function_exists('countProductByType')) {
-    function countProductByType($typeId, $categoryId){
+    function countProductByType($typeId, $categoryId)
+    {
         $_this =& get_instance();
         $_this->load->model('product_model');
         $productModel = new Product_model();
-        $data = $productModel->countProductByType($typeId,$categoryId);
+        $data = $productModel->countProductByType($typeId, $categoryId);
         return $data;
     }
 }
- if (!function_exists('getListProduct')) {
-     function getListProduct($ids, $limit = 10){
-         $_this =& get_instance();
-         $_this->load->model('product_model');
-         $productModel = new Product_model();
-         $params = array(
+if (!function_exists('getListProduct')) {
+    function getListProduct($ids, $limit = 10)
+    {
+        $_this =& get_instance();
+        $_this->load->model('product_model');
+        $productModel = new Product_model();
+        $params = array(
             'is_status' => 1,
-            'in' => $ids, 
+            'in' => $ids,
             'limit' => $limit
         );
-         $data = $productModel->getData($params);
-         return $data;
-     }
- }
+        $data = $productModel->getData($params);
+        return $data;
+    }
+}
+
+if (!function_exists('getProductDetail')) {
+    function getProductDetail($id)
+    {
+        $_this =& get_instance();
+        $_this->load->model('product_model');
+        $productModel = new Product_model();
+        $data = $productModel->getDetail($id);
+        return $data;
+    }
+}
 if (!function_exists('getProduct')) {
-    function getProduct($id, $select = '*', $language = ''){
+    function getProduct($id, $select = '*', $language = '')
+    {
         $_this =& get_instance();
         $_this->load->library('session');
         $_this->load->model('product_model');
         $productModel = new Product_model();
-        if(empty($language)) $language = !empty($_this->session->public_lang_code) ? $_this->session->public_lang_code : $_this->session->admin_lang;
+        if (empty($language)) $language = !empty($_this->session->public_lang_code) ? $_this->session->public_lang_code : $_this->session->admin_lang;
         $oneData = $productModel->getById($id, $select, $language);
         return $oneData;
     }
 }
 if (!function_exists('getMadeIn')) {
-    function getMadeIn($cateId){
+    function getMadeIn($cateId)
+    {
         $_this =& get_instance();
         $_this->load->model('category_model');
         $catModel = new Category_model();
-        if(!$_this->cache->get('_all_category_'.$_this->session->public_lang_code)){
-            $_this->cache->save('_all_category_'.$_this->session->public_lang_code,$_this->_data_category->getAll($_this->session->public_lang_code),60*60*30);
+        if (!$_this->cache->get('_all_category_' . $_this->session->public_lang_code)) {
+            $_this->cache->save('_all_category_' . $_this->session->public_lang_code, $_this->_data_category->getAll($_this->session->public_lang_code), 60 * 60 * 30);
         }
-        $_all_category = $_this->cache->get('_all_category_'.$_this->session->public_lang_code);
-        $data = $catModel->getByIdCached($_all_category,$cateId);
+        $_all_category = $_this->cache->get('_all_category_' . $_this->session->public_lang_code);
+        $data = $catModel->getByIdCached($_all_category, $cateId);
         return !empty($data) ? $data->title : '';
     }
 
 }
 
 if (!function_exists('getAddressById')) {
-    function getAddressById($districtId){
+    function getAddressById($districtId)
+    {
         $_this =& get_instance();
         $_this->load->model('location_model');
         $catModel = new Location_model();
@@ -80,72 +98,78 @@ if (!function_exists('getAddressById')) {
 }
 
 if (!function_exists('getCategoryChildLv1')) {
-    function getCategoryChildLv1($parentId = 0){
+    function getCategoryChildLv1($parentId = 0)
+    {
         $_this =& get_instance();
         $_this->load->model('category_model');
         $categoryModel = new Category_model();
-        if(!$_this->cache->get('_all_category_'.$_this->session->public_lang_code)){
-            $_this->cache->save('_all_category_'.$_this->session->public_lang_code,$categoryModel->getAll($_this->session->public_lang_code),60*60*30);
+        if (!$_this->cache->get('_all_category_' . $_this->session->public_lang_code)) {
+            $_this->cache->save('_all_category_' . $_this->session->public_lang_code, $categoryModel->getAll($_this->session->public_lang_code), 60 * 60 * 30);
         }
-        $_all_category = $_this->cache->get('_all_category_'.$_this->session->public_lang_code);
+        $_all_category = $_this->cache->get('_all_category_' . $_this->session->public_lang_code);
         $data = $categoryModel->getListChild($_all_category, $parentId);
         return $data;
     }
 }
 if (!function_exists('getCategoryByType')) {
-  function getCategoryByType($parentId = 0,$type='post'){
-    $_this =& get_instance();
-    $_this->load->model('category_model');
-    $categoryModel = new Category_model();
-    if(!$_this->cache->get('_all_category_'.$_this->session->public_lang_code)){
-      $_this->cache->save('_all_category_'.$_this->session->public_lang_code,$categoryModel->getAll($_this->session->public_lang_code),60*60*30);
-    }
-    $_all_category = $_this->cache->get('_all_category_'.$_this->session->public_lang_code);
-    $data = $categoryModel->getAllCategoryByType($_this->session->public_lang_code, $type,$parentId);
-    return $data;
-  }
-}
-if (!function_exists('getCategoryById')) {
-    function getCategoryById($id){
+    function getCategoryByType($parentId = 0, $type = 'post')
+    {
         $_this =& get_instance();
         $_this->load->model('category_model');
         $categoryModel = new Category_model();
-        $data = $categoryModel->getById($id,'',$_this->session->public_lang_code);
+        if (!$_this->cache->get('_all_category_' . $_this->session->public_lang_code)) {
+            $_this->cache->save('_all_category_' . $_this->session->public_lang_code, $categoryModel->getAll($_this->session->public_lang_code), 60 * 60 * 30);
+        }
+        $_all_category = $_this->cache->get('_all_category_' . $_this->session->public_lang_code);
+        $data = $categoryModel->getAllCategoryByType($_this->session->public_lang_code, $type, $parentId);
+        return $data;
+    }
+}
+if (!function_exists('getCategoryById')) {
+    function getCategoryById($id)
+    {
+        $_this =& get_instance();
+        $_this->load->model('category_model');
+        $categoryModel = new Category_model();
+        $data = $categoryModel->getById($id, '', $_this->session->public_lang_code);
         return $data;
     }
 }
 
 if (!function_exists('getPageById')) {
-    function getPageById($id){
+    function getPageById($id)
+    {
         $_this =& get_instance();
         $_this->load->model('page_model');
         $dataModel = new Page_model();
-        $data = $dataModel->getById($id,'',$_this->session->public_lang_code);
+        $data = $dataModel->getById($id, '', $_this->session->public_lang_code);
         return $data;
     }
 }
 
 if (!function_exists('getUserById')) {
-    function getUserById($id){
+    function getUserById($id)
+    {
         $_this =& get_instance();
         $_this->load->model('users_model');
         $dataModel = new Users_model();
-        $data = $dataModel->getById($id,'',$_this->session->public_lang_code);
+        $data = $dataModel->getById($id, '', $_this->session->public_lang_code);
         return $data;
     }
 }
 
 if (!function_exists('getListProductByCateId')) {
-    function getListProductByCateId($id, $limit = 10, $featured = 0){
+    function getListProductByCateId($id, $limit = 10, $featured = 0)
+    {
         $_this =& get_instance();
-        $_this->load->model(['product_model','category_model']);
+        $_this->load->model(['product_model', 'category_model']);
         $categoryModel = new Category_model();
         $productModel = new Product_model();
-        if(!$_this->cache->get('_all_category_'.$_this->session->public_lang_code)){
-            $_this->cache->save('_all_category_'.$_this->session->public_lang_code,$categoryModel->getAll($_this->session->public_lang_code),60*60*30);
+        if (!$_this->cache->get('_all_category_' . $_this->session->public_lang_code)) {
+            $_this->cache->save('_all_category_' . $_this->session->public_lang_code, $categoryModel->getAll($_this->session->public_lang_code), 60 * 60 * 30);
         }
-        $_all_category = $_this->cache->get('_all_category_'.$_this->session->public_lang_code);
-        $categoryModel->_recursive_child_id($_all_category,$id);
+        $_all_category = $_this->cache->get('_all_category_' . $_this->session->public_lang_code);
+        $categoryModel->_recursive_child_id($_all_category, $id);
         $params = array(
             'is_status' => 1,
             'is_featured' => $featured,
@@ -158,16 +182,17 @@ if (!function_exists('getListProductByCateId')) {
 }
 
 if (!function_exists('getListNewsByCateId')) {
-    function getListNewsByCateId($id, $limit = 10, $featured = 0){
+    function getListNewsByCateId($id, $limit = 10, $featured = 0)
+    {
         $_this =& get_instance();
-        $_this->load->model(['post_model','category_model']);
+        $_this->load->model(['post_model', 'category_model']);
         $categoryModel = new Category_model();
         $postModel = new Post_model();
-        if(!$_this->cache->get('_all_category_'.$_this->session->public_lang_code)){
-            $_this->cache->save('_all_category_'.$_this->session->public_lang_code,$categoryModel->getAll($_this->session->public_lang_code),60*60*30);
+        if (!$_this->cache->get('_all_category_' . $_this->session->public_lang_code)) {
+            $_this->cache->save('_all_category_' . $_this->session->public_lang_code, $categoryModel->getAll($_this->session->public_lang_code), 60 * 60 * 30);
         }
-        $_all_category = $_this->cache->get('_all_category_'.$_this->session->public_lang_code);
-        $categoryModel->_recursive_child_id($_all_category,$id);
+        $_all_category = $_this->cache->get('_all_category_' . $_this->session->public_lang_code);
+        $categoryModel->_recursive_child_id($_all_category, $id);
         $params = array(
             'is_status' => 1,
             'is_featured' => $featured,
@@ -180,52 +205,57 @@ if (!function_exists('getListNewsByCateId')) {
 }
 
 if (!function_exists('listBannerByPosition')) {
-    function listBannerByPosition($position_id){
+    function listBannerByPosition($position_id)
+    {
         $_this =& get_instance();
         $_this->load->model('banner_model');
         $bannerModel = new Banner_model();
-        $data = $bannerModel->getData(['lang_code' => $_this->session->public_lang_code,'property_id' => $position_id]);
+        $data = $bannerModel->getData(['lang_code' => $_this->session->public_lang_code, 'property_id' => $position_id]);
         return $data;
     }
 
 }
-if (!function_exists('covertMoney')){
-    function covertMoney($number){
-        if ($number!=null) {
-            return number_format($number,0,'','.');
+if (!function_exists('covertMoney')) {
+    function covertMoney($number)
+    {
+        if ($number != null) {
+            return number_format($number, 0, '', '.');
         }
     }
 }
 if (!function_exists('showRatting')) {
-    function showRatting($diem){
+    function showRatting($diem)
+    {
         for ($i = 1; $i <= 5; $i++) {
-          if ($i <= $diem) {
-            echo '<i class="icon_star active"></i>';
-        } else {
-            echo '<i class="icon_star"></i>';
+            if ($i <= $diem) {
+                echo '<i class="icon_star active"></i>';
+            } else {
+                echo '<i class="icon_star"></i>';
+            }
         }
     }
 }
-}
-if (!function_exists('cutString')){
-    function cutString($chuoi,$max){
+if (!function_exists('cutString')) {
+    function cutString($chuoi, $max)
+    {
         $length_chuoi = strlen($chuoi);
-        if($length_chuoi <= $max){
+        if ($length_chuoi <= $max) {
             return $chuoi;
-        }else{
-            return mb_substr($chuoi,0,$max,'UTF-8').'...';
+        } else {
+            return mb_substr($chuoi, 0, $max, 'UTF-8') . '...';
         }
     }
 }
 
-if (!function_exists('getTags')){
-    function getTags($keyword){
+if (!function_exists('getTags')) {
+    function getTags($keyword)
+    {
         $tags = '';
-        if(!empty($keyword)) {
+        if (!empty($keyword)) {
             $listTags = explode(',', $keyword);
             foreach ($listTags as $k => $tag) {
                 $tags .= $k != 0 ? ', ' : '';
-                $tags .= '<a href="'.getUrlTag($tag).'" title="'.$tag.'">'.$tag.'</a>';
+                $tags .= '<a href="' . getUrlTag($tag) . '" title="' . $tag . '">' . $tag . '</a>';
             }
         }
         return $tags;
@@ -234,22 +264,24 @@ if (!function_exists('getTags')){
 
 
 if (!function_exists('getPropertyById')) {
-    function getPropertyById($id){
+    function getPropertyById($id)
+    {
         $_this =& get_instance();
         $_this->load->model('property_model');
         $propertyModel = new Property_model();
-        if(!$_this->cache->get('_all_property_'.$_this->session->public_lang_code)){
-            $_this->cache->save('_all_property_'.$_this->session->public_lang_code,$propertyModel->getAll($_this->session->public_lang_code),60*60*30);
+        if (!$_this->cache->get('_all_property_' . $_this->session->public_lang_code)) {
+            $_this->cache->save('_all_property_' . $_this->session->public_lang_code, $propertyModel->getAll($_this->session->public_lang_code), 60 * 60 * 30);
         }
-        $_all_property = $_this->cache->get('_all_property_'.$_this->session->public_lang_code);
-        $data = $propertyModel->getByIdCached($_all_property,$id);
+        $_all_property = $_this->cache->get('_all_property_' . $_this->session->public_lang_code);
+        $data = $propertyModel->getByIdCached($_all_property, $id);
         return $data;
     }
 }
 
 
 if (!function_exists('getPropertyByProduct')) {
-    function getPropertyByProduct($productId, $type){
+    function getPropertyByProduct($productId, $type)
+    {
         $_this =& get_instance();
         $_this->load->model('product_model');
         $productModel = new Product_model();
@@ -258,8 +290,9 @@ if (!function_exists('getPropertyByProduct')) {
     }
 }
 
-if(!function_exists('')){
-    function checkExistCart($productId){
+if (!function_exists('')) {
+    function checkExistCart($productId)
+    {
         $_this =& get_instance();
         $listItem = $_this->cart->contents();
         if (!empty($listItem)) foreach ($listItem as $item) {
@@ -268,17 +301,18 @@ if(!function_exists('')){
         return false;
     }
 }
-if(!function_exists('getPostNews')){
-  function getPostNews(){
-    $_this =& get_instance();
-    $_this->load->model('post_model');
-    $postModel=new Post_model();
-    $params = array(
-      'is_status' => 1, //0: Huỷ, 1: Hiển thị, 2: Nháp
-      'lang_code' => $_this->session->public_lang_code,
-      'limit' => 5,
-    );
-    $data=$postModel->getData($params);
-    return $data;
-  }
+if (!function_exists('getPostNews')) {
+    function getPostNews()
+    {
+        $_this =& get_instance();
+        $_this->load->model('post_model');
+        $postModel = new Post_model();
+        $params = array(
+            'is_status' => 1, //0: Huỷ, 1: Hiển thị, 2: Nháp
+            'lang_code' => $_this->session->public_lang_code,
+            'limit' => 5,
+        );
+        $data = $postModel->getData($params);
+        return $data;
+    }
 }

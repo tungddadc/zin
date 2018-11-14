@@ -333,6 +333,84 @@ var CART = {
         });
     }
 };
+var WISHLIST = {
+    add: function () {
+        $(document).on('click','.link-wishlist',function (e) {
+            e.preventDefault();
+            let product_id = $(this).data('id');
+            $.ajax({
+                type:'POST',
+                url: base_url + 'product/ajax_save_wishlist',
+                data: {product_id:product_id},
+                dataType: 'JSON',
+                success: function (response) {
+                    if (typeof response.type !== 'undefined') {
+                        toastr[response.type](response.message);
+                    }
+                }
+            });
+        });
+    },
+    delete: function () {
+        $('#page-wishlist').on('click','.remove-item',function (e) {
+            e.preventDefault();
+            let elementItem = $(this).closest('tr');
+            let product_id = elementItem.data('id');
+            $.ajax({
+                type:'POST',
+                url: base_url + 'product/ajax_delete_wishlist',
+                data: {product_id:product_id},
+                dataType: 'JSON',
+                success: function (response) {
+                    if (typeof response.type !== 'undefined') {
+                        toastr[response.type](response.message);
+                        if(response.type === 'success') elementItem.remove();
+                    }
+                }
+            });
+        });
+    },
+    addToCart: function () {
+        $('#page-wishlist').on('click','.btn-cart',function (e) {
+            e.preventDefault();
+            let elementItem = $(this).closest('tr');
+            let product_id = elementItem.data('id');
+            let quantity = elementItem.find('.customer-wishlist-item-quantity input').val();
+            CART.add(product_id,quantity);
+        });
+    },
+    init: function () {
+        WISHLIST.add();
+        WISHLIST.delete();
+        WISHLIST.addToCart();
+    }
+};
+var COMPARE = {
+    add: function () {
+        $(document).on('click','.link-compare',function (e) {
+            e.preventDefault();
+            let product_id = $(this).data('id');
+            $.ajax({
+                type:'POST',
+                url: base_url + 'product/ajax_add_compare',
+                data: {product_id:product_id},
+                dataType: 'JSON',
+                success: function (response) {
+                    if (typeof response.type !== 'undefined') {
+                        toastr[response.type](response.message);
+                    }
+                }
+            });
+        });
+    },
+    delete: function () {
+
+    },
+    init: function () {
+        COMPARE.add();
+        COMPARE.delete();
+    }
+};
 var UI = {
     ajaxFormSubmit: function(){
         $('form[method="post"]').ajaxForm({
@@ -375,6 +453,8 @@ var UI = {
 jQuery(document).ready(function () {
     $('ul>li a[href="' + window.location.origin + window.location.pathname + '"]').parent().addClass('active');
     UI.ajaxFormSubmit();
+    WISHLIST.init();
+    COMPARE.init();
     $('a[href*="#"]').click(function (e) {
         e.preventDefault();
         let href = $(this).attr('href').split('#');
@@ -495,37 +575,6 @@ jQuery(document).ready(function () {
         $('#fancybox-wrap').show();
     });
 
-    $(document).on('click','.link-wishlist',function (e) {
-        e.preventDefault();
-        let product_id = $(this).data('id');
-        $.ajax({
-           type:'POST',
-           url: base_url + 'product/ajax_save_favourite',
-           data: {product_id:product_id},
-            dataType: 'JSON',
-            success: function (response) {
-                if (typeof response.type !== 'undefined') {
-                    toastr[response.type](response.message);
-                }
-            }
-        });
-    });
-
-    $(document).on('click','.link-compare',function (e) {
-        e.preventDefault();
-        let product_id = $(this).data('id');
-        $.ajax({
-           type:'POST',
-           url: base_url + 'product/ajax_add_compare',
-           data: {product_id:product_id},
-            dataType: 'JSON',
-            success: function (response) {
-                if (typeof response.type !== 'undefined') {
-                    toastr[response.type](response.message);
-                }
-            }
-        });
-    });
 
     $('#fancybox-wrap').on('click','#fancybox-close',function (e) {
         e.preventDefault();
