@@ -9,11 +9,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Voucher_model extends STEVEN_Model
 {
+  public $table_user_voucher;
+
   public function __construct()
   {
     parent::__construct();
     $this->table = 'voucher';
-    $this->table_account_gift = 'account_gift';
+    $this->table_user_voucher = 'user_voucher';
     $this->table_account_lucky = 'lucky';
     $this->column_order = array('id', 'id', 'event', 'code', 'percent_sale', 'created_time'); //thiết lập cột sắp xếp
     $this->column_search = array('code'); //thiết lập cột search
@@ -30,22 +32,22 @@ class Voucher_model extends STEVEN_Model
     //$this->db->distinct();
     $this->db->select($select);
     $this->db->from($this->table);
-    if (!empty($account_gift)) {
-      $this->db->join($this->table_account_gift, "$this->table_account_gift.type_id=$this->table.id");
+    if (!empty($user_voucher)) {
+      $this->db->join($this->table_user_voucher, "$this->table_user_voucher.type_id=$this->table.id");
       if (!empty($account_id))
-        $this->db->where("$this->table_account_gift.account_id", $account_id);
+        $this->db->where("$this->table_user_voucher.account_id", $account_id);
       if (!empty($type))
-        $this->db->where("$this->table_account_gift.type", $type);
+        $this->db->where("$this->table_user_voucher.type", $type);
     }
     if (isset($is_status) && $is_status != '') {
       $this->db->where("$this->table.is_status", $is_status);
     }
     if (!empty($status)) {
-      if($status==3){
-        $this->db->where("$this->table_account_gift.status", 0);
+      if ($status == 3) {
+        $this->db->where("$this->table_user_voucher.status", 0);
 
-      }else{
-        $this->db->where("$this->table_account_gift.status", $status);
+      } else {
+        $this->db->where("$this->table_user_voucher.status", $status);
 
       }
     }
@@ -73,7 +75,7 @@ class Voucher_model extends STEVEN_Model
         if ($key == 'is_status') {
           $this->db->order_by("$this->table.$key", $item);
         } else {
-          $this->db->order_by("$this->table_account_gift.$key", $item);
+          $this->db->order_by("$this->table_user_voucher.$key", $item);
 
         }
       }
@@ -115,11 +117,11 @@ class Voucher_model extends STEVEN_Model
     return $query->num_rows();
   }
 
-  public function getByCode($code,$check='')
+  public function getByCode($code, $check = '')
   {
     $this->db->select('*');
     $this->db->from($this->table);
-    if(empty($check)) $this->db->where("is_status", 1);
+    if (empty($check)) $this->db->where("is_status", 1);
     $this->db->where('code', $code);
     $data = $this->db->get()->row();
     return $data;
@@ -147,13 +149,12 @@ class Voucher_model extends STEVEN_Model
   }
 
   //  Kiểm tra tài khoản đã ăn voucher hay chưa
-  public function receivingAccount($code_id, $account_id, $type = 'voucher')
+  public function receivingAccount($code_id, $account_id, $status = '')
   {
     if (!empty($code_id) && !empty($account_id)) {
       $this->db->select("1");
-      $this->db->from($this->table_account_gift);
-      $this->db->where("status", 1);
-      $this->db->where('type', $type);
+      $this->db->from($this->table_user_voucher);
+      if (empty($status)) $this->db->where("status", 1);
       $this->db->where('type_id', $code_id);
       $this->db->where('account_id', $account_id);
       $data = $this->db->get()->row();
@@ -216,35 +217,24 @@ class Voucher_model extends STEVEN_Model
   public function useVoucher($code_id, $account_id, $type = 'voucher')
   {
     $this->db->select("1");
-    $this->db->from($this->table_account_gift);
+    $this->db->from($this->table_user_voucher);
     $this->db->where('type', $type);
     $this->db->where('type_id', $code_id);
     $this->db->where('account_id', $account_id);
     $data = $this->db->get()->row();
     $params = array('type' => $type, 'type_id' => $code_id, 'account_id' => $account_id);
     if (empty($data)) {
-      $responsive = $this->insert($params, $this->table_account_gift);
+      $responsive = $this->insert($params, $this->table_user_voucher);
     }
 //    ddQuery($this->db);
     return $responsive;
   }
 
-  // Kiểm tra xem user đó còn lượt quay hay không
-  public function luotquay($race_id, $account_id, $status = '')
-  {
-    $this->db->select('*');
-    $this->db->from($this->table_account_lucky);
-    if (!empty($status)) $this->db->where('is_status', $status);
-    $this->db->where('race_id', $race_id);
-    $this->db->where('account_id', $account_id);
-    $data = $this->db->get()->row();
-    return $data;
-  }
 
   // Xử lý hết hạn voucher khi được gán chi thành viên
   public function expiredVoucher($id)
   {
-    $this->db->update('account_gift', array('status' => 3), array('type_id' => $id, 'type' => 'voucher', 'status' => 2));
+    $this->db->update('user_voucher', array('status' => 3), array('type_id' => $id, 'type' => 'voucher', 'status' => 2));
   }
 
 }
