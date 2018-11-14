@@ -61,23 +61,9 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
   <meta name="msapplication-TileImage"
         content="<?php echo !empty($this->settings['favicon']) ? getImageThumb($this->settings['favicon'], 270, 270) : $this->templates_assets . "favicon.ico"; ?>">
 
-  <!--begin::Web font -->
-  <script>
-    WebFontConfig = {
-      google: {families: ["Nunito Sans:400,300,500,600,700", "Open+Sans:700,600,800,400"]}
-    };
-    (function () {
-      var wf = document.createElement('script');
-      wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-      wf.type = 'text/javascript';
-      wf.async = 'true';
-      var s = document.getElementsByTagName('script')[0];
-      s.parentNode.insertBefore(wf, s);
-    })();
-  </script>
-  <!--end::Web font -->
   <?php $asset_css[] = 'bootstrap.min.css'; ?>
   <?php $asset_css[] = 'font-awesome.min.css'; ?>
+  <?php $asset_css[] = 'google-fonts.css'; ?>
   <?php $asset_css[] = 'simple-line-icons.css'; ?>
   <?php $asset_css[] = 'owl.carousel.css'; ?>
   <?php $asset_css[] = 'owl.theme.css'; ?>
