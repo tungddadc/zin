@@ -221,6 +221,70 @@ var CART = {
             }
 
         });
+    },
+    coupon_code:function () {
+        $.ajax({
+            url:base_url + 'cart/voucher',
+            type:'POST',
+            dataType:'json',
+            data:{code:$('#coupon_code').val()},
+            success:function (data) {
+                let cls='text-danger';
+                if(data.type=='success') {
+                    cls='text-success';
+                    $('.price_sale').html(data.price_sale);
+                    $('[name="voucher_id"]').val(data.voucher);
+                }
+                $('.mess_coupon').html('<p class="'+cls+'"> '+data.message+'</p>');
+            }
+        });
+    },
+    payment_collapse:function () {
+        //payment-collapse
+        var pay = $('.payment-collapse');
+        if (pay.length > 0) {
+            pay.find('.item .head').click(function(e) {
+                var ct = $(this).nextAll(".ct");
+                if (ct.is(":hidden") === true) {
+                    ct.parent('.item').parent().children().children('.ct').slideUp(200);
+                    ct.parent('.item').parent().children().children('.head').removeClass("active");
+                    $(this).addClass("active");
+                    $('.payment-collapse .item').removeClass('active')
+                    $(this).parent().addClass("active");
+
+                    ct.slideDown(200);
+                } else {
+                    ct.slideUp(200);
+                    $(this).removeClass("active");
+                    $(this).parent().removeClass("active");
+                }
+            });
+        }
+    },
+    check_out:function () {
+        $('.text-danger').remove();
+        let form=$('#check_out');
+        $.ajax({
+            url:base_url+'cart/checkout',
+            type:'post',
+            dataType:'json',
+            data:form.serialize(),
+            beforeSend:function () {
+                $('.btn-proceed-checkout span').append('<i class="fa fa-spinner fa-spin ml-2" style=" margin-left:5px;color: #ffffff;"></i>');
+            },
+            success:function (data) {
+                $('.btn-proceed-checkout span').find('i').remove();
+                if(data.type!='success'){
+                    $.each(data.validation,function (key,value) {
+                        $('[name="'+key+'"]').closest('.input-box').append(value);
+                    });
+                    toastr[data.type](data.message);
+                }else{
+                    window.location.href=data.redirect_url;
+                }
+
+            }
+        });
     }
 };
 var UI = {
@@ -379,7 +443,7 @@ jQuery(document).ready(function () {
         $('body').removeClass('fixed');
     });
 
-
+    CART.payment_collapse();
 });
 var ajaxShowRequest = function (formData, jqForm, options) {
     jqForm.find('[type="submit"]').append('<i class="fa fa-spinner fa-spin ml-2" style="color: #ffffff;"></i>');
