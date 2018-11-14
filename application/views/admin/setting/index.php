@@ -296,7 +296,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                             <div class="box-body">
                                 <div class="form-group">
                                     <label>Facebook</label>
-                                    <input name="social_fb" placeholder="Facebook Url"
+                                    <input name="social_facebook" placeholder="Facebook Url"
                                            class="form-control" type="text"
                                            value="<?php echo isset($social_facebook) ? $social_facebook : ''; ?>"/>
                                 </div>

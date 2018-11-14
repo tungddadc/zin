@@ -18,6 +18,8 @@ class NavsMenu {
      *
      * @var string
      */
+    private $items = [];
+
     private $nav_tag_open             = '<ul>';
 
     /**
@@ -277,7 +279,7 @@ class NavsMenu {
      */
     public function set_divided_items($items = array(), $divider = null)
     {
-        if ( count($items) )
+        if (!empty($items) && count($items) )
         {
             $this->divided_items_list       = $items;
             $this->item_divider             = $divider ? $divider : $this->item_divider;
@@ -305,7 +307,7 @@ class NavsMenu {
             $this->item_active = $config;
         }
 
-        if ( count($this->items) )
+        if ( !empty($this->items) && count($this->items) )
         {
             $items = $this->prepare_items($this->items);
 

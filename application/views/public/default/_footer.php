@@ -31,50 +31,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
             <div class="row">
                 <div class="col-md-3 col-sm-6">
                     <div class="footer-column pull-left">
-                        <h4>Shopping Guide</h4>
-                        <ul class="links">
-                            <li><a title="How to buy" href="blog.html">Blog</a></li>
-                            <li><a title="FAQs" href="faq.html">FAQs</a></li>
-                            <li><a title="Payment" href="#">Payment</a></li>
-                            <li><a title="Shipment" href="#">Shipment</a></li>
-                            <li><a title="Where is my order?" href="#">Where is my order?</a></li>
-                            <li><a title="Return policy" href="#">Return policy</a></li>
-                        </ul>
+                        <h4>Hướng dẫn mua hàng</h4>
+                        <?php echo navMenuFooter1('links') ?>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-6">
                     <div class="footer-column pull-left">
-                        <h4>Style Advisor</h4>
-                        <ul class="links">
-                            <li><a title="Your Account" href="login.html">Your Account</a></li>
-                            <li><a title="Information" href="#">Information</a></li>
-                            <li><a title="Addresses" href="#">Addresses</a></li>
-                            <li><a title="Addresses" href="#">Discount</a></li>
-                            <li><a title="Orders History" href="#">Orders History</a></li>
-                            <li><a title="Order Tracking" href="#">Order Tracking</a></li>
-                        </ul>
+                        <h4>Thông tin tài khoản</h4>
+                        <?php echo navMenuFooter2('links') ?>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-6">
                     <div class="footer-column pull-left">
-                        <h4>Information</h4>
-                        <ul class="links">
-                            <li><a title="Site Map" href="sitemap.html">Site Map</a></li>
-                            <li><a title="Search Terms" href="#">Search Terms</a></li>
-                            <li><a title="Advanced Search" href="#">Advanced Search</a></li>
-                            <li><a title="About Us" href="about_us.html">About Us</a></li>
-                            <li><a title="Contact Us" href="contact_us.html">Contact Us</a></li>
-                            <li><a title="Suppliers" href="#">Suppliers</a></li>
-                        </ul>
+                        <h4>Thông tin</h4>
+                        <?php echo navMenuFooter3('links') ?>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-6">
-                    <h4>Contact Us</h4>
+                    <h4>Liên hệ với chúng tôi</h4>
+                    <?php $contact = $this->settings['contact'][$this->session->userdata('public_lang_code')]; ?>
                     <div class="contacts-info">
-                        <address><i class="add-icon"></i>ABC Town Luton Street,<br>
-                            New York 226688</address>
-                        <div class="phone-footer"><i class="phone-icon"></i>+ 0800 567 345</div>
-                        <div class="email-footer"><i class="email-icon"></i><a href="mailto:abc@example.com">abc@example.com</a></div>
+
+                        <address><i class="add-icon"></i><?php echo $contact['title'] ?>. <?php echo $contact['address'] ?></address>
+                        <div class="phone-footer"><i class="phone-icon"></i><?php echo $contact['phone'] ?></div>
+                        <div class="email-footer"><i class="email-icon"></i><a href="mailto:<?php echo $contact['email'] ?>"><?php echo $contact['email'] ?></a></div>
                     </div>
                 </div>
             </div>
@@ -86,13 +66,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                 <div class="col-xs-12 col-sm-6">
                     <div class="social">
                         <ul>
-                            <li class="fb"><a href="#"></a></li>
-                            <li class="tw"><a href="#"></a></li>
-                            <li class="googleplus"><a href="#"></a></li>
-                            <li class="rss"><a href="#"></a></li>
-                            <li class="pintrest"><a href="#"></a></li>
-                            <li class="linkedin"><a href="#"></a></li>
-                            <li class="youtube"><a href="#"></a></li>
+                            <li class="fb"><a target="_blank" href="<?php echo $this->settings['social_facebook'] ?>" title="<?php echo $this->settings['social_facebook'] ?>"></a></li>
+                            <li class="googleplus"><a target="_blank" href="<?php echo $this->settings['social_google'] ?>" title="<?php echo $this->settings['social_google'] ?>"></a></li>
+                            <li class="youtube"><a target="_blank" href="<?php echo $this->settings['social_youtube'] ?>" title="<?php echo $this->settings['social_youtube'] ?>"></a></li>
                         </ul>
                     </div>
                 </div>
@@ -106,7 +82,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 col-xs-12 coppyright">
-                    © 2017 ThemesSoft. All Rights Reserved.
+                    © 2017 <?php echo $this->settings['name'] ?>. All Rights Reserved.
                 </div>
             </div>
         </div>
@@ -114,4 +90,4 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 </footer>
 <!-- End Footer -->
 
-<a id="toTop" style="display: none;" href="#"><span id="toTopHover"></span></a>
+<a id="toTop" style="display: none;" href="javascript:;" rel="nofollow"><span id="toTopHover"></span></a>

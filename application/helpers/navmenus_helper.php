@@ -14,7 +14,6 @@ if (!function_exists('navMenuMain')) {
 
 if (!function_exists('navMenuFooter1')) {
     function navMenuFooter1($classname = '', $id = '', $submenuclass = ''){
-
         return menus(2, $classname, $id, $submenuclass);
     }
 }
@@ -22,6 +21,12 @@ if (!function_exists('navMenuFooter1')) {
 if (!function_exists('navMenuFooter2')) {
     function navMenuFooter2($classname = '', $id = '', $submenuclass = ''){
         return menus(3, $classname, $id, $submenuclass);
+    }
+}
+
+if (!function_exists('navMenuFooter3')) {
+    function navMenuFooter3($classname = '', $id = '', $submenuclass = ''){
+        return menus(4, $classname, $id, $submenuclass);
     }
 }
 
