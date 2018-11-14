@@ -362,21 +362,20 @@ class Product extends Public_Controller
     }
 
     public function ajax_save_favourite(){
-        if($this->input->server('REQUEST_METHOD') == 'POST' && !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-            if($this->session->is_logged != true){
-                $message['type'] = 'error';
-                $message['message'] = "Bạn phải đăng nhập để thực hiện thao tác này !";
-                echo json_encode($message);exit;
-            }
-            $this->load->model('account_model');
-            $accountModel = new Account_model();
-            $data['account_id'] = $this->session->userdata('account')['account_id'];
-            $data['product_id'] = $this->input->post('product_id');
-            if($accountModel->save($data, $accountModel->table_collection)){
-                $message['type'] = 'success';
-                $message['message'] = "Bạn vừa thêm ";
-                echo json_encode($message);exit;
-            }
+        $this->checkRequestPostAjax();
+        if($this->session->userdata('is_logged') != true){
+            $message['type'] = 'error';
+            $message['message'] = "Bạn phải đăng nhập để thực hiện thao tác này !";
+            $this->returnJson($message);
+        }
+        $this->load->model('users_model');
+        $accountModel = new Users_model();
+        $data['account_id'] = $this->session->userdata('user_id');
+        $data['product_id'] = $this->input->post('product_id');
+        if($accountModel->save($data, $accountModel->table_collection)){
+            $message['type'] = 'success';
+            $message['message'] = "Bạn vừa thêm ";
+            $this->returnJson($message);
         }
         exit;
     }

@@ -61,7 +61,7 @@ $(function() {
         table.search($(this).val(), "is_status")
     }), $('[name="is_status"]').selectpicker();
 
-    $('select[name="group_id"]').on("change", function () {
+    $('select[name="filter_group_id"]').on("change", function () {
         table.search($(this).val(), "group_id")
     });
 
