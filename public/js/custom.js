@@ -62,6 +62,37 @@ var FUNC = {
             $('#popup_newsletter').hide();
             $('#overlay').hide();
         }
+    },
+    ajax_loader: function() {
+        $('body').toggleClass('fixed');
+        $('#preloader').toggleClass('d-none');
+    },
+    ajax_load_content_animation: function (url, element, goto) {
+        let _container = $(element);
+        $.ajax({
+            url: url,
+            type: 'GET',
+            dataType: 'html',
+            beforeSend: function () {
+                FUNC.ajax_loader();
+            },
+            success: function (result) {
+                let resultFind = $(result).find(element);
+
+                if(resultFind.length > 0){
+                    _container.html(resultFind);
+                }
+                FUNC.ajax_loader();
+                window.history.pushState({path: url}, '', url);
+
+                if(goto){
+                    $('html, body').animate({
+                        scrollTop: $(goto).offset().top
+                    }, 1000);
+                }
+
+            }
+        });
     }
 };
 var CART = {
@@ -260,6 +291,12 @@ jQuery(document).ready(function () {
 
     LOC.loadCity();
     LOC.loadDistrict()
+
+    $(document).on('change','select[name*="filter_"]',function () {
+        let form_parent = $(this).closest('form');
+        let url = form_parent.attr('action') + '?' + form_parent.serialize();
+        FUNC.ajax_load_content_animation(url,'#content_ajax','#content_ajax');
+    });
 });
 var ajaxShowRequest = function (formData, jqForm, options) {
     jqForm.find('[type="submit"]').append('<i class="fa fa-spinner fa-spin ml-2" style="color: #ffffff;"></i>');

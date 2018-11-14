@@ -55,24 +55,21 @@ class Product extends Public_Controller
         $data['property_color'] = $propertyModel->getDataByPropertyType($_all_property,'color');
         $data['property_genre'] = $propertyModel->getGenre($_all_property,'genre',$oneParent->id);*/
         /*Lay list cac thuoc tinh*/
-
-        if(!empty($this->input->get('filter_format'))) $paramsFilter['filter_format'] = $this->input->get('filter_format');
-        if(!empty($this->input->get('filter_color'))) $paramsFilter['filter_color'] = $this->input->get('filter_color');
-        if(!empty($this->input->get('filter_type'))) $paramsFilter['filter_type'] = $this->input->get('filter_type');
-        if(!empty($this->input->get('filter_genre'))) $paramsFilter['filter_genre'] = $this->input->get('filter_genre');
-
         switch ($this->input->get('filter_sort')) {
-            case 'most_download':
-                $paramsFilter['order'] = ['total_download' => 'DESC'];
+            case 'oldest':
+                $paramsFilter['order'] = ['created_time' => 'ASC'];
                 break;
-            case 'most_favourite':
-                $paramsFilter['order'] = ['total_favourite' => 'DESC'];
+            case 'lowest':
+                $paramsFilter['order'] = ['price_sort' => 'ASC'];
+                break;
+            case 'highest':
+                $paramsFilter['order'] = ['price_sort' => 'DESC'];
                 break;
             default:
                 $paramsFilter['order'] = ['created_time' => 'DESC'];
         }
-
-        $limit = $data['limit'] = 12;
+        $limit = $this->input->get('filter_limit');
+        $data['limit'] = $limit = !empty($limit) ? $limit : 12;
         $data['page'] = $page;
         $params = [
             'is_status' => 1, //0: Huỷ, 1: Hiển thị, 2: Nháp
