@@ -51,6 +51,51 @@ var LOC = {
 
 }
 var FUNC = {
+    ajaxShowRequest: function (formData, jqForm, options) {
+        if(jqForm.find('[type="submit"]').length > 0) jqForm.find('[type="submit"]').append('<i class="fa fa-spinner fa-spin ml-2" style="color: #ffffff;"></i>');
+        //let queryString = $.param(formData);
+        return true;
+    },
+    ajaxShowResponse: function (response, statusText, xhr, $form) {
+        if (response.csrf_form) {
+            $form.find('input[name="' + response.csrf_form.csrf_name + '"]').val(response.csrf_form.csrf_value);
+            $('meta[name="csrf_form_token"]').attr('content', response.csrf_form.csrf_value);
+        }
+        $form.find('.fa-spin').remove();
+        if (typeof response.type !== 'undefined') {
+            toastr[response.type](response.message);
+            if (response.type === "warning") {
+                $form.find('.form-group').removeClass('has-warning');
+                $form.find('.text-danger').remove();
+                $.each(response.validation, function (key, val) {
+                    $form.find('[name="' + key + '"]').after(val).parent().addClass('has-warning');
+                });
+            } else {
+                $form.find('.form-group').removeClass('has-warning');
+                $form.find('.text-danger').remove();
+                //$form.reset();
+                if (response.type === "success") {
+                    switch ($form.attr('id')) {
+                        case 'product_addtocart_form':
+                            CART.updateCountHeader();
+                            break;
+
+                        case 'form-order':
+                            setTimeout(function () {
+                                location.href = base_url;
+                            }, 2000);
+                            break;
+
+                        default:
+                            setTimeout(function () {
+                                if (response.url_redirect) location.href = response.url_redirect;
+                                else location.reload();
+                            }, 2000);
+                    }
+                }
+            }
+        }
+    },
     formatMoney: function (money) {
         return money.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.") + 'đ'
     },
@@ -106,6 +151,7 @@ var FUNC = {
                 if(resultFind.length > 0){
                     container_popup.html(resultFind);
                     UI.zoomImageProduct();
+                    UI.ajaxFormSubmit();
                 }
             }
         });
@@ -288,6 +334,19 @@ var CART = {
     }
 };
 var UI = {
+    ajaxFormSubmit: function(){
+        $('form[method="post"]').ajaxForm({
+            //target:        '#output1',   // target element(s) to be updated with server response
+            beforeSubmit: FUNC.ajaxShowRequest,  // pre-submit callback
+            success: FUNC.ajaxShowResponse,  // post-submit callback
+            type: 'POST',        // 'get' or 'post', override for form's 'method' attribute
+            dataType: 'JSON'        // 'xml', 'script', or 'json' (expected server response type)
+            //clearForm: true        // clear all form fields after successful submit
+            //resetForm: true        // reset the form after successful submit
+            // $.ajax options can be used here too, for example:
+            //timeout:   3000
+        });
+    },
     zoomImageProduct: function () {
         /* Zoom image */
         if (jQuery('#product-zoom').length > 0) {
@@ -315,7 +374,7 @@ var UI = {
 };
 jQuery(document).ready(function () {
     $('ul>li a[href="' + window.location.origin + window.location.pathname + '"]').parent().addClass('active');
-
+    UI.ajaxFormSubmit();
     $('a[href*="#"]').click(function (e) {
         e.preventDefault();
         let href = $(this).attr('href').split('#');
@@ -445,65 +504,7 @@ jQuery(document).ready(function () {
 
     CART.payment_collapse();
 });
-var ajaxShowRequest = function (formData, jqForm, options) {
-    jqForm.find('[type="submit"]').append('<i class="fa fa-spinner fa-spin ml-2" style="color: #ffffff;"></i>');
-    //let queryString = $.param(formData);
-    return true;
-};
-var ajaxShowResponse = function (response, statusText, xhr, $form) {
-    if (response.csrf_form) {
-        $form.find('input[name="' + response.csrf_form.csrf_name + '"]').val(response.csrf_form.csrf_value);
-        $('meta[name="csrf_form_token"]').attr('content', response.csrf_form.csrf_value);
-    }
-    $form.find('.fa-spin').remove();
-    if (typeof response.type !== 'undefined') {
-        toastr[response.type](response.message);
-        if (response.type === "warning") {
-            $form.find('.form-group').removeClass('has-warning');
-            $form.find('.text-danger').remove();
-            $.each(response.validation, function (key, val) {
-                $form.find('[name="' + key + '"]').after(val).parent().addClass('has-warning');
-            });
-        } else {
-            $form.find('.form-group').removeClass('has-warning');
-            $form.find('.text-danger').remove();
-            //$form.reset();
-            if (response.type === "success") {
-                switch ($form.attr('id')) {
-                    case 'product_addtocart_form':
-                        CART.updateCountHeader();
-                        break;
 
-                    case 'form-order':
-                        setTimeout(function () {
-                            location.href = base_url;
-                        }, 2000);
-                        break;
-
-                    default:
-                        setTimeout(function () {
-                            if (response.url_redirect) location.href = response.url_redirect;
-                            else location.reload();
-                        }, 2000);
-                }
-            }
-        }
-    }
-};
-
-var ajaxFormSubmit = function () {
-    $('form[method="post"]').ajaxForm({
-        //target:        '#output1',   // target element(s) to be updated with server response
-        beforeSubmit: ajaxShowRequest,  // pre-submit callback
-        success: ajaxShowResponse,  // post-submit callback
-        type: 'POST',        // 'get' or 'post', override for form's 'method' attribute
-        dataType: 'JSON'        // 'xml', 'script', or 'json' (expected server response type)
-        //clearForm: true        // clear all form fields after successful submit
-        //resetForm: true        // reset the form after successful submit
-        // $.ajax options can be used here too, for example:
-        //timeout:   3000
-    });
-};
 /*
 var dthen1 = new Date("12/25/17 11:59:00 PM");
 start = "08/04/15 03:02:11 AM";
