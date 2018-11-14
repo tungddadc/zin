@@ -299,8 +299,7 @@ class STEVEN_Model extends CI_Model
 			return false;
 		}
         $id = $this->db->insert_id();
-
-        return $id;
+        return !empty($id) ? $id : $this->db->affected_rows();
 	}
 
 

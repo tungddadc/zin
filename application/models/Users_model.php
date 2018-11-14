@@ -73,6 +73,7 @@ class Users_model extends STEVEN_Model
             'account_id' => $user_id,
             'product_id' => $product_id
         ];
-        return $this->save($data,$this->table_user_favourite);
+        if(!$this->save($data,$this->table_user_favourite)) return false;
+        return true;
     }
 }

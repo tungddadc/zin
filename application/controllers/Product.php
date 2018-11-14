@@ -381,47 +381,30 @@ class Product extends Public_Controller
         }
     }
 
-    public function ajax_add_collection(){
-        if($this->input->server('REQUEST_METHOD') == 'POST' && !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-            if($this->session->is_logged != true){
-                $message['type'] = 'error';
-                $message['message'] = "Bạn phải đăng nhập để thực hiện thao tác này !";
-                echo json_encode($message);exit;
+    public function ajax_add_compare(){
+        $this->checkRequestPostAjax();
+        $product_id = $this->input->post('product_id');
+        $key = 'product_compare';
+        $data = get_cookie($key);
+        if(!empty($data)){
+            $data = json_decode($data, true);
+            if(in_array($product_id,$data)){
+                $message['type'] = 'warning';
+                $message['message'] = "Bạn đã thêm sản phẩm vào so sánh rồi.";
+                $this->returnJson($message);
             }
-            $rules = array(
-                array(
-                    'field' => 'title',
-                    'label' => 'tên bộ sưu tập',
-                    'rules' => 'required|trim|max_length[150]'
-                )
-            );
-            $this->form_validation->set_rules($rules);
-            if ($this->form_validation->run() != false) {
-                $this->load->model('account_model');
-                $accountModel = new Account_model();
-                $data['account_id'] = $this->session->userdata('account')['account_id'];
-                $data['title'] = $this->input->post('title');
-                if ($accountModel->insert($data, $accountModel->table_collection)) {
-                    $message['type'] = 'success';
-                    $message['message'] = "Bạn vừa thêm bộ sưu tập \"{$data['title']}\" thành công !";
-                    echo json_encode($message);
-                    exit;
-                }
-            }else{
-                $message['type'] = "warning";
-                $message['message'] = $this->lang->line('mess_validation');
-                $valid = array();
-                if(!empty($rules)) foreach ($rules as $item){
-                    if(!empty(form_error($item['field']))) $valid[$item['field']] = form_error($item['field']);
-                }
-                $message['validation'] = $valid;
-                die(json_encode($message));
-            }
+            array_push($data,$product_id);
+            $data = array_unique($data);
+            set_cookie($key, json_encode($data), 0);
+        }else {
+            set_cookie($key, json_encode([$product_id]), 0);
         }
-        exit;
+        $message['type'] = 'success';
+        $message['message'] = "Bạn vừa thêm sản phẩm này để so sánh.";
+        $this->returnJson($message);
     }
 
-    public function ajax_action_collection(){
+    public function ajax_action_compare(){
         if($this->input->server('REQUEST_METHOD') == 'POST' && !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
             if($this->session->is_logged != true){
                 $message['type'] = 'error';
@@ -472,7 +455,7 @@ class Product extends Public_Controller
         exit;
     }
 
-    public function ajax_remove_product_collection()
+    public function ajax_remove_product_compare()
     {
         if ($this->input->server('REQUEST_METHOD') == 'POST' && !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
             if ($this->session->is_logged != true) {
@@ -481,55 +464,6 @@ class Product extends Public_Controller
                 echo json_encode($message);
                 exit;
             }
-        }
-        exit;
-    }
-
-    public function ajax_category_load($type = null){
-        if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-            $this->load->model('category_model');
-            $categoryModel = new Category_model();
-            $term = $this->input->get("q");
-            $params = [
-                'category_type' => $type,
-                'is_status'=> 1,
-                'search' => $term,
-                'limit'=> 1000
-            ];
-            $list = $categoryModel->getData($params);
-            $this->_queue_select($list, 0);
-            $json = [];
-            if(!empty($this->category_tree)) foreach ($this->category_tree as $item) {
-                $item = (object) $item;
-                $json[] = ['id'=>$item->id, 'text'=>$item->title];
-            }
-            print json_encode($json);
-        }
-        exit;
-    }
-
-    public function ajax_property_load($type = null){
-        if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-            $this->load->model('property_model');
-            $propertyModel = new Property_model();
-            $term = $this->input->get("q");
-            $category_id = $this->input->get('category_id');
-            $oneParent = $this->_data_category->_recursive_one_parent($this->_data_category->_all_category(),$category_id);
-
-            $params = [
-                'property_type' => $type,
-                'category_id' => !empty($oneParent->id) ? $oneParent->id : 0,
-                'is_status'=> 1,
-                'search' => $term,
-                'limit'=> 100
-            ];
-            $list = $propertyModel->getData($params);
-            $json = [];
-            if(!empty($list)) foreach ($list as $item) {
-                $item = (object) $item;
-                $json[] = ['id'=>$item->id, 'text'=>$item->title];
-            }
-            print json_encode($json);
         }
         exit;
     }
