@@ -105,7 +105,7 @@ var CART = {
             success: function (response) {
                 if (typeof response.type !== 'undefined') {
                     CART.updateCountHeader();
-                    toastr[response.tgype](response.message);
+                    toastr[response.type](response.message);
                 }
             }
         });
@@ -383,13 +383,13 @@ jQuery(document).ready(function () {
     $(document).on('click','.link-quickview',function (e) {
         e.preventDefault();
         $('body').addClass('fixed');
-        $('#fancybox-overlay').show();
+        $('#overlay').show();
         $('#fancybox-wrap').show();
     });
 
     $('#fancybox-wrap').on('click','#fancybox-close',function (e) {
         e.preventDefault();
-        $('#fancybox-overlay').hide();
+        $('#overlay').hide();
         $('#fancybox-wrap').hide();
         $('body').removeClass('fixed');
     });
