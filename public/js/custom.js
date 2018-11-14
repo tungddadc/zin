@@ -96,6 +96,21 @@ var FUNC = {
     }
 };
 var CART = {
+    add: function (id,quantity) {
+        $.ajax({
+            type: 'POST',
+            url: base_url + 'cart/add',
+            data: {product_id: id,quantity:quantity},
+            dataType: 'JSON',
+            success: function (response) {
+                if (typeof response.type !== 'undefined') {
+                    CART.updateCountHeader();
+                    toastr[response.tgype](response.message);
+                }
+            }
+        });
+        return false;
+    },
     delete: function (_this, id) {
         $.ajax({
             type: 'POST',

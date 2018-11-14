@@ -103,8 +103,6 @@
 
                                     <?php echo form_open('cart/add', ['id' => 'product_addtocart_form']) ?>
                                     <input name="product_id" value="<?php echo $oneItem->id ?>" type="hidden">
-                                    <input name="slug" value="<?php echo $oneItem->slug ?>" type="hidden">
-                                    <input name="name" value="<?php echo $oneItem->title ?>" type="hidden">
                                     <input name="image" value="<?php echo getImageThumb($oneItem->thumbnail,100,100,true) ?>" type="hidden">
                                     <div class="price-block">
                                         <div class="price-box">
@@ -130,7 +128,6 @@
                                                         <span class="price-label">Giá:</span>
                                                         <span class="price"><?php echo formatMoney($oneItem->price) ?></span>
                                                     </p>
-                                                    <input name="price" value="<?php echo $oneItem->price ?>" type="hidden">
                                                 <?php endif; ?>
                                             <?php endif; ?>
                                             <p class="availability in-stock pull-right">

@@ -79,6 +79,18 @@ class Product extends Public_Controller
         if(!empty($paramsFilter)) $params = array_merge($params,$paramsFilter);
         $data['data'] = $this->_data->getData($params);
         $data['total'] = $this->_data->getTotal($params);
+
+        /*List product viewed*/
+        $this->_updateLastViewed($id);
+        $listIdView = json_decode(get_cookie('last_viewed'), true);
+        $params['is_status'] = 1;
+        $params['lang_code'] = $this->_lang_code;
+        $params['in'] = $listIdView;
+        $params['not_in'] = $id;
+        $params['limit'] = 4;
+        $data['listProductViewed'] = $this->_data->getData($params);
+        /*List product viewed*/
+
         /*Pagination*/
         $this->load->library('pagination');
         $paging['base_url'] = getUrlCateProduct(['slug' => $oneItem->slug, 'id' => $oneItem->id, 'page' => 1]);

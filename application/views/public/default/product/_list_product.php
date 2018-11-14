@@ -42,7 +42,7 @@
                                 </div>
                             </div>
                             <div class="action">
-                                <a href="javascript:;" data-id="<?php echo $item->id ?>" class="button btn-cart" title="Thêm vào giỏ hàng"><span>Thêm vào giỏ hàng</span></a>
+                                <a href="javascript:;" onclick="CART.add(<?php echo $item->id ?>,1)" class="button" title="Thêm vào giỏ hàng"><span>Thêm vào giỏ hàng</span></a>
                             </div>
                         </div>
                     </div>
