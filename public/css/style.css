@@ -2306,7 +2306,7 @@ nav {
   vertical-align: top;
   padding-top: 4px;
   float: left;
-  width: 180px;
+  width: calc(100% - 50px);
 }
 
 .our-features-box .feature-box h3 {
