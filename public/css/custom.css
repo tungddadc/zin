@@ -174,7 +174,7 @@ header .our-features-box li {
     margin-bottom: 10px;
 }
 .product-buy .feature-box .content{
-    width: 210px;
+    width: calc(100% - 50px);
 }
 
 .product-buy .feature-box h3{

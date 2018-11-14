@@ -10,13 +10,13 @@
                         <?php echo !empty($item->is_new) ? '<div class="new-label new-top-left">New</div>' : '' ?>
                         <div class="box-hover">
                             <ul class="add-to-links">
-                                <li><a class="link-quickview" href="javascript:;" rel="nofollow" title="Xem Quickview"></a> </li>
+                                <li><a class="link-quickview" data-url="<?php echo getUrlProduct($item) ?>" href="javascript:;" rel="nofollow" title="Xem Quickview"></a> </li>
                                 <li><a class="link-wishlist" href="javascript:;" rel="nofollow" title="Yêu thích sản phẩm này"></a> </li>
                                 <li><a class="link-compare" href="javascript:;" rel="nofollow" title="So sánh sản phẩm này"></a> </li>
                             </ul>
                         </div>
                     </div>
-                </div>
+            </div>
                 <div class="item-info">
                     <div class="info-inner">
                         <div class="item-title">

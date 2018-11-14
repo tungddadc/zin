@@ -17,7 +17,7 @@
 
                     <article class="col-main">
                         <div class="product-view">
-                            <div class="product-essential">
+                            <div id="ajax-quickview" class="product-essential">
                                 <div class="product-img-box col-lg-4 col-sm-4 col-xs-12">
                                     <?php echo !empty($oneItem->is_new) ? '<div class="new-label new-top-left"> New </div>' : '' ?>
                                     <div class="product-image">
@@ -84,7 +84,7 @@
                                             <div style="width:60%" class="rating"></div>
                                         </div>
                                         <p class="rating-links">
-                                            <a href="#reviews_tabs" rel="nofollow" title="Phản hồi về sản phẩm">1 lượt
+                                            <a href="<?php echo getUrlProduct($oneItem) ?>#reviews_tabs" rel="nofollow" title="Phản hồi về sản phẩm">1 lượt
                                                 phản hồi về sản phẩm này</a>
                                         </p>
                                         <div class="email-addto-box">
@@ -111,7 +111,6 @@
                                                     <span class="price-label">Giá đại lý:</span>
                                                     <span class="price"><?php echo formatMoney($data_detail[0]->price_agency) ?></span>
                                                 </p>
-                                                <input name="price" value="<?php echo $data_detail[0]->price_agency ?>" type="hidden">
                                             <?php else: ?>
                                                 <?php if(!empty($oneItem->price_sale)): ?>
                                                     <p class="special-price">
@@ -122,7 +121,6 @@
                                                         <span class="price-label">Giá gốc:</span>
                                                         <span class="price"><?php echo formatMoney($oneItem->price) ?></span>
                                                     </p>
-                                                    <input name="price" value="<?php echo $oneItem->price_sale ?>" type="hidden">
                                                 <?php else: ?>
                                                     <p class="special-price">
                                                         <span class="price-label">Giá:</span>

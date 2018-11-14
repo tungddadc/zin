@@ -60,9 +60,12 @@
 	width: 50px;
 }
 #fancybox-content .product-view .product-shop .add-to-box .btn-cart {
-	font-size: 14px;
+	font-size: 12px;
 	margin-top: 0;
-	padding: 7px 12px;
+	padding: 7px;
+}
+#fancybox-content .product-view .product-shop .add-to-box .qty-label{
+	display: none;
 }
 #fancybox-outer {
 	position: relative;
@@ -363,6 +366,9 @@ filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/fancyb
 	margin-top: 5px;
 	z-index: -10000;
 }
+#fancybox-content .product-view .product-shop .add-to-links li{
+	padding: 0;
+}
 #fancybox-content .product-view .short-description {
 	clear: both;
 	padding: 3px 0px 18px;
@@ -376,6 +382,7 @@ filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/fancyb
 #fancybox-content .product-options-bottom {
 	padding: 5px 0;
 }
+
 #fancybox-content .product-options label {
 	text-align: left;
 	margin-bottom: 5px;
@@ -393,8 +400,8 @@ filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/fancyb
 #fancybox-content .product-view .product-shop .availability, .product-brand #fancybox-content .product-view .product-shop .availability, .product-brand {
 	margin: 0;
 	right: 8px;
-	margin-top: 7px;
 }
+
 #fancybox-content #large-images1 {
 	height: 340px !important;
 	width: 340px !important;
