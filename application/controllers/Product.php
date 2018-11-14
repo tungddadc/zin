@@ -6,7 +6,6 @@ class Product extends Public_Controller
     protected $cid = 0;
     protected $_data;
     protected $_data_category;
-    protected $_all_category;
     protected $category_tree;
     protected $_lang_code;
 
@@ -16,30 +15,29 @@ class Product extends Public_Controller
         $this->load->model(['category_model', 'product_model']);
         $this->_data = new Product_model();
         $this->_data_category = new Category_model();
-        $this->_all_category = $this->_data_category->_all_category('product');
         $this->_lang_code = $this->session->userdata('public_lang_code');
     }
 
     public function category($id, $page = 1){
         $oneItem = $this->_data_category->getByIdCached($id);
         if (empty($oneItem)) show_404();
-
+        if ($oneItem->type !== 'product') show_404();
         if ($this->input->get('lang')) {
             redirect(getUrlCateProduct(['slug' => $oneItem->slug, 'id' => $oneItem->id]));
         }
 
         $data['oneItem'] = $oneItem;
-        $data['oneParent'] = $oneParent = $this->_data_category->_recursive_one_parent($this->_all_category,$id);
-        /*$this->_data_category->_recursive_child($this->_all_category,$oneParent->id);
+        $data['oneParent'] = $oneParent = $this->_data_category->_recursive_one_parent($this->_data_category->_all_category(),$id);
+        /*$this->_data_category->_recursive_child($this->_data_category->_all_category(),$oneParent->id);
         $listCateChild = $this->_data_category->_list_category_child;*/
         /*Get level category*/
-        $this->_data_category->_recursive_parent($this->_all_category, $oneItem->id);
+        $this->_data_category->_recursive_parent($this->_data_category->_all_category(), $oneItem->id);
 
-        $data['list_category_child'] = $this->_data_category->getListChild($this->_all_category, $id);
+        $data['list_category_child'] = $this->_data_category->getListChild($this->_data_category->_all_category(), $id);
 
         /*Lay list id con của category*/
         $this->_data_category->_list_category_child_id = null;
-        $this->_data_category->_recursive_child_id($this->_all_category,$id);
+        $this->_data_category->_recursive_child_id($this->_data_category->_all_category(),$id);
         $listCateId = $this->_data_category->_list_category_child_id;
         /*Lay list id con của category*/
 
@@ -93,7 +91,104 @@ class Product extends Public_Controller
 
         //add breadcrumbs
         $this->breadcrumbs->push("Trang chủ", base_url());
-        $this->_data_category->_recursive_parent($this->_all_category, $id);
+        $this->_data_category->_recursive_parent($this->_data_category->_all_category(), $id);
+        if(!empty($this->_data_category->_list_category_parent)) foreach (array_reverse($this->_data_category->_list_category_parent) as $item){
+            $this->breadcrumbs->push($item->title, getUrlCateProduct($item));
+        }
+        $this->breadcrumbs->push($oneItem->title, getUrlCateProduct($oneItem));
+        $data['breadcrumb'] = $this->breadcrumbs->show();
+        //SEO Meta
+        $data['SEO'] = [
+            'meta_title' => !empty($oneItem->meta_title) ? $oneItem->meta_title : $oneItem->title,
+            'meta_description' => !empty($oneItem->meta_description) ? $oneItem->meta_description : $oneItem->description,
+            'meta_keyword' => !empty($oneItem->meta_title) ? $oneItem->meta_keyword : '',
+            'url' => getUrlCateProduct($oneItem),
+            'image' => getImageThumb($oneItem->thumbnail, 400, 200)
+        ];
+
+        if($oneParent->layout) $layoutView = '-'.$oneParent->layout;
+        else $layoutView = '';
+
+        $data['main_content'] = $this->load->view($this->template_path . 'product/category'.$layoutView, $data, TRUE);
+        $this->load->view($this->template_main, $data);
+
+    }
+
+    public function brand($id, $page = 1){
+        $oneItem = $this->_data_category->getByIdCached($id);
+        if (empty($oneItem)) show_404();
+        if ($oneItem->type !== 'brand') show_404();
+
+        if ($this->input->get('lang')) {
+            redirect(getUrlCateProduct(['slug' => $oneItem->slug, 'id' => $oneItem->id]));
+        }
+
+        $data['oneItem'] = $oneItem;
+        $data['oneParent'] = $oneParent = $this->_data_category->_recursive_one_parent($this->_data_category->_all_category(),$id);
+        /*$this->_data_category->_recursive_child($this->_data_category->_all_category(),$oneParent->id);
+        $listCateChild = $this->_data_category->_list_category_child;*/
+        /*Get level category*/
+        $this->_data_category->_recursive_parent($this->_data_category->_all_category(), $oneItem->id);
+
+        $data['list_category_child'] = $this->_data_category->getListChild($this->_data_category->_all_category(), $id);
+
+        /*Lay list id con của category*/
+        $this->_data_category->_list_category_child_id = null;
+        $this->_data_category->_recursive_child_id($this->_data_category->_all_category(),$id);
+        $listCateId = $this->_data_category->_list_category_child_id;
+        /*Lay list id con của category*/
+
+        /*Lay list cac thuoc tinh*/
+        /*$this->load->model('property_model');
+        $propertyModel = new Property_model();
+        if(!$this->cache->get('_all_property_'.$this->session->public_lang_code)){
+            $this->cache->save('_all_property_'.$this->session->public_lang_code,$propertyModel->getAll($this->session->public_lang_code),60*60*30);
+        }
+        $_all_property = $this->cache->get('_all_property_'.$this->session->public_lang_code);
+        $data['property_format'] = $propertyModel->getDataByPropertyType($_all_property,'format');
+        $data['property_type'] = $propertyModel->getDataByPropertyType($_all_property,'type');
+        $data['property_color'] = $propertyModel->getDataByPropertyType($_all_property,'color');
+        $data['property_genre'] = $propertyModel->getGenre($_all_property,'genre',$oneParent->id);*/
+        /*Lay list cac thuoc tinh*/
+        switch ($this->input->get('filter_sort')) {
+            case 'oldest':
+                $paramsFilter['order'] = ['created_time' => 'ASC'];
+                break;
+            case 'lowest':
+                $paramsFilter['order'] = ['price_sort' => 'ASC'];
+                break;
+            case 'highest':
+                $paramsFilter['order'] = ['price_sort' => 'DESC'];
+                break;
+            default:
+                $paramsFilter['order'] = ['created_time' => 'DESC'];
+        }
+        $limit = $this->input->get('filter_limit');
+        $data['limit'] = $limit = !empty($limit) ? $limit : 12;
+        $data['page'] = $page;
+        $params = [
+            'is_status' => 1, //0: Huỷ, 1: Hiển thị, 2: Nháp
+            'lang_code' => $this->_lang_code,
+            'category_id' => ($id != 1) ? $listCateId : null,
+            'limit' => $limit,
+            'page' => $page
+        ];
+        if(!empty($paramsFilter)) $params = array_merge($params,$paramsFilter);
+        $data['data'] = $this->_data->getData($params);
+        $data['total'] = $this->_data->getTotal($params);
+        /*Pagination*/
+        $this->load->library('pagination');
+        $paging['base_url'] = getUrlCateProduct(['slug' => $oneItem->slug, 'id' => $oneItem->id, 'page' => 1]);
+        $paging['first_url'] = getUrlCateProduct(['slug' => $oneItem->slug, 'id' => $oneItem->id]);
+        $paging['total_rows'] = $data['total'];
+        $paging['per_page'] = $limit;
+        $this->pagination->initialize($paging);
+        $data['pagination'] = $this->pagination->create_links();
+        /*Pagination*/
+
+        //add breadcrumbs
+        $this->breadcrumbs->push("Trang chủ", base_url());
+        $this->_data_category->_recursive_parent($this->_data_category->_all_category(), $id);
         if(!empty($this->_data_category->_list_category_parent)) foreach (array_reverse($this->_data_category->_list_category_parent) as $item){
             $this->breadcrumbs->push($item->title, getUrlCateProduct($item));
         }
@@ -126,7 +221,7 @@ class Product extends Public_Controller
         }
 
         $data['oneCategory'] = $oneCategory = $this->_data->getOneCateIdById($id);
-        $data['oneParent'] = $oneCategoryParent = $this->_data_category->_recursive_one_parent($this->_all_category,$data['oneCategory']->id);
+        $data['oneParent'] = $oneCategoryParent = $this->_data_category->_recursive_one_parent($this->_data_category->_all_category(),$data['oneCategory']->id);
         if(!empty($data['oneParent'])){
             $data['list_category_child'] = $this->_data_category->getCategoryChild($data['oneParent']->id,$this->session->public_lang_code);
         }
@@ -137,7 +232,7 @@ class Product extends Public_Controller
         $data['oneBrand'] = $this->_data_category->getByIdCached((int)$oneItem->brand);
 
         /*List product related*/
-        $this->_data_category->_recursive_child_id($this->_all_category,$oneCategoryParent->id);
+        $this->_data_category->_recursive_child_id($this->_data_category->_all_category(),$oneCategoryParent->id);
         $listCateId = $this->_data_category->_list_category_child_id;
         $params['is_status'] = 1;
         $params['lang_code'] = $this->_lang_code;
@@ -160,7 +255,7 @@ class Product extends Public_Controller
 
         //add breadcrumbs
         $this->breadcrumbs->push("Trang chủ", base_url());
-        $this->_data_category->_recursive_parent($this->_all_category, $oneCategory->id);
+        $this->_data_category->_recursive_parent($this->_data_category->_all_category(), $oneCategory->id);
         if(!empty($this->_data_category->_list_category_parent)) foreach (array_reverse($this->_data_category->_list_category_parent) as $item){
             $this->breadcrumbs->push($item->title, getUrlCateProduct($item));
         }
@@ -197,15 +292,18 @@ class Product extends Public_Controller
     }
     public function ajax_get_detail(){
         $this->checkRequestPostAjax();
-        $productId = $this->input->post('id');
-        $quantity = $this->input->post('quantity');
-        $data = $this->_data->getPriceAgency($productId,$quantity);
-        $this->returnJson(['price' => $data->price_agency]);
+        if($this->session->userdata('is_agency') == true){
+            $productId = $this->input->post('id');
+            $quantity = $this->input->post('quantity');
+            $data = $this->_data->getPriceAgency($productId,$quantity);
+            $this->returnJson(['price' => $data->price_agency]);
+        }
+        $this->returnJson(['price' => 0]);
     }
     public function ajax_load_list(){
         if($this->input->server('REQUEST_METHOD') == 'POST' && !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
             $cateId = $this->input->post('id');
-            $this->_data_category->_recursive_child_id($this->_all_category, $cateId);
+            $this->_data_category->_recursive_child_id($this->_data_category->_all_category(), $cateId);
             $listCateId = $this->_data_category->_list_category_child_id;
             $params = [
                 'is_status' => 1, //0: Huỷ, 1: Hiển thị, 2: Nháp
@@ -404,7 +502,7 @@ class Product extends Public_Controller
             $propertyModel = new Property_model();
             $term = $this->input->get("q");
             $category_id = $this->input->get('category_id');
-            $oneParent = $this->_data_category->_recursive_one_parent($this->_all_category,$category_id);
+            $oneParent = $this->_data_category->_recursive_one_parent($this->_data_category->_all_category(),$category_id);
 
             $params = [
                 'property_type' => $type,

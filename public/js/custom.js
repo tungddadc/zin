@@ -135,8 +135,10 @@ var CART = {
                 data: {id: id, quantity: quantity},
                 dataType: 'json',
                 success: function (data) {
-                    blockPrice.find('.price').text(FUNC.formatMoney(data.price));
-                    blockPrice.find('input[name="price"]').val(data.price);
+                    if(data.price > 0){
+                        blockPrice.find('.price').text(FUNC.formatMoney(data.price));
+                        blockPrice.find('input[name="price"]').val(data.price);
+                    }
                 }
             });
         }
