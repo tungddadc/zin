@@ -105,7 +105,7 @@ var CART = {
             success: function (response) {
                 if (typeof response.type !== 'undefined') {
                     CART.updateCountHeader();
-                    toastr[response.tgype](response.message);
+                    toastr[response.type](response.message);
                 }
             }
         });
