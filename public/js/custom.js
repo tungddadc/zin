@@ -495,10 +495,28 @@ jQuery(document).ready(function () {
         $('#fancybox-wrap').show();
     });
 
+    $(document).on('click','.link-wishlist',function (e) {
+        e.preventDefault();
+        let product_id = $(this).data('id');
+        $.ajax({
+           type:'POST',
+           url: base_url + 'product/ajax_save_favourite',
+           data: {product_id:product_id},
+            dataType: 'JSON',
+            success: function (response) {
+                if (typeof response.type !== 'undefined') {
+                    CART.updateCountHeader();
+                    toastr[response.type](response.message);
+                }
+            }
+        });
+    });
+
     $('#fancybox-wrap').on('click','#fancybox-close',function (e) {
         e.preventDefault();
         $('#overlay').hide();
         $('#fancybox-wrap').hide();
+        $('.zoomContainer').hide();
         $('body').removeClass('fixed');
     });
 

@@ -11,8 +11,8 @@
                         <div class="box-hover">
                             <ul class="add-to-links">
                                 <li><a class="link-quickview" data-url="<?php echo getUrlProduct($item) ?>" href="javascript:;" rel="nofollow" title="Xem Quickview"></a> </li>
-                                <li><a class="link-wishlist" href="javascript:;" rel="nofollow" title="Yêu thích sản phẩm này"></a> </li>
-                                <li><a class="link-compare" href="javascript:;" rel="nofollow" title="So sánh sản phẩm này"></a> </li>
+                                <li><a class="link-wishlist" data-id="<?php echo $item->id ?>" href="javascript:;" rel="nofollow" title="Yêu thích sản phẩm này"></a> </li>
+                                <li><a class="link-compare" data-id="<?php echo $item->id ?>" href="javascript:;" rel="nofollow" title="So sánh sản phẩm này"></a> </li>
                             </ul>
                         </div>
                     </div>

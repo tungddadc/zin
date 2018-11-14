@@ -369,15 +369,16 @@ class Product extends Public_Controller
             $this->returnJson($message);
         }
         $this->load->model('users_model');
-        $accountModel = new Users_model();
-        $data['account_id'] = $this->session->userdata('user_id');
-        $data['product_id'] = $this->input->post('product_id');
-        if($accountModel->save($data, $accountModel->table_collection)){
+        $userModel = new Users_model();
+        if($userModel->saveFavourite($this->session->userdata('user_id'),$this->input->post('product_id'))){
             $message['type'] = 'success';
-            $message['message'] = "Bạn vừa thêm ";
+            $message['message'] = "Bạn vừa yêu thích sản phẩm này.";
+            $this->returnJson($message);
+        }else{
+            $message['type'] = 'error';
+            $message['message'] = "Bạn đã yêu thích sản phẩm này rồi.";
             $this->returnJson($message);
         }
-        exit;
     }
 
     public function ajax_add_collection(){
