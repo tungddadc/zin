@@ -12188,7 +12188,7 @@ a.button.wishlist {
     -moz-opacity: 0.8;
     -khtml-opacity: 0.8;
     opacity: 0.8;
-    z-index: 9999;
+    z-index: 999;
     display: none;
 }
 

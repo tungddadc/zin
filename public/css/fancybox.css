@@ -47,13 +47,14 @@
 	display: none;
 }
 #fancybox-wrap {
-	position: absolute;
+	position: fixed;
 	top: 0;
+	right: 0;
+	bottom: 0;
 	left: 0;
 	z-index: 1101;
 	outline: none;
 	display: none;
-	width: auto !important;
 }
 #fancybox-content .add-to-cart .qty {
 	width: 50px;
@@ -65,9 +66,9 @@
 }
 #fancybox-outer {
 	position: relative;
-	/*width: 100%;*/ width: 800px;
-	height: 100%;
+	width: 900px;
 	background: #fff;
+	margin: 30px auto;
 	border-radius: 5px;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
@@ -78,9 +79,11 @@
 	overflow: hidden;
 	padding: 30px 15px;
 	position: relative;
-	width: 800px !important;
+	width: 900px !important;
 	z-index: 1102;
 	background: #fff;
+	height: calc(100vh - 50px);
+	overflow-y: scroll;
 }
 #fancybox-hide-sel-frame {
 	position: absolute;

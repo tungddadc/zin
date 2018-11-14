@@ -120,7 +120,6 @@ switch ($this->_controller) {
 ?>
 <body class="<?php echo $classBody ?>">
 <div id="fb-root"></div>
-<?php $this->load->view($this->template_path . 'product/_quick_view') ?>
 <div id="page">
   <?php $this->load->view($this->template_path . '_header') ?>
   <?php echo !empty($main_content) ? $main_content : '' ?>
@@ -216,8 +215,10 @@ switch ($this->_controller) {
     </div>
   </div>
 </div>
-<div id="overlay" style="display: none;"></div>
 
+<?php $this->load->view($this->template_path . 'product/_quick_view') ?>
+
+<div id="overlay" style="display: none;"></div>
 
 <div id="preloader" class="d-none">
   <div id="loader"></div>
@@ -254,7 +255,7 @@ echo $this->minify->deploy_js(); ?>
     <?php
     unset($_SESSION['message']);
     endif; ?>
-    sdkInit();
+    setTimeout(sdkInit(),4000);
   });
 
   function sdkInit() {

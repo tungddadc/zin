@@ -1,8 +1,7 @@
-<div style="background-color: rgb(119, 119, 119); opacity: 0.7; cursor: pointer; height: 1024px; display: none;" id="fancybox-overlay"></div>
-<div style="width: 1190px; height: auto; top: 20%; left: 245px; display: none;" id="fancybox-wrap">
+<div style="top: 15px;" id="fancybox-wrap">
     <div id="fancybox-outer">
-        <div style="border-width: 10px; width: 1170px; height: auto;" id="fancybox-content">
-            <div style="width:auto;height:auto;overflow: auto;position:relative;">
+        <div id="fancybox-content">
+            <div>
                 <div class="product-view">
                     <div class="product-essential">
                         <form action="#" method="post" id="product_addtocart_form">
