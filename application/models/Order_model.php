@@ -72,9 +72,6 @@ class Order_model extends CI_Model
     if (isset($is_status) && $is_status != "")
       $this->db->where("$this->table.is_status", $is_status);
     
-    if (!empty($users_sale))
-      $this->db->where("$this->table.users_sale", $users_sale);
-
     if (!empty($in))
       $this->db->where_in('tb1.id', $in);
 // 
@@ -359,24 +356,6 @@ class Order_model extends CI_Model
 }
 
 
-
-
-//   public function get_by_id($id)
-//   {
-//     $this->db->select('*');
-//     $this->db->from($this->table);
-//     $this->db->where('id', $id);
-// //        ddQuery($this->db);
-//     return $this->db->get()->row();
-//   }
-public function get_by_id_store($id)
-  {
-    $this->db->select('*');
-    $this->db->from($this->table_store);
-    $this->db->where('id', $id);
-//        ddQuery($this->db);
-    return $this->db->get()->row();
-  }
   //check xem voucher này đã được ăn ở don hang chua
   public function receivingedAccount($id, $account_id)
   {
@@ -462,127 +441,6 @@ public function get_by_id_store($id)
     }
   }
 
-  public function getData($args = array(), $returnType = "object")
-  {
-    $this->_where($args);
-    $query = $this->db->get();
-    //ddQuery($this->db);
-    if ($returnType !== "object") return $query->result_array(); //Check kiểu data trả về
-    else return $query->result();
-  }
-
-  public function _where($args, $typeQuery = null)
-  {
-    $select = "*";
-    //$lang_code = $this->session->admin_lang; //Mặc định lấy lang của Admin
-    $page = 1; //Page default
-    $limit = 10;
-
-    extract($args);
-    //$this->db->distinct();
-    $this->db->select($select);
-    $this->db->from($this->table);
-
-    if ($this->table === 'product') $this->db->select('IF(`price_sale` = 0, `price`, `price_sale`) AS `price_sort`');
-
-    if (!empty($this->table_trans)) {
-      $this->db->join($this->table_trans, "$this->table.id = $this->table_trans.id");
-      if (empty($lang_code)) $lang_code = $this->session->admin_lang;
-      if (!empty($lang_code)) $this->db->where("$this->table_trans.language_code", $lang_code);
-    }
-
-    if (!empty($this->table_category) && !empty($category_id)) {
-      $nameModel = str_replace('_model', '', $this->table);
-      $this->db->join($this->table_category, "$this->table.id = $this->table_category.{$nameModel}_id");
-      $this->db->where_in("$this->table_category.category_id", $category_id);
-    }
-    /*Lọc các thuộc tính của sản phẩm*/
-    if (isset($filter_price_min) && !empty($filter_price_max)) {
-      $this->db->where("IF(`price_sale` != 0, `price_sale`, `price`) >=", $filter_price_min);
-      $this->db->where("IF(`price_sale` != 0, `price_sale`, `price`) <=", $filter_price_max);
-    }
-
-    if (!empty($filter_type))
-      $this->db->where_in("$this->table.type", $filter_type);
-
-    if (!empty($id_product))
-      $this->db->where("$this->table.id_product", $id_product);
-
-    if (!empty($property_type))
-      $this->db->where_in("$this->table.type", $property_type);
-
-    /*Lọc các thuộc tính của sản phẩm*/
-    if (isset($parent_id) && $parent_id !== '')
-      $this->db->where("$this->table.parent_id", $parent_id);
-
-    if (!empty($position_id))
-      $this->db->where("$this->table.position_id", $position_id);
-    if (!empty($type))
-      $this->db->where("$this->table.type", $type);
-
-    if (!empty($category_type))
-      $this->db->where("$this->table.type", $category_type);
-    if (!empty($user_id))
-      $this->db->where("$this->table.user_id", $user_id);
-
-    if (isset($page_type))
-      $this->db->where("$this->table.style", $page_type);
-
-    if (isset($page_type_not))
-      $this->db->where("$this->table.style !=", $page_type_not);
-
-    if (!empty($is_featured))
-      $this->db->where("$this->table.is_featured", $is_featured);
-
-
-    if (isset($is_status))
-      $this->db->where("$this->table.is_status", $is_status);
-
-    if (!empty($status_check_cronjob))
-            $this->db->where("$this->table.status_check_cronjob",$status_check_cronjob);
-
-    if (!empty($product_id))
-      $this->db->where("$this->table.product_id", $product_id);
-
-    if (!empty($category_id_page))
-      $this->db->where("$this->table.category_id", $category_id_page);
-
-    if (!empty($in))
-      $this->db->where_in("$this->table.id", $in);
-
-    if (!empty($or_in))
-      $this->db->or_where_in("$this->table.id", $or_in);
-
-    if (!empty($not_in))
-      $this->db->where_not_in("$this->table.id", $not_in);
-
-    if (!empty($or_not_in))
-      $this->db->or_where_not_in("$this->table.id", $or_not_in);
-    if (!empty($order_by))
-      $this->db->order_by("$this->table." . $order_by, 'DESC');
-    $this->db->group_by("$this->table.id");
-    //query for datatables jquery
-    $this->_get_datatables_query();
-
-    if (!empty($search)) {
-      $this->db->group_start(); // open bracket. query Where with OR clause better with bracket. because maybe can combine with other WHERE with AND.
-      if (!empty($this->column_search)) foreach ($this->column_search as $field) $this->db->like($field, $search);
-      else $this->db->like("$this->table_trans.title", $search);
-      $this->db->group_end(); //close bracket
-    }
-
-    if ($typeQuery === null || empty($typeQuery)) {
-      if (!empty($order) && is_array($order)) {
-        foreach ($order as $k => $v)
-          $this->db->order_by($k, $v);
-      } else if (isset($this->order_default)) {
-        $order = $this->order_default;
-        $this->db->order_by(key($order), $order[key($order)]);
-      }
-      $offset = ($page - 1) * $limit;
-      $this->db->limit($limit, $offset);
-    }
-  }
 
   public function getOneOrder($args = array())
   {
@@ -601,5 +459,18 @@ public function get_by_id_store($id)
      $this->db->where('id', $id);
     return $this->db->get()->row();
   }
-
+  public function update_status_product_order($order_id, $product_id)
+  {
+    $this->db->set('is_status', 2);
+    $this->db->where("$this->table_detail.order_id", $order_id);
+    $this->db->where("$this->table_detail.product_id", $product_id);
+    $this->db->update($this->table_detail);
+    return true;
+  }
+  public function updateTotal($id_order, $remaining){
+    $this->db->set('total_amount', $remaining);
+    $this->db->where("$this->table.id", $id_order);
+    $this->db->update($this->table);
+    return true;
+  }
 }
