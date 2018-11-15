@@ -880,6 +880,49 @@ div.effect-sadie1 + div.effect-sadie1 {
   letter-spacing: 0.5px;
   line-height: 40px
 }
+.search_mini_form{
+  position: relative;
+}
+.product_search{
+  z-index: 99999;
+  width: 100%;
+  position: absolute;
+  background: white;
+  /* border-bottom: dashed 1px #ccc; */
+  /* padding: 10px; */
+  box-shadow: 0 5px 5px 0 rgba(17, 17, 17, 0.28);
+  box-sizing: border-box;
+  overflow-y: auto;
+  max-height: 468px;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+.product_search.go_in{
+  opacity: 1;
+  visibility: visible;
+}
+.product_add{
+  overflow: hidden;
+  cursor: default;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+.product_add:hover{
+  background-color: #00000003;
+}
+.images_product img{
+  float: left;
+  margin-right: 10px;
+  border: solid 1px #ccc;
+  padding: 5px;
+  background-color: #fff;
+  max-width: 70px;
+}
 
 .cate-dropdown {
   border: medium none;
