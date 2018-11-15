@@ -77,6 +77,10 @@ $route['wishlist'] = 'product/wishlist';
 $route['so-sanh-san-pham'] = 'product/compare';
 /*Route product*/
 
+/* Route search */
+$route['search/(:any)']   = 'search/index/$1';
+$route['search/(:any)/page/(:num)']   = 'search/index/$1/$2';
+/* Route search*/
 
 //page
 $route['(:any).html'] = 'page/index/$1';

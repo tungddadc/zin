@@ -122,11 +122,11 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3 hidden-xs category-search-form">
                 <div class="search-box">
-                    <?php echo form_open('search',['method' => 'GET','id' => 'search_mini_form']) ?>
+                    <div id="search_mini_form">
                         <input name="search" class="searchbox" id="search" type="text" maxlength="128" autocomplete="disabled" placeholder="Tìm kiếm sản phẩm...">
-                        <button title="Search" class="search-btn-bg" id="submit-button" type="submit"></button>
+                        <button title="Search" class="search-btn-bg btnSearch" id="submit-button" type="submit"></button>
                         <div class="product_search"></div>
-                    <?php echo form_close() ?>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 card_wishlist_area">

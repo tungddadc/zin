@@ -339,7 +339,7 @@ a.button:hover {
   padding: 8px 14px;
   /* padding: 6px 14px 6px; */
   text-transform: uppercase;
-  border: 1px #e5e5e5 solid;
+  border: 2px #e5e5e5 solid;
   line-height: 13px;
   font-family: "Nunito Sans", sans-serif;
   transition: color 300ms ease-in-out 0s, background-color 300ms ease-in-out 0s, background-position 300ms ease-in-out 0s;

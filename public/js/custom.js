@@ -412,6 +412,14 @@ var COMPARE = {
     }
 };
 var UI = {
+    search: function(){
+        let searchstring  = $('input[name="search"]').val();
+        if (searchstring.length > 0) {
+            window.location.href = base_url+'search/'+searchstring;
+        }else{
+            toastr['warning']('Vui lòng nhập từ khóa để tìm kiếm !');
+        }
+    },
     ajaxFormSubmit: function(){
         $('form[method="post"]').ajaxForm({
             //target:        '#output1',   // target element(s) to be updated with server response
@@ -600,7 +608,7 @@ jQuery(document).ready(function () {
     $(document).on('keyup','input#search',function () {
         let element = $(this);
         let keyword = $(this).val();
-        element.closest('form').find('.product_search').html('').removeClass('go_in')
+        element.closest('#search_mini_form').find('.product_search').html('').removeClass('go_in')
         setTimeout(function () {
             if(keyword){
                 $.ajax({
@@ -610,7 +618,7 @@ jQuery(document).ready(function () {
                     dataType: 'HTML',
                     success: function (content) {
                         if(content){
-                            element.closest('form').find('.product_search').html(content).addClass('go_in');
+                            element.closest('#search_mini_form').find('.product_search').html(content).addClass('go_in');
                         }
                     }
                 });
@@ -619,6 +627,19 @@ jQuery(document).ready(function () {
         },500);
         return false;
     });
+
+    $(".btnSearch").click(function(e) {
+        e.preventDefault();
+        UI.search();
+    });
+
+    $('input[name="search"]').keydown(function (e) {
+        if (e.keyCode === 13) {
+            UI.search();
+        }
+    });
+
+
 });
 
 /*
