@@ -23,4 +23,12 @@ class Vote_model extends STEVEN_Model
         $data = $query->row();
         return $data;
     }
+
+    public function getVoteById($id){
+        $this->db->select('*');
+        $this->db->where('id',$id);
+        $query = $this->db->get($this->table);
+        $data = $query->result();
+        return $data;
+    }
 }

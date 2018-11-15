@@ -266,7 +266,7 @@
                                                                     <div id="product-review-table">
                                                                         <div class="rateit"
                                                                              data-id="<?php echo $oneItem->id ?>"
-                                                                             data-rateit-value="<?php echo !empty($vote->avg) ? $vote->avg : 0 ?>"
+                                                                             data-rateit-value="0"
                                                                              data-rateit-starwidth="16"
                                                                              data-rateit-starheight="16"
                                                                              data-rateit-min="0"
@@ -305,7 +305,7 @@
                                                                                 <div class="input-box">
                                                                                 <textarea rows="3" cols="5"
                                                                                           id="review_field"
-                                                                                          name="content"></textarea>
+                                                                                          name="message"></textarea>
                                                                                 </div>
                                                                             </li>
                                                                         </ul>
@@ -329,57 +329,28 @@
                                                             <h3>Đánh giá bởi khách hàng</h3>
                                                             <div class="box visible">
                                                                 <ul>
-                                                                    <?php  ?>
-                                                                    <li>
-                                                                        <div class="review">
-                                                                            <h6><a href="#">Excellent</a></h6>
-                                                                            <div class="rating-box">
-                                                                                <div class="rating"
-                                                                                     style="width:100%;"></div>
+                                                                    <?php if(!empty($data_vote)) foreach ($data_vote as $k => $item): ?>
+                                                                        <li class="<?php echo $k%2 == 0 ? '' : 'even'?>">
+                                                                            <div class="review">
+                                                                                <h6><a href="#">Excellent</a></h6>
+                                                                                <div class="rating-box">
+                                                                                    <div class="rating" style="width:<?php echo round(($item->vote/5)*100) ?>%;"></div>
+                                                                                </div>
+                                                                                <small>
+                                                                                    Đánh giá bởi <span><?php echo $item->name ?> </span> ngày <?php echo timeAgo($item->created_time,'d/m/Y') ?>
+                                                                                </small>
+                                                                                <div class="review-txt">
+                                                                                    <?php echo $item->message ?>
+                                                                                </div>
                                                                             </div>
-                                                                            <small>Review by
-                                                                                <span>Leslie Prichard </span>on
-                                                                                1/3/2014
-                                                                            </small>
-                                                                            <div class="review-txt"> I have purchased
-                                                                                shirts
-                                                                                from Minimalism a few times and am never
-                                                                                disappointed. The quality is excellent
-                                                                                and the
-                                                                                shipping is amazing. It seems like it's
-                                                                                at your
-                                                                                front door the minute you get off your
-                                                                                pc. I
-                                                                                have received my purchases within two
-                                                                                days -
-                                                                                amazing.
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
-                                                                    <li class="even">
-                                                                        <div class="review">
-                                                                            <h6>
-                                                                                <a href="#/catalog/product/view/id/60/">Amazing</a>
-                                                                            </h6>
-                                                                            <div class="rating-box">
-                                                                                <div class="rating"
-                                                                                     style="width:100%;"></div>
-                                                                            </div>
-                                                                            <small>Review by <span>Sandra Parker</span>on
-                                                                                1/3/2014
-                                                                            </small>
-                                                                            <div class="review-txt"> Minimalism is the
-                                                                                online
-                                                                                !
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
+                                                                        </li>
+                                                                    <?php endforeach; ?>
                                                                 </ul>
                                                             </div>
-                                                            <div class="actions">
+                                                            <!--<div class="actions">
                                                                 <a class="button view-all" id="revies-button"
                                                                    href="#"><span><span>Xem thêm</span></span></a>
-                                                            </div>
+                                                            </div>-->
                                                         </div>
                                                         <div class="clear"></div>
                                                     </div>

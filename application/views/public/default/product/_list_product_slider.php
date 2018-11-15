@@ -6,7 +6,7 @@
                     <a href="<?php echo getUrlProduct($item) ?>"
                        title="<?php echo getTitle($item) ?>"
                        class="product-image">
-                        <img src="<?php echo getImageThumb($item->thumbnail, 178, 216) ?>"
+                        <img src="<?php echo getImageThumb($item->thumbnail, 178, 216,true) ?>"
                              alt="<?php echo getTitle($item) ?>">
                     </a>
                     <?php echo !empty($item->is_new) ? '<div class="new-label new-top-left">New</div>' : '' ?>
@@ -29,10 +29,9 @@
                         <div class="rating">
                             <div class="ratings">
                                 <div class="rating-box">
-                                    <div style="width:80%"
-                                         class="rating"></div>
+                                    <div style="width:<?php echo round(($item->vote/5)*100) ?>%" class="rating"></div>
                                 </div>
-                                <p class="rating-links"> <a href="<?php echo getUrlProduct($item).'#' ?>">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>
+                                <p class="rating-links"> <a href="<?php echo getUrlProduct($item).'#tab_reviews' ?>"><?php echo $item->total_vote ?> đánh giá</a></p>
                             </div>
                         </div>
                         <div class="item-price">

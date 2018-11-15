@@ -279,7 +279,7 @@ class Product extends Public_Controller
         $data['oneBrand'] = $this->_data_category->getByIdCached((int)$oneItem->brand);
         $this->load->model('vote_model');
         $voteModel = new Vote_model();
-        $data['data_vote'] = $voteModel->getVote($id);
+        $data['data_vote'] = $voteModel->getVoteById($id);
 
         /*List product related*/
         $this->_data_category->_recursive_child_id($this->_data_category->_all_category(),$oneCategoryParent->id);
