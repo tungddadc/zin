@@ -1,127 +1,162 @@
 // Dom Ready
-$(function() {
+$(function () {
   datatables_columns = [{
     field: "checkID",
     title: "#",
-    width: 50,
+    width: 20,
     sortable: !1,
     textAlign: "center",
     selector: {class: "m-checkbox--solid m-checkbox--brand"}
-  },{
+  }, {
     field: "id",
-    title: "Đơn hàng",
+    title: "ID",
     textAlign: "center",
     sortable: 'asc',
     filterable: !1,
+    width: 40
   }
-  ,{
+    , {
       field: "username",
       title: "tài khoản",
     }
-  , {
-    field: "fullname",
-    title: "Họ và tên",
-  },
+    , {
+      field: "full_name",
+      title: "Họ và tên",
+    },
     {
-    field: "email",
-    title: "Email",
-  },{
+      field: "email",
+      title: "Email",
+    }, {
       field: "bill_address",
       title: "Địa chỉ nhận hàng",
     },
     {
       field: "total_amount",
       title: "Tổng tiền",
-    },{
-    field: "is_status",
-    title: "Status",
-    textAlign: "center",
-    width: 70,
-    template: function (t) {
-      var e = {
-        0: {title: "Disable", class: "m-badge--danger"},
-        1: {title: "Active", class: "m-badge--primary"},
-      };
-      return '<span data-field="is_status" data-value="'+(t.is_status == 1 ? 0 : 1)+'" class="m-badge ' + e[t.is_status].class + ' m-badge--wide btnUpdateField">' + e[t.is_status].title + "</span>"
-    }
-  }, {
-    field: "updated_time",
-    title: "Updated Time",
-    type: "date",
-    textAlign: "center",
-    format: "MM/DD/YYYY"
-  }, {
-    field: "created_time",
-    title: "Created Time",
-    type: "date",
-    textAlign: "center",
-    format: "MM/DD/YYYY"
-  }, {
-    field: "action",
-    width: 110,
-    title: "Actions",
-    sortable: !1,
-    overflow: "visible",
-    template: function (t, e, a) {
-      return '' +
-        '<a href="javascript:;" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill btnEdit" title="Edit"><i class="la la-edit"></i></a>' +
-        '<a href="javascript:;" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill btnDelete" title="Delete"><i class="la la-trash"></i></a>'
-    }
-  }];
+    }, {
+      field: "is_status",
+      title: "Status",
+      textAlign: "center",
+      width: 110,
+      template: function (t) {
+        var e = {
+          0: {title: "Hủy", class: "m-badge--danger"},
+          1: {title: "Chờ xử lý", class: "m-badge--default"},
+          2: {title: "Chưa xác nhận", class: "m-badge--primary"},
+          3: {title: "Đã xác nhận", class: "m-badge--warning"},
+          4: {title: "Đã giao hàng", class: "m-badge--success"},
+        };
+        return '<span data-field="is_status" data-value="' + (t.is_status == 1 ? 0 : 1) + '" class="m-badge ' + e[t.is_status].class + ' m-badge--wide">' + e[t.is_status].title + "</span>"
+      }
+    }, {
+      field: "updated_time",
+      title: "Updated Time",
+      type: "date",
+      textAlign: "center",
+      format: "MM/DD/YYYY"
+    }, {
+      field: "created_time",
+      title: "Created Time",
+      type: "date",
+      textAlign: "center",
+      format: "MM/DD/YYYY"
+    }, {
+      field: "action",
+      title: "Actions",
+      sortable: !1,
+      overflow: "visible",
+      template: function (t, e, a) {
+        return '' +
+          '<a href="javascript:;" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill btnEdit" title="Edit"><i class="la la-eye"></i></a>'
+      }
+    }];
   AJAX_DATATABLES.init();
   AJAX_CRUD_MODAL.init();
 
-  $('[name="is_status"]').on("change", function () {
-    table.search($(this).val(), "is_status")
-  }), $('[name="is_status"]').selectpicker();
-
-
-
-  $('#modal_form').on('shown.bs.modal', function(e){
-    loadCategory();
+  $('#modal_form').on('shown.bs.modal', function (e) {
   });
 
-  $(document).on('click','.btnEdit',function () {
+  $(document).on('click', '.btnEdit', function () {
     let modal_form = $('#modal_form');
     let id = $(this).closest('tr').find('input[type="checkbox"]').val();
     AJAX_CRUD_MODAL.edit(function () {
       $.ajax({
-        url : url_ajax_edit,
+        url: url_ajax_view + '/' + id,
         type: "POST",
-        data: {id:id},
         dataType: "JSON",
-        success: function(response) {
-          $.each(response.data_info, function( key, value ) {
-            let element = modal_form.find('[name="'+key+'"]');
-            element.val(value);
-            if(element.hasClass('switchBootstrap')){
-              element.bootstrapSwitch('state',(value == 1 ? true : false));
-            }
-            if(key === 'thumbnail') element.closest('.form-group').find('img').attr('src',media_url + value);
+        success: function (response) {
+          $.each(response, function (key, value) {
+            let element = modal_form.find('td#' + key).html(value);
           });
+          $('[name="shipped_time"]').val(response.shipped_time);
+          $('[name="is_status"]').val(response.is_status);
 
-          $.each(response.data_language, function( i, value ) {
-            let lang_code = value.language_code;
-            $.each(value, function( key, val) {
-              let element = modal_form.find('[name="language['+lang_code+']['+key+']"]');
-              if(element.hasClass('tinymce') && val){
-                tinymce.get(element.attr('id')).setContent(val);
-              }
-              element.val(val);
+          $('[name="id"]').val(id);
+          $('table.list-detail tbody').html('');
+          $.each(response.order_detail, function (key, value) {
+            var tr = '<tr id="' + key + '">';
+            $.each(value, function (k, v) {
+              tr += '<td>' + v + '</td>';
             });
+            tr += '</tr>';
+            $('table.list-detail tbody').append(tr);
           });
-
-          loadCategory(response.data_category);
           modal_form.modal('show');
         },
-        error: function (jqXHR, textStatus, errorThrown)
-        {
+        error: function (jqXHR, textStatus, errorThrown) {
           console.log(errorThrown);
           console.log(textStatus);
           console.log(jqXHR);
         }
-      });return false;
+      });
+      return false;
     });
+  });
+
+  $('body').on('click', '.delete_order', function (e) {
+    current = $(this);
+    var id = current.attr('data-id');
+    var id_order = current.attr('id-order');
+    var total = current.attr('total');
+    var total_amount = current.attr('total_amount');
+    swal({
+      title: "Bạn có chắc chắn xóa những bản ghi này ?",
+      text: "Bạn không thể khôi phục những bản ghi này sau khi xóa!",
+      type: "warning",
+      showCancelButton: !0,
+      confirmButtonText: "Đúng, Xóa ngay !",
+      cancelButtonText: "Không, Hủy nó !",
+      reverseButtons: !0
+    }).then(function (e) {
+      if (e.value) {
+        $.ajax({
+          url: url_ajax_remove_item,
+          type: 'POST',
+          dataType: 'json',
+          data: {
+            id: id,
+            id_order: id_order,
+            total: total,
+            total_amount: total_amount
+          },
+          success: function (data) {
+            if (data.status == true) {
+              current.closest('tr').fadeOut('slow', function () {
+                current.closest('tr').remove();
+              });
+              $('#total_amount').text(data.total);
+              toastr["success"](data.mess);
+              swal.close();
+            } else {
+              toastr["warning"](data.mess);
+            }
+          }
+        });
+      } else {
+        swal("Hủy bỏ thành công !", "Bản ghi của bạn đã được an toàn :)", "error")
+      }
+    })
+
   });
 });
 

@@ -234,6 +234,7 @@ class Cart extends Public_Controller
       $data['order_info']['is_status'] = 1; //Chờ giao hàng
       $data['order_info']['payment'] = 1; //Hình thức thanh toán
       $voucher_id = $dataOrder['voucher_id'];
+      $data['order_info']['total_amount'] = $this->cart->total();
       if (!empty($voucher_id)) {
         $voucher_id = $this->decryptIt($voucher_id);
         $this->load->model('voucher_model');
@@ -256,8 +257,6 @@ class Cart extends Public_Controller
               $voucherModel->save(array('account_id' => $this->session->userdata('user_id'), 'type_id' => $voucher->id, 'is_status' => 1), 'user_voucher');
             }
           }
-        } else {
-          $data['order_info']['total_amount'] = $this->cart->total();
         }
 
       }

@@ -51,11 +51,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'home';
 $route['404_override'] = 'page/_404';
-$route['404'] = 'page/notfound';
+$route['404.html'] = 'page/notfound';
 $route['translate_uri_dashes'] = FALSE;
 $route['sitemap.xml'] = 'seo/sitemap';
 $route['admin'] = 'admin/dashboard';
 
+$route['cart'] = 'cart/index';
 
 //Profile
 $route['account'] = 'account/index';
@@ -72,13 +73,13 @@ $route['(:any)-b(:num)/page/(:num)'] = 'product/brand/$2/$3';
 /*Route product*/
 $route['(:any)-cp(:num)'] = 'product/category/$2';
 $route['(:any)-cp(:num)/page/(:num)'] = 'product/category/$2/$3';
-$route['(:any)'] = 'product/detail/$1';
 $route['wishlist'] = 'product/wishlist';
 $route['so-sanh-san-pham'] = 'product/compare';
 /*Route product*/
 
 
 //page
-$route['cart'] = 'cart/index';
 $route['(:any).html'] = 'page/index/$1';
+$route['(:any)'] = 'product/detail/$1';
+
 //page

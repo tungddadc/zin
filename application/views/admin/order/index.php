@@ -18,14 +18,6 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
             </div>
           </div>
           <div class="col-xl-4 order-1 order-xl-2 m--align-right">
-            <a href="javascript:;" class="btn btn-primary m-btn m-btn--icon m-btn--air m-btn--pill btnAddForm">
-              <span>
-                  <i class="la la-plus"></i>
-                  <span>
-                      Add
-                  </span>
-              </span>
-            </a>
             <a href="javascript:;" class="btn btn-danger m-btn m-btn--icon m-btn--air m-btn--pill btnDeleteAll">
               <span>
                 <i class="la la-remove"></i>
@@ -56,7 +48,6 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
   <div class="modal-dialog" style="width: 100%; max-width: 850px">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h3 class="modal-title" id="title-form">Chi tiết đơn hàng</h3>
       </div>
       <div class="modal-body form">
@@ -64,8 +55,8 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
           <table class="table">
             <tr>
-              <th><?php echo lang('col_firstname'); ?> :</th>
-              <td id="fullname"></td>
+              <th>Họ và tên :</th>
+              <td id="full_name"></td>
             </tr>
             <tr>
               <th>Địa chỉ nhận hàng :</th>
@@ -80,27 +71,21 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
               <td id="email"></td>
             </tr>
             <tr>
-              <th><?php echo lang('col_total_amount'); ?> :</th>
+              <th>Tổng tiền :</th>
               <td id="total_amount"></td>
-            </tr>
-            <tr>
-              <th>Mã đơn hàng :</th>
-              <td id="code"></td>
             </tr>
             <tr>
               <th>Ngày giao hàng :</th>
               <td>
                 <input type="hidden" name="id" value="">
                 <div class="input-group">
-                  <input name="shipped_time" placeholder="Ngày hiển thị" class="form-control datepicker" type="text">
-                  <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
-                  </div>
+                  <input name="shipped_time" placeholder="Ngày hiển thị" class="form-control" type="date">
+
                 </div>
               </td>
             </tr>
             <tr>
-              <th><?php echo lang('col_created_or_at'); ?> :</th>
+              <th>Ngày tạo :</th>
               <td id="created_time"></td>
             </tr>
             <tr>
@@ -111,10 +96,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
               <th>Gía trị mã giảm giá :</th>
               <td id="total_voucher"></td>
             </tr>
-            <tr>
-              <th>Đơn hàng chuyển về : </th>
-              <td id="is_status_sendmail"></td>
-            </tr>
+
             <tr>
               <th>Trạng thái đơn hàng :</th>
               <td>
@@ -128,19 +110,6 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
               </td>
 
             </tr>
-            <?php if ($this->session->userdata['admin_group_id']==1 || $this->session->userdata['admin_group_id']==19): ?>
-              <tr>
-                <th>Công việc giao sale : </th>
-                <td>
-                  <select name="users_sale" class="form-control">
-                    <option value="">Lựa chọn nhân viên sale</option>
-                    <?php  if(!empty($list_sale)) foreach ($list_sale as $value):?>
-                      <option value="<?php echo $value->user_id ?>" ><?php echo $value->username ?></option>
-                    <?php endforeach;?>
-                  </select>
-                </td>
-              </tr>
-            <?php endif; ?>
             <tr>
               <th>Note:</th>
               <td id="note"></td>
@@ -165,8 +134,8 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
         </table>
       </div>
       <div class="modal-footer">
-        <button type="button" id="btnSave" onclick="save()" class="btn btn-primary pull-left"><?php echo lang('btn_save');?></button>
-        <button type="button" class="btn btn-danger" data-dismiss="modal"><?php echo lang('btn_cancel');?></button>
+        <button type="button" id="btnSave"  class="btn btn-primary pull-left btnSave">Lưu</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

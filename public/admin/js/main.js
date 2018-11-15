@@ -369,27 +369,34 @@ var AJAX_CRUD_MODAL = {
                     ids.push($(v).find('input[type="checkbox"]').val());
                 });
                 if(ids){
-                    $.ajax({
-                        url : url_ajax_delete,
-                        type: "POST",
-                        data: {id:ids},
-                        dataType: "JSON",
-                        success: function(data) {
-                            if(data.type){
-                                toastr[data.type](data.message);
-                            }
-                            if(data.type === 'success'){
-                                e.value ? swal("Xóa thành công!", "Những bản ghi bạn chọn đã được xóa.", "success") : "cancel" === e.dismiss && swal("Hủy bỏ thành công !", "Các bản ghi của bạn đã được an toàn :)", "error")
-                            }
-                            AJAX_DATATABLES.reload();
-                        },
-                        error: function (jqXHR, textStatus, errorThrown)
-                        {
-                            console.log(errorThrown);
-                            console.log(textStatus);
-                            console.log(jqXHR);
-                        }
-                    });
+                    if(e.value){
+                        $.each(ids,function (index) {
+                            $.ajax({
+                                url : url_ajax_delete,
+                                type: "POST",
+                                data:{id:ids[index]},
+                                dataType: "JSON",
+                                success: function(data) {
+                                    if(data.type){
+                                        toastr[data.type](data.message);
+                                    }
+                                    if(data.type === 'success'){
+                                        e.value ? swal("Xóa thành công!", "Những bản ghi bạn chọn đã được xóa.", "success") : "cancel" === e.dismiss && swal("Hủy bỏ thành công !", "Các bản ghi của bạn đã được an toàn :)", "error")
+                                    }
+                                    AJAX_DATATABLES.reload();
+                                },
+                                error: function (jqXHR, textStatus, errorThrown)
+                                {
+                                    console.log(errorThrown);
+                                    console.log(textStatus);
+                                    console.log(jqXHR);
+                                }
+                            });
+                        });
+
+                    }else{
+                        swal("Hủy bỏ thành công !", "Bản ghi của bạn đã được an toàn :)", "error")
+                    }
                 }
             })
         });
@@ -405,27 +412,32 @@ var AJAX_CRUD_MODAL = {
                 cancelButtonText: "Không, Hủy nó !",
                 reverseButtons: !0
             }).then(function(e) {
-                $.ajax({
-                    url : url_ajax_delete,
-                    type: "POST",
-                    data:{id:id},
-                    dataType: "JSON",
-                    success: function(data) {
-                        if(data.type){
-                            toastr[data.type](data.message);
+                if(e.value){
+                    $.ajax({
+                        url : url_ajax_delete,
+                        type: "POST",
+                        data:{id:id},
+                        dataType: "JSON",
+                        success: function(data) {
+                            if(data.type){
+                                toastr[data.type](data.message);
+                            }
+                            if(data.type === 'success'){
+                                swal("Xóa thành công!", "Bản ghi đã được xóa.", "success")
+                            }
+                            AJAX_DATATABLES.reload();
+                        },
+                        error: function (jqXHR, textStatus, errorThrown)
+                        {
+                            console.log(errorThrown);
+                            console.log(textStatus);
+                            console.log(jqXHR);
                         }
-                        if(data.type === 'success'){
-                            e.value ? swal("Xóa thành công!", "Bản ghi đã được xóa.", "success") : "cancel" === e.dismiss && swal("Hủy bỏ thành công !", "Bản ghi của bạn đã được an toàn :)", "error")
-                        }
-                        AJAX_DATATABLES.reload();
-                    },
-                    error: function (jqXHR, textStatus, errorThrown)
-                    {
-                        console.log(errorThrown);
-                        console.log(textStatus);
-                        console.log(jqXHR);
-                    }
-                });
+                    });
+                }else{
+                    swal("Hủy bỏ thành công !", "Bản ghi của bạn đã được an toàn :)", "error")
+                }
+
             })
         });
 
