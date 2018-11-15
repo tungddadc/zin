@@ -258,7 +258,7 @@ class Product extends Public_Controller
     }
 
     public function detail($slug){
-        $oneItem = $this->_data->getBySlugCustom($slug,'', $this->_lang_code);
+        $oneItem = $this->_data->getBySlugCustom($slug,$this->_lang_code);
         if (empty($oneItem)) redirect('404');
         $id = $oneItem->id;
         $this->flushView($id,$oneItem->viewed);

@@ -49,15 +49,12 @@ class Product_model extends STEVEN_Model
 
     }
 
-    public function getBySlugCustom($slug,$select='*',$lang_code = null){
+    public function getBySlugCustom($slug, $lang_code = null){
 
-        $this->db->select($select);
+        $this->db->select('*, IF(`total_vote` IS NULL, 0, `total_vote`) AS `total_vote`, IF(`vote` IS NULL, 0, `vote`) AS `vote`');
         $this->db->from($this->table);
         if(!empty($this->table_trans)) $this->db->join($this->table_trans,"$this->table.id = $this->table_trans.id");
-        //$this->db->select('IF(`total_vote` IS NULL, 0, `total_vote`) AS `total_vote`');
-        //$this->db->select('IF(`vote` IS NULL, 0, `vote`) AS `vote`');
         $this->db->join("(SELECT id AS product_id, COUNT(1) AS total_vote, ROUND( AVG(vote),1) AS vote FROM st_vote GROUP BY product_id) AS tblVote","tblVote.product_id = $this->table.id", "left");
-
         $this->db->where("$this->table_trans.slug",$slug);
 
         if(empty($this->table_trans)){
