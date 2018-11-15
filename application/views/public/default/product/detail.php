@@ -198,7 +198,7 @@
                                 <div class="product-buy sticky_box col-lg-3 col-sm-3 col-xs-12">
                                     <div class="info">
                                         <p>Thương hiệu: <strong><?php if(!empty($oneBrand)): ?><a href="<?php echo getUrlBrand($oneBrand) ?>" title="<?php echo getTitle($oneBrand) ?>"><?php echo $oneBrand->title ?></a> <?php endif; ?></strong></p>
-                                        <p>Mã sản phẩm: <strong>ZIN111</strong></p>
+                                        <p>Mã sản phẩm: <strong><?php echo $oneItem->model ?></strong></p>
                                     </div>
                                     <?php $this->load->view($this->template_path . 'product/_box_features') ?>
                                 </div>

@@ -224,21 +224,22 @@ class Product extends Public_Controller
     }
 
     public function wishlist(){
-        if($this->session->userdata('is_logged') != true){
-            show_404();
+        $data = [];
+        if($this->session->userdata('is_logged') == true){
+            $this->load->model('users_model');
+            $userModel = new Users_model();
+            $dataId = $userModel->getDataIdFavourite($this->session->userdata('user_id'));
+            $listProductId = [];
+            if(!empty($dataId)) foreach ($dataId as $item){
+                $listProductId[] = $item->product_id;
+            }
+            $params['is_status'] = 1;
+            $params['lang_code'] = $this->_lang_code;
+            $params['in'] = $listProductId;
+            $params['limit'] = 10;
+            $data['data'] = $this->_data->getData($params);
         }
-        $this->load->model('users_model');
-        $userModel = new Users_model();
-        $dataId = $userModel->getDataIdFavourite($this->session->userdata('user_id'));
-        $listProductId = [];
-        if(!empty($dataId)) foreach ($dataId as $item){
-            $listProductId[] = $item->product_id;
-        }
-        $params['is_status'] = 1;
-        $params['lang_code'] = $this->_lang_code;
-        $params['in'] = $listProductId;
-        $params['limit'] = 10;
-        $data['data'] = $this->_data->getData($params);
+
         $data['main_content'] = $this->load->view($this->template_path . 'product/wishlist', $data, TRUE);
         $this->load->view($this->template_main, $data);
     }

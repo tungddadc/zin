@@ -9,6 +9,7 @@
                         </div>
                         <div class="my-wishlist">
                             <div class="table-responsive">
+                                <?php if($this->session->userdata('is_logged') == true): ?>
                                 <fieldset>
                                     <table id="wishlist-table" class="clean-table linearize-table data-table">
                                         <thead>
@@ -74,6 +75,9 @@
                                         <button class="button btn-danger btn-delete-all pull-left" title="Xóa toàn bộ sản phẩm khỏi yêu thích của tôi" type="button"><span>Xóa toàn bộ yêu thích</span></button>
                                     </div>
                                 </fieldset>
+                                <?php else: ?>
+                                    <div class="text-center" style="margin-top: 15px">Bạn phải đăng nhập để được xem yêu thích của bạn! </div>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
