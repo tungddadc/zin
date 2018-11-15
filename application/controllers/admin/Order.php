@@ -242,15 +242,13 @@ class Order extends Admin_Controller
     if ($this->input->server('REQUEST_METHOD') == 'POST' && !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
       $id = $this->input->post('id');
       $id_order = $this->input->post('id_order');
-      $total_amount = $this->input->post('total_amount');
-      $total = $this->input->post('total');
       $response = $this->_data->update_status_product_order($id_order, $id);
+      $total_amount_remaining=$this->_data->resetTotalOrder($id_order);
       if ($response != false) {
-        $remaining = $total_amount - $total;
-        $total_amount_remaining = $this->_data->updateTotal($id_order, $remaining);
+        $this->_data->updateTotal($id_order, $total_amount_remaining);
         $data_mess = array(
           'status' => true,
-          'total' => number_format($remaining, 0, '', '.'),
+          'total' => formatMoney($total_amount_remaining),
           'mess' => 'Xóa sản phẩm thành công'
         );
       } else {

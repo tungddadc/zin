@@ -205,7 +205,14 @@ class Order_model extends CI_Model
     $data = $this->db->get()->row();
     return !empty($data) ? $data->total : 0;
   }
-
+  public function resetTotalOrder($order_id){
+    $this->db->select_sum('price');
+    $this->db->from($this->table_detail);
+    $this->db->where('order_id',$order_id);
+    $this->db->where('is_status',1);
+    $data = $this->db->get()->row();
+    return !empty($data->price)?$data->price:0;
+  }
   public function one_detail($id)
   {
     $this->db->select('');

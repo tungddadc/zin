@@ -117,8 +117,6 @@ $(function () {
     current = $(this);
     var id = current.attr('data-id');
     var id_order = current.attr('id-order');
-    var total = current.attr('total');
-    var total_amount = current.attr('total_amount');
     swal({
       title: "Bạn có chắc chắn xóa những bản ghi này ?",
       text: "Bạn không thể khôi phục những bản ghi này sau khi xóa!",
@@ -136,19 +134,18 @@ $(function () {
           data: {
             id: id,
             id_order: id_order,
-            total: total,
-            total_amount: total_amount
           },
           success: function (data) {
             if (data.status == true) {
               current.closest('tr').fadeOut('slow', function () {
                 current.closest('tr').remove();
               });
-              $('#total_amount').text(data.total);
+              $('#total_amount span').html(data.total);
               toastr["success"](data.mess);
               swal.close();
+              AJAX_DATATABLES.reload();
             } else {
-              toastr["warning"](data.mess);
+              toastr["success"](data.mess);
             }
           }
         });
