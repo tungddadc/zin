@@ -125,7 +125,7 @@ class Page extends Public_Controller
     }
 
     public function _404(){
-        redirect('404','','301');
+        redirect('404.html','','301');
     }
 
     public function notfound(){

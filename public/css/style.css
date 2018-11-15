@@ -5249,7 +5249,7 @@ ul.products-grid {
 .products-grid .item:hover .item-inner .item-info .info-inner .action .button {
   background: rgb(190, 30, 45);
   color: #fff;
-  border: 1px rgb(190, 30, 45) solid;
+  border: 2px rgb(190, 30, 45) solid;
   transition: color 300ms ease-in-out 0s, background-color 300ms ease-in-out 0s, background-position 300ms ease-in-out 0s;
 }
 
@@ -6620,6 +6620,7 @@ a.button.detail-bnt span {
   z-index: 10;
   position: relative;
   float: right;
+  width: 100%;
 }
 
 .breadcrumbs a {

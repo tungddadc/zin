@@ -316,3 +316,19 @@ if (!function_exists('getPostNews')) {
         return $data;
     }
 }
+
+if (!function_exists('getCompare')) {
+    function getCompare(){
+        $_this =& get_instance();
+        $_this->load->model('product_model');
+        $productModel = new Product_model();
+        $key = 'product_compare';
+        $dataId = get_cookie($key);
+        $listProductId = json_decode($dataId, true);
+        $params['is_status'] = 1;
+        $params['lang_code'] = $_this->session->userdata('public_lang_code');
+        $params['in'] = $listProductId;
+        $params['limit'] = 10;
+        return $productModel->getData($params);
+    }
+}
