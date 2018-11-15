@@ -123,7 +123,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
             <input name="q" class="searchbox" id="search" type="text" maxlength="128"
                    value="Search entire store here...">
             <button title="Search" class="search-btn-bg" id="submit-button" type="submit"></button>
-            <div class="product_search go_in">
+            <div class="product_search">
               <div class="product_add">
                 <div class="images_product">
                   <a href="#">

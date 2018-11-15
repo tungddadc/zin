@@ -1354,6 +1354,7 @@ ul.currencies_list li a:hover {
   text-align: left;
   cursor: pointer;
   margin: 0px;
+  min-height: 46px;
 }
 
 .mini-cart .basket a {
