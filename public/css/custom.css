@@ -100,7 +100,7 @@ header .our-features-box li {
     float: none;
     margin-bottom: 0px;
     text-align: center;
-    width: inherit;
+    width: auto;
     padding: 0;
     display: table-cell;
     text-transform: uppercase;

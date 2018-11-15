@@ -89,13 +89,13 @@
                                         </p>
                                         <div class="email-addto-box">
                                             <ul class="add-to-links">
-                                                <li><a class="link-wishlist" href="javascript:;"
+                                                <li>
+                                                    <a class="link-wishlist" data-id="<?php echo $oneItem->id ?>" href="javascript:;"
                                                        title="Yêu thích sản phẩm này" rel="nofollow"><span>Yêu thích sản phẩm này</span></a>
                                                 </li>
-                                                <li><span class="separator">|</span> <a class="link-compare"
-                                                                                        href="javascript:;"
-                                                                                        title="So sánh sản phẩm này"
-                                                                                        rel="nofollow"><span>So sánh sản phẩm này</span></a>
+                                                <li>
+                                                    <span class="separator">|</span>
+                                                    <a class="link-compare" data-id="<?php echo $oneItem->id ?>" href="javascript:;" title="So sánh sản phẩm này" rel="nofollow"><span>So sánh sản phẩm này</span></a>
                                                 </li>
                                             </ul>
                                         </div>
