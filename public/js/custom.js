@@ -594,6 +594,33 @@ jQuery(document).ready(function () {
     });
 
     CART.payment_collapse();
+
+
+    /*Search autocomplete*/
+    $(document).on('keyup','input#search',function () {
+        let element = $(this);
+        let keyword = $(this).val();
+        setTimeout(function () {
+            if(keyword){
+                $.ajax({
+                    type:'POST',
+                    url: base_url + 'search/ajax_autocomplete',
+                    data: {keyword:keyword},
+                    dataType: 'HTML',
+                    beforeSend: function(){
+                        element.closest('form').find('.product_search').html('').removeClass('go_in')
+                    },
+                    success: function (content) {
+                        if(content){
+                            element.closest('form').find('.product_search').html(content).addClass('go_in');
+                        }
+                    }
+                });
+            }
+
+        },500);
+        return false;
+    });
 });
 
 /*

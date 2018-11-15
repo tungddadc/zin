@@ -304,7 +304,7 @@ a.button:hover {
   border-width: 2px;
   background-color: rgb(190, 30, 45);
   color: #fff;
-  border: 1px rgb(190, 30, 45) solid;
+  border: 2px rgb(190, 30, 45) solid;
 }
 
 .price, .breadcrumbs li strong, .product-details span.price, #recently-viewed-items .price-box .special-price .price, #recently-viewed-items .price-box .regular-price .price, .availability.out-of-stock span {

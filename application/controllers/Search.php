@@ -91,6 +91,19 @@ class Search extends Public_Controller {
         $this->load->view($this->template_main, $data);
     }
 
+    public function ajax_autocomplete(){
+        $this->checkRequestPostAjax();
+        $keyword = $this->input->post('keyword');
+        $params = [
+            'search' => $keyword,
+            'is_status' => 1,
+            'lang_code' => $this->session->userdata('public_lang_code'),
+            'limit' => 5
+        ];
+        $data['data'] = $this->_data_product->getData($params);
+        echo $this->load->view($this->template_path.'search/ajax_autocomplete', $data, TRUE);exit;
+    }
+
     public function ajax_load_more(){
         if($this->input->server('REQUEST_METHOD') == 'POST' && !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
             $type = $this->input->post('type');
@@ -102,23 +115,6 @@ class Search extends Public_Controller {
 
             // Kiểm tra nếu là ajax request thì trả kết quả
             $html = $this->load->view($this->template_path.'search/_ajax_load_more', $data , TRUE);
-            print $html;exit;
-        }
-    }
-
-    public function ajax_autoComplete(){
-        if($this->input->server('REQUEST_METHOD') == 'POST' && !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-            $data['keyword'] = $keyword = $this->input->post('keyword');
-            $limit = 3;
-            $page = 1;
-            $listProduct =  $this->loadProduct($keyword, $limit, $page);
-            $listPost =$this->loadPost($keyword, $limit, $page);
-            $dataMerge = array_merge($listPost['list_post'],$listProduct['list_product']);
-            $this->sortArrayByKey($dataMerge,'title',TRUE);
-            $data['data'] = $dataMerge;
-            $data['total'] = $listProduct['total_product'] + $listPost['total_post'];
-            // Kiểm tra nếu là ajax request thì trả kết quả
-            $html = $this->load->view($this->template_path.'search/_ajax_load_item', $data , TRUE);
             print $html;exit;
         }
     }

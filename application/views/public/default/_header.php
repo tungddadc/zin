@@ -120,74 +120,9 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
         <div class="search-box">
           <form id="search_mini_form" action="" method="get">
             <!-- Autocomplete End code -->
-            <input name="q" class="searchbox" id="search" type="text" maxlength="128"
-                   value="Search entire store here...">
+            <input name="q" class="searchbox" id="search" type="text" maxlength="128" placeholder="Tìm kiếm sản phẩm...">
             <button title="Search" class="search-btn-bg" id="submit-button" type="submit"></button>
-            <div class="product_search">
-              <div class="product_add">
-                <div class="images_product">
-                  <a href="#">
-                    <img
-                      src="https://devtolive.online/public/media/thumb/san-pham/man-hinh/man-hinh-oppo/man-hinh-oppo-r815-178x216.jpg"
-                      alt="">
-                  </a>
-                </div>
-
-                <div class="product_name">
-                  <a href="#">Máy xịt rửa Model KH-2209GI - Kowon</a>
-                </div>
-                <div class="price">
-                  <strong>7.880.000đ</strong>
-                </div>
-              </div>
-              <div class="product_add">
-                <div class="images_product">
-                  <a href="#">
-                    <img
-                      src="https://devtolive.online/public/media/thumb/san-pham/man-hinh/man-hinh-oppo/man-hinh-oppo-r815-178x216.jpg"
-                      alt="">
-                  </a>
-                </div>
-
-                <div class="product_name">
-                  <a href="#">Máy xịt rửa Model KH-2209GI - Kowon</a>
-                </div>
-                <div class="price">
-                  <strong>7.880.000đ</strong>
-                </div>
-              </div>
-              <div class="product_add">
-                <div class="images_product">
-                  <a href="#">
-                    <img
-                      src="https://devtolive.online/public/media/thumb/san-pham/man-hinh/man-hinh-oppo/man-hinh-oppo-r815-178x216.jpg"
-                      alt="">
-                  </a>
-                </div>
-
-                <div class="product_name">
-                  <a href="#">Máy xịt rửa Model KH-2209GI - Kowon</a>
-                </div>
-                <div class="price">
-                  <strong>7.880.000đ</strong>
-                </div>
-              </div>
-              <div class="product_add">
-                <div class="images_product">
-                  <a href="#">
-                    <img
-                      src="https://devtolive.online/public/media/thumb/san-pham/man-hinh/man-hinh-oppo/man-hinh-oppo-r815-178x216.jpg"
-                      alt="">
-                  </a>
-                </div>
-
-                <div class="product_name">
-                  <a href="#">Máy xịt rửa Model KH-2209GI - Kowon</a>
-                </div>
-                <div class="price">
-                  <strong>7.880.000đ</strong>
-                </div>
-              </div>
+            <div class="product_search"></div>
           </form>
         </div>
         </div>
