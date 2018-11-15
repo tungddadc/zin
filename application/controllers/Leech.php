@@ -27,7 +27,6 @@ class Leech extends STEVEN_Controller
     }
 
     public function convertCategory(){
-
         $file =  MEDIA_PATH.'categories.xlsx';
 
 //load the excel library
@@ -62,9 +61,99 @@ class Leech extends STEVEN_Controller
             $tmp['parent_id'] = $item['F'];
             $tmp['slug'] = $item['I'];
             $tmp['thumbnail'] = $item['J'];
+            $tmp['type'] = 'product';
             $this->saveCategory($tmp);
         }
         echo "done save category";
+    }
+
+    public function convertBrand(){
+        $file =  MEDIA_PATH.'brands.xlsx';
+
+//load the excel library
+        $this->load->library('phpexcel');
+
+//read file from path
+
+        $objPHPExcel = PHPExcel_IOFactory::load($file);
+//get only the Cell Collection
+        $cell_collection = $objPHPExcel->getActiveSheet()->getCellCollection();
+
+//extract to a PHP readable array format
+        foreach ($cell_collection as $cell) {
+            $column = $objPHPExcel->getActiveSheet()->getCell($cell)->getColumn();
+            $row = $objPHPExcel->getActiveSheet()->getCell($cell)->getRow();
+            $data_value = $objPHPExcel->getActiveSheet()->getCell($cell)->getValue();
+
+            //The header will/should be in row 1 only. of course, this can be modified to suit your need.
+            if ($row == 1) {
+                $header[$row][$column] = $data_value;
+            } else {
+                $arr_data[$row][$column] = $data_value;
+            }
+        }
+        if(!empty($arr_data)) foreach ($arr_data as $k => $item){
+            if(!empty($item['G'])){
+                $tmp['title'] = $item['G'];
+                $tmp['meta_title'] = $item['G'];
+                $tmp['description']  = $item['G'];
+                $tmp['meta_description'] = $item['G'];
+                $tmp['meta_keyword'] = $item['G'];
+                $tmp['parent_id'] = 0;
+                $tmp['slug'] = $this->toSlug($item['G']);
+                $tmp['thumbnail'] = '';
+                $tmp['type'] = 'brand';
+                $this->saveCategory($tmp);
+            }
+        }
+        echo "done save category brand";
+    }
+
+    public function convertProduct(){
+        $file =  MEDIA_PATH.'excel_products/products_4000.xlsx';
+
+//load the excel library
+        $this->load->library('phpexcel');
+
+//read file from path
+
+        $objPHPExcel = PHPExcel_IOFactory::load($file);
+//get only the Cell Collection
+        $cell_collection = $objPHPExcel->getActiveSheet()->getCellCollection();
+
+//extract to a PHP readable array format
+        foreach ($cell_collection as $cell) {
+            $column = $objPHPExcel->getActiveSheet()->getCell($cell)->getColumn();
+            $row = $objPHPExcel->getActiveSheet()->getCell($cell)->getRow();
+            $data_value = $objPHPExcel->getActiveSheet()->getCell($cell)->getValue();
+
+            //The header will/should be in row 1 only. of course, this can be modified to suit your need.
+            if ($row == 1) {
+                $header[$row][$column] = $data_value;
+            } else {
+                $arr_data[$row][$column] = $data_value;
+            }
+        }
+        //dump($header);
+        //dump($arr_data);
+        if(!empty($arr_data)) foreach ($arr_data as $item){
+            $tmp['id'] = $item['A'];
+            $tmp['title'] = $item['B'];
+            $tmp['meta_title'] = $item['AN'];
+            $tmp['description']  = $item['E'];
+            $tmp['meta_description'] = $item['F'];
+            $tmp['meta_keyword'] = $item['H'];
+            $tmp['category_id'] = $item['AI'];
+            $tmp['slug'] = $item['X'];
+            $tmp['model'] = $item['C'];
+            $tmp['quantity'] = $item['R'];
+            $tmp['price'] = $item['N'];
+            $tmp['thumbnail'] = $item['T'];
+            $tmp['data_related'] = $item['AM'];
+            $tmp['brand'] = $item['AH']; //Phải check slug get ID rồi lưu ID
+            echo $this->saveProduct($tmp);
+        }
+        echo "done save product";
     }
 
     public function getChildCategory($url,$element,$parent_id = 0){
@@ -94,17 +183,43 @@ class Leech extends STEVEN_Controller
         $tmpLang[$this->_lang_code]['meta_description'] = $item->meta_description;
         $tmpLang[$this->_lang_code]['meta_keyword'] = $item->meta_keyword;
         $tmpLang[$this->_lang_code]['slug'] = $item->slug;
-        $tmp['id'] = $item->id;
+        if(!empty($item->id)) $tmp['id'] = $item->id;
         $tmp['parent_id'] = $item->parent_id;
         $tmp['is_status'] = 1;
         $tmp['thumbnail'] = $item->thumbnail;
-        if(strpos($item->thumbnail,'Thuong-hieu')  !== false) $tmp['type'] = 'brand';else $tmp['type'] = 'product';
+        $tmp['type'] = $item->type;
 
         $category_id = $this->_category->save($tmp);
         if(!empty($category_id)){
             $this->save_language($category_id, $tmpLang, $this->_category->table_trans);
         }
         return $category_id;
+    }
+
+    private function saveProduct($item){
+        $item = (object) $item;
+        $tmpLang[$this->_lang_code]['title'] = $item->title;
+        $tmpLang[$this->_lang_code]['meta_title'] = $item->meta_title;
+        $tmpLang[$this->_lang_code]['description'] = $item->description;
+        $tmpLang[$this->_lang_code]['meta_description'] = $item->meta_description;
+        $tmpLang[$this->_lang_code]['meta_keyword'] = $item->meta_keyword;
+        $tmpLang[$this->_lang_code]['slug'] = $item->slug;
+        $tmp['id'] = (int)$item->id;
+        $tmp['model'] = $item->model;
+        $tmp['quantity'] = (int)$item->quantity;
+        $tmp['price'] = $item->price;
+        $tmp['thumbnail'] = $item->thumbnail;
+        $tmp['brand'] = (int)$this->convertBrandnameToId($item->brand);
+        $tmp['is_status'] = 1;
+        $listRelated = explode(', ',$item->data_related);
+        $tmp['data_related'] = json_encode($listRelated);
+        $product_id = $this->_product_model->save($tmp);
+        $category_id = (int)$item->category_id;
+        if(!empty($product_id)){
+            $this->save_language($product_id, $tmpLang, $this->_product_model->table_trans);
+            if(!empty($category_id)) $this->_product_model->save(['product_id' => $product_id, 'category_id' => $category_id],$this->_product_model->table_category);
+        }
+        return $product_id;
     }
 
     private function save_language($id, $data, $table_trans){
@@ -115,6 +230,12 @@ class Leech extends STEVEN_Controller
                 die('Lỗi save language '.$table_trans);
             }
         }
+    }
+
+    private function convertBrandnameToId($title){
+        $slug = $this->toSlug($title);
+        $id = $this->_category->slugToId($slug);
+        return $id;
     }
     public function clearCache(){
         $this->cache->clean();
