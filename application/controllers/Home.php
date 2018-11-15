@@ -106,8 +106,7 @@ class Home extends Public_Controller
             'is_status' => 1,
             'limit' => 3
         );
-        $data['listData'] = $postModel->getData($params);
-        return $data;
+        return $postModel->getData($params);
     }
 
 

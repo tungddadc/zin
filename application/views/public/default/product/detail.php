@@ -81,11 +81,11 @@
                                     </div>
                                     <div class="ratings">
                                         <div class="rating-box">
-                                            <div style="width:60%" class="rating"></div>
+                                            <div style="width:<?php echo round(($oneItem->vote/5)*100) ?>%" class="rating"></div>
                                         </div>
                                         <p class="rating-links">
-                                            <a href="<?php echo getUrlProduct($oneItem) ?>#reviews_tabs" rel="nofollow" title="Phản hồi về sản phẩm">1 lượt
-                                                phản hồi về sản phẩm này</a>
+                                            <a href="<?php echo getUrlProduct($oneItem) ?>#reviews_tabs" rel="nofollow" title="Phản hồi về sản phẩm">
+                                                <?php echo $oneItem->total_vote ?> lượt phản hồi về sản phẩm này</a>
                                         </p>
                                         <div class="email-addto-box">
                                             <ul class="add-to-links">
@@ -250,69 +250,19 @@
                                             <div id="productTabContent" class="tab-content">
                                                 <div class="tab-pane fade in active" id="product_tabs_description">
                                                     <div class="std">
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-                                                            fringilla augue nec est tristique auctor. Donec non est at
-                                                            libero
-                                                            vulputate rutrum. Morbi ornare lectus quis justo gravida
-                                                            semper.
-                                                            Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id
-                                                            nulla.
-                                                            Donec a neque libero. Pellentesque aliquet, sem eget laoreet
-                                                            ultrices, ipsum metus feugiat sem, quis fermentum turpis
-                                                            eros eget
-                                                            velit. Donec ac tempus ante. Fusce ultricies massa massa.
-                                                            Fusce
-                                                            aliquam, purus eget sagittis vulputate, sapien libero
-                                                            hendrerit est,
-                                                            sed commodo augue nisi non neque. Lorem ipsum dolor sit
-                                                            amet,
-                                                            consectetur adipiscing elit. Sed tempor, lorem et placerat
-                                                            vestibulum, metus nisi posuere nisl, in accumsan elit odio
-                                                            quis mi.
-                                                            Cras neque metus, consequat et blandit et, luctus a nunc.
-                                                            Etiam
-                                                            gravida vehicula tellus, in imperdiet ligula euismod eget.
-                                                            Pellentesque habitant morbi tristique senectus et netus et
-                                                            malesuada
-                                                            fames ac turpis egestas. Nam erat mi, rutrum at sollicitudin
-                                                            rhoncus, ultricies posuere erat. Duis convallis, arcu nec
-                                                            aliquam
-                                                            consequat, purus felis vehicula felis, a dapibus enim lorem
-                                                            nec
-                                                            augue.</p>
-                                                        <p> Nunc facilisis sagittis ullamcorper. Proin lectus ipsum,
-                                                            gravida et
-                                                            mattis vulputate, tristique ut lectus. Sed et lorem nunc.
-                                                            Vestibulum
-                                                            ante ipsum primis in faucibus orci luctus et ultrices
-                                                            posuere
-                                                            cubilia Curae; Aenean eleifend laoreet congue. Vivamus
-                                                            adipiscing
-                                                            nisl ut dolor dignissim semper. Nulla luctus malesuada
-                                                            tincidunt.
-                                                            Class aptent taciti sociosqu ad litora torquent per conubia
-                                                            nostra,
-                                                            per inceptos himenaeos. Integer enim purus, posuere at
-                                                            ultricies eu,
-                                                            placerat a felis. Suspendisse aliquet urna pretium eros
-                                                            convallis
-                                                            interdum. Quisque in arcu id dui vulputate mollis eget non
-                                                            arcu.
-                                                            Aenean et nulla purus. Mauris vel tellus non nunc mattis
-                                                            lobortis.</p>
+                                                        <?php echo $oneItem->content ?>
                                                     </div>
                                                 </div>
                                                 <div class="tab-pane fade" id="reviews_tabs">
                                                     <div class="box-collateral box-reviews" id="customer-reviews">
                                                         <div class="box-reviews1">
                                                             <div class="form-add">
-                                                                <?php echo form_open('', ['id' => 'review-form']) ?>
+                                                                <?php echo form_open('product/ajax_vote', ['id' => 'review-form']) ?>
+                                                                <input type="hidden" name="id" value="<?php echo $oneItem->id ?>">
                                                                 <h3>Phản hồi của khách hàng về sản phẩm
                                                                     "<?php echo $oneItem->title ?>"</h3>
                                                                 <fieldset>
-                                                                    <h4>Bạn đánh giá sản phẩm này như thế nào ? <em
-                                                                                class="required">*</em></h4>
-                                                                    <span id="input-message-box"></span>
+                                                                    <h4>Bạn đánh giá sản phẩm này như thế nào ? <em class="required">*</em></h4>
                                                                     <div id="product-review-table">
                                                                         <div class="rateit"
                                                                              data-id="<?php echo $oneItem->id ?>"
@@ -320,19 +270,31 @@
                                                                              data-rateit-starwidth="16"
                                                                              data-rateit-starheight="16"
                                                                              data-rateit-min="0"
-                                                                             data-rateit-max="10"></div>
-                                                                        <input type="hidden" name="vote" value="">
+                                                                             data-rateit-max="5"></div>
+                                                                        <input type="hidden" name="vote" value="5">
                                                                     </div>
 
                                                                     <div class="review1">
                                                                         <ul class="form-list">
+                                                                            <?php if($this->session->userdata('is_logged') == true): ?>
                                                                             <li>
                                                                                 <label class="required"
-                                                                                       for="nickname_field">Tên<em>*</em></label>
+                                                                                       for="nickname_field">Tài khoản</label>
                                                                                 <div class="input-box">
                                                                                     <input type="text"
                                                                                            class="input-text"
                                                                                            id="nickname_field"
+                                                                                           name="username" disabled value="<?php echo $this->session->userdata('username') ?>">
+                                                                                </div>
+                                                                            </li>
+                                                                            <?php endif; ?>
+                                                                            <li>
+                                                                                <label class="required"
+                                                                                       for="fullname_field">Tên<em>*</em></label>
+                                                                                <div class="input-box">
+                                                                                    <input type="text"
+                                                                                           class="input-text"
+                                                                                           id="fullname_field"
                                                                                            name="name">
                                                                                 </div>
                                                                             </li>
@@ -364,9 +326,10 @@
                                                             </div>
                                                         </div>
                                                         <div class="box-reviews2">
-                                                            <h3>Customer Reviews</h3>
+                                                            <h3>Đánh giá bởi khách hàng</h3>
                                                             <div class="box visible">
                                                                 <ul>
+                                                                    <?php  ?>
                                                                     <li>
                                                                         <div class="review">
                                                                             <h6><a href="#">Excellent</a></h6>
@@ -613,78 +576,7 @@
                                         </div>
                                         <div id="related-products-slider" class="product-flexslider hidden-buttons">
                                             <div class="slider-items slider-width-col4 products-grid block-content">
-                                                <?php if (!empty($listProductBrand)) foreach ($listProductBrand as $item): ?>
-                                                    <div class="item">
-                                                        <div class="item-inner">
-                                                            <div class="item-img">
-                                                                <div class="item-img-info">
-                                                                    <a href="<?php echo getUrlProduct($item) ?>"
-                                                                       title="<?php echo getTitle($item) ?>"
-                                                                       class="product-image">
-                                                                        <img src="<?php echo getImageThumb($item->thumbnail, 178, 216) ?>"
-                                                                             alt="<?php echo getTitle($item) ?>">
-                                                                    </a>
-                                                                    <?php echo !empty($item->is_new) ? '<div class="new-label new-top-left">New</div>' : '' ?>
-                                                                    <div class="box-hover">
-                                                                        <ul class="add-to-links">
-                                                                            <li><a class="link-quickview"
-                                                                                   href="javascript:;" rel="nofollow"
-                                                                                   title="Xem Quickview"></a></li>
-                                                                            <li><a class="link-wishlist"
-                                                                                   href="javascript:;" rel="nofollow"
-                                                                                   title="Yêu thích sản phẩm này"></a>
-                                                                            </li>
-                                                                            <li><a class="link-compare"
-                                                                                   href="javascript:;" rel="nofollow"
-                                                                                   title="So sánh sản phẩm này"></a>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="item-info">
-                                                                <div class="info-inner">
-                                                                    <div class="item-title">
-                                                                        <a href="<?php echo getUrlProduct($item) ?>"
-                                                                           title="<?php echo getTitle($item) ?>"><?php echo $item->title ?></a>
-                                                                    </div>
-                                                                    <div class="item-content">
-                                                                        <div class="rating">
-                                                                            <div class="ratings">
-                                                                                <div class="rating-box">
-                                                                                    <div style="width:80%"
-                                                                                         class="rating"></div>
-                                                                                </div>
-                                                                                <p class="rating-links"><a href="#">1
-                                                                                        Review(s)</a> <span
-                                                                                            class="separator">|</span>
-                                                                                    <a href="#">Add Review</a></p>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="item-price">
-                                                                            <div class="price-box">
-                                                                                <p class="old-price"><span
-                                                                                            class="price-label">Regular Price:</span>
-                                                                                    <span class="price">$100.00 </span>
-                                                                                </p>
-                                                                                <p class="special-price"><span
-                                                                                            class="price-label">Special Price</span>
-                                                                                    <span class="price">$90.00 </span>
-                                                                                </p>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="action">
-                                                                            <button class="button btn-cart"
-                                                                                    type="button" title=""
-                                                                                    data-original-title="Add to Cart">
-                                                                                <span>Add to Cart</span></button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                <?php endforeach; ?>
+                                                <?php $this->load->view($this->template_path . 'product/_list_product_slider', ['data' => $listProductBrand]) ?>
                                             </div>
                                         </div>
                                     </div>

@@ -68,7 +68,7 @@ if (!function_exists('getUrlProduct')) {
         $id = $optional['id'];
         $slug = $optional['slug'];
         $linkReturn = BASE_URL;
-        $linkReturn .= "$slug-p$id";
+        $linkReturn .= "$slug";
         return $linkReturn;
     }
 }

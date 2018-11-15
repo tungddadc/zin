@@ -257,9 +257,10 @@ class Product extends Public_Controller
         $this->load->view($this->template_main, $data);
     }
 
-    public function detail($id){
-        $oneItem = $this->_data->getById($id,'', $this->_lang_code);
+    public function detail($slug){
+        $oneItem = $this->_data->getBySlugCustom($slug,'', $this->_lang_code);
         if (empty($oneItem)) redirect('404');
+        $id = $oneItem->id;
         $this->flushView($id,$oneItem->viewed);
         //Check xem co chuyen lang hay khong thi redirect ve lang moi
         if ($this->input->get('lang')) {
@@ -276,6 +277,9 @@ class Product extends Public_Controller
         $data['oneNext'] = $this->_data->getNextById($oneItem->id,'',$this->_lang_code);
         $data['data_detail'] = $this->_data->getDetail($id);
         $data['oneBrand'] = $this->_data_category->getByIdCached((int)$oneItem->brand);
+        $this->load->model('vote_model');
+        $voteModel = new Vote_model();
+        $data['data_vote'] = $voteModel->getVote($id);
 
         /*List product related*/
         $this->_data_category->_recursive_child_id($this->_data_category->_all_category(),$oneCategoryParent->id);
@@ -394,7 +398,29 @@ class Product extends Public_Controller
         }
         exit;
     }
-
+    public function ajax_vote(){
+        $this->checkRequestPostAjax();
+        if($this->session->userdata('is_logged') != true){
+            $message['type'] = 'error';
+            $message['message'] = "Bạn phải đăng nhập để thực hiện thao tác này !";
+            $this->returnJson($message);
+        }
+        $this->load->model('vote_model');
+        $voteModel = new Vote_model();
+        $data['ip_address'] = $this->input->ip_address();
+        $data['vote'] = $this->input->post('vote');
+        $data['id'] = $this->input->post('id');
+        $data['user_id'] = $this->session->userdata('user_id');
+        $data['name'] = $this->input->post('name') ? $this->input->post('name') : $this->session->userdata('username');
+        if ($voteModel->insert($data)) {
+            $message['type'] = 'success';
+            $message['message'] = "Bạn vừa đánh giá {$data['vote']} sao cho sản phẩm này.";
+        } else {
+            $message['type'] = 'warning';
+            $message['message'] = "Bạn đã đánh giá sản phẩm này rồi.";
+        }
+        die(json_encode($message));
+    }
     public function ajax_save_wishlist(){
         $this->checkRequestPostAjax();
         if($this->session->userdata('is_logged') != true){

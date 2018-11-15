@@ -71,7 +71,7 @@ $route['(:any)-b(:num)/page/(:num)'] = 'product/brand/$2/$3';
 /*Route product*/
 $route['(:any)-cp(:num)'] = 'product/category/$2';
 $route['(:any)-cp(:num)/page/(:num)'] = 'product/category/$2/$3';
-$route['(:any)-p(:num)'] = 'product/detail/$2/';
+$route['(:any)'] = 'product/detail/$1';
 $route['wishlist'] = 'product/wishlist';
 $route['so-sanh-san-pham'] = 'product/compare';
 /*Route product*/
@@ -79,5 +79,5 @@ $route['so-sanh-san-pham'] = 'product/compare';
 
 //page
 $route['cart'] = 'cart/index';
-$route['(:any)'] = 'page/index/$1';
+$route['(:any).html'] = 'page/index/$1';
 //page

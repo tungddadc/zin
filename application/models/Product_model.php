@@ -34,6 +34,8 @@ class Product_model extends STEVEN_Model
             $this->db->where("$this->table_detail.quantity_end <=",$quantity_end);
         }
 
+        $this->db->join("(SELECT id AS product_id, COUNT(1) AS total_vote, ROUND( AVG(vote),1) AS vote FROM st_vote GROUP BY product_id) AS tblVote","tblVote.product_id = $this->table.id", "left");
+
         if(!empty($category_id)){
             $this->db->join($this->table_category,"$this->table.id = $this->table_category.{$this->table}_id");
             $this->db->where_in("$this->table_category.category_id",$category_id);
@@ -45,6 +47,32 @@ class Product_model extends STEVEN_Model
         }
         /*Sắp xếp trường đặc biệt*/
 
+    }
+
+    public function getBySlugCustom($slug,$select='*',$lang_code = null){
+
+        $this->db->select($select);
+        $this->db->from($this->table);
+        if(!empty($this->table_trans)) $this->db->join($this->table_trans,"$this->table.id = $this->table_trans.id");
+        //$this->db->select('IF(`total_vote` IS NULL, 0, `total_vote`) AS `total_vote`');
+        //$this->db->select('IF(`vote` IS NULL, 0, `vote`) AS `vote`');
+        $this->db->join("(SELECT id AS product_id, COUNT(1) AS total_vote, ROUND( AVG(vote),1) AS vote FROM st_vote GROUP BY product_id) AS tblVote","tblVote.product_id = $this->table.id", "left");
+
+        $this->db->where("$this->table_trans.slug",$slug);
+
+        if(empty($this->table_trans)){
+            $query = $this->db->get();
+            return $query->row();
+        }
+
+        if(!empty($lang_code)){
+            $this->db->where("$this->table_trans.language_code",$lang_code);
+            $query = $this->db->get();
+            return $query->row();
+        }else{
+            $query = $this->db->get();
+            return $query->result();
+        }
     }
 
     public function getCategoryByProductId($id, $lang_code = null){
