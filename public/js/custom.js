@@ -455,6 +455,15 @@ jQuery(document).ready(function () {
     UI.ajaxFormSubmit();
     WISHLIST.init();
     COMPARE.init();
+    if(window.location.hash === '#reviews_tabs'){
+        let tabClick = window.location.hash;
+        $('[href="'+tabClick+'"]').tab('show');
+        setTimeout(function () {
+            $('html, body').animate({
+                scrollTop: $(tabClick).offset().top - 80
+            }, 1000);
+        }, 500);
+    }
     $('a[href*="#"]').click(function (e) {
         e.preventDefault();
         let href = $(this).attr('href').split('#');
