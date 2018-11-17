@@ -38,7 +38,7 @@
       <div class="col2-set">
         <div class="col-1">
           <h5>Thông tin liên hệ</h5>
-          <a href="<?php echo site_url('edit') ?>">Sửa</a>
+          <a href="<?php echo getUrlProfile('edit') ?>">Sửa</a>
           <p><?php echo $this->_user_login->fullname ?><br>
             <?php echo $this->_user_login->email ?><br>
             <a href="<?php echo getUrlProfile('changepassword') ?>">Thay đổi mật khẩu</a> </p>

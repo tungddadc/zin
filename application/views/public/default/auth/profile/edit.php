@@ -29,7 +29,7 @@
         </li>
       </ul>
       <div class="buttons-set">
-        <button name="send" class="button login" type="submit"><span>Đăng ký</span></button>
+        <button name="send" class="button login" type="submit"><span>Cập nhật</span></button>
     </form>
   </fieldset>
 </div>

@@ -84,28 +84,8 @@
                 </article>
                 <!--	///*///======    End article  ========= //*/// -->
             </div>
-            <aside class="col-left sidebar col-sm-3 col-xs-12 col-sm-pull-9">
-                <div class="side-banner"><img src="<?php echo $this->templates_assets ?>images/side-banner.jpg" alt="banner"></div>
-                <div class="block block-account">
-                    <div class="block-title">Tài khoản của tôi</div>
-                    <div class="block-content">
-                        <ul>
-                            <li><a href="#">Account Dashboard</a></li>
-                            <li><a href="#">Account Information</a></li>
-                            <li><a href="#">Address Book</a></li>
-                            <li><a href="#">My Orders</a></li>
-                            <li><a href="#">Billing Agreements</a></li>
-                            <li><a href="#">Recurring Profiles</a></li>
-                            <li><a href="#">My Product Reviews</a></li>
-                            <li><a href="#">My Tags</a></li>
-                            <li class="current"><a href="#">My Wishlist</a></li>
-                            </li>
-                            <li><a href="#">My Downloadable</a></li>
-                            <li class="last"><a href="#">Newsletter Subscriptions</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </aside>
+            <?php $this->load->view($this->template_path.'auth/profile/sidebar'); ?>
+
         </div>
     </div>
 </section>

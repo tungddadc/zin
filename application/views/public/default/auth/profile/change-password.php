@@ -23,7 +23,7 @@
 
         <input type="hidden" name="id" value="<?php echo $this->_user_login->id ?>">
         <?php echo form_hidden($csrf); ?>
-        <button name="send" class="button login" type="submit"><span>Đăng ký</span></button>
+        <button name="send" class="button login" type="submit"><span>Đổi mật khẩu</span></button>
     </form>
   </fieldset>
 </div>
