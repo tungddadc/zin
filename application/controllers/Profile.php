@@ -22,19 +22,59 @@ class Profile extends Public_Controller
 
     $this->lang->load('auth');
     $this->load->library(array('ion_auth', 'hybridauth'));
-    $this->load->model(array('users_model'));
+    $this->load->model(array('users_model','order_model'));
     $this->_data = new Users_model();
+    $this->_order = new Order_model();
     $this->_lang_code = $this->session->public_lang_code;
   }
 
   public function index()
   {
     $data = array();
+    // Lấy 10 đơn hàng mới nhất
+    $params=array(
+      'user_id'=>$this->_user_login->id,
+      'order'=>array('created_time'=>'DESC'),
+      'limit'=>10
+    );
+    $data['data']=$this->_order->getDataOrder($params);
     $data['main_profile'] = $this->load->view($this->template_path . 'auth/profile/dashboard', $data, TRUE);
     $data['main_content'] = $this->load->view($this->template_path . 'auth/profile/index', $data, TRUE);
     $this->load->view($this->template_main, $data);
   }
+  public function order($page=1){
+    $limit=10;
+    $params=array(
+      'user_id'=>$this->_user_login->id,
+      'order'=>array('created_time'=>'DESC'),
+      'limit'=>$limit,
+      'page'=>$page
+    );
+    $data['data']=$this->_order->getDataOrder($params);
+    $data['total']=$this->_order->getTotal($params);
+    /*Pagination*/
+    $this->load->library('pagination');
+    $paging['base_url'] = getUrlProfile('order');
+      $paging['first_url'] = getUrlProfile('order');
+    $paging['total_rows'] = $data['total'];
+    $config['enable_query_strings'] = TRUE;
+    $paging['per_page'] = $limit;
+    $this->pagination->initialize($paging);
+    $data['pagination'] = $this->pagination->create_links();
+    $data['main_profile'] = $this->load->view($this->template_path . 'auth/profile/order/index', $data, TRUE);
+    $data['main_content'] = $this->load->view($this->template_path . 'auth/profile/index', $data, TRUE);
 
+    $this->load->view($this->template_main, $data);
+  }
+
+  public function orderDetail($id){
+    $data=array();
+    $data['data']=$this->_order->getOrderById($id);
+    $data['orderDetail']=$this->_order->getDetailOrder($id);
+    $data['main_profile'] = $this->load->view($this->template_path . 'auth/profile/order/detail', $data, TRUE);
+    $data['main_content'] = $this->load->view($this->template_path . 'auth/profile/index', $data, TRUE);
+    $this->load->view($this->template_main, $data);
+  }
 //  edit profile
   public function edit()
   {

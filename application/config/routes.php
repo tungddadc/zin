@@ -56,6 +56,8 @@ $route['translate_uri_dashes'] = FALSE;
 $route['sitemap.xml'] = 'seo/sitemap';
 $route['admin'] = 'admin/dashboard';
 
+$route['profile'] = 'profile/index';
+$route['profile/detail-order/(:num)'] = 'profile/orderdetail/$1';
 $route['cart'] = 'cart/index';
 
 //Profile

@@ -332,3 +332,21 @@ if (!function_exists('getCompare')) {
         return $productModel->getData($params);
     }
 }
+if (!function_exists('getCityById')) {
+  function getCityById($id){
+    $_this =& get_instance();
+    $_this->load->model('location_model');
+    $locModel = new Location_model();
+    $data=$locModel->getCityById($id);
+    return !empty($data)?$data->name:'';
+  }
+}
+if (!function_exists('getDistrict')) {
+  function getDistrict($id){
+    $_this =& get_instance();
+    $_this->load->model('location_model');
+    $locModel = new Location_model();
+    $data=$locModel->getDistrictById($id);
+    return !empty($data)?$data->name:'';
+  }
+}

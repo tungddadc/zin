@@ -160,10 +160,13 @@ class Order_model extends CI_Model
   // Chi tiết đơn hàng
   public function getDetailOrder($id)
   {
-    $this->db->select("$this->table_detail.*,$this->table_product_trans.title");
+    $this->db->select("$this->table_detail.*,$this->table_product_trans.title,$this->table_product_trans.slug,$this->table_product_trans.id as id_product");
     $this->db->from($this->table_detail);
     $this->db->join($this->table_product_trans, "$this->table_product_trans.id=$this->table_detail.product_id");
-    $this->db->where("$this->table_product_trans.language_code", '');
+    $this->db->where("$this->table_product_trans.language_code", $this->session->public_lang_code);
+    $this->db->where("$this->table_detail.id",$id);
+    $data=$this->db->get()->result();
+    return $data;
   }
 
 
@@ -248,16 +251,6 @@ class Order_model extends CI_Model
 
   }
 
-  public function getTotalOrderByUser($id,$paramsFilter=array()){
-    $this->db->select('1');
-    $this->db->from($this->table);
-    // $this->db->join($this->table_detail, "$this->table.id = $this->table_detail.order_id");
-    $this->db->where('user_id', $id);
-    if(isset($paramsFilter['is_status'])) $this->db->where('is_status', $paramsFilter['is_status']);
-    $this->db->order_by("$this->table.created_time", 'DESC');
-
-    return $this->db->get()->num_rows();
-  }
 
   public function save($data)
   {

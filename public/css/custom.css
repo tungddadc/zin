@@ -193,3 +193,16 @@ header .our-features-box li {
 #fancybox-wrap{
 
 }
+.phantrang {
+    display: block;
+    margin: auto;
+    margin-top: 25px;
+    text-align: right;
+}
+.phantrang .pagination li.active a{
+    background-color: #939393;
+    border: 1px solid #939393;
+}
+.phantrang .pagination{
+    border-radius: 0;
+}
