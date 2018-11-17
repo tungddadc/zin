@@ -412,6 +412,14 @@ var COMPARE = {
     }
 };
 var UI = {
+    search: function(){
+        let searchstring  = $('input[name="search"]').val();
+        if (searchstring.length > 0) {
+            window.location.href = base_url+'search/'+searchstring;
+        }else{
+            toastr['warning']('Vui lòng nhập từ khóa để tìm kiếm !');
+        }
+    },
     ajaxFormSubmit: function(){
         $('form[method="post"]').ajaxForm({
             //target:        '#output1',   // target element(s) to be updated with server response
@@ -594,6 +602,44 @@ jQuery(document).ready(function () {
     });
 
     CART.payment_collapse();
+
+
+    /*Search autocomplete*/
+    $(document).on('keyup','input#search',function () {
+        let element = $(this);
+        let keyword = $(this).val();
+        element.closest('#search_mini_form').find('.product_search').html('').removeClass('go_in')
+        setTimeout(function () {
+            if(keyword){
+                $.ajax({
+                    type:'POST',
+                    url: base_url + 'search/ajax_autocomplete',
+                    data: {keyword:keyword},
+                    dataType: 'HTML',
+                    success: function (content) {
+                        if(content){
+                            element.closest('#search_mini_form').find('.product_search').html(content).addClass('go_in');
+                        }
+                    }
+                });
+            }
+
+        },500);
+        return false;
+    });
+
+    $(".btnSearch").click(function(e) {
+        e.preventDefault();
+        UI.search();
+    });
+
+    $('input[name="search"]').keydown(function (e) {
+        if (e.keyCode === 13) {
+            UI.search();
+        }
+    });
+
+
 });
 
 /*

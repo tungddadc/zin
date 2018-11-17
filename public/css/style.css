@@ -304,7 +304,7 @@ a.button:hover {
   border-width: 2px;
   background-color: rgb(190, 30, 45);
   color: #fff;
-  border: 1px rgb(190, 30, 45) solid;
+  border: 2px rgb(190, 30, 45) solid;
 }
 
 .price, .breadcrumbs li strong, .product-details span.price, #recently-viewed-items .price-box .special-price .price, #recently-viewed-items .price-box .regular-price .price, .availability.out-of-stock span {
@@ -339,7 +339,7 @@ a.button:hover {
   padding: 8px 14px;
   /* padding: 6px 14px 6px; */
   text-transform: uppercase;
-  border: 1px #e5e5e5 solid;
+  border: 2px #e5e5e5 solid;
   line-height: 13px;
   font-family: "Nunito Sans", sans-serif;
   transition: color 300ms ease-in-out 0s, background-color 300ms ease-in-out 0s, background-position 300ms ease-in-out 0s;
@@ -5249,7 +5249,7 @@ ul.products-grid {
 .products-grid .item:hover .item-inner .item-info .info-inner .action .button {
   background: rgb(190, 30, 45);
   color: #fff;
-  border: 1px rgb(190, 30, 45) solid;
+  border: 2px rgb(190, 30, 45) solid;
   transition: color 300ms ease-in-out 0s, background-color 300ms ease-in-out 0s, background-position 300ms ease-in-out 0s;
 }
 
@@ -6620,6 +6620,7 @@ a.button.detail-bnt span {
   z-index: 10;
   position: relative;
   float: right;
+  width: 100%;
 }
 
 .breadcrumbs a {

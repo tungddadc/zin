@@ -108,8 +108,8 @@ class STEVEN_Model extends CI_Model
 			$this->db->or_where_not_in("$this->table.id",$or_not_in);
 
         if (!empty($search)) {
-            $this->db->select('MATCH ('.$this->table_trans.'.title) AGAINST ('.$this->db->escape($search).' IN NATURAL LANGUAGE MODE) AS score_search');
-            $this->db->where('MATCH ('.$this->table_trans.'.title) AGAINST ('.$this->db->escape($search).' IN NATURAL LANGUAGE MODE)', NULL, FALSE);
+            $this->db->select('MATCH ('.$this->_dbprefix.$this->table_trans.'.title) AGAINST ('.$this->db->escape($search).' IN NATURAL LANGUAGE MODE) AS score_search');
+            $this->db->where('MATCH ('.$this->_dbprefix.$this->table_trans.'.title) AGAINST ('.$this->db->escape($search).' IN NATURAL LANGUAGE MODE)', NULL, FALSE);
             //$this->db->or_group_start();
             //$this->db->like('title', $search);
             //$this->db->or_like('description', $search);

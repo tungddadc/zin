@@ -101,8 +101,6 @@ if (!function_exists('getUrlTag')) {
 if (!function_exists('getUrlSearch')) {
     function getUrlSearch($keyword){
         $_this =& get_instance();
-        $_this->load->library('session');
-        $_this->load->helper('url');
         $slug = $_this->toSlug($keyword);
         $linkReturn = BASE_URL."search/$slug";
         return $linkReturn;
