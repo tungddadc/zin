@@ -92,18 +92,18 @@ class Category extends Admin_Controller
         $params = [
             'parent_id' => !empty($queryFilter['category_id']) ? $queryFilter['category_id'] : '',
             'type'      => $this->session->userdata('type'),
-            'page'      => $page,
-            'limit'     => $limit
+            'limit'     => 2000
         ];
         if(isset($queryFilter['is_status']) && $queryFilter['is_status'] !== '')
             $params = array_merge($params,['is_status' => $queryFilter['is_status']]);
 
-        $listData = $this->_data->getData($params);
+        $listAll = $this->_data->getData($params);
 
-        if(empty($this->input->post('parent_id'))){
-            $this->_queue($listData);
-            $listData = $this->category_tree;
-        }
+        $this->_queue($listAll);
+
+        $listData = $this->category_tree;
+        $offset = ($page-1)*$limit;
+        $listData = array_slice($listData,$offset,$limit);
 
         if(!empty($listData)) foreach ($listData as $category) {
             if(empty($queryFilter['category_id'])){
@@ -155,6 +155,7 @@ class Category extends Admin_Controller
         }else{
             $this->_queue_select($list);
             $listTree = $this->category_tree;
+
         }
         $output = [];
         if(!empty($listTree)) foreach ($listTree as $item) {

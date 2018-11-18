@@ -28,6 +28,20 @@ class Category_model extends STEVEN_Model
 
     }
 
+    public function recusive_parent(){
+        $sql = "SELECT tb1.id,parent_id,title,is_status,created_time,updated_time
+FROM st_category AS tb1
+JOIN st_category_translations AS tb2 ON tb1.id = tb2.id
+WHERE parent_id = 0 AND TYPE = 'product'
+UNION
+SELECT tb1.id,parent_id,CONCAT(\"|----\", title) AS title ,is_status,created_time,updated_time
+FROM st_category AS tb1
+JOIN st_category_translations AS tb2 ON tb1.id = tb2.id
+WHERE parent_id IN (SELECT id FROM st_category WHERE parent_id = 0)";
+        $query = $this->db->query($sql);
+        return $query->result();
+    }
+
     public function _all_category($type = ''){
         $data = '';
         $lang_code = $this->session->userdata('public_lang_code');

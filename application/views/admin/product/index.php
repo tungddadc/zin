@@ -245,7 +245,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                         <div class="form-group">
                                             <label>Sản phẩm cùng loại khác màu:</label>
                                             <div class="input-group">
-                                                <select name="product_related" class="form-control m-select2 product_related" style="width: 100%;"></select>
+                                                <select name="product_related[]" class="form-control m-select2 product_related" style="width: 100%;"></select>
                                             </div>
                                         </div>
                                         <div class="form-group">

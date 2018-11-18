@@ -138,7 +138,7 @@ $(function() {
                     showPriceAgency(response.data_detail);
                     loadCategory(response.data_category);
                     loadBrand(response.data_brand);
-                    loadProduct();(response.data_product_related);
+                    loadProduct(response.data_product_related);
 
                     FUNC.showGallery('#list-album',response.data_info.album);
                     modal_form.modal('show');
@@ -234,7 +234,7 @@ function loadProduct(dataSelected) {
     selector.select2({
         placeholder: 'Chọn sản phẩm',
         allowClear: !0,
-        multiple: !1,
+        multiple: !0,
         data: dataSelected,
         ajax: {
             url: url_ajax_load_product,

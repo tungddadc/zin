@@ -82,7 +82,7 @@ class Product extends Admin_Controller
         $id = $this->input->get('id')?$this->input->get('id'):0;
         $params = [
             'is_status'=> 1,
-            'not_in' => ['id' => $id],
+            'not_in' => [$id],
             'search' => $term,
             'limit'=> 10
         ];
