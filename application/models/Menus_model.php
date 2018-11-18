@@ -15,7 +15,7 @@ class Menus_model extends STEVEN_Model
         $this->table = 'menus';
     }
 
-    public function getMenu($location, $lang_code, $parent_id = 0,$clear_cache = false){
+    public function getMenu($location, $lang_code, $parent_id = 0,$clear_cache = TRUE){
         $data = '';
         $lang_code = $this->session->userdata('public_lang_code');
         if(CACHE_MODE == TRUE){
@@ -26,7 +26,7 @@ class Menus_model extends STEVEN_Model
             $this->db->select('*');
             $this->db->from($this->table);
             $this->db->where('location_id',$location);
-            $this->db->where('parent_id',$parent_id);
+            // $this->db->where('parent_id',$parent_id);
             $this->db->where('language_code',$lang_code);
             $query = $this->db->get();
             $data = $query->result_array();
@@ -50,8 +50,9 @@ class Menus_model extends STEVEN_Model
                     'link' => ($row['link'] === '/')?BASE_URL:($row['link'] === '#' ? $row['link'] : BASE_URL.$row['link']),
                     'level' => intval($row['parent_id']),
                     'parent' => intval($row['parent_id']));
-                unset($menu[$key]);
                 $this->listmenu($menu, $row['id']);
+                unset($menu[$key]);
+                
             }
         }
     }
