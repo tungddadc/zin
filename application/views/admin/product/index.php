@@ -97,7 +97,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
     </div>
 </div>
 
-<div class="modal fade" id="modal_form" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true" style="display: none;">
+<div class="modal fade" id="modal_form" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -243,6 +243,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                     </div>
                                     <div class="col-lg-6 col-12">
                                         <div class="form-group">
+                                            <label>Sản phẩm cùng loại khác màu:</label>
+                                            <div class="input-group">
+                                                <select name="product_related" class="form-control m-select2 product_related" style="width: 100%;"></select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
                                             <label for="thumbnail">Ảnh đại diện</label>
                                             <div class="input-group m-input-group m-input-group--air">
                                                 <div class="input-group-prepend">
@@ -284,5 +290,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 </div>
 <script type="text/javascript">
     var url_ajax_load_category = '<?php echo site_admin_url('category/ajax_load/' . $this->_controller) ?>',
-        url_ajax_load_brand = '<?php echo site_admin_url('category/ajax_load/brand') ?>';
+        url_ajax_load_brand = '<?php echo site_admin_url('category/ajax_load/brand') ?>',
+        url_ajax_load_product = '<?php echo site_admin_url('product/ajax_load') ?>';
 </script>
