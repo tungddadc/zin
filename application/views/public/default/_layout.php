@@ -82,6 +82,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
   <?php $asset_css[] = 'select2.min.css'; ?>
   <?php $asset_css[] = 'blogmate.css'; ?>
   <?php $asset_css[] = 'custom.css'; ?>
+  <?php $asset_css[] = 'menu.css'; ?>
 
   <?php
   $this->minify->css($asset_css);

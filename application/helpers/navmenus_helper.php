@@ -6,7 +6,7 @@ if (!function_exists('navMenuTop')) {
     }
 }
 if (!function_exists('navMenuMain')) {
-    function navMenuMain($classname = '', $id = '', $submenuclass = ''){
+    function navMenuMain($classname = '', $id = '', $submenuclass = 'sub-menu'){
 
         return menus(1, $classname, $id, $submenuclass);
     }
