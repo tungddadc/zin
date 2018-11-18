@@ -98,9 +98,7 @@ class Category extends Admin_Controller
             $params = array_merge($params,['is_status' => $queryFilter['is_status']]);
 
         $listAll = $this->_data->getData($params);
-
         $this->_queue($listAll);
-
         $listData = $this->category_tree;
         $offset = ($page-1)*$limit;
         $listData = array_slice($listData,$offset,$limit);
@@ -146,8 +144,8 @@ class Category extends Admin_Controller
             'type' => !(empty($type)) ? $type : null,
             'is_status'=> 1,
             'not_in' => ['id' => $id],
-            'search' => $term,
-            'limit'=> 1000
+
+            'limit'=> 2000
         ];
         $list = $this->_data->getData($params);
         if($type === 'brand'){
@@ -155,7 +153,16 @@ class Category extends Admin_Controller
         }else{
             $this->_queue_select($list);
             $listTree = $this->category_tree;
-
+            if(!empty($term)){
+                $searchword = $term;
+                $matches = array();
+                foreach($listTree as $k=>$v) {
+                    if(preg_match("/\b$searchword\b/i", $v['title'])) {
+                        $matches[$k] = $v;
+                    }
+                }
+                $listTree = $matches;
+            }
         }
         $output = [];
         if(!empty($listTree)) foreach ($listTree as $item) {
