@@ -64,7 +64,7 @@ class Category extends Admin_Controller
     }
 
     public function _queue_select($categories, $parent_id = 0, $char = ''){
-        foreach ($categories as $key => $item)
+        if(!empty($categories)) foreach ($categories as $key => $item)
         {
             if ($item->parent_id == $parent_id)
             {
@@ -92,19 +92,26 @@ class Category extends Admin_Controller
         $params = [
             'parent_id' => !empty($queryFilter['category_id']) ? $queryFilter['category_id'] : '',
             'type'      => $this->session->userdata('type'),
+            'search'    => !empty($queryFilter['generalSearch']) ? $queryFilter['generalSearch'] : '',
             'limit'     => 2000
         ];
         if(isset($queryFilter['is_status']) && $queryFilter['is_status'] !== '')
             $params = array_merge($params,['is_status' => $queryFilter['is_status']]);
 
         $listAll = $this->_data->getData($params);
-        $this->_queue($listAll);
-        $listData = $this->category_tree;
-        $offset = ($page-1)*$limit;
-        $listData = array_slice($listData,$offset,$limit);
+
+        if(empty($queryFilter)){
+            $this->_queue($listAll);
+            $listData = $this->category_tree;
+            $offset = ($page-1)*$limit;
+            if(!empty($listData))
+                $listData = array_slice($listData,$offset,$limit);
+        }else{
+            $listData = $listAll;
+        }
 
         if(!empty($listData)) foreach ($listData as $category) {
-            if(empty($queryFilter['category_id'])){
+            if(empty($queryFilter)){
                 $item = $category['value'];
                 $title = $category['title'];
             }else{

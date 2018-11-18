@@ -206,3 +206,10 @@ header .our-features-box li {
 .phantrang .pagination{
     border-radius: 0;
 }
+.panel-danger {
+    border-color: #be1e2d;
+}
+.panel-danger>.panel-heading{
+    color: #be1e2d;
+    background-color: #ffffff;
+}
