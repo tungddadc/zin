@@ -65,7 +65,7 @@ class Voucher extends Admin_Controller
     $queryFilter = $this->input->post('query');
     $params = [
       'page' => $page,
-      'limit' => $limit
+      'limit' => $limit,
     ];
     if (isset($queryFilter['is_status']) && $queryFilter['is_status'] !== '')
       $params = array_merge($params, ['is_status' => $queryFilter['is_status']]);
