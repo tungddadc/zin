@@ -141,7 +141,7 @@ var SEO = {
     },
     init_slug: function(){
         $.each(lang_cnf, function( code, name ) {
-            let elementTitle = $('input[name="language['+code+'][title]"]');
+            let elementTitle = $('input[name="language['+code+'][meta_title]"]');
             let elementSlug = $('input[name="language['+code+'][slug]"]');
             elementTitle.on('paste', function (e) {
                 setTimeout(function () {
