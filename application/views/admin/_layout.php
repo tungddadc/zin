@@ -39,7 +39,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     <link href="<?php echo $this->templates_assets ?>css/custom.css" rel="stylesheet" type="text/css" />
 
     <!--end::Base Styles -->
-    <link rel="shortcut icon" href="<?php echo site_url() ?>favicon.ico" />
+    <link rel="shortcut icon" href="<?php echo site_url('public/favicon.ico') ?>" />
 </head>
 <!-- end::Head -->
 

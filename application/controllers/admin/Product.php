@@ -161,11 +161,11 @@ class Product extends Admin_Controller
             $output['data_detail'] = $this->_data->getDetail($id);
             if(!empty($oneItem->data_related)){
                 $idRelated = json_decode($oneItem->data_related);
-                $output['data_related'] = $this->_data->getData(['in' => $idRelated,'limit'=>20]);
+                $output['data_related'] = $this->_data->getSelect2($idRelated);
             }
             if(!empty($oneItem->data_similar)){
                 $idSimilar = json_decode($oneItem->data_similar);
-                $output['data_similar'] = $this->_data->getData(['in' => $idSimilar,'limit'=>20]);
+                $output['data_similar'] = $this->_data->getSelect2($idSimilar);
             }
             $this->returnJson($output);
         }
