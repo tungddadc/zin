@@ -15,11 +15,11 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
         <div class="container">
             <div class="row">
                 <!-- Header Language -->
-                <div class="col-xs-12 col-sm-4 col-md-5 col-lg-5 pull-left">
+                <div class="col-xs-12 col-sm-2 col-md-4 col-lg-5 pull-left">
                     <div class="welcome-msg">Đặt hàng online gọi <?php echo $this->settings['hotline'] ?></div>
                 </div>
                 <!-- Header Top Links -->
-                <div class="col-xs-12 col-sm-8 col-md-7 col-lg-7 pull-right hidden-xs">
+                <div class="col-xs-12 col-sm-10 col-md-8  col-lg-7 pull-right hidden-xs">
                     <div class="toplinks">
                         <div class="links">
                             <?php if ($this->session->userdata('is_logged')): ?>
@@ -139,7 +139,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                         <div class="basket dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
                             <a href="<?php echo base_url('cart') ?>"><span class="price hidden-xs">Giỏ hàng</span>
                                 <span class="cart_count hidden-xs"><?php echo $this->cart->total_items() ?>
-                                    sản phẩm/ <?php echo formatMoney($this->cart->total()) ?></span>
+                                    sản phẩm/ <?php echo number_format($this->cart->total(),0,',','.') ?>đ</span>
                             </a>
                         </div>
                         <div class="k_list_cart">
@@ -160,7 +160,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     </div>
     <nav class="hidden-xs">
         <div class="nav-container">
-            <div class="col-md-3 col-xs-12 col-sm-3">
+            <div class="col-md-3 col-xs-12 col-sm-3 hidden-sm">
                 <div class="mega-container visible-lg visible-md visible-sm">
                     <div class="navleft-container">
                         <div class="mega-menu-title">
@@ -197,7 +197,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
             <!-- features box -->
             <div class="our-features-box hidden-xs">
                 <div class="features-block">
-                    <div class="col-lg-9 col-md-9 col-xs-12 col-sm-9 offer-block">
+                    <div class="col-lg-9 col-md-9 col-xs-12 col-sm-12 offer-block">
                         <?php echo navMenuMain() ?>
                     </div>
                 </div>

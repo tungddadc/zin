@@ -149,27 +149,27 @@ switch ($this->_controller) {
     <ul class="links">
       <?php if ($this->session->userdata('is_logged')): ?>
         <li>
-          <a title="Tài khoản" href="<?php echo base_url('account') ?>">
+          <a title="Tài khoản" href="<?php echo base_url('auth') ?>">
             <span class="hidden-xs">Tài khoản</span>
           </a>
         </li>
       <?php else: ?>
         <li>
-          <a href="<?php echo base_url('account/window/Facebook') ?>" title="Đăng nhập Facebook"
+          <a href="<?php echo base_url('auth/window/Facebook') ?>" title="Đăng nhập Facebook"
              class="btn btn-block btn-social btn-facebook">
             <span class="fa fa-facebook"></span>
             Đăng nhập Facebook
           </a>
         </li>
         <li>
-          <a href="<?php echo base_url('account/window/Google') ?>" title="Đăng nhập Google"
+          <a href="<?php echo base_url('auth/window/Google') ?>" title="Đăng nhập Google"
              class="btn btn-block btn-social btn-google">
             <span class="fa fa-google-plus"></span>
             Đăng nhập Google
           </a>
         </li>
         <li>
-          <a href="<?php echo base_url('account/login_zalo') ?>" title="Đăng nhập Zalo"
+          <a href="https://oauth.zaloapp.com/v3/auth?app_id=<?php echo ZALO_APP_ID_CFG ?>&redirect_uri=<?php echo urlencode(ZALO_CAL_BACK) ?>" title="Đăng nhập Zalo"
              class="btn btn-block btn-social btn-zalo">
             <span class="fa fa-zalo"></span>
             Đăng nhập Zalo

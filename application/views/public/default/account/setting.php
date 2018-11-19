@@ -82,8 +82,8 @@
                                     <div class="content-left">
                                         <span>Tài khoản xã hội</span>
                                         <div class="social">
-                                            <a href="<?php echo base_url('account/window/Facebook') ?>" title="Login Facebook"><i class="social_facebook_circle"></i></a>
-                                            <a href="<?php echo base_url('account/window/Google') ?>" title="Login Facebook"><i class="social_googleplus_circle"></i></a>
+                                            <a href="<?php echo base_url('auth/window/Facebook') ?>" title="Login Facebook"><i class="social_facebook_circle"></i></a>
+                                            <a href="<?php echo base_url('auth/window/Google') ?>" title="Login Facebook"><i class="social_googleplus_circle"></i></a>
                                         </div>
                                     </div>
                                     <a href="javascript:;" title="Chỉnh sửa" class="btn-edit btn-toggle-content">Chỉnh sửa <i class="lnr lnr-chevron-down" aria-hidden="true"></i></a>
