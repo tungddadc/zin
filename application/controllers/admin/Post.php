@@ -208,7 +208,7 @@ class Post extends Admin_Controller
                     [
                         'field' => "language[$lang_code][title]",
                         'label' => "Tiêu đề ($lang_name)",
-                        'rules' => "trim|required|min_length[2]|max_length[{$this->config->item('SEO_title_maxlength')}]"
+                        'rules' => "trim|required|min_length[2]"
                     ],[
                         'field' => "language[$lang_code][slug]",
                         'label' => "Đường dẫn ($lang_name)",

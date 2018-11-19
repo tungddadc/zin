@@ -65,7 +65,8 @@ $(function() {
     AJAX_DATATABLES.init();
     loadCategory();
     loadBrand();
-    loadProduct();
+    loadProductRelated();
+    loadProductSimilar();
     AJAX_CRUD_MODAL.init();
     AJAX_CRUD_MODAL.tinymce();
     SEO.init_slug();
@@ -138,7 +139,8 @@ $(function() {
                     showPriceAgency(response.data_detail);
                     loadCategory(response.data_category);
                     loadBrand(response.data_brand);
-                    loadProduct(response.data_product_related);
+                    loadProductRelated(response.data_related);
+                    loadProductSimilar(response.data_similar);
 
                     FUNC.showGallery('#list-album',response.data_info.album);
                     modal_form.modal('show');
@@ -229,8 +231,39 @@ function loadBrand(dataSelected) {
     if (typeof dataSelected !== 'undefined') selector.find('> option').prop("selected", "selected").trigger("change");
 }
 
-function loadProduct(dataSelected) {
-    let selector = $('select.product_related');
+function loadProductRelated(dataSelected) {
+    let selector = $('select[name="data_related"]');
+    selector.select2({
+        placeholder: 'Chọn sản phẩm',
+        allowClear: !0,
+        multiple: !0,
+        data: dataSelected,
+        ajax: {
+            url: url_ajax_load_product,
+            dataType: 'json',
+            delay: 250,
+            data: function(e) {
+                return {
+                    q: e.term,
+                    page: e.page
+                }
+            },
+            processResults: function(e, t) {
+                return t.page = t.page || 1, {
+                    results: e,
+                    pagination: {
+                        more: 30 * t.page < e.total_count
+                    }
+                }
+            },
+            cache: !0
+        }
+    });
+    if (typeof dataSelected !== 'undefined') selector.find('> option').prop("selected", "selected").trigger("change");
+}
+
+function loadProductSimilar(dataSelected) {
+    let selector = $('select[name="data_similar"]');
     selector.select2({
         placeholder: 'Chọn sản phẩm',
         allowClear: !0,

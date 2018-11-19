@@ -155,10 +155,14 @@ class Product extends Admin_Controller
         $this->checkRequestPostAjax();
         $id = $this->input->post('id');
         if(!empty($id)){
-            $output['data_info'] = $this->_data->single(['id' => $id],$this->_data->table);
+            $output['data_info'] = $oneItem = $this->_data->single(['id' => $id],$this->_data->table);
             $output['data_language'] = $this->_data->getDataAll(['id' => $id],$this->_data->table_trans);
             $output['data_category'] = $this->_data->getSelect2Category($id, $this->session->userdata('admin_lang'));
             $output['data_detail'] = $this->_data->getDetail($id);
+            if(!empty($oneItem->data_related)){
+                $idRelated = json_decode($oneItem->data_related);
+                $output['data_related'] = $this->_data->getData(['in' => $idRelated,'limit'=>20]);
+            }
             $this->returnJson($output);
         }
     }
@@ -226,7 +230,7 @@ class Product extends Admin_Controller
                     [
                         'field' => "language[$lang_code][title]",
                         'label' => "Tiêu đề ($lang_name)",
-                        'rules' => "trim|required|min_length[2]|max_length[{$this->config->item('SEO_title_maxlength')}]"
+                        'rules' => "trim|required|min_length[2]"
                     ],[
                         'field' => "language[$lang_code][slug]",
                         'label' => "Đường dẫn ($lang_name)",
@@ -273,6 +277,9 @@ class Product extends Admin_Controller
         if(!empty($data['is_featured'])) $data['is_featured'] = 1;else $data['is_featured'] = 0;
         if(!empty($data['album'])) {
             $data['album'] = json_encode($data['album']);
+        }
+        if(!empty($data['data_related'])) {
+            $data['data_related'] = json_encode($data['data_related']);
         }
         return $data;
     }
