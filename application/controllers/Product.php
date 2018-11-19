@@ -285,20 +285,17 @@ class Product extends Public_Controller
             $data['data_related'] = $this->_data->getData(['in' => $listIdRelated,'limit' => 5]);
         }
 
-        $data['data_related'] = $this->_data->getDetail($id);
         $data['oneBrand'] = $this->_data_category->getByIdCached((int)$oneItem->brand);
         $this->load->model('vote_model');
         $voteModel = new Vote_model();
         $data['data_vote'] = $voteModel->getVoteById($id);
 
         /*List product related*/
-        $this->_data_category->_recursive_child_id($this->_data_category->_all_category(),$oneCategoryParent->id);
-        $listCateId = $this->_data_category->_list_category_child_id;
         $params['is_status'] = 1;
         $params['lang_code'] = $this->_lang_code;
         $params['not_in'] = $id;
+        $params['brand_id'] = $oneItem->brand;
         $params['limit'] = 8;
-        $params['category_id'] = $listCateId;
         $data['listProductBrand'] = $this->_data->getData($params);
         /*List product related*/
 

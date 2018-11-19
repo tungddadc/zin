@@ -245,3 +245,13 @@ header .our-features-box li {
 .nav-tabs > li > a:hover{
     background-color: rgb(251, 175, 63);
 }
+.accessories .item a{
+    display: flex;
+    display: -moz-flex;
+    display: -webkit-flex;
+}
+
+.accessories .item a h2{
+    font-size: 14px;
+    padding-left: 10px;
+}

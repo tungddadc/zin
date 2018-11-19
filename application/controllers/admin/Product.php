@@ -246,7 +246,7 @@ class Product extends Admin_Controller
                     ],[
                         'field' => "language[$lang_code][meta_title]",
                         'label' => "Tiêu đề SEO ($lang_name)",
-                        'rules' => "trim|required|min_length[2]|max_length[{$this->config->item('SEO_title_maxlength')}]"
+                        'rules' => "trim|required|min_length[2]"
                     ],[
                         'field' => "language[$lang_code][meta_description]",
                         'label' => "Mô tả SEO ($lang_name)",
@@ -281,6 +281,9 @@ class Product extends Admin_Controller
         if(!empty($data['is_featured'])) $data['is_featured'] = 1;else $data['is_featured'] = 0;
         if(!empty($data['album'])) {
             $data['album'] = json_encode($data['album']);
+        }
+        if(!empty($data['data_similar'])) {
+            $data['data_similar'] = json_encode($data['data_similar']);
         }
         if(!empty($data['data_related'])) {
             $data['data_related'] = json_encode($data['data_related']);

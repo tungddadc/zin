@@ -207,7 +207,7 @@
                                     <?php $this->load->view($this->template_path . 'product/_box_features') ?>
                                 </div>
                             </div>
-                            <?php if(!empty($data_related)): ?>
+                            <?php if(!empty($data_related)): $totalItem = count($data_related) ?>
                             <div class="row accessories">
                                 <div class="col-lg-12 col-sm-12 col-xs-12">
                                     <div class="panel panel-danger">
@@ -216,9 +216,10 @@
                                         </div>
                                         <div class="panel-body">
                                             <?php foreach ($data_related as $item): ?>
-                                                <div class="col-sm-3 col-xs-6 item">
+                                                <div class="col-sm-<?php echo $totalItem%5 == 0 ? 3 : 3 ?> col-xs-6 item">
                                                     <a href="<?php echo getUrlProduct($item) ?>" title="<?php echo getTitle($item) ?>">
                                                         <img src="<?php echo getImageThumb($item->thumbnail,100,100) ?>" alt="<?php echo getTitle($item) ?>" class="img-thumbnail">
+                                                        <h2><?php echo $item->title ?></h2>
                                                     </a>
                                                 </div>
                                             <?php endforeach; ?>

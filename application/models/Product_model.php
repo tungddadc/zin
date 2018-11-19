@@ -41,6 +41,10 @@ class Product_model extends STEVEN_Model
             $this->db->where_in("$this->table_category.category_id",$category_id);
         }
 
+        if(!empty($brand_id)){
+            $this->db->where("$this->table.brand",$brand_id);
+        }
+
         /*Sắp xếp trường đặc biệt*/
         if(!empty($order['price_sort'])){
             $this->db->order_by('price_sort',$order['price_sort']);
