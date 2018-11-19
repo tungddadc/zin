@@ -18,23 +18,14 @@ class Setting extends Admin_Controller {
         $data['list_db'] = $this->get_list_db();
         $dataPost = $this->input->post();
         if (!empty($dataPost)){
-            $data_store = array();
-            if(!empty($this->input->post())){
-                foreach ($dataPost as $k=>$item) {
-                    $data_store[$k] = !empty($item)? $item :"";
-                }
+            if(file_put_contents(FCPATH.'config'.DIRECTORY_SEPARATOR.'settings.cfg',json_encode($dataPost))) {
+                $message['type'] = "success";
+                $message['message'] = "Cập nhật thành công !";
+            }else{
+                $message['type'] = 'error';
+                $message['message'] = "Cập nhật thất bại !";
             }
-            $data_store['updated_time'] = date('Y-m-d H:i:s');
-            if(!empty($data_store)){
-                if(file_put_contents(FCPATH.'config'.DIRECTORY_SEPARATOR.'settings.cfg',json_encode($data_store))) {
-                    $message['type'] = "success";
-                    $message['message'] = "Cập nhật thành công !";
-                }else{
-                    $message['type'] = 'error';
-                    $message['message'] = "Cập nhật thất bại !";
-                }
-                $this->returnJson($message);
-            }
+            $this->returnJson($message);
         }
         //$data['path1'] = glob(FCPATH.'application/views/templates/*',GLOB_ONLYDIR);
         $data['main_content'] = $this->load->view($this->template_path . $this->_controller . DIRECTORY_SEPARATOR . 'index', $data, TRUE);

@@ -276,6 +276,16 @@ class Product extends Public_Controller
         $data['onePrev'] = $this->_data->getPrevById($oneItem->id,'',$this->_lang_code);
         $data['oneNext'] = $this->_data->getNextById($oneItem->id,'',$this->_lang_code);
         $data['data_detail'] = $this->_data->getDetail($id);
+        if(!empty($oneItem->data_similar)){
+            $listIdSimilar = json_decode($oneItem->data_similar);
+            $data['data_similar'] = $this->_data->getData(['in' => $listIdSimilar,'limit' => 5]);
+        }
+        if(!empty($oneItem->data_related)){
+            $listIdRelated = json_decode($oneItem->data_related);
+            $data['data_related'] = $this->_data->getData(['in' => $listIdRelated,'limit' => 5]);
+        }
+
+        $data['data_related'] = $this->_data->getDetail($id);
         $data['oneBrand'] = $this->_data_category->getByIdCached((int)$oneItem->brand);
         $this->load->model('vote_model');
         $voteModel = new Vote_model();

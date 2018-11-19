@@ -1,8 +1,6 @@
 <?php if (!empty($oneItem)):
     $url = getUrlProduct($oneItem);
     $album = !empty($oneItem->album) ? json_decode($oneItem->album) : null;
-    $data_similar = !empty($oneItem->data_similar) ? json_decode($oneItem->data_similar) : null;
-    $data_related = !empty($oneItem->data_related) ? json_decode($oneItem->data_related) : null;
     ?>
     <!-- Main Container -->
     <section class="main-container col1-layout">
@@ -157,37 +155,41 @@
                                         </div>
                                     </div>
                                     <?php echo form_close() ?>
+                                    <?php if(!empty($data_similar)): ?>
                                     <div class="buy-more">
                                         <div class="panel panel-danger">
                                             <div class="panel-heading panel-danger">
                                                 <h4 class="panel-title">Sản phẩm cùng loại khác màu</h4>
                                             </div>
                                             <div class="panel-body">
-                                                <div class="add-to-box">
-                                                    <div class="add-to-cart">
-                                                        <div class="pull-left">
-                                                            <div class="custom pull-left"><span class="qty-label">Số lượng:</span>
-                                                                <button onClick="let result = document.getElementById('quantity_1'); let qty = result.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 0 ) result.value--;return false;"
-                                                                        class="reduced items-count <?php echo $this->session->userdata('is_agency') == true ? 'is-agency' : ''  ?>" type="button"><i
-                                                                            class="fa fa-minus">&nbsp;</i></button>
-                                                                <input type="text" class="input-text qty" title="Qty"
-                                                                       value="1"
-                                                                       maxlength="12" id="quantity_1" name="qty">
-                                                                <button onClick="let result = document.getElementById('quantity_1'); let qty = result.value; if( !isNaN( qty )) result.value++;return false;"
-                                                                        class="increase items-count <?php echo $this->session->userdata('is_agency') == true ? 'is-agency' : ''  ?>" type="button"><i
-                                                                            class="fa fa-plus">&nbsp;</i></button>
+                                                <?php foreach ($data_similar as $item): ?>
+                                                    <div class="add-to-box">
+                                                        <div class="add-to-cart">
+                                                            <div class="row">
+                                                                <div class="col-sm-3">
+                                                                    <img src="<?php echo getImageThumb($item->thumbnail,75,75,true) ?>" alt="<?php echo getTitle($item) ?>">
+                                                                </div>
+                                                                <div class="col-sm-9">
+                                                                    <h2><a href="<?php echo getUrlProduct($item) ?>" title="<?php echo getTitle($item) ?>"><?php echo $item->title ?></a> </h2>
+                                                                    <div class="custom pull-left">
+                                                                        <button onClick="CART.quantity_reduced(this)" class="reduced items-count <?php echo $this->session->userdata('is_agency') == true ? 'is-agency' : ''  ?>" type="button">
+                                                                            <i class="fa fa-minus">&nbsp;</i>
+                                                                        </button>
+                                                                        <input onkeyup="CART.changeInputQuantity(this)" type="text" class="input-text qty" title="Số lượng" value="1" maxlength="<?php echo $item->quantity ?>" name="quantity">
+                                                                        <button onClick="CART.quantity_increase(this)" class="increase items-count <?php echo $this->session->userdata('is_agency') == true ? 'is-agency' : ''  ?>" type="button">
+                                                                            <i class="fa fa-plus">&nbsp;</i>
+                                                                        </button>
+                                                                        <button onclick="CART.add_more(<?php echo $item->id ?>,this)" class="button btn-cart pull-right" title="Thêm vào giỏ hàng" type="submit">Thêm vào giỏ</button>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                        <button class="button btn-cart pull-right"
-                                                                title="Thêm vào giỏ hàng" type="submit">Thêm
-                                                            vào giỏ
-                                                        </button>
                                                     </div>
-
-                                                </div>
+                                                <?php endforeach; ?>
                                             </div>
                                         </div>
                                     </div>
+                                    <?php endif; ?>
                                     <!--<div class="short-description">
                                         <h2>Khuyến mãi</h2>
                                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue
@@ -205,41 +207,26 @@
                                     <?php $this->load->view($this->template_path . 'product/_box_features') ?>
                                 </div>
                             </div>
+                            <?php if(!empty($data_related)): ?>
                             <div class="row accessories">
                                 <div class="col-lg-12 col-sm-12 col-xs-12">
                                     <div class="panel panel-danger">
                                         <div class="panel-heading">
-                                            <h4 class="panel-title">Linh kiện cùng đời máy</h4>
+                                            <h2 class="panel-title">Linh kiện cùng đời máy</h2>
                                         </div>
                                         <div class="panel-body">
-                                            <div class="col-sm-3 col-xs-6 item"><a href="" title=""><img
-                                                            src="<?php echo getImageThumb() ?>" alt=""
-                                                            class="img-thumbnail"></a></div>
-                                            <div class="col-sm-3 col-xs-6 item"><a href="" title=""><img
-                                                            src="<?php echo getImageThumb() ?>" alt=""
-                                                            class="img-thumbnail"></a></div>
-                                            <div class="col-sm-3 col-xs-6 item"><a href="" title=""><img
-                                                            src="<?php echo getImageThumb() ?>" alt=""
-                                                            class="img-thumbnail"></a></div>
-                                            <div class="col-sm-3 col-xs-6 item"><a href="" title=""><img
-                                                            src="<?php echo getImageThumb() ?>" alt=""
-                                                            class="img-thumbnail"></a></div>
-                                            <div class="col-sm-3 col-xs-6 item"><a href="" title=""><img
-                                                            src="<?php echo getImageThumb() ?>" alt=""
-                                                            class="img-thumbnail"></a></div>
-                                            <div class="col-sm-3 col-xs-6 item"><a href="" title=""><img
-                                                            src="<?php echo getImageThumb() ?>" alt=""
-                                                            class="img-thumbnail"></a></div>
-                                            <div class="col-sm-3 col-xs-6 item"><a href="" title=""><img
-                                                            src="<?php echo getImageThumb() ?>" alt=""
-                                                            class="img-thumbnail"></a></div>
-                                            <div class="col-sm-3 col-xs-6 item"><a href="" title=""><img
-                                                            src="<?php echo getImageThumb() ?>" alt=""
-                                                            class="img-thumbnail"></a></div>
+                                            <?php foreach ($data_related as $item): ?>
+                                                <div class="col-sm-3 col-xs-6 item">
+                                                    <a href="<?php echo getUrlProduct($item) ?>" title="<?php echo getTitle($item) ?>">
+                                                        <img src="<?php echo getImageThumb($item->thumbnail,100,100) ?>" alt="<?php echo getTitle($item) ?>" class="img-thumbnail">
+                                                    </a>
+                                                </div>
+                                            <?php endforeach; ?>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <?php endif; ?>
                             <div class="row">
                                 <div class="col-sm-6 col-xs-12">
                                     <div class="product-collateral">
@@ -365,172 +352,24 @@
                                     <div class="product-collateral">
                                         <div class="add_info">
                                             <ul id="tab_infomation" class="nav nav-tabs product-tabs">
-                                                <li class="active"><a href="#tab_warranty" data-toggle="tab">Thông tin
-                                                        bảo hành </a></li>
+                                                <li class="active"><a href="#tab_warranty" data-toggle="tab">Thông tin bảo hành </a></li>
                                                 <li><a href="#tab_return" data-toggle="tab">Quy định đổi trả</a></li>
                                                 <li><a href="#tab_bank" data-toggle="tab">Tài khoản ngân hàng</a></li>
                                             </ul>
                                             <div class="tab-content">
                                                 <div class="tab-pane fade in active" id="tab_warranty">
                                                     <div class="std">
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-                                                            fringilla augue nec est tristique auctor. Donec non est at
-                                                            libero
-                                                            vulputate rutrum. Morbi ornare lectus quis justo gravida
-                                                            semper.
-                                                            Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id
-                                                            nulla.
-                                                            Donec a neque libero. Pellentesque aliquet, sem eget laoreet
-                                                            ultrices, ipsum metus feugiat sem, quis fermentum turpis
-                                                            eros eget
-                                                            velit. Donec ac tempus ante. Fusce ultricies massa massa.
-                                                            Fusce
-                                                            aliquam, purus eget sagittis vulputate, sapien libero
-                                                            hendrerit est,
-                                                            sed commodo augue nisi non neque. Lorem ipsum dolor sit
-                                                            amet,
-                                                            consectetur adipiscing elit. Sed tempor, lorem et placerat
-                                                            vestibulum, metus nisi posuere nisl, in accumsan elit odio
-                                                            quis mi.
-                                                            Cras neque metus, consequat et blandit et, luctus a nunc.
-                                                            Etiam
-                                                            gravida vehicula tellus, in imperdiet ligula euismod eget.
-                                                            Pellentesque habitant morbi tristique senectus et netus et
-                                                            malesuada
-                                                            fames ac turpis egestas. Nam erat mi, rutrum at sollicitudin
-                                                            rhoncus, ultricies posuere erat. Duis convallis, arcu nec
-                                                            aliquam
-                                                            consequat, purus felis vehicula felis, a dapibus enim lorem
-                                                            nec
-                                                            augue.</p>
-                                                        <p> Nunc facilisis sagittis ullamcorper. Proin lectus ipsum,
-                                                            gravida et
-                                                            mattis vulputate, tristique ut lectus. Sed et lorem nunc.
-                                                            Vestibulum
-                                                            ante ipsum primis in faucibus orci luctus et ultrices
-                                                            posuere
-                                                            cubilia Curae; Aenean eleifend laoreet congue. Vivamus
-                                                            adipiscing
-                                                            nisl ut dolor dignissim semper. Nulla luctus malesuada
-                                                            tincidunt.
-                                                            Class aptent taciti sociosqu ad litora torquent per conubia
-                                                            nostra,
-                                                            per inceptos himenaeos. Integer enim purus, posuere at
-                                                            ultricies eu,
-                                                            placerat a felis. Suspendisse aliquet urna pretium eros
-                                                            convallis
-                                                            interdum. Quisque in arcu id dui vulputate mollis eget non
-                                                            arcu.
-                                                            Aenean et nulla purus. Mauris vel tellus non nunc mattis
-                                                            lobortis.</p>
+                                                        <?php echo !empty($this->settings['block']['warranty']) ? $this->settings['block']['warranty'] : '' ?>
                                                     </div>
                                                 </div>
                                                 <div class="tab-pane fade" id="tab_return">
                                                     <div class="std">
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-                                                            fringilla augue nec est tristique auctor. Donec non est at
-                                                            libero
-                                                            vulputate rutrum. Morbi ornare lectus quis justo gravida
-                                                            semper.
-                                                            Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id
-                                                            nulla.
-                                                            Donec a neque libero. Pellentesque aliquet, sem eget laoreet
-                                                            ultrices, ipsum metus feugiat sem, quis fermentum turpis
-                                                            eros eget
-                                                            velit. Donec ac tempus ante. Fusce ultricies massa massa.
-                                                            Fusce
-                                                            aliquam, purus eget sagittis vulputate, sapien libero
-                                                            hendrerit est,
-                                                            sed commodo augue nisi non neque. Lorem ipsum dolor sit
-                                                            amet,
-                                                            consectetur adipiscing elit. Sed tempor, lorem et placerat
-                                                            vestibulum, metus nisi posuere nisl, in accumsan elit odio
-                                                            quis mi.
-                                                            Cras neque metus, consequat et blandit et, luctus a nunc.
-                                                            Etiam
-                                                            gravida vehicula tellus, in imperdiet ligula euismod eget.
-                                                            Pellentesque habitant morbi tristique senectus et netus et
-                                                            malesuada
-                                                            fames ac turpis egestas. Nam erat mi, rutrum at sollicitudin
-                                                            rhoncus, ultricies posuere erat. Duis convallis, arcu nec
-                                                            aliquam
-                                                            consequat, purus felis vehicula felis, a dapibus enim lorem
-                                                            nec
-                                                            augue.</p>
-                                                        <p> Nunc facilisis sagittis ullamcorper. Proin lectus ipsum,
-                                                            gravida et
-                                                            mattis vulputate, tristique ut lectus. Sed et lorem nunc.
-                                                            Vestibulum
-                                                            ante ipsum primis in faucibus orci luctus et ultrices
-                                                            posuere
-                                                            cubilia Curae; Aenean eleifend laoreet congue. Vivamus
-                                                            adipiscing
-                                                            nisl ut dolor dignissim semper. Nulla luctus malesuada
-                                                            tincidunt.
-                                                            Class aptent taciti sociosqu ad litora torquent per conubia
-                                                            nostra,
-                                                            per inceptos himenaeos. Integer enim purus, posuere at
-                                                            ultricies eu,
-                                                            placerat a felis. Suspendisse aliquet urna pretium eros
-                                                            convallis
-                                                            interdum. Quisque in arcu id dui vulputate mollis eget non
-                                                            arcu.
-                                                            Aenean et nulla purus. Mauris vel tellus non nunc mattis
-                                                            lobortis.</p>
+                                                        <?php echo !empty($this->settings['block']['return']) ? $this->settings['block']['return'] : '' ?>
                                                     </div>
                                                 </div>
                                                 <div class="tab-pane fade" id="tab_bank">
                                                     <div class="std">
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-                                                            fringilla augue nec est tristique auctor. Donec non est at
-                                                            libero
-                                                            vulputate rutrum. Morbi ornare lectus quis justo gravida
-                                                            semper.
-                                                            Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id
-                                                            nulla.
-                                                            Donec a neque libero. Pellentesque aliquet, sem eget laoreet
-                                                            ultrices, ipsum metus feugiat sem, quis fermentum turpis
-                                                            eros eget
-                                                            velit. Donec ac tempus ante. Fusce ultricies massa massa.
-                                                            Fusce
-                                                            aliquam, purus eget sagittis vulputate, sapien libero
-                                                            hendrerit est,
-                                                            sed commodo augue nisi non neque. Lorem ipsum dolor sit
-                                                            amet,
-                                                            consectetur adipiscing elit. Sed tempor, lorem et placerat
-                                                            vestibulum, metus nisi posuere nisl, in accumsan elit odio
-                                                            quis mi.
-                                                            Cras neque metus, consequat et blandit et, luctus a nunc.
-                                                            Etiam
-                                                            gravida vehicula tellus, in imperdiet ligula euismod eget.
-                                                            Pellentesque habitant morbi tristique senectus et netus et
-                                                            malesuada
-                                                            fames ac turpis egestas. Nam erat mi, rutrum at sollicitudin
-                                                            rhoncus, ultricies posuere erat. Duis convallis, arcu nec
-                                                            aliquam
-                                                            consequat, purus felis vehicula felis, a dapibus enim lorem
-                                                            nec
-                                                            augue.</p>
-                                                        <p> Nunc facilisis sagittis ullamcorper. Proin lectus ipsum,
-                                                            gravida et
-                                                            mattis vulputate, tristique ut lectus. Sed et lorem nunc.
-                                                            Vestibulum
-                                                            ante ipsum primis in faucibus orci luctus et ultrices
-                                                            posuere
-                                                            cubilia Curae; Aenean eleifend laoreet congue. Vivamus
-                                                            adipiscing
-                                                            nisl ut dolor dignissim semper. Nulla luctus malesuada
-                                                            tincidunt.
-                                                            Class aptent taciti sociosqu ad litora torquent per conubia
-                                                            nostra,
-                                                            per inceptos himenaeos. Integer enim purus, posuere at
-                                                            ultricies eu,
-                                                            placerat a felis. Suspendisse aliquet urna pretium eros
-                                                            convallis
-                                                            interdum. Quisque in arcu id dui vulputate mollis eget non
-                                                            arcu.
-                                                            Aenean et nulla purus. Mauris vel tellus non nunc mattis
-                                                            lobortis.</p>
+                                                        <?php echo !empty($this->settings['block']['bank']) ? $this->settings['block']['bank'] : '' ?>
                                                     </div>
                                                 </div>
                                             </div>

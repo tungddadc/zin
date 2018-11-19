@@ -173,6 +173,22 @@ var CART = {
         });
         return false;
     },
+    add_more: function (id,_this) {
+        let quantity = $(_this).closest('.custom').find('input[name="quantity"]').val();
+        $.ajax({
+            type: 'POST',
+            url: base_url + 'cart/add',
+            data: {product_id: id,quantity:quantity},
+            dataType: 'JSON',
+            success: function (response) {
+                if (typeof response.type !== 'undefined') {
+                    CART.updateCountHeader();
+                    toastr[response.type](response.message);
+                }
+            }
+        });
+        return false;
+    },
     delete: function (_this, id) {
         $.ajax({
             type: 'POST',

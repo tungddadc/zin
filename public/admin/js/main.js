@@ -541,6 +541,13 @@ var FUNC = {
     },
     ajaxShowRequest: function (formData, jqForm, options) {
         jqForm.find('[type="submit"]').append('<i class="fa fa-spinner fa-spin ml-2" style="font-size:24px;color: #ffffff;"></i>');
+        if(tinyMCE.editors.length > 0){
+            for (let j = 0; j < tinyMCE.editors.length; j++){
+                let idInput = tinyMCE.editors[j].id;
+                let content = tinymce.get(idInput).getContent();
+                $('[name="'+idInput+'"]').val(content);
+            }
+        }
         //let queryString = $.param(formData);
         return true;
     },

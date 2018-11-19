@@ -48,18 +48,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                     Mạng xã hội
                                 </a>
                             </li>
-                            <!--<li class="nav-item m-tabs__item">
+                            <li class="nav-item m-tabs__item">
                                 <a class="nav-link m-tabs__link" data-toggle="tab" href="#tab_block" role="tab" aria-selected="false">
                                     <i class="la la-bookmark"></i>
                                     Tùy chỉnh block
                                 </a>
-                            </li>-->
-                            <li class="nav-item m-tabs__item">
+                            </li>
+                            <!--<li class="nav-item m-tabs__item">
                                 <a class="nav-link m-tabs__link" data-toggle="tab" href="#tab_popup" role="tab" aria-selected="false">
                                     <i class="la la-picture-o"></i>
                                     Popup
                                 </a>
-                            </li>
+                            </li>-->
                             <li class="nav-item m-tabs__item">
                                 <a class="nav-link m-tabs__link" data-toggle="tab" href="#tab_system" role="tab" aria-selected="false">
                                     <i class="la la-cog"></i>
@@ -358,7 +358,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                             </div>
                         </div>
                         <div class="tab-pane" id="tab_block" role="tabpanel">
+                            <div class="form-group">
+                                <label>Thông tin bảo hành</label>
+                                <textarea name="block[warranty]" id="block_warranty" class="form-control tinymce"><?php echo !empty($block['warranty']) ? $block['warranty'] : ''; ?></textarea>
+                            </div>
 
+                            <div class="form-group">
+                                <label>Quy định đổi trả</label>
+                                <textarea name="block[return]"id="block_return" class="form-control tinymce"><?php echo !empty($block['return']) ? $block['return'] : ''; ?></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Tài khoản ngân hàng</label>
+                                <textarea name="block[bank]" id="block_bank" class="form-control tinymce"><?php echo !empty($block['bank']) ? $block['bank'] : ''; ?></textarea>
+                            </div>
                         </div>
                         <div class="tab-pane" id="tab_popup" role="tabpanel">
                             <div class="form-group">

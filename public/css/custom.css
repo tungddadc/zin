@@ -159,7 +159,32 @@ header .our-features-box li {
     margin: 0 auto;
 }
 .buy-more .add-to-box{
-    padding: 0 !important;
+    padding: 10px 0 !important;
+    border-bottom: 1px solid #f0ad4e;
+}
+
+.buy-more .add-to-box:first-child{
+    padding: 0 0 10px 0 !important;
+}
+
+.buy-more .add-to-box:last-child{
+    padding: 10px 0 0 0 !important;
+    border-bottom: none;
+}
+
+.buy-more .add-to-box h2{
+    margin: 0 0 5px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #333333;
+}
+
+.buy-more .add-to-box h2 a{
+    color: #333333;
+}
+.buy-more .add-to-box .custom .btn-cart{
+    font-size: 12px;
+    padding: 5px;
 }
 .product-buy{
     padding: 0;
@@ -212,4 +237,11 @@ header .our-features-box li {
 .panel-danger>.panel-heading{
     color: #be1e2d;
     background-color: #ffffff;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{
+    background-color: rgb(251, 175, 63);
+}
+.nav-tabs > li > a:hover{
+    background-color: rgb(251, 175, 63);
 }
