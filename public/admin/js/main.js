@@ -256,6 +256,7 @@ var AJAX_CRUD_MODAL = {
             $('#list-album').html('');
             //$("input.tagsinput").tagsinput('removeAll');
             $('input.switchBootstrap').bootstrapSwitch('state',false);
+            $('input[name="is_status"]').bootstrapSwitch('state',true);
             for (var j = 0; j < tinyMCE.editors.length; j++){
                 tinymce.get(tinyMCE.editors[j].id).setContent('');
             }

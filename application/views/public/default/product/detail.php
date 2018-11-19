@@ -1,6 +1,8 @@
 <?php if (!empty($oneItem)):
     $url = getUrlProduct($oneItem);
     $album = !empty($oneItem->album) ? json_decode($oneItem->album) : null;
+    $data_similar = !empty($oneItem->data_similar) ? json_decode($oneItem->data_similar) : null;
+    $data_related = !empty($oneItem->data_related) ? json_decode($oneItem->data_related) : null;
     ?>
     <!-- Main Container -->
     <section class="main-container col1-layout">
@@ -54,10 +56,10 @@
                                                     <h4 class="panel-title">Ưu đãi dành cho đại lý</h4>
                                                 </div>
                                                 <div class="panel-body">
-                                                    <a href="" class="btn btn-warning btn-block"
+                                                    <a href="<?php echo base_url('dieu-kien-va-chinh-sach-dai-ly.html') ?>" class="btn btn-warning btn-block"
                                                        title="Điều kiện và chính sách đại lý">Điều kiện và chính sách
                                                         đại lý</a>
-                                                    <a href="" class="btn btn-warning btn-block"
+                                                    <a href="<?php echo base_url('gia-dai-ly-va-uu-dai.html') ?>" class="btn btn-warning btn-block"
                                                        title="Giá đại lý và ưu đãi">Giá đại lý và ưu đãi</a>
                                                 </div>
                                             </div>
