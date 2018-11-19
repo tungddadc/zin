@@ -45,7 +45,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                         </label>
                                     </div>
                                     <div class="m-form__control">
-                                        <select class="form-control m-bootstrap-select category" name="category_id" style="width: 100%"></select>
+                                        <select class="form-control m-bootstrap-select filter_category" name="filter_category" style="width: 100%"></select>
                                     </div>
                                 </div>
                                 <div class="d-md-none m--margin-bottom-10"></div>
@@ -244,6 +244,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                     <div class="col-lg-6 col-12">
                                         <div class="form-group">
                                             <label>Sản phẩm cùng loại khác màu:</label>
+                                            <div class="input-group">
+                                                <select name="data_similar[]" class="form-control m-select2 data_similar" style="width: 100%;"></select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Linh kiện liên quan:</label>
                                             <div class="input-group">
                                                 <select name="data_related[]" class="form-control m-select2 data_related" style="width: 100%;"></select>
                                             </div>

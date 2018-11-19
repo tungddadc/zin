@@ -72,12 +72,7 @@ $route['(:any)-d(:num)'] = 'news/detail/$2/';
 $route['(:any)-b(:num)'] = 'product/brand/$2';
 $route['(:any)-b(:num)/page/(:num)'] = 'product/brand/$2/$3';
 /*Route post*/
-/*Route product*/
-$route['(:any)-cp(:num)'] = 'product/category/$2';
-$route['(:any)-cp(:num)/page/(:num)'] = 'product/category/$2/$3';
-$route['wishlist'] = 'product/wishlist';
-$route['so-sanh-san-pham'] = 'product/compare';
-/*Route product*/
+
 
 /* Route search */
 $route['search/(:any)']   = 'search/index/$1';
@@ -86,6 +81,11 @@ $route['search/(:any)/page/(:num)']   = 'search/index/$1/$2';
 
 //page
 $route['(:any).html'] = 'page/index/$1';
-$route['(:any)'] = 'product/detail/$1';
-
 //page
+/*Route product*/
+$route['(:any)-cp(:num)'] = 'product/category/$2';
+$route['(:any)-cp(:num)/page/(:num)'] = 'product/category/$2/$3';
+$route['wishlist'] = 'product/wishlist';
+$route['so-sanh-san-pham'] = 'product/compare';
+$route['(:any)'] = 'product/detail/$1';
+/*Route product*/

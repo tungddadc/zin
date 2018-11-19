@@ -81,6 +81,7 @@ $(function() {
     });
 
     $(document).on('click','.btnEdit',function () {
+        slug_disable = false;
         let modal_form = $('#modal_form');
         let id = $(this).closest('tr').find('input[type="checkbox"]').val();
         AJAX_CRUD_MODAL.edit(function () {

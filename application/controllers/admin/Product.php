@@ -163,6 +163,10 @@ class Product extends Admin_Controller
                 $idRelated = json_decode($oneItem->data_related);
                 $output['data_related'] = $this->_data->getData(['in' => $idRelated,'limit'=>20]);
             }
+            if(!empty($oneItem->data_similar)){
+                $idSimilar = json_decode($oneItem->data_similar);
+                $output['data_similar'] = $this->_data->getData(['in' => $idSimilar,'limit'=>20]);
+            }
             $this->returnJson($output);
         }
     }
