@@ -186,6 +186,8 @@
                                                         </div>
                                                     </div>
                                                 <?php endforeach; ?>
+
+                                                <div class="showmore"><a class="btn btn-default btn-sm">Xem thêm »</a></div>
                                             </div>
                                         </div>
                                     </div>

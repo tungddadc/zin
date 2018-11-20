@@ -655,6 +655,16 @@ jQuery(document).ready(function () {
         }
     });
 
+    $('.buy-more').on('click','.showmore a',function(e) {
+        e.preventDefault();
+        let _this = $(this);
+        _this.parent().css({
+            height: 0
+        });
+        _this.closest('.panel-body').css({
+            'max-height': '2000px'
+        });
+    });
 
 });
 

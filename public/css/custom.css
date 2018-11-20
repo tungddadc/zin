@@ -255,3 +255,25 @@ header .our-features-box li {
     font-size: 14px;
     padding-left: 10px;
 }
+.buy-more .panel-body{
+    max-height: 230px;
+    overflow: hidden;
+    position: relative;
+}
+
+.buy-more .showmore{
+    position: absolute;
+    bottom: 0px;
+    height: 35px;
+    text-align: center;
+    width: 94%;
+    background-color: #ffffff;
+}
+.buy-more .showmore a{
+    background-color: rgb(251, 175, 63);
+    color: #ffffff;
+}
+.buy-more .showmore a:hover{
+    background-color: #be1e2d;
+    color: #ffffff;
+}
