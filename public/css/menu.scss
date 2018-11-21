@@ -13,7 +13,7 @@ header {
             transition: .3s;
             transform: translateY(30px);
             opacity: 0;
-            visibility: 0;
+            visibility: hidden;
             display: block;
             max-height: 300px !important;
             overflow: hidden;
@@ -188,5 +188,35 @@ header {
   }
   div.figure.banner-width,div.effect-sadie1 + div.effect-sadie1{
     margin-left: 0;
+  }
+  .newsletter-wrap {
+    form{
+        h4{
+          display: none;
+        }
+      #newsletter1{
+        width: calc(100% - 90px) !important;
+        margin-bottom: 0;
+      }
+      .subscribe{
+        width: 84px;
+        margin-left: 6px;
+      }
+    }
+  }
+  .footer-middle .col-md-3 {
+    padding: 10px 15px;
+  }
+  .footer-middle .col-md-3:last-child{
+    padding-right: 15px;
+  }
+  .product-option-right{
+    display: none;
+  }
+}
+@media only screen and (max-width: 479px) and (min-width: 320px)
+{
+  .related-pro .block-title h2 {
+    font-size: 16px;
   }
 }
