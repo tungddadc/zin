@@ -493,6 +493,7 @@ jQuery(document).ready(function () {
         let href = $(this).attr('href').split('#');
         let tabClick = '#' + href[href.length-1];
         $(this).tab('show');
+        $('[href="#'+ href[href.length-1] +'"]').parent().addClass('active');
         setTimeout(function () {
             $('html, body').animate({
                 scrollTop: $(tabClick).offset().top - 80

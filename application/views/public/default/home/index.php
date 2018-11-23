@@ -9,8 +9,8 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 <div class="container">
     <div class="row">
         <div class="col-md-3 col-md-4 col-sm-3 hidden-xs">
-            <div class="side-banner"><img src="<?php echo $this->templates_assets ?>images/side-banner.jpg"
-                                          alt="banner"></div>
+            <div class="side-banner">
+                <img src="<?php echo $this->templates_assets ?>images/side-banner.jpg" alt="banner"></div>
         </div>
         <div class="col-md-9 col-sm-9 col-xs-12 home-slider">
             <div id="thm-slideshow" class="thm-slideshow slider-block">
@@ -188,14 +188,16 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
                     </div>
                 </div>
-                <div class="hot-deal">
+                <!--<div class="hot-deal">
                     <ul class="products-grid">
                         <li class="right-space two-height item">
                             <div class="item-inner">
                                 <div class="item-img">
-                                    <div class="item-img-info"><a href="#" title="Retis lapen casen"
-                                                                  class="product-image"> <img
-                                                    src="<?php echo $this->templates_assets ?>products-images/product12.jpg"
+                                    <div class="item-img-info">
+                                        <a href="#" title="Retis lapen casen"
+                                           class="product-image">
+                                            <img
+                                                    src="<?php /*echo $this->templates_assets */?>products-images/product12.jpg"
                                                     alt="Retis lapen casen"> </a>
                                         <div class="hot-label hot-top-left">Hot Deal</div>
                                         <div class="box-hover">
@@ -239,76 +241,37 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                             </div>
                         </li>
                     </ul>
-                </div>
+                </div>-->
+                <?php $listFeedback = getFeedback();
+                if(!empty($listFeedback)): ?>
                 <div class="testimonials">
                     <div class="ts-testimonial-widget">
                         <div class="slider-items-products">
                             <div id="testimonials-slider" class="product-flexslider hidden-buttons home-testimonials">
-                                <div class="slider-items slider-width-col4 fadeInUp owl-carousel owl-theme"
-                                     style="opacity: 1; display: block;">
-
-                                    <div class="holder">
-                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, Lid est laborum
-                                            dolo rumes fugats untras. dolore magna aliquam erat volutpat. Aenean est
-                                            auctorwisiet urna. Aliquam erat volutpat...</p>
-                                        <div class="testimonial-arrow-down"></div>
-                                        <div class="thumb">
-                                            <div class="customer-img"><img
-                                                        src="<?php echo $this->templates_assets ?>images/photo1.jpg"
-                                                        alt="Saraha Smith"></div>
-                                            <div class="customer-bio"><strong class="name"><a href="#" target="_blank">Saraha
-                                                        Smith</a></strong> <span>Happy Customer</span></div>
+                                <div class="slider-items slider-width-col4 fadeInUp owl-carousel owl-theme">
+                                    <?php  foreach ($listFeedback as $item): ?>
+                                        <div class="holder">
+                                            <p><?php echo $item->content ?></p>
+                                            <div class="testimonial-arrow-down"></div>
+                                            <div class="thumb">
+                                                <div class="customer-img">
+                                                    <img src="<?php echo getImageThumb($item->thumbnail) ?>" alt="<?php echo $item->name ?>">
+                                                </div>
+                                                <div class="customer-bio">
+                                                    <strong class="name">
+                                                        <a href="javascript:;" title="<?php echo $item->name ?>"><?php echo $item->name ?></a>
+                                                    </strong>
+                                                    <span><strong><?php echo $item->company ?></strong></span>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-
-                                    <div class="holder">
-                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, Lid est laborum
-                                            dolo rumes fugats untras. dolore magna aliquam erat volutpat. Aenean est
-                                            auctorwisiet urna. Aliquam erat volutpat...</p>
-                                        <div class="testimonial-arrow-down"></div>
-                                        <div class="thumb">
-                                            <div class="customer-img"><img
-                                                        src="<?php echo $this->templates_assets ?>images/photo.jpg"
-                                                        alt="Stephen Doe"></div>
-                                            <div class="customer-bio"><strong class="name"><a href="#" target="_blank">Stephen
-                                                        Doe</a></strong> <span>Happy Customer</span></div>
-                                        </div>
-                                    </div>
-
-                                    <div class="holder">
-                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, Lid est laborum
-                                            dolo rumes fugats untras. dolore magna aliquam erat volutpat. Aenean est
-                                            auctorwisiet urna. Aliquam erat volutpat...</p>
-                                        <div class="testimonial-arrow-down"></div>
-                                        <div class="thumb">
-                                            <div class="customer-img"><img
-                                                        src="<?php echo $this->templates_assets ?>images/photo1.jpg"
-                                                        alt="Mark doe"></div>
-                                            <div class="customer-bio"><strong class="name"><a href="#" target="_blank">Mark
-                                                        doe</a></strong> <span>Happy Customer</span></div>
-                                        </div>
-                                    </div>
-
-                                    <div class="holder">
-                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, Lid est laborum
-                                            dolo rumes fugats untras. dolore magna aliquam erat volutpat. Aenean est
-                                            auctorwisiet urna. Aliquam erat volutpat...</p>
-                                        <div class="testimonial-arrow-down"></div>
-                                        <div class="thumb">
-                                            <div class="customer-img"><img
-                                                        src="<?php echo $this->templates_assets ?>images/photo.jpg"
-                                                        alt="John Doe"></div>
-                                            <div class="customer-bio"><strong class="name"><a href="#" target="_blank">John
-                                                        Doe</a></strong> <span>Happy Customer</span></div>
-                                        </div>
-                                    </div>
-
-
+                                    <?php endforeach; ?>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <?php endif; ?>
                 <div class="featured-add-box">
                     <div class="featured-add-inner"><a href="#"> <img
                                     src="<?php echo $this->templates_assets ?>images/bottom_banner.jpg" alt="f-img"></a>
@@ -337,25 +300,29 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                 <h2>Tin mới nhất</h2>
             </div>
             <div class="blog-inner">
-                <?php if(!empty($home_news)) foreach ($home_news as $item): ?>
+                <?php if (!empty($home_news)) foreach ($home_news as $item): ?>
                     <div class="col-lg-4 col-md-4 col-sm-4">
                         <div class="entry-thumb image-hover2">
                             <a href="<?php echo getUrlNews($item) ?>" title="<?php echo getTitle($item) ?>">
-                                <img alt="<?php echo getTitle($item) ?>" src="<?php echo getImageThumb($item->thumbnail,340,160,true) ?>">
+                                <img alt="<?php echo getTitle($item) ?>"
+                                     src="<?php echo getImageThumb($item->thumbnail, 340, 160, true) ?>">
                             </a>
                         </div>
                         <div class="blog-preview_info">
                             <h4 class="blog-preview_title">
-                                <a href="<?php echo getUrlNews($item) ?>" title="<?php echo getTitle($item) ?>">Standard blog post with photo</a>
+                                <a href="<?php echo getUrlNews($item) ?>" title="<?php echo getTitle($item) ?>">Standard
+                                    blog post with photo</a>
                             </h4>
                             <ul class="post-meta">
                                 <li><i class="fa fa-eye"></i><?php echo $item->viewed ?></li>
-                                <li><i class="fa fa-clock-o"></i><?php echo timeAgo($item->created_time,'d/m/Y') ?></li>
+                                <li><i class="fa fa-clock-o"></i><?php echo timeAgo($item->created_time, 'd/m/Y') ?>
+                                </li>
                             </ul>
                             <div class="blog-preview_desc">
                                 <?php echo $item->description ?>
                             </div>
-                            <a class="blog-preview_btn" href="<?php echo getUrlNews($item) ?>" title="<?php echo getTitle($item) ?>">Xem thêm</a></div>
+                            <a class="blog-preview_btn" href="<?php echo getUrlNews($item) ?>"
+                               title="<?php echo getTitle($item) ?>">Xem thêm</a></div>
                     </div>
                 <?php endforeach; ?>
             </div>

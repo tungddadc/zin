@@ -318,7 +318,8 @@ if (!function_exists('getPostNews')) {
 }
 
 if (!function_exists('getCompare')) {
-    function getCompare(){
+    function getCompare()
+    {
         $_this =& get_instance();
         $_this->load->model('product_model');
         $productModel = new Product_model();
@@ -333,20 +334,32 @@ if (!function_exists('getCompare')) {
     }
 }
 if (!function_exists('getCityById')) {
-  function getCityById($id){
-    $_this =& get_instance();
-    $_this->load->model('location_model');
-    $locModel = new Location_model();
-    $data=$locModel->getCityById($id);
-    return !empty($data)?$data->name:'';
-  }
+    function getCityById($id)
+    {
+        $_this =& get_instance();
+        $_this->load->model('location_model');
+        $locModel = new Location_model();
+        $data = $locModel->getCityById($id);
+        return !empty($data) ? $data->name : '';
+    }
 }
 if (!function_exists('getDistrict')) {
-  function getDistrict($id){
-    $_this =& get_instance();
-    $_this->load->model('location_model');
-    $locModel = new Location_model();
-    $data=$locModel->getDistrictById($id);
-    return !empty($data)?$data->name:'';
-  }
+    function getDistrict($id)
+    {
+        $_this =& get_instance();
+        $_this->load->model('location_model');
+        $locModel = new Location_model();
+        $data = $locModel->getDistrictById($id);
+        return !empty($data) ? $data->name : '';
+    }
+}
+
+if (!function_exists('getFeedback')) {
+    function getFeedback(){
+        $_this =& get_instance();
+        $_this->load->model('feedback_model');
+        $feedbackModel = new Feedback_model();
+        $data = $feedbackModel->getAll('',1);
+        return $data;
+    }
 }

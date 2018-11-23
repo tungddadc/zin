@@ -246,17 +246,18 @@ var AJAX_CRUD_MODAL = {
             window.onbeforeunload = null;
             $(this).find('form').trigger('reset');
             $(this).find('input[type=hidden]').val(0);
-            $(".m-select2").empty().trigger('change');
-            $('div.form-control-feedback').remove();
-            $('#modal_form [name="username"]').attr('disabled',false);
-            $('.form-group').removeClass('has-danger');
+            $(this).find('.m-select2').empty().trigger('change');
+            $(this).find('div.form-control-feedback').remove();
+            $(this).find('[name="username"]').attr('disabled',false);
+            $(this).find('.form-group').removeClass('has-danger');
+            $(this).find('.preview img').attr('src','//via.placeholder.com/100x100');
 
-            $('ul[role="tablist"] li a').removeClass('active show');
-            $('ul[role="tablist"] li:first-child a').trigger('click').addClass('active show');
-            $('#list-album').html('');
+            $(this).find('ul[role="tablist"] li a').removeClass('active show');
+            $(this).find('ul[role="tablist"] li:first-child a').trigger('click').addClass('active show');
+            $(this).find('#list-album').html('');
             //$("input.tagsinput").tagsinput('removeAll');
-            $('input.switchBootstrap').bootstrapSwitch('state',false);
-            $('input[name="is_status"]').bootstrapSwitch('state',true);
+            $(this).find('input.switchBootstrap').bootstrapSwitch('state',false);
+            $(this).find('input[name="is_status"]').bootstrapSwitch('state',true);
             for (var j = 0; j < tinyMCE.editors.length; j++){
                 tinymce.get(tinyMCE.editors[j].id).setContent('');
             }
