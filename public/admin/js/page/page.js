@@ -88,7 +88,7 @@ $(function() {
                         if(element.hasClass('switchBootstrap')){
                             element.bootstrapSwitch('state',(value == 1 ? true : false));
                         }
-                        if(key === 'thumbnail') element.closest('.form-group').find('img').attr('src',media_url + value);
+                        if(key === 'thumbnail' && value) element.closest('.form-group').find('img').attr('src',media_url + value);
                     });
 
                     $.each(response.data_language, function( i, value ) {

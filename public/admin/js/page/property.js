@@ -53,9 +53,8 @@ $(function() {
         }
     }];
     AJAX_DATATABLES.init();
-    loadCategory();
+    loadProperty();
     AJAX_CRUD_MODAL.init();
-    SEO.init_slug();
 
     $('[name="is_status"]').on("change", function () {
         table.search($(this).val(), "is_status")
@@ -88,8 +87,7 @@ $(function() {
                         });
                     });
 
-                    loadCategory(response.data_category);
-                    FUNC.showGallery('#list-album',response.data_info.banner);
+                    loadProperty(response.data_category);
                     modal_form.modal('show');
                 },
                 error: function (jqXHR, textStatus, errorThrown)
@@ -103,15 +101,15 @@ $(function() {
     });
 });
 
-function loadCategory(dataSelected) {
-    let selector = $('select.category');
+function loadProperty(dataSelected) {
+    let selector = $('select.property');
     selector.select2({
-        placeholder: 'Chọn danh mục',
+        placeholder: 'Chọn',
         allowClear: !0,
         multiple: !1,
         data: dataSelected,
         ajax: {
-            url: url_ajax_load_category,
+            url: url_ajax_load_property,
             dataType: 'json',
             delay: 250,
             data: function(e) {
