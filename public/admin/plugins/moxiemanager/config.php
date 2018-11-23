@@ -109,7 +109,7 @@ $root = dirname(dirname(dirname(dirname(__FILE__))));
 	$moxieManagerConfig['thumbnail.allow_override'] = '*';
 
 	// Authentication
-	$moxieManagerConfig['authenticator'] = 'IpAuthenticator';
+	$moxieManagerConfig['authenticator'] = '';
 	$moxieManagerConfig['authenticator.login_page'] = '';
 
 	// SessionAuthenticator
