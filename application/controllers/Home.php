@@ -15,6 +15,7 @@ class Home extends Public_Controller
     }
 
     public function index(){
+        $data['home_slider'] = $this->listSlider();
         $data['home_product_latest'] = $this->listProductLatest();
         $data['home_product_sale'] = $this->listProductSale();
         $data['home_product_featured'] = $this->listProductFeatured();
@@ -67,6 +68,19 @@ class Home extends Public_Controller
             'order' => ['created_time', 'DESC']
         );
         $data = $productModel->getData($params);
+        return $data;
+    }
+
+    private function listSlider(){
+        $this->load->model('banner_model');
+        $bannerModel = new Banner_model();
+        $params = array(
+            'lang_code' => $this->session->userdata('public_lang_code'),
+            'is_status' => 1,
+            'limit' => 10,
+            'order' => ['created_time', 'DESC']
+        );
+        $data = $bannerModel->getData($params);
         return $data;
     }
 

@@ -68,10 +68,6 @@ $(function() {
         table.search($(this).val(), "property_id")
     });
 
-    $('#modal_form').on('shown.bs.modal', function(e){
-        loadProperty();
-    });
-
     $(document).on('click','.btnEdit',function () {
         slug_disable = false;
         let modal_form = $('#modal_form');
@@ -100,7 +96,7 @@ $(function() {
                         });
                     });
 
-                    loadProperty(response.data_property);
+                    loadProperty(response.data_property,$('select[name="property_id"]'));
                     modal_form.modal('show');
                 },
                 error: function (jqXHR, textStatus, errorThrown)
@@ -114,13 +110,13 @@ $(function() {
     });
 });
 
-function loadProperty(dataSelected) {
-    let selector = $('select.property');
+function loadProperty(dataSelected,_this) {
+    let selector = _this ? $(_this) :$('select.property');
     selector.select2({
         placeholder: 'Chọn vị trí',
         allowClear: !0,
         multiple: !1,
-        data: selector.attr('name') !== 'filter_property_id' ? dataSelected : null,
+        data: dataSelected,
         ajax: {
             url: url_ajax_load_property,
             dataType: 'json',
@@ -142,5 +138,5 @@ function loadProperty(dataSelected) {
             cache: !0
         }
     });
-    if (typeof dataSelected !== 'undefined' && selector.attr('name') !== 'filter_property_id') selector.find('> option').prop("selected", "selected").trigger("change");
+    if (typeof dataSelected !== 'undefined') selector.find('> option').prop("selected", "selected").trigger("change");
 }

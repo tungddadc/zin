@@ -167,6 +167,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <label>Link</label>
+                                    <input name="url" placeholder="Link" class="form-control" type="text" />
+                                </div>
+                                <div class="form-group">
                                     <label>Trạng thái:</label>
                                     <div class="m-input">
                                         <input data-switch="true" type="checkbox" name="is_status" class="switchBootstrap" checked="checked">

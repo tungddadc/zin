@@ -277,3 +277,11 @@ header .our-features-box li {
     background-color: #be1e2d;
     color: #ffffff;
 }
+
+.buy-btn{
+    background-color: #be1e2d;
+}
+.tp-caption.Title{
+    margin-top: 20px;
+    font-size: 20px !important;
+}
