@@ -187,7 +187,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                         <input type="text" name="thumbnail" onclick="FUNC.chooseImage(this)" class="form-control m-input chooseImage" placeholder="Click để chọn ảnh" aria-describedby="input_thumbnail">
                                     </div>
                                     <div class="alert m-alert m-alert--default preview text-center mt-1" role="alert">
-                                        <img width="100" height="100" src="<?php echo getImageThumb('',100,100) ?>">
+                                        <img height="200" src="<?php echo getImageThumb('',100,100) ?>">
                                     </div>
                                 </div>
                             </div>
