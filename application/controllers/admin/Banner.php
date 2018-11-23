@@ -126,7 +126,7 @@ class Banner extends Admin_Controller
         if(!empty($id)){
             $output['data_info'] = $oneItem = $this->_data->single(['id' => $id],$this->_data->table);
             $output['data_language'] = $this->_data->getDataAll(['id' => $id],$this->_data->table_trans);
-            $output['data_property'] = $this->_data->getSelect2($oneItem->property_id);
+            $output['data_property'] = $this->_data_property->getSelect2($oneItem->property_id);
             $this->returnJson($output);
         }
     }

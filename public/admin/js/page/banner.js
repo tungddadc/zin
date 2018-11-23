@@ -120,7 +120,7 @@ function loadProperty(dataSelected) {
         placeholder: 'Chọn vị trí',
         allowClear: !0,
         multiple: !1,
-        data: dataSelected,
+        data: selector.attr('name') !== 'filter_property_id' ? dataSelected : null,
         ajax: {
             url: url_ajax_load_property,
             dataType: 'json',
@@ -142,5 +142,5 @@ function loadProperty(dataSelected) {
             cache: !0
         }
     });
-    if (typeof dataSelected !== 'undefined' && selector !== 'filter_property_id') selector.find('> option').prop("selected", "selected").trigger("change");
+    if (typeof dataSelected !== 'undefined' && selector.attr('name') !== 'filter_property_id') selector.find('> option').prop("selected", "selected").trigger("change");
 }
