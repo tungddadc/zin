@@ -55,10 +55,14 @@ class Users_model extends STEVEN_Model
         return $this->db->get($this->table)->row();
     }
 
-    public function getAccountSelect2($params)
-    {
-        $data = $this->getData($params);
-        return $data;
+    public function getSelect2($ids){
+        $this->db->select("$this->table.id, CONCAT(fullname, ' (', email, ')') AS text");
+        $this->db->from($this->table);
+        if(is_array($ids)) $this->db->where_in("$this->table.id",$ids);
+        else $this->db->where("$this->table.id",$ids);
+
+        $query = $this->db->get();
+        return $query->result();
     }
 
     public function updateField($account_id, $key, $value)

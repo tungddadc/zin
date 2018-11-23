@@ -5,49 +5,25 @@
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Voucher extends Admin_Controller
+class Vote extends Admin_Controller
 {
     protected $_data;
-    protected $user_model;
+    protected $_data_user;
 
     public function __construct()
     {
         parent::__construct();
-
-        //tải file ngôn ngữ//tải model
-        $this->load->model(array('voucher_model', 'users_model'));
-        $this->_data = new Voucher_model();
-        $this->user_model = new Users_model();
+        $this->load->model(array('vote_model', 'users_model'));
+        $this->_data = new Vote_model();
+        $this->_data_user = new Users_model();
     }
 
     public function index()
     {
-        //chỉ lấy ra những category thuộc mục product
-        $data = [];
-        $data['main_content'] = $this->load->view($this->template_path . 'voucher/index', $data, TRUE);
+        $data['heading_title'] = "Quản lý đánh giá";
+        $data['heading_description'] = "Danh sách đánh giá";
+        $data['main_content'] = $this->load->view($this->template_path . $this->_controller . DIRECTORY_SEPARATOR . 'index', $data, TRUE);
         $this->load->view($this->template_main, $data);
-    }
-
-
-    public function ajax_add()
-    {
-        $data_store = $this->_convertData();
-        if (!empty($data_store['user_use'])) $data_user = $data_store['user_use'];
-        if ($id = $this->_data->save($data_store)) {
-            // log action
-            if (!empty($data_user)) $this->insert_account_gift($id, $data_user);
-
-            $this->_message = array(
-                'type' => 'success',
-                'message' => 'Thêm mới voucher thành công!',
-            );
-        } else {
-            $this->_message = array(
-                'type' => 'error',
-                'message' => 'Thêm mới voucher thành công!'
-            );
-        }
-        $this->returnJson($this->_message);
     }
 
     /*
@@ -75,10 +51,11 @@ class Voucher extends Admin_Controller
             $row = array();
             $row['checkID'] = $item->id;
             $row['id'] = $item->id;
-            $row['code'] = $item->code;
-            $row['value'] = $item->value;
+            $row['name'] = $item->name;
+            $row['email'] = $item->email;
+            $row['vote'] = $item->vote;
+            $row['message'] = $item->message;
             $row['is_status'] = $item->is_status;
-            $row['updated_time'] = $item->updated_time;
             $row['created_time'] = $item->created_time;
             $data[] = $row;
         }
@@ -98,13 +75,24 @@ class Voucher extends Admin_Controller
         $this->returnJson($output);
     }
 
+    public function ajax_add()
+    {
+        $data_store = $this->_convertData();
+        if($id = $this->_data->save($data_store)){
+            $message['type'] = 'success';
+            $message['message'] = "Thêm mới thành công !";
+        }else{
+            $message['type'] = 'error';
+            $message['message'] = "Thêm mới thất bại !";
+        }
+        $this->returnJson($message);
+    }
+
     public function ajax_update()
     {
         $data_store = $this->_convertData();
-        $data_user = $data_store['user_use'];
         $response = $this->_data->update(array('id' => $this->input->post('id')), $data_store, $this->_data->table);
         if ($response != false) {
-            $this->insert_account_gift($this->input->post('id'), $data_user);
             $message['type'] = 'success';
             $message['message'] = "Cập nhật thành công !";
         } else {
@@ -119,16 +107,25 @@ class Voucher extends Admin_Controller
         $this->checkRequestPostAjax();
         $id = $this->input->post('id');
         $data['data_info'] = $oneItem = $this->_data->getById($id);
-        $data['user_use'] = array();
-        if (!empty($oneItem->user_use)) {
-            $dataAccount = $this->user_model->getUserByField('id', $oneItem->user_use);
-            $data['user_use'] = array(array('id' => $dataAccount->id, 'text' => $dataAccount->email . '(' . $dataAccount->fullname . ')'));
-        }
-
+        if(!empty($oneItem->user_id)) $data['data_user'] = $this->_data_user->getSelect2($oneItem->user_id);
         $this->returnJson($data);
     }
 
-
+    public function ajax_update_field(){
+        $this->checkRequestPostAjax();
+        $id = $this->input->post('id');
+        $field = $this->input->post('field');
+        $value = $this->input->post('value');
+        $response = $this->_data->update(['id' => $id], [$field => $value]);
+        if($response != false){
+            $message['type'] = 'success';
+            $message['message'] = "Cập nhật thành công !";
+        }else{
+            $message['type'] = 'error';
+            $message['message'] = "Cập nhật thất bại !";
+        }
+        $this->returnJson($message);
+    }
     /*
      * Xóa một bản ghi
      * */
@@ -147,62 +144,39 @@ class Voucher extends Admin_Controller
         }
         $this->returnJson($message);
     }
-
-    // Thêm vào bảng account_gift
-    private function insert_account_gift($id, $account)
-    {
-        $this->_data->delete(array('type_id' => $id, 'account_id' => $account), 'user_voucher');
-
-        $tmp['account_id'] = $account;
-        $tmp['type_id'] = $id;
-        $this->user_model->save($tmp, 'user_voucher');
-
-        return;
-    }
-
-
-//  Check xem mã đã tồn tại hay chưa
-    function ajax_check_code()
-    {
-        if ($this->input->server('REQUEST_METHOD') == 'POST' && !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-
-            $code = $this->input->post('code');
-            if (!empty($code)) $result = $this->_data->check_code($code);
-            echo $result;
-            exit();
-        }
-    }
-
     /*
        * Kiêm tra thông tin post lên
        * */
     private function _validate()
     {
         $this->checkRequestPostAjax();
-        $this->form_validation->set_rules('value', 'Giá trị', 'required');
         $rules = array(
             array(
-                'field' => "code",
-                'label' => "Mã voucher",
-                'rules' => "required"
-            ), array(
-                'field' => "value",
-                'label' => "Giá trị",
-                'rules' => "required"
+                'field' => "name",
+                'label' => "Tên",
+                'rules' => "required|trim"
+            ),
+            array(
+                'field' => "email",
+                'label' => "email",
+                'rules' => "required|trim|valid_email"
+            ),
+            array(
+                'field' => "vote",
+                'label' => "Đánh giá",
+                'rules' => "required|trim"
             ),
         );
         $this->form_validation->set_rules($rules);
         if ($this->form_validation->run() === false) {
+            $message['type'] = "warning";
+            $message['message'] = "Vui lòng kiểm tra lại thông tin vừa nhập.";
             $valid = array();
-            if (!empty($rules)) foreach ($rules as $item) {
-                if (!empty(form_error($item['field']))) $valid[$item['field']] = form_error($item['field']);
+            if(!empty($rules)) foreach ($rules as $item){
+                if(!empty(form_error($item['field']))) $valid[$item['field']] = form_error($item['field']);
             }
-            $this->_message = array(
-                'type' => 'warning',
-                'message' => 'Vui lòng nhập đúng thông tin!',
-                'validation' => $valid,
-            );
-            $this->returnJson($this->_message);
+            $message['validation'] = $valid;
+            $this->returnJson($message);
         }
     }
 
@@ -210,12 +184,7 @@ class Voucher extends Admin_Controller
     {
         $this->_validate();
         $data = $this->input->post();
-        $data_store = array();
-        foreach ($data as $key => $value) {
-            $data_store[$key] = $value;
-        }
-        if (!isset($data['user_use'])) $data_store['user_use'] = '';
-//    dd($data_store);
-        return $data_store;
+        if(!empty($data['is_status'])) $data['is_status'] = 1;else $data['is_status'] = 0;
+        return $data;
     }
 }
