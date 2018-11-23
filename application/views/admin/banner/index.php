@@ -37,7 +37,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                 </div>
                                 <div class="d-md-none m--margin-bottom-10"></div>
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-4">
+                                <div class="m-form__group m-form__group--inline">
+                                    <div class="m-form__label">
+                                        <label>
+                                            Vị trí:
+                                        </label>
+                                    </div>
+                                    <div class="m-form__control">
+                                        <select class="form-control m-bootstrap-select property" name="filter_property_id" style="width: 100%"></select>
+                                    </div>
+                                </div>
+                                <div class="d-md-none m--margin-bottom-10"></div>
+                            </div>
+                            <div class="col-md-4">
                                 <div class="m-input-icon m-input-icon--left">
                                     <input type="text" class="form-control m-input" placeholder="Search..." id="generalSearch">
                                     <span class="m-input-icon__icon m-input-icon__icon--left">
@@ -85,7 +98,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 </div>
 
 <div class="modal fade" id="modal_form" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true" style="display: none;">
-    <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h3 class="modal-title" id="formModalLabel">Form</h3>
@@ -99,14 +112,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                             <ul class="nav nav-tabs m-tabs-line m-tabs-line--primary m-tabs-line--2x" role="tablist">
                                 <li class="nav-item m-tabs__item">
                                     <a class="nav-link m-tabs__link active show" data-toggle="tab" href="#tab_language" role="tab" aria-selected="true">
-                                        <i class="la la-language"></i>
-                                        Nội dung
+                                        <i class="la la-language"></i>Nội dung SEO
                                     </a>
                                 </li>
                                 <li class="nav-item m-tabs__item">
                                     <a class="nav-link m-tabs__link" data-toggle="tab" href="#tab_info" role="tab" aria-selected="false">
-                                        <i class="la la-info"></i>
-                                        Thông tin
+                                        <i class="la la-info"></i>Thông tin
                                     </a>
                                 </li>
                             </ul>
@@ -139,7 +150,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                                         <input name="language[<?php echo $lang_code;?>][title]" placeholder="Tiêu đề (<?php echo $lang_name ?>)" class="form-control" type="text" />
                                                     </div>
                                                     <div class="form-group">
-                                                        <label>Mô tả</label>
+                                                        <label>Tóm tắt</label>
                                                         <textarea name="language[<?php echo $lang_code;?>][description]" placeholder="Tóm tắt (<?php echo $lang_name ?>)" class="form-control" rows="5"></textarea>
                                                     </div>
                                                 </div>
@@ -149,6 +160,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                 </div>
                             </div>
                             <div class="tab-pane" id="tab_info" role="tabpanel">
+                                <div class="form-group">
+                                    <label>Vị trí:</label>
+                                    <div class="input-group">
+                                        <select name="property_id" class="form-control m-select2 property" style="width: 100%;"></select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Trạng thái:</label>
+                                    <div class="m-input">
+                                        <input data-switch="true" type="checkbox" name="is_status" class="switchBootstrap" checked="checked">
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <label for="thumbnail">Ảnh đại diện</label>
                                     <div class="input-group m-input-group m-input-group--air">
@@ -161,18 +184,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                     </div>
                                     <div class="alert m-alert m-alert--default preview text-center mt-1" role="alert">
                                         <img width="100" height="100" src="<?php echo getImageThumb('',100,100) ?>">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label>Class</label>
-                                    <input name="class" placeholder="Custom class" class="form-control" type="text" />
-                                </div>
-                                <div class="form-group">
-                                    <label>
-                                        Trạng thái:
-                                    </label>
-                                    <div class="m-input">
-                                        <input data-switch="true" type="checkbox" name="is_status" class="switchBootstrap" checked="checked">
                                     </div>
                                 </div>
                             </div>
@@ -188,3 +199,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    var url_ajax_load_property = '<?php echo site_admin_url('property/ajax_load/' . $this->_controller) ?>';
+</script>

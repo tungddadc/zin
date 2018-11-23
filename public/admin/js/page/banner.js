@@ -11,6 +11,7 @@ $(function() {
         field: "id",
         title: "ID",
         width: 50,
+        textAlign: "center",
         sortable: 'asc',
         filterable: !1,
     }, {
@@ -20,6 +21,7 @@ $(function() {
     }, {
         field: "is_status",
         title: "Status",
+        textAlign: "center",
         width: 70,
         template: function (t) {
             var e = {
@@ -53,13 +55,25 @@ $(function() {
         }
     }];
     AJAX_DATATABLES.init();
+    loadProperty();
     AJAX_CRUD_MODAL.init();
+    AJAX_CRUD_MODAL.tinymce();
+    SEO.init_slug();
 
     $('[name="is_status"]').on("change", function () {
         table.search($(this).val(), "is_status")
     }), $('[name="is_status"]').selectpicker();
 
+    $('select[name="filter_property_id"]').on("change", function () {
+        table.search($(this).val(), "property_id")
+    });
+
+    $('#modal_form').on('shown.bs.modal', function(e){
+        loadProperty();
+    });
+
     $(document).on('click','.btnEdit',function () {
+        slug_disable = false;
         let modal_form = $('#modal_form');
         let id = $(this).closest('tr').find('input[type="checkbox"]').val();
         AJAX_CRUD_MODAL.edit(function () {
@@ -85,6 +99,8 @@ $(function() {
                             element.val(val);
                         });
                     });
+
+                    loadProperty(response.data_property);
                     modal_form.modal('show');
                 },
                 error: function (jqXHR, textStatus, errorThrown)
@@ -97,3 +113,34 @@ $(function() {
         });
     });
 });
+
+function loadProperty(dataSelected) {
+    let selector = $('select.property');
+    selector.select2({
+        placeholder: 'Chọn vị trí',
+        allowClear: !0,
+        multiple: !1,
+        data: dataSelected,
+        ajax: {
+            url: url_ajax_load_property,
+            dataType: 'json',
+            delay: 250,
+            data: function(e) {
+                return {
+                    q: e.term,
+                    page: e.page
+                }
+            },
+            processResults: function(e, t) {
+                return t.page = t.page || 1, {
+                    results: e,
+                    pagination: {
+                        more: 30 * t.page < e.total_count
+                    }
+                }
+            },
+            cache: !0
+        }
+    });
+    if (typeof dataSelected !== 'undefined' && selector !== 'filter_property_id') selector.find('> option').prop("selected", "selected").trigger("change");
+}

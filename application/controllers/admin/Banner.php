@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Banner extends Admin_Controller
 {
     protected $_data;
-    protected $_data_category;
+    protected $_data_property;
 
     const STATUS_CANCEL = 0;
     const STATUS_ACTIVE = 1;
@@ -21,12 +21,12 @@ class Banner extends Admin_Controller
         //$this->lang->load('category');
         $this->load->model(['property_model','banner_model']);
         $this->_data = new Banner_model();
-        $this->_data_category = new Category_model();
+        $this->_data_property = new Property_model();
     }
 
     public function index(){
-        $data['heading_title'] = "Quản lý bài viết";
-        $data['heading_description'] = "Danh sách bài viết";
+        $data['heading_title'] = "Quản lý banner/slider";
+        $data['heading_description'] = "Danh sách banner/slider";
         $data['main_content'] = $this->load->view($this->template_path . $this->_controller . DIRECTORY_SEPARATOR . 'index', $data, TRUE);
         $this->load->view($this->template_main, $data);
     }
@@ -41,7 +41,7 @@ class Banner extends Admin_Controller
 
         $queryFilter = $this->input->post('query');
         $params = [
-            'category_id'   => !empty($queryFilter['category_id']) ? $queryFilter['category_id'] : '',
+            'property_id'   => !empty($queryFilter['property_id']) ? $queryFilter['property_id'] : '',
             'type'          => $this->session->userdata('type'),
             'page'          => $page,
             'limit'         => $limit
@@ -55,7 +55,6 @@ class Banner extends Admin_Controller
             $row['checkID'] = $item->id;
             $row['id'] = $item->id;
             $row['title'] = $item->title;
-            $row['is_featured'] = $item->is_featured;
             $row['is_status'] = $item->is_status;
             $row['updated_time'] = $item->updated_time;
             $row['created_time'] = $item->created_time;
@@ -78,11 +77,10 @@ class Banner extends Admin_Controller
     }
 
     public function ajax_load(){
+        $this->checkRequestGetAjax();
         $term = $this->input->get("q");
-        $id = $this->input->get('id')?$this->input->get('id'):0;
         $params = [
             'is_status'=> 1,
-            'not_in' => ['id' => $id],
             'search' => $term,
             'limit'=> 10
         ];
@@ -106,28 +104,13 @@ class Banner extends Admin_Controller
         }
     }
 
-    private function save_category($id, $data){
-        if(!empty($data)) foreach ($data as $category_id){
-            $data_category = ["{$this->_data->table}_id" => $id, 'category_id' => $category_id];
-            if(!$this->_data->insertOnUpdate($data_category, $this->_data->table_category)){
-                $message['type'] = 'error';
-                $message['message'] = "Thêm {$this->_data->table_category} thất bại !";
-                log_message('error', $message['message'] . '=>' . json_encode($data_category));
-                $this->returnJson($message);
-            }
-        }
-    }
     public function ajax_add(){
         $this->checkRequestPostAjax();
         $data = $this->_convertData();
-        $data['viewed'] = rand(1000,9999);
         $data_trans = $data['language'];
-        $data_category = $data['category_id'];
         unset($data['language']);
-        unset($data['category_id']);
         if($id = $this->_data->save($data)){
             $this->save_language($id, $data_trans);
-            $this->save_category($id, $data_category);
             $message['type'] = 'success';
             $message['message'] = "Thêm mới thành công !";
         }else{
@@ -141,9 +124,9 @@ class Banner extends Admin_Controller
         $this->checkRequestPostAjax();
         $id = $this->input->post('id');
         if(!empty($id)){
-            $output['data_info'] = $this->_data->single(['id' => $id],$this->_data->table);
+            $output['data_info'] = $oneItem = $this->_data->single(['id' => $id],$this->_data->table);
             $output['data_language'] = $this->_data->getDataAll(['id' => $id],$this->_data->table_trans);
-            $output['data_category'] = $this->_data->getSelect2Category($id, $this->session->userdata('admin_lang'));
+            $output['data_property'] = $this->_data->getSelect2($oneItem->property_id);
             $this->returnJson($output);
         }
     }
@@ -153,12 +136,9 @@ class Banner extends Admin_Controller
         $data = $this->_convertData();
         $id = $data['id'];
         $data_trans = $data['language'];
-        $data_category = $data['category_id'];
-        unset($data['category_id']);
         unset($data['language']);
         if($this->_data->update(['id' => $id],$data, $this->_data->table)){
             $this->save_language($id, $data_trans);
-            $this->save_category($id, $data_category);
             $message['type'] = 'success';
             $message['message'] = "Cập nhật thành công !";
         }else{
@@ -208,27 +188,11 @@ class Banner extends Admin_Controller
                     [
                         'field' => "language[$lang_code][title]",
                         'label' => "Tiêu đề ($lang_name)",
-                        'rules' => "trim|required|min_length[2]"
-                    ],[
-                        'field' => "language[$lang_code][slug]",
-                        'label' => "Đường dẫn ($lang_name)",
                         'rules' => "trim|required"
                     ],[
                         'field' => "language[$lang_code][description]",
                         'label' => "Tóm tắt ($lang_name)",
                         'rules' => 'trim|required'
-                    ],[
-                        'field' => "language[$lang_code][meta_title]",
-                        'label' => "Tiêu đề SEO ($lang_name)",
-                        'rules' => "trim|required|min_length[2]|max_length[{$this->config->item('SEO_title_maxlength')}]"
-                    ],[
-                        'field' => "language[$lang_code][meta_description]",
-                        'label' => "Mô tả SEO ($lang_name)",
-                        'rules' => "trim|required|min_length[2]|max_length[{$this->config->item('SEO_description_maxlength')}]"
-                    ],[
-                        'field' => "language[$lang_code][content]",
-                        'label' => "Nội dung ($lang_name)",
-                        'rules' => "required"
                     ]
                 ];
             }
@@ -252,7 +216,6 @@ class Banner extends Admin_Controller
         $this->_validation();
         $data = $this->input->post();
         if(!empty($data['is_status'])) $data['is_status'] = 1;else $data['is_status'] = 0;
-        if(!empty($data['is_featured'])) $data['is_featured'] = 1;else $data['is_featured'] = 0;
         return $data;
     }
 }
