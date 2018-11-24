@@ -78,7 +78,8 @@ class Search extends Public_Controller {
             'limit' => 5
         ];
         $data['data'] = $this->_data_product->getData($params);
-        echo $this->load->view($this->template_path.'search/ajax_autocomplete', $data, TRUE);exit;
+        print $this->load->view($this->template_path.'search/ajax_autocomplete', $data, TRUE);
+        exit;
     }
 
     public function ajax_load_more(){

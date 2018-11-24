@@ -347,6 +347,22 @@ class Product extends Public_Controller
             set_cookie($key, json_encode([$id]), 0);
         }
     }
+    public function ajax_load_comment(){
+        $this->checkRequestPostAjax();
+        $productId = $this->input->post('product_id');
+        $page = $this->input->post('page');
+        $limit = 5;
+        $params = [
+            'is_status' => 1,
+            'product_id' => $productId,
+            'limit' => $limit,
+            'page' => $page
+        ];
+        $this->load->model('comments_model');
+        $commentModel = new Comments_model();
+        $data['data'] = $commentModel->getData($params);
+        print $this->load->view($this->template_path . 'product/_ajax_load_comment', $data, TRUE);
+    }
     public function ajax_get_detail(){
         $this->checkRequestPostAjax();
         if($this->session->userdata('is_agency') == true){
