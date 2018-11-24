@@ -52,7 +52,7 @@ var LOC = {
 }
 var FUNC = {
     ajaxShowRequest: function (formData, jqForm, options) {
-        if(jqForm.find('[type="submit"]').length > 0) jqForm.find('[type="submit"]').append('<i class="fa fa-spinner fa-spin ml-2" style="color: #ffffff;"></i>');
+        if(jqForm.find('[type="submit"]').length > 0) jqForm.find('[type="submit"]').append(' <i class="fa fa-spinner fa-spin ml-2" style="color: #ffffff;"></i>');
         //let queryString = $.param(formData);
         return true;
     },
@@ -480,8 +480,8 @@ var UI = {
             success: FUNC.ajaxShowResponse,
             type: 'POST',
             dataType: 'JSON',
-            clearForm: true,
-            resetForm: true,
+            /*clearForm: true,*/
+            /*resetForm: true,*/
             /*$.ajax options can be used here too, for example:*/
             timeout:   500
         });
@@ -593,21 +593,21 @@ var UI = {
         }
     },
     loadComment: function (page) {
-        if($('#comment').length > 0){
-            let container = $('#comment');
-            let product_id = el.data('id');
-            $.ajax({
-                type: 'POST',
-                url: base_url + 'product/ajax_load_comment',
-                data: {product_id: product_id,page:page},
-                beforeSend: function () {
-                    container.html('<div class="text-center"><i class="fa fa-spinner fa-spin ml-2" style=" margin-left:5px;color: #ffffff;"></i></div>');
-                },
-                success: function (html) {
-                    container.html(html);
-                }
+        let container = $('#comments');
+        if(container.length > 0){
+            let product_id = container.data('id');
+            container.find('.cmt-list').html('<div class="text-center"><i class="fa fa-spinner fa-spin ml-2" style=" margin-left:5px;color: #be1e2d;"></i></div>');
+            setTimeout(function () {
+                $.ajax({
+                    type: 'POST',
+                    url: base_url + 'product/ajax_load_comment',
+                    data: {product_id: product_id,page:page},
+                    success: function (html) {
+                        container.find('.cmt-list').html(html);
+                    }
 
-            })
+                })
+            },1000);
         }
         return false;
     },
@@ -666,7 +666,7 @@ jQuery(document).ready(function () {
 
     CART.hover_cart();
     LOC.loadCity();
-    LOC.loadDistrict()
+    LOC.loadDistrict();
 
     $(document).on('change','select[name*="filter_"]',function () {
         let form_parent = $(this).closest('form');
@@ -699,6 +699,29 @@ jQuery(document).ready(function () {
         });
         _this.closest('.panel-body').css({
             'max-height': '2000px'
+        });
+    });
+
+    $('.comment-fr').on('click', '.reply-btn', function(e) {
+        e.preventDefault();
+        let container = $(this).closest('.comment-fr');
+        let form = container.find('form.form-comment');
+        let cmtID = $(this).attr('data-id'), name = $(this).closest('.hc-comment').children('.head').find('.name').text();
+        let clone = form.clone();
+        container.find('.hc-comment form.form_comment').remove();
+        clone.find('textarea').val("@"+name+': ');
+        clone.append('<input type="hidden" name="parent_id" id="comment-id" value="'+cmtID+'">');
+        $(this).parent().after(clone);
+        clone.find('textarea').focus();
+        container.ajaxForm({
+            beforeSubmit: FUNC.ajaxShowRequest,
+            success: FUNC.ajaxShowResponse,
+            type: 'POST',
+            dataType: 'JSON',
+            /*clearForm: true,*/
+            /*resetForm: true,*/
+            /*$.ajax options can be used here too, for example:*/
+            timeout:   500
         });
     });
 

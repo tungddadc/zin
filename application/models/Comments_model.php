@@ -27,8 +27,29 @@ class Comments_model extends STEVEN_Model
     {
         parent::_where_custom();
         extract($args);
+        if (!empty($parent_id)) $this->db->where("$this->table.parent_id", $parent_id);
         if (!empty($product_id)) $this->db->where("$this->table.product_id", $product_id);
 
+    }
+
+    public function _recursive($data, $parent_id){
+        $comment = array();
+        $data = (array) $data;
+        $tmp2 = array();
+        if(!empty($data)) foreach ($data as $key => $item)
+        {
+            if ((int)$item->parent_id == (int)$parent_id)
+            {
+                $tmp = (array)$item;
+                unset($data[$key]);
+                if($parent_id == 0) {
+                    $listChild = $this->_recursive($data,$item->id);
+                    $tmp2['list_child'] = array_reverse($listChild);
+                }
+                $comment[] = (object)array_merge($tmp,$tmp2);
+            }
+        }
+        return $comment;
     }
 
     public function get_by_comment_id($id)
