@@ -26,6 +26,14 @@ class Leech extends STEVEN_Controller
         $this->_category = new Category_model();
     }
 
+    public function convertSlug(){
+        $allProduct = $this->_product_model->getDataAll('',$this->_product_model->table_trans);
+        if(!empty($allProduct)) foreach ($allProduct as $item){
+            echo "Result update ".$this->_product_model->update(['id' => $item->id],['slug' => $this->toSlug($item->slug)],$this->_product_model->table_trans)."<br>";
+        }
+        die('done');
+    }
+
     public function convertCategory(){
         $file =  MEDIA_PATH.'categories.xlsx';
 

@@ -2190,15 +2190,15 @@ nav {
 .features-block a {
     color: #fff;
     font-weight: 600;
-    margin-right: 13px;
+    margin: 0 6.5px;
     padding-top: 15px;
     padding-bottom: 13px;
     display: inline-block;
     font-size: 13px;
 }
 
-.features-block a:hover, .features-block li.active a {
-    color: rgb(251, 175, 63);
+.features-block li:hover, .features-block li.active{
+    background-color: rgb(251, 175, 63);
 }
 
 .features-block li:last-child a {

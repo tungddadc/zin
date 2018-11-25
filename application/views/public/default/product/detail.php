@@ -466,4 +466,6 @@
     </section>
     <!-- Main Container End -->
 <?php endif; ?>
-
+<script>
+    var urlCurrentMenu = '<?php echo !empty($oneParent) ? getUrlCateProduct($oneParent) : '' ?>';
+</script>

@@ -327,12 +327,12 @@ class STEVEN_Model extends CI_Model
 		return $this->db->get($tablename)->row();
 	}
 
-    public function getDataAll($conditions, $tablename = '')
+    public function getDataAll($conditions = [], $tablename = '')
     {
         if ($tablename == '') {
             $tablename = $this->table;
         }
-        $this->db->where($conditions);
+        if(!empty($conditions)) $this->db->where($conditions);
 
         return $this->db->get($tablename)->result();
     }

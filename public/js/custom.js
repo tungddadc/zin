@@ -431,6 +431,7 @@ var UI = {
     activeMenu: function(){
         let href = window.location.origin + window.location.pathname;
         $('ul>li a[href="' + href + '"]').parent().addClass('active');
+        if(urlCurrentMenu) $('ul>li a[href="' + urlCurrentMenu + '"]').parent().addClass('active');
     },
     search: function(){
         let el  = $('input[name="search"]');
