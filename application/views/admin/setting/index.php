@@ -152,7 +152,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="thumbnail">Ảnh đại diện Website</label>
+                                    <label for="thumbnail">Ảnh đại diện trang chủ Website (Social Share) (200px x 200px)</label>
                                     <div class="input-group m-input-group m-input-group--air">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">

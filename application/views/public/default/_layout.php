@@ -63,7 +63,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
 
     <!--begin::Web font -->
-    <script>
+    <!--<script>
         WebFontConfig = {
             google: {families: ["Nunito+Sans:400,300,500,600,700", "Open+Sans:700,600,800,400"]}
         };
@@ -75,13 +75,13 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
             var s = document.getElementsByTagName('script')[0];
             s.parentNode.insertBefore(wf, s);
         })();
-    </script>
+    </script>-->
     <!--end::Web font -->
 
 
   <?php $asset_css[] = 'bootstrap.min.css'; ?>
   <?php $asset_css[] = 'font-awesome.min.css'; ?>
-  <?php //$asset_css[] = 'google-fonts.css'; ?>
+  <?php $asset_css[] = 'google-fonts.css'; ?>
   <?php $asset_css[] = 'simple-line-icons.css'; ?>
   <?php $asset_css[] = 'owl.carousel.css'; ?>
   <?php $asset_css[] = 'owl.theme.css'; ?>
