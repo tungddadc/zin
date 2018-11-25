@@ -96,7 +96,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                             </div>
 
                             <div class="check">
-                                <a title="Lịch sử đơn hàng" href="<?php echo base_url('cart/history') ?>">
+                                <a title="Lịch sử đơn hàng" href="<?php echo base_url('profile/order') ?>">
                                     <span class="hidden-xs">Lịch sử đơn hàng</span>
                                 </a>
                             </div>
