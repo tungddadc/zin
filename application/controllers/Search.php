@@ -37,6 +37,21 @@ class Search extends Public_Controller {
         $oneItem = (object) $oneItem;
         $data['oneItem'] = $oneItem;
         //Get data category current
+        switch ($this->input->get('filter_sort')) {
+            case 'oldest':
+                $paramsFilter['order'] = ['created_time' => 'ASC'];
+                break;
+            case 'lowest':
+                $paramsFilter['order'] = ['price_sort' => 'ASC'];
+                break;
+            case 'highest':
+                $paramsFilter['order'] = ['price_sort' => 'DESC'];
+                break;
+            default:
+                $paramsFilter['order'] = ['created_time' => 'DESC'];
+        }
+        $limit = $this->input->get('filter_limit');
+        $data['limit'] = $limit = !empty($limit) ? $limit : 12;
         $params = [
             'is_status'     => 1, //0: Huỷ, 1: Hiển thị, 2: Nháp
             'lang_code'     => $this->_lang_code,
@@ -44,6 +59,7 @@ class Search extends Public_Controller {
             'limit'         => $limit,
             'page'          => $page
         ];
+        if(!empty($paramsFilter)) $params = array_merge($params,$paramsFilter);
         $data['data'] = $this->_data_product->getData($params);
         $data['total'] = $total = $this->_data_product->getTotal($params);
         /*Pagination*/

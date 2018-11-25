@@ -132,7 +132,7 @@ var FUNC = {
 
                 if(goto){
                     $('html, body').animate({
-                        scrollTop: $(goto).offset().top - 100
+                        scrollTop: $(goto).offset().top - 110
                     }, 1000);
                 }
 
@@ -642,12 +642,14 @@ jQuery(document).ready(function () {
     UI.init();
     WISHLIST.init();
     COMPARE.init();
+    var heightMenuMain = $('#menu-main').height();
+    console.log(heightMenuMain);
     if(window.location.hash === '#reviews_tabs'){
         let tabClick = window.location.hash;
         $('[href="'+tabClick+'"]').tab('show');
         setTimeout(function () {
             $('html, body').animate({
-                scrollTop: $(tabClick).offset().top - 80
+                scrollTop: $(tabClick).offset().top - 120
             }, 1000);
         }, 500);
     }
@@ -659,7 +661,7 @@ jQuery(document).ready(function () {
         $('[href="#'+ href[href.length-1] +'"]').parent().addClass('active');
         setTimeout(function () {
             $('html, body').animate({
-                scrollTop: $(tabClick).offset().top - 80
+                scrollTop: $(tabClick).offset().top - 120
             }, 1000);
         }, 500);
     });
