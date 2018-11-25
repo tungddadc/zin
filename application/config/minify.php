@@ -49,7 +49,7 @@ $config['js_file'] = 'script_minified.min.js';
 
 
 // use automatic file names (default value: 'FALSE')
-$config['auto_names'] = FALSE;
+$config['auto_names'] = TRUE;
 
 // compress files or not (default value: 'TRUE')
 $config['compress'] = TRUE;
@@ -62,7 +62,7 @@ $config['compression_engine'] = array(
 
 // when you use closurecompiler as compression engine you can choose compression level (default value: 'SIMPLE_OPTIMIZATIONS')
 // avaliable options: "WHITESPACE_ONLY", "SIMPLE_OPTIMIZATIONS" or "ADVANCED_OPTIMIZATIONS"
-$config['closurecompiler']['compilation_level'] = 'SIMPLE_OPTIMIZATIONS';
+$config['closurecompiler']['compilation_level'] = 'ADVANCED_OPTIMIZATIONS';
 
 
 // End of file minify.php

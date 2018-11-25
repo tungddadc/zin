@@ -1,7 +1,7 @@
 <?php
     defined('BASEPATH') OR exit('No direct script access allowed');
 
-    $config['num_links'] = 5;
+    $config['num_links'] = 3;
     $config['enable_query_strings'] = TRUE;
     $config['use_page_numbers'] = TRUE;
     /*SET PARAM PAGE*/
@@ -24,8 +24,8 @@
     $config['num_tag_close'] = '</li>';
     $config['last_tag_open'] = '<li class="last">';
     $config['last_tag_close'] = '</li>';
-    $config['first_link'] = '«';
-    $config['last_link'] = '<i class="fa fa-arrow-right"></i>';
+    $config['first_link'] = 'Trang đầu';
+    $config['last_link'] = 'Trang cuối';
     $config['prev_link'] = '<i class="fa fa-arrow-left"></i>';
-    $config['next_link'] = '»';
+    $config['next_link'] = '<i class="fa fa-arrow-right"></i>';
     $config['display_pages'] = true;
