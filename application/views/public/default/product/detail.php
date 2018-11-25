@@ -165,7 +165,7 @@
                                                 <?php foreach ($data_similar as $item): ?>
                                                     <div class="add-to-box">
                                                         <div class="add-to-cart">
-                                                            <div class="row">
+                                                            <div class="row clearfix">
                                                                 <div class="col-sm-3">
                                                                     <img src="<?php echo getImageThumb($item->thumbnail,75,75,true) ?>" alt="<?php echo getTitle($item) ?>">
                                                                 </div>
@@ -210,7 +210,7 @@
                                 </div>
                             </div>
                             <?php if(!empty($data_related)): $totalItem = count($data_related) ?>
-                            <div class="row accessories">
+                            <div class="row clearfix accessories">
                                 <div class="col-lg-12 col-sm-12 col-xs-12">
                                     <div class="panel panel-danger">
                                         <div class="panel-heading">
@@ -230,7 +230,7 @@
                                 </div>
                             </div>
                             <?php endif; ?>
-                            <div class="row">
+                            <div class="row clearfix">
                                 <div class="col-sm-6 col-xs-12">
                                     <div class="product-collateral">
                                         <div class="add_info">

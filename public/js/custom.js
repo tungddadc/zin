@@ -579,7 +579,7 @@ var UI = {
                 document.getElementById('menu-category').style.display = 'none';
             } else {
                 header.classList.remove("sticky");
-                document.getElementById('menu-category').style.display = 'block';
+                //document.getElementById('menu-category').style.display = 'block';
             }
         };
     },

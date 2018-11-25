@@ -137,7 +137,9 @@ a:hover {
 :focus {
     outline: none;
 }
-
+.clearfix{
+    clear: both !important;
+}
 small {
     font-size: 85%;
     font-weight: normal;

@@ -236,9 +236,11 @@ class Product extends Public_Controller
         }
 
         $data['oneCategory'] = $oneCategory = $this->_data->getOneCateIdById($id);
-        $data['oneParent'] = $oneCategoryParent = $this->_data_category->_recursive_one_parent($this->_data_category->_all_category(),$data['oneCategory']->id);
-        if(!empty($data['oneParent'])){
-            $data['list_category_child'] = $this->_data_category->getCategoryChild($data['oneParent']->id,$this->session->public_lang_code);
+        if(!empty($oneCategory)){
+            $data['oneParent'] = $oneCategoryParent = $this->_data_category->_recursive_one_parent($this->_data_category->_all_category(),$oneCategory->id);
+            if(!empty($data['oneParent'])){
+                $data['list_category_child'] = $this->_data_category->getCategoryChild($data['oneParent']->id,$this->session->public_lang_code);
+            }
         }
         $data['oneItem'] = $oneItem;
         $data['onePrev'] = $this->_data->getPrevById($oneItem->id,'',$this->_lang_code);
@@ -280,9 +282,11 @@ class Product extends Public_Controller
 
         //add breadcrumbs
         $this->breadcrumbs->push("Trang chủ", base_url());
-        $this->_data_category->_recursive_parent($this->_data_category->_all_category(), $oneCategory->id);
-        if(!empty($this->_data_category->_list_category_parent)) foreach (array_reverse($this->_data_category->_list_category_parent) as $item){
-            $this->breadcrumbs->push($item->title, getUrlCateProduct($item));
+        if(!empty($oneCategory)) {
+            $this->_data_category->_recursive_parent($this->_data_category->_all_category(), $oneCategory->id);
+            if (!empty($this->_data_category->_list_category_parent)) foreach (array_reverse($this->_data_category->_list_category_parent) as $item) {
+                $this->breadcrumbs->push($item->title, getUrlCateProduct($item));
+            }
         }
         $this->breadcrumbs->push($oneItem->title, getUrlProduct($oneItem));
         $data['breadcrumb'] = $this->breadcrumbs->show();
