@@ -46,9 +46,9 @@ class Product_model extends STEVEN_Model
         }
 
         /*Sắp xếp trường đặc biệt*/
-        if(!empty($order['price_sort'])){
+        /*if(!empty($order['price_sort'])){
             $this->db->order_by('price_sort',$order['price_sort']);
-        }
+        }*/
         /*Sắp xếp trường đặc biệt*/
 
     }

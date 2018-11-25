@@ -66,9 +66,6 @@ class STEVEN_Model extends CI_Model
         if ($this->input->post('sort')) {
             $sort = $this->input->post('sort');
             $this->db->order_by($sort['field'], $sort['sort']);
-        } else if (isset($this->order_default)) {
-            $order = $this->order_default;
-            $this->db->order_by(key($order), $order[key($order)]);
         }
 	}
 

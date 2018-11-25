@@ -125,14 +125,14 @@ var FUNC = {
                 let resultFind = $(result).find(element);
 
                 if(resultFind.length > 0){
-                    _container.html(resultFind);
+                    _container.html(resultFind.html());
                 }
                 FUNC.ajax_loader();
                 window.history.pushState({path: url}, '', url);
 
                 if(goto){
                     $('html, body').animate({
-                        scrollTop: $(goto).offset().top
+                        scrollTop: $(goto).offset().top - 100
                     }, 1000);
                 }
 
@@ -685,6 +685,12 @@ jQuery(document).ready(function () {
     $(document).on('change','select[name*="filter_"]',function () {
         let form_parent = $(this).closest('form');
         let url = form_parent.attr('action') + '?' + form_parent.serialize();
+        FUNC.ajax_load_content_animation(url,'#content_ajax','#content_ajax');
+    });
+
+    $(document).on('click','ul.pagination li a',function (e) {
+        e.preventDefault();
+        let url = $(this).attr('href');
         FUNC.ajax_load_content_animation(url,'#content_ajax','#content_ajax');
     });
     $(document).on('click','.link-quickview',function (e) {
