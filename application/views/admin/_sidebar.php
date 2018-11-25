@@ -118,6 +118,16 @@
                                 </span>
                             </a>
                         </li>
+                        <li class="m-menu__item " aria-haspopup="true">
+                            <a href="<?php echo site_admin_url('comments') ?>" class="m-menu__link ">
+                                <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                    <span></span>
+                                </i>
+                                <span class="m-menu__link-text">
+                                    Quản lý bình luận
+                                </span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </li>
@@ -286,16 +296,6 @@
                                 </i>
                                 <span class="m-menu__link-text">
                                     Quản lý voucher
-                                </span>
-                            </a>
-                        </li>
-                        <li class="m-menu__item " aria-haspopup="true">
-                            <a href="<?php echo site_admin_url('comments') ?>" class="m-menu__link ">
-                                <i class="m-menu__link-bullet m-menu__link-bullet--dot">
-                                    <span></span>
-                                </i>
-                                <span class="m-menu__link-text">
-                                    Quản lý comments
                                 </span>
                             </a>
                         </li>

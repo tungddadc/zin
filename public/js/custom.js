@@ -725,11 +725,12 @@ jQuery(document).ready(function () {
 
     $('.comment-fr').on('click', '.reply-btn', function(e) {
         e.preventDefault();
+        $(this).closest('.comment-fr');
         let container = $(this).closest('.comment-fr');
+        container.find('.hc-comment form.form-comment').remove();
         let form = container.find('form.form-comment');
         let cmtID = $(this).attr('data-id'), name = $(this).closest('.hc-comment').children('.head').find('.name').text();
         let clone = form.clone();
-        container.find('.hc-comment form.form_comment').remove();
         clone.find('textarea').val("@"+name+': ');
         clone.append('<input type="hidden" name="parent_id" id="comment-id" value="'+cmtID+'">');
         $(this).parent().after(clone);
