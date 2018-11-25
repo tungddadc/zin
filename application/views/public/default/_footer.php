@@ -51,8 +51,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                     <h4>Liên hệ với chúng tôi</h4>
                     <?php $contact = $this->settings['contact'][$this->session->userdata('public_lang_code')]; ?>
                     <div class="contacts-info">
-
                         <address><i class="add-icon"></i><?php echo $contact['title'] ?>. <?php echo $contact['address'] ?></address>
+                        <div class="phone-footer"><i class="building-icon"></i>Văn phòng: <?php echo $this->settings['address_office'] ?></div>
                         <div class="phone-footer"><i class="phone-icon"></i><?php echo $contact['phone'] ?></div>
                         <div class="email-footer"><i class="email-icon"></i><a href="mailto:<?php echo $contact['email'] ?>"><?php echo $contact['email'] ?></a></div>
                     </div>
@@ -76,6 +76,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                     <div class="payment-accept"> <img alt="" src="<?php echo $this->templates_assets ?>images/payment-1.png"> <img alt="" src="<?php echo $this->templates_assets ?>images/payment-2.png"> <img alt="" src="<?php echo $this->templates_assets ?>images/payment-3.png"> <img alt="" src="<?php echo $this->templates_assets ?>images/payment-4.png"> </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="footer-middle footer-link">
+        <div class="container">
+            <?php echo navMenuFooterCol('nav-link') ?>
         </div>
     </div>
     <div class="footer-bottom">

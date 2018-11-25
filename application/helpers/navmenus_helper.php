@@ -30,6 +30,12 @@ if (!function_exists('navMenuFooter3')) {
     }
 }
 
+if (!function_exists('navMenuFooterCol')) {
+    function navMenuFooterCol($classname = '', $id = '', $submenuclass = ''){
+        return menus(5, $classname, $id, $submenuclass);
+    }
+}
+
 
 function menus($location, $classname, $id, $submenuclass){
     $ci =& get_instance();
