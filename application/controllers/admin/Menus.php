@@ -129,7 +129,6 @@ class Menus extends Admin_Controller {
             }
         }
     }
-
     private function getCategoryByType($all, $type){
         $data = [];
         if(!empty($all)) foreach ($all as $item){
@@ -137,4 +136,18 @@ class Menus extends Admin_Controller {
         }
         return $data;
     }
+
+    /*public function saveMenuBrand(){
+        $allCategory = $this->_categoryModel->getAll($this->session->userdata('public_lang_code'));
+        $allBrand = $this->_categoryModel->getDataByCategoryType($allCategory,'brand');
+        if(!empty($allBrand)) foreach ($allBrand as $k => $item){
+            $tmp['title'] = $item->title;
+            $tmp['link'] = str_replace(base_url(),'',getUrlBrand($item));
+            $tmp['parent_id'] = 0;
+            $tmp['order'] = $k;
+            $tmp['language_code'] = 'vi';
+            $this->_data->saveMenu($tmp);
+        }
+        die('done');
+    }*/
 }

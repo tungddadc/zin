@@ -7,4 +7,4 @@
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-$config['cms_menu'] = ['Menu Top','Menu Main','Menu Footer Hướng dẫn mua hàng','Menu Footer Tài khoản','Menu Footer Thông tin'];
+$config['cms_menu'] = ['Menu Thương hiệu','Menu Main','Menu Footer Hướng dẫn mua hàng','Menu Footer Tài khoản','Menu Footer Thông tin'];

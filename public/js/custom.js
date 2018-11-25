@@ -725,6 +725,17 @@ jQuery(document).ready(function () {
         });
     });
 
+    $('.view-more').on('click','a', function(e) {
+        e.preventDefault();
+        let _this = $(this);
+        _this.parent().css({
+            height: 0
+        });
+        _this.closest('ul').css({
+            'max-height': '4000px'
+        }).stop(true,true).fadeIn('slow');
+    });
+
 });
 
 /*

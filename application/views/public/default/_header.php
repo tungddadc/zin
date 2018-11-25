@@ -166,30 +166,8 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                         <div class="mega-menu-title">
                             <h3><i class="fa fa-navicon"></i> Thương hiệu</h3>
                         </div>
-                        <div class="mega-menu-category"
-                             style="<?php if ($this->_controller != 'home') echo 'display:none'; ?>">
-                            <?php $listBrandCategory = getAllBrand(); ?>
-                            <ul class="nav">
-                                <?php if (!empty($listBrandCategory)) foreach ($listBrandCategory as $item): ?>
-                                    <li class="<?php echo empty($item->list_child) ? 'nosub' : '' ?>">
-                                        <a href="<?php echo getUrlBrand($item) ?>"
-                                           title="<?php echo getTitle($item) ?>"><?php echo $item->title ?></a>
-                                        <?php if (!empty($item->list_child)): ?>
-                                            <div class="wrap-popup column1">
-                                                <div class="popup">
-                                                    <ul class="nav">
-                                                        <?php foreach ($item->list_child as $itemChild): ?>
-                                                            <li><a href="<?php echo getUrlBrand($itemChild) ?>"
-                                                                   title="<?php echo getTitle($itemChild) ?>"><?php echo $itemChild->title ?></a>
-                                                            </li>
-                                                        <?php endforeach; ?>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        <?php endif; ?>
-                                    </li>
-                                <?php endforeach; ?>
-                            </ul>
+                        <div class="mega-menu-category" style="<?php if ($this->_controller != 'home') echo 'display:none'; ?>">
+                            <?php echo navMenuBrand('nav','','nav') ?>
                         </div>
                     </div>
                 </div>
