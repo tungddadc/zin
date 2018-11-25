@@ -54,6 +54,7 @@ class Search extends Public_Controller {
         $params = [
             'is_status'     => 1, //0: Huỷ, 1: Hiển thị, 2: Nháp
             'lang_code'     => $this->_lang_code,
+            'model'         => $keyword,
             'search'        => $keyword,
             'limit'         => $limit,
             'page'          => $page
