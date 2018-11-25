@@ -40,7 +40,7 @@
                                                                    data-zoom-image="<?php echo getImageThumb($item) ?>"
                                                                    title="<?php echo getTitle($oneItem) ?>">
                                                                     <img id="product-zoom"
-                                                                         src="<?php echo getImageThumb($item, 76, 76) ?>"
+                                                                         src="<?php echo getImageThumb($item, 76, 76,true) ?>"
                                                                          alt="<?php echo getTitle($oneItem) ?>"/>
                                                                 </a>
                                                             </div>

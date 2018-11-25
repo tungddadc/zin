@@ -6,9 +6,9 @@ if (!function_exists('getImageThumb')) {
             $image = $imageArray[0];
         }
         if(empty($image)) {
-            $width = !empty($width)?$width:400;
+            $width = !empty($width)?$width:200;
             $height = !empty($height)?$height:200;
-            return "//via.placeholder.com/{$width}x{$height}";
+            return "no_image.png";
         }
         $image = str_replace(MEDIA_NAME,'',$image);
         $sourceImage = MEDIA_PATH . $image;
@@ -16,9 +16,9 @@ if (!function_exists('getImageThumb')) {
         $sourceImage = str_replace('\\','/',$sourceImage);
 
         if(!file_exists($sourceImage)){
-            $width = !empty($width)?$width:400;
+            $width = !empty($width)?$width:200;
             $height = !empty($height)?$height:200;
-            return "//via.placeholder.com/{$width}x{$height}";
+            return "no_image.png";
         }
         $CI =& get_instance();
         if($width != 0 && $height != 0){
