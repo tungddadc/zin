@@ -8,17 +8,16 @@ if (!function_exists('getImageThumb')) {
         if(empty($image)) {
             $width = !empty($width)?$width:200;
             $height = !empty($height)?$height:200;
-            return "no_image.png";
+            $image =  "no_image.png";
         }
         $image = str_replace(MEDIA_NAME,'',$image);
         $sourceImage = MEDIA_PATH . $image;
-
         $sourceImage = str_replace('\\','/',$sourceImage);
 
         if(!file_exists($sourceImage)){
             $width = !empty($width)?$width:200;
             $height = !empty($height)?$height:200;
-            return "no_image.png";
+            $sourceImage = MEDIA_PATH . "no_image.png";
         }
         $CI =& get_instance();
         if($width != 0 && $height != 0){
