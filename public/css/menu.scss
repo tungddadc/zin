@@ -195,11 +195,11 @@ header {
           display: none;
         }
       #newsletter1{
-        width: calc(100% - 90px) !important;
+        width: calc(100% - 104px) !important;
         margin-bottom: 0;
       }
       .subscribe{
-        width: 84px;
+        width: 100px;
         margin-left: 6px;
       }
     }
@@ -213,10 +213,25 @@ header {
   .product-option-right{
     display: none;
   }
+  a.link-quickview {
+    display: none !important;
+  }
+  .product-tabs{
+    display: inline-grid;
+  }
+  .product-view .product-shop .add-to-box{
+  }
+  .breadcrumbs ul {
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    white-space: nowrap;
+    overflow: auto;
+  }
 }
-@media only screen and (max-width: 479px) and (min-width: 320px)
+@media only screen and (max-width: 767px) and (min-width: 320px)
 {
-  .related-pro .block-title h2 {
+  .related-pro .block-title h2 ,.upsell-pro .block-title h2{
     font-size: 16px;
   }
 }
