@@ -139,7 +139,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                     </div>
                 </div>
             </div>
-            <aside class="col-left sidebar col-sm-3 col-xs-12 col-sm-pull-9">
+            <div class="col-left sidebar col-sm-3 col-xs-12 col-sm-pull-9">
                 <div>
                     <div class="sideoffer-banner">
 
@@ -246,11 +246,11 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                     </div>
                 </div>
 
-                <div>
+                <div class="sticky_box">
                     <?php $this->load->view($this->template_path . 'product/_box_features') ?>
                 </div>
 
-            </aside>
+            </div>
         </div>
     </div>
 </section>

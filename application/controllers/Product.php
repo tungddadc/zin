@@ -132,36 +132,11 @@ class Product extends Public_Controller
         if ($oneItem->type !== 'brand') show_404();
 
         if ($this->input->get('lang')) {
-            redirect(getUrlCateProduct(['slug' => $oneItem->slug, 'id' => $oneItem->id]));
+            redirect(getUrlBrand(['slug' => $oneItem->slug, 'id' => $oneItem->id]));
         }
 
         $data['oneItem'] = $oneItem;
-        $data['oneParent'] = $oneParent = $this->_data_category->_recursive_one_parent($this->_data_category->_all_category(),$id);
-        /*$this->_data_category->_recursive_child($this->_data_category->_all_category(),$oneParent->id);
-        $listCateChild = $this->_data_category->_list_category_child;*/
-        /*Get level category*/
-        $this->_data_category->_recursive_parent($this->_data_category->_all_category(), $oneItem->id);
 
-        $data['list_category_child'] = $this->_data_category->getListChild($this->_data_category->_all_category(), $id);
-
-        /*Lay list id con của category*/
-        $this->_data_category->_list_category_child_id = null;
-        $this->_data_category->_recursive_child_id($this->_data_category->_all_category(),$id);
-        $listCateId = $this->_data_category->_list_category_child_id;
-        /*Lay list id con của category*/
-
-        /*Lay list cac thuoc tinh*/
-        /*$this->load->model('property_model');
-        $propertyModel = new Property_model();
-        if(!$this->cache->get('_all_property_'.$this->session->public_lang_code)){
-            $this->cache->save('_all_property_'.$this->session->public_lang_code,$propertyModel->getAll($this->session->public_lang_code),60*60*30);
-        }
-        $_all_property = $this->cache->get('_all_property_'.$this->session->public_lang_code);
-        $data['property_format'] = $propertyModel->getDataByPropertyType($_all_property,'format');
-        $data['property_type'] = $propertyModel->getDataByPropertyType($_all_property,'type');
-        $data['property_color'] = $propertyModel->getDataByPropertyType($_all_property,'color');
-        $data['property_genre'] = $propertyModel->getGenre($_all_property,'genre',$oneParent->id);*/
-        /*Lay list cac thuoc tinh*/
         switch ($this->input->get('filter_sort')) {
             case 'oldest':
                 $paramsFilter['order'] = ['created_time' => 'ASC'];
@@ -181,7 +156,7 @@ class Product extends Public_Controller
         $params = [
             'is_status' => 1, //0: Huỷ, 1: Hiển thị, 2: Nháp
             'lang_code' => $this->_lang_code,
-            'category_id' => ($id != 1) ? $listCateId : null,
+            'brand_id' => $id,
             'limit' => $limit,
             'page' => $page
         ];
@@ -190,8 +165,8 @@ class Product extends Public_Controller
         $data['total'] = $this->_data->getTotal($params);
         /*Pagination*/
         $this->load->library('pagination');
-        $paging['base_url'] = getUrlCateProduct(['slug' => $oneItem->slug, 'id' => $oneItem->id, 'page' => 1]);
-        $paging['first_url'] = getUrlCateProduct(['slug' => $oneItem->slug, 'id' => $oneItem->id]);
+        $paging['base_url'] = getUrlBrand(['slug' => $oneItem->slug, 'id' => $oneItem->id, 'page' => 1]);
+        $paging['first_url'] = getUrlBrand(['slug' => $oneItem->slug, 'id' => $oneItem->id]);
         $paging['total_rows'] = $data['total'];
         $paging['per_page'] = $limit;
         $this->pagination->initialize($paging);
@@ -200,25 +175,18 @@ class Product extends Public_Controller
 
         //add breadcrumbs
         $this->breadcrumbs->push("Trang chủ", base_url());
-        $this->_data_category->_recursive_parent($this->_data_category->_all_category(), $id);
-        if(!empty($this->_data_category->_list_category_parent)) foreach (array_reverse($this->_data_category->_list_category_parent) as $item){
-            $this->breadcrumbs->push($item->title, getUrlCateProduct($item));
-        }
-        $this->breadcrumbs->push($oneItem->title, getUrlCateProduct($oneItem));
+        $this->breadcrumbs->push($oneItem->title, getUrlBrand($oneItem));
         $data['breadcrumb'] = $this->breadcrumbs->show();
         //SEO Meta
         $data['SEO'] = [
             'meta_title' => !empty($oneItem->meta_title) ? $oneItem->meta_title : $oneItem->title,
             'meta_description' => !empty($oneItem->meta_description) ? $oneItem->meta_description : $oneItem->description,
             'meta_keyword' => !empty($oneItem->meta_title) ? $oneItem->meta_keyword : '',
-            'url' => getUrlCateProduct($oneItem),
+            'url' => getUrlBrand($oneItem),
             'image' => getImageThumb($oneItem->thumbnail, 400, 200)
         ];
 
-        if($oneParent->layout) $layoutView = '-'.$oneParent->layout;
-        else $layoutView = '';
-
-        $data['main_content'] = $this->load->view($this->template_path . 'product/category'.$layoutView, $data, TRUE);
+        $data['main_content'] = $this->load->view($this->template_path . 'product/category', $data, TRUE);
         $this->load->view($this->template_main, $data);
 
     }
