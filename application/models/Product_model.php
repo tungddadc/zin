@@ -45,6 +45,12 @@ class Product_model extends STEVEN_Model
             $this->db->where("$this->table.brand",$brand_id);
         }
 
+        if(!empty($tags)){
+            $this->db->select('MATCH (meta_keyword) AGAINST ('.$this->db->escape($tags).' IN BOOLEAN MODE) AS score_tags');
+            $this->db->where('MATCH (meta_keyword) AGAINST ('.$this->db->escape($tags).' IN BOOLEAN MODE)', NULL, FALSE);
+            $this->db->order_by('score_tags','DESC');
+        }
+
         /*Sắp xếp trường đặc biệt*/
         /*if(!empty($order['price_sort'])){
             $this->db->order_by('price_sort',$order['price_sort']);
