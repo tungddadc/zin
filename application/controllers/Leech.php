@@ -35,9 +35,10 @@ class Leech extends STEVEN_Controller
     }
 
     public function convertAlbumProduct(){
-        $allProduct = $this->_product_model->getDataAll('',$this->_product_model->table_trans);
-        if(!empty($allProduct)) foreach ($allProduct as $item){
-            echo "Result update ".$this->_product_model->update(['id' => $item->id],['slug' => $this->toSlug($item->slug)],$this->_product_model->table_trans)."<br>";
+        $allAlbumProduct = $this->_product_model->getAlbumImage();
+        if(!empty($allAlbumProduct)) foreach ($allAlbumProduct as $item){
+            $album = explode(',',$item->album);
+            echo "Result update ".$this->_product_model->update(['id' => $item->product_id],['album' => json_encode($album)],$this->_product_model->table)."<br>";
         }
         die('done');
     }
