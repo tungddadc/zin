@@ -158,7 +158,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
             </div>
         </div>
     </div>
-    <nav class="hidden-xs">
+    <nav id="menu-main" class="hidden-xs">
         <div class="nav-container">
             <div class="col-md-3 col-xs-12 col-sm-3 hidden-sm">
                 <div class="mega-container visible-lg visible-md visible-sm">
@@ -166,7 +166,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                         <div class="mega-menu-title">
                             <h3><i class="fa fa-navicon"></i> Thương hiệu</h3>
                         </div>
-                        <div class="mega-menu-category" style="<?php if ($this->_controller != 'home') echo 'display:none'; ?>">
+                        <div id="menu-category" class="mega-menu-category" style="<?php if ($this->_controller != 'home') echo 'display:none'; ?>">
                             <?php echo navMenuBrand('nav','','nav') ?>
                         </div>
                     </div>

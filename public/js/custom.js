@@ -570,6 +570,19 @@ var UI = {
             });
         }
     },
+    stickyMenuMain: function(){
+        let header = document.getElementById('menu-main');
+        let sticky = header.offsetTop;
+        window.onscroll = function() {
+            if (window.pageYOffset > sticky) {
+                header.classList.add("sticky");
+                document.getElementById('menu-category').style.display = 'none';
+            } else {
+                header.classList.remove("sticky");
+                document.getElementById('menu-category').style.display = 'block';
+            }
+        };
+    },
     stickyBox: function(){
         if($('.sticky_box').length > 0){
             $('.sticky_box').stick_in_parent();
@@ -612,6 +625,7 @@ var UI = {
         return false;
     },
     init: function () {
+        UI.stickyMenuMain();
         UI.activeMenu();
         UI.searchBox();
         UI.stickyBox();
