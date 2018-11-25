@@ -10,7 +10,7 @@ class Setting extends Admin_Controller {
 
     public function index()
     {
-        $dataContent = file_get_contents(FCPATH.'config'.DIRECTORY_SEPARATOR.'settings.cfg');
+        $dataContent = file_get_contents(FCPATH.'database'.DIRECTORY_SEPARATOR.'settings.cfg');
         $data = $dataContent ? json_decode($dataContent,true) : array();
         $data['heading_title'] = "Cấu hình hệ thống";
         $data['heading_description'] = 'Cấu hình chung';
@@ -18,7 +18,7 @@ class Setting extends Admin_Controller {
         $data['list_db'] = $this->get_list_db();
         $dataPost = $this->input->post();
         if (!empty($dataPost)){
-            if(file_put_contents(FCPATH.'config'.DIRECTORY_SEPARATOR.'settings.cfg',json_encode($dataPost))) {
+            if(file_put_contents(FCPATH.'database'.DIRECTORY_SEPARATOR.'settings.cfg',json_encode($dataPost))) {
                 $message['type'] = "success";
                 $message['message'] = "Cập nhật thành công !";
             }else{
