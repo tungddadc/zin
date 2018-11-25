@@ -5221,12 +5221,14 @@ ul.products-grid {
 }
 
 .products-grid .item .item-inner .item-info .info-inner .item-title {
-  margin-bottom: 3px;
-  padding-top: 10px;
   font-size: 14px;
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  line-height: 24px;
+  height: calc(24px * 3);
 }
 
 .products-grid .item .item-inner .item-info .info-inner .item-title a {

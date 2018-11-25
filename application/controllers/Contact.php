@@ -13,7 +13,7 @@ class Contact extends Public_Controller
 
             $rules = array(
                 array(
-                    'field' => 'fullname',
+                    'field' => 'full_name',
                     'label' => 'họ và tên',
                     'rules' => 'required|trim'
                 ),
@@ -22,76 +22,69 @@ class Contact extends Public_Controller
                     'label' => 'email',
                     'rules' => 'trim|required|valid_email'
                 ),
-                /*array(
+                array(
                     'field' => 'phone',
                     'label' => 'số điện thoại',
                     'rules' => 'trim|regex_match[/^[0-9.-]{0,18}+$/]'
-                ),*/
+                ),
                 array(
                     'field' => 'content',
                     'label' => 'nội dung',
                     'rules' => 'trim|required'
                 ),
-                array(
+
+            );
+            if(GG_CAPTCHA_MODE == true){
+                $rules = array_merge($rules,array(
                     'field' => 'g-recaptcha-response',
                     'label' => 'mã captcha',
                     'rules' => 'required'
-                )
-
-            );
+                ));
+            }
             $this->form_validation->set_rules($rules);
             if ($this->form_validation->run() != false) {
-                //Check config setting reCaptcha
-                $this->load->library('recaptcha');
-                $captchaResponse = $this->input->post('g-recaptcha-response');
-                $remoteIp = $this->input->ip_address();
-                if($this->recaptcha->verify($captchaResponse,$remoteIp) == false){
-                    $message['type'] = 'error';
-                    $message['message'] = "Bạn chưa xác thực Captcha !";
-                    die(json_encode($message));
+                if(GG_CAPTCHA_MODE == true) {
+                    //Check config setting reCaptcha
+                    $this->load->library('recaptcha');
+                    $captchaResponse = $this->input->post('g-recaptcha-response');
+                    $remoteIp = $this->input->ip_address();
+                    if ($this->recaptcha->verify($captchaResponse, $remoteIp) == false) {
+                        $message['type'] = 'error';
+                        $message['message'] = "Bạn chưa xác thực Captcha !";
+                        die(json_encode($message));
 
+                    }
                 }
                 //Check config setting reCaptcha
 
-
-                $emailFrom = $this->input->post('email');
-                $nameFrom = $this->input->post('fullname');
-                //$phone = $this->input->post('phone');
-                $title = $this->input->post('title');
-                $content = $this->input->post('content');
-
-                $contentHtml = '
-                <h2>Dear ' . $this->settings['name'] . ' !</h2></br>
-                <p>Họ và tên: ' . $nameFrom . '</p>
-                <p>Nội dung: ' . $content . '</p>
-            ';
-                $this->email->from($emailFrom, $nameFrom);
-
-                $this->email->to($emailTo);
-                if (!empty($emailToCC)) $this->email->cc($emailToCC);
-                if (!empty($emailToBCC)) $this->email->bcc($emailToBCC);
-
-                $this->email->subject($title);
-                $this->email->message($contentHtml);
-
-                if ($this->email->send()) {
-                    $message['type'] = 'success';
-                    $message['message'] = "Gửi thông tin liên hệ thành công !";
+                $data = $this->input->post();
+                $title = "Thông tin liên hệ";
+                $contentHtml = $this->load->view($this->template_path . 'email/contact', $data, TRUE);
+                $respon = $this->sendMail($emailTo, $title, $contentHtml);
+                if ($respon === true) {
+                    $this->_message = array(
+                        'message' => 'Gửi thông tin liên hệ thành công !',
+                        'type' => 'success',
+                        'url_redirect' => current_url()
+                    );
                 } else {
-                    $message['type'] = 'error';
-                    $message['message'] = 'Gửi thông tin liên hệ thất bại !';
+                    $this->_message = array(
+                        'message' => 'Gửi thông tin liên hệ không thành công !',
+                        'type' => 'warning'
+                    );
                 }
-                die(json_encode($message));
-            }else{
-                $message['type'] = "warning";
-                $message['message'] = $this->lang->line('mess_validation');
+            } else {
                 $valid = array();
-                if(!empty($rules)) foreach ($rules as $item){
-                    if(!empty(form_error($item['field']))) $valid[$item['field']] = form_error($item['field']);
+                if (!empty($rules)) foreach ($rules as $item) {
+                    if (!empty(form_error($item['field']))) $valid[$item['field']] = form_error($item['field']);
                 }
-                $message['validation'] = $valid;
-                die(json_encode($message));
+                $this->_message = array(
+                    'message' => 'Gửi thông tin liên hệ không thành công !',
+                    'type' => 'warning',
+                    'validation' => $valid
+                );
             }
+            $this->returnJson($this->_message);
         }
     }
 

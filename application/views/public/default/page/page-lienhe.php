@@ -9,7 +9,7 @@
                     </div>
                     <div class="static-contain">
                         <fieldset class="group-select account-login">
-                            <form class="content sb_form" method="post" action="#">
+                            <?php echo form_open('contact/submit',['class' => 'content sb_form']) ?>
                                 <ul class="form-list">
                                     <li>
                                         <label for="full_name">Họ và tên <span class="required">*</span></label>
@@ -39,11 +39,18 @@
                                                   cols="5"></textarea>
                                     </li>
 
-
+                                    <?php if (GG_CAPTCHA_MODE == TRUE): ?>
+                                    <li>
+                                        <div class="form-group m-form__group">
+                                            <div class="g-recaptcha"
+                                                 data-sitekey="<?php echo GG_CAPTCHA_SITE_KEY ?>"></div>
+                                        </div>
+                                    </li>
+                                    <?php endif; ?>
                                 </ul>
                                 <div class="buttons-set">
                                     <button name="send" class="button login" type="submit"><span>Gửi</span></button>
-                            </form>
+                            <?php echo form_close() ?>
                         </fieldset>
                     </div>
                 </article>
