@@ -252,10 +252,13 @@ if (!function_exists('getTags')) {
     {
         $tags = '';
         if (!empty($keyword)) {
-            $listTags = explode(',', $keyword);
-            foreach ($listTags as $k => $tag) {
-                $tags .= $k != 0 ? ', ' : '';
-                $tags .= '<a href="' . getUrlTag($tag) . '" title="' . $tag . '">' . $tag . '</a>';
+            $listTags = explode(',', trim($keyword));
+            if(!empty($listTags)) foreach ($listTags as $k => $tag) {
+                $tag = trim($tag);
+                if(!empty($tag) && $tag !== ''){
+                    $tags .= $k != 0 ? ', ' : '';
+                    $tags .= '<a href="' . getUrlTag($tag) . '" title="' . $tag . '">' . $tag . '</a>';
+                }
             }
         }
         return $tags;

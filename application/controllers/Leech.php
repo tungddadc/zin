@@ -34,6 +34,17 @@ class Leech extends STEVEN_Controller
         die('done');
     }
 
+    public function convertAlbumProduct(){
+        $allAlbumProduct = $this->_product_model->getAlbumImage();
+        if(!empty($allAlbumProduct)) foreach ($allAlbumProduct as $item){
+            $album = explode(',',$item->album);
+            echo "Result update ".$this->_product_model->update(['id' => $item->product_id],['album' => json_encode($album)],$this->_product_model->table)."<br>";
+        }
+        die('done');
+    }
+
+
+
     public function convertCategory(){
         $file =  MEDIA_PATH.'categories.xlsx';
 
@@ -157,6 +168,7 @@ class Leech extends STEVEN_Controller
             $tmp['quantity'] = $item['R'];
             $tmp['price'] = $item['N'];
             $tmp['thumbnail'] = $item['T'];
+            $tmp['created_time'] = $item['Y'];
             $tmp['data_related'] = $item['AM'];
             $tmp['brand'] = $item['AH']; //Phải check slug get ID rồi lưu ID
             echo $this->saveProduct($tmp);
@@ -208,24 +220,38 @@ class Leech extends STEVEN_Controller
         $item = (object) $item;
         $tmpLang[$this->_lang_code]['title'] = $item->title;
         $tmpLang[$this->_lang_code]['meta_title'] = $item->meta_title;
-        $tmpLang[$this->_lang_code]['description'] = $item->description;
-        $tmpLang[$this->_lang_code]['meta_description'] = $item->meta_description;
+        $tmpLang[$this->_lang_code]['description'] = !empty($item->description) ? $item->description : $item->meta_title;
+        $tmpLang[$this->_lang_code]['meta_description'] = !empty($item->meta_description) ? $item->meta_description : $item->meta_title;
         $tmpLang[$this->_lang_code]['meta_keyword'] = $item->meta_keyword;
-        $tmpLang[$this->_lang_code]['slug'] = $item->slug;
+        $tmpLang[$this->_lang_code]['slug'] = $this->toSlug($item->slug);
         $tmp['id'] = (int)$item->id;
         $tmp['model'] = $item->model;
         $tmp['quantity'] = (int)$item->quantity;
         $tmp['price'] = $item->price;
+        $tmp['created_time'] = $item->created_time;
         $tmp['thumbnail'] = $item->thumbnail;
         $tmp['brand'] = (int)$this->convertBrandnameToId($item->brand);
         $tmp['is_status'] = 1;
         $listRelated = explode(', ',$item->data_related);
-        $tmp['data_related'] = json_encode($listRelated);
+        $tmp['data_similar'] = json_encode($listRelated);
         $product_id = $this->_product_model->save($tmp);
-        $category_id = (int)$item->category_id;
+        $category_id = trim($item->category_id);
         if(!empty($product_id)){
             $this->save_language($product_id, $tmpLang, $this->_product_model->table_trans);
-            if(!empty($category_id)) $this->_product_model->save(['product_id' => $product_id, 'category_id' => $category_id],$this->_product_model->table_category);
+            if(!empty($category_id)) {
+                if(strpos($category_id,',') !== FALSE){
+                    $arrCate = explode(',',$category_id);
+                    $data_category = [];
+                    if(!empty($arrCate)) foreach ($arrCate as $cateId){
+                        $tmpCate['product_id'] = $product_id;
+                        $tmpCate['category_id'] = $cateId;
+                        $data_category[] = $tmpCate;
+                    }
+                    $this->_product_model->insertMultiple($data_category,$this->_product_model->table_category);
+                }else{
+                    $this->_product_model->save(['product_id' => $product_id, 'category_id' => $category_id],$this->_product_model->table_category);
+                }
+            }
         }
         return $product_id;
     }

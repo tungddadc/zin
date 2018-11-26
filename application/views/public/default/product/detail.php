@@ -1,6 +1,7 @@
 <?php if (!empty($oneItem)):
     $url = getUrlProduct($oneItem);
-    $album = !empty($oneItem->album) ? json_decode($oneItem->album) : null;
+    $album = !empty($oneItem->album) ? json_decode($oneItem->album) : [];
+    array_push($album,$oneItem->thumbnail);
     ?>
     <!-- Main Container -->
     <section class="main-container col1-layout">
@@ -39,7 +40,7 @@
                                                                    data-zoom-image="<?php echo getImageThumb($item) ?>"
                                                                    title="<?php echo getTitle($oneItem) ?>">
                                                                     <img id="product-zoom"
-                                                                         src="<?php echo getImageThumb($item, 76, 76) ?>"
+                                                                         src="<?php echo getImageThumb($item, 76, 76,true) ?>"
                                                                          alt="<?php echo getTitle($oneItem) ?>"/>
                                                                 </a>
                                                             </div>
@@ -387,6 +388,8 @@
                                         <?php echo form_close() ?>
                                         <?php endif; ?>
                                     </div>
+
+                                    <div>Tags: <?php echo getTags($oneItem->meta_keyword) ?></div>
                                 </div>
                                 <div class="col-sm-6 col-xs-12">
                                     <div class="product-collateral">

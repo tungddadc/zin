@@ -292,7 +292,7 @@ class Public_Controller extends STEVEN_Controller
         //$this->detectMobile = new Mobile_Detect();
 
         //đọc file setting
-        $dataSetting = file_get_contents(FCPATH . 'config' . DIRECTORY_SEPARATOR . 'settings.cfg');
+        $dataSetting = file_get_contents(FCPATH . 'database' . DIRECTORY_SEPARATOR . 'settings.cfg');
         $dataSetting = $dataSetting ? json_decode($dataSetting, true) : array();
         if (!empty($dataSetting)) foreach ($dataSetting as $key => $item) {
             if ($key === 'meta') {

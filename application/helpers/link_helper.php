@@ -93,7 +93,7 @@ if (!function_exists('getUrlTag')) {
         $_this->load->library('session');
         $_this->load->helper('url');
         $slug = $_this->toSlug($keyword);
-        $linkReturn = BASE_URL."search/$slug";
+        $linkReturn = BASE_URL."tags/$slug";
         return $linkReturn;
     }
 }

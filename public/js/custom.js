@@ -132,7 +132,7 @@ var FUNC = {
 
                 if(goto){
                     $('html, body').animate({
-                        scrollTop: $(goto).offset().top - 100
+                        scrollTop: $(goto).offset().top - 110
                     }, 1000);
                 }
 
@@ -642,12 +642,14 @@ jQuery(document).ready(function () {
     UI.init();
     WISHLIST.init();
     COMPARE.init();
+    var heightMenuMain = $('#menu-main').height();
+    console.log(heightMenuMain);
     if(window.location.hash === '#reviews_tabs'){
         let tabClick = window.location.hash;
         $('[href="'+tabClick+'"]').tab('show');
         setTimeout(function () {
             $('html, body').animate({
-                scrollTop: $(tabClick).offset().top - 80
+                scrollTop: $(tabClick).offset().top - 120
             }, 1000);
         }, 500);
     }
@@ -659,7 +661,7 @@ jQuery(document).ready(function () {
         $('[href="#'+ href[href.length-1] +'"]').parent().addClass('active');
         setTimeout(function () {
             $('html, body').animate({
-                scrollTop: $(tabClick).offset().top - 80
+                scrollTop: $(tabClick).offset().top - 120
             }, 1000);
         }, 500);
     });
@@ -725,11 +727,12 @@ jQuery(document).ready(function () {
 
     $('.comment-fr').on('click', '.reply-btn', function(e) {
         e.preventDefault();
+        $(this).closest('.comment-fr');
         let container = $(this).closest('.comment-fr');
+        container.find('.hc-comment form.form-comment').remove();
         let form = container.find('form.form-comment');
         let cmtID = $(this).attr('data-id'), name = $(this).closest('.hc-comment').children('.head').find('.name').text();
         let clone = form.clone();
-        container.find('.hc-comment form.form_comment').remove();
         clone.find('textarea').val("@"+name+': ');
         clone.append('<input type="hidden" name="parent_id" id="comment-id" value="'+cmtID+'">');
         $(this).parent().after(clone);

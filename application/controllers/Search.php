@@ -32,23 +32,39 @@ class Search extends Public_Controller {
         if(empty($keyword)) show_404();
         //$keyword = xss_clean($keyword);
         $data['page'] = $page;
-        $data['limit'] = $limit = 36;
         $data['keyword'] = $oneItem['title'] = $keyword;
         $oneItem = (object) $oneItem;
         $data['oneItem'] = $oneItem;
         //Get data category current
+        switch ($this->input->get('filter_sort')) {
+            case 'oldest':
+                $paramsFilter['order'] = ['created_time' => 'ASC'];
+                break;
+            case 'lowest':
+                $paramsFilter['order'] = ['price_sort' => 'ASC'];
+                break;
+            case 'highest':
+                $paramsFilter['order'] = ['price_sort' => 'DESC'];
+                break;
+            default:
+                $paramsFilter['order'] = ['created_time' => 'DESC'];
+        }
+        $limit = $this->input->get('filter_limit');
+        $data['limit'] = $limit = !empty($limit) ? $limit : 12;
         $params = [
             'is_status'     => 1, //0: Huỷ, 1: Hiển thị, 2: Nháp
             'lang_code'     => $this->_lang_code,
+            'model'         => $keyword,
             'search'        => $keyword,
             'limit'         => $limit,
             'page'          => $page
         ];
+        if(!empty($paramsFilter)) $params = array_merge($params,$paramsFilter);
         $data['data'] = $this->_data_product->getData($params);
         $data['total'] = $total = $this->_data_product->getTotal($params);
         /*Pagination*/
         $this->load->library('pagination');
-        $paging['base_url'] = getUrlSearch($keyword);
+        $paging['base_url'] = getUrlSearch($keyword).'/page';
         $paging['first_url'] =  getUrlSearch($keyword);
         $paging['total_rows'] = $data['total'];
         $paging['per_page'] = $limit;
@@ -59,10 +75,65 @@ class Search extends Public_Controller {
         //SEO Meta
         $data['SEO'] = array(
             'meta_title'        => $oneItem->title,
-            'meta_description'  => "Search result: $oneItem->title",
-            'meta_keyword'      => "Keyword $oneItem->title",
+            'meta_description'  => "Kết quả tìm kiếm sản phẩm với từ khóa: $oneItem->title",
+            'meta_keyword'      => "Kết quả tìm kiếm sản phẩm với từ khóa $oneItem->title",
             'url'               => getUrlSearch($keyword),
-            'image'             => getImageThumb('',400,200)
+            'image'             => getImageThumb('',200,200)
+        );
+        $data['main_content'] = $this->load->view($this->template_path.'search/index', $data, TRUE);
+        $this->load->view($this->template_main, $data);
+    }
+
+    public function tags($keyword = '',$page = 1){
+        if(empty($keyword)) show_404();
+        //$keyword = xss_clean($keyword);
+        $data['page'] = $page;
+        $data['keyword'] = $oneItem['title'] = str_replace('-',' ',$keyword);
+        $oneItem = (object) $oneItem;
+        $data['oneItem'] = $oneItem;
+        //Get data category current
+        switch ($this->input->get('filter_sort')) {
+            case 'oldest':
+                $paramsFilter['order'] = ['created_time' => 'ASC'];
+                break;
+            case 'lowest':
+                $paramsFilter['order'] = ['price_sort' => 'ASC'];
+                break;
+            case 'highest':
+                $paramsFilter['order'] = ['price_sort' => 'DESC'];
+                break;
+            default:
+                $paramsFilter['order'] = ['created_time' => 'DESC'];
+        }
+        $limit = $this->input->get('filter_limit');
+        $data['limit'] = $limit = !empty($limit) ? $limit : 12;
+        $params = [
+            'is_status'     => 1, //0: Huỷ, 1: Hiển thị, 2: Nháp
+            'lang_code'     => $this->_lang_code,
+            'tags'          => $oneItem->title,
+            'limit'         => $limit,
+            'page'          => $page
+        ];
+        if(!empty($paramsFilter)) $params = array_merge($params,$paramsFilter);
+        $data['data'] = $this->_data_product->getData($params);
+        $data['total'] = $total = $this->_data_product->getTotal($params);
+        /*Pagination*/
+        $this->load->library('pagination');
+        $paging['base_url'] = getUrlTag($oneItem->title).'/page';
+        $paging['first_url'] =  getUrlTag($oneItem->title);
+        $paging['total_rows'] = $data['total'];
+        $paging['per_page'] = $limit;
+        $this->pagination->initialize($paging);
+        $data['pagination'] = $this->pagination->create_links();
+        /*Pagination*/
+
+        //SEO Meta
+        $data['SEO'] = array(
+            'meta_title'        => $oneItem->title,
+            'meta_description'  => "Thông tin, hình ảnh, giá cả của: $oneItem->title. Linh kiện giá tốt, $oneItem->title chất lượng nhất",
+            'meta_keyword'      => "$oneItem->title, $oneItem->title rẻ nhất, tốt nhất",
+            'url'               => getUrlTag($keyword),
+            'image'             => getImageThumb('',200,200)
         );
         $data['main_content'] = $this->load->view($this->template_path.'search/index', $data, TRUE);
         $this->load->view($this->template_main, $data);

@@ -300,6 +300,7 @@ Comment*/
 }
 .comment-fr{
     font-family: Helvetica, Arial, sans-serif;
+    margin-bottom: 10px;
 }
 .comment-fr form .form_50{
     width: 49%;
@@ -511,7 +512,7 @@ Comment*/
         font-size: 14px; } }
 
 .footer-link{
-    padding: 15px 0;
+    padding: 15px 0.comment-fr;
 }
 ul.nav-link{
     display: grid;
@@ -520,7 +521,7 @@ ul.nav-link{
     padding: 0;
 }
 ul.nav-link li{
-
+    text-align: center;
 }
 ul.nav-link li a{
     color: #ffffff;
@@ -529,4 +530,28 @@ ul.nav-link li a{
 }
 ul.nav-link li a:hover{
     color: rgb(190, 30, 45);
+}
+
+@media only screen and (min-width: 320px) and (max-width: 479px) {
+    ul.nav-link{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+    ul.nav-link{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+    ul.nav-link{
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media only screen and (min-width: 993px) and (max-width: 1170px) {
+    ul.nav-link{
+        grid-template-columns: repeat(5, 1fr);
+    }
 }
