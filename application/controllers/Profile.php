@@ -18,7 +18,7 @@ class Profile extends Public_Controller
   {
     parent::__construct();
 
-    if (empty($this->_user_login)) redirect(site_url('login'));
+    if (empty($this->_user_login)) redirect(site_url('auth/login'));
 
     $this->lang->load('auth');
     $this->load->library(array('ion_auth', 'hybridauth'));

@@ -512,7 +512,7 @@ Comment*/
         font-size: 14px; } }
 
 .footer-link{
-    padding: 15px 0.comment-fr;
+    padding: 15px 0;
 }
 ul.nav-link{
     display: grid;

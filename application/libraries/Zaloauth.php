@@ -128,7 +128,7 @@ class Zaloauth {
 
         $this->session->set_flashdata('message', "Đăng nhập không thành công ");
         $this->session->set_flashdata('type', 'warning');
-        redirect(site_url('login'), 'refresh');
+        redirect(site_url('auth/login'), 'refresh');
       }
     } catch (ZaloResponseException $e) {
       // When Graph returns an error
