@@ -24,8 +24,8 @@
     $config['num_tag_close'] = '</li>';
     $config['last_tag_open'] = '<li class="last">';
     $config['last_tag_close'] = '</li>';
-    $config['first_link'] = 'Trang đầu';
-    $config['last_link'] = 'Trang cuối';
-    $config['prev_link'] = '<i class="fa fa-arrow-left"></i>';
-    $config['next_link'] = '<i class="fa fa-arrow-right"></i>';
+    $config['first_link'] = '&laquo;';
+    $config['last_link'] = '&raquo;';
+    $config['prev_link'] = '&lsaquo;';
+    $config['next_link'] = '&rsaquo;';
     $config['display_pages'] = true;

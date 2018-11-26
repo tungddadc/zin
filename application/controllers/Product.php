@@ -401,6 +401,27 @@ class Product extends Public_Controller
         }
         $this->returnJson(['price' => 0]);
     }
+
+    public function ajax_load_category(){
+        $term = $this->input->get("q");
+        $keyword = $this->input->get('id')?$this->input->get('id'):0;
+        if(empty($type)) $this->session->userdata('type');
+        $params = [
+            'type' => !(empty($type)) ? $type : null,
+            'is_status'=> 1,
+            'search' => $term,
+            'limit'=> 10
+        ];
+        $list = $this->_data->getData($params);
+        $output = [];
+        if(!empty($list)) foreach ($list as $item) {
+            $item = (object) $item;
+            $output[] = ['id'=>$item->id, 'text'=>$item->title];
+        }
+        $this->returnJson($output);
+    }
+
+
     public function ajax_load_list(){
         if($this->input->server('REQUEST_METHOD') == 'POST' && !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
             $cateId = $this->input->post('id');
