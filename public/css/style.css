@@ -1644,7 +1644,7 @@ ul#cart-sidebar {
     background: rgb(190, 30, 45);
 }
 
-.button:btn-bag:hover {
+.button.btn-bag:hover {
     background: #f6f6f6
 }
 
@@ -13951,11 +13951,10 @@ a.shop-now-btn {
 
     .toolbar .pager {
         float: left;
-        margin: 10px 0px 6px;
     }
 
     .product-option-right {
-        width: 100%;
+        width: auto;
     }
 
     .pager .limiter label, .toolbar label {
@@ -13968,8 +13967,7 @@ a.shop-now-btn {
 
     .category-products ul.products-grid li.item {
         margin: 0%;
-        width: 100%;
-        padding: 0px;
+        padding: 0 5px;
     }
 
     .category-products ul.products-grid li.item a.thumb span.quick-view {
@@ -14822,9 +14820,6 @@ a.shop-now-btn {
         float: right;
     }
 
-    #sort-by {
-        margin: 10px 0px 0px;
-    }
 
     .pager .limiter label, .toolbar label {
         display: none;
@@ -14957,8 +14952,8 @@ a.shop-now-btn {
     }
 
     .col-main .category-products .products-grid {
-        margin-left: 0px;
-        margin-right: 0px;
+        margin-left: -5px;
+        margin-right: -5px;
     }
 
     .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
@@ -17471,6 +17466,10 @@ a.shop-now-btn {
         padding-top: 8px;
     }
 
+    .mega-menu-title h3 span{
+        display: none;
+    }
+
     .wrap-popup {
         top: 55px;
         width: 530px;
@@ -17648,6 +17647,7 @@ a.shop-now-btn {
 
     .offer-block {
         padding-right: 0px;
+        padding-left: 50px;
     }
 
     .our-features-box .feature-box h3 {
@@ -17663,6 +17663,7 @@ a.shop-now-btn {
         /* color: #fff; */
         cursor: pointer;
         height: 48px;
+        width: 33px;
         line-height: 46px;
         padding: 10px 10px;
         vertical-align: middle;
@@ -17794,8 +17795,8 @@ a.shop-now-btn {
     }
 
     .navleft-container {
-        width: 101%;
         margin-top: 0px;
+        overflow: hidden;
     }
 
     .card_wishlist_area {

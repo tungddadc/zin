@@ -160,11 +160,11 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     </div>
     <nav id="menu-main" class="hidden-xs">
         <div class="nav-container">
-            <div class="col-md-3 col-xs-12 col-sm-3 hidden-sm">
+            <div class="col-md-3 col-xs-12 col-sm-3">
                 <div class="mega-container visible-lg visible-md visible-sm">
                     <div class="navleft-container">
                         <div class="mega-menu-title">
-                            <h3><i class="fa fa-navicon"></i> Thương hiệu</h3>
+                            <h3><i class="fa fa-navicon"></i> <span>Thương hiệu</span></h3>
                         </div>
                         <div id="menu-category" class="mega-menu-category" style="<?php if ($this->_controller != 'home') echo 'display:none'; ?>">
                             <?php echo navMenuBrand('nav','','nav') ?>

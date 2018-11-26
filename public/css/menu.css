@@ -156,9 +156,6 @@ header .our-features-box .offer-block > ul > li:hover > .sub-menu {
   .footer-middle .col-md-3:last-child {
     padding-right: 15px;
   }
-  .product-option-right {
-    display: none;
-  }
   a.link-quickview {
     display: none !important;
   }

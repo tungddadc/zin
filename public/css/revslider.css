@@ -187,7 +187,7 @@ Text Domain:  Lilac
 	line-height: 30px;
 	letter-spacing: 1px;
 	font-size:36px;
-	font-family:'Kaushan Script', cursive;
+	font-family:'Open Sans', cursive;
 	font-weight: normal;
 }
 .tp-caption.LargeTitle {
@@ -199,7 +199,7 @@ Text Domain:  Lilac
 	font-size: 66px;
 	text-align: left;
 	letter-spacing: 1px;
-	font-family: 'Abril Fatface', cursive;
+	font-family: 'Nunito Sans', cursive;
 	line-height: 60px;
 }
 .tp-caption.LargeTitle span {
@@ -231,7 +231,7 @@ Text Domain:  Lilac
 	margin-top: 45px;
 	float: left;
 	background: #00a6ed;
-	font-family: "Poppins", sans-serif;
+	font-family: "Open Sans", sans-serif;
 	border-radius:3px
 }
 .buy-btn:hover {
@@ -255,7 +255,7 @@ Text Domain:  Lilac
 	line-height: 20px;
 	font-weight: 300;
 	text-transform: none;
-	font-family:"Poppins","Helvetica","Arial","sans-serif";
+	font-family:"Open Sans","Helvetica","Arial","sans-serif";
 /*	color: #333;  */
 	text-decoration: none;
 	background-color: transparent;
