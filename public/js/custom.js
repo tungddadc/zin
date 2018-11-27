@@ -480,16 +480,27 @@ var UI = {
             UI.loadSearchAutocomplete(1);
         });
 
+        container.find('input[name="search"]').focusin(function() {
+            container.find('.product_search').addClass('go_in').fadeIn(500);
+        });
+
+        container.find('input[name="search"]').focusout(function() {
+            container.find('.product_search').removeClass('go_in').fadeOut(500);
+        });
+
+        let page = 1;
         container.find('.product_search').scroll(function () {
             let divHeight = $(this).innerHeight();
             let scrollPosition = $(this).scrollTop();
             let scrollHeight = this.scrollHeight;
-            let page = 1;
             if (scrollPosition +  divHeight  >=  scrollHeight) {
                 page+=1;
+                console.log(page);
                 UI.loadSearchAutocomplete(page);
             }
         });
+
+
     },
     ajaxFormSubmit: function(){
         $('form[method="post"]').ajaxForm({
