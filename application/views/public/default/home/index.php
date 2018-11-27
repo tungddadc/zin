@@ -12,7 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
             <div class="side-banner">
                 <?php $bannerSidebarTop = listBannerByPosition(2);if(!empty($bannerSidebarTop)) foreach ($bannerSidebarTop as $item): ?>
                     <a href="<?php echo $item->url ?>" title="banner sidebar" rel="nofollow">
-                        <img src="<?php echo getImageThumb($item->thumbnail,265,425) ?>" alt="banner sidebar">
+                        <img src="<?php echo getImageThumb($item->thumbnail,265,425,false,false) ?>" alt="banner sidebar">
                     </a>
                 <?php endforeach; ?>
             </div>
@@ -64,7 +64,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                     <?php $bannerHomeTop = listBannerByPosition(4);if(!empty($bannerHomeTop)) foreach ($bannerHomeTop as $item): ?>
                         <div class="col-sm-6 col-xs-12">
                             <a href="<?php echo $item->url ?>" title="banner sidebar" rel="nofollow">
-                                <img style="width: 100%" src="<?php echo getImageThumb($item->thumbnail,410,210) ?>" alt="banner sidebar">
+                                <img style="width: 100%" src="<?php echo getImageThumb($item->thumbnail,410,210,false,false) ?>" alt="banner sidebar">
                             </a>
                         </div>
                     <?php endforeach; ?>
@@ -94,7 +94,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                 <div class="offer-banner">
                     <?php $bannerCenterHome = listBannerByPosition(5);if(!empty($bannerCenterHome)) foreach ($bannerCenterHome as $item): ?>
                         <a href="<?php echo $item->url ?>" title="banner center home" rel="nofollow">
-                            <img src="<?php echo getImageThumb($item->thumbnail,410,210) ?>" alt="banner center home">
+                            <img src="<?php echo getImageThumb($item->thumbnail,410,210,false,false) ?>" alt="banner center home">
                         </a>
                     <?php endforeach; ?>
                 </div>
@@ -166,7 +166,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                 <div class="side-banner">
                     <?php $bannerSidebar = listBannerByPosition(3);if(!empty($bannerSidebar)) foreach ($bannerSidebar as $item): ?>
                         <a href="<?php echo $item->url ?>" title="banner center home" rel="nofollow">
-                            <img class="hidden-xs" src="<?php echo getImageThumb($item->thumbnail,265,500) ?>" alt="banner center home">
+                            <img class="hidden-xs" src="<?php echo getImageThumb($item->thumbnail,265,500,false,false) ?>" alt="banner center home">
                         </a>
                     <?php endforeach; ?>
                 </div>
