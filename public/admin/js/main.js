@@ -336,6 +336,9 @@ var AJAX_CRUD_MODAL = {
     tinymce: function(){
         tinymce.init(option_TinyMCE);
     },
+    summernote: function(){
+        $(".summernote").summernote({height:150});
+    },
     init: function () {
         AJAX_CRUD_MODAL.disable_close();
         AJAX_CRUD_MODAL.open();

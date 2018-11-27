@@ -359,6 +359,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                         </div>
                         <div class="tab-pane" id="tab_block" role="tabpanel">
                             <div class="form-group">
+                                <label>Thông tin TOP</label>
+                                <textarea name="block[header_top]" class="form-control summernote"><?php echo !empty($block['header_top']) ? $block['header_top'] : ''; ?></textarea>
+                            </div>
+
+                            <div class="form-group">
                                 <label>Thông tin bảo hành</label>
                                 <textarea name="block[warranty]" id="block_warranty" class="form-control tinymce"><?php echo !empty($block['warranty']) ? $block['warranty'] : ''; ?></textarea>
                             </div>

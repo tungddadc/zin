@@ -30,16 +30,16 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                                 <img src='<?php echo getImageThumb($item->thumbnail,850,440) ?>' alt="<?php echo $item->title ?>"
                                         data-bgposition='left top' data-bgfit='cover' data-bgrepeat='no-repeat'/>
                                 <div class="info">
-                                    <div class='tp-caption ExtraLargeTitle sft  tp-resizeme ' data-endspeed='500'
+                                    <!--<div class='tp-caption ExtraLargeTitle sft  tp-resizeme ' data-endspeed='500'
                                          data-speed='500' data-start='1100' data-easing='Linear.easeNone'
                                          data-splitin='none' data-splitout='none' data-elementdelay='0.1'
-                                         data-endelementdelay='0.1'><span><?php echo $item->title ?></span>
+                                         data-endelementdelay='0.1'><span><?php /*echo $item->title */?></span>
                                     </div>
                                     <div class='tp-caption Title sft  tp-resizeme ' data-endspeed='500' data-speed='500'
                                          data-start='1450' data-easing='Power2.easeInOut' data-splitin='none'
                                          data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1'>
-                                        <?php echo $item->description ?>
-                                    </div>
+                                        <?php /*echo $item->description */?>
+                                    </div>-->
                                     <div class='tp-caption sfb  tp-resizeme ' data-endspeed='500' data-speed='500'
                                          data-start='1500' data-easing='Linear.easeNone' data-splitin='none'
                                          data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1'>
@@ -60,9 +60,9 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     <div class="container">
         <div class="row">
             <div class="col-sm-9 col-sm-push-3">
-                <div>
+                <div class="row">
                     <?php $bannerHomeTop = listBannerByPosition(4);if(!empty($bannerHomeTop)) foreach ($bannerHomeTop as $item): ?>
-                        <div style="width: 50%;float:left">
+                        <div class="col-sm-6 col-xs-12">
                             <a href="<?php echo $item->url ?>" title="banner sidebar" rel="nofollow">
                                 <img style="width: 100%" src="<?php echo getImageThumb($item->thumbnail,410,210) ?>" alt="banner sidebar">
                             </a>
@@ -93,11 +93,9 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
                 <div class="offer-banner">
                     <?php $bannerCenterHome = listBannerByPosition(5);if(!empty($bannerCenterHome)) foreach ($bannerCenterHome as $item): ?>
-                        <div class="figure banner-with-effects effect-sadie1 banner-width  with-button">
-                            <a href="<?php echo $item->url ?>" title="banner center home" rel="nofollow">
-                                <img src="<?php echo getImageThumb($item->thumbnail,410,210) ?>" alt="banner center home">
-                            </a>
-                        </div>
+                        <a href="<?php echo $item->url ?>" title="banner center home" rel="nofollow">
+                            <img src="<?php echo getImageThumb($item->thumbnail,410,210) ?>" alt="banner center home">
+                        </a>
                     <?php endforeach; ?>
                 </div>
                 <!-- bestsell slider -->
@@ -135,71 +133,6 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                 </div>
             </div>
             <div class="col-left sidebar col-sm-3 col-xs-12 col-sm-pull-9">
-                <div>
-                    <div class="sideoffer-banner">
-                        <?php $bannerSidebar = listBannerByPosition(3);if(!empty($bannerSidebar)) foreach ($bannerSidebar as $item): ?>
-                            <div class="figure banner-with-effects effect-sadie1 banner-width  with-button">
-                                <a href="<?php echo $item->url ?>" title="banner center home" rel="nofollow">
-                                    <img class="hidden-xs" src="<?php echo getImageThumb($item->thumbnail,265,500) ?>" alt="banner center home">
-                                </a>
-                            </div>
-                        <?php endforeach; ?>
-                    </div>
-                </div>
-                <!--<div class="hot-deal">
-                    <ul class="products-grid">
-                        <li class="right-space two-height item">
-                            <div class="item-inner">
-                                <div class="item-img">
-                                    <div class="item-img-info">
-                                        <a href="#" title="Retis lapen casen"
-                                           class="product-image">
-                                            <img
-                                                    src="<?php /*echo $this->templates_assets */?>products-images/product12.jpg"
-                                                    alt="Retis lapen casen"> </a>
-                                        <div class="hot-label hot-top-left">Hot Deal</div>
-                                        <div class="box-hover">
-                                            <ul class="add-to-links">
-                                                <li><a class="link-quickview" href="quick_view.html"></a></li>
-                                                <li><a class="link-wishlist" href="wishlist.html"></a></li>
-                                                <li><a class="link-compare" href="compare.html"></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="box-timer">
-                                            <div class="countbox_1 timer-grid"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item-info">
-                                    <div class="info-inner">
-                                        <div class="item-title"><a href="product_detail.html" title="Retis lapen casen">
-                                                Retis lapen casen </a></div>
-                                        <div class="item-content">
-                                            <div class="rating">
-                                                <div class="ratings">
-                                                    <div class="rating-box">
-                                                        <div class="rating" style="width:80%"></div>
-                                                    </div>
-                                                    <p class="rating-links"><a href="#">1 Review(s)</a> <span
-                                                                class="separator">|</span> <a href="#">Add Review</a>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="item-price">
-                                                <div class="price-box"><span class="regular-price"> <span class="price">$125.00</span> </span>
-                                                </div>
-                                            </div>
-                                            <div class="action">
-                                                <button data-original-title="Add to Cart" title="" type="button"
-                                                        class="button btn-cart"><span>Add to Cart</span></button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>-->
                 <?php $listFeedback = getFeedback();
                 if(!empty($listFeedback)): ?>
                 <div class="testimonials">
@@ -231,18 +164,14 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                 </div>
                 <?php endif; ?>
                 <div class="featured-add-box">
-                    <div class="featured-add-inner">
-                        <?php $bannerSidebar = listBannerByPosition(3);if(!empty($bannerSidebar)) foreach ($bannerSidebar as $item): ?>
-                            <div class="figure banner-with-effects effect-sadie1 banner-width  with-button">
-                                <a href="<?php echo $item->url ?>" title="banner center home" rel="nofollow">
-                                    <img class="hidden-xs" src="<?php echo getImageThumb($item->thumbnail,265,500) ?>" alt="banner center home">
-                                </a>
-                            </div>
-                        <?php endforeach; ?>
-                    </div>
+                    <?php $bannerSidebar = listBannerByPosition(3);if(!empty($bannerSidebar)) foreach ($bannerSidebar as $item): ?>
+                        <a href="<?php echo $item->url ?>" title="banner center home" rel="nofollow">
+                            <img class="hidden-xs" src="<?php echo getImageThumb($item->thumbnail,265,500) ?>" alt="banner center home">
+                        </a>
+                    <?php endforeach; ?>
                 </div>
 
-                <div class="sticky_box">
+                <div class="">
                     <?php $this->load->view($this->template_path . 'product/_box_features') ?>
                 </div>
 

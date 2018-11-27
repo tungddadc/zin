@@ -100,12 +100,14 @@ var FUNC = {
         return money.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.") + 'đ'
     },
     showPopupNewsletter: function (show) {
-        if (show) {
-            $('#popup_newsletter').show();
-            $('#overlay').show();
-        } else {
-            $('#popup_newsletter').hide();
-            $('#overlay').hide();
+        if($('#popup_newsletter').length > 0){
+            if (show) {
+                $('#popup_newsletter').show();
+                $('#overlay').show();
+            } else {
+                $('#popup_newsletter').hide();
+                $('#overlay').hide();
+            }
         }
     },
     ajax_loader: function() {

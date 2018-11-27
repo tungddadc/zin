@@ -44,7 +44,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     <meta property="og:description"
           content="<?php echo isset($this->settings['meta_desc']) ? $this->settings['meta_desc'] : ''; ?>"/>
     <meta property="og:image"
-          content="<?php echo !empty($this->settings['homepage_thumbnail']) ? getImageThumb($this->settings['homepage_thumbnail'], 400, 200) : getImageThumb('', 400, 200); ?>"/>
+          content="<?php echo !empty($this->settings['homepage_thumbnail']) ? getImageThumb($this->settings['homepage_thumbnail'], 200, 200) : getImageThumb($this->settings['homepage_thumbnail'], 200, 200); ?>"/>
     <meta property="og:url" content="<?php echo base_url(); ?>"/>
     <!--Meta Facebook Homepage-->
     <link rel="canonical" href="<?php echo base_url(); ?>"/>
@@ -209,13 +209,13 @@ switch ($this->_controller) {
 </div>
 
 
-<div id="popup_newsletter" style="display: none;" class="popup1">
+<!--<div id="popup_newsletter" style="display: none;" class="popup1">
   <div class="newsletter-sign-box">
     <div class="newsletter">
-        <a href="javascript:;" title="<?php echo $this->settings['title'] ?>" rel="nofollow" class="x">
-            <img src="<?php echo $this->templates_assets ?>images/f-box-close-icon.png" alt="close">
+        <a href="javascript:;" title="<?php /*echo $this->settings['title'] */?>" rel="nofollow" class="x">
+            <img src="<?php /*echo $this->templates_assets */?>images/f-box-close-icon.png" alt="close">
         </a>
-      <?php echo form_open('contact/subscriber', ['id' => 'popup-newsletter', 'class' => 'email-form']) ?>
+      <?php /*echo form_open('contact/subscriber', ['id' => 'popup-newsletter', 'class' => 'email-form']) */?>
       <h3>Đăng ký nhận thông tin khuyến mại</h3>
       <h4>Đăng ký email với chúng tôi để chúng tôi tự động thông báo chương trình khuyến mại một cách nhanh
         nhất.</h4>
@@ -225,15 +225,15 @@ switch ($this->_controller) {
                  id="newsletter2" name="email">
           <button class="button subscribe" title="Đăng ký" type="submit"><span>Đăng ký</span></button>
           <img style="display:none;margin-left:120px;margin-top:10px;" id="loader1" alt="Loading"
-               src="<?php echo $this->templates_assets ?>images/loading.gif">
+               src="<?php /*echo $this->templates_assets */?>images/loading.gif">
         </div>
       </div>
-      <?php echo form_close() ?>
+      <?php /*echo form_close() */?>
       <label class="subscribe-bottom"><input type="checkbox" id="notshowpopup" name="notshowpopup">Không hiển thị
         lại cửa sổ này. </label>
     </div>
   </div>
-</div>
+</div>-->
 
 <?php $this->load->view($this->template_path . 'product/_quick_view') ?>
 

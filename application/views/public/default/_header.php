@@ -7,7 +7,7 @@
  */
 defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 <div class="top-banners">
-    <div class="banner"> BLACK FRIDAY giảm giá kịch sàn <span>20%</span></div>
+    <div class="banner"><?php echo $this->settings['block']['header_top'] ?></div>
 </div>
 <!-- Header -->
 <header>
