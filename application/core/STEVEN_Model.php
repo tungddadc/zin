@@ -69,7 +69,10 @@ class STEVEN_Model extends CI_Model
         }
 	}
 
-	public function _where_before($args = array()){
+	public function _where_before($args = array(), $typeQuery = false){
+        $page = 1;
+        $limit = 10;
+
 		$select = "*";
 
 		extract($args);
@@ -103,47 +106,36 @@ class STEVEN_Model extends CI_Model
 
 		if (!empty($or_not_in))
 			$this->db->or_where_not_in("$this->table.id",$or_not_in);
-	}
 
-	public function _where_after($args = array(), $typeQuery){
-		$page = 1;
-		$limit = 10;
 
-		extract($args);
-
-		//$this->db->group_by($this->primary_key);
-		//query for datatables jquery
-		$this->_get_datatables_query();
+        $this->_get_datatables_query();
 
         if (!empty($search)) {
             $this->db->select('MATCH ('.$this->_dbprefix.$this->table_trans.'.title) AGAINST ('.$this->db->escape($search).' IN BOOLEAN MODE) AS score_search');
-            $this->db->where('MATCH ('.$this->_dbprefix.$this->table_trans.'.title) AGAINST ('.$this->db->escape($search).' IN BOOLEAN MODE)', NULL, FALSE);
-            //$this->db->or_group_start();
-            //$this->db->like('title', $search);
-            //$this->db->or_like('description', $search);
-            //$this->db->group_end(); //close bracket
+            $this->db->group_start();
+            $this->db->like("$this->table_trans.title", $search);
+            $this->db->or_like("$this->table_trans.title", $search);
+            $this->db->or_where('MATCH ('.$this->_dbprefix.$this->table_trans.'.title) AGAINST ('.$this->db->escape($search).' IN BOOLEAN MODE)', NULL, FALSE);
+            $this->db->group_end();
             $this->db->order_by('score_search','DESC');
         }
 
 
-		if($typeQuery === null){
-			if(!empty($order) && is_array($order)){
-				foreach ($order as $k => $v)
-					$this->db->order_by($k, $v);
-			} else if(isset($this->order_default)) {
-				$this->db->order_by(key($this->order_default), $this->order_default[key($this->order_default)]);
-			}
-			$offset = ($page-1)*$limit;
-			$this->db->limit($limit,$offset);
-		}
+        if($typeQuery == false){
+            if(!empty($order) && is_array($order)){
+                foreach ($order as $k => $v)
+                    $this->db->order_by($k, $v);
+            }
+            $offset = ($page-1)*$limit;
+            $this->db->limit($limit,$offset);
+        }
 	}
 
 	public function _where_custom($args = array()){}
 
 	private function _where($args = array(), $typeQuery = null){
-		$this->_where_before($args);
+		$this->_where_before($args, $typeQuery);
 		$this->_where_custom($args);
-		$this->_where_after($args, $typeQuery);
 	}
 
 	/*

@@ -910,6 +910,7 @@ div.effect-sadie1 + div.effect-sadie1 {
 .product_search.go_in {
     opacity: 1;
     visibility: visible;
+    overflow-y: scroll;
 }
 
 .product_add {
@@ -1817,7 +1818,7 @@ nav.sticky{
     line-height: 63px;
     background-color: rgb(251, 175, 63);
     vertical-align: middle;
-    padding: 15px 24px;
+    padding: 15px 24px 14px;
     font-weight: 300
 }
 

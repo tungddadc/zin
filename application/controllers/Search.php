@@ -30,7 +30,7 @@ class Search extends Public_Controller {
 
     public function index($keyword = '',$page = 1){
         if(empty($keyword)) show_404();
-        //$keyword = xss_clean($keyword);
+        $keyword = urldecode($keyword);
         $data['page'] = $page;
         $data['keyword'] = $oneItem['title'] = $keyword;
         $oneItem = (object) $oneItem;
@@ -40,24 +40,24 @@ class Search extends Public_Controller {
             case 'oldest':
                 $paramsFilter['order'] = ['created_time' => 'ASC'];
                 break;
+            case 'newest':
+                $paramsFilter['order'] = ['created_time' => 'DESC'];
+                break;
             case 'lowest':
                 $paramsFilter['order'] = ['price_sort' => 'ASC'];
                 break;
             case 'highest':
                 $paramsFilter['order'] = ['price_sort' => 'DESC'];
                 break;
-            default:
-                $paramsFilter['order'] = ['created_time' => 'DESC'];
         }
         $limit = $this->input->get('filter_limit');
         $data['limit'] = $limit = !empty($limit) ? $limit : 12;
         $params = [
             'is_status'     => 1, //0: Huỷ, 1: Hiển thị, 2: Nháp
             'lang_code'     => $this->_lang_code,
-            'model'         => $keyword,
-            'search'        => $keyword,
+            'search_custom' => $keyword,
             'limit'         => $limit,
-            'page'          => $page
+            'page'          => $page,
         ];
         if(!empty($paramsFilter)) $params = array_merge($params,$paramsFilter);
         $data['data'] = $this->_data_product->getData($params);
@@ -142,11 +142,14 @@ class Search extends Public_Controller {
     public function ajax_autocomplete(){
         $this->checkRequestPostAjax();
         $keyword = $this->input->post('keyword');
+        $keyword = urldecode($keyword);
+        $page = $this->input->post('page');
         $params = [
-            'search' => $keyword,
-            'is_status' => 1,
-            'lang_code' => $this->session->userdata('public_lang_code'),
-            'limit' => 5
+            'is_status'     => 1, //0: Huỷ, 1: Hiển thị, 2: Nháp
+            'lang_code'     => $this->_lang_code,
+            'search_custom' => $keyword,
+            'limit'         => 10,
+            'page'          => !empty($page) ? $page : 1
         ];
         $data['data'] = $this->_data_product->getData($params);
         print $this->load->view($this->template_path.'search/ajax_autocomplete', $data, TRUE);

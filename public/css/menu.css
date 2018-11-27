@@ -9,7 +9,8 @@ header .our-features-box .offer-block > ul > li > .sub-menu {
   transform: translateY(30px);
   opacity: 0;
   visibility: hidden;
-  display: block;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   max-height: 300px !important;
   overflow: hidden;
   overflow-y: auto;
@@ -21,13 +22,15 @@ header .our-features-box .offer-block > ul > li > .sub-menu {
   padding: 15px;
   background-color: #fff;
   z-index: 9;
-  border-top: 4px solid #de0909;
+  border-top: 4px solid #be1e2d;
   box-shadow: 0 6px 6px 6px rgba(0, 0, 0, 0.06);
 }
 header .our-features-box .offer-block > ul > li > .sub-menu li {
   display: inline-block;
   transition: 0.3s;
   float: left;
+  text-align: left;
+  padding-left: 10px;
 }
 header .our-features-box .offer-block > ul > li > .sub-menu li a {
   vertical-align: top;
@@ -38,8 +41,11 @@ header .our-features-box .offer-block > ul > li > .sub-menu li a {
   text-align: left;
   position: relative;
 }
+header .our-features-box .offer-block > ul > li > .sub-menu li:hover {
+  background-color: #be1e2d;
+}
 header .our-features-box .offer-block > ul > li > .sub-menu li:hover a {
-  color: #be1e2d;
+  color: #ffffff;
 }
 header .our-features-box .offer-block > ul > li.parent-colum-4 .sub-menu li {
   text-align: left;
@@ -155,6 +161,9 @@ header .our-features-box .offer-block > ul > li:hover > .sub-menu {
   }
   .footer-middle .col-md-3:last-child {
     padding-right: 15px;
+  }
+  .product-option-right {
+    display: none;
   }
   a.link-quickview {
     display: none !important;

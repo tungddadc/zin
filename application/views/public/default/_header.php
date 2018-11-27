@@ -115,7 +115,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                     <a title="<?php echo $this->settings['title'] . ' | ' . $this->settings['name'] ?>"
                        href="<?php echo base_url() ?>">
                         <img alt="<?php echo $this->settings['title'] . ' | ' . $this->settings['name'] ?>"
-                             src="<?php echo getImageThumb($this->settings['logo'], 260, 50) ?>">
+                             src="<?php echo getImageThumb($this->settings['logo'], 260, 50, true) ?>">
                     </a>
                 </div>
                 <!-- End Header Logo -->
@@ -123,7 +123,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3 hidden-xs category-search-form">
                 <div class="search-box">
                     <div id="search_mini_form">
-                        <input name="search" class="searchbox" id="search" type="text" maxlength="128" autocomplete="disabled" placeholder="Tìm kiếm sản phẩm...">
+                        <input name="search" class="searchbox" id="search" value="<?php echo ($this->_controller === 'search' && !empty($this->uri->segment(2))) ? urldecode($this->uri->segment(2)) : '' ?>" type="text" maxlength="128" autocomplete="off" placeholder="Tìm kiếm sản phẩm...">
                         <button title="Search" class="search-btn-bg btnSearch" id="submit-button" type="submit"></button>
                         <div class="product_search"></div>
                     </div>

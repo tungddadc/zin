@@ -19,7 +19,7 @@
         </div>
     </div>
 <?php endif; ?>
-<div>
+<div class="side-banner">
     <?php $bannerSidebar = listBannerByPosition(3);if(!empty($bannerSidebar)) foreach ($bannerSidebar as $item): ?>
         <a href="<?php echo $item->url ?>" title="banner center home" rel="nofollow">
             <img class="hidden-xs" src="<?php echo getImageThumb($item->thumbnail,265,500) ?>" alt="banner center home">

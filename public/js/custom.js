@@ -444,6 +444,24 @@ var UI = {
             toastr['warning']('Vui lòng nhập từ khóa để tìm kiếm !');
         }
     },
+    loadSearchAutocomplete: function(page){
+        let formEl = $('#search_mini_form');
+        let keyword = formEl.find('input[name="search"]').val();
+        if(keyword){
+            $.ajax({
+                type:'POST',
+                url: base_url + 'search_autocomplete',
+                data: {keyword:keyword,page:page},
+                dataType: 'HTML',
+                success: function (content) {
+                    if(content){
+                        formEl.find('.product_search').append(content);
+                    }
+                }
+            });
+            return false;
+        }
+    },
     searchBox: function(){
         let container  = $('#search_mini_form');
         container.find('button').click(function(e) {
@@ -458,22 +476,18 @@ var UI = {
         });
 
         container.find('input[name="search"]').keyup(function () {
-            let el = $(this);
-            el.closest('#search_mini_form').find('.product_search').html('').removeClass('go_in');
-            let keyword = $(this).val();
-            if(keyword){
-                $.ajax({
-                    type:'POST',
-                    url: base_url + 'search_autocomplete',
-                    data: {keyword:keyword},
-                    dataType: 'HTML',
-                    success: function (content) {
-                        if(content){
-                            el.closest('#search_mini_form').find('.product_search').html(content).addClass('go_in');
-                        }
-                    }
-                });
-                return false;
+            container.find('.product_search').html('').addClass('go_in');
+            UI.loadSearchAutocomplete(1);
+        });
+
+        container.find('.product_search').scroll(function () {
+            let divHeight = $(this).innerHeight();
+            let scrollPosition = $(this).scrollTop();
+            let scrollHeight = this.scrollHeight;
+            let page = 1;
+            if (scrollPosition +  divHeight  >=  scrollHeight) {
+                page+=1;
+                UI.loadSearchAutocomplete(page);
             }
         });
     },
@@ -579,10 +593,8 @@ var UI = {
         window.onscroll = function() {
             if (window.pageYOffset > sticky) {
                 header.classList.add("sticky");
-                document.getElementById('menu-category').style.display = 'none';
             } else {
                 header.classList.remove("sticky");
-                //document.getElementById('menu-category').style.display = 'block';
             }
         };
     },

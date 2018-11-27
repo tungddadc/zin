@@ -18,7 +18,7 @@ class Product_model extends STEVEN_Model
         $this->table_detail     = "product_detail";
         $this->column_order     = array("$this->table.id", "$this->table.id", "$this->table_trans.title", "$this->table.is_featured", "$this->table.is_status", "$this->table.created_time", "$this->table.updated_time");
         $this->column_search    = array("$this->table_trans.title");
-        $this->order_default    = array("$this->table.id" => "ASC");
+        $this->order_default    = array("$this->table.created_time" => "DESC");
     }
     public function _where_custom($args = array()){
         parent::_where_custom();
@@ -39,6 +39,7 @@ class Product_model extends STEVEN_Model
         if(!empty($category_id)){
             $this->db->join($this->table_category,"$this->table.id = $this->table_category.{$this->table}_id");
             $this->db->where_in("$this->table_category.category_id",$category_id);
+            $this->db->group_by("$this->table.id");
         }
 
         if(!empty($brand_id)){
@@ -51,18 +52,15 @@ class Product_model extends STEVEN_Model
             $this->db->order_by('score_tags','DESC');
         }
 
-        if(!empty($model)){
-            $this->db->select('MATCH (model) AGAINST ('.$this->db->escape($model).' IN BOOLEAN MODE) AS score_model');
-            $this->db->where('MATCH (model) AGAINST ('.$this->db->escape($model).' IN BOOLEAN MODE)', NULL, FALSE);
-            $this->db->order_by('score_model','DESC');
+        if (!empty($search_custom)) {
+            $this->db->select('MATCH ('.$this->_dbprefix.$this->table_trans.'.title) AGAINST ('.$this->db->escape($search_custom).' IN BOOLEAN MODE) AS score_search');
+            //$this->db->group_start();
+            $this->db->like("$this->table_trans.title", $search_custom);
+            //$this->db->or_like("$this->table.model", $search_custom);
+            //$this->db->or_where('MATCH ('.$this->_dbprefix.$this->table_trans.'.title) AGAINST ('.$this->db->escape($search_custom).' IN BOOLEAN MODE)', NULL, FALSE);
+            //$this->db->group_end();
+            //$this->db->order_by('score_search','DESC');
         }
-
-        /*Sắp xếp trường đặc biệt*/
-        /*if(!empty($order['price_sort'])){
-            $this->db->order_by('price_sort',$order['price_sort']);
-        }*/
-        /*Sắp xếp trường đặc biệt*/
-
     }
 
     public function getBySlugCustom($slug, $lang_code = null){
