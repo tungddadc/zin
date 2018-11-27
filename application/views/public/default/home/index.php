@@ -18,6 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
             </div>
         </div>
         <div class="col-md-9 col-sm-9 col-xs-12 home-slider">
+            <?php $home_slider = listBannerByPosition(1); ?>
             <?php if(!empty($home_slider)): ?>
             <div id="thm-slideshow" class="thm-slideshow slider-block">
                 <div id='rev_slider_4_wrapper' class='rev_slider_wrapper fullwidthbanner-container'>
@@ -59,11 +60,11 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     <div class="container">
         <div class="row">
             <div class="col-sm-9 col-sm-push-3">
-                <div style="overflow:hidden">
+                <div>
                     <?php $bannerHomeTop = listBannerByPosition(4);if(!empty($bannerHomeTop)) foreach ($bannerHomeTop as $item): ?>
-                        <div class="figure banner-with-effects effect-sadie1 banner-width  with-button">
+                        <div style="width: 50%;float:left">
                             <a href="<?php echo $item->url ?>" title="banner sidebar" rel="nofollow">
-                                <img src="<?php echo getImageThumb($item->thumbnail,410,210) ?>" alt="banner sidebar">
+                                <img style="width: 100%" src="<?php echo getImageThumb($item->thumbnail,410,210) ?>" alt="banner sidebar">
                             </a>
                         </div>
                     <?php endforeach; ?>
