@@ -30,7 +30,7 @@ class Property extends Admin_Controller
 
     public function banner(){
         $data['heading_title'] = "Quản lý banner/slider";
-        $data['heading_description'] = "Danh sách banner/slider";
+        $data['heading_description'] = "Danh sách vị trí";
         $this->get_list($data);
     }
 
