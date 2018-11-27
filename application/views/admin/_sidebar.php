@@ -167,7 +167,7 @@
                                     <span></span>
                                 </i>
                                 <span class="m-menu__link-text">
-                                    Danh sách vị trí Banner / Slider
+                                    Vị trí Banner / Slider
                                 </span>
                             </a>
                         </li>
@@ -177,7 +177,7 @@
                                     <span></span>
                                 </i>
                                 <span class="m-menu__link-text">
-                                    Quản lý Banner / Slider
+                                    Danh sách Banner / Slider
                                 </span>
                             </a>
                         </li>

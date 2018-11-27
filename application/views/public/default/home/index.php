@@ -10,7 +10,12 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     <div class="row">
         <div class="col-md-3 col-md-4 col-sm-3 hidden-xs">
             <div class="side-banner">
-                <img src="<?php echo $this->templates_assets ?>images/side-banner.jpg" alt="banner"></div>
+                <?php $bannerSidebarTop = listBannerByPosition(2);if(!empty($bannerSidebarTop)) foreach ($bannerSidebarTop as $item): ?>
+                    <a href="<?php echo $item->url ?>" title="banner sidebar" rel="nofollow">
+                        <img src="<?php echo getImageThumb($item->thumbnail,265,425) ?>" alt="banner sidebar">
+                    </a>
+                <?php endforeach; ?>
+            </div>
         </div>
         <div class="col-md-9 col-sm-9 col-xs-12 home-slider">
             <?php if(!empty($home_slider)): ?>
@@ -55,30 +60,13 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
         <div class="row">
             <div class="col-sm-9 col-sm-push-3">
                 <div style="overflow:hidden">
-                    <div class="figure banner-with-effects effect-sadie1 banner-width  with-button"
-                         style="background-color:#ffffff"><img
-                                src="<?php echo $this->templates_assets ?>images/watch.jpg" alt="">
-                        <div class="figcaption">
-                            <div class="banner-content left top"><span
-                                        style="color: #cccccc; font-size: 12px; letter-spacing:1px; font-weight:600">DIGITAL LIFE</span><br>
-                                <span style="font-size: 24px; color: #ffffff;">Slim, smart and <br
-                                            style="color: #ffffff; font-size: 24px;">
-                  beautiful</span></div>
+                    <?php $bannerHomeTop = listBannerByPosition(4);if(!empty($bannerHomeTop)) foreach ($bannerHomeTop as $item): ?>
+                        <div class="figure banner-with-effects effect-sadie1 banner-width  with-button">
+                            <a href="<?php echo $item->url ?>" title="banner sidebar" rel="nofollow">
+                                <img src="<?php echo getImageThumb($item->thumbnail,410,210) ?>" alt="banner sidebar">
+                            </a>
                         </div>
-                        <a href="" style="color:#00aeef" class="left bottom btn_type_1" rel="nofollow">Read more</a>
-                    </div>
-                    <div class="figure banner-with-effects effect-sadie1 banner-width  with-button"
-                         style="background-color:#ffffff"><img
-                                src="<?php echo $this->templates_assets ?>images/shoes-banner.jpg" alt="">
-                        <div class="figcaption">
-                            <div class="banner-content left top"><b><span
-                                            style="color: #444444; font-size: 12px; letter-spacing:1px">TODAYS OFFER</span></b><br>
-                                <span style="color: #000000; font-size: 24px; padding-top:5px">Men's shoes <br
-                                            style="color: #000000; font-size: 24px;">
-                  collection</span></div>
-                        </div>
-                        <a href="#" style="color:#00aeef" class="left bottom btn_type_1" rel="nofollow">Read more</a>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
                 <div class="content-page">
                     <div class="category-product">
@@ -102,8 +90,14 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                 </div>
 
 
-                <div class="offer-banner"><a href="#"><img alt="Banner"
-                                                           src="<?php echo $this->templates_assets ?>images/banner-img.png"></a>
+                <div class="offer-banner">
+                    <?php $bannerCenterHome = listBannerByPosition(5);if(!empty($bannerCenterHome)) foreach ($bannerCenterHome as $item): ?>
+                        <div class="figure banner-with-effects effect-sadie1 banner-width  with-button">
+                            <a href="<?php echo $item->url ?>" title="banner center home" rel="nofollow">
+                                <img src="<?php echo getImageThumb($item->thumbnail,410,210) ?>" alt="banner center home">
+                            </a>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
                 <!-- bestsell slider -->
                 <div class="bestsell-pro">
@@ -142,13 +136,13 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
             <div class="col-left sidebar col-sm-3 col-xs-12 col-sm-pull-9">
                 <div>
                     <div class="sideoffer-banner">
-
-                        <a href="#" title="Side Offer Banner">
-
-                            <img class="hidden-xs" src="<?php echo $this->templates_assets ?>images/custom-slide1.jpg"
-                                 alt="Side Offer Banner"></a>
-
-
+                        <?php $bannerSidebar = listBannerByPosition(3);if(!empty($bannerSidebar)) foreach ($bannerSidebar as $item): ?>
+                            <div class="figure banner-with-effects effect-sadie1 banner-width  with-button">
+                                <a href="<?php echo $item->url ?>" title="banner center home" rel="nofollow">
+                                    <img class="hidden-xs" src="<?php echo getImageThumb($item->thumbnail,265,500) ?>" alt="banner center home">
+                                </a>
+                            </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
                 <!--<div class="hot-deal">
@@ -236,13 +230,14 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                 </div>
                 <?php endif; ?>
                 <div class="featured-add-box">
-                    <div class="featured-add-inner"><a href="#"> <img
-                                    src="<?php echo $this->templates_assets ?>images/bottom_banner.jpg" alt="f-img"></a>
-                        <div class="banner-content">
-                            <div class="banner-text">Electronic's</div>
-                            <div class="banner-text1">20% off</div>
-                            <p>limited time offer</p>
-                            <a href="#" class="view-bnt">Shop now</a></div>
+                    <div class="featured-add-inner">
+                        <?php $bannerSidebar = listBannerByPosition(3);if(!empty($bannerSidebar)) foreach ($bannerSidebar as $item): ?>
+                            <div class="figure banner-with-effects effect-sadie1 banner-width  with-button">
+                                <a href="<?php echo $item->url ?>" title="banner center home" rel="nofollow">
+                                    <img class="hidden-xs" src="<?php echo getImageThumb($item->thumbnail,265,500) ?>" alt="banner center home">
+                                </a>
+                            </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
 
