@@ -1874,7 +1874,7 @@ nav.sticky .mega-menu-category{
 
 }
 .mega-menu-category > ul.nav{
-    max-height: 100vh;
+    max-height: calc(100vh - 48px);
     overflow-y: scroll;
 }
 .mega-menu-category > .nav > li.view-more {
@@ -1993,6 +1993,8 @@ nav.sticky .mega-menu-category{
     text-align: left;
     z-index: 3000;
     padding: 15px 20px 15px;
+    max-height: calc(100vh - 48px);
+    overflow-y: scroll;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 992px) {
