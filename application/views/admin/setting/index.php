@@ -182,6 +182,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="thumbnail">Watermark (Ảnh PNG trong suốt)</label>
+                                    <div class="input-group m-input-group m-input-group--air">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="la la-picture-o"></i>
+                                            </span>
+                                        </div>
+                                        <input type="text" name="watermark" value="<?php echo !empty($watermark) ? $watermark : '' ?>" onclick="FUNC.chooseImage(this)" class="form-control m-input chooseImage" placeholder="Click để chọn ảnh">
+                                    </div>
+                                    <div class="alert m-alert m-alert--default preview text-center mt-1" role="alert">
+                                        <img height="70" src="<?php echo !empty($watermark) ? getImageThumb($watermark,100,100) : '' ?>">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
                                     <label>Chèn script ở Head</label>
                                     <textarea name="script_head" rows="10" class="form-control"><?php echo !empty($script_head) ? $script_head : '' ?></textarea>
                                 </div>

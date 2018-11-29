@@ -27,7 +27,7 @@
                                             <tr data-id="<?php echo $item->id ?>" class="<?php echo $k == 0 ? 'first odd' : '' ?> <?php echo ($k == count($data) - 1) ? 'last' : '' ?> <?php echo ($k%2 == 0 && $k != 0) ? 'odd' : 'even' ?>">
                                                 <td class="wishlist-cell0 customer-wishlist-item-image">
                                                     <a title="<?php echo getTitle($item) ?>" href="<?php echo getUrlProduct($item) ?>" class="product-image">
-                                                        <img width="150" alt="<?php echo getTitle($item) ?>" src="<?php echo getImageThumb($item->thumbnail,150,150,true) ?>">
+                                                        <img width="150" alt="<?php echo getTitle($item) ?>" src="<?php echo getImageThumb($item->thumbnail,150,150,true,true) ?>">
                                                     </a>
                                                 </td>
                                                 <td class="wishlist-cell1 customer-wishlist-item-info">

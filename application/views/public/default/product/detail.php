@@ -24,8 +24,8 @@
                                     <div class="product-image">
                                         <div class="product-full">
                                             <img id="product-zoom"
-                                                 src="<?php echo getImageThumb($album[0], 375, 375, true) ?>"
-                                                 data-zoom-image="<?php echo getImageThumb($album[0]) ?>"
+                                                 src="<?php echo getImageThumb($album[0], 375, 375, true,true) ?>"
+                                                 data-zoom-image="<?php echo getImageThumb($album[0],500,600,false,true) ?>"
                                                  alt="<?php echo getTitle($oneItem) ?>"/>
                                         </div>
                                         <div class="more-views">
@@ -36,11 +36,11 @@
                                                         <?php if (!empty($album)) foreach ($album as $item): ?>
                                                             <div class="more-views-items">
                                                                 <a href="javascript:;"
-                                                                   data-image="<?php echo getImageThumb($item, 375, 375, true) ?>"
-                                                                   data-zoom-image="<?php echo getImageThumb($item) ?>"
+                                                                   data-image="<?php echo getImageThumb($item, 375, 375, true,true) ?>"
+                                                                   data-zoom-image="<?php echo getImageThumb($item,500,600,false,true) ?>"
                                                                    title="<?php echo getTitle($oneItem) ?>">
                                                                     <img id="product-zoom"
-                                                                         src="<?php echo getImageThumb($item, 76, 76,true) ?>"
+                                                                         src="<?php echo getImageThumb($item, 76, 76,true,true) ?>"
                                                                          alt="<?php echo getTitle($oneItem) ?>"/>
                                                                 </a>
                                                             </div>

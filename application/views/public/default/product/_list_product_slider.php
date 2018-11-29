@@ -6,7 +6,7 @@
                     <a href="<?php echo getUrlProduct($item) ?>"
                        title="<?php echo getTitle($item) ?>"
                        class="product-image">
-                        <img src="<?php echo getImageThumb($item->thumbnail, 250, 300,true) ?>"
+                        <img src="<?php echo getImageThumb($item->thumbnail, 250, 300,true,true) ?>"
                              alt="<?php echo getTitle($item) ?>">
                     </a>
                     <?php echo !empty($item->is_new) ? '<div class="new-label new-top-left">New</div>' : '' ?>

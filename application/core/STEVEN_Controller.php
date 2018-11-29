@@ -32,7 +32,7 @@ class STEVEN_Controller extends CI_Controller
         $this->_method = $this->router->fetch_method();
 
         //load cache driver
-        if (CACHE_MODE == TRUE) $this->load->driver('cache');
+        if (CACHE_MODE == TRUE) $this->load->driver('cache',array('adapter' => 'apc', 'backup' => 'file', 'key_prefix' => CACHE_PREFIX_NAME));
 
     }
 
@@ -291,18 +291,9 @@ class Public_Controller extends STEVEN_Controller
         //Detect mobile
         //$this->detectMobile = new Mobile_Detect();
 
-        //đọc file setting
-        $dataSetting = file_get_contents(FCPATH . 'database' . DIRECTORY_SEPARATOR . 'settings.cfg');
-        $dataSetting = $dataSetting ? json_decode($dataSetting, true) : array();
-        if (!empty($dataSetting)) foreach ($dataSetting as $key => $item) {
-            if ($key === 'meta') {
-                $oneMeta = $item[$this->session->userdata('public_lang_code')];
-                if (!empty($oneMeta)) foreach ($oneMeta as $keyMeta => $value) {
-                    $this->settings[$keyMeta] = str_replace('"', '\'', $value);
-                }
-            } else
-                $this->settings[$key] = $item;
-        }
+        //Setting
+        $this->load->model('setting_model');
+        $this->settings = $this->setting_model->getAll();
 
         //Set flash message
         $this->_message = $this->session->flashdata('message');
