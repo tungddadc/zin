@@ -25,7 +25,7 @@ if (!function_exists('getImageThumb')) {
             $part = explode('.', $image);
             $ext = '.'.end($part);
             $newImage = str_replace($ext,$size.$ext, $image);
-            $newPathImage = MEDIA_PATH.'thumb'.DIRECTORY_SEPARATOR.$newImage;
+            $newPathImage = MEDIA_PATH_THUMB.DIRECTORY_SEPARATOR.$newImage;
             $newPathImage = str_replace('\\','/',$newPathImage);
             if ( !file_exists( $newPathImage ) ) {
                 if(!is_dir(dirname($newPathImage))){
@@ -91,10 +91,9 @@ if (!function_exists('getImageThumb')) {
 
                 }
             }
-            return str_replace('\\','/',MEDIA_URL.'thumb'.DIRECTORY_SEPARATOR.$newImage);
+            return str_replace('\\','/',MEDIA_URL.DIRECTORY_SEPARATOR.$newImage);
         }
         else {
-
             return str_replace('\\','/',MEDIA_URL.$image);
         }
     }

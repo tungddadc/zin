@@ -5,7 +5,6 @@
  * Date: 05/12/2017
  * Time: 4:34 CH
  */
-
 $root = str_replace('\\','/',dirname(__FILE__));
 
 if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") {
@@ -16,23 +15,24 @@ if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") {
 
 $url .= $_SERVER['HTTP_HOST'];
 
-if ($_SERVER['SERVER_PORT'] != 80) {
+/*if ($_SERVER['SERVER_PORT'] != 80) {
     $url .= ':' . $_SERVER['SERVER_PORT'];
-}
+}*/
 define('BASE_URL', $url.'/');
 define('BASE_ADMIN_URL', BASE_URL."admin/");
 define('BASE_SCRIPT_NAME', '');
 define('MEDIA_NAME',"public/media/"); //Tên đường dẫn lưu media
-define('MEDIA_PATH',$root.'/'.MEDIA_NAME); //Đường dẫn lưu media
+define('MEDIA_PATH',"/home/media/"); //Đường dẫn lưu media
+define('MEDIA_PATH_THUMB',$root.'/'.MEDIA_NAME); //Đường dẫn lưu media
 define('MEDIA_URL',BASE_URL . MEDIA_NAME);
 
 define('DB_DEFAULT_HOST','localhost'); //DB HOST
-define('DB_DEFAULT_USER','root'); //DB USER
-define('DB_DEFAULT_PASSWORD','Abc1234@'); //DB PASSWORD
-define('DB_DEFAULT_NAME','corefw'); //DB NAME
+define('DB_DEFAULT_USER','zinlinhkie269d'); //DB USER
+define('DB_DEFAULT_PASSWORD','d2bae358874eabdc'); //DB PASSWORD
+define('DB_DEFAULT_NAME','zinlinhkien_269d'); //DB NAME
 
 define('MAINTAIN_MODE',FALSE); //Bảo trì
-define('DEBUG_MODE',TRUE);
+define('DEBUG_MODE',FALSE);
 
 //Cache manager
 define('CACHE_MODE',TRUE);
@@ -40,19 +40,19 @@ define('CACHE_PREFIX_NAME','THANHCHIMB_');
 define('CACHE_TIMEOUT_LOGIN',1800);
 
 //Config zalo
-define('ZALO_APP_ID_CFG','837698574184996512');
-define('ZALO_APP_SECRET_KEY_CFG','1XXO6SCOkX8KaEO5BvZZ');
+define('ZALO_APP_ID_CFG','1250780810165803242');
+define('ZALO_APP_SECRET_KEY_CFG','Ui7fBnBF3r45Y3N1Igk9');
 define('ZALO_CAL_BACK',BASE_URL.'auth/loginzalo');
 //define('ZALO_OA_SECRET_KEY_CFG','APS_');
 //Config zalo
 
-define('FB_API','383863395372857');
-define('FB_SECRET','5d0fa0a80a67db2a6d0fd72bd27f7750');
+define('FB_API','513850409113974');
+define('FB_SECRET','98096dad1eda7098bae37470e1b32747');
 define('FB_VER','v2.9');
 
-define('GG_API','778836651692-hn9srbboktca7kke49lg9uq88amq0cl7.apps.googleusercontent.com');
+define('GG_API','146506042160-l5bb49an9fvtuq8rhm8og0ifp8856lua.apps.googleusercontent.com');
 define('GG_SECRET','P5BJVSsjeDkyvqm-mvZ-z-Mh');
-define('GG_KEY','AIzaSyCfmCVTjRI007pC1Yk2o2d_EhgkjTsFVN8');//AIzaSyAhR8OG9cUL1jDfAAc6i35nt5Ki1ZJnykA
-define('GG_CAPTCHA_MODE', FALSE);
+define('GG_KEY','AIzaSyB5nM64brxbxwB09CRVOthWqCAhxa6mM5A');//AIzaSyAhR8OG9cUL1jDfAAc6i35nt5Ki1ZJnykA
+define('GG_CAPTCHA_MODE', TRUE);
 define('GG_CAPTCHA_SITE_KEY','6LevJWcUAAAAAMi7qfknK1bnVNd8sjQPcrShoZjC');
 define('GG_CAPTCHA_SECRET_KEY','6LevJWcUAAAAAHE2cjYE-Kfy5LiHEnSl7bpj_Ssq');

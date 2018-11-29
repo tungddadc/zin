@@ -1,5 +1,6 @@
 <?php
-$root = dirname(dirname(dirname(dirname(__FILE__))));
+$root = dirname(dirname(dirname(dirname(dirname(__FILE__)))));
+require_once $root . "/config.php";
 	// General
 	$moxieManagerConfig['general.license'] = 'XXXX-XXXX-XXXX-XXXX-XXXX-XXXX-XXXX-XXXX';
 	$moxieManagerConfig['general.hidden_tools'] = '';
@@ -13,7 +14,7 @@ $root = dirname(dirname(dirname(dirname(__FILE__))));
 	$moxieManagerConfig['general.allow_override'] = 'hidden_tools,disabled_tools';
 
 	// Filesystem
-	$moxieManagerConfig['filesystem.rootpath'] = $root . "/media";
+	$moxieManagerConfig['filesystem.rootpath'] = MEDIA_PATH;
 	$moxieManagerConfig['filesystem.include_directory_pattern'] = '';
 	$moxieManagerConfig['filesystem.exclude_directory_pattern'] = '/^mcith$/i';
 	$moxieManagerConfig['filesystem.include_file_pattern'] = '';
@@ -132,7 +133,7 @@ $root = dirname(dirname(dirname(dirname(__FILE__))));
     $moxieManagerConfig['CodeIgniterAuthenticator.user_key'] = 'user';
 
 	// Local filesystem
-	$moxieManagerConfig['filesystem.local.wwwroot'] = '';
+	$moxieManagerConfig['filesystem.local.wwwroot'] = MEDIA_PATH;
 	$moxieManagerConfig['filesystem.local.urlprefix'] = '';
 	$moxieManagerConfig['filesystem.local.urlsuffix'] = '';
 	$moxieManagerConfig['filesystem.local.access_file_name'] = 'mc_access';
