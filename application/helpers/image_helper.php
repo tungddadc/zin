@@ -70,7 +70,7 @@ if (!function_exists('getImageThumb')) {
                     }
                 }
 
-                if($crop == true && ($imageWidth > $width || $imageHeight > $height)){
+                if($crop == true){
                     $image_config['image_library'] = 'gd2';
                     $image_config['source_image'] = $newPathImage;
                     $image_config['new_image'] = $newPathImage;
