@@ -16,7 +16,8 @@ jQuery(document).ready(function() {
     
     jQuery('.mega-menu-category .nav > li').hover(function(){
     	jQuery(this).addClass("active");
-		jQuery(this).find('.popup').stop(true,true).fadeIn('slow');
+    	let ofTop=$(this).offset().top - $('#menu-category').offset().top;
+		jQuery(this).find('.popup').stop(true,true).fadeIn('slow').parent().css('top',ofTop);
     },function(){
         jQuery(this).removeClass("active");
 		jQuery(this).find('.popup').stop(true,true).fadeOut('slow');

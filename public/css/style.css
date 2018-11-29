@@ -1861,8 +1861,7 @@ nav.sticky{
 }
 
 nav.sticky .mega-menu-category{
-    max-height: 100vh;
-    overflow-y: scroll;
+    position: relative;
 }
 
 .mega-menu-category ul {
@@ -1872,8 +1871,12 @@ nav.sticky .mega-menu-category{
     background-color: #fff;
     border: 1px solid #ededed;
     border-top: none;
-}
 
+}
+.mega-menu-category > ul.nav{
+    max-height: 100vh;
+    overflow-y: scroll;
+}
 .mega-menu-category > .nav > li.view-more {
     position: absolute;
     overflow: hidden;
@@ -1900,6 +1903,9 @@ nav.sticky .mega-menu-category{
     font-size: 13px;
     letter-spacing: 1px;
     border-bottom: 1px #eaeaea solid;
+}
+.mega-menu-category > .nav > li{
+    position: static;
 }
 
 .mega-menu-category > .nav > li > a .fa {
