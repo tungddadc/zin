@@ -16,7 +16,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
             <div class="row">
                 <!-- Header Language -->
                 <div class="col-xs-12 col-sm-2 col-md-4 col-lg-5 pull-left">
-                    <div class="welcome-msg">Đặt hàng online gọi <?php echo $this->settings['hotline'] ?></div>
+                    <div class="welcome-msg">Tổng Đài CSKH: <?php echo $this->settings['hotline'] ?></div>
                 </div>
                 <!-- Header Top Links -->
                 <div class="col-xs-12 col-sm-10 col-md-8  col-lg-7 pull-right hidden-xs">
