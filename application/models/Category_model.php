@@ -46,7 +46,7 @@ WHERE parent_id IN (SELECT id FROM st_category WHERE parent_id = 0)";
         $data = '';
         $lang_code = $this->session->userdata('public_lang_code');
         if(CACHE_MODE == TRUE){
-            $key = CACHE_PREFIX_NAME . '_all_category_'.$lang_code.'_'.$type;
+            $key = '_all_category_'.$lang_code.'_'.$type;
             $data = $this->cache->get($key);
         }
         if(empty($data)){

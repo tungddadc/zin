@@ -19,7 +19,7 @@ class Menus_model extends STEVEN_Model
         $data = '';
         $lang_code = $this->session->userdata('public_lang_code');
         if(CACHE_MODE == TRUE){
-            $key = CACHE_PREFIX_NAME . "_cache_menu_{$lang_code}_{$location}_{$parent_id}";
+            $key = "_cache_menu_{$lang_code}_{$location}_{$parent_id}";
             $data = $this->cache->get($key);
         }
         if(empty($data) || $clear_cache == true){

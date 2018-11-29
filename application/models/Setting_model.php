@@ -18,7 +18,7 @@ class Setting_model extends CI_Model
         $this->load->driver('cache', array('adapter' => 'apc', 'backup' => 'file'));
         $data = '';
         if(CACHE_MODE == TRUE){
-            $key = CACHE_PREFIX_NAME . '_all_setting';
+            $key = '_all_setting';
             $data = $this->cache->get($key);
         }
         if(empty($data)){
