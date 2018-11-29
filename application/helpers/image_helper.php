@@ -109,7 +109,7 @@ if (!function_exists('getWatermark')) {
         $part = explode('.', $image);
         $ext = '.'.end($part);
         $newImage = str_replace($ext,$size.$ext, $image);
-        $newPathImage = MEDIA_PATH.$newImage;
+        $newPathImage = MEDIA_PATH_THUMB.$newImage;
 
         if(!file_exists($newPathImage)) {
             $CI =& get_instance();
