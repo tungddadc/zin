@@ -108,7 +108,7 @@ if (!function_exists('getWatermark')) {
     function getWatermark($width = '',$height= ''){
         $CI =& get_instance();
         $CI->load->model('setting_model');
-        $settings = $CI->setting_model->getAll;
+        $settings = $CI->setting_model->getAll();
         $width = intval(250/2);
         $height = intval(300/2);
         $image = !empty($settings['watermark']) ? $settings['watermark'] : null;
