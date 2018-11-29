@@ -22,21 +22,21 @@ define('BASE_URL', $url.'/');
 define('BASE_ADMIN_URL', BASE_URL."admin/");
 define('BASE_SCRIPT_NAME', '');
 define('MEDIA_NAME',"public/media/"); //Tên đường dẫn lưu media
-define('MEDIA_PATH',"/home/media/"); //Đường dẫn lưu media
-define('MEDIA_PATH_THUMB',$root.'/'.MEDIA_NAME); //Đường dẫn lưu media
-define('MEDIA_URL',BASE_URL . MEDIA_NAME);
+define('MEDIA_PATH',$root."/".MEDIA_NAME); //Đường dẫn lưu media
+define('MEDIA_PATH_THUMB',$root.'/'.MEDIA_NAME.'thumb/'); //Đường dẫn lưu media
+define('MEDIA_URL',BASE_URL . MEDIA_NAME . 'thumb/');
 
 define('DB_DEFAULT_HOST','localhost'); //DB HOST
-define('DB_DEFAULT_USER','zinlinhkie269d'); //DB USER
-define('DB_DEFAULT_PASSWORD','d2bae358874eabdc'); //DB PASSWORD
-define('DB_DEFAULT_NAME','zinlinhkien_269d'); //DB NAME
+define('DB_DEFAULT_USER','root'); //DB USER
+define('DB_DEFAULT_PASSWORD','password'); //DB PASSWORD
+define('DB_DEFAULT_NAME','corefw'); //DB NAME
 
 define('MAINTAIN_MODE',FALSE); //Bảo trì
-define('DEBUG_MODE',FALSE);
+define('DEBUG_MODE',TRUE);
 
 //Cache manager
 define('CACHE_MODE',TRUE);
-define('CACHE_ADAPTER','redis');
+define('CACHE_ADAPTER','apc');
 define('CACHE_PREFIX_NAME','ZINLK_');
 define('CACHE_TIMEOUT_LOGIN',1800);
 
