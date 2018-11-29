@@ -32,7 +32,7 @@ class STEVEN_Controller extends CI_Controller
         $this->_method = $this->router->fetch_method();
 
         //load cache driver
-        if (CACHE_MODE == TRUE) $this->load->driver('cache',array('adapter' => CACHE_ADAPTER, 'backup' => 'file', 'key_prefix' => CACHE_PREFIX_NAME));
+        if (CACHE_MODE == FALSE) $this->load->driver('cache',array('adapter' => CACHE_ADAPTER, 'backup' => 'file', 'key_prefix' => CACHE_PREFIX_NAME));
 
     }
 
@@ -232,7 +232,7 @@ class Admin_Controller extends STEVEN_Controller
                     $controller = $this->router->fetch_class();
                     if (!in_array($controller, array('dashboard'))) {
                         if (!$this->session->admin_permission[$controller]['view']) {//check quyen view
-                            redirect('admin/dashboard/notPermission');
+                            redirect(site_admin_url('dashboard/notPermission'));
                         }
                     }
                 } else {
