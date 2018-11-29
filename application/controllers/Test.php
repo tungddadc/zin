@@ -12,6 +12,7 @@ class Test extends Public_Controller
 
     public function index()
     {
+        exit;
         $this->load->library('image_lib');
         $source = MEDIA_PATH . "STK-TCM.jpg";
         $sourceNew = MEDIA_PATH_THUMB . "STK-TCM-crop.jpg";
@@ -21,22 +22,29 @@ class Test extends Public_Controller
         $width = "200";
         $height = "200";
 
-        $config['image_library'] = 'gd2';
-        $config['source_image'] = $source;
-        $config['new_image'] = $sourceNew;
-        $config['create_thumb'] = FALSE;
-        $config['maintain_ratio'] = TRUE;
+        $config1 = $config2 = array();
 
-        $config['width'] = $width;
-        $config['height'] = $height;
-        $config['y_axis'] = ($imageSize['height'] - $height) / 2;
-        $config['x_axis'] = ($imageSize['width'] - $width) / 2;
+        $config1['image_library']     = 'gd2';
+        $config1['source_image']      = $source;
+        $config1['new_image']         = $sourceNew;
+        $config1['maintain_ratio']    = TRUE;
+        $config1['width']             = $width;
 
-        $this->image_lib->initialize($config);
+        $this->load->library('image_lib');
+        $this->image_lib->initialize($config1);
+        $this->image_lib->resize();
 
-        if(!$this->image_lib->crop())
-        {
-            echo $this->image_lib->display_errors();
-        }
+        $this->image_lib->clear();
+
+        $config2['image_library'] = 'gd2';
+        $config2['source_image']  = './project_pics/resize/'.$filename;
+        $config2['new_image']     = './project_pics/crop/'.$filename;
+        $config2['width']         = 650;
+        $config2['height']        = 450;
+        $config2['x_axis']        = 0;
+        $config2['y_axis']        = 0;
+
+        $this->image_lib->initialize($config2);
+        $this->image_lib->crop();
     }
 }

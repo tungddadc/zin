@@ -49,46 +49,41 @@ if (!function_exists('getImageThumb')) {
                 $CI->image_lib->initialize($config);
                 if (!$CI->image_lib->resize()) {
                     log_message('error',$CI->image_lib->display_errors());
-                    return str_replace('\\','/',MEDIA_URL.DIRECTORY_SEPARATOR.$image);
-                } else {
+                }
+                $CI->image_lib->clear();
+                if(!empty($watermark)){
+                    $config_watermark['image_library']       = 'gd2';
+                    $config_watermark['source_image']       = $newPathImage;
+                    $config_watermark['wm_type']       = 'overlay';
+                    $config_watermark['wm_opacity']     = 60;
+                    //$config_watermark['wm_padding']     = 30;
+                    $config_watermark['wm_vrt_alignment'] = 'middle';
+                    $config_watermark['wm_hor_alignment'] = 'center';
+                    $config_watermark['wm_overlay_path'] = getWatermark($width,$height);
+                    $CI->image_lib->initialize($config_watermark);
+                    $CI->image_lib->watermark();
                     $CI->image_lib->clear();
-                    if(!empty($watermark)){
-                        $config_watermark['image_library']       = 'gd2';
-                        $config_watermark['source_image']       = $newPathImage;
-                        $config_watermark['wm_type']       = 'overlay';
-                        $config_watermark['wm_opacity']     = 60;
-                        //$config_watermark['wm_padding']     = 30;
-                        $config_watermark['wm_vrt_alignment'] = 'middle';
-                        $config_watermark['wm_hor_alignment'] = 'center';
-                        $config_watermark['wm_overlay_path'] = getWatermark($width,$height);
-                        $CI->image_lib->initialize($config_watermark);
-                        $CI->image_lib->watermark();
-                        $CI->image_lib->clear();
-                    }
+                }
 
-                    if($crop == true){
-                        $image_config['image_library'] = 'gd2';
-                        $image_config['source_image'] = $newPathImage;
-                        $image_config['new_image'] = $newPathImage;
-                        $image_config['quality'] = "100%";
-                        $image_config['maintain_ratio'] = FALSE;
-                        $image_config['width'] = $width;
-                        $image_config['height'] = $height;
-                        $imageSize = getimagesize($newPathImage);
-                        $imageWidth = intval($imageSize[0]);
-                        $imageHeight = intval($imageSize[1]);
-                        $cropStartX = ( $imageWidth / 2) - ( $width /2 );
-                        $cropStartY = ( $imageHeight/ 2) - ( $height/2 );
-                        $image_config['x_axis'] = $cropStartX;
-                        $image_config['y_axis'] = $cropStartY;
-                        $CI->image_lib->initialize($image_config);
-                        if (!$CI->image_lib->crop()) {
-                            log_message('error',$CI->image_lib->display_errors());
-                        }
-                        $CI->image_lib->clear();
-                        return str_replace('\\','/',MEDIA_URL.DIRECTORY_SEPARATOR.$image);
+                if($crop == true){
+                    $image_config['image_library'] = 'gd2';
+                    $image_config['source_image'] = $newPathImage;
+                    $image_config['new_image'] = $newPathImage;
+                    $image_config['quality'] = "100%";
+                    $image_config['maintain_ratio'] = FALSE;
+                    $image_config['width'] = $width;
+                    $image_config['height'] = $height;
+                    $imageSize = getimagesize($newPathImage);
+                    $imageWidth = intval($imageSize[0]);
+                    $imageHeight = intval($imageSize[1]);
+                    $cropStartX = ( $imageWidth / 2) - ( $width /2 );
+                    $cropStartY = ( $imageHeight/ 2) - ( $height/2 );
+                    $image_config['x_axis'] = $cropStartX;
+                    $image_config['y_axis'] = $cropStartY;
+                    $CI->image_lib->initialize($image_config);
+                    if (!$CI->image_lib->crop()) {
+                        log_message('error',$CI->image_lib->display_errors());
                     }
-
                 }
             }
             return str_replace('\\','/',MEDIA_URL.DIRECTORY_SEPARATOR.$newImage);
