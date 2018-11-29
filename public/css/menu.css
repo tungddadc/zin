@@ -25,14 +25,14 @@ header .our-features-box .offer-block > ul > li > .sub-menu {
   border-top: 4px solid #be1e2d;
   box-shadow: 0 6px 6px 6px rgba(0, 0, 0, 0.06);
 }
-header .our-features-box .offer-block > ul > li > .sub-menu li {
+header .our-features-box .offer-block > ul > li > .sub-menu > li {
   display: inline-block;
   transition: 0.3s;
   float: left;
   text-align: left;
   padding-left: 10px;
 }
-header .our-features-box .offer-block > ul > li > .sub-menu li a {
+header .our-features-box .offer-block > ul > li > .sub-menu > li a {
   vertical-align: top;
   color: #333;
   font-size: 14px;
@@ -41,11 +41,22 @@ header .our-features-box .offer-block > ul > li > .sub-menu li a {
   text-align: left;
   position: relative;
 }
-header .our-features-box .offer-block > ul > li > .sub-menu li:hover {
+header .our-features-box .offer-block > ul > li > .sub-menu > li:hover {
   background-color: #be1e2d;
 }
-header .our-features-box .offer-block > ul > li > .sub-menu li:hover a {
+header .our-features-box .offer-block > ul > li > .sub-menu > li:hover a {
   color: #ffffff;
+}
+header .our-features-box .offer-block > ul > li > .sub-menu > li ul {
+  padding: 0 10px;
+}
+header .our-features-box .offer-block > ul > li > .sub-menu > li ul li {
+  display: inline-block;
+  transition: 0.3s;
+  float: left;
+  text-align: left;
+  padding-left: 10px;
+  width: 100%;
 }
 header .our-features-box .offer-block > ul > li.parent-colum-4 .sub-menu li {
   text-align: left;

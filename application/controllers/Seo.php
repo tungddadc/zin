@@ -33,25 +33,37 @@ class Seo extends Public_Controller {
             'is_status' => 1,
             'limit' => 100
         );
-        $categories = $categoryModel->getData($params);
-        $posts = $postModel->getData($params);
-        $products = $productModel->getData($params);
+        $allCategory = $categoryModel->_all_category();
+        $categorieProduct = $categoryModel->getDataByCategoryType($allCategory,'product');
+        $categorieBrand = $categoryModel->getDataByCategoryType($allCategory,'brand');
+        $categoriePost = $categoryModel->getDataByCategoryType($allCategory,'post');
+        $posts = $postModel->getAll($this->session->public_lang_code,1);
+        $products = $productModel->getAll($this->session->public_lang_code,1);
 
         $this->add(base_url(), '', 'always', 1.0);
-        if(!empty($categories)) foreach ($categories as $item){
+        if(!empty($categorieProduct)) foreach ($categorieProduct as $item){
+            $url = getUrlCateProduct($item);
+            $this->add($url, timeAgo($item->created_time, 'c'), 'weekly', 0.9);
+        }
+        if(!empty($categorieBrand)) foreach ($categorieBrand as $item){
+            $url = getUrlBrand($item);
+            $this->add($url, timeAgo($item->created_time, 'c'), 'weekly', 0.9);
+        }
+        if(!empty($categoriePost)) foreach ($categoriePost as $item){
             $url = getUrlCateNews($item);
-            $this->add($url, timeAgo($item->created_time,'Y-m-d'), 'weekly', 0.9);
+            $this->add($url, timeAgo($item->created_time, 'c'), 'weekly', 0.9);
         }
 
         if(!empty($posts)) foreach ($posts as $item) {
             $url = getUrlNews($item);
-            $this->add($url, timeAgo($item->created_time,'Y-m-d'), 'weekly', 0.9);
+            $this->add($url, timeAgo($item->created_time, 'c'), 'weekly', 0.9);
         }
 
         if(!empty($products)) foreach ($products as $item) {
             $url = getUrlProduct($item);
-            $this->add($url, timeAgo($item->created_time,'Y-m-d'), 'weekly', 0.9);
+            $this->add($url, timeAgo($item->created_time, 'c'), 'weekly', 0.9);
         }
+        $this->output->cache(30);
         $this->output();
     }
 

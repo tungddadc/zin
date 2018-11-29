@@ -468,7 +468,7 @@
         </div>
     </section>
     <!-- Main Container End -->
+    <script>
+        var urlCurrentMenu = '<?php echo !empty($oneParent) ? getUrlCateProduct($oneParent) : '' ?>';
+    </script>
 <?php endif; ?>
-<script>
-    var urlCurrentMenu = '<?php echo !empty($oneParent) ? getUrlCateProduct($oneParent) : '' ?>';
-</script>

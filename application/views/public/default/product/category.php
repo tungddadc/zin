@@ -118,4 +118,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
             </div>
         </div>
     </section>
+    <script>
+        var urlCurrentMenu = '<?php echo !empty($oneParent) ? getUrlCateProduct($oneParent) : '' ?>';
+    </script>
 <?php endif; ?>

@@ -29,7 +29,7 @@ header {
             z-index: 9;
             border-top: 4px solid rgb(190, 30, 45);
             box-shadow: 0 6px 6px 6px rgba(0, 0, 0, 0.06);
-            li {
+            > li {
               display: inline-block;
               transition: .3s;
               float: left;
@@ -59,6 +59,17 @@ header {
                 background-color: rgb(190, 30, 45);
                 a {
                   color: #ffffff;
+                }
+              }
+              ul{
+                padding: 0 10px;
+                li{
+                  display: inline-block;
+                  transition: .3s;
+                  float: left;
+                  text-align: left;
+                  padding-left: 10px;
+                  width: 100%;
                 }
               }
             }

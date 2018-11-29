@@ -44,22 +44,22 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     <meta property="og:description"
           content="<?php echo isset($this->settings['meta_desc']) ? $this->settings['meta_desc'] : ''; ?>"/>
     <meta property="og:image"
-          content="<?php echo !empty($this->settings['homepage_thumbnail']) ? getImageThumb($this->settings['homepage_thumbnail'], 200, 200) : getImageThumb($this->settings['homepage_thumbnail'], 200, 200); ?>"/>
+          content="<?php echo !empty($this->settings['homepage_thumbnail']) ? getImageThumb($this->settings['homepage_thumbnail'], 200, 200,false,false) : getImageThumb('', 200, 200); ?>"/>
     <meta property="og:url" content="<?php echo base_url(); ?>"/>
     <!--Meta Facebook Homepage-->
     <link rel="canonical" href="<?php echo base_url(); ?>"/>
   <?php endif; ?>
 
   <link rel="icon"
-        href="<?php echo !empty($this->settings['favicon']) ? getImageThumb($this->settings['favicon'], 32, 32) : $this->templates_assets . "favicon.ico"; ?>"
+        href="<?php echo !empty($this->settings['favicon']) ? getImageThumb($this->settings['favicon'], 32, 32,false,false) : $this->templates_assets . "favicon.ico"; ?>"
         sizes="32x32">
   <link rel="icon"
-        href="<?php echo !empty($this->settings['favicon']) ? getImageThumb($this->settings['favicon'], 192, 192) : $this->templates_assets . "favicon.ico"; ?>"
+        href="<?php echo !empty($this->settings['favicon']) ? getImageThumb($this->settings['favicon'], 192, 192,false,false) : $this->templates_assets . "favicon.ico"; ?>"
         sizes="192x192">
   <link rel="apple-touch-icon-precomposed"
-        href="<?php echo !empty($this->settings['favicon']) ? getImageThumb($this->settings['favicon'], 180, 180) : $this->templates_assets . "favicon.ico"; ?>">
+        href="<?php echo !empty($this->settings['favicon']) ? getImageThumb($this->settings['favicon'], 180, 180,false,false) : $this->templates_assets . "favicon.ico"; ?>">
   <meta name="msapplication-TileImage"
-        content="<?php echo !empty($this->settings['favicon']) ? getImageThumb($this->settings['favicon'], 270, 270) : $this->templates_assets . "favicon.ico"; ?>">
+        content="<?php echo !empty($this->settings['favicon']) ? getImageThumb($this->settings['favicon'], 270, 270,false,false) : $this->templates_assets . "favicon.ico"; ?>">
 
 
     <!--begin::Web font -->
@@ -115,6 +115,48 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+
+    <script type="application/ld+json">
+{
+	"@context": "http://schema.org",
+	"@type": "ElectronicsStore",
+	"name": "Zin Viet Nam Company Limited",
+	"address": {
+		"@type": "PostalAddress",
+		"streetAddress": "241 Le Loi, Minh Khai",
+		"addressLocality": "Phu Ly",
+		"addressRegion": "Hanam",
+		"postalCode": "40000"
+	},
+	"image": "https://zinlinhkien.com.vn/public/media/thumb/ZIN-LOGO-500-260x50.png",
+	"email": "admin@zinlinhkien.com.vn",
+	"telePhone": "1900-299-922",
+	"url": "zinlinhkien.com.vn",
+	"paymentAccepted": [ "cash", "check", "credit card", "invoice", "paypal" ],
+	"openingHours": "Mo,Tu,We,Th,Fr,Sa 08:00-19:00",
+	"openingHoursSpecification": [ {
+		"@type": "OpeningHoursSpecification",
+		"dayOfWeek": [
+			"Monday",
+			"Tuesday",
+			"Wednesday",
+			"Thursday",
+			"Friday",
+			"Saturday"
+		],
+		"opens": "08:00",
+		"closes": "19:00"
+	} ],
+	"geo": {
+		"@type": "GeoCoordinates",
+		"latitude": "20.542285",
+		"longitude": "105.922401"
+	},
+	"priceRange":"$$$$$"
+
+}
+</script>
+
 
   <script>
     var urlCurrentMenu = window.location.href,
