@@ -94,6 +94,11 @@ if (!function_exists('getImageThumb')) {
             return str_replace('\\','/',MEDIA_URL.DIRECTORY_SEPARATOR.$newImage);
         }
         else {
+            $newPathImage = MEDIA_PATH_THUMB.$image;
+            if(!is_dir(dirname($newPathImage))){
+                mkdir(dirname($newPathImage), 0755, TRUE);
+                copy($sourceImage, $newPathImage);
+            }
             return str_replace('\\','/',MEDIA_URL.$image);
         }
     }

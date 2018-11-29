@@ -97,7 +97,7 @@ require_once $root . "/config.php";
 	$moxieManagerConfig['download.allow_override'] = '*';
 
 	// Thumbnail
-	$moxieManagerConfig['thumbnail.enabled'] = true;
+	$moxieManagerConfig['thumbnail.enabled'] = false;
 	$moxieManagerConfig['thumbnail.auto_generate'] = true;
 	$moxieManagerConfig['thumbnail.use_exif'] = true;
 	$moxieManagerConfig['thumbnail.width'] = 90;
