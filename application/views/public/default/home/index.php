@@ -193,13 +193,12 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                         <div class="entry-thumb image-hover2">
                             <a href="<?php echo getUrlNews($item) ?>" title="<?php echo getTitle($item) ?>">
                                 <img alt="<?php echo getTitle($item) ?>"
-                                     src="<?php echo getImageThumb($item->thumbnail, 340, 160, true) ?>">
+                                     src="<?php echo getImageThumb($item->thumbnail, 340, 160, true, false) ?>">
                             </a>
                         </div>
                         <div class="blog-preview_info">
                             <h4 class="blog-preview_title">
-                                <a href="<?php echo getUrlNews($item) ?>" title="<?php echo getTitle($item) ?>">Standard
-                                    blog post with photo</a>
+                                <a href="<?php echo getUrlNews($item) ?>" title="<?php echo getTitle($item) ?>"><?php echo $item->title ?></a>
                             </h4>
                             <ul class="post-meta">
                                 <li><i class="fa fa-eye"></i><?php echo $item->viewed ?></li>
