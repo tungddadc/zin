@@ -378,7 +378,7 @@ $config['encryption_key'] = '0915224935';
 |
 */
 $config['sess_driver'] = 'files';
-$config['sess_cookie_name'] = 'st_session';
+$config['sess_cookie_name'] = 'key_'.md5($_SERVER['SERVER_NAME']);
 $config['sess_expiration'] = 7200;
 $config['sess_save_path'] = sys_get_temp_dir();
 $config['sess_match_ip'] = FALSE;

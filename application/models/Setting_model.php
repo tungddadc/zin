@@ -14,26 +14,28 @@ class Setting_model extends CI_Model
         return $data;
     }
     public function getAll(){
-        $this->load->library(array('session'));
-        $this->load->driver('cache', array('adapter' => 'apc', 'backup' => 'file'));
+        $this->load->library('session');
         $data = '';
         if(CACHE_MODE == TRUE){
-            $key = '_all_setting';
-            $data = $this->cache->get($key);
+            $keyCache = '_all_setting';
+            $data = $this->cache->get($keyCache);
         }
         if(empty($data)){
+            $tmp = [];
             $dataSetting = $this->_all_setting();
             if (!empty($dataSetting)) foreach ($dataSetting as $key => $item) {
                 if ($key === 'meta') {
                     $oneMeta = $item[$this->session->userdata('public_lang_code')];
                     if (!empty($oneMeta)) foreach ($oneMeta as $keyMeta => $value) {
-                        $data[$keyMeta] = str_replace('"', '\'', $value);
+                        $tmp[$keyMeta] = str_replace('"', '\'', $value);
                     }
                 } else
-                    $data[$key] = $item;
+                    $tmp[$key] = $item;
             }
+            $data = $tmp;
         }
-        if(CACHE_MODE == TRUE) $this->cache->save($key,$data,3600);
+
+        if(CACHE_MODE == TRUE) $this->cache->save($keyCache,$data,3600);
         return $data;
     }
 

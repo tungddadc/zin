@@ -6,8 +6,8 @@ require_once $root . "/config.php";
 	$moxieManagerConfig['general.hidden_tools'] = '';
 	$moxieManagerConfig['general.disabled_tools'] = '';
 	$moxieManagerConfig['general.plugins'] = 'AutoFormat,AutoRename,Dropbox,Favorites,Ftp,GoogleDrive,History,Uploaded';
-	$moxieManagerConfig['general.demo'] = false;
-	$moxieManagerConfig['general.debug'] = false;
+	$moxieManagerConfig['general.demo'] = true;
+	$moxieManagerConfig['general.debug'] = true;
 	$moxieManagerConfig['general.language'] = 'en';
 	$moxieManagerConfig['general.temp_dir'] = '';
 	$moxieManagerConfig['general.http_proxy'] = '';
@@ -110,11 +110,11 @@ require_once $root . "/config.php";
 	$moxieManagerConfig['thumbnail.allow_override'] = '*';
 
 	// Authentication
-	$moxieManagerConfig['authenticator'] = '';
+	$moxieManagerConfig['authenticator'] = 'SessionAuthenticator';
 	$moxieManagerConfig['authenticator.login_page'] = '';
 
 	// SessionAuthenticator
-	$moxieManagerConfig['SessionAuthenticator.logged_in_key'] = 'MyLoggedInKey';
+	$moxieManagerConfig['SessionAuthenticator.logged_in_key'] = 'isLoggedIn';
 	$moxieManagerConfig['SessionAuthenticator.user_key'] = 'user';
 	$moxieManagerConfig['SessionAuthenticator.config_prefix'] = 'moxiemanager';
 
