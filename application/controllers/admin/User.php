@@ -142,9 +142,9 @@ class User extends Admin_Controller
                 //if the login is successful
                 //Set session for Moxie Manager Image
                 $this->session->set_userdata('MyLoggedInKey', true);
+                $this->session->set_userdata('CodeIgniterAuthenticator.environment', ENVIRONMENT);
                 $this->session->set_userdata('moxiemanager.filesystem.rootpath', MEDIA_PATH);
                 $this->session->set_userdata('moxiemanager.storage.path', MEDIA_PATH);
-                $this->session->set_userdata("moxie_user", $identity);
                 //redirect them back to the home page
                 $url_redirect = $this->input->post('url_redirect') ? $this->input->post('url_redirect') : site_admin_url();
                 $message['type'] = 'success';

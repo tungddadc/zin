@@ -6,7 +6,7 @@ require_once $root . "/config.php";
 	$moxieManagerConfig['general.hidden_tools'] = '';
 	$moxieManagerConfig['general.disabled_tools'] = '';
 	$moxieManagerConfig['general.plugins'] = 'AutoFormat,AutoRename,Dropbox,Favorites,Ftp,GoogleDrive,History,Uploaded';
-	$moxieManagerConfig['general.demo'] = true;
+	$moxieManagerConfig['general.demo'] = false;
 	$moxieManagerConfig['general.debug'] = true;
 	$moxieManagerConfig['general.language'] = 'en';
 	$moxieManagerConfig['general.temp_dir'] = '';
@@ -133,8 +133,8 @@ require_once $root . "/config.php";
     $moxieManagerConfig['CodeIgniterAuthenticator.user_key'] = 'moxie_user';
 
 	// Local filesystem
-	$moxieManagerConfig['filesystem.local.wwwroot'] = '';
-	$moxieManagerConfig['filesystem.local.urlprefix'] = '';
+	$moxieManagerConfig['filesystem.local.wwwroot'] = MEDIA_PATH;
+	$moxieManagerConfig['filesystem.local.urlprefix'] = BASE_URL . MEDIA_NAME;
 	$moxieManagerConfig['filesystem.local.urlsuffix'] = '';
 	$moxieManagerConfig['filesystem.local.access_file_name'] = 'mc_access';
 	$moxieManagerConfig['filesystem.local.cache'] = false;
