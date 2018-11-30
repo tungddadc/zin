@@ -4,11 +4,13 @@
  *
  * Copyright 2003-2014, Moxiecode Systems AB, All rights reserved.
  */
-
 $baseDir = dirname(MOXMAN_ROOT);
 for ($i = 0; $i < 10 && !file_exists($baseDir . "/application"); $i++) {
 	$baseDir = dirname($baseDir);
 }
+define('ICONV_ENABLED',TRUE);
+define('MB_ENABLED',TRUE);
+define('VIEWPATH', $baseDir . "/application/views".DIRECTORY_SEPARATOR);
 
 if (!file_exists($baseDir . "/application")) {
 	die("Could not find CodeIgniter as a parent path of moxiemanager.");

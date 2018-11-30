@@ -14,7 +14,7 @@ require_once $root . "/config.php";
 	$moxieManagerConfig['general.allow_override'] = 'hidden_tools,disabled_tools';
 
 	// Filesystem
-	$moxieManagerConfig['filesystem.rootpath'] = MEDIA_PATH;
+	$moxieManagerConfig['filesystem.rootpath'] = '';
 	$moxieManagerConfig['filesystem.include_directory_pattern'] = '';
 	$moxieManagerConfig['filesystem.exclude_directory_pattern'] = '/^mcith$/i';
 	$moxieManagerConfig['filesystem.include_file_pattern'] = '';
@@ -110,11 +110,11 @@ require_once $root . "/config.php";
 	$moxieManagerConfig['thumbnail.allow_override'] = '*';
 
 	// Authentication
-	$moxieManagerConfig['authenticator'] = 'SessionAuthenticator';
+	$moxieManagerConfig['authenticator'] = 'CodeIgniterAuthenticator';
 	$moxieManagerConfig['authenticator.login_page'] = '';
 
 	// SessionAuthenticator
-	$moxieManagerConfig['SessionAuthenticator.logged_in_key'] = 'isLoggedIn';
+	$moxieManagerConfig['SessionAuthenticator.logged_in_key'] = 'MyLoggedInKey';
 	$moxieManagerConfig['SessionAuthenticator.user_key'] = 'user';
 	$moxieManagerConfig['SessionAuthenticator.config_prefix'] = 'moxiemanager';
 
@@ -128,12 +128,12 @@ require_once $root . "/config.php";
 	$moxieManagerConfig['ExternalAuthenticator.basic_auth_password'] = '';
 
     //CodeIgniterAuthenticator
-    $moxieManagerConfig['CodeIgniterAuthenticator.environment'] = "production";
+    $moxieManagerConfig['CodeIgniterAuthenticator.environment'] = DEBUG_MODE ? "development" : "production";
     $moxieManagerConfig['CodeIgniterAuthenticator.logged_in_key'] = "MyLoggedInKey";
-    $moxieManagerConfig['CodeIgniterAuthenticator.user_key'] = 'user';
+    $moxieManagerConfig['CodeIgniterAuthenticator.user_key'] = 'moxie_user';
 
 	// Local filesystem
-	$moxieManagerConfig['filesystem.local.wwwroot'] = MEDIA_PATH;
+	$moxieManagerConfig['filesystem.local.wwwroot'] = '';
 	$moxieManagerConfig['filesystem.local.urlprefix'] = '';
 	$moxieManagerConfig['filesystem.local.urlsuffix'] = '';
 	$moxieManagerConfig['filesystem.local.access_file_name'] = 'mc_access';
