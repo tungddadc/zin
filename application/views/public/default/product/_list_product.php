@@ -5,7 +5,10 @@
                 <div class="item-img">
                     <div class="item-img-info">
                         <a href="<?php echo getUrlProduct($item) ?>" title="<?php echo getTitle($item) ?>" class="product-image">
-                            <img src="<?php echo getImageThumb($item->thumbnail,250,300,true,true) ?>" alt="<?php echo getTitle($item) ?>">
+                            <img src="<?php echo getImageThumb($item->thumbnail,250,300,true,true) ?>"
+                                 data-src="<?php echo getImageThumb($item->thumbnail,250,300,true,true) ?>"
+                                 class="lazy"
+                                 alt="<?php echo getTitle($item) ?>">
                         </a>
                         <?php echo !empty($item->is_new) ? '<div class="new-label new-top-left">New</div>' : '' ?>
                         <div class="box-hover">

@@ -12,7 +12,10 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
             <div class="side-banner">
                 <?php $bannerSidebarTop = listBannerByPosition(2);if(!empty($bannerSidebarTop)) foreach ($bannerSidebarTop as $item): ?>
                     <a href="<?php echo $item->url ?>" title="banner sidebar" rel="nofollow">
-                        <img src="<?php echo getImageThumb($item->thumbnail,265,425,false,false) ?>" alt="banner sidebar">
+                        <img src="<?php echo getImageThumb($item->thumbnail,265,265,true,true) ?>"
+                             data-src="<?php echo getImageThumb($item->thumbnail,265,265,true,true) ?>"
+                             class="lazy"
+                             alt="<?php echo getTitle($item) ?>">
                     </a>
                 <?php endforeach; ?>
             </div>
@@ -27,8 +30,12 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                             <?php foreach ($home_slider as $item): ?>
                             <li data-transition='random' data-slotamount='7' data-masterspeed='1000'
                                 data-thumb='<?php echo getImageThumb($item->thumbnail,850,440) ?>'>
-                                <img src='<?php echo getImageThumb($item->thumbnail,850,440) ?>' alt="<?php echo $item->title ?>"
-                                        data-bgposition='left top' data-bgfit='cover' data-bgrepeat='no-repeat'/>
+                                <img src="<?php echo getImageThumb($item->thumbnail,850,440,true) ?>"
+                                     data-src="<?php echo getImageThumb($item->thumbnail,850,440,true) ?>"
+                                     class="lazy"
+                                     data-bgposition='left top' data-bgfit='cover' data-bgrepeat='no-repeat'
+                                     alt="<?php echo getTitle($item) ?>">
+
                                 <div class="info">
                                     <!--<div class='tp-caption ExtraLargeTitle sft  tp-resizeme ' data-endspeed='500'
                                          data-speed='500' data-start='1100' data-easing='Linear.easeNone'
@@ -64,7 +71,11 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                     <?php $bannerHomeTop = listBannerByPosition(4);if(!empty($bannerHomeTop)) foreach ($bannerHomeTop as $item): ?>
                         <div class="col-sm-6 col-xs-12">
                             <a href="<?php echo $item->url ?>" title="banner sidebar" rel="nofollow">
-                                <img style="width: 100%" src="<?php echo getImageThumb($item->thumbnail,410,210,false,false) ?>" alt="banner sidebar">
+                                <img src="<?php echo getImageThumb($item->thumbnail,410,210,true) ?>"
+                                     data-src="<?php echo getImageThumb($item->thumbnail,410,210,true) ?>"
+                                     class="lazy"
+                                     style="width: 100%"
+                                     alt="<?php echo getTitle($item) ?>">
                             </a>
                         </div>
                     <?php endforeach; ?>
@@ -166,7 +177,10 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                 <div class="side-banner">
                     <?php $bannerSidebar = listBannerByPosition(3);if(!empty($bannerSidebar)) foreach ($bannerSidebar as $item): ?>
                         <a href="<?php echo $item->url ?>" title="banner center home" rel="nofollow">
-                            <img class="hidden-xs" src="<?php echo getImageThumb($item->thumbnail,265,500,false,false) ?>" alt="banner center home">
+                            <img src="<?php echo getImageThumb($item->thumbnail,265,500,true) ?>"
+                                 data-src="<?php echo getImageThumb($item->thumbnail,265,500,true) ?>"
+                                 class="lazy hidden-xs"
+                                 alt="<?php echo getTitle($item) ?>">
                         </a>
                     <?php endforeach; ?>
                 </div>

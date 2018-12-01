@@ -6,7 +6,10 @@
                     <a href="<?php echo getUrlProduct($item) ?>"
                        title="<?php echo getTitle($item) ?>"
                        class="product-image">
-                        <img src="<?php echo getImageThumb($item->thumbnail, 250, 300,true,true) ?>"
+                        <img src="<?php echo getImageThumb($item->thumbnail,250,300,true,true) ?>"
+                             data-src="<?php echo getImageThumb($item->thumbnail,250,300,true,true) ?>"
+                             data-srcset="<?php echo getImageThumb($item->thumbnail,250,300,true,true) ?> 1x, <?php echo getImageThumb($item->thumbnail,250,300,true,true) ?> 2x"
+                             class="lazy"
                              alt="<?php echo getTitle($item) ?>">
                     </a>
                     <?php echo !empty($item->is_new) ? '<div class="new-label new-top-left">New</div>' : '' ?>

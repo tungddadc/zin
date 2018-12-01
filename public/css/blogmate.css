@@ -35,6 +35,7 @@
 	margin: 0 0px 10px 0;
 	position: relative;
 	overflow: hidden;
+	text-align: center;
 }
 .blog_entry .featured-thumb a {
 	display: block;
