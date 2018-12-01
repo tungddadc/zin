@@ -92,8 +92,8 @@ if (!function_exists('getImageThumb')) {
             $newPathImage = MEDIA_PATH_THUMB.$image;
             if(!is_dir(dirname($newPathImage))){
                 mkdir(dirname($newPathImage), 0755, TRUE);
-                copy($sourceImage, $newPathImage);
             }
+            copy($sourceImage, $newPathImage);
             return MEDIA_URL.$image;
         }
     }

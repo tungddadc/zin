@@ -16,6 +16,12 @@ class Test extends Public_Controller
         $source = MEDIA_PATH . "STK-TCM.jpg";
         $sourceNew = MEDIA_PATH_THUMB . "STK-TCM-crop.jpg";
 
+        $newPathImage = MEDIA_PATH_THUMB."zinlinhkien/favicon.ico";
+        if(!is_dir(dirname($newPathImage))){
+            mkdir(dirname($newPathImage), 0755, TRUE);
+        }
+        echo copy(MEDIA_PATH . 'zinlinhkien/favicon.ico', $newPathImage);
+        exit;
         $result = $this->getImageThumb( "/san-pham/mat-kinh/mat-kinh-apple/cuong-luc-ip7-8p.jpg",100,100,true,true);
         echo "<a href='$result'>$result</a>";
     }
