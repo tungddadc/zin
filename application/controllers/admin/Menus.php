@@ -66,11 +66,9 @@ class Menus extends Admin_Controller {
         $response = $this->input->post('s');
         $menuLanguage = $this->input->post('lang');
 
-        log_message('error',json_encode($response));
         $this->_data->delete(['location_id'=>$menuLocation,'language_code'=>$menuLanguage]);
         if (is_array($response)) {
             $topmenusorder = 1;
-            log_message('error',json_encode($response));
             if(!empty($response)) foreach ($response as $key => $block) {
                 $tmp['title'] = trim($block['label']);
                 $tmp['class'] = trim($block['cls']);
