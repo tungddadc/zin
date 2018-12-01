@@ -1,3 +1,4 @@
+<?php if(!empty($category)): ?>
 <section class="main-container col2-left-layout">
   <div class="container">
     <div class="row">
@@ -57,3 +58,4 @@
     </div>
   </div>
 </section>
+<?php endif; ?>

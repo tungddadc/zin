@@ -1,8 +1,14 @@
 <aside class="col-left sidebar col-sm-3 col-xs-12 col-sm-pull-9">
-  <div class="side-banner"><img alt="banner" src="<?php echo $this->templates_assets ?>images/side-banner.jpg"></div>
+  <div class="side-banner">
+      <?php $bannerSidebarTop = listBannerByPosition(2);if(!empty($bannerSidebarTop)) foreach ($bannerSidebarTop as $item): ?>
+          <a href="<?php echo $item->url ?>" title="banner sidebar" rel="nofollow">
+              <img src="<?php echo getImageThumb($item->thumbnail,265,425,false,false) ?>" alt="banner sidebar">
+          </a>
+      <?php endforeach; ?>
+  </div>
   <div class="widget_wrapper13" id="secondary" role="complementary">
     <div class="popular-posts widget widget__sidebar wow bounceInUp animated" id="recent-posts-4">
-      <h3 class="widget-title"><span>Most Popular Post</span></h3>
+      <h3 class="widget-title"><span>Tin nổi bật</span></h3>
       <div class="widget-content">
         <ul class="posts-list unstyled clearfix">
           <?php
@@ -12,7 +18,7 @@
             <li>
               <figure class="featured-thumb">
                 <a href="<?php getUrlNews($item) ?>" title="<?php echo getTitle($item) ?>">
-                  <img width="80" height="53" alt="blog image"
+                  <img width="80" height="53" alt="<?php echo getTitle($item) ?>"
                        src="<?php echo getImageThumb($item->thumbnail, 80, 53, true) ?>">
                 </a>
               </figure>
@@ -22,7 +28,7 @@
                       title="<?php echo getTitle($item) ?>"><?php echo $item->title ?></a>
               </h4>
               <p class="post-meta"><i class="icon-calendar"></i>
-                <time class="entry-date" datetime="2014-07-10T07:09:31+00:00"><?php echo date('d/m/Y') ?></time>
+                <time class="entry-date" datetime="<?php echo timeAgo($item->created_time,"c") ?>"><?php echo date('d/m/Y') ?></time>
               </p>
             </li>
           <?php endforeach; ?>
@@ -37,7 +43,7 @@
         $cats = getCategoryByType(0, 'post');
         if (!empty($cats)) foreach ($cats as $item) {
           ?>
-          <li class="cat-item cat-item-19599"><a
+          <li class="cat-item cat-item-19599"><a title="<?php echo getTitle($item) ?>"
               href="<?php echo getUrlCateNews($item) ?>"><?php echo $item->title; ?></a></li>
           <?php
         }

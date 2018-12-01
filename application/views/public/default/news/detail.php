@@ -1,3 +1,4 @@
+<?php if(!empty($oneItem)): ?>
 <section class="main-container col2-left-layout">
     <div class="container">
         <div class="row">
@@ -15,9 +16,8 @@
                                     <div class="entry-content">
                                         <div class="featured-thumb">
                                             <a href="<?php echo getUrlNews($oneItem) ?>" title="<?php echo getTitle($oneItem) ?>">
-                                                <img alt="blog-img3" src="<?php echo getImageThumb($oneItem->thumbnail) ?>"
-                                                     alt="<?php echo getTitle($oneItem) ?>">
-                                                </a>
+                                                <img src="<?php echo getImageThumb($oneItem->thumbnail) ?>" alt="<?php echo getTitle($oneItem) ?>">
+                                            </a>
                                         </div>
                                         <header class="blog_entry-header clearfix">
                                             <div class="blog_entry-header-inner">
@@ -44,3 +44,4 @@
         </div>
     </div>
 </section>
+<?php endif; ?>
