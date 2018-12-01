@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+redirect('404.html','','301');
 ?><!DOCTYPE html>
 <html lang="en">
 <head>

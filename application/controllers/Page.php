@@ -50,8 +50,7 @@ class Page extends Public_Controller
     }
 
     public function _404(){
-        //die('a');
-        //redirect('404.html','','301');
+        redirect('404.html','','301');
     }
 
     public function notfound(){
