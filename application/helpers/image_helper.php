@@ -34,6 +34,7 @@ if (!function_exists('getImageThumb')) {
                 $config['new_image'] = $newPathImage;
                 $config['maintain_ratio'] = TRUE;
                 $config['create_thumb'] = FALSE;
+                $config['quality'] = "80%";
                 $imageSize = getimagesize($sourceImage);
                 $imageWidth = intval($imageSize[0]);
                 $imageHeight = intval($imageSize[1]);
@@ -54,7 +55,7 @@ if (!function_exists('getImageThumb')) {
                         $config_watermark['image_library']       = 'gd2';
                         $config_watermark['source_image']       = $newPathImage;
                         $config_watermark['wm_type']       = 'overlay';
-                        $config_watermark['wm_opacity']     = 60;
+                        $config_watermark['wm_opacity']     = 40;
                         //$config_watermark['wm_padding']     = 30;
                         $config_watermark['wm_vrt_alignment'] = 'middle';
                         $config_watermark['wm_hor_alignment'] = 'center';
@@ -69,7 +70,7 @@ if (!function_exists('getImageThumb')) {
                     $image_config['image_library'] = 'gd2';
                     $image_config['source_image'] = $newPathImage;
                     $image_config['new_image'] = $newPathImage;
-                    $image_config['quality'] = "100%";
+                    $image_config['quality'] = "80%";
                     $image_config['maintain_ratio'] = FALSE;
                     $image_config['width'] = $width;
                     $image_config['height'] = $height;
