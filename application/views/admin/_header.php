@@ -112,13 +112,36 @@
                             </a>
                         </li>
 
-                        <li class="m-menu__item">
-                            <a href="javascript:;" onclick="FUNC.clearCache()" class="m-menu__link">
+                        <li class="m-menu__item m-menu__item--submenu m-menu__item--rel" m-menu-submenu-toggle="click" m-menu-link-redirect="1" aria-haspopup="true">
+                            <a href="javascript:;" class="m-menu__link m-menu__toggle">
                                 <i class="m-menu__link-icon la la-eraser"></i>
                                 <span class="m-menu__link-text">
-                                    Clear Cache
+                                    Cache Manager
                                 </span>
+                                <i class="m-menu__hor-arrow la la-angle-down"></i>
+                                <i class="m-menu__ver-arrow la la-angle-right"></i>
                             </a>
+                            <div class="m-menu__submenu m-menu__submenu--classic m-menu__submenu--left">
+                                <span class="m-menu__arrow m-menu__arrow--adjust" style="left: 73px;"></span>
+                                <ul class="m-menu__subnav">
+                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true">
+                                        <a href="javascript:;" onclick="FUNC.clearCacheDb()" class="m-menu__link ">
+                                            <i class="m-menu__link-icon la la-database"></i>
+                                            <span class="m-menu__link-text">
+                                                Clear cache database
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true">
+                                        <a href="javascript:;" onclick="FUNC.clearCacheImage()" class="m-menu__link ">
+                                            <i class="m-menu__link-icon la la-image"></i>
+                                            <span class="m-menu__link-text">
+                                                Clear cache image
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                     </ul>
                 </div>

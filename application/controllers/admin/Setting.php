@@ -32,6 +32,40 @@ class Setting extends Admin_Controller {
         $this->load->view($this->template_main, $data);
     }
 
+    public function ajax_clear_cache_db(){
+        if(CACHE_MODE == true) $this->cache->clean();
+        $this->returnJson([
+            'type' => 'success',
+            'message' => 'Xóa cache database thành công !'
+        ]);
+    }
+
+    public function ajax_clear_cache_image(){
+        if($this->recursiveDelete(MEDIA_PATH_THUMB))
+            $this->returnJson([
+                'type' => 'success',
+                'message' => 'Xóa cache ảnh thành công !'
+            ]);
+        else
+            $this->returnJson([
+                'type' => 'error',
+                'message' => 'Xóa cache ảnh không thành công !'
+            ]);
+    }
+
+    private function recursiveDelete($str) {
+        if (is_file($str)) {
+            return @unlink($str);
+        }
+        elseif (is_dir($str)) {
+            $scan = glob(rtrim($str,'/').'/*');
+            foreach($scan as $index=>$path) {
+                $this->recursiveDelete($path);
+            }
+            return @rmdir($str);
+        }
+    }
+
     private function get_list_db(){
         $this->load->helper('directory');
         $map = directory_map(FCPATH.'db');

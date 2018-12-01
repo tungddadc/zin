@@ -667,8 +667,6 @@ jQuery(document).ready(function () {
     UI.init();
     WISHLIST.init();
     COMPARE.init();
-    var heightMenuMain = $('#menu-main').height();
-    console.log(heightMenuMain);
     if(window.location.hash === '#reviews_tabs'){
         let tabClick = window.location.hash;
         $('[href="'+tabClick+'"]').tab('show');
