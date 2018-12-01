@@ -1,18 +1,14 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 if (!function_exists('getImageThumb')) {
     function getImageThumb($image = '',$width = '',$height= '', $crop = false, $watermark = false){
-        if(is_array(json_decode($image))){
-            $imageArray = json_decode($image);
-            $image = $imageArray[0];
-        }
         if(empty($image)) {
             $width = !empty($width)?$width:200;
             $height = !empty($height)?$height:200;
             $image =  "no_image.png";
         }
         $image = str_replace(MEDIA_NAME,'',$image);
+        $image = ltrim($image,'/');
         $sourceImage = MEDIA_PATH . $image;
-        $sourceImage = str_replace('\\','/',$sourceImage);
 
         if(!file_exists($sourceImage)){
             $width = !empty($width)?$width:200;
@@ -25,8 +21,7 @@ if (!function_exists('getImageThumb')) {
             $part = explode('.', $image);
             $ext = '.'.end($part);
             $newImage = str_replace($ext,$size.$ext, $image);
-            $newPathImage = MEDIA_PATH_THUMB.DIRECTORY_SEPARATOR.$newImage;
-            $newPathImage = str_replace('\\','/',$newPathImage);
+            $newPathImage = MEDIA_PATH_THUMB.$newImage;
             if ( !file_exists( $newPathImage ) ) {
                 if(!is_dir(dirname($newPathImage))){
                     mkdir(dirname($newPathImage), 0755, TRUE);
@@ -91,7 +86,7 @@ if (!function_exists('getImageThumb')) {
                     }
                 }
             }
-            return str_replace('\\','/',MEDIA_URL.DIRECTORY_SEPARATOR.$newImage);
+            return MEDIA_URL.$newImage;
         }
         else {
             $newPathImage = MEDIA_PATH_THUMB.$image;
@@ -99,7 +94,7 @@ if (!function_exists('getImageThumb')) {
                 mkdir(dirname($newPathImage), 0755, TRUE);
                 copy($sourceImage, $newPathImage);
             }
-            return str_replace('\\','/',MEDIA_URL.$image);
+            return MEDIA_URL.$image;
         }
     }
 }
@@ -112,13 +107,14 @@ if (!function_exists('getWatermark')) {
         $width = intval(250/2);
         $height = intval(300/2);
         $image = !empty($settings['watermark']) ? $settings['watermark'] : null;
+        $image = ltrim($image,'/');
         if(!empty($image)){
             $source_image = MEDIA_PATH . $image;
             $size = sprintf('-%dx%d', $width, $height);
             $part = explode('.', $image);
             $ext = '.'.end($part);
             $newImage = str_replace($ext,$size.$ext, $image);
-            $newPathImage = MEDIA_PATH_THUMB.$newImage;
+            $newPathImage = MEDIA_PATH . $newImage;
 
             if(!file_exists($newPathImage)) {
                 $CI->load->library('image_lib');
@@ -131,11 +127,11 @@ if (!function_exists('getWatermark')) {
                 $config_watermark['width'] = $width;
                 $CI->image_lib->initialize($config_watermark);
                 if (!$CI->image_lib->resize()) {
-                    log_message('error', $CI->image_lib->display_errors());
+                    log_message('error',"Error watermark image: $newPathImage =>" . $CI->image_lib->display_errors());
                 }
                 $CI->image_lib->clear();
             }
-            return str_replace('\\', '/', $newPathImage);
+            return $newPathImage;
         }else{
             return false;
         }
