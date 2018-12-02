@@ -71,8 +71,8 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                     <?php $bannerHomeTop = listBannerByPosition(4);if(!empty($bannerHomeTop)) foreach ($bannerHomeTop as $item): ?>
                         <div class="col-sm-6 col-xs-12">
                             <a href="<?php echo $item->url ?>" title="banner sidebar" rel="nofollow">
-                                <img src="<?php echo getImageThumb($item->thumbnail,410,210,true) ?>"
-                                     data-src="<?php echo getImageThumb($item->thumbnail,410,210,true) ?>"
+                                <img src="<?php echo getImageThumb($item->thumbnail,265,425,true) ?>"
+                                     data-src="<?php echo getImageThumb($item->thumbnail,265,425,true) ?>"
                                      class="lazy"
                                      style="width: 100%"
                                      alt="<?php echo getTitle($item) ?>">
