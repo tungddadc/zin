@@ -607,6 +607,8 @@ var UI = {
                 jQuery('.mega-menu-category').slideUp();
             } else {
                 header.classList.remove("sticky");
+            }
+            if(window.pageYOffset == 0){
                 jQuery('.mega-menu-category').slideDown();
             }
         };

@@ -555,3 +555,7 @@ ul.nav-link li a:hover{
         grid-template-columns: repeat(5, 1fr);
     }
 }
+.sidebar h1{
+    font-size: 20px;
+    margin: 0 0 10px;
+}
