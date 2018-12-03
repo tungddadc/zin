@@ -604,8 +604,10 @@ var UI = {
         window.onscroll = function() {
             if (window.pageYOffset > sticky) {
                 header.classList.add("sticky");
+                jQuery('.mega-menu-category').slideUp();
             } else {
                 header.classList.remove("sticky");
+                jQuery('.mega-menu-category').slideDown();
             }
         };
     },
