@@ -93,9 +93,6 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
         })();
     </script>
     <?php $asset_css[] = 'bootstrap.min.css'; ?>
-    <?php// $asset_css[] = 'font-awesome.min.css'; ?>
-    <?php //$asset_css[] = 'google-fonts.css'; ?>
-    <?php //$asset_css[] = 'simple-line-icons.css'; ?>
     <?php $asset_css[] = 'owl.carousel.css'; ?>
     <?php $asset_css[] = 'owl.theme.css'; ?>
     <?php $asset_css[] = 'jquery.bxslider.css'; ?>
