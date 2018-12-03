@@ -45,7 +45,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
         <meta property="og:description"
               content="<?php echo isset($this->settings['meta_desc']) ? $this->settings['meta_desc'] : ''; ?>"/>
         <meta property="og:image"
-              content="<?php echo !empty($this->settings['homepage_thumbnail']) ? getImageThumb($this->settings['homepage_thumbnail'], 200, 200, false, false) : getImageThumb('', 200, 200); ?>"/>
+              content="<?php echo !empty($this->settings['homepage_thumbnail']) ? getImageThumb($this->settings['homepage_thumbnail'], 200, 200, true, false) : getImageThumb('', 200, 200); ?>"/>
         <meta property="og:url" content="<?php echo base_url(); ?>"/>
         <!--Meta Facebook Homepage-->
         <link rel="canonical" href="<?php echo base_url(); ?>"/>
