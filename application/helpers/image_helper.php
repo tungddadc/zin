@@ -95,6 +95,22 @@ if (!function_exists('getImageThumb')) {
                 mkdir(dirname($newPathImage), 0755, TRUE);
             }
             copy($sourceImage, $newPathImage);
+            if(!empty($watermark)){
+                $watermarkImage = getWatermark($width,$height);
+                if(!empty($watermarkImage)){
+                    $config_watermark['image_library']       = 'gd2';
+                    $config_watermark['source_image']       = $newPathImage;
+                    $config_watermark['wm_type']       = 'overlay';
+                    $config_watermark['wm_opacity']     = 40;
+                    //$config_watermark['wm_padding']     = 30;
+                    $config_watermark['wm_vrt_alignment'] = 'middle';
+                    $config_watermark['wm_hor_alignment'] = 'center';
+                    $config_watermark['wm_overlay_path'] = getWatermark($width,$height);
+                    $CI->image_lib->initialize($config_watermark);
+                    $CI->image_lib->watermark();
+                    $CI->image_lib->clear();
+                }
+            }
             return MEDIA_URL.$image;
         }
     }
