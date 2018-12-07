@@ -180,6 +180,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
             csrf_token_hash = '<?php echo $this->security->get_csrf_hash() ?>'
         ;
     </script>
+    <?php echo !empty($this->settings['script_head']) ? $this->settings['script_head'] : '' ?>
 </head>
 <?php
 switch ($this->_controller) {
@@ -360,5 +361,6 @@ echo $this->minify->deploy_js(); ?>
 <?php if (GG_CAPTCHA_MODE == true): ?>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <?php endif; ?>
+<?php echo !empty($this->settings['script_body']) ? $this->settings['script_body'] : '' ?>
 </body>
 </html>
