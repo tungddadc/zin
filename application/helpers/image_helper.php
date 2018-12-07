@@ -98,6 +98,7 @@ if (!function_exists('getImageThumb')) {
             if(!empty($watermark)){
                 $watermarkImage = getWatermark($width,$height);
                 if(!empty($watermarkImage)){
+                    $CI->load->library('image_lib');
                     $config_watermark['image_library']       = 'gd2';
                     $config_watermark['source_image']       = $newPathImage;
                     $config_watermark['wm_type']       = 'overlay';
