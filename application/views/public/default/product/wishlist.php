@@ -60,19 +60,19 @@
                                                 </td>
                                                 <td class="wishlist-cell4 customer-wishlist-item-cart">
                                                     <div class="cart-cell">
-                                                        <button class="button btn-cart" title="Thêm sản phẩm này vào giỏ hàng" type="button"><span><span>Thêm vào giỏ hàng</span></span></button>
+                                                        <button class="button btn-cart" onclick="CART.add(<?php echo $item->id ?>,1)" type="button"><span><span>Thêm vào giỏ hàng</span></span></button>
                                                     </div>
                                                 </td>
                                                 <td class="wishlist-cell5 customer-wishlist-item-remove last">
-                                                    <a class="remove-item" title="Xóa sản phẩm này khỏi yêu thích" href="javascript:;"><span><span></span></span></a>
+                                                    <a class="remove-item" onclick="WISHLIST.delete(this)" title="Xóa sản phẩm này khỏi yêu thích" href="javascript:;"><span><span></span></span></a>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>
                                         </tbody>
                                     </table>
                                     <div class="buttons-set buttons-set2">
-                                        <button class="button btn-primary btn-add-all-to-cart pull-right" title="Thêm tất cả vào giỏ hàng" type="button"><span>Thêm toàn bộ vào giỏ hàng</span></button>
-                                        <button class="button btn-danger btn-delete-all pull-left" title="Xóa toàn bộ sản phẩm khỏi yêu thích của tôi" type="button"><span>Xóa toàn bộ yêu thích</span></button>
+                                        <!--<button class="button btn-primary btn-add-all-to-cart pull-right" title="Thêm tất cả vào giỏ hàng" type="button"><span>Thêm toàn bộ vào giỏ hàng</span></button>-->
+                                        <button class="button btn-danger btn-delete-all pull-left" onclick="WISHLIST.deleteAll()" title="Xóa toàn bộ sản phẩm khỏi yêu thích của tôi" type="button"><span>Xóa toàn bộ yêu thích</span></button>
                                     </div>
                                 </fieldset>
                                 <?php else: ?>

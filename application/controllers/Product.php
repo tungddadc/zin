@@ -201,11 +201,13 @@ class Product extends Public_Controller
             if(!empty($dataId)) foreach ($dataId as $item){
                 $listProductId[] = $item->product_id;
             }
-            $params['is_status'] = 1;
-            $params['lang_code'] = $this->_lang_code;
-            $params['in'] = $listProductId;
-            $params['limit'] = 10;
-            $data['data'] = $this->_data->getData($params);
+            if(!empty($listProductId)){
+                $params['is_status'] = 1;
+                $params['lang_code'] = $this->_lang_code;
+                $params['in'] = $listProductId;
+                $params['limit'] = 10;
+                $data['data'] = $this->_data->getData($params);
+            }
         }
 
         $data['main_content'] = $this->load->view($this->template_path . 'product/wishlist', $data, TRUE);
@@ -216,11 +218,14 @@ class Product extends Public_Controller
         $key = 'product_compare';
         $dataId = get_cookie($key);
         $listProductId = json_decode($dataId, true);
-        $params['is_status'] = 1;
-        $params['lang_code'] = $this->_lang_code;
-        $params['in'] = $listProductId;
-        $params['limit'] = 10;
-        $data['data'] = $this->_data->getData($params);
+        $data = [];
+        if(!empty($listProductId)){
+            $params['is_status'] = 1;
+            $params['lang_code'] = $this->_lang_code;
+            $params['in'] = $listProductId;
+            $params['limit'] = 10;
+            $data['data'] = $this->_data->getData($params);
+        }
         $data['main_content'] = $this->load->view($this->template_path . 'product/compare', $data, TRUE);
         $this->load->view($this->template_main, $data);
     }
@@ -523,8 +528,8 @@ class Product extends Public_Controller
         $this->load->model('users_model');
         $userModel = new Users_model();
         $params = [
-            'account_id' => $this->session->userdata('user_id'),
-            'product_id' => $this->input->post('product_id')
+            'account_id' => (int) $this->session->userdata('user_id'),
+            'product_id' => (int) $this->input->post('product_id')
         ];
         if($userModel->delete($params,$userModel->table_user_favourite)){
             $message['type'] = 'success';
@@ -533,6 +538,29 @@ class Product extends Public_Controller
         }else{
             $message['type'] = 'error';
             $message['message'] = "Xóa sản phẩm khỏi yêu thích thất bại.";
+            $this->returnJson($message);
+        }
+    }
+
+    public function ajax_deleteAll_wishlist(){
+        $this->checkRequestPostAjax();
+        if($this->session->userdata('is_logged') != true){
+            $message['type'] = 'error';
+            $message['message'] = "Bạn phải đăng nhập để thực hiện thao tác này !";
+            $this->returnJson($message);
+        }
+        $this->load->model('users_model');
+        $userModel = new Users_model();
+        $params = [
+            'account_id' => (int) $this->session->userdata('user_id'),
+        ];
+        if($userModel->delete($params,$userModel->table_user_favourite)){
+            $message['type'] = 'success';
+            $message['message'] = "Bạn vừa xóa toàn bộ sản phẩm khỏi yêu thích thành công.";
+            $this->returnJson($message);
+        }else{
+            $message['type'] = 'error';
+            $message['message'] = "Xóa toàn bộ sản phẩm khỏi yêu thích thất bại.";
             $this->returnJson($message);
         }
     }
@@ -560,68 +588,40 @@ class Product extends Public_Controller
         $this->returnJson($message);
     }
 
-    public function ajax_action_compare(){
-        if($this->input->server('REQUEST_METHOD') == 'POST' && !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-            if($this->session->is_logged != true){
-                $message['type'] = 'error';
-                $message['message'] = "Bạn phải đăng nhập để thực hiện thao tác này !";
-                echo json_encode($message);exit;
-            }
-            //THêm và xóa product khỏi collectio account
-            $this->load->model('account_model');
-            $accountModel = new Account_model();
-            $action = $this->input->post('action');
-            $accountId = $this->session->userdata('account')['account_id'];
-            $productId = $this->input->post('product_id');
-            $collectionId = $this->input->post('collection_id');
-            if($action === 'add'){
-                $data_store = array(
-                    'account_id' => $accountId,
-                    'product_id' => $productId,
-                    'collection_id' => $collectionId
-                );
-                if($accountModel->insert($data_store, $accountModel->table_account_collection)){
-                    $message['type'] = 'success';
-                    $message['message'] = "Bạn đã thêm ảnh vào mục yêu thích thành công !";
-                    echo json_encode($message);exit;
-                }else{
-                    $message['type'] = 'error';
-                    $message['message'] = "Lỗi không thêm được ảnh vào mục yêu thích !";
-                    echo json_encode($message);exit;
-                }
-            }
-            if($action === 'remove'){
-                $condition = array(
-                    'account_id' => $accountId,
-                    'product_id' => $productId,
-                    'collection_id' => $collectionId
-                );
-                if($accountModel->delete($condition, $accountModel->table_account_collection)){
-                    $message['type'] = 'success';
-                    $message['message'] = "Bạn xóa ảnh khỏi mục yêu thích thành công !";
-                    echo json_encode($message);exit;
-                }else{
-                    $message['type'] = 'error';
-                    $message['message'] = "Lỗi không xóa được ảnh khỏi mục yêu thích !";
-                    echo json_encode($message);exit;
-                }
-            }
-
+    public function ajax_delete_compare(){
+        $this->checkRequestPostAjax();
+        $key = 'product_compare';
+        $dataId = get_cookie($key);
+        $dataOld = json_decode($dataId, true);
+        if($dataOld){
+            $productId = (int) $this->input->post('product_id');
+            $dataNew = array_diff($dataOld, [$productId]);
+            set_cookie($key, json_encode($dataNew), 0);
+            $message['type'] = 'success';
+            $message['message'] = "Bạn vừa xóa sản phẩm khỏi danh sách so sánh thành công.";
+            $this->returnJson($message);
+        }else{
+            $message['type'] = 'error';
+            $message['message'] = "Xóa sản phẩm khỏi danh sách so sánh thất bại.";
+            $this->returnJson($message);
         }
-        exit;
     }
 
-    public function ajax_remove_product_compare()
-    {
-        if ($this->input->server('REQUEST_METHOD') == 'POST' && !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-            if ($this->session->is_logged != true) {
-                $message['type'] = 'error';
-                $message['message'] = "Bạn phải đăng nhập để thực hiện thao tác này !";
-                echo json_encode($message);
-                exit;
-            }
+    public function ajax_deleteAll_compare(){
+        $this->checkRequestPostAjax();
+        $key = 'product_compare';
+        $dataId = get_cookie($key);
+        $dataOld = json_decode($dataId, true);
+        if($dataOld){
+            delete_cookie($key);
+            $message['type'] = 'success';
+            $message['message'] = "Bạn vừa xóa toàn bộ sản phẩm khỏi danh sách so sánh thành công.";
+            $this->returnJson($message);
+        }else{
+            $message['type'] = 'error';
+            $message['message'] = "Xóa toàn bộ sản phẩm khỏi danh sách so sánh thất bại.";
+            $this->returnJson($message);
         }
-        exit;
     }
 
 }

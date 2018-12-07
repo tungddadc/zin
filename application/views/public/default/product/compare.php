@@ -55,19 +55,19 @@
                                                 </td>
                                                 <td class="wishlist-cell4 customer-wishlist-item-cart">
                                                     <div class="cart-cell">
-                                                        <button class="button btn-cart" title="Thêm sản phẩm này vào giỏ hàng" type="button"><span><span>Thêm vào giỏ hàng</span></span></button>
+                                                        <button class="button btn-cart" onclick="CART.add(<?php echo $item->id ?>,1)" type="button"><span><span>Thêm vào giỏ hàng</span></span></button>
                                                     </div>
                                                 </td>
                                                 <td class="wishlist-cell5 customer-wishlist-item-remove last">
-                                                    <a class="remove-item" title="Xóa sản phẩm này" href="javascript:;"><span><span></span></span></a>
+                                                    <a class="remove-item" onclick="COMPARE.delete(this)" title="Xóa sản phẩm này" href="javascript:;"><span><span></span></span></a>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>
                                         </tbody>
                                     </table>
                                     <div class="buttons-set buttons-set2">
-                                        <button class="button btn-primary btn-add-all-to-cart pull-right" title="Thêm tất cả vào giỏ hàng" type="button"><span>Thêm toàn bộ vào giỏ hàng</span></button>
-                                        <button class="button btn-danger btn-delete-all pull-left" title="Xóa toàn bộ sản phẩm" type="button"><span>Xóa toàn bộ</span></button>
+                                        <!--<button class="button btn-primary btn-add-all-to-cart pull-right" title="Thêm tất cả vào giỏ hàng" type="button"><span>Thêm toàn bộ vào giỏ hàng</span></button>-->
+                                        <button class="button btn-danger btn-delete-all pull-left" onclick="COMPARE.deleteAll()" title="Xóa toàn bộ sản phẩm" type="button"><span>Xóa toàn bộ</span></button>
                                     </div>
                                 </fieldset>
                             </div>
@@ -77,26 +77,7 @@
                 <!--	///*///======    End article  ========= //*/// -->
             </div>
             <aside class="col-left sidebar col-sm-3 col-xs-12 col-sm-pull-9">
-                <div class="side-banner"><img src="<?php echo $this->templates_assets ?>images/side-banner.jpg" alt="banner"></div>
-                <div class="block block-account">
-                    <div class="block-title">Tài khoản của tôi</div>
-                    <div class="block-content">
-                        <ul>
-                            <li><a href="#">Account Dashboard</a></li>
-                            <li><a href="#">Account Information</a></li>
-                            <li><a href="#">Address Book</a></li>
-                            <li><a href="#">My Orders</a></li>
-                            <li><a href="#">Billing Agreements</a></li>
-                            <li><a href="#">Recurring Profiles</a></li>
-                            <li><a href="#">My Product Reviews</a></li>
-                            <li><a href="#">My Tags</a></li>
-                            <li class="current"><a href="#">My Wishlist</a></li>
-                            </li>
-                            <li><a href="#">My Downloadable</a></li>
-                            <li class="last"><a href="#">Newsletter Subscriptions</a></li>
-                        </ul>
-                    </div>
-                </div>
+                <?php $this->load->view($this->template_path . '_block/_sidebar_product') ?>
             </aside>
         </div>
     </div>

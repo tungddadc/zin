@@ -9,7 +9,7 @@ if (!empty($this->cart->contents())) {
             <div class="item-inner">
               <a title="<?php echo $item['name'] ?>" class="product-image"
                  href="<?php echo getUrlProduct(array('slug'=>$item['slug'],'id'=>$item['id'])) ?>">
-                <img alt="<?php echo $item['name'] ?>" src="<?php echo getImageThumb($item['image'],100,100,true) ?>">
+                <img alt="<?php echo $item['name'] ?>" src="<?php echo $item['image'] ?>">
               </a>
               <div class="product-details">
                 <div class="access">

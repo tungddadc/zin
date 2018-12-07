@@ -60,8 +60,8 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                       <td class="image">
                         <a title="Sample Product" class="<?php echo $item['name'] ?>"
                            href="<?php echo getUrlProduct(array('slug' => $item['slug'], 'id' => $item['id'])) ?>">
-                          <img width="75" alt="Sample Product"
-                               src="<?php echo getImageThumb($item['image'], 75, 80, true) ?>">
+                          <img width="75" alt="<?php echo $item['name'] ?>"
+                               src="<?php echo $item['image'] ?>">
                         </a>
                       </td>
                       <td>
