@@ -629,15 +629,16 @@ var UI = {
     stickyMenuMain: function(){
         let header = document.getElementById('menu-main');
         let sticky = header.offsetTop;
+        jQuery('.mega-menu-category').slideUp();
         window.onscroll = function() {
             if (window.pageYOffset > sticky) {
                 header.classList.add("sticky");
-                jQuery('.mega-menu-category').slideUp();
+                /*jQuery('.mega-menu-category').slideUp();*/
             } else {
                 header.classList.remove("sticky");
             }
             if(window.pageYOffset == 0){
-                jQuery('.mega-menu-category').slideDown();
+                /*jQuery('.mega-menu-category').slideDown();*/
             }
         };
     },

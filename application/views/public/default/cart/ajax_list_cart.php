@@ -24,7 +24,6 @@ if (!empty($this->cart->contents())) {
       </ul>
       <!--actions-->
       <div class="actions">
-        <button title="Checkout" class="btn-checkout" type="button"><span>Thanh toán</span></button>
         <a class="view-cart" href="<?php echo base_url('cart') ?>"><span>Xem giỏ hàng</span></a></div>
     </div>
   <?php
