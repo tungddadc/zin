@@ -50,6 +50,7 @@ class Product extends Admin_Controller
             $params = array_merge($params,['is_status' => $queryFilter['is_status']]);
 
         $listData = $this->_data->getData($params);
+        //ddQuery($this->db);
         if(!empty($listData)) foreach ($listData as $item) {
             $row = array();
             $row['checkID'] = $item->id;

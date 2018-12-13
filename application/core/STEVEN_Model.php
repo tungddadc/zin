@@ -45,22 +45,24 @@ class STEVEN_Model extends CI_Model
             $keyword = $query['generalSearch'];
             $fieldSearch = '';
             foreach ($this->column_search as $i => $item){
-                /*if ($i == 0){
-                    $this->db->or_group_start();
-                    $this->db->like($item, $keyword);
+                if ($i == 0){
+                    $this->db->group_start();
+                    $this->db->like($item, $keyword, "after");
+                    $this->db->or_like($item, $keyword);
                 } else {
+                    $this->db->or_like($item, $keyword, "after");
                     $this->db->or_like($item, $keyword);
                 }
 
                 if (count($this->column_search) - 1 == $i)
-                    $this->db->group_end();*/
+                    $this->db->group_end();
 
-                if($i != 0) $fieldSearch .= ',';
-                $fieldSearch .= $this->_dbprefix.$item;
+                /*if($i != 0) $fieldSearch .= ',';
+                $fieldSearch .= $this->_dbprefix.$item;*/
             }
-            $this->db->select('MATCH ('.$fieldSearch.') AGAINST ('.$this->db->escape($keyword).' IN BOOLEAN MODE) AS score_search');
-            $this->db->where('MATCH ('.$fieldSearch.') AGAINST ('.$this->db->escape($keyword).' IN BOOLEAN MODE)', NULL, FALSE);
-            $this->db->order_by('score_search','DESC');
+            //$this->db->select('MATCH ('.$fieldSearch.') AGAINST ('.$this->db->escape($keyword).' IN BOOLEAN MODE) AS score_search');
+            //$this->db->or_where('MATCH ('.$fieldSearch.') AGAINST ('.$this->db->escape($keyword).' IN BOOLEAN MODE)', NULL, FALSE);
+            //$this->db->order_by('score_search','DESC');
         }
 
         if ($this->input->post('sort')) {
