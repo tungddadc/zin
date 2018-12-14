@@ -84,7 +84,7 @@ class Product extends Admin_Controller
         $params = [
             'is_status'=> 1,
             'not_in' => [$id],
-            'search' => $term,
+            'search_custom' => $term,
             'limit'=> 10
         ];
         $data = $this->_data->getData($params);
