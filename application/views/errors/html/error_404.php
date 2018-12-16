@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-redirect('404.html','','301');
+header( "HTTP/1.1 301 Moved Permanently" );
+header( "Location: ".BASE_URL . '404.html' );
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
