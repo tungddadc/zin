@@ -513,8 +513,10 @@ Comment*/
 
 .footer-link{
     padding: 15px 0;
+    background-color: #131A22;
 }
 ul.nav-link{
+    list-style-type: none;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     grid-gap: 10px;
@@ -524,9 +526,10 @@ ul.nav-link li{
     text-align: center;
 }
 ul.nav-link li a{
-    color: #ffffff;
+    color: #999;
     transition: color 300ms ease-in-out 0s, background-color 300ms ease-in-out 0s, background-position 300ms ease-in-out 0s;
     font-weight: 500;
+    font-size: 12px;
 }
 ul.nav-link li a:hover{
     color: rgb(190, 30, 45);
@@ -558,4 +561,16 @@ ul.nav-link li a:hover{
 .sidebar h1{
     font-size: 20px;
     margin: 0 0 10px;
+}
+
+.footer-top{
+    padding: 15px;
+    background-color: #353D43;
+}
+.footer-bottom{
+    background-color: #131A22;
+}
+
+.footer-middle .col-md-3{
+    padding: 0 20px;
 }

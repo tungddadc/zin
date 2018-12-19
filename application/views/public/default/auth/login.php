@@ -11,8 +11,7 @@
             <fieldset class="col2-set">
               <div class="col-1 new-users"><strong>Tạo tài khoản</strong>
                 <div class="content">
-                  <p>By creating an account with our store, you will be able to move through the checkout process
-                    faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
+                  <p>Đăng ký tài khoản để dễ dàng mua hàng một cách nhanh nhất cũng như mua với giá đại lý của hệ thống.</p>
                   <div class="buttons-set">
                     <?php
                     $url_red = !empty($this->input->get('url')) ? site_url("auth/ajax_login?url=" . urlencode($this->input->get('url'))) :site_url("auth/ajax_login");

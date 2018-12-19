@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                     <div class="newsletter newsletter-footer">
                         <?php echo form_open('contact/subscriber') ?>
                             <div>
-                                <h4><span>newsletter</span></h4>
+                                <h4><span>Đăng ký bản tin</span></h4>
                                 <input name="email" title="Đăng ký để nhận tin khuyến mại" class="input-text" id="newsletter1" type="text" placeholder="Nhập email của bạn vào đây">
                                 <button class="subscribe" type="submit"><span>Đăng ký</span></button>
                             </div>
@@ -26,12 +26,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
         </div>
     </div>
     <!--newsletter-->
-    <div class="footer-middle">
+    <div class="footer-middle footer-top">
         <div class="container">
             <div class="row">
                 <div class="col-md-3 col-sm-6">
                     <div class="footer-column pull-left">
-                        <h4>Hướng dẫn mua hàng</h4>
+                        <h4>Chính sách công ty</h4>
                         <?php echo navMenuFooter1('links') ?>
                     </div>
                 </div>
