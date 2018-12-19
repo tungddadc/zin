@@ -213,7 +213,6 @@ header .our-features-box li {
 }
 
 .accessories .item{
-    padding: 0 5px 10px;
 }
 
 #fancybox-wrap{
@@ -247,9 +246,11 @@ header .our-features-box li {
     background-color: rgb(251, 175, 63);
 }
 .accessories .item a{
-    display: flex;
-    display: -moz-flex;
-    display: -webkit-flex;
+    display: block;
+}
+.accessories .item img{
+    display: block;
+    margin: 0 auto;
 }
 
 .accessories .item a h2{
@@ -573,4 +574,8 @@ ul.nav-link li a:hover{
 
 .footer-middle .col-md-3{
     padding: 0 20px;
+}
+
+.buy-more img {
+    width: auto !important;
 }

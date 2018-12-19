@@ -167,10 +167,10 @@
                                                     <div class="add-to-box">
                                                         <div class="add-to-cart">
                                                             <div class="row clearfix">
-                                                                <div class="col-sm-3">
+                                                                <div class="col-xs-3">
                                                                     <img src="<?php echo getImageThumb($item->thumbnail,75,75,true) ?>" alt="<?php echo getTitle($item) ?>">
                                                                 </div>
-                                                                <div class="col-sm-9">
+                                                                <div class="col-xs-9">
                                                                     <h2><a href="<?php echo getUrlProduct($item) ?>" title="<?php echo getTitle($item) ?>"><?php echo $item->title ?></a> </h2>
                                                                     <div class="custom pull-left">
                                                                         <button onClick="CART.quantity_reduced(this)" class="reduced items-count <?php echo $this->session->userdata('is_agency') == true ? 'is-agency' : ''  ?>" type="button">
@@ -217,13 +217,23 @@
                                         <div class="panel-heading">
                                             <h2 class="panel-title">Linh kiện cùng đời máy</h2>
                                         </div>
-                                        <div class="panel-body">
+                                        <div class="panel-body accessories-slider">
                                             <?php foreach ($data_related as $item): ?>
-                                                <div class="col-sm-<?php echo $totalItem%5 == 0 ? 3 : 3 ?> col-xs-6 item">
+                                                <div class="item add-to-cart">
                                                     <a href="<?php echo getUrlProduct($item) ?>" title="<?php echo getTitle($item) ?>">
                                                         <img src="<?php echo getImageThumb($item->thumbnail,100,100) ?>" alt="<?php echo getTitle($item) ?>" class="img-thumbnail">
                                                         <h2><?php echo $item->title ?></h2>
                                                     </a>
+                                                    <div class="custom pull-left">
+                                                        <button onClick="CART.quantity_reduced(this)" class="reduced items-count <?php echo $this->session->userdata('is_agency') == true ? 'is-agency' : ''  ?>" type="button">
+                                                            <i class="fa fa-minus">&nbsp;</i>
+                                                        </button>
+                                                        <input autocomplete="disabled" onkeyup="CART.changeInputQuantity(this)" type="text" class="input-text qty" title="Số lượng" value="1" maxlength="<?php echo $item->quantity ?>" name="quantity">
+                                                        <button onClick="CART.quantity_increase(this)" class="increase items-count <?php echo $this->session->userdata('is_agency') == true ? 'is-agency' : ''  ?>" type="button">
+                                                            <i class="fa fa-plus">&nbsp;</i>
+                                                        </button>
+                                                        <button onclick="CART.add_more(<?php echo $item->id ?>,this)" class="button btn-cart pull-right" title="Thêm vào giỏ hàng" type="submit">Thêm vào giỏ</button>
+                                                    </div>
                                                 </div>
                                             <?php endforeach; ?>
                                         </div>

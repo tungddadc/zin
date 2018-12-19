@@ -8604,7 +8604,7 @@ ol#compare-items li.last {
     transition: color 300ms ease-in-out 0s, background-color 300ms ease-in-out 0s, background-position 300ms ease-in-out 0s;
     margin-left: 12px;
     border: none;
-    height: 40px;
+    height: 35px;
     text-transform: uppercase;
 }
 
@@ -8925,10 +8925,14 @@ ol#compare-items li.last {
 }
 
 .add-to-cart .qty {
-    height: 40px;
+    height: 35px;
     text-align: center;
-    width: 60px;
+    width: 40px;
     vertical-align: top
+}
+
+.add-to-cart .btn-cart {
+    margin-left: 5px;
 }
 
 .qty-input-text {
@@ -8940,9 +8944,9 @@ ol#compare-items li.last {
     transition: color 300ms ease-in-out 0s, background-color 300ms ease-in-out 0s, background-position 300ms ease-in-out 0s;
     font-size: 13px;
     line-height: 0px;
-    padding: 13px 12px 9px 12px;
-    height: 40px;
-    width: 40px;
+    padding: 5px;
+    height: 35px;
+    width: 35px;
 }
 
 .product-view .product-shop .add-to-box .add-to-cart label {
