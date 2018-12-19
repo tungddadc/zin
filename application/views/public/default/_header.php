@@ -15,19 +15,19 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
         <div class="container">
             <div class="row">
                 <!-- Header Language -->
-                <div class="col-xs-12 col-sm-2 col-md-4 col-lg-5 pull-left">
+                <div class="col-xs-12 col-sm-2 col-md-4 pull-left">
                     <div class="welcome-msg">Tổng Đài CSKH: <?php echo $this->settings['hotline'] ?></div>
                 </div>
                 <!-- Header Top Links -->
-                <div class="col-xs-12 col-sm-10 col-md-8  col-lg-7 pull-right hidden-xs">
+                <div class="col-xs-12 col-sm-10 col-md-8 pull-right hidden-xs">
                     <div class="toplinks">
                         <div class="links">
                             <?php if ($this->session->userdata('is_logged')): ?>
                                 <div class="check">
-                                    <a title="<?php echo $this->_user_login->username ?>"
+                                    <a title="<?php echo $this->_user_login->fullname ?>"
                                        href="<?php echo base_url('profile') ?>">
                                         <i class="fa fa-user-circle-o"></i>
-                                        <span class="hidden-xs"><?php echo $this->_user_login->username ?></span>
+                                        <span class="hidden-xs"><?php echo $this->_user_login->fullname ?></span>
                                     </a>
                                 </div>
                                 <div class="check">

@@ -72,6 +72,9 @@ class Order_model extends CI_Model
     if (isset($is_status) && $is_status != "")
       $this->db->where("$this->table.is_status", $is_status);
     
+    if (!empty($user_id))
+      $this->db->where('user_id', $user_id);
+
     if (!empty($in))
       $this->db->where_in('tb1.id', $in);
 // 
