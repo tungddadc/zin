@@ -87,7 +87,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 col-xs-12 coppyright">
-                    © 2017 <?php echo $this->settings['name'] ?>. All Rights Reserved.
+                    <?php echo !empty($this->settings['block']['footer_copyright']) ? $this->settings['block']['footer_copyright'] : '' ?>
                 </div>
             </div>
         </div>

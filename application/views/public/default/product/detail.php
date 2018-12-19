@@ -277,7 +277,7 @@
                                                                                     <input type="text"
                                                                                            class="input-text"
                                                                                            id="nickname_field"
-                                                                                           name="username" disabled value="<?php echo $this->session->userdata('username') ?>">
+                                                                                           name="username" disabled value="<?php echo $this->_user_login->fullname ?>">
                                                                                 </div>
                                                                             </li>
                                                                             <?php endif; ?>
@@ -372,7 +372,7 @@
                                             <input type="hidden" name="product_id" value="<?php echo $oneItem->id ?>">
                                             <div class="clearfix">
                                                 <div class="form-group">
-                                                    <input type="text" name="name" placeholder="Tên của bạn" value="<?php echo $this->session->userdata('username') ?>" class="form-control">
+                                                    <input type="text" name="name" placeholder="Tên của bạn" value="<?php echo $this->_user_login->fullname ?>" class="form-control">
                                                 </div>
                                                 <div class="form-group">
                                                     <input type="text" name="email" placeholder="Email" value="<?php echo $this->session->userdata('email') ?>" class="form-control">

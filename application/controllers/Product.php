@@ -488,7 +488,7 @@ class Product extends Public_Controller
         $data['vote'] = $this->input->post('vote');
         $data['id'] = $this->input->post('id');
         $data['user_id'] = $this->session->userdata('user_id');
-        $data['name'] = $this->input->post('name') ? $this->input->post('name') : $this->session->userdata('username');
+        $data['name'] = $this->input->post('name') ? $this->input->post('name') : $this->_user_login->fullname;
         if ($voteModel->insert($data)) {
             $message['type'] = 'success';
             $message['message'] = "Bạn vừa đánh giá {$data['vote']} sao cho sản phẩm này.";

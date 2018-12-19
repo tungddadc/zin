@@ -379,6 +379,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                             </div>
 
                             <div class="form-group">
+                                <label>Thông tin Copyright Footer</label>
+                                <textarea name="block[footer_copyright]" class="form-control summernote"><?php echo !empty($block['footer_copyright']) ? $block['footer_copyright'] : ''; ?></textarea>
+                            </div>
+
+                            <div class="form-group">
                                 <label>Thông tin bảo hành</label>
                                 <textarea name="block[warranty]" id="block_warranty" class="form-control tinymce"><?php echo !empty($block['warranty']) ? $block['warranty'] : ''; ?></textarea>
                             </div>
