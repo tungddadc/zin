@@ -63,6 +63,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                         </div>
                     </div>
                     <div class="col-xl-4 order-1 order-xl-2 m--align-right">
+                        <a href="<?php echo site_admin_url('product/export_excel') ?>" class="btn btn-default m-btn m-btn--icon m-btn--air m-btn--pill">
+                            <span>
+                                <i class="fa fa-file-excel-o"></i>
+                                <span>
+                                    Export
+                                </span>
+                            </span>
+                        </a>
                         <a href="javascript:;" class="btn btn-primary m-btn m-btn--icon m-btn--air m-btn--pill btnAddForm">
                             <span>
                                 <i class="la la-plus"></i>
@@ -79,12 +87,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                 </span>
                             </span>
                         </a>
-                        <a href="javascript:;" class="btn btn-info m-btn m-btn--icon m-btn--air m-btn--pill btnReload">
+                        <!--<a href="javascript:;" class="btn btn-info m-btn m-btn--icon m-btn--air m-btn--pill btnReload">
                             <span>
                                 <i class="la la-refresh"></i>
                                 <span>Refresh</span>
                             </span>
-                        </a>
+                        </a>-->
                         <div class="m-separator m-separator--dashed d-xl-none"></div>
                     </div>
                 </div>

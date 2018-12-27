@@ -291,4 +291,54 @@ class Product extends Admin_Controller
         }
         return $data;
     }
+
+
+    public function export_excel(){
+        $data = $this->_data->getAll('vi');
+        $dataToExports = [];
+        if (!empty($data)) foreach ($data as $item) {
+            $arrangeData['ID'] = $item->id;
+            $arrangeData['Barcode'] = $item->barcode;
+            $arrangeData['Mã sản phẩm'] = $item->model;
+            $arrangeData['Tên sản phẩm'] = $item->title;
+            //$arrangeData['Mô tả sản phẩm'] = $item->description;
+            //$arrangeData['Tiêu đề SEO'] = $item->meta_title;
+            //$arrangeData['Mô tả SEO'] = $item->meta_description;
+            //$arrangeData['Content'] = $item->content;
+            $arrangeData['Url'] = getUrlProduct($item);
+            $arrangeData['Ảnh'] = $item->thumbnail;
+            $arrangeData['Ảnh album'] = $item->album;
+            $arrangeData['Giá gốc'] = $item->price;
+            $arrangeData['Giá sale'] = $item->price_sale;
+            $dataAgency = getProductDetail($item->id);
+            $showAgency = [];
+            if(!empty($dataAgency)) foreach ($dataAgency as $agency){
+                $tmp['quantity'] = $agency->total_qty;
+                $tmp['price'] = $agency->price_agency;
+                $showAgency[] = $tmp;
+            }
+            $arrangeData['Giá đại lý'] = json_encode($showAgency);
+            $dataToExports[] = $arrangeData;
+        }
+
+        // set header
+        $filename = "product_zin_".date('Hi-dmY').".xls";
+        header("Content-Type: application/vnd.ms-excel");
+        header("Content-Disposition: attachment; filename=\"$filename\"");
+        $this->exportExcelData($dataToExports);
+    }
+
+    private function exportExcelData($records)
+    {
+        $heading = false;
+        if (!empty($records))
+            foreach ($records as $row) {
+                if (!$heading) {
+                    // display field/column names as a first row
+                    echo implode("\t", array_keys($row)) . "\n";
+                    $heading = true;
+                }
+                echo implode("\t", ($row)) . "\n";
+            }
+    }
 }
