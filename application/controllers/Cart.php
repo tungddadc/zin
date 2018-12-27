@@ -462,4 +462,46 @@ class Cart extends Public_Controller
         $qDecoded = rtrim(mcrypt_decrypt(MCRYPT_RIJNDAEL_256, md5($cryptKey), base64_decode($q), MCRYPT_MODE_CBC, md5(md5($cryptKey))), "\0");
         return $qDecoded;
     }
+
+    public function ajax_get_fee(){
+        //$this->checkRequestGetAjax();
+        $this->load->model('location_model');
+        $locationModel = new Location_model();
+        $district_id = $this->input->get('district_id');
+        $city_id = $this->input->get('city_id');
+        $district = $locationModel->getDistrictById($district_id);
+        $city = $locationModel->getCityById($city_id);
+        $address = $this->input->get('address');
+        $data = $this->getFeeShip($address,$district,$city);
+        $data = json_decode($data);
+        $this->returnJson($data);exit;
+    }
+
+    private function getFeeShip($address,$district,$city){
+        $data = array(
+            "pick_province" => "Hà Nội",
+            "pick_district" => "Quận Thanh Xuân",
+            "province" => $city->name_with_type,
+            "district" => $district->name_with_type,
+            "address" => $address,
+            "weight" => 1000,
+            "value" => 3000000,
+            "transport" => "fly"
+        );
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://services.giaohangtietkiem.vn/services/shipment/fee?" . http_build_query($data),
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_HTTPHEADER => array(
+                "Token: 39e65CB51E0E334faf6b2443858778f67870553f",
+            ),
+        ));
+
+        $response = curl_exec($curl);
+        curl_close($curl);
+
+        return $response;
+    }
 }

@@ -46,7 +46,9 @@ var LOC = {
                 }
             });
         }
-
+        district_id.change(function () {
+            CART.fee_ship(city_id,$(this).val());
+        })
     }
 
 }
@@ -321,6 +323,24 @@ var CART = {
                     ct.slideUp(200);
                     $(this).removeClass("active");
                     $(this).parent().removeClass("active");
+                }
+            });
+        }
+    },
+    fee_ship: function(city_id,district_id){
+        if($('#shipping-zip-form').length > 0){
+            let address = $('input[name="address"]').val();
+            $.ajax({
+                url:base_url+'cart/ajax_get_fee',
+                type:'get',
+                data: {address:address,city_id:city_id,district_id:district_id},
+                dataType:'json',
+                success:function (data) {
+                    if(data.success == true){
+                        let fee = data.fee.fee;
+                        let total_money = $('.fee_ship').data('total');
+                        $('.fee_ship').text(FUNC.formatMoney(fee));
+                    }
                 }
             });
         }

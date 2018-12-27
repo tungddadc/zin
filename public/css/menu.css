@@ -5,7 +5,7 @@ header .our-features-box .offer-block > ul > li a:before {
   display: none;
 }
 header .our-features-box .offer-block > ul > li > .sub-menu {
-  transition: 0.3s;
+  /*transition: .3s;*/
   transform: translateY(30px);
   opacity: 0;
   visibility: hidden;
