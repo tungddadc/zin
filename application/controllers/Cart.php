@@ -225,6 +225,11 @@ class Cart extends Public_Controller
             'label' => 'Email',
             'rules' => 'required|trim|valid_email'
         );
+        $rules[] = array(
+            'field' => 'warehouse',
+            'label' => 'Kho hàng',
+            'rules' => 'required'
+        );
         $this->form_validation->set_rules($rules);
         if ($this->form_validation->run() !== false) {
             //Check config setting reCaptcha
@@ -464,28 +469,43 @@ class Cart extends Public_Controller
     }
 
     public function ajax_get_fee(){
-        //$this->checkRequestGetAjax();
+        $this->checkRequestPostAjax();
         $this->load->model('location_model');
         $locationModel = new Location_model();
-        $district_id = $this->input->get('district_id');
-        $city_id = $this->input->get('city_id');
+        $warehouse = $this->input->post('warehouse');
+        switch ($warehouse){
+            case 1:
+                $from_city = 'Hà Nam';
+                $from_district = 'Thành phố Phủ Lý';
+                break;
+            case 2:
+                $from_city = 'Hà Nội';
+                $from_district = 'Quận Đống Đa';
+                break;
+            default:
+                $from_city = 'Hà Nội';
+                $from_district = 'Quận Thanh Xuân';
+        }
+        $district_id = $this->input->post('district_id');
+        $city_id = $this->input->post('city_id');
         $district = $locationModel->getDistrictById($district_id);
         $city = $locationModel->getCityById($city_id);
-        $address = $this->input->get('address');
-        $data = $this->getFeeShip($address,$district,$city);
+        $total_price = $this->input->post('total');
+        $total_weight = $this->input->post('weight');
+        $data = $this->getFeeShip($from_city,$from_district,$district,$city,$total_price,$total_weight);
         $data = json_decode($data);
         $this->returnJson($data);exit;
     }
 
-    private function getFeeShip($address,$district,$city){
+    private function getFeeShip($from_city,$from_district,$district,$city,$total_price,$total_weight){
         $data = array(
-            "pick_province" => "Hà Nội",
-            "pick_district" => "Quận Thanh Xuân",
+            "pick_province" => $from_city,
+            "pick_district" =>  $from_district,
             "province" => $city->name_with_type,
             "district" => $district->name_with_type,
-            "address" => $address,
-            "weight" => 1000,
-            "value" => 3000000,
+            "address" => "Số nhà 000",
+            "weight" => (int)$total_weight,
+            "value" => (int)$total_price,
             "transport" => "fly"
         );
         $curl = curl_init();

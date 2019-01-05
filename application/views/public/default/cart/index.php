@@ -58,7 +58,10 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                                     </tfoot>
                                     <tbody>
                                     <?php
+                                    $total_weight = 0;
                                     if (!empty($this->cart->contents())) foreach ($this->cart->contents() as $key => $item):
+                                        $oneProduct = getProductDetail($item['id']);
+                                        $total_weight = $total_weight + $oneProduct->weight;
                                         ?>
                                         <tr class="first odd">
                                             <td class="image">
@@ -164,6 +167,19 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                                         <h3>Thông tin giao hàng</h3>
                                         <div class="bill-shipping-form">
                                             <ul class="form-list">
+                                                <input type="hidden" name="total_weight" value="<?php echo $total_weight ?>">
+                                                <li>
+                                                    <label class="required" for="country"><em>*</em>Nơi lấy hàng</label>
+                                                    <div class="input-box">
+                                                        <select name="warehouse" class="fullwidth" style="width: 100%;">
+                                                            <option value="">Chọn nơi lấy hàng</option>
+                                                            <option value="1">Kho hàng Phủ Lý - Hà Nam</option>
+                                                            <option value="2">Kho hàng Đê La Thành - Hà Nội</option>
+                                                            <option value="3">Kho hàng Nguyễn Trãi - Hà Nội</option>
+                                                        </select>
+                                                    </div>
+                                                </li>
+
                                                 <li>
                                                     <label class="required" for="country"><em>*</em>Địa chỉ viết hóa đơn</label>
                                                     <div class="input-box">

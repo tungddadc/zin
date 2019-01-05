@@ -47,7 +47,7 @@ var LOC = {
             });
         }
         district_id.change(function () {
-            CART.fee_ship(city_id,$(this).val());
+            CART.fee_ship();
         })
     }
 
@@ -327,19 +327,23 @@ var CART = {
             });
         }
     },
-    fee_ship: function(city_id,district_id){
+    fee_ship: function(){
         if($('#shipping-zip-form').length > 0){
-            let address = $('input[name="address"]').val();
+            let city_id = $('[name="city_id"]').val();
+            let district_id = $('[name="district_id"]').val();
+            let total_weight = $('[name="total_weight"]').val();
+            let warehouse = $('[name="warehouse"]').val();
+            let total_money = $('.fee_ship').data('total');
             $.ajax({
                 url:base_url+'cart/ajax_get_fee',
-                type:'get',
-                data: {address:address,city_id:city_id,district_id:district_id},
+                type:'POST',
+                data: {warehouse:warehouse,weight:total_weight,city_id:city_id,district_id:district_id,total:total_money},
                 dataType:'json',
                 success:function (data) {
                     if(data.success == true){
                         let fee = data.fee.fee;
-                        let total_money = $('.fee_ship').data('total');
                         $('.fee_ship').text(FUNC.formatMoney(fee));
+                        $('.price_sale').text(FUNC.formatMoney(total_money + fee));
                     }
                 }
             });
@@ -765,6 +769,10 @@ jQuery(document).ready(function () {
         let form_parent = $(this).closest('form');
         let url = form_parent.attr('action') + '?' + form_parent.serialize();
         FUNC.ajax_load_content_animation(url,'#content_ajax','#content_ajax');
+    });
+
+    $(document).on('change','select[name="warehouse"]',function () {
+        CART.fee_ship();
     });
 
     $(document).on('click','ul.pagination li a',function (e) {
