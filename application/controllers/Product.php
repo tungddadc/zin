@@ -624,4 +624,58 @@ class Product extends Public_Controller
         }
     }
 
+    public function updateProductExcel(){
+        $this->load->library('PHPExcel');
+        $filename = MEDIA_PATH . '';
+        $inputFileType = PHPExcel_IOFactory::identify($filename);
+        $objReader = PHPExcel_IOFactory::createReader($inputFileType);
+        $objReader->setReadDataOnly(true);
+
+        $objPHPExcel = $objReader->load("$filename");
+
+        $total_sheets=$objPHPExcel->getSheetCount();
+
+        $allSheetName=$objPHPExcel->getSheetNames();
+        $objWorksheet  = $objPHPExcel->setActiveSheetIndex(0);
+        $highestRow    = $objWorksheet->getHighestRow();
+        $highestColumn = $objWorksheet->getHighestColumn();
+        $highestColumnIndex = PHPExcel_Cell::columnIndexFromString($highestColumn);
+        $arraydata = array();
+        for ($row = 2; $row <= $highestRow;++$row)
+        {
+            for ($col = 0; $col <$highestColumnIndex;++$col)
+            {
+                $value=$objWorksheet->getCellByColumnAndRow($col, $row)->getValue();
+                $arraydata[$row-2][$col]=$value;
+            }
+        }
+        $total = count($arraydata);
+        for($i=0;$i<$total;$i++){
+            $data['id'] = $arraydata[$i]['0'];
+            $data['id_cabinets'] = $arraydata[$i]['1'];
+            $data['rs485'] = $arraydata[$i]['2'];
+            $data['ip'] = $arraydata[$i]['3'];
+            $data['port'] = (int)$arraydata[$i]['4'];
+            $data['main'] = (int)$arraydata[$i]['5'];
+            $data['pin'] = (int)$arraydata[$i]['6'];
+            $data['is_status'] = $arraydata[$i]['7'];
+            $result = $this->_data->insertOnUpdate($data);
+
+
+            /* if($data['id'] === 'A29'){
+                 echo "response A29:";
+                 dd($result);
+             }*/
+            if(!$result){
+                $message['type'] = 'error';
+                $message['message'] = "Lỗi import không thành công !";
+                $message['error'] = $result;
+                die(json_encode($message));
+            }
+        }
+        $message['type'] = 'success';
+        $message['message'] = "Import thành công !";
+        die(json_encode($message));
+    }
+
 }

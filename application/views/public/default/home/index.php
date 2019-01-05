@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                         <img src="<?php echo getImageThumb($item->thumbnail,265,425,true) ?>"
                              data-src="<?php echo getImageThumb($item->thumbnail,265,425,true) ?>"
                              class="lazy"
-                             style="width: 100%"
+                             style="height: 100%"
                              alt="<?php echo getTitle($item) ?>">
                     </a>
                 <?php endforeach; ?>
