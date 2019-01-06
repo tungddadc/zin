@@ -14,7 +14,6 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     <!--[if IE]>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="https://m.me/thietkewebsitechatluongcao">
     <meta name="theme-color" content="#be1e2d">
     <?php if (!empty($SEO)): ?>
@@ -50,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
         <!--Meta Facebook Homepage-->
         <link rel="canonical" href="<?php echo base_url(); ?>"/>
     <?php endif; ?>
-
+    <meta property="fb:app_id" content="<?php echo FB_API ?>"/>
     <link rel="icon"
           href="<?php echo !empty($this->settings['favicon']) ? getImageThumb($this->settings['favicon'], '', '', false, false) : $this->templates_assets . "favicon.ico"; ?>"
           sizes="32x32">
