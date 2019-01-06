@@ -278,15 +278,29 @@ var CART = {
         });
     },
     hover_cart: function () {
+        if(mobileDetect == true){
+            $('.mini-cart a').click(function (e) {
+                e.preventDefault();
+                if ($('.top-cart-content').length > 0) {
+                    $('.top-cart-content').show();
+                } else {
+                    CART.list_cart();
+                }
 
-        $('.mini-cart').hover(function () {
-            if ($('.top-cart-content').length > 0) {
-                $('.top-cart-content').show();
-            } else {
-                CART.list_cart();
-            }
+            });
+        }else{
+            $('.mini-cart').hover(function () {
+                if ($('.top-cart-content').length > 0) {
+                    $('.top-cart-content').show();
+                } else {
+                    CART.list_cart();
+                }
 
-        });
+            });
+        }
+    },
+    hide_cart: function (_this) {
+        $('.k_list_cart').empty();
     },
     coupon_code:function () {
         $.ajax({
@@ -487,8 +501,7 @@ var UI = {
         $('ul>li a[href="' + href + '"]').parent().addClass('active');
         if(urlCurrentMenu) $('ul>li a[href="' + urlCurrentMenu + '"]').parent().addClass('active');
     },
-    search: function(){
-        let el  = $('input[name="search"]');
+    search: function(el){
         let keyword = el.val();
         if (keyword.length > 0) {
             window.location.href = base_url+'search/'+keyword;
@@ -516,14 +529,16 @@ var UI = {
     },
     searchBox: function(){
         let container  = $('#search_mini_form');
-        container.find('button').click(function(e) {
+        $('header').find('button.btnSearch').click(function(e) {
             e.preventDefault();
-            UI.search();
+            let inputElement = $(this).parent().parent().find('input[name="search"]');
+            UI.search(inputElement);
         });
 
         container.find('input[name="search"]').keydown(function (e) {
             if (e.keyCode === 13) {
-                UI.search();
+                let inputElement = $(this);
+                UI.search(inputElement);
             }
         });
 

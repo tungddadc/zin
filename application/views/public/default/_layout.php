@@ -177,7 +177,8 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
             script_folder = '<?php echo BASE_SCRIPT_NAME; ?>',
             csrf_cookie_name = '<?php echo $this->config->item('csrf_cookie_name') ?>',
             csrf_token_name = '<?php echo $this->security->get_csrf_token_name() ?>',
-            csrf_token_hash = '<?php echo $this->security->get_csrf_hash() ?>'
+            csrf_token_hash = '<?php echo $this->security->get_csrf_hash() ?>',
+            mobileDetect = '<?php echo $this->agent->is_mobile() ? true : false ?>'
         ;
     </script>
     <?php echo !empty($this->settings['script_head']) ? $this->settings['script_head'] : '' ?>
@@ -200,21 +201,6 @@ switch ($this->_controller) {
 </div>
 <!-- mobile menu -->
 <div id="mobile-menu">
-    <ul>
-        <li>
-            <div class="mm-search">
-                <form id="search1" name="search">
-                    <div class="input-group">
-                        <div class="input-group-btn">
-                            <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
-                        </div>
-                        <input type="text" class="form-control simple" placeholder="Search ..." name="srch-term"
-                               id="srch-term">
-                    </div>
-                </form>
-            </div>
-        </li>
-    </ul>
     <?php echo navMenuMain('mobile-menu') ?>
     <div class="top-links">
 

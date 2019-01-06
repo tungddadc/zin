@@ -579,3 +579,14 @@ ul.nav-link li a:hover{
 .buy-more img {
     width: auto !important;
 }
+
+.mm-search{
+    display: inline-block;
+    position: absolute;
+    width: 63%;
+    left: 80px;
+    top: 7px;
+}
+.mm-search .simple{
+    height: 38px;
+}

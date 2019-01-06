@@ -133,10 +133,27 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                 <div class="mm-toggle-wrap">
                     <div class="mm-toggle"><i class="fa fa-align-justify"></i><span class="mm-label">Menu</span></div>
                 </div>
+
+
+                <?php if($this->agent->is_mobile()): ?>
+                <!--Search mobile-->
+                <div class="mm-search">
+                    <div id="search1">
+                        <div class="input-group">
+                            <input type="text" class="form-control simple" placeholder="Tìm kiếm sản phẩm.." name="search" value="<?php echo ($this->_controller === 'search' && !empty($this->uri->segment(2))) ? urldecode($this->uri->segment(2)) : '' ?>">
+                            <div class="input-group-btn">
+                                <button class="btn btn-default btnSearch" type="button"><i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php endif; ?>
+
+
                 <div class="top-cart-contain">
                     <!-- Top Cart -->
                     <div class="mini-cart">
-                        <div class="basket dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
+                        <div class="basket">
                             <a href="<?php echo base_url('cart') ?>"><span class="price hidden-xs">Giỏ hàng</span>
                                 <span class="cart_count hidden-xs"><?php echo $this->cart->total_items() ?>
                                     sản phẩm/ <?php echo number_format($this->cart->total(),0,',','.') ?>đ</span>
@@ -146,8 +163,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                         </div>
                     </div>
                     <!-- Top Cart -->
-                    <div id="ajaxconfig_info" style="display: none;"><a
-                                href="<?php echo base_url() ?>"></a>
+                    <div id="ajaxconfig_info" style="display: none;"><a href="<?php echo base_url() ?>"></a>
                         <input type="hidden" value="">
                         <input id="enable_module" type="hidden" value="1">
                         <input class="effect_to_cart" type="hidden" value="1">
@@ -172,6 +188,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                     </div>
                 </div>
             </div>
+
             <!-- features box -->
             <div class="our-features-box hidden-xs">
                 <div class="features-block">
