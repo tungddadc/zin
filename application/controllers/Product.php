@@ -251,6 +251,7 @@ class Product extends Public_Controller
         $data['onePrev'] = $this->_data->getPrevById($oneItem->id,'',$this->_lang_code);
         $data['oneNext'] = $this->_data->getNextById($oneItem->id,'',$this->_lang_code);
         $data['data_detail'] = $this->_data->getDetail($id);
+        if(!empty($oneItem->barcode)) $data['data_stock'] = $this->getStockApi($oneItem->barcode);
         if(!empty($oneItem->data_similar)){
             $listIdSimilar = json_decode($oneItem->data_similar);
             $data['data_similar'] = $this->_data->getData(['in' => $listIdSimilar,'limit' => 5]);
@@ -624,18 +625,39 @@ class Product extends Public_Controller
         }
     }
 
-    public function updateProductExcel(){
+    public function syncProduct(){
+        $allProduct = $this->_data->getAll($this->session->public_lang_code);
+        if(!empty($allProduct)) foreach ($allProduct as $item){
+            $id = (int) $item->id;
+            $barcode = $item->barcode;
+            if(!empty($barcode)){
+                $dataApi = $this->getStockApi($barcode);
+                $data['id'] = $id;
+                $data['price'] = $dataApi[0]->Price;
+                $data_lang['id'] = $id;
+                $data_lang['title'] = $dataApi[0]->ProductName;
+                $data_lang['meta_title'] = $dataApi[0]->ProductName;
+
+                $result = $this->_data->update(['id' => $id],$data);
+                echo "Update Result ".$barcode ." => ". $result . "<br>\n";
+                $this->_data->insertOnUpdate($data_lang,$this->_data->table_trans);
+            }
+        }
+        die('ok');
+    }
+
+    public function importExcel(){
         $this->load->library('PHPExcel');
-        $filename = MEDIA_PATH . '';
+        $filename = FCPATH . 'database/DSSP-2018-12-30-a.xlsx';
         $inputFileType = PHPExcel_IOFactory::identify($filename);
         $objReader = PHPExcel_IOFactory::createReader($inputFileType);
         $objReader->setReadDataOnly(true);
 
         $objPHPExcel = $objReader->load("$filename");
 
-        $total_sheets=$objPHPExcel->getSheetCount();
+        $total_sheets = $objPHPExcel->getSheetCount();
 
-        $allSheetName=$objPHPExcel->getSheetNames();
+        $allSheetName = $objPHPExcel->getSheetNames();
         $objWorksheet  = $objPHPExcel->setActiveSheetIndex(0);
         $highestRow    = $objWorksheet->getHighestRow();
         $highestColumn = $objWorksheet->getHighestColumn();
@@ -649,33 +671,57 @@ class Product extends Public_Controller
                 $arraydata[$row-2][$col]=$value;
             }
         }
-        $total = count($arraydata);
-        for($i=0;$i<$total;$i++){
-            $data['id'] = $arraydata[$i]['0'];
-            $data['id_cabinets'] = $arraydata[$i]['1'];
-            $data['rs485'] = $arraydata[$i]['2'];
-            $data['ip'] = $arraydata[$i]['3'];
-            $data['port'] = (int)$arraydata[$i]['4'];
-            $data['main'] = (int)$arraydata[$i]['5'];
-            $data['pin'] = (int)$arraydata[$i]['6'];
-            $data['is_status'] = $arraydata[$i]['7'];
-            $result = $this->_data->insertOnUpdate($data);
+        //$total = count($arraydata);
+        if(!empty($arraydata)) foreach ($arraydata as $item){
+            if(!empty($item[3])){
+                $data['id'] = $id = (int)$item[0];
+                $data['barcode'] = $item[1];
+                $data['model'] = $item[2];
+                $data['thumbnail'] = $item[5];
+                //$data['album'] = $item[7];
+                $data['price'] = !empty($item[8]) ? $item[8] : 0;
+                $data['price_sale'] = !empty($item[9]) ? $item[9] : 0;
+                $data['viewed'] = rand(1000,9999);
+                $data_detail = json_decode($item[10]);
+                if(!empty($id)) $data_lang['id'] = (int)$item[0];
+                $data_lang['title'] = $item[3];
+                $data_lang['meta_title'] = $item[3];
+                $data_lang['slug'] = str_replace('https://zinlinhkien.com.vn/','',$item[4]);
+                $data_lang['language_code'] = 'vi';
 
+                if(empty($id)){
+                    $resultId = $this->_data->insert($data);
+                    echo "Result ".$item['3'] ." => ". $resultId . "<br>\n";
+                    $this->_data->insertOnUpdate($data_lang,$this->_data->table_trans);
+                    $this->save_detail($resultId,$data_detail);
+                }else{
+                    $result = $this->_data->update(['id' => $id],$data);
+                    echo "Update Result ".$item['3'] ." => ". $result . "<br>\n";
+                    $this->_data->insertOnUpdate($data_lang,$this->_data->table_trans);
+                    $this->save_detail($id,$data_detail);
+                }
+            }
 
-            /* if($data['id'] === 'A29'){
-                 echo "response A29:";
-                 dd($result);
-             }*/
-            if(!$result){
+        }
+        exit;
+    }
+
+    private function save_detail($id, $data){
+        if(!empty($data)) foreach ($data as $item){
+            $data_detail = ["{$this->_data->table}_id" => $id, 'total_qty' => $item['total_qty'],'price_agency' => $item['price_agency']];
+            if(!$this->_data->insertOnUpdate($data_detail, $this->_data->table_detail)){
                 $message['type'] = 'error';
-                $message['message'] = "Lỗi import không thành công !";
-                $message['error'] = $result;
-                die(json_encode($message));
+                $message['message'] = "Thêm {$this->_data->table_detail} thất bại !";
+                log_message('error', $message['message'] . '=>' . json_encode($data_detail));
+                $this->returnJson($message);
             }
         }
-        $message['type'] = 'success';
-        $message['message'] = "Import thành công !";
-        die(json_encode($message));
+    }
+
+    private function getStockApi($barcode){
+        $api = "http://112.213.91.39:81/api/Stock?barcode=$barcode";
+        $data = $this->cUrl($api);
+        return json_decode($data);
     }
 
 }
