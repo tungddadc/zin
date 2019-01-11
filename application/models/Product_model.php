@@ -86,6 +86,17 @@ class Product_model extends STEVEN_Model
         }
     }
 
+
+    public function getIdByBarcode($barcode){
+        $this->db->select('id');
+        $tablename = $this->table;
+        $this->db->from($tablename);
+        $this->db->where('barcode', $barcode);
+        $query = $this->db->get();
+        $data = $query->row();
+        return !empty($data->id) ? $data->id : 0;
+    }
+
     public function getCategoryByProductId($id, $lang_code = null){
         if(empty($lang_code)) $lang_code = $this->session->userdata('admin_lang') ? $this->session->userdata('admin_lang') : $this->session->userdata('public_lang_code');
         $this->db->select();

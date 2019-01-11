@@ -256,14 +256,16 @@ class STEVEN_Model extends CI_Model
 
 
 	public function checkExistByField($field, $value, $tablename = ''){
-		$this->db->select('1');
-		if ($tablename == '') {
-			$tablename = $this->table;
-		}
-		$this->db->from($tablename);
-		$this->db->where($field, $value);
-		return $this->db->num_rows() > 0 ? true : false;
+        $this->db->select('1');
+        if ($tablename == '') {
+            $tablename = $this->table;
+        }
+        $this->db->from($tablename);
+        $this->db->where($field, $value);
+        $query = $this->db->get();
+        return $query->num_rows() > 0 ? true : false;
 	}
+
 
 	public function getSelect2($ids){
 		$this->db->select("$this->table.id, title AS text");
@@ -337,8 +339,7 @@ class STEVEN_Model extends CI_Model
 			$tablename = $this->table;
 		}
 		$this->db->insert($tablename, $data);
-
-		return $this->db->affected_rows();
+		return $this->db->insert_id();
 	}
 
 

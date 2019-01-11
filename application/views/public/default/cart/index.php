@@ -61,7 +61,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                                     $total_weight = 0;
                                     if (!empty($this->cart->contents())) foreach ($this->cart->contents() as $key => $item):
                                         $oneProduct = getProductDetail($item['id']);
-                                        $total_weight = $total_weight + $oneProduct->weight;
+                                        $total_weight = !empty($oneProduct->weight) ? $total_weight + $oneProduct->weight : 0;
                                         ?>
                                         <tr class="first odd">
                                             <td class="image">

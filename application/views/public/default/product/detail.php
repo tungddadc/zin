@@ -209,6 +209,7 @@
                                     <div class="info">
                                         <p>Thương hiệu: <strong><?php if(!empty($oneBrand)): ?><a href="<?php echo getUrlBrand($oneBrand) ?>" title="<?php echo getTitle($oneBrand) ?>"><?php echo $oneBrand->title ?></a> <?php endif; ?></strong></p>
                                         <p>Mã sản phẩm: <strong><?php echo $oneItem->model ?></strong></p>
+                                        <p>Mã vạch: <strong><?php echo (string) $oneItem->barcode ?></strong></p>
                                     </div>
                                     <?php $this->load->view($this->template_path . 'product/_box_features') ?>
                                 </div>

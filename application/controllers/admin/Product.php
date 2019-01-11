@@ -297,30 +297,35 @@ class Product extends Admin_Controller
         $data = $this->_data->getAll('vi');
         $dataToExports = [];
         if (!empty($data)) foreach ($data as $item) {
-            $arrangeData['ID'] = $item->id;
-            $arrangeData['Barcode'] = $item->barcode;
-            $arrangeData['Mã sản phẩm'] = $item->model;
-            $arrangeData['Tên sản phẩm'] = $item->title;
-            //$arrangeData['Mô tả sản phẩm'] = $item->description;
-            //$arrangeData['Tiêu đề SEO'] = $item->meta_title;
-            //$arrangeData['Mô tả SEO'] = $item->meta_description;
-            //$arrangeData['Content'] = $item->content;
-            $arrangeData['Url'] = getUrlProduct($item);
-            $arrangeData['Ảnh'] = $item->thumbnail;
-            $arrangeData['Ảnh album'] = $item->album;
-            $arrangeData['Giá gốc'] = $item->price;
-            $arrangeData['Giá sale'] = $item->price_sale;
-            $dataAgency = getProductDetail($item->id);
-            $showAgency = [];
-            if(!empty($dataAgency)) foreach ($dataAgency as $agency){
-                $tmp['quantity'] = $agency->total_qty;
-                $tmp['price'] = $agency->price_agency;
-                $showAgency[] = $tmp;
+            if($item->barcode === NULL){
+                $arrangeData['ID'] = $item->id;
+                $arrangeData['Barcode'] = (string) $item->barcode;
+                $arrangeData['Mã sản phẩm'] = $item->model;
+                $arrangeData['Trọng lượng'] = $item->weight;
+                $arrangeData['Giá gốc'] = $item->price;
+                $arrangeData['Giá sale'] = $item->price_sale;
+                $arrangeData['Giá đại lý'] = $item->price_agency;
+                $arrangeData['Ảnh'] = $item->thumbnail;
+                $arrangeData['Ảnh album'] = $item->album;
+                $arrangeData['Link Web'] = getUrlProduct($item);
+                //$arrangeData['Tên sản phẩm'] = $item->title;
+                $arrangeData['Mô tả sản phẩm'] = "";
+                //$arrangeData['Tiêu đề SEO'] = $item->meta_title;
+                //$arrangeData['Mô tả SEO'] = $item->meta_description;
+                $arrangeData['Nội dung'] = "";
+                /*$arrangeData['Giá gốc'] = $item->price;
+                $arrangeData['Giá sale'] = $item->price_sale;
+                $dataAgency = getProductDetail($item->id);
+                $showAgency = [];
+                if(!empty($dataAgency)) foreach ($dataAgency as $agency){
+                    $tmp['quantity'] = $agency->total_qty;
+                    $tmp['price'] = $agency->price_agency;
+                    $showAgency[] = $tmp;
+                }
+                $arrangeData['Giá đại lý'] = json_encode($showAgency);*/
+                $dataToExports[] = $arrangeData;
             }
-            $arrangeData['Giá đại lý'] = json_encode($showAgency);
-            $dataToExports[] = $arrangeData;
         }
-
         // set header
         $filename = "product_zin_".date('Hi-dmY').".xls";
         header("Content-Type: application/vnd.ms-excel");
