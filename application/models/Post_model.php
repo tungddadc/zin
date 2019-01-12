@@ -41,13 +41,6 @@ class Post_model extends STEVEN_Model
         return $data;
     }
 
-    public function getCateIdByPostId($id){
-        $this->db->select('category_id');
-        $this->db->from($this->table_category);
-        $this->db->where($this->table_category.".post_id", $id);
-        $data = $this->db->get()->row();
-        return !empty($data) ? $data->category_id : null;
-    }
     public function getSelect2Category($id, $lang_code = null){
         if(empty($lang_code)) $lang_code = $this->session->userdata('admin_lang') ? $this->session->userdata('admin_lang') : $this->session->userdata('public_lang_code');
         $this->db->select("$this->table_category.category_id AS id, category_translations.title AS text");

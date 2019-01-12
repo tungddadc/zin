@@ -143,4 +143,12 @@ class Product_model extends STEVEN_Model
         $data = $this->getCategoryByProductId($id, $this->session->userdata('public_lang_code'));
         return !empty($data)?$data[0]:null;
     }
+
+    public function getCateIdByProductId($id){
+        $this->db->select('category_id');
+        $this->db->from($this->table_category);
+        $this->db->where($this->table_category.".product_id", $id);
+        $data = $this->db->get()->row();
+        return !empty($data) ? $data->category_id : null;
+    }
 }

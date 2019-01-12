@@ -300,7 +300,7 @@ class Product extends Admin_Controller
             $arrangeData['ID'] = $item->id;
             $arrangeData['Barcode'] = (string) $item->barcode;
             $arrangeData['Mã sản phẩm'] = $item->model;
-            $arrangeData['Danh mục'] = getCategoryById($item->id);
+            $arrangeData['Danh mục'] = getCategoryByProduct($item->id);
             $arrangeData['Thương hiệu'] = $item->brand;
             $arrangeData['Trọng lượng'] = $item->weight;
             $arrangeData['Giá gốc'] = $item->price;
@@ -308,12 +308,12 @@ class Product extends Admin_Controller
             $arrangeData['Giá đại lý'] = $item->price_agency;
             $arrangeData['Ảnh'] = $item->thumbnail;
             $arrangeData['Ảnh album'] = $item->album;
-            $arrangeData['Link Web'] = getUrlProduct($item);
             //$arrangeData['Tên sản phẩm'] = $item->title;
             $arrangeData['Mô tả sản phẩm'] = "";
             //$arrangeData['Tiêu đề SEO'] = $item->meta_title;
             //$arrangeData['Mô tả SEO'] = $item->meta_description;
             $arrangeData['Nội dung'] = "";
+            $arrangeData['Link Web'] = getUrlProduct($item);
             /*$arrangeData['Giá gốc'] = $item->price;
             $arrangeData['Giá sale'] = $item->price_sale;
             $dataAgency = getProductDetail($item->id);
