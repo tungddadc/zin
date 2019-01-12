@@ -10,6 +10,16 @@ if (!function_exists('getAllBrand')) {
     }
 }
 
+if (!function_exists('getCategoryByPost')) {
+    function getCategoryByPost($id)
+    {
+        $_this =& get_instance();
+        $_this->load->model('post_model');
+        $postModel = new Post_model();
+        return $postModel->getCateIdById($id);
+    }
+}
+
 if (!function_exists('countProductByCate')) {
     function countProductByCate($cateId)
     {

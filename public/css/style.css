@@ -844,7 +844,7 @@ div.effect-sadie1 + div.effect-sadie1 {
 /* top search*/
 .search-box {
     margin: auto;
-    margin-top: 10px;
+    margin-top: 16px;
     float: left;
     position: relative;
     border-radius: 2px;
@@ -1439,7 +1439,7 @@ ul.currencies_list li a:hover {
 }
 
 .top-cart-contain {
-    margin-top: 8px;
+    margin-top: 15px;
 }
 
 .mgk-wishlist {
@@ -17310,8 +17310,11 @@ a.shop-now-btn {
 
     .search-box {
         margin-left: 2px;
+        margin-top: 6px;
     }
-
+    .top-cart-contain {
+        margin-top: 5px;
+    }
     .banner-images li.grid figure.effect h2 {
         padding: 16px;
     }

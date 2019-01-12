@@ -590,3 +590,9 @@ ul.nav-link li a:hover{
 .mm-search .simple{
     height: 38px;
 }
+.header-container{
+    margin-bottom: 0;
+}
+nav#menu-main{
+    margin-top: 0;
+}
