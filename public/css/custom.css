@@ -586,9 +586,16 @@ ul.nav-link li a:hover{
     width: 63%;
     left: 80px;
     top: 7px;
+    margin-top: 0;
 }
-.mm-search .simple{
-    height: 38px;
+.mm-search button[type=submit]{
+    height: 38px!important;
+    background-position: 50%;
+}
+.mm-search input.searchbox{
+    height: 38px !important;
+    width: 100% !important;
+    border: none !important;
 }
 .header-container{
     margin-bottom: 0;

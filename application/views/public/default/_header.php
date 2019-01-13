@@ -121,13 +121,15 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                 <!-- End Header Logo -->
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3 hidden-xs category-search-form">
-                <div class="search-box">
-                    <div id="search_mini_form">
-                        <input name="search" class="searchbox" id="search" value="<?php echo ($this->_controller === 'search' && !empty($this->uri->segment(2))) ? urldecode($this->uri->segment(2)) : '' ?>" type="text" maxlength="128" autocomplete="off" placeholder="Tìm kiếm sản phẩm...">
-                        <button title="Search" class="search-btn-bg btnSearch" id="submit-button" type="submit"></button>
-                        <div class="product_search"></div>
+                <?php if($this->agent->is_mobile() == false): ?>
+                    <div class="search-box">
+                        <div id="search_mini_form">
+                            <input name="search" class="searchbox" id="search" value="<?php echo ($this->_controller === 'search' && !empty($this->uri->segment(2))) ? urldecode($this->uri->segment(2)) : '' ?>" type="text" maxlength="128" autocomplete="off" placeholder="Tìm kiếm sản phẩm...">
+                            <button title="Search" class="search-btn-bg btnSearch" id="submit-button" type="submit"></button>
+                            <div class="product_search"></div>
+                        </div>
                     </div>
-                </div>
+                <?php endif; ?>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 card_wishlist_area">
                 <div class="mm-toggle-wrap">
@@ -136,17 +138,24 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
 
                 <?php if($this->agent->is_mobile()): ?>
-                <!--Search mobile-->
+                    <div class="search-box mm-search">
+                        <div id="search_mini_form">
+                            <input name="search" class="searchbox" id="search" value="<?php echo ($this->_controller === 'search' && !empty($this->uri->segment(2))) ? urldecode($this->uri->segment(2)) : '' ?>" type="text" maxlength="128" autocomplete="off" placeholder="Tìm kiếm sản phẩm...">
+                            <button title="Search" class="search-btn-bg btnSearch" id="submit-button" type="submit"></button>
+                            <div class="product_search"></div>
+                        </div>
+                    </div>
+                <!--
                 <div class="mm-search">
                     <div id="search1">
                         <div class="input-group">
-                            <input type="text" class="form-control simple" placeholder="Tìm kiếm sản phẩm.." name="search" value="<?php echo ($this->_controller === 'search' && !empty($this->uri->segment(2))) ? urldecode($this->uri->segment(2)) : '' ?>">
+                            <input type="text" class="form-control simple" placeholder="Tìm kiếm sản phẩm.." name="search" value="<?php /*echo ($this->_controller === 'search' && !empty($this->uri->segment(2))) ? urldecode($this->uri->segment(2)) : '' */?>">
                             <div class="input-group-btn">
                                 <button class="btn btn-default btnSearch" type="button"><i class="fa fa-search"></i></button>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>-->
                 <?php endif; ?>
 
 

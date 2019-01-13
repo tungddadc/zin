@@ -133,12 +133,19 @@
                                                 <?php echo $this->session->userdata('is_agency') == true ? '<span class="agency">Đại lý</span>' : ''  ?>
                                                 <?php echo $oneItem->quantity > 0 ? '<span>Còn hàng</span>' : '' ?>
                                             </p>
-                                            <?php if(!empty($data_stock)) foreach ($data_stock as $item): ?>
-                                            <p><?php echo $item->StockName ?> còn <?php echo $item->Amount ?> cái</p>
-                                            <?php endforeach; ?>
-                                            <p class="sold">Đã bán <strong>90</strong> sản phẩm / tháng. </p>
-                                            <p class="sold">Lượt xem: <strong><?php echo $oneItem->viewed ?></strong> đã xem. </p>
-                                            <p class="sold">Tỷ lệ bảo hành: <strong> <5%</strong></p>
+                                            <div class="row">
+                                                <div class="col-sm-6 col-xs-12">
+                                                    <?php if(!empty($data_stock)) foreach ($data_stock as $item): ?>
+                                                        <p><?php echo $item->StockName ?> còn <?php echo $item->Amount ?> cái</p>
+                                                    <?php endforeach; ?>
+                                                    <p class="sold">Đã bán <strong>90</strong> sản phẩm / tháng. </p>
+                                                    <p class="sold">Lượt xem: <strong><?php echo $oneItem->viewed ?></strong> đã xem. </p>
+                                                    <p class="sold">Tỷ lệ bảo hành: <strong> <5%</strong></p>
+                                                </div>
+                                                <div class="col-sm-6 col-xs-12">
+                                                    <?php echo $oneItem->description ?>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="add-to-box">
