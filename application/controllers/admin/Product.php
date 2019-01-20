@@ -135,14 +135,11 @@ class Product extends Admin_Controller
         $data['viewed'] = rand(1000,9999);
         $data_trans = $data['language'];
         $data_category = $data['category_id'];
-        $data_detail = $data['data_detail'];
         unset($data['language']);
         unset($data['category_id']);
-        unset($data['data_detail']);
         if($id = $this->_data->save($data)){
             $this->save_language($id, $data_trans);
             $this->save_category($id, $data_category);
-            $this->save_detail($id, $data_detail);
             $message['type'] = 'success';
             $message['message'] = "Thêm mới thành công !";
         }else{
@@ -178,14 +175,11 @@ class Product extends Admin_Controller
         $id = $data['id'];
         $data_trans = $data['language'];
         $data_category = $data['category_id'];
-        $data_detail = $data['data_detail'];
         unset($data['language']);
         unset($data['category_id']);
-        unset($data['data_detail']);
         if($this->_data->update(['id' => $id],$data, $this->_data->table)){
             $this->save_language($id, $data_trans);
             $this->save_category($id, $data_category);
-            $this->save_detail($id, $data_detail);
             $message['type'] = 'success';
             $message['message'] = "Cập nhật thành công !";
         }else{

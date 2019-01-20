@@ -6,7 +6,7 @@ header .our-features-box .offer-block > ul > li a:before {
 }
 header .our-features-box .offer-block > ul > li > .sub-menu {
   /*transition: .3s;*/
-  transform: translateY(30px);
+  /*transform: translateY(30px);*/
   opacity: 0;
   visibility: hidden;
   display: grid;

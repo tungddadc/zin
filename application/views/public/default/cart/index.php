@@ -14,7 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                 <article class="col-main">
                     <div class="cart">
                         <div class="page-title">
-                            <h2>Shopping Cart</h2>
+                            <h2>Đơn hàng của bạn</h2>
                         </div>
                         <div class="table-responsive">
                             <?php echo form_open('cart/update'); ?>
@@ -45,13 +45,13 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                                         <td class="a-right last" colspan="50">
                                             <button title="Continue Shopping" class="button btn-continue"
                                                     onclick="setLocation('#')"
-                                                    type="button"><span>Continue Shopping</span></button>
+                                                    type="button"><span>Tiếp tục mua hàng</span></button>
                                             <button name="update_cart_action" title="Update Cart"
                                                     class="button btn-update" type="submit"
-                                                    value="update_qty"><span>Update Cart</span></button>
+                                                    value="update_qty"><span>Cập nhật giỏ hàng</span></button>
                                             <button name="update_cart_action" title="Clear Cart"
                                                     class="button btn-empty"
-                                                    id="empty_cart_button" type="submit" value="empty_cart"><span>Clear Cart</span>
+                                                    id="empty_cart_button" type="submit" value="empty_cart"><span>Xóa giỏ hàng</span>
                                             </button>
                                         </td>
                                     </tr>

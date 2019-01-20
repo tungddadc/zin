@@ -56,10 +56,18 @@ class Product_model extends STEVEN_Model
             //$this->db->select('MATCH ('.$this->_dbprefix.$this->table_trans.'.title) AGAINST ('.$this->db->escape($search_custom).' IN BOOLEAN MODE) AS score_search');
             //$this->db->group_start();
             $this->db->like("$this->table_trans.title", $search_custom);
+            $this->db->or_like("$this->table.model", $search_custom);
             //$this->db->or_like("$this->table.model", $search_custom);
             //$this->db->or_where('MATCH ('.$this->_dbprefix.$this->table_trans.'.title) AGAINST ('.$this->db->escape($search_custom).' IN BOOLEAN MODE)', NULL, FALSE);
             //$this->db->group_end();
-            //$this->db->order_by('score_search','DESC');
+            $this->db->order_by("$this->table_trans.title",'ASC');
+        }
+
+        if (!empty($search_similar)) {
+            //$this->db->like("$this->table.model", $search_model);
+            $this->db->select('MATCH ('.$this->_dbprefix.$this->table_trans.'.title) AGAINST ('.$this->db->escape($search_similar).' IN BOOLEAN MODE) AS score_search');
+            $this->db->where('MATCH ('.$this->_dbprefix.$this->table_trans.'.title) AGAINST ('.$this->db->escape($search_similar).' IN BOOLEAN MODE)', NULL, FALSE);
+            $this->db->order_by('score_search','DESC');
         }
     }
 

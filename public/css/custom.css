@@ -168,7 +168,7 @@ header .our-features-box li {
     padding: 0 0 10px 0 !important;
 }
 
-.buy-more .add-to-box:last-child{
+.buy-more .add-to-box:nth-last-child(2){
     padding: 10px 0 0 0 !important;
     border-bottom: none;
 }
@@ -197,6 +197,11 @@ header .our-features-box li {
     line-height: 1.4em;
     padding: 18px 15px;
     background: #f2f2f2;
+    margin-bottom: 10px;
+}
+.product-buy .pstock-list{
+    max-height: 30vh;
+    overflow-y: auto;
     margin-bottom: 10px;
 }
 .product-buy .feature-box .content{
@@ -257,8 +262,11 @@ header .our-features-box li {
     font-size: 14px;
     padding-left: 10px;
 }
+.buy-more{
+    margin-top: 10px;
+}
 .buy-more .panel-body{
-    max-height: 230px;
+    max-height: 330px;
     overflow: hidden;
     position: relative;
 }
@@ -266,7 +274,7 @@ header .our-features-box li {
 .buy-more .showmore{
     position: absolute;
     bottom: 0px;
-    height: 35px;
+    height: 33px;
     text-align: center;
     width: 94%;
     background-color: #ffffff;

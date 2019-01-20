@@ -41,6 +41,7 @@
                     </li>
                   </ul>
                   <div class="buttons-set">
+                      <input type="hidden" name="url" value="<?php echo $this->input->get('url') ?>">
                     <button name="send" class="button login" id="send2" type="submit"><span>Đăng nhập</span></button>
                     <a class="forgot-word" href="<?php echo site_url('auth/forgotpassword') ?>">Quên mật khẩu?</a></div>
                 </form>

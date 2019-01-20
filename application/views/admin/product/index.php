@@ -199,10 +199,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                             <input name="model" placeholder="Mã sản phẩm" class="form-control" type="text" />
                                         </div>
                                         <div class="form-group row">
-                                            <div class="col">
+                                            <!--<div class="col">
                                                 <label>Số lượng</label>
                                                 <input name="quantity" placeholder="Số lượng" value="0" class="form-control" type="text" />
-                                            </div>
+                                            </div>-->
                                             <div class="col">
                                                 <label>Giá gốc</label>
                                                 <input name="price" placeholder="Giá gốc" class="form-control" type="text" />
@@ -211,9 +211,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                                 <label>Giá khuyến mại</label>
                                                 <input name="price_sale" placeholder="Giá khuyến mại" class="form-control" type="text" />
                                             </div>
+
+                                            <div class="col">
+                                                <label>Giá đại lý</label>
+                                                <input name="price_agency" placeholder="Giá đại lý" class="form-control" type="text" />
+                                            </div>
                                         </div>
                                         <div class="m-separator m-separator--dashed m-separator--lg"></div>
-                                        <fieldset class="form-group agency-container">
+                                        <!--<fieldset class="form-group agency-container">
                                             <legend>Giá cho đại lý</legend>
                                             <div class="quantity-range">
                                                 <div class="form-group row">
@@ -231,7 +236,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                             <div class=" text-center">
                                                 <button type="button" class="btn btn-info btn-add-agency">Thêm khoảng giá cho đại lý</button>
                                             </div>
-                                        </fieldset>
+                                        </fieldset>-->
                                         <div class="m-separator m-separator--dashed m-separator--lg"></div>
 
                                         <div class="form-group row">

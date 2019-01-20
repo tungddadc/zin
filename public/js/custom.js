@@ -813,10 +813,8 @@ jQuery(document).ready(function () {
 
     CART.payment_collapse();
 
-    if($('.showmore').length > 0){
-        if($('.showmore').closest('.panel-body').find('.add-to-box').length <= 1){
-            $('.showmore').addClass('hidden');
-        }
+    if($('.showmore').closest('.panel-body').find('.add-to-box').length <= 3){
+        $('.showmore').addClass('hidden');
     }
 
     $('.buy-more').on('click','.showmore a',function(e) {

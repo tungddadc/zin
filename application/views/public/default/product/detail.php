@@ -131,14 +131,11 @@
                                             <?php endif; ?>
                                             <p class="availability in-stock pull-right">
                                                 <?php echo $this->session->userdata('is_agency') == true ? '<span class="agency">Đại lý</span>' : ''  ?>
-                                                <?php echo $oneItem->quantity > 0 ? '<span>Còn hàng</span>' : '' ?>
+                                                <?php echo !empty($data_stock) ? '<span>Còn hàng</span>' : '' ?>
                                             </p>
                                             <div class="row">
                                                 <div class="col-sm-6 col-xs-12">
-                                                    <?php if(!empty($data_stock)) foreach ($data_stock as $item): ?>
-                                                        <p><?php echo $item->StockName ?> còn <?php echo $item->Amount ?> cái</p>
-                                                    <?php endforeach; ?>
-                                                    <p class="sold">Đã bán <strong>90</strong> sản phẩm / tháng. </p>
+                                                    <p class="sold">Đã bán <strong><?php echo $oneItem->viewed > 1000 ? $oneItem->viewed - 555 : $oneItem->viewed - 333 ?></strong> sản phẩm / tháng. </p>
                                                     <p class="sold">Lượt xem: <strong><?php echo $oneItem->viewed ?></strong> đã xem. </p>
                                                     <p class="sold">Tỷ lệ bảo hành: <strong> <5%</strong></p>
                                                 </div>
@@ -166,6 +163,12 @@
                                         </div>
                                     </div>
                                     <?php echo form_close() ?>
+                                    <div class="short-description">
+                                        <h2>Lưu ý</h2>
+                                        <p>Mức giá trên là dành cho cửa hàng. Chúng tôi sẽ có chính sách giá riêng dành cho đại lý linh kiện.
+                                        Hân hạnh được hợp tác cùng quý Đại lý trên toàn quốc. Để xem được giá đại lý, quý khách vui lòng tạo tài khoản và gửi yêu cầu
+                                        cấp quyền đại lý cho quý khách.</p>
+                                    </div>
                                     <?php if(!empty($data_similar)): ?>
                                     <div class="buy-more">
                                         <div class="panel panel-danger">
@@ -203,13 +206,6 @@
                                         </div>
                                     </div>
                                     <?php endif; ?>
-                                    <!--<div class="short-description">
-                                        <h2>Khuyến mãi</h2>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue
-                                            nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi
-                                            ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate
-                                            adipiscing cursus eu, suscipit id nulla. Donec a neque libero. </p>
-                                    </div>-->
                                     <div id="social-share"></div>
                                 </div>
                                 <div class="product-buy col-lg-3 col-sm-3 col-xs-12">
@@ -217,6 +213,13 @@
                                         <p>Thương hiệu: <strong><?php if(!empty($oneBrand)): ?><a href="<?php echo getUrlBrand($oneBrand) ?>" title="<?php echo getTitle($oneBrand) ?>"><?php echo $oneBrand->title ?></a> <?php endif; ?></strong></p>
                                         <p>Mã sản phẩm: <strong><?php echo $oneItem->model ?></strong></p>
                                         <p>Mã vạch: <strong><?php echo (string) $oneItem->barcode ?></strong></p>
+                                    </div>
+                                    <div class="pstock-list">
+                                        <?php if(!empty($data_stock)) foreach ($data_stock as $item): ?>
+                                            <p class="pstock-item pstock-item-01 pstock-district-001" style="display: block;">
+                                                <?php echo $item->StockName ?> - <?php echo $item->Amount > 0 ? '<span class="text-primary">Còn hàng</span>' : '<span class="text-danger">Hết hàng</span>' ?></span>
+                                            </p>
+                                        <?php endforeach; ?>
                                     </div>
                                     <?php $this->load->view($this->template_path . 'product/_box_features') ?>
                                 </div>

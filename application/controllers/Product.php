@@ -252,13 +252,23 @@ class Product extends Public_Controller
         $data['oneNext'] = $this->_data->getNextById($oneItem->id,'',$this->_lang_code);
         $data['data_detail'] = $this->_data->getDetail($id);
         if(!empty($oneItem->barcode) && $this->session->userdata('admin_group_id') == true) $data['data_stock'] = $this->getStockApi($oneItem->barcode);
+
+
         if(!empty($oneItem->data_similar)){
             $listIdSimilar = json_decode($oneItem->data_similar);
             $data['data_similar'] = $this->_data->getData(['in' => $listIdSimilar,'limit' => 5]);
+        }else{
+            $keySimilar = str_replace('-','',substr($oneItem->title,0,15));
+            $data['data_similar'] = $this->_data->getData(['search_similar' => $keySimilar,'limit' => 5]);
         }
+
+
+
         if(!empty($oneItem->data_related)){
             $listIdRelated = json_decode($oneItem->data_related);
             $data['data_related'] = $this->_data->getData(['in' => $listIdRelated,'limit' => 5]);
+        }else{
+            $data['data_related'] = $this->_data->getData(['search_similar' => $oneItem->title,'limit' => 5]);
         }
 
         $data['oneBrand'] = $this->_data_category->getByIdCached((int)$oneItem->brand);
@@ -730,71 +740,6 @@ class Product extends Public_Controller
         exit;
     }
 
-    public function importExcel_old(){
-        $this->load->library('PHPExcel');
-        $filename = FCPATH . 'database/DSSP-2018-12-30-a.xlsx';
-        $inputFileType = PHPExcel_IOFactory::identify($filename);
-        $objReader = PHPExcel_IOFactory::createReader($inputFileType);
-        $objReader->setReadDataOnly(true);
-
-        $objPHPExcel = $objReader->load("$filename");
-
-        $total_sheets = $objPHPExcel->getSheetCount();
-
-        $allSheetName = $objPHPExcel->getSheetNames();
-        $objWorksheet  = $objPHPExcel->setActiveSheetIndex(0);
-        $highestRow    = $objWorksheet->getHighestRow();
-        $highestColumn = $objWorksheet->getHighestColumn();
-        $highestColumnIndex = PHPExcel_Cell::columnIndexFromString($highestColumn);
-        $arraydata = array();
-        for ($row = 2; $row <= $highestRow;++$row)
-        {
-            for ($col = 0; $col <$highestColumnIndex;++$col)
-            {
-                $value=$objWorksheet->getCellByColumnAndRow($col, $row)->getValue();
-                $arraydata[$row-2][$col]=$value;
-            }
-        }
-        //$total = count($arraydata);
-        if(!empty($arraydata)) foreach ($arraydata as $item){
-            if(!empty($item[3])){
-                $id = (int)$item[0];
-                if(!empty($id)){
-                    $data['id'] = $id;
-                    $data['barcode'] = $item[1];
-                    $data['model'] = $item[2];
-                    $data['thumbnail'] = $item[5];
-                    //$data['album'] = $item[7];
-                    $data_lang['title'] = $item[3];
-                    $data_lang['meta_title'] = $item[3];
-                    $slug = str_replace('https://zinlinhkien.com.vn/','',$item[4]);
-                    $data_lang['slug'] = !empty($slug) ? $slug : $this->toSlug($data_lang['title']);
-                    $result = $this->_data->update(['id' => $id],$data);
-                    echo "Update Result ".$data['barcode'] ." => ". $result . "<br>\n";
-                    $this->_data->update(['id' => $id,'language_code' => 'vi'],$data_lang,$this->_data->table_trans);
-                }else{
-                    $data['barcode'] = $item[1];
-                    $data['model'] = $item[2];
-                    $data['thumbnail'] = $item[5];
-                    //$data['album'] = $item[7];
-                    $data['viewed'] = rand(1000,9999);
-                    $resultId = $this->_data->insert($data);
-                    if(!empty($resultId)){
-                        $data_lang['id'] = $resultId;
-                        $data_lang['title'] = $item[3];
-                        $data_lang['meta_title'] = $item[3];
-                        $slug = str_replace('https://zinlinhkien.com.vn/','',$item[4]);
-                        $data_lang['slug'] = !empty($slug) ? $slug : $this->toSlug($data_lang['title']);
-                        $data_lang['language_code'] = 'vi';
-                        $this->_data->insertOnUpdate($data_lang,$this->_data->table_trans);
-                    }
-                    echo "Result ".$data['barcode'] ." => ". $resultId . "<br>\n";
-                }
-            }
-
-        }
-        exit;
-    }
 
     private function getStockApi($barcode){
         $api = "http://112.213.91.39:81/api/Stock?barcode=$barcode";
