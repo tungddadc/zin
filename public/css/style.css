@@ -8778,14 +8778,32 @@ ol#compare-items li.last {
     border-radius: 999px;
 }
 
+.availability.in-stock span.outstock {
+    color: #fff;
+    font-size: 10px;
+    line-height: 16px;
+    display: inline-block;
+    background: #be1e2d;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 999px;
+}
+
 .availability.in-stock span.agency {
     color: #fff;
     background: #be0700;
 }
 
-.availability.in-stock span:before {
+.availability.in-stock span.instock:before {
     content: "\e080";
     font-family: 'Simple-Line-Icons';
+    display: inline-block;
+    margin-right: 5px;
+    font-size: 11px;
+    vertical-align: middle
+}
+
+.availability.in-stock span.outstock:before {
     display: inline-block;
     margin-right: 5px;
     font-size: 11px;

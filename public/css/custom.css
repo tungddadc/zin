@@ -203,6 +203,9 @@ header .our-features-box li {
     max-height: 30vh;
     overflow-y: auto;
     margin-bottom: 10px;
+    background: #f2f2f2;
+    padding: 15px;
+    border: 1px #eaeaea solid;
 }
 .product-buy .feature-box .content{
     width: calc(100% - 50px);
@@ -610,4 +613,42 @@ ul.nav-link li a:hover{
 }
 nav#menu-main{
     margin-top: 0;
+}
+
+.onlinepromo {
+    border: #d0021b solid 1px;
+    border-radius: 4px;
+    padding: 20px 0 10px;
+    position: relative;
+    overflow: visible;
+    margin: 20px 0px 15px;
+}
+.onlinepromo b {
+    background: #ec1933;
+    border-radius: 13px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: normal;
+    position: absolute;
+    top: -13px;
+    left: 10px;
+    vertical-align: middle;
+    line-height: 26px;
+    clear: both;
+    padding: 0 15px 0 30px;
+}
+.onlinepromo b:before {
+    display:inline-block;
+    font:normal normal normal 14px/1 FontAwesome;
+    font-size:inherit;text-rendering:auto;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    content:"\f129";
+    width: 16px;
+    height: 15px;
+    margin: 4px 0 0 -15px;
+}
+
+.onlinepromo .infopr {
+    padding: 10px;
 }

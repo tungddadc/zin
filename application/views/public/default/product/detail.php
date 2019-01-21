@@ -107,10 +107,10 @@
                                     <input name="image" value="<?php echo getImageThumb($oneItem->thumbnail,100,100,true) ?>" type="hidden">
                                     <div class="price-block">
                                         <div class="price-box">
-                                            <?php if($this->session->userdata('is_agency') == true && !empty($data_detail)): ?>
+                                            <?php if($this->session->userdata('is_agency') == true && !empty($oneItem->price_agency)): ?>
                                                 <p class="special-price">
                                                     <span class="price-label">Giá đại lý:</span>
-                                                    <span class="price"><?php echo formatMoney($data_detail[0]->price_agency) ?></span>
+                                                    <span class="price"><?php echo formatMoney($oneItem->price_agency) ?></span>
                                                 </p>
                                             <?php else: ?>
                                                 <?php if(!empty($oneItem->price_sale)): ?>
@@ -131,19 +131,24 @@
                                             <?php endif; ?>
                                             <p class="availability in-stock pull-right">
                                                 <?php echo $this->session->userdata('is_agency') == true ? '<span class="agency">Đại lý</span>' : ''  ?>
-                                                <?php echo !empty($data_stock) ? '<span>Còn hàng</span>' : '' ?>
+                                                <?php echo !empty($data_stock[0]->Amount) ? '<span class="instock">Còn hàng</span>' : '<span class="outstock">Hết hàng</span>' ?>
                                             </p>
                                             <div class="row">
-                                                <div class="col-sm-6 col-xs-12">
-                                                    <p class="sold">Đã bán <strong><?php echo $oneItem->viewed > 1000 ? $oneItem->viewed - 555 : $oneItem->viewed - 333 ?></strong> sản phẩm / tháng. </p>
-                                                    <p class="sold">Lượt xem: <strong><?php echo $oneItem->viewed ?></strong> đã xem. </p>
-                                                    <p class="sold">Tỷ lệ bảo hành: <strong> <5%</strong></p>
-                                                </div>
-                                                <div class="col-sm-6 col-xs-12">
-                                                    <?php echo $oneItem->description ?>
+                                                <div class="col-md-12">
+                                                    <p class="sold pull-left">Lượt xem: <strong><?php echo $oneItem->viewed ?></strong> đã xem. </p>
+                                                    <p class="sold pull-right">Đã bán <strong><?php echo $oneItem->viewed > 1000 ? $oneItem->viewed - 555 : $oneItem->viewed - 333 ?></strong> sản phẩm. </p>
+                                                    <p class="sold clearfix">Tỷ lệ bảo hành: <strong> <5%</strong></p>
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div style="    border-bottom: 1px #ddd dotted;">
+                                        <aside class="onlinepromo">
+                                            <b>Thông tin mô tả sản phẩm</b>
+                                            <div class="infopr">
+                                                <?php echo $oneItem->description ?>
+                                            </div>
+                                        </aside>
                                     </div>
                                     <div class="add-to-box">
                                         <div class="add-to-cart" data-id="<?php echo $oneItem->id ?>">
@@ -217,7 +222,7 @@
                                     <div class="pstock-list">
                                         <?php if(!empty($data_stock)) foreach ($data_stock as $item): ?>
                                             <p class="pstock-item pstock-item-01 pstock-district-001" style="display: block;">
-                                                <?php echo $item->StockName ?> - <?php echo $item->Amount > 0 ? '<span class="text-primary">Còn hàng</span>' : '<span class="text-danger">Hết hàng</span>' ?></span>
+                                                <?php echo $item->StockName ?> - <?php echo $item->Amount > 0 ? '<span class="text-primary">Còn hàng '.($this->session->userdata('admin_group_id') == true ? "($item->Amount)" : "").'</span>' : '<span class="text-danger">Hết hàng</span>' ?>
                                             </p>
                                         <?php endforeach; ?>
                                     </div>

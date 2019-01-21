@@ -251,7 +251,8 @@ class Product extends Public_Controller
         $data['onePrev'] = $this->_data->getPrevById($oneItem->id,'',$this->_lang_code);
         $data['oneNext'] = $this->_data->getNextById($oneItem->id,'',$this->_lang_code);
         $data['data_detail'] = $this->_data->getDetail($id);
-        if(!empty($oneItem->barcode) && $this->session->userdata('admin_group_id') == true) $data['data_stock'] = $this->getStockApi($oneItem->barcode);
+        if(!empty($oneItem->barcode))
+            $data['data_stock'] = $this->getStockApi($oneItem->barcode);
 
 
         if(!empty($oneItem->data_similar)){
