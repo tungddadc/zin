@@ -16,6 +16,7 @@ class STEVEN_Controller extends CI_Controller
     public $_controller;
     public $_method;
     public $_message = array();
+    public $db_second = '';
 
     public function __construct()
     {
@@ -27,6 +28,8 @@ class STEVEN_Controller extends CI_Controller
         $this->config->load('languages');
         //Load database
         $this->load->database();
+
+        $this->db_second = $this->load->database('zinlocal', true);
 
         $this->_controller = $this->router->fetch_class();
         $this->_method = $this->router->fetch_method();

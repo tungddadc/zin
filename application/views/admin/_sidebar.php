@@ -241,44 +241,6 @@
                 <div class="m-menu__submenu ">
                     <span class="m-menu__arrow"></span>
                     <ul class="m-menu__subnav">
-                        <li class="m-menu__item  m-menu__item--parent" aria-haspopup="true">
-                            <span class="m-menu__link">
-                                <span class="m-menu__link-text">
-                                    Quản lý sản phẩm
-                                </span>
-                            </span>
-                        </li>
-                        <li class="m-menu__item " aria-haspopup="true">
-                            <a href="<?php echo site_admin_url('category/product') ?>" class="m-menu__link ">
-                                <i class="m-menu__link-bullet m-menu__link-bullet--dot">
-                                    <span></span>
-                                </i>
-                                <span class="m-menu__link-text">
-                                    Danh mục sản phẩm
-                                </span>
-                            </a>
-                        </li>
-
-                        <li class="m-menu__item " aria-haspopup="true">
-                            <a href="<?php echo site_admin_url('category/brand') ?>" class="m-menu__link ">
-                                <i class="m-menu__link-bullet m-menu__link-bullet--dot">
-                                    <span></span>
-                                </i>
-                                <span class="m-menu__link-text">
-                                    Thương hiệu sản phẩm
-                                </span>
-                            </a>
-                        </li>
-                        <li class="m-menu__item " aria-haspopup="true">
-                            <a href="<?php echo site_admin_url('product') ?>" class="m-menu__link ">
-                                <i class="m-menu__link-bullet m-menu__link-bullet--dot">
-                                    <span></span>
-                                </i>
-                                <span class="m-menu__link-text">
-                                    Danh sách sản phẩm
-                                </span>
-                            </a>
-                        </li>
                         <li class="m-menu__item " aria-haspopup="true">
                             <a href="<?php echo site_admin_url('order') ?>" class="m-menu__link ">
                                 <i class="m-menu__link-bullet m-menu__link-bullet--dot">

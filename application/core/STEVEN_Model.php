@@ -36,6 +36,8 @@ class STEVEN_Model extends CI_Model
 
 		//load cache driver
         if(CACHE_MODE == TRUE) $this->load->driver('cache', array('adapter' => 'file'));
+
+        if(in_array($this->table,['category','property','product'])) $this->db = $this->db_second;
 	}
 
 	/*Hàm xử lý các tham số truyền từ Datatables Jquery*/

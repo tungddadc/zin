@@ -13,6 +13,8 @@ class Category_model extends STEVEN_Model
     public $_list_category_child_id;
     public function __construct(){
         parent::__construct();
+        $this->load->database('zinlocal', TRUE);
+
         $this->table            = "category";
         $this->table_trans      = "category_translations";
         $this->column_order     = array("$this->table.id", "$this->table.id", "$this->table_trans.title", "$this->table.is_status", "$this->table.created_time", "$this->table.updated_time");

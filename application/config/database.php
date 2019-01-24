@@ -94,3 +94,25 @@ $db['default'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
+
+$db['zinlocal'] = array(
+	'dsn'	=> '',
+    'hostname' => DB_ZIN_HOST,
+    'username' => DB_ZIN_USER,
+    'password' => DB_ZIN_PASSWORD,
+    'database' => DB_ZIN_NAME,
+	'dbdriver' => 'mysqli',
+	'dbprefix' => 'st_',
+	'pconnect' => FALSE,
+	'db_debug' => (ENVIRONMENT !== 'production'),
+	'cache_on' => FALSE,
+	'cachedir' => '',
+	'char_set' => 'utf8',
+	'dbcollat' => 'utf8_general_ci',
+	'swap_pre' => '',
+	'encrypt' => FALSE,
+	'compress' => FALSE,
+	'stricton' => FALSE,
+	'failover' => array(),
+	'save_queries' => TRUE
+);
