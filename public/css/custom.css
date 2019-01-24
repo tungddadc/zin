@@ -652,3 +652,62 @@ nav#menu-main{
 .onlinepromo .infopr {
     padding: 10px;
 }
+
+.nav-category{
+    display: block;
+    overflow: hidden;
+    background-color: #337ab7;
+    color: #ffffff
+}
+.nav-category h2 {
+    float: left;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 15px;
+    text-transform: uppercase;
+    margin: 0;
+    color: #ffffff
+}
+.nav-category .view-list-child{
+    float: right;
+    overflow: hidden;
+}
+.nav-category .view-list-child a{
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 14px;
+    color: #ffffff;
+    padding: 14px 10px;
+}
+
+.nav-category .view-list-child .list-all{
+    margin-left: 35px;
+}
+
+.nav-category .view-list-child .list-all a{
+    padding-left: 5px;
+}
+.mini-banner-wrap .mini-item {
+    width: 190px;
+    float: left;
+    height: 165px;
+    overflow: hidden;
+    background: #B9D5FF;
+}
+.mini-banner-wrap .mini-item:first-child, .mini-banner-wrap .mini-item:nth-child(2) {
+    border-top: 0;
+}
+.mini-banner-wrap .hso-item a, .mini-banner-wrap .mini-item a {
+    display: inline-grid;
+}
+.mini-banner-wrap .mini-item img {
+    width: 100%;
+    float: left;
+}
+
+.home-slider{
+    padding-right: 0;
+}
+.mini-promotion{
+    padding-left: 0;
+}

@@ -8,20 +8,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 <div class="container">
     <div class="row">
-        <div class="col-md-3 col-md-4 col-sm-3 hidden-xs">
-            <div class="side-banner">
-                <?php $bannerSidebarTop = listBannerByPosition(2);if(!empty($bannerSidebarTop)) foreach ($bannerSidebarTop as $item): ?>
-                    <a href="<?php echo $item->url ?>" title="banner sidebar" rel="nofollow">
-                        <img src="<?php echo getImageThumb($item->thumbnail,265,425,true) ?>"
-                             data-src="<?php echo getImageThumb($item->thumbnail,265,425,true) ?>"
-                             class="lazy"
-                             style="height: 100%"
-                             alt="<?php echo getTitle($item) ?>">
-                    </a>
-                <?php endforeach; ?>
-            </div>
-        </div>
-        <div class="col-md-9 col-sm-9 col-xs-12 home-slider">
+        <div class="col-md-6 col-xs-12 home-slider">
             <?php $home_slider = listBannerByPosition(1); ?>
             <?php if(!empty($home_slider)): ?>
             <div id="thm-slideshow" class="thm-slideshow slider-block">
@@ -30,24 +17,14 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                         <ul>
                             <?php foreach ($home_slider as $item): ?>
                             <li data-transition='random' data-slotamount='7' data-masterspeed='1000'
-                                data-thumb='<?php echo getImageThumb($item->thumbnail,850,440) ?>'>
-                                <img src="<?php echo getImageThumb($item->thumbnail,850,440,true) ?>"
-                                     data-src="<?php echo getImageThumb($item->thumbnail,850,440,true) ?>"
+                                data-thumb='<?php echo getImageThumb($item->thumbnail,570,330,true) ?>'>
+                                <img src="<?php echo getImageThumb($item->thumbnail,570,330,true) ?>"
+                                     data-src="<?php echo getImageThumb($item->thumbnail,570,330,true) ?>"
                                      class="lazy"
                                      data-bgposition='left top' data-bgfit='cover' data-bgrepeat='no-repeat'
                                      alt="<?php echo getTitle($item) ?>">
 
                                 <div class="info">
-                                    <!--<div class='tp-caption ExtraLargeTitle sft  tp-resizeme ' data-endspeed='500'
-                                         data-speed='500' data-start='1100' data-easing='Linear.easeNone'
-                                         data-splitin='none' data-splitout='none' data-elementdelay='0.1'
-                                         data-endelementdelay='0.1'><span><?php /*echo $item->title */?></span>
-                                    </div>
-                                    <div class='tp-caption Title sft  tp-resizeme ' data-endspeed='500' data-speed='500'
-                                         data-start='1450' data-easing='Power2.easeInOut' data-splitin='none'
-                                         data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1'>
-                                        <?php /*echo $item->description */?>
-                                    </div>-->
                                     <div class='tp-caption sfb  tp-resizeme ' data-endspeed='500' data-speed='500'
                                          data-start='1500' data-easing='Linear.easeNone' data-splitin='none'
                                          data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1'>
@@ -61,16 +38,32 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
             </div>
             <?php endif; ?>
         </div>
+        <div class="col-md-6 col-xs-12 mini-promotion">
+            <div class="mini-banner-wrap">
+                <?php $bannerRightSlider = listBannerByPosition(6);if(!empty($bannerRightSlider)) foreach ($bannerRightSlider as $item): ?>
+                    <div class="mini-item">
+                        <a href="<?php echo $item->url ?>" title="banner sidebar" rel="nofollow">
+                            <img src="<?php echo getImageThumb($item->thumbnail,190,165,true) ?>"
+                                 data-src="<?php echo getImageThumb($item->thumbnail,190,165,true) ?>"
+                                 class="lazy"
+                                 style="width: 100%"
+                                 alt="<?php echo getTitle($item) ?>">
+                        </a>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
     </div>
 </div>
 
 <section class="main-container col2-left-layout">
     <div class="container">
         <div class="row">
-            <div class="col-sm-9 col-sm-push-3">
-                <div class="row">
+            <div class="col-md-12 col-xs-12">
+
+                <div class="row" style="margin-bottom: 25px">
                     <?php $bannerHomeTop = listBannerByPosition(4);if(!empty($bannerHomeTop)) foreach ($bannerHomeTop as $item): ?>
-                        <div class="col-sm-6 col-xs-12">
+                        <div class="col-sm-3 col-xs-12">
                             <a href="<?php echo $item->url ?>" title="banner sidebar" rel="nofollow">
                                 <img src="<?php echo getImageThumb($item->thumbnail,410,210,true) ?>"
                                      data-src="<?php echo getImageThumb($item->thumbnail,410,210,true) ?>"
@@ -81,116 +74,47 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                         </div>
                     <?php endforeach; ?>
                 </div>
-                <div class="content-page">
-                    <div class="category-product">
-                        <div class="navbar nav-menu">
-                            <div class="navbar-collapse">
-                                <div class="new_title">
-                                    <h2>Sản phẩm mới nhất</h2>
+
+                <?php if(!empty($home_product['listCategory'])) foreach ($home_product['listCategory'] as $oneCategory): ?>
+                    <div class="content-page">
+                        <div class="category-product">
+                            <div class="navbar nav-menu">
+                                <div class="navbar-collapse">
+                                    <div class="nav-category">
+                                        <a href="<?php echo getUrlCateProduct($oneCategory) ?>" title="<?php echo getTitle($oneCategory) ?>"><h2><?php echo $oneCategory->title ?></h2></a>
+
+                                        <div class="view-list-child">
+                                            <?php
+                                            $listCategory = $home_product['listCategoryChild'][$oneCategory->id];
+                                            $listCategory = array_slice($listCategory, 0, 5);
+                                            if(!empty($listCategory)) foreach ($listCategory as $itemChild): ?>
+                                                <a href="<?php echo getUrlCateProduct($itemChild) ?>" title="<?php echo getTitle($itemChild) ?>"><?php echo $itemChild->title ?></a>
+                                            <?php endforeach; ?>
+                                            <span class="list-all"><i class="fa fa-angle-double-right" aria-hidden="true"></i><a href="<?php echo getUrlCateProduct($oneCategory) ?>" title="Xem tất cả sản phẩm trong <?php echo getTitle($oneCategory) ?>">Xem tất cả</a></span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="product-bestseller">
-                            <div class="product-bestseller-content">
-                                <div class="product-bestseller-list">
-                                    <div class="category-products">
-                                        <?php $this->load->view($this->template_path . 'product/_list_product', ['data' => !empty($home_product_latest) ? $home_product_latest : '']) ?>
+                            <div class="product-bestseller">
+                                <div class="product-bestseller-content">
+                                    <div class="product-bestseller-list">
+                                        <div class="category-products">
+                                            <?php $this->load->view($this->template_path . 'product/_list_product', ['data' => $home_product['listProduct'][$oneCategory->id]]) ?>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                <?php endforeach; ?>
 
-
-                <div class="offer-banner">
+                <div class="offer-banner text-center">
                     <?php $bannerCenterHome = listBannerByPosition(5);if(!empty($bannerCenterHome)) foreach ($bannerCenterHome as $item): ?>
                         <a href="<?php echo $item->url ?>" title="banner center home" rel="nofollow">
                             <img src="<?php echo getImageThumb($item->thumbnail,410,210,false,false) ?>" alt="banner center home">
                         </a>
                     <?php endforeach; ?>
                 </div>
-                <!-- bestsell slider -->
-                <div class="bestsell-pro">
-                    <div>
-                        <div class="slider-items-products">
-                            <div class="bestsell-block">
-                                <div class="block-title">
-                                    <h2>Sản phẩm bán chạy</h2>
-                                </div>
-                                <div id="bestsell-slider" class="product-flexslider hidden-buttons">
-                                    <div class="slider-items slider-width-col4 products-grid block-content">
-                                        <?php $this->load->view($this->template_path . 'product/_list_product_slider', ['data' => !empty($home_product_sale) ? $home_product_sale : '']) ?>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="featured-pro-block">
-                    <div class="slider-items-products">
-                        <div class="new-arrivals-block">
-                            <div class="block-title">
-                                <h2>Sản phẩm nổi bật</h2>
-                            </div>
-                            <div id="new-arrivals-slider" class="product-flexslider hidden-buttons">
-                                <div class="home-block-inner"></div>
-                                <div class="slider-items slider-width-col4 products-grid block-content">
-                                    <?php $this->load->view($this->template_path . 'product/_list_product_slider', ['data' => !empty($home_product_featured) ? $home_product_featured : '']) ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-left sidebar col-sm-3 col-xs-12 col-sm-pull-9">
-                <?php $listFeedback = getFeedback();
-                if(!empty($listFeedback)): ?>
-                <div class="testimonials">
-                    <div class="ts-testimonial-widget">
-                        <div class="slider-items-products">
-                            <div id="testimonials-slider" class="product-flexslider hidden-buttons home-testimonials">
-                                <div class="slider-items slider-width-col4 fadeInUp owl-carousel owl-theme">
-                                    <?php  foreach ($listFeedback as $item): ?>
-                                        <div class="holder">
-                                            <p><?php echo $item->content ?></p>
-                                            <div class="testimonial-arrow-down"></div>
-                                            <div class="thumb">
-                                                <div class="customer-img">
-                                                    <img src="<?php echo getImageThumb($item->thumbnail) ?>" alt="<?php echo $item->name ?>">
-                                                </div>
-                                                <div class="customer-bio">
-                                                    <strong class="name">
-                                                        <a href="javascript:;" title="<?php echo $item->name ?>"><?php echo $item->name ?></a>
-                                                    </strong>
-                                                    <span><strong><?php echo $item->company ?></strong></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    <?php endforeach; ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <?php endif; ?>
-                <h1><?php echo $this->settings['title']." - ".$this->settings['name'] ?></h1>
-                <div class="side-banner">
-                    <?php $bannerSidebar = listBannerByPosition(3);if(!empty($bannerSidebar)) foreach ($bannerSidebar as $item): ?>
-                        <a href="<?php echo $item->url ?>" title="banner center home" rel="nofollow">
-                            <img src="<?php echo getImageThumb($item->thumbnail,265,500,true) ?>"
-                                 data-src="<?php echo getImageThumb($item->thumbnail,265,500,true) ?>"
-                                 class="lazy hidden-xs"
-                                 alt="<?php echo getTitle($item) ?>">
-                        </a>
-                    <?php endforeach; ?>
-                </div>
-
-                <div class="">
-                    <?php $this->load->view($this->template_path . 'product/_box_features') ?>
-                </div>
-
             </div>
         </div>
     </div>

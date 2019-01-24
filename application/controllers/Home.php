@@ -15,9 +15,7 @@ class Home extends Public_Controller
     }
 
     public function index(){
-        $data['home_product_latest'] = $this->listProductLatest();
-        $data['home_product_sale'] = $this->listProductSale();
-        $data['home_product_featured'] = $this->listProductFeatured();
+        $data['home_product'] = $this->listProduct();
         $data['home_news'] = $this->listNews();
         $data['main_content'] = $this->load->view($this->template_path . 'home/index', $data, TRUE);
         //$this->output->cache(5);
@@ -28,30 +26,29 @@ class Home extends Public_Controller
         $this->load->model('product_model');
         $categoryModel = new Category_model();
         $productModel = new Product_model();
-        $allCategoryProduct = $categoryModel->getDataByCategoryType($this->_all_category,'product');
-        $listCateChild = $categoryModel->getListChildLv1($allCategoryProduct,0);
+        $allCategoryProduct = $categoryModel->_all_category('product');
+        $listCateChild = $categoryModel->getListChild($allCategoryProduct,0);
         $listCategory = array();
         if(!empty($listCateChild)) foreach ($listCateChild as $item){
-            if(!in_array($item->id, array(1,58,59))){
-                $categoryModel->_list_category_child_id = [];
-                $categoryModel->_recursive_child_id($this->_all_category,$item->id);
-                $listCateId = $categoryModel->_list_category_child_id;
-                $params = array(
-                    'lang_code' => $this->session->userdata('public_lang_code'),
-                    'is_status' => 1,
-                    'category_id'=> $listCateId,
-                    'limit' => $item->id == 9 ? 6 : 4
-                );
-                $listCategory[] = $item;
-                $data['listCategoryChild'][$item->id] = $categoryModel->getListChildLv1($this->_all_category, $item->id);
-                $keyCacheProduct = "_listProduct_{$item->id}_{$this->session->userdata('public_lang_code')}";
-                $listProduct = $this->cache->get($keyCacheProduct);
-                if(empty($listProduct)){
-                    $listProduct = $productModel->getData($params);
-                    $this->cache->save($keyCacheProduct,$listProduct,60*30);//30 phút
-                }
-                $data['listProduct'][$item->id] = $listProduct;
+            $categoryModel->_list_category_child_id = [];
+            $categoryModel->_recursive_child_id($allCategoryProduct,$item->id);
+            $listCateId = $categoryModel->_list_category_child_id;
+            $params = array(
+                'lang_code' => $this->session->userdata('public_lang_code'),
+                'is_status' => 1,
+                'category_id'=> $listCateId,
+                'limit' => 4
+            );
+            $listCategory[] = $item;
+            $data['listCategoryChild'][$item->id] = $categoryModel->getListChild($allCategoryProduct, $item->id);
+            $keyCacheProduct = "_listProduct_{$item->id}_{$this->session->userdata('public_lang_code')}";
+            //$this->cache->delete($keyCacheProduct);
+            $listProduct = $this->cache->get($keyCacheProduct);
+            if(empty($listProduct)){
+                $listProduct = $productModel->getData($params);
+                $this->cache->save($keyCacheProduct,$listProduct,60*30);//30 phút
             }
+            $data['listProduct'][$item->id] = $listProduct;
             unset($item);
         }
         $data['listCategory'] = $listCategory;

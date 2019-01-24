@@ -612,8 +612,8 @@ var UI = {
             jQuery('#rev_slider_4').show().revolution({
                 dottedOverlay: 'none',
                 delay: 5000,
-                startwidth: 850,
-                startheight: 428,
+                startwidth: 550,
+                startheight: 330,
                 hideThumbs: 200,
                 thumbWidth: 200,
                 thumbHeight: 50,
