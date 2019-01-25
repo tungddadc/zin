@@ -53,13 +53,11 @@ class Product_model extends STEVEN_Model
         }
 
         if (!empty($search_custom)) {
-            //$this->db->select('MATCH ('.$this->_dbprefix.$this->table_trans.'.title) AGAINST ('.$this->db->escape($search_custom).' IN BOOLEAN MODE) AS score_search');
-            //$this->db->group_start();
-            $this->db->like("$this->table_trans.title", $search_custom);
+            $arrKey = explode(" ",$search_custom);
+
+            if(!empty($arrKey)) foreach ($arrKey as $keyword)
+                $this->db->like("$this->table_trans.title", $keyword);
             $this->db->or_like("$this->table.model", $search_custom);
-            //$this->db->or_like("$this->table.model", $search_custom);
-            //$this->db->or_where('MATCH ('.$this->_dbprefix.$this->table_trans.'.title) AGAINST ('.$this->db->escape($search_custom).' IN BOOLEAN MODE)', NULL, FALSE);
-            //$this->db->group_end();
             $this->db->order_by("$this->table_trans.title",'ASC');
         }
 

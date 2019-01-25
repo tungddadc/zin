@@ -647,6 +647,7 @@ class Product extends Public_Controller
                 $data['price'] = $item['Price'];
                 $data['price_sale'] = $item['PriceSale'];
                 $data['price_agency'] = $item['PriceAgency'];
+                $data['viewed'] = rand(1000,9999);
 
                 $resultId = $this->_data->insert($data);
                 if(!empty($resultId)){
