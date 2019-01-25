@@ -665,6 +665,15 @@ var UI = {
             });
         }
     },
+    sliderHotKey: function () {
+        $('.slider-keyword .owl-carousel').owlCarousel({
+            stagePadding: 50,
+            loop:true,
+            margin:10,
+            nav:true,
+            items:5
+        })
+    },
     stickyMenuMain: function(){
         let header = document.getElementById('menu-main');
         let sticky = header.offsetTop;
@@ -732,6 +741,7 @@ var UI = {
         UI.ajaxFormSubmit();
         UI.zoomImageProduct();
         UI.sliderHome();
+        UI.sliderHotKey();
         UI.loadComment(1);
     }
 };

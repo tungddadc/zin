@@ -717,3 +717,44 @@ nav#menu-main{
 .list-banner-bottom > div{
     padding: 0;
 }
+.slider-keyword{
+width: 100%;
+}
+
+.slider-keyword .blog-inner .item{
+    width: 141px;
+    white-space: nowrap;
+}
+
+.slider-keyword .blog-inner a{
+    color: #ffffff;
+    width: 200px;
+    line-height: 28px;
+    margin-right: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 300;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.slider-keyword .blog-inner a:hover{
+    opacity: .8;
+    color: #ffffff;
+}
+.slider-keyword .blog-inner a span {
+    line-height: 20px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    white-space: initial;
+    text-align: center;
+}

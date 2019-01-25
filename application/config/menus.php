@@ -13,4 +13,5 @@ $config['cms_menu'] = [
     'Menu Footer Hướng dẫn mua hàng',
     'Menu Footer Tài khoản',
     'Menu Footer Thông tin',
-    'Menu Link'];
+    'Menu Link',
+    'Từ khóa HOT'];

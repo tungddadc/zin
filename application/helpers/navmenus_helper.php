@@ -12,6 +12,15 @@ if (!function_exists('navMenuMain')) {
     }
 }
 
+if (!function_exists('navHotKeyword')) {
+    function navHotKeyword(){
+        $ci =& get_instance();
+        $ci->load->model('menus_model');
+        $menuModel = new Menus_model();
+        return $menuModel->getMenu(6, $ci->session->public_lang_code);
+    }
+}
+
 if (!function_exists('navMenuFooter1')) {
     function navMenuFooter1($classname = '', $id = '', $submenuclass = ''){
         return menus(2, $classname, $id, $submenuclass);

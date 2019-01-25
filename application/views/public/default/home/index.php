@@ -98,14 +98,6 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                         </div>
                     </div>
                 <?php endforeach; ?>
-
-                <div class="offer-banner text-center">
-                    <?php $bannerCenterHome = listBannerByPosition(5);if(!empty($bannerCenterHome)) foreach ($bannerCenterHome as $item): ?>
-                        <a href="<?php echo $item->url ?>" title="banner center home" rel="nofollow">
-                            <img src="<?php echo getImageThumb($item->thumbnail,410,210,false,false) ?>" alt="banner center home">
-                        </a>
-                    <?php endforeach; ?>
-                </div>
             </div>
         </div>
     </div>
@@ -114,6 +106,22 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 <!-- Latest Blog -->
 <div class="container">
     <div class="row">
+        <div class="blog-outer-container slider-keyword">
+            <div class="block-title">
+                <h2>TỪ KHÓA HOT</h2>
+            </div>
+            <div class="blog-inner owl-carousel owl-theme">
+                <?php $listKeyword = navHotKeyword();
+                if(!empty($listKeyword)) foreach ($listKeyword as $item): $item = (object) $item; ?>
+                    <div class="item">
+                        <a style="background: rgb(<?php echo rand(000,255) ?>, <?php echo rand(000,255) ?>, <?php echo rand(000,255) ?>);" target="_blank" href="<?php echo site_url('search/'.$item->title) ?>" title="<?php echo $item->title ?>" class="btn">
+                            <span><?php echo $item->title ?></span>
+                        </a>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+
         <div class="blog-outer-container">
             <div class="block-title">
                 <h2>Tin mới nhất</h2>
