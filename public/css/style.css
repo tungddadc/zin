@@ -2380,6 +2380,7 @@ nav {
     background: rgb(251, 175, 63);
     float: left;
     width: 38px;
+    height: 38px;
     border-radius: 999px;
     text-align: center;
 }
@@ -5404,7 +5405,7 @@ ul.products-grid {
 .new-label {
     font-size: 10px;
     color: #fff;
-    background: #e27c7c;
+    background: #337ab7;
     text-transform: uppercase;
     padding: 3px 10px;
     text-align: center;
@@ -5413,12 +5414,12 @@ ul.products-grid {
 }
 
 .new-label.new-top-left:after {
-    border-color: #e27c7c transparent transparent;
+    border-color: #337ab7 transparent transparent;
     border-style: solid solid solid none;
     border-width: 9px 9px 9px 0;
-    bottom: -15px;
+    bottom: -18px;
     content: "";
-    left: -37px;
+    left: -39px;
     margin: 0 auto;
     position: absolute;
     right: -1px;
@@ -5500,7 +5501,7 @@ ul.products-grid {
     border-width: 9px 0px 9px 9px;
     bottom: -18px;
     content: "";
-    right: -57px;
+    right: -36px;
     margin: 0 auto;
     position: absolute;
     left: 0px;

@@ -26,7 +26,7 @@ class Product_model extends STEVEN_Model
 
         $this->db->select('IF(`price_sale` = 0, `price`, `price_sale`) AS `price_sort`');
         $this->db->select("IF(`price_sale` = 0, 0, 1) AS `is_sale`");
-        $this->db->select('IF(`created_time` <= DATE_ADD(NOW(), INTERVAL 10 DAY), 1, 0) AS `is_new`');
+        $this->db->select('IF(`created_time` >= DATE_SUB(NOW(), INTERVAL 10 DAY), 1, 0) AS `is_new`');
 
         if(!empty($quantity_begin) && !empty($quantity_end)){
             $this->db->join($this->table_detail,"$this->table.id = $this->table_detail.{$this->table}_id");
