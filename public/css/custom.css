@@ -711,3 +711,9 @@ nav#menu-main{
 .mini-promotion{
     padding-left: 0;
 }
+.list-banner-bottom{
+    padding: 0 15px;
+}
+.list-banner-bottom > div{
+    padding: 0;
+}

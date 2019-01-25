@@ -23,13 +23,6 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                                      class="lazy"
                                      data-bgposition='left top' data-bgfit='cover' data-bgrepeat='no-repeat'
                                      alt="<?php echo getTitle($item) ?>">
-
-                                <div class="info">
-                                    <div class='tp-caption sfb  tp-resizeme ' data-endspeed='500' data-speed='500'
-                                         data-start='1500' data-easing='Linear.easeNone' data-splitin='none'
-                                         data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1'>
-                                        <a href='<?php echo $item->url ?>' rel="nofollow" title="Xem chi tiết" class="buy-btn">Xem chi tiết</a></div>
-                                </div>
                             </li>
                             <?php endforeach; ?>
                         </ul>
@@ -54,27 +47,25 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
             </div>
         </div>
     </div>
+    <div class="row list-banner-bottom">
+        <?php $bannerHomeTop = listBannerByPosition(4);if(!empty($bannerHomeTop)) foreach ($bannerHomeTop as $item): ?>
+            <div class="col-sm-3 col-xs-12">
+                <a href="<?php echo $item->url ?>" title="banner sidebar" rel="nofollow">
+                    <img src="<?php echo getImageThumb($item->thumbnail,285,150,true) ?>"
+                         data-src="<?php echo getImageThumb($item->thumbnail,285,150,true) ?>"
+                         class="lazy"
+                         style="width: 100%"
+                         alt="<?php echo getTitle($item) ?>">
+                </a>
+            </div>
+        <?php endforeach; ?>
+    </div>
 </div>
 
 <section class="main-container col2-left-layout">
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-xs-12">
-
-                <div class="row" style="margin-bottom: 25px">
-                    <?php $bannerHomeTop = listBannerByPosition(4);if(!empty($bannerHomeTop)) foreach ($bannerHomeTop as $item): ?>
-                        <div class="col-sm-3 col-xs-12">
-                            <a href="<?php echo $item->url ?>" title="banner sidebar" rel="nofollow">
-                                <img src="<?php echo getImageThumb($item->thumbnail,410,210,true) ?>"
-                                     data-src="<?php echo getImageThumb($item->thumbnail,410,210,true) ?>"
-                                     class="lazy"
-                                     style="width: 100%"
-                                     alt="<?php echo getTitle($item) ?>">
-                            </a>
-                        </div>
-                    <?php endforeach; ?>
-                </div>
-
                 <?php if(!empty($home_product['listCategory'])) foreach ($home_product['listCategory'] as $oneCategory): ?>
                     <div class="content-page">
                         <div class="category-product">

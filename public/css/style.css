@@ -5268,6 +5268,12 @@ ul.products-grid {
 .products-grid .item .item-inner .item-info .info-inner .item-title a:hover {
     color: rgb(237, 28, 36);
 }
+.products-grid .item .item-inner{
+    padding: 5px;
+}
+.products-grid .item:hover .item-inner{
+    border: rgb(237, 28, 36) solid 1px;
+}
 
 .products-grid .item:hover .item-inner .item-img .item-img-info {
     border-color: #fff;

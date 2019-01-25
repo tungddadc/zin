@@ -64,8 +64,8 @@ class Search extends Public_Controller {
         $data['total'] = $total = $this->_data_product->getTotal($params);
         /*Pagination*/
         $this->load->library('pagination');
-        $paging['base_url'] = getUrlSearch($keyword).'/page';
-        $paging['first_url'] =  getUrlSearch($keyword);
+        $paging['base_url'] = $keyword.'/page';
+        $paging['first_url'] =  $keyword;
         $paging['total_rows'] = $data['total'];
         $paging['per_page'] = $limit;
         $this->pagination->initialize($paging);
