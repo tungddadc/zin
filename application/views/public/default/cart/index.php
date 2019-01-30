@@ -184,7 +184,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                                                     <label class="required" for="country"><em>*</em>Địa chỉ viết hóa đơn</label>
                                                     <div class="input-box">
                                                         <input name="bill_address" class="input-text fullwidth"
-                                                               type="text" value="">
+                                                               type="text" value="<?php echo $this->_user_login->shipping_address ?>">
                                                     </div>
                                                 </li>
 

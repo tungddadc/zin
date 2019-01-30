@@ -5,8 +5,6 @@
     <section class="main-container col2-left-layout">
         <div class="container">
             <div class="row">
-
-
                 <div class="col-sm-9 col-sm-push-3">
                     <article class="col-main">
                         <div class="page-title">

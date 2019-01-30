@@ -1,4 +1,14 @@
-<div class="side-banner"><img alt="banner" src="<?php echo $this->templates_assets ?>images/side-banner.jpg"></div>
+<div class="side-banner">
+    <ul class="list-group">
+        <li class="list-group-item"><a href="<?php echo base_url('dieu-kien-va-chinh-sach-dai-ly.html') ?>" class="btn btn-warning btn-block"
+                                       title="Điều kiện và chính sách đại lý">Điều kiện và chính sách
+                đại lý</a></li>
+        <li class="list-group-item"><a href="<?php echo base_url('gia-dai-ly-va-uu-dai.html') ?>" class="btn btn-warning btn-block"
+                                       title="Giá đại lý và ưu đãi">Giá đại lý và ưu đãi</a></li>
+
+
+    </ul>
+</div>
 <div class="block block-company">
     <div class="block-title">Thông tin về công ty</div>
     <div class="block-content">

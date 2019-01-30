@@ -385,7 +385,8 @@ class Auth extends Public_Controller
 
                     $this->session->set_flashdata('message', 'Đăng nhập thành công!');
                     $this->session->set_flashdata('type', 'success');
-                    redirect($this->agent->referrer() ? $this->agent->referrer() : base_url(), 'refresh');
+                    $referer = $this->agent->referrer() ? $this->agent->referrer() : base_url();
+                    redirect($referer, 'refresh');
                 } else {
                     $this->hybridauth->HA->logoutAllProviders();
                     unset($this->session->userdata['account']);
