@@ -5398,7 +5398,7 @@ ul.products-grid {
 .new-label {
     font-size: 10px;
     color: #fff;
-    background: #e27c7c;
+    background: #337ab7;
     text-transform: uppercase;
     padding: 3px 10px;
     text-align: center;
@@ -5407,12 +5407,12 @@ ul.products-grid {
 }
 
 .new-label.new-top-left:after {
-    border-color: #e27c7c transparent transparent;
+    border-color: #337ab7 transparent transparent;
     border-style: solid solid solid none;
     border-width: 9px 9px 9px 0;
-    bottom: -15px;
+    bottom: -18px;
     content: "";
-    left: -37px;
+    left: -39px;
     margin: 0 auto;
     position: absolute;
     right: -1px;
@@ -5478,7 +5478,7 @@ ul.products-grid {
 .hot-label {
     font-size: 10px;
     color: #fff;
-    background-color: rgb(190, 30, 45);
+    background-color: rgb(237, 28, 36);
     text-transform: uppercase;
     padding: 3px 10px;
     text-align: center;
@@ -5489,12 +5489,12 @@ ul.products-grid {
 }
 
 .hot-label.hot-top-left:after {
-    border-color: rgb(190, 30, 45) transparent transparent;
+    border-color: rgb(237, 28, 36) transparent transparent;
     border-style: solid none solid solid;
     border-width: 9px 0px 9px 9px;
     bottom: -18px;
     content: "";
-    right: -57px;
+    right: -36px;
     margin: 0 auto;
     position: absolute;
     left: 0px;

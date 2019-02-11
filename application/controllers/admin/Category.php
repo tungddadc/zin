@@ -151,9 +151,10 @@ class Category extends Admin_Controller
             'type' => !(empty($type)) ? $type : null,
             'is_status'=> 1,
             'not_in' => ['id' => $id],
-
             'limit'=> 2000
         ];
+
+        if($type === 'brand') $params = array_merge($params,['search' => $term]);
         $list = $this->_data->getData($params);
         if($type === 'brand'){
             $listTree = $list;
