@@ -667,11 +667,20 @@ var UI = {
     },
     sliderHotKey: function () {
         $('.slider-keyword .owl-carousel').owlCarousel({
-            stagePadding: 50,
             loop:true,
             margin:10,
             nav:true,
-            items:5
+            responsive : {
+                0 : {
+                    items:2,
+                },
+                480 : {
+                    items:4,
+                },
+                768 : {
+                    items:5,
+                }
+            }
         })
     },
     stickyMenuMain: function(){

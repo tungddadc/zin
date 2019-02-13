@@ -229,6 +229,121 @@
                 </div>
             </li>
             <!--Quản lý Article-->
+            <!--Quản lý thuộc tính-->
+            <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
+                <a href="javascript:;" class="m-menu__link m-menu__toggle">
+                    <i class="m-menu__link-icon flaticon-interface-7"></i>
+                    <span class="m-menu__link-text">
+                        Quản lý thuộc tính
+                    </span>
+                    <i class="m-menu__ver-arrow la la-angle-right"></i>
+                </a>
+                <div class="m-menu__submenu ">
+                    <span class="m-menu__arrow"></span>
+                    <ul class="m-menu__subnav">
+                        <li class="m-menu__item " aria-haspopup="true">
+                            <a href="<?php echo site_admin_url('property/pattern') ?>" class="m-menu__link ">
+                                <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                    <span></span>
+                                </i>
+                                <span class="m-menu__link-text">
+                                    Kiểu loại
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="m-menu__item " aria-haspopup="true">
+                            <a href="<?php echo site_admin_url('property/resolution') ?>" class="m-menu__link ">
+                                <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                    <span></span>
+                                </i>
+                                <span class="m-menu__link-text">
+                                    Độ phân giải
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="m-menu__item " aria-haspopup="true">
+                            <a href="<?php echo site_admin_url('property/machine') ?>" class="m-menu__link ">
+                                <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                    <span></span>
+                                </i>
+                                <span class="m-menu__link-text">
+                                    Đời máy
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="m-menu__item " aria-haspopup="true">
+                            <a href="<?php echo site_admin_url('property/kind') ?>" class="m-menu__link ">
+                                <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                    <span></span>
+                                </i>
+                                <span class="m-menu__link-text">
+                                    Chủng loại
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="m-menu__item " aria-haspopup="true">
+                            <a href="<?php echo site_admin_url('property/color') ?>" class="m-menu__link ">
+                                <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                    <span></span>
+                                </i>
+                                <span class="m-menu__link-text">
+                                    Màu sắc
+                                </span>
+                            </a>
+                        </li>
+                        <li class="m-menu__item " aria-haspopup="true">
+                            <a href="<?php echo site_admin_url('property/quality') ?>" class="m-menu__link ">
+                                <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                    <span></span>
+                                </i>
+                                <span class="m-menu__link-text">
+                                    Chất lượng
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="m-menu__item " aria-haspopup="true">
+                            <a href="<?php echo site_admin_url('property/qc') ?>" class="m-menu__link ">
+                                <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                    <span></span>
+                                </i>
+                                <span class="m-menu__link-text">
+                                    QC (Quality Control)
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="m-menu__item " aria-haspopup="true">
+                            <a href="<?php echo site_admin_url('property/warranty') ?>" class="m-menu__link ">
+                                <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                    <span></span>
+                                </i>
+                                <span class="m-menu__link-text">
+                                    Bảo hành
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="m-menu__item " aria-haspopup="true">
+                            <a href="<?php echo site_admin_url('property/feature') ?>" class="m-menu__link ">
+                                <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                    <span></span>
+                                </i>
+                                <span class="m-menu__link-text">
+                                    Đặc tính
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <!--Quản lý thuộc tính-->
+
+
             <!--Quản lý Sản phẩm-->
             <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
                 <a href="javascript:;" class="m-menu__link m-menu__toggle">

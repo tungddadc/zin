@@ -272,6 +272,7 @@ class Admin_Controller extends STEVEN_Controller
 class Public_Controller extends STEVEN_Controller
 {
     public $_user_login = array();
+    public $mobile_detect;
 
     public function __construct()
     {
@@ -292,7 +293,7 @@ class Public_Controller extends STEVEN_Controller
         $this->switchLanguage($this->input->get('lang'));
 
         //Detect mobile
-        //$this->detectMobile = new Mobile_Detect();
+        $this->mobile_detect = $this->agent;
 
         //Setting
         $this->load->model('setting_model');

@@ -705,9 +705,7 @@ nav#menu-main{
     float: left;
 }
 
-.home-slider{
-    padding-right: 0;
-}
+
 .mini-promotion{
     padding-left: 0;
 }
@@ -757,4 +755,13 @@ width: 100%;
     overflow: hidden;
     white-space: initial;
     text-align: center;
+}
+
+@media (min-width: 991px) {
+    .home-slider{
+        padding-right: 0;
+    }
+}
+.blog-inner{
+    margin-top: 10px;
 }

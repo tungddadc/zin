@@ -21,7 +21,7 @@ class Property_model extends STEVEN_Model{
 
     public function _where_custom($args = []){
         extract($args);
-        if(!empty($property_type)) $this->db->where("$this->table.type", $property_type);
+        if(!empty($type)) $this->db->where("$this->table.type", $type);
         if(!empty($category_id)) $this->db->where("$this->table.category_id", $category_id);
     }
 

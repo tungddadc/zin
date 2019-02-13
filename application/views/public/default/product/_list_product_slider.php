@@ -12,7 +12,8 @@
                              class="lazy"
                              alt="<?php echo getTitle($item) ?>">
                     </a>
-                    <?php echo !empty($item->is_new) ? '<div class="new-label new-top-left">New</div>' : '' ?>
+                    <?php echo !empty($item->is_new) ? '<div class="new-label new-top-left">New</div>' : '<div class="new-label new-top-left">Đã bán: '.($item->viewed - 555).'</div>' ?>
+                    <?php echo !empty($item->is_sale) ? '<div class="hot-label hot-top-left">-'.round((($item->price - $item->price_sale)/$item->price)*100).'%</div>' : '' ?>
                     <div class="box-hover">
                         <ul class="add-to-links">
                             <li><a class="link-quickview" data-url="<?php echo getUrlProduct($item) ?>" href="javascript:;" rel="nofollow" title="Xem Quickview"></a> </li>
