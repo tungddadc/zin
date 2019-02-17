@@ -27,7 +27,6 @@ header .our-features-box .offer-block > ul > li > .sub-menu {
 }
 header .our-features-box .offer-block > ul > li > .sub-menu > li {
   display: inline-block;
-  transition: 0.3s;
   float: left;
   text-align: left;
   padding-left: 10px;
