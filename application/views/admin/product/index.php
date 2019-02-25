@@ -128,6 +128,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                         <i class="la la-info"></i>Thông tin
                                     </a>
                                 </li>
+                                <li class="nav-item m-tabs__item">
+                                    <a class="nav-link m-tabs__link" data-toggle="tab" href="#tab_property" role="tab" aria-selected="false">
+                                        <i class="la la-info"></i>Thuộc tính sản phẩm
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -296,6 +301,68 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                     </div>
                                 </div>
                             </div>
+                            <div class="tab-pane" id="tab_property" role="tabpanel">
+                                <div class="row">
+                                    <div class="col-lg-6 col-12">
+                                        <div class="form-group">
+                                            <label>Màu sắc:</label>
+                                            <div class="input-group">
+                                                <select name="property_id[color][]" class="form-control m-select2 property_color" style="width: 100%;"></select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Kiểu loại:</label>
+                                            <div class="input-group">
+                                                <select name="property_id[pattern][]" class="form-control m-select2 property_pattern" style="width: 100%;"></select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Độ phân giải:</label>
+                                            <div class="input-group">
+                                                <select name="property_id[resolution][]" class="form-control m-select2 property_resolution" style="width: 100%;"></select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Đời máy:</label>
+                                            <div class="input-group">
+                                                <select name="property_id[machine][]" class="form-control m-select2 property_machine" style="width: 100%;"></select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Chủng loại:</label>
+                                            <div class="input-group">
+                                                <select name="property_id[kind][]" class="form-control m-select2 property_kind" style="width: 100%;"></select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-12">
+                                        <div class="form-group">
+                                            <label>Chất lượng:</label>
+                                            <div class="input-group">
+                                                <select name="property_id[quality][]" class="form-control m-select2 property_quality" style="width: 100%;"></select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Kiểm định chất lượng QC:</label>
+                                            <div class="input-group">
+                                                <select name="property_id[qc][]" class="form-control m-select2 property_qc" style="width: 100%;"></select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Bảo hành:</label>
+                                            <div class="input-group">
+                                                <select name="property_id[warranty][]" class="form-control m-select2 property_warranty" style="width: 100%;"></select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Đặc tính sản phẩm:</label>
+                                            <div class="input-group">
+                                                <select name="property_id[feature][]" class="form-control m-select2 property_feature" style="width: 100%;"></select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -310,6 +377,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 </div>
 <script type="text/javascript">
     var url_ajax_load_category = '<?php echo site_admin_url('category/ajax_load/' . $this->_controller) ?>',
+        url_ajax_load_property = '<?php echo site_admin_url('property/ajax_load') ?>',
         url_ajax_load_brand = '<?php echo site_admin_url('category/ajax_load/brand') ?>',
         url_ajax_load_product = '<?php echo site_admin_url('product/ajax_load') ?>';
 </script>

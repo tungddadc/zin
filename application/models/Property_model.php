@@ -11,6 +11,7 @@ class Property_model extends STEVEN_Model{
     public function __construct()
     {
         parent::__construct();
+
         $this->table            = "property";
         $this->table_trans      = "property_translations";
         $this->column_order     = array("$this->table.id","$this->table.id","$this->table.order","$this->table_trans.title","$this->table.is_status","$this->table.created_time","$this->table.updated_time"); //thiết lập cột sắp xếp
@@ -20,7 +21,7 @@ class Property_model extends STEVEN_Model{
 
     public function _where_custom($args = []){
         extract($args);
-        if(!empty($property_type)) $this->db->where("$this->table.type", $property_type);
+        if(!empty($type)) $this->db->where("$this->table.type", $type);
         if(!empty($category_id)) $this->db->where("$this->table.category_id", $category_id);
     }
 

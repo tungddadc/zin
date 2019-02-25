@@ -40,6 +40,54 @@ class Property extends Admin_Controller
         $this->get_list($data);
     }
 
+    public function pattern(){
+        $data['heading_title'] = "Quản lý thuộc tính";
+        $data['heading_description'] = "Danh sách thuộc tính kiểu loại";
+        $this->get_list($data);
+    }
+
+    public function resolution(){
+        $data['heading_title'] = "Quản lý thuộc tính";
+        $data['heading_description'] = "Danh sách thuộc tính độ phân giải";
+        $this->get_list($data);
+    }
+
+    public function machine(){
+        $data['heading_title'] = "Quản lý thuộc tính";
+        $data['heading_description'] = "Danh sách thuộc tính đời máy";
+        $this->get_list($data);
+    }
+
+    public function kind(){
+        $data['heading_title'] = "Quản lý thuộc tính";
+        $data['heading_description'] = "Danh sách thuộc tính chủng loại";
+        $this->get_list($data);
+    }
+
+    public function quality(){
+        $data['heading_title'] = "Quản lý thuộc tính";
+        $data['heading_description'] = "Danh sách thuộc tính chất lượng";
+        $this->get_list($data);
+    }
+
+    public function qc(){
+        $data['heading_title'] = "Quản lý thuộc tính";
+        $data['heading_description'] = "Danh sách thuộc tính kiểm định chất lượng";
+        $this->get_list($data);
+    }
+
+    public function warranty(){
+        $data['heading_title'] = "Quản lý thuộc tính";
+        $data['heading_description'] = "Danh sách thuộc tính bảo hành";
+        $this->get_list($data);
+    }
+
+    public function feature(){
+        $data['heading_title'] = "Quản lý thuộc tính";
+        $data['heading_description'] = "Danh sách thuộc tính đặc tính sản phẩm";
+        $this->get_list($data);
+    }
+
     public function ajax_list(){
         $this->checkRequestPostAjax();
         $data = array();
@@ -90,6 +138,7 @@ class Property extends Admin_Controller
         if(empty($type)) $this->session->userdata('type');
         $params = [
             'type' => !(empty($type)) ? $type : null,
+            'search_custom' => $term,
             'is_status'=> 1,
             'limit'=> 2000
         ];

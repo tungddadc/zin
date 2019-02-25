@@ -68,6 +68,16 @@ $(function() {
     loadBrand();
     loadProductRelated();
     loadProductSimilar();
+
+    loadProperty('color');
+    loadProperty('pattern');
+    loadProperty('resolution');
+    loadProperty('machine');
+    loadProperty('kind');
+    loadProperty('quality');
+    loadProperty('qc');
+    loadProperty('warranty');
+    loadProperty('feature');
     AJAX_CRUD_MODAL.init();
     AJAX_CRUD_MODAL.tinymce();
     SEO.init_slug();
@@ -138,11 +148,20 @@ $(function() {
                             element.val(val);
                         });
                     });
-                    showPriceAgency(response.data_detail);
                     loadCategory(response.data_category);
                     loadBrand(response.data_brand);
                     loadProductRelated(response.data_related);
                     loadProductSimilar(response.data_similar);
+
+                    loadProperty('color',response.data_property);
+                    loadProperty('pattern',response.data_property);
+                    loadProperty('resolution',response.data_property);
+                    loadProperty('machine',response.data_property);
+                    loadProperty('kind',response.data_property);
+                    loadProperty('quality',response.data_property);
+                    loadProperty('qc',response.data_property);
+                    loadProperty('warranty',response.data_property);
+                    loadProperty('feature',response.data_property);
 
                     FUNC.showGallery('#list-album',response.data_info.album);
                     modal_form.modal('show');
@@ -211,6 +230,38 @@ function loadCategory(dataSelected) {
         data: dataSelected,
         ajax: {
             url: url_ajax_load_category,
+            dataType: 'json',
+            delay: 250,
+            data: function(e) {
+                return {
+                    q: e.term,
+                    page: e.page
+                }
+            },
+            processResults: function(e, t) {
+                return t.page = t.page || 1, {
+                    results: e,
+                    pagination: {
+                        more: 30 * t.page < e.total_count
+                    }
+                }
+            },
+            cache: !0
+        }
+    });
+    if (typeof dataSelected !== 'undefined') selector.find('> option').prop("selected", "selected").trigger("change");
+}
+
+function loadProperty(type,dataSelected) {
+    let selector = $('select.property_' + type);
+    let dataValue = typeof dataSelected !== 'undefined' ? dataSelected[type] : null;
+    selector.select2({
+        placeholder: 'Chọn thuộc tính',
+        allowClear: !0,
+        multiple: 1,
+        data: dataValue,
+        ajax: {
+            url: url_ajax_load_property + '/' + type,
             dataType: 'json',
             delay: 250,
             data: function(e) {

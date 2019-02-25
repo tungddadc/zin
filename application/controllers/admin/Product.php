@@ -10,6 +10,7 @@ class Product extends Admin_Controller
 {
     protected $_data;
     protected $_data_category;
+    protected $_data_property;
 
     const STATUS_CANCEL = 0;
     const STATUS_ACTIVE = 1;
@@ -19,9 +20,10 @@ class Product extends Admin_Controller
         parent::__construct();
         //tải thư viện
         //$this->lang->load('category');
-        $this->load->model(['category_model','product_model']);
+        $this->load->model(['category_model','property_model','product_model']);
         $this->_data = new Product_model();
         $this->_data_category = new Category_model();
+        $this->_data_property = new Property_model();
     }
 
     public function index(){
@@ -118,28 +120,44 @@ class Product extends Admin_Controller
             }
         }
     }
-    private function save_detail($id, $data){
-        if(!empty($data)) foreach ($data as $item){
-            $data_detail = ["{$this->_data->table}_id" => $id, 'total_qty' => $item['total_qty'],'price_agency' => $item['price_agency']];
-            if(!$this->_data->insertOnUpdate($data_detail, $this->_data->table_detail)){
-                $message['type'] = 'error';
-                $message['message'] = "Thêm {$this->_data->table_detail} thất bại !";
-                log_message('error', $message['message'] . '=>' . json_encode($data_detail));
-                $this->returnJson($message);
+
+    private function save_property($id, $data){
+        $tmpProperty = [];
+        if(!empty($data)) foreach ($data as $type => $item){
+            if(is_array($item)) foreach ($item as $v){
+                $tmp["product_id"] = $id;
+                $tmp["type"] = $type;
+                $tmp["property_id"] = $v;
+                $tmpProperty[] = $tmp;
+            }else{
+                $tmp["product_id"] = $id;
+                $tmp["type"] = $type;
+                $tmp["property_id"] = $item;
+                $tmpProperty[] = $tmp;
             }
         }
+        if(!$this->_data->insertMultiple($tmpProperty, $this->_data->table_property)) {
+            $message['type'] = 'error';
+            $message['message'] = "Thêm {$this->_data->table_property} thất bại !";
+            log_message('error', $message['message'] . '=>' . json_encode($tmpProperty));
+            $this->returnJson($message);
+        }
     }
+
     public function ajax_add(){
         $this->checkRequestPostAjax();
         $data = $this->_convertData();
         $data['viewed'] = rand(1000,9999);
         $data_trans = $data['language'];
         $data_category = $data['category_id'];
+        $data_property = $data['property_id'];
         unset($data['language']);
         unset($data['category_id']);
+        unset($data['property_id']);
         if($id = $this->_data->save($data)){
             $this->save_language($id, $data_trans);
             $this->save_category($id, $data_category);
+            $this->save_property($id, $data_property);
             $message['type'] = 'success';
             $message['message'] = "Thêm mới thành công !";
         }else{
@@ -156,7 +174,10 @@ class Product extends Admin_Controller
             $output['data_info'] = $oneItem = $this->_data->single(['id' => $id],$this->_data->table);
             $output['data_language'] = $this->_data->getDataAll(['id' => $id],$this->_data->table_trans);
             $output['data_category'] = $this->_data->getSelect2Category($id, $this->session->userdata('admin_lang'));
-            $output['data_detail'] = $this->_data->getDetail($id);
+            $allPropertyType = $this->_data_property->getDataGroupBy();
+            if(!empty($allPropertyType)) foreach ($allPropertyType as $item){
+                $output['data_property'][$item['type']] = $this->_data->getSelect2Property($id,$item['type'],$this->session->userdata('admin_lang'));
+            }
             if(!empty($oneItem->data_related)){
                 $idRelated = json_decode($oneItem->data_related);
                 $output['data_related'] = $this->_data->getSelect2($idRelated);
@@ -175,11 +196,14 @@ class Product extends Admin_Controller
         $id = $data['id'];
         $data_trans = $data['language'];
         $data_category = $data['category_id'];
+        $data_property = $data['property_id'];
         unset($data['language']);
         unset($data['category_id']);
+        unset($data['property_id']);
         if($this->_data->update(['id' => $id],$data, $this->_data->table)){
             $this->save_language($id, $data_trans);
             $this->save_category($id, $data_category);
+            $this->save_property($id, $data_property);
             $message['type'] = 'success';
             $message['message'] = "Cập nhật thành công !";
         }else{

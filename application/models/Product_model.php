@@ -9,12 +9,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Product_model extends STEVEN_Model
 {
     public $table_category;
+    public $table_property;
     public $table_detail;
     public function __construct(){
         parent::__construct();
         $this->table            = "product";
         $this->table_trans      = "product_translations";
         $this->table_category   = "product_category";
+        $this->table_property   = "product_property";
         $this->table_detail     = "product_detail";
         $this->column_order     = array("$this->table.id", "$this->table.id", "$this->table_trans.title", "$this->table.is_featured", "$this->table.is_status", "$this->table.created_time", "$this->table.updated_time");
         $this->column_search    = array("$this->table_trans.title");
@@ -141,6 +143,18 @@ class Product_model extends STEVEN_Model
         $this->db->join("category_translations","$this->table_category.category_id = category_translations.id");
         $this->db->where('category_translations.language_code', $lang_code);
         $this->db->where($this->table_category.".product_id", $id);
+        $data = $this->db->get()->result();
+        return $data;
+    }
+
+    public function getSelect2Property($id, $type , $lang_code = null){
+        if(empty($lang_code)) $lang_code = $this->session->userdata('admin_lang') ? $this->session->userdata('admin_lang') : $this->session->userdata('public_lang_code');
+        $this->db->select("$this->table_property.property_id AS id, property_translations.title AS text");
+        $this->db->from($this->table_property);
+        $this->db->join("property_translations","$this->table_property.property_id = property_translations.id");
+        $this->db->where('property_translations.language_code', $lang_code);
+        $this->db->where($this->table_property.".product_id", $id);
+        $this->db->where($this->table_property.".type", $type);
         $data = $this->db->get()->result();
         return $data;
     }
