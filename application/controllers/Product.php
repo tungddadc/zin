@@ -51,7 +51,7 @@ class Product extends Public_Controller
         $paramsProperty = [];
         if(!empty($allPropertyType)) foreach ($allPropertyType as $item){
             $itemType = 'filter_'.$item['type'];
-            array_push($paramsProperty,$this->input->get($itemType));
+            if($this->input->get($itemType) !== null) array_push($paramsProperty,$this->input->get($itemType));
         }
         $paramsFilter['property_id'] = $paramsProperty;
 
@@ -80,7 +80,6 @@ class Product extends Public_Controller
             'page' => $page
         ];
         if(!empty($paramsFilter)) $params = array_merge($params,$paramsFilter);
-        dump($paramsFilter);
         $data['data'] = $this->_data->getData($params);
         $data['total'] = $this->_data->getTotal($params);
 
