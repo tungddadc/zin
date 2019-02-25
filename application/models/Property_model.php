@@ -58,13 +58,20 @@ class Property_model extends STEVEN_Model{
     }
 
     // get data group by
-    public function getDataGroupBy()
-    {
-        $this->db->select('type');
-        $this->db->from($this->table);
-        $this->db->group_by('type');
-        $query = $this->db->get();
-        return $query->result_array();
+    public function getDataGroupBy(){
+        if(CACHE_MODE == TRUE){
+            $key = '_list_property_type';
+            $data = $this->cache->get($key);
+        }
+        if(empty($data)){
+            $this->db->select('type');
+            $this->db->from($this->table);
+            $this->db->group_by('type');
+            $query = $this->db->get();
+            $data = $query->result_array();
+        }
+        if(CACHE_MODE == TRUE) $this->cache->save($key,$data,3600);
+        return $data;
     }
 
     public function slugToId($slug){

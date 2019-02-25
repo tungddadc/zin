@@ -69,6 +69,11 @@ class Product_model extends STEVEN_Model
             $this->db->where('MATCH ('.$this->_dbprefix.$this->table_trans.'.title) AGAINST ('.$this->db->escape($search_similar).' IN BOOLEAN MODE)', NULL, FALSE);
             $this->db->order_by('score_search','DESC');
         }
+
+        if(!empty($property_id)){
+            $this->db->join($this->table_property,"$this->table.id = $this->table_property.{$this->table}_id");
+            $this->db->where_in("$this->table_property.property_id",$property_id);
+        }
     }
 
     public function getBySlugCustom($slug, $lang_code = null){

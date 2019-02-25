@@ -42,16 +42,19 @@ class Product extends Public_Controller
         /*Lay list id con của category*/
 
         /*Lay list cac thuoc tinh*/
-        /*$this->load->model('property_model');
+        $this->load->model('property_model');
         $propertyModel = new Property_model();
-        if(!$this->cache->get('_all_property_'.$this->session->public_lang_code)){
-            $this->cache->save('_all_property_'.$this->session->public_lang_code,$propertyModel->getAll($this->session->public_lang_code),60*60*30);
+        $allPropertyType = $propertyModel->getDataGroupBy();
+        if(!empty($allPropertyType)) foreach ($allPropertyType as $item){
+            $data['data_property'][$item['type']] = $propertyModel->_all_property($item['type']);
         }
-        $_all_property = $this->cache->get('_all_property_'.$this->session->public_lang_code);
-        $data['property_format'] = $propertyModel->getDataByPropertyType($_all_property,'format');
-        $data['property_type'] = $propertyModel->getDataByPropertyType($_all_property,'type');
-        $data['property_color'] = $propertyModel->getDataByPropertyType($_all_property,'color');
-        $data['property_genre'] = $propertyModel->getGenre($_all_property,'genre',$oneParent->id);*/
+        $paramsProperty = [];
+        if(!empty($allPropertyType)) foreach ($allPropertyType as $item){
+            $itemType = 'filter_'.$item['type'];
+            array_push($paramsProperty,$this->input->get($itemType));
+        }
+        $paramsFilter['property_id'] = $paramsProperty;
+
         /*Lay list cac thuoc tinh*/
         switch ($this->input->get('filter_sort')) {
             case 'oldest':
@@ -77,6 +80,7 @@ class Product extends Public_Controller
             'page' => $page
         ];
         if(!empty($paramsFilter)) $params = array_merge($params,$paramsFilter);
+        dump($paramsFilter);
         $data['data'] = $this->_data->getData($params);
         $data['total'] = $this->_data->getTotal($params);
 

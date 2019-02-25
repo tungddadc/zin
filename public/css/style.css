@@ -10891,7 +10891,7 @@ ul.shipping-pro li {
     letter-spacing: 0.5px;
 }
 
-select {
+select, select.form-control {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -10933,11 +10933,12 @@ select {
     margin-top: 10px;
 }
 
-input.input-text, select, textarea {
+input.input-text, select,select.form-control, textarea {
     padding: 8px 10px;
     outline: none;
     color: #999;
     border: 1px solid #ddd;
+    border-radius: 0;
 }
 
 #wishlist-table textarea {
