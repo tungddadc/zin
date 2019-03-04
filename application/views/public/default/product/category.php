@@ -10,6 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     <section class="main-container col2-left-layout">
         <div class="container">
             <div class="row">
+                <?php echo form_open('') ?>
                 <div class="col-sm-9 col-sm-push-3">
                     <!-- Breadcrumbs -->
                     <div class="breadcrumbs">
@@ -39,59 +40,6 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                         </div>
                     </div>
                     <article id="content_ajax" class="col-main">
-                        <?php echo form_open('') ?>
-                        <div class="toolbar">
-                            <div class="row">
-                                <?php if(!empty($data_property)) foreach ($data_property as $type => $property):
-                                    switch ($type){
-                                        case 'color':
-                                            $nameProperty = 'Màu sắc';
-                                            break;
-                                        case 'pattern':
-                                            $nameProperty = 'Kiểu loại';
-                                            break;
-                                        case 'resolution':
-                                            $nameProperty = 'Độ phân giải';
-                                            break;
-                                        case 'machine':
-                                            $nameProperty = 'Đời máy';
-                                            break;
-                                        case 'kind':
-                                            $nameProperty = 'Chủng loại';
-                                            break;
-                                        case 'quality':
-                                            $nameProperty = 'Chất lượng';
-                                            break;
-                                        case 'qc':
-                                            $nameProperty = 'Kiểm định chất lượng';
-                                            break;
-                                        case 'warranty':
-                                            $nameProperty = 'Bảo hành';
-                                            break;
-                                        case 'feature':
-                                            $nameProperty = 'Đặc tính sản phẩm';
-                                            break;
-                                        default:
-                                            $nameProperty = '';
-                                    }
-                                    if(!empty($nameProperty)):
-                                        ?>
-                                        <div class="col-sm-3 filter filter_<?php echo $type ?>">
-                                            <label class="left"><?php echo $nameProperty ?>: </label>
-                                            <select name="filter_<?php echo $type ?>" title="<?php echo $nameProperty ?>" class="form-control">
-                                                <option value="0">Tất cả</option>
-                                                <?php if(!empty($property)) foreach ($property as $item): ?>
-                                                    <option value="<?php echo $item->id ?>" <?php echo $this->input->get('filter_'.$type) === $item->id ? 'selected' : '' ?>><?php echo $item->title ?></option>
-                                                <?php endforeach; ?>
-                                            </select>
-                                        </div>
-                                    <?php endif; endforeach; ?>
-                                <div class="col-sm-3">
-                                    <label class="left"></label>
-                                    <a style="    margin-top: 35px;" href="<?php echo getUrlCateProduct($oneItem) ?>" class="btn btn-danger" rel="nofollow" title="Xóa lọc">Xóa tất cả lọc</a>
-                                </div>
-                            </div>
-                        </div>
                         <div class="toolbar">
                             <div class="display-product-option">
                                 <?php if (!empty($pagination)): ?>
@@ -124,11 +72,9 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                                 </div>
                             </div>
                         </div>
-                        <?php echo form_close() ?>
                         <div class="category-products">
                             <?php $this->load->view($this->template_path . 'product/_list_product', ['data' => $data]) ?>
                         </div>
-                        <?php echo form_open('') ?>
                         <div class="toolbar">
                             <div class="display-product-option">
                                 <?php if (!empty($pagination)): ?>
@@ -161,12 +107,12 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                                 </div>
                             </div>
                         </div>
-                        <?php echo form_close() ?>
                     </article>
                 </div>
                 <aside class="col-left sidebar col-sm-3 col-xs-12 col-sm-pull-9">
                     <?php $this->load->view($this->template_path . '_block/_sidebar_product') ?>
                 </aside>
+                <?php echo form_close() ?>
             </div>
         </div>
     </section>

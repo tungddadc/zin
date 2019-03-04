@@ -413,11 +413,18 @@ class Product extends Public_Controller
 
     public function ajax_get_detail(){
         $this->checkRequestPostAjax();
-        if($this->session->userdata('is_agency') == true){
-            $productId = $this->input->post('id');
-            $quantity = $this->input->post('quantity');
-            $data = $this->_data->getPriceAgency($productId,$quantity);
-            $this->returnJson(['price' => $data->price_agency]);
+        $productId = $this->input->post('id');
+        $quantity = $this->input->post('quantity');
+        if(!empty($this->session->userdata('user_id'))){
+            $this->load->model('ion_auth_model');
+            $ionAuth = new Ion_auth_model();
+            $userId = $this->session->userdata('user_id');
+            $oneGroup = $ionAuth->get_users_groups($userId)->result();
+            if(empty($oneGroup) || $quantity < 15) return;
+            $group_id = $oneGroup[0]->id;
+            $oneProduct = $this->_data->getById($productId,'',$this->_lang_code);
+            $price_agency = $group_id == 3 ? $oneProduct->price_agency : 0;
+            $this->returnJson(['price' => $price_agency]);
         }
         $this->returnJson(['price' => 0]);
     }

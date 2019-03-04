@@ -233,7 +233,7 @@ var CART = {
                 dataType: 'json',
                 success: function (data) {
                     if(data.price > 0){
-                        blockPrice.find('.price').text(FUNC.formatMoney(data.price));
+                        blockPrice.find('.special-price .price').text(FUNC.formatMoney(data.price));
                         blockPrice.find('input[name="price"]').val(data.price);
                     }
                 }

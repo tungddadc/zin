@@ -382,7 +382,6 @@ class Auth extends Public_Controller
                     $this->session->userdata['is_logged'] = true;
                     $this->session->userdata['dentity'] = $identity;
                     $this->session->userdata['user_id'] = $id_user;
-
                     $this->session->set_flashdata('message', 'Đăng nhập thành công!');
                     $this->session->set_flashdata('type', 'success');
                     redirect($this->agent->referrer() ? $this->agent->referrer() : base_url(), 'refresh');
