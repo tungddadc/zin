@@ -722,6 +722,16 @@ var UI = {
         }
         return false;
     },
+    show_random_realtime: function(){
+        if(typeof is_realtime_visitor !== "undefined" && is_realtime_visitor == true){
+            setInterval(function () {
+                let number_random = Math.floor((Math.random() * 10) + (Math.random() * 3));
+                console.log(number_random);
+                toastr.options.positionClass = "toast-bottom-left";
+                toastr.info('Có '+ number_random + ' người đang xem sản phẩm này !','',{timeOut: 10000});
+            },15000);
+        }
+    },
     init: function () {
         UI.stickyMenuMain();
         UI.activeMenu();
@@ -733,6 +743,7 @@ var UI = {
         UI.zoomImageProduct();
         UI.sliderHome();
         UI.loadComment(1);
+        UI.show_random_realtime();
     }
 };
 jQuery(document).ready(function () {

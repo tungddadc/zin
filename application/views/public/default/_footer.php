@@ -96,3 +96,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 <!-- End Footer -->
 
 <a id="toTop" style="display: none;" href="javascript:;" rel="nofollow"><span id="toTopHover"></span></a>
+
+<div class="coccoc-alo-phone coccoc-alo-green coccoc-alo-show" id="coccoc-alo-phoneIcon" style="left:0;">
+    <a href="tel:<?php echo $this->settings['hotline'] ?>" title="<?php echo $this->settings['hotline'] ?>" data-original-title="Liên hệ với chúng tôi">
+        <div class="coccoc-alo-ph-circle"></div>
+        <div class="coccoc-alo-ph-circle-fill"></div>
+        <div class="coccoc-alo-ph-img-circle"></div>
+        <span class="phone_text">Tư vấn miễn phí</span>
+    </a>
+</div>
+<div class="alo-floating left">
+    <a href="tel:<?php echo $this->settings['hotline'] ?>" title="Liên hệ với chúng tôi"><i class="fa fa-phone"></i><strong><?php echo $this->settings['hotline'] ?></strong></a>
+</div>

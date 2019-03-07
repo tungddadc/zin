@@ -499,5 +499,6 @@
     <!-- Main Container End -->
     <script>
         var urlCurrentMenu = '<?php echo !empty($oneParent) ? getUrlCateProduct($oneParent) : '' ?>';
+        var is_realtime_visitor = true;
     </script>
 <?php endif; ?>
