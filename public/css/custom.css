@@ -2306,3 +2306,8 @@ coccoc-alo-number::-ms-clear {
         margin-left: 10px
     }
 }
+
+.blog_entry .entry-content img{
+    max-width: 90%;
+    height: auto;
+}
