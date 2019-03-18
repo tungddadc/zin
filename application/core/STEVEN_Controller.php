@@ -214,13 +214,15 @@ class Admin_Controller extends STEVEN_Controller
 
     public function check_auth()
     {
-        if (($this->_controller !== 'user' || ($this->_controller === 'user' && !in_array($this->_method, ['login', 'ajax_login']))) && !$this->ion_auth->logged_in()) {
+        //die('check auth');
+        if (($this->_controller !== 'user'
+                || ($this->_controller === 'user' && !in_array($this->_method, ['login', 'ajax_login','logout']))
+            ) && !$this->ion_auth->logged_in()) {
             //chưa đăng nhập thì chuyển về page login
             redirect(site_admin_url('user/login') . '?url=' . urlencode(current_url()), 'refresh');
-
         } else {
             if ($this->ion_auth->logged_in()) {
-                if ($this->session->admin_group_id === 2) redirect(site_url());
+                //if ($this->session->admin_group_id === 2) redirect(site_url());
                 if ($this->ion_auth->in_group(1) != true) {
                     if (!$this->session->admin_permission) {
                         $this->load->model('Groups_model', 'group');
@@ -232,10 +234,9 @@ class Admin_Controller extends STEVEN_Controller
                             $this->session->admin_group_id = (int)$group->group_id;
                         }
                     }
-                    $controller = $this->router->fetch_class();
-                    if (!in_array($controller, array('dashboard'))) {
-                        if (!$this->session->admin_permission[$controller]['view']) {//check quyen view
-                            redirect(site_admin_url('dashboard/notPermission'));
+                    if (!in_array($this->_controller, array('dashboard')) && $this->_method !== 'logout') {
+                        if (!$this->session->admin_permission[$this->_controller]['view']) {//check quyen view
+                            $this->load->view($this->template_main, ['main_content' => $this->load->view($this->template_path.'not_permission', [], TRUE)]);
                         }
                     }
                 } else {

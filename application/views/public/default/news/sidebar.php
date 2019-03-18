@@ -17,14 +17,14 @@
             ?>
             <li>
               <figure class="featured-thumb">
-                <a href="<?php getUrlNews($item) ?>" title="<?php echo getTitle($item) ?>">
+                <a href="<?php echo getUrlNews($item) ?>" title="<?php echo getTitle($item) ?>">
                   <img width="80" height="53" alt="<?php echo getTitle($item) ?>"
                        src="<?php echo getImageThumb($item->thumbnail, 80, 53, true) ?>">
                 </a>
               </figure>
               <!--featured-thumb-->
               <h4>
-                <a <a href="<?php getUrlNews($item) ?>"
+                <a <a href="<?php echo getUrlNews($item) ?>"
                       title="<?php echo getTitle($item) ?>"><?php echo $item->title ?></a>
               </h4>
               <p class="post-meta"><i class="icon-calendar"></i>

@@ -72,18 +72,12 @@ class News extends Public_Controller
         if ($this->input->get('lang')) {
             redirect(getUrlNews(['slug' => $oneItem->slug, 'id' => $oneItem->id]));
         }
-        $data['oneCategory'] = $oneCategory = $this->_data->getOneCateIdById($id);
+        //$data['oneCategory'] = $oneCategory = $this->_data->getOneCateIdById($id);
 
-        $data['listCategory'] = $listCategory = $this->_data->getCateIdById($id);
-        foreach ($data['listCategory'] as $key => $value) {
-            $list_cate = $value;
-            // dump($list_cate);
-        }
-
-        if (!empty($data['oneCategory'])) $data['oneParent'] = $oneCategoryParent = $this->_data_category->_recursive_one_parent($this->_all_category, $data['oneCategory']->id);
+        /*if (!empty($data['oneCategory'])) $data['oneParent'] = $oneCategoryParent = $this->_data_category->_recursive_one_parent($this->_all_category, $data['oneCategory']->id);
         if (!empty($data['oneParent'])) {
             $data['list_category_child'] = $this->_data_category->getCategoryChild($data['oneParent']->id, $this->session->public_lang_code);
-        }
+        }*/
 
         $data['oneItem'] = $oneItem;
 
