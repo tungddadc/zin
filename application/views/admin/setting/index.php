@@ -385,17 +385,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 
                             <div class="form-group">
                                 <label>Thông tin bảo hành</label>
-                                <textarea name="block[warranty]" id="block_warranty" class="form-control tinymce"><?php echo !empty($block['warranty']) ? $block['warranty'] : ''; ?></textarea>
+                                <textarea name="block[warranty]" id="block_warranty" class="form-control summernote"><?php echo !empty($block['warranty']) ? $block['warranty'] : ''; ?></textarea>
                             </div>
 
                             <div class="form-group">
                                 <label>Quy định đổi trả</label>
-                                <textarea name="block[return]"id="block_return" class="form-control tinymce"><?php echo !empty($block['return']) ? $block['return'] : ''; ?></textarea>
+                                <textarea name="block[return]"id="block_return" class="form-control summernote"><?php echo !empty($block['return']) ? $block['return'] : ''; ?></textarea>
                             </div>
 
                             <div class="form-group">
                                 <label>Tài khoản ngân hàng</label>
-                                <textarea name="block[bank]" id="block_bank" class="form-control tinymce"><?php echo !empty($block['bank']) ? $block['bank'] : ''; ?></textarea>
+                                <textarea name="block[bank]" id="block_bank" class="form-control summernote"><?php echo !empty($block['bank']) ? $block['bank'] : ''; ?></textarea>
                             </div>
                         </div>
                         <div class="tab-pane" id="tab_popup" role="tabpanel">

@@ -105,7 +105,8 @@ class Home extends Public_Controller
         $params = array(
             'lang_code' => $this->session->userdata('public_lang_code'),
             'is_status' => 1,
-            'limit' => 3
+            'limit' => 3,
+            'order' => ['created_time' => 'DESC']
         );
         return $postModel->getData($params);
     }

@@ -102,7 +102,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
         <div class="coccoc-alo-ph-circle"></div>
         <div class="coccoc-alo-ph-circle-fill"></div>
         <div class="coccoc-alo-ph-img-circle"></div>
-        <span class="phone_text">Tư vấn miễn phí</span>
+        <span class="phone_text">Hotline: <?php echo $this->settings['hotline'] ?></span>
     </a>
 </div>
 <div class="alo-floating left">

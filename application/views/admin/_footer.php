@@ -12,8 +12,8 @@
             <div class="m-stack__item m-stack__item--left m-stack__item--middle m-stack__item--last">
 							<span class="m-footer__copyright">
 								2018 &copy; Developer by
-								<a href="https://fb.me/steven.mucian" class="m-link">
-									Steven Mucian
+								<a href="https://zinlinhkien.com.vn" class="m-link">
+									Zin Linh Kiện
 								</a>
 							</span>
             </div>
