@@ -242,31 +242,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                             </div>
 
                                             <div class="form-group">
-                                                <label>Mua hàng & CSKH</label>
+                                                <label>Phòng kinh doanh</label>
                                                 <input name="contact[<?php echo $lang_code; ?>][phone]"
-                                                       placeholder="Mua hàng & CSKH"
+                                                       placeholder="Phòng kinh doanh"
                                                        class="form-control" type="text"
                                                        value="<?php echo !empty($contact[$lang_code]['phone']) ? $contact[$lang_code]['phone'] : ''; ?>"/>
                                             </div>
 
                                             <div class="form-group">
-                                                <label>Tư vấn kỹ thuật</label>
+                                                <label>Phòng kỹ thuật</label>
                                                 <input name="contact[<?php echo $lang_code; ?>][phone1]"
-                                                       placeholder="Tư vấn kỹ thuật"
+                                                       placeholder="Phòng kỹ thuật"
                                                        class="form-control" type="text"
                                                        value="<?php echo !empty($contact[$lang_code]['phone1']) ? $contact[$lang_code]['phone1'] : ''; ?>"/>
                                             </div>
                                             <div class="form-group">
-                                                <label>Liên hệ làm đại lý</label>
+                                                <label>Phòng hành chính nhân sự</label>
                                                 <input name="contact[<?php echo $lang_code; ?>][phone2]"
-                                                       placeholder="Liên hệ làm đại lý"
+                                                       placeholder="Phòng hành chính nhân sự"
                                                        class="form-control" type="text"
                                                        value="<?php echo !empty($contact[$lang_code]['phone2']) ? $contact[$lang_code]['phone2'] : ''; ?>"/>
                                             </div>
                                             <div class="form-group">
-                                                <label>Mời quảng cáo</label>
+                                                <label>Chăm sóc khách hàng và xử lý khiếu nại</label>
                                                 <input name="contact[<?php echo $lang_code; ?>][phone3]"
-                                                       placeholder="Mời quảng cáo"
+                                                       placeholder="Chăm sóc khách hàng và xử lý khiếu nại"
                                                        class="form-control" type="text"
                                                        value="<?php echo !empty($contact[$lang_code]['phone3']) ? $contact[$lang_code]['phone3'] : ''; ?>"/>
                                             </div>

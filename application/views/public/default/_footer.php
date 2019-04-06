@@ -51,10 +51,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                     <h4>Liên hệ với chúng tôi</h4>
                     <?php $contact = $this->settings['contact'][$this->session->userdata('public_lang_code')]; ?>
                     <div class="contacts-info">
-                        <address><i class="add-icon"></i><?php echo $contact['title'] ?>. <?php echo $contact['address'] ?></address>
-                        <div class="phone-footer"><i class="building-icon"></i>Văn phòng: <?php echo $this->settings['address_office'] ?></div>
-                        <div class="phone-footer"><i class="phone-icon"></i><?php echo $contact['phone'] ?></div>
-                        <div class="email-footer"><i class="email-icon"></i><a href="mailto:<?php echo $contact['email'] ?>"><?php echo $contact['email'] ?></a></div>
+                        <div class="phone-footer"><i class="phone-icon"></i>Kinh Doanh: <?php echo $contact['phone'] ?> ấn phím số 1</div>
+                        <div class="phone-footer"><i class="phone-icon"></i>Kỹ Thuật: <?php echo $contact['phone1'] ?> ấn phím số 2</div>
+                        <div class="phone-footer"><i class="phone-icon"></i>HCNS: <?php echo $contact['phone2'] ?> ấn phím số 3</div>
+                        <div class="phone-footer"><i class="phone-icon"></i>CSKH: <?php echo $contact['phone3'] ?> ấn phím số 4</div>
                     </div>
                 </div>
             </div>

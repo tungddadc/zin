@@ -100,9 +100,7 @@ if (!function_exists('getUrlTag')) {
 
 if (!function_exists('getUrlSearch')) {
     function getUrlSearch($keyword){
-        $_this =& get_instance();
-        $slug = $_this->toSlug($keyword);
-        $linkReturn = BASE_URL."search/$slug";
+        $linkReturn = BASE_URL."search/$keyword";
         return $linkReturn;
     }
 }

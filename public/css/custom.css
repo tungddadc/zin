@@ -2311,3 +2311,6 @@ coccoc-alo-number::-ms-clear {
     max-width: 90%;
     height: auto;
 }
+.phone-footer{
+    font-size:12px;
+}
