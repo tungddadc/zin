@@ -267,7 +267,7 @@ class STEVEN_Model extends CI_Model
 	}
 
 
-	public function getSelect2($ids){
+	public function getSelect2($ids,$status=''){
 		$this->db->select("$this->table.id, title AS text");
 		$this->db->from($this->table);
 		if(!empty($this->table_trans)) {
@@ -275,9 +275,10 @@ class STEVEN_Model extends CI_Model
             $this->db->where("$this->table_trans.language_code",$this->session->userdata('admin_lang'));
         }
 		if(is_array($ids)) $this->db->where_in("$this->table.id",$ids);
-		else $this->db->where("$this->table.id",$ids);
 
-		$query = $this->db->get();
+		else $this->db->where("$this->table.id",$ids);
+    if(!empty($status)) $this->db->where("$this->table.is_status",$status);
+      $query = $this->db->get();
 		return $query->result();
 	}
 

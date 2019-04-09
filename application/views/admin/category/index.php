@@ -144,6 +144,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                                                 <label>Tóm tắt</label>
                                                                 <textarea name="language[<?php echo $lang_code;?>][description]" placeholder="Tóm tắt (<?php echo $lang_name ?>)" class="form-control" rows="5"></textarea>
                                                             </div>
+                                                          <div class="form-group">
+                                                            <label>Nội dung</label>
+                                                            <textarea name="language[<?php echo $lang_code;?>][content]" placeholder="Nội dung (<?php echo $lang_name ?>)" class="form-control tinymce"></textarea>
+                                                          </div>
                                                         </div>
                                                         <div class="col-sm-6 col-xs-12">
                                                             <?php $this->load->view($this->template_path.'_block/seo_meta',['lang_code'=>$lang_code]) ?>

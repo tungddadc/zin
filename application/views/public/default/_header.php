@@ -13,15 +13,22 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 <header>
     <div class="header-container">
         <div class="container">
-            <div class="row">
+            <div class="flex_row">
                 <!-- Header Language -->
-                <div class="col-xs-12 col-md-4 pull-left">
+                <div class="pull-left">
                     <div class="welcome-msg">Tổng Đài CSKH: <?php echo $this->settings['hotline'] ?></div>
                 </div>
                 <!-- Header Top Links -->
-                <div class="col-xs-12 col-md-8 pull-right hidden-xs">
+                <div class="pull-right hidden-xs">
                     <div class="toplinks">
                         <div class="links">
+                          <div class="check">
+                            <a title="Tin tức" href="<?php echo base_url('tin-tuc-tong-hop-c555') ?>">
+                              <span class="hidden-xs">Tin tức</span>
+                              <span class="icon_new"><img src="<?php echo $this->templates_assets ?>images/new.png" alt="New"></span>
+                            </a>
+                          </div>
+
                             <?php if ($this->session->userdata('is_logged')): ?>
                                 <div class="check">
                                     <a title="<?php echo $this->_user_login->fullname ?>"

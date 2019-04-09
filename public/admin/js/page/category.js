@@ -56,6 +56,7 @@ $(function() {
     loadCategory();
     AJAX_CRUD_MODAL.init();
     SEO.init_slug();
+    AJAX_CRUD_MODAL.tinymce();
 
     $('[name="is_status"]').on("change", function () {
         table.search($(this).val(), "is_status")

@@ -38,6 +38,11 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                                 </div>
                             </div>
                         </div>
+                      <?php if(!empty($oneItem->content)): ?>
+                      <div class="des_cat">
+                        <?php echo $oneItem->content ?>
+                      </div>
+                      <?php endif; ?>
                     </div>
                     <article id="content_ajax" class="col-main">
                         <div class="toolbar">

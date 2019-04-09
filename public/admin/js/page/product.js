@@ -67,6 +67,7 @@ $(function() {
     loadCategory();
     loadBrand();
     loadProductRelated();
+    loadPostRelated();
     loadProductSimilar();
 
     loadProperty('color');
@@ -151,6 +152,7 @@ $(function() {
                     loadCategory(response.data_category);
                     loadBrand(response.data_brand);
                     loadProductRelated(response.data_related);
+                    loadPostRelated(response.post_related);
                     loadProductSimilar(response.data_similar);
 
                     loadProperty('color',response.data_property);
@@ -345,6 +347,38 @@ function loadProductRelated(dataSelected) {
     });
     if (typeof dataSelected !== 'undefined') selector.find('> option').prop("selected", "selected").trigger("change");
 }
+
+function loadPostRelated(dataSelected) {
+    let selector = $('select.post_related');
+    selector.select2({
+        placeholder: 'Chọn bài viết',
+        allowClear: !0,
+        multiple: !0,
+        data: dataSelected,
+        ajax: {
+            url: url_ajax_load_post,
+            dataType: 'json',
+            delay: 250,
+            data: function(e) {
+                return {
+                    q: e.term,
+                    page: e.page
+                }
+            },
+            processResults: function(e, t) {
+                return t.page = t.page || 1, {
+                    results: e,
+                    pagination: {
+                        more: 30 * t.page < e.total_count
+                    }
+                }
+            },
+            cache: !0
+        }
+    });
+    if (typeof dataSelected !== 'undefined') selector.find('> option').prop("selected", "selected").trigger("change");
+}
+
 
 function loadProductSimilar(dataSelected) {
     let selector = $('select.data_similar');

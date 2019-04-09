@@ -42,10 +42,20 @@
         <?php
         $cats = getCategoryByType(0, 'post');
         if (!empty($cats)) foreach ($cats as $item) {
+          $catsChild=getCategoryByType($item->id, 'post');
           ?>
-          <li class="cat-item cat-item-19599"><a title="<?php echo getTitle($item) ?>"
+          <li class="cat-item cat-item-19599">
+            <a title="<?php echo getTitle($item) ?>"
               href="<?php echo getUrlCateNews($item) ?>"><?php echo $item->title; ?></a></li>
           <?php
+          if(!empty($catsChild)) foreach ($catsChild as $val){
+            ?>
+            <li class="cat-item cat-item-19599">
+              <a title="<?php echo getTitle($val) ?>"
+                                                   href="<?php echo getUrlCateNews($val) ?>"><?php echo $val->title; ?></a></li>
+            <?php
+          }
+
         }
         ?>
 

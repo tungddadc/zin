@@ -11,6 +11,7 @@ class Product extends Admin_Controller
     protected $_data;
     protected $_data_category;
     protected $_data_property;
+    protected $_data_post;
 
     const STATUS_CANCEL = 0;
     const STATUS_ACTIVE = 1;
@@ -20,10 +21,11 @@ class Product extends Admin_Controller
         parent::__construct();
         //tải thư viện
         //$this->lang->load('category');
-        $this->load->model(['category_model','property_model','product_model']);
+        $this->load->model(['category_model','property_model','product_model','post_model']);
         $this->_data = new Product_model();
         $this->_data_category = new Category_model();
         $this->_data_property = new Property_model();
+        $this->_data_post = new Post_model();
     }
 
     public function index(){
@@ -123,6 +125,7 @@ class Product extends Admin_Controller
 
     private function save_property($id, $data){
         $tmpProperty = [];
+        if(!empty($id)) $this->_data_property->delete(array("product_id"=>$id),$this->_data->table_property);
         if(!empty($data)) foreach ($data as $type => $item){
             if(is_array($item)) foreach ($item as $v){
                 $tmp["product_id"] = $id;
@@ -136,7 +139,7 @@ class Product extends Admin_Controller
                 $tmpProperty[] = $tmp;
             }
         }
-        if(!$this->_data->insertMultiple($tmpProperty, $this->_data->table_property)) {
+        if(!empty($tmpProperty)) if(!$this->_data->insertMultiple($tmpProperty, $this->_data->table_property)) {
             $message['type'] = 'error';
             $message['message'] = "Thêm {$this->_data->table_property} thất bại !";
             log_message('error', $message['message'] . '=>' . json_encode($tmpProperty));
@@ -186,6 +189,10 @@ class Product extends Admin_Controller
                 $idSimilar = json_decode($oneItem->data_similar);
                 $output['data_similar'] = $this->_data->getSelect2($idSimilar);
             }
+          if(!empty($oneItem->post_related)){
+            $idPost = json_decode($oneItem->post_related,true);
+            $output['post_related'] = $this->_data_post->getSelect2($idPost,1);
+          }
             $this->returnJson($output);
         }
     }
@@ -196,10 +203,11 @@ class Product extends Admin_Controller
         $id = $data['id'];
         $data_trans = $data['language'];
         $data_category = $data['category_id'];
-        $data_property = $data['property_id'];
         unset($data['language']);
         unset($data['category_id']);
-        unset($data['property_id']);
+          $data_property = $data['property_id'];
+          unset($data['property_id']);
+
         if($this->_data->update(['id' => $id],$data, $this->_data->table)){
             $this->save_language($id, $data_trans);
             $this->save_category($id, $data_category);
@@ -298,16 +306,17 @@ class Product extends Admin_Controller
         $data = $this->input->post();
         if(!empty($data['is_status'])) $data['is_status'] = 1;else $data['is_status'] = 0;
         if(!empty($data['is_featured'])) $data['is_featured'] = 1;else $data['is_featured'] = 0;
-        if(!empty($data['album'])) {
-            $data['album'] = json_encode($data['album']);
-        }
-        if(!empty($data['data_similar'])) {
-            $data['data_similar'] = json_encode($data['data_similar']);
-        }
-        if(!empty($data['data_related'])) {
-            $data['data_related'] = json_encode($data['data_related']);
-        }
-        return $data;
+        if(!empty($data['album'])) $data['album'] = json_encode($data['album']);
+        else $data['album'] = '';
+        if(!empty($data['data_similar'])) $data['data_similar'] = json_encode($data['data_similar']);
+        else $data['data_similar'] ='';
+        if(!empty($data['data_related']))   $data['data_related'] = json_encode($data['data_related']);
+        else $data['data_related'] ='';
+        if(!empty($data['post_related']))   $data['post_related'] = json_encode($data['post_related']);
+        else $data['post_related'] ='';
+        if(!isset($data['property_id']))   $data['property_id'] = '';
+
+      return $data;
     }
 
 

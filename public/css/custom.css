@@ -2314,3 +2314,59 @@ coccoc-alo-number::-ms-clear {
 .phone-footer{
     font-size:12px;
 }
+.post_related{
+    display: flex;
+    flex-direction: column;
+}
+.post_related h2{
+    background-color: rgb(190, 30, 45);
+    line-height: 2;
+    font-size: 26px;
+    color: #fff;
+    text-align: center;
+    margin-top: 0;
+}
+.post_related .item{
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #E0E0E0;
+}
+.post_related .item:last-child{
+    border-bottom: 0;
+}
+.post_related .item a{
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.post_related .item a:hover h3{
+    color: rgb(190, 30, 45);
+}
+.post_related .item a .left{
+    flex: 0 0 100px;
+}
+.post_related .item a .right{
+    padding-left: 10px;
+}
+.post_related .item a .right h3{
+    margin-bottom: 0;
+}
+._post_related h3{
+    font-size: 24px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+._post_related ul{
+    padding-left: 15px;
+}
+._post_related ul li a:hover{
+    transition: .2s;
+    transform: translate(10px,0);
+    padding-left: 10px;
+}
+.icon_new img{
+    width: 28px;
+    margin-top: -13px;
+    margin-left: -2px;
+}

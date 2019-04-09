@@ -273,6 +273,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                                 <select name="data_related[]" class="form-control m-select2 data_related" style="width: 100%;"></select>
                                             </div>
                                         </div>
+                                      <div class="form-group">
+                                        <label>Bài viết liên quan:</label>
+                                        <div class="input-group">
+                                          <select name="post_related[]" class="form-control m-select2 post_related" style="width: 100%;"></select>
+                                        </div>
+                                      </div>
                                         <div class="form-group">
                                             <label for="thumbnail">Ảnh đại diện</label>
                                             <div class="input-group m-input-group m-input-group--air">
@@ -380,4 +386,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
         url_ajax_load_property = '<?php echo site_admin_url('property/ajax_load') ?>',
         url_ajax_load_brand = '<?php echo site_admin_url('category/ajax_load/brand') ?>',
         url_ajax_load_product = '<?php echo site_admin_url('product/ajax_load') ?>';
+        url_ajax_load_post= '<?php echo site_admin_url('post/ajax_load') ?>';
 </script>

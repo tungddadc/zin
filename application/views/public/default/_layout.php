@@ -346,6 +346,26 @@ echo $this->minify->deploy_js(); ?>
 <?php if (GG_CAPTCHA_MODE == true): ?>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <?php endif; ?>
-<?php echo !empty($this->settings['script_body']) ? $this->settings['script_body'] : '' ?>
+<?php //echo !empty($this->settings['script_body']) ? $this->settings['script_body'] : '' ?>
+<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+<script>
+  var OneSignal = window.OneSignal || [];
+  OneSignal.push(["init", {
+    appId: "23da72ca-689d-4b93-ba2f-fc4856c58a9f",
+    autoRegister: false,
+    notifyButton: {
+      enable: true
+    },
+    promptOptions: {
+      siteName: "Thành chi Mobile",
+      actionMessage: "Bạn có muốn nhận thông báo khi chúng tôi có tin mới hay không?",
+      acceptButtonText: "ĐỒNG Ý",
+      cancelButtonText: "KHÔNG, CẢM ƠN",
+    }
+  }]);
+  OneSignal.push(function() {
+    OneSignal.showHttpPrompt();
+  });
+</script>
 </body>
 </html>

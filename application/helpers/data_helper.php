@@ -376,3 +376,17 @@ if (!function_exists('getFeedback')) {
         return $data;
     }
 }
+if (!function_exists('getPostRelated')) {
+    function getPostRelated($ids=array()){
+        $_this =& get_instance();
+        $_this->load->model('post_model');
+        $postModel = new Post_model();
+        $params=array(
+          'in'=>$ids,
+          'is_status'=>1,
+          'order'=>array('post.id'=>'DESC')
+        );
+        $data=$postModel->getData($params);
+        return $data;
+    }
+}

@@ -63,6 +63,33 @@
                                                 </div>
                                             </div>
                                         </div>
+                                      <?php
+                                      if(!empty($oneItem->post_related)){
+                                        $listId=json_decode($oneItem->post_related,true);
+                                        if(!empty($listId)) $listPostRelated=getPostRelated($listId);
+                                        if(!empty($listPostRelated)){
+                                          ?>
+                                          <div class="post_related">
+                                            <h2>Tin tức liên quan</h2>
+                                            <?php foreach ($listPostRelated as $item): ?>
+                                            <div class="item">
+                                              <a href="<?php echo getUrlNews($item) ?>">
+                                              <div class="left">
+                                                <img src="<?php echo getImageThumb($item->thumbnail,300,200,true) ?>" alt="<?php echo $item->title ?>">
+                                              </div>
+                                                <div class="right">
+                                                  <h3><?php echo $item->title ?></h3>
+                                                </div>
+                                              </a>
+                                            </div>
+                                          <?php endforeach; ?>
+                                          </div>
+                                          <?php
+                                        }
+                                      }
+
+                                      ?>
+
                                     </div>
                                     <!-- end: more-images -->
                                 </div>

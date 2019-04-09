@@ -55,7 +55,7 @@ class Users_model extends STEVEN_Model
         return $this->db->get($this->table)->row();
     }
 
-    public function getSelect2($ids){
+    public function getSelect2($ids,$status=''){
         $this->db->select("$this->table.id, CONCAT(fullname, ' (', email, ')') AS text");
         $this->db->from($this->table);
         if(is_array($ids)) $this->db->where_in("$this->table.id",$ids);
@@ -64,7 +64,6 @@ class Users_model extends STEVEN_Model
         $query = $this->db->get();
         return $query->result();
     }
-
     public function updateField($account_id, $key, $value)
     {
         $this->db->where($this->table . '.id', $account_id);
