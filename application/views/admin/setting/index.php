@@ -54,6 +54,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                     Tùy chỉnh block
                                 </a>
                             </li>
+                          <li class="nav-item m-tabs__item">
+                            <a class="nav-link m-tabs__link" data-toggle="tab" href="#tab_agency" role="tab" aria-selected="false">
+                              <i class="la la-bookmark"></i>
+                              Đại lý
+                            </a>
+                          </li>
                             <!--<li class="nav-item m-tabs__item">
                                 <a class="nav-link m-tabs__link" data-toggle="tab" href="#tab_popup" role="tab" aria-selected="false">
                                     <i class="la la-picture-o"></i>
@@ -476,6 +482,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                        value="<?php echo isset($smtp_port) ? $smtp_port : ''; ?>"/>
                             </div>
                         </div>
+
+                      <div class="tab-pane" id="tab_agency" role="tabpanel">
+                        <div class="box-body">
+                          <div class="form-group">
+                            <label>Cửa hàng trên toàn quốc</label>
+                            <input name="total_agency" placeholder="Cửa hàng trên toàn quốc"
+                                   class="form-control" type="text"
+                                   value="<?php echo isset($total_agency) ? $total_agency : ''; ?>"/>
+                          </div>
+                          <div class="form-group">
+                            <label>Phục vụ khách mỗi ngày</label>
+                            <input name="serve_customer"
+                                   placeholder="Phục vụ khách mỗi ngày"
+                                   class="form-control" type="text"
+                                   value="<?php echo isset($serve_customer) ? $serve_customer : ''; ?>"/>
+                          </div>
+                          <div class="form-group">
+                            <label>Giờ mở cửa</label>
+                            <input name="open_door"
+                                   placeholder="Giờ mở cửa"
+                                   class="form-control" type="text"
+                                   value="<?php echo isset($open_door) ? $open_door : ''; ?>"/>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                 </div>
             </div>

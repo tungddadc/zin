@@ -62,6 +62,8 @@ $route['cart'] = 'cart/index';
 //Profile
 $route['account'] = 'account/index';
 //Profile
+$route['(:any)-ag(:num)'] = 'agency/detail/$2';
+
 /*Route post*/
 $route['(:any)-c(:num)'] = 'news/category/$2';
 $route['(:any)-c(:num)/page/(:num)'] = 'news/category/$2/$3';

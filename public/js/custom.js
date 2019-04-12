@@ -1,3 +1,4 @@
+var flagSearch = true;
 var LOC = {
     loadCity: function loadCity(dataSelected) {
         let city_id = $('select[name="city_id"]');
@@ -894,5 +895,82 @@ jQuery(document).ready(function () {
             }
         }
     })
-
+    getAgencyNear();
+    filterAgency();
 });
+
+function getAgencyNear() {
+    $('.list-agency__title a').on('click',function () {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showLocation);
+        } else {
+
+            alert('Geolocation is not supported by this browser.');
+        }
+    });
+}
+function showLocation(position) {
+
+    var latitude = position.coords.latitude;
+    var longitude = position.coords.longitude;
+    $.ajax({
+        type:'POST',
+        url: base_url +  'agency/agencyNear',
+        data:{lat:latitude,log:longitude},
+        success:function(data){
+            if(msg){
+                $(".list-agency__content").html(msg);
+            }else{
+                $(".list-agency__content").html('Not Available');
+            }
+        }
+    });
+}
+function filterAgency() {
+    $('.form_filter [name="city_id"],.form_filter [name="district_id"]').on('change',function () {
+        let params={
+            city_id:$('[name="city_id"]').val(),
+            district_id:$('[name="district_id"]').val(),
+        };
+        $.ajax({
+            type:'POST',
+            url: base_url +  'agency/listAgency',
+            data:params,
+            success:function(data){
+                if(data){
+                    $(".list-agency__content").html(data);
+                }else{
+                    $(".list-agency__content").html('Không có cửa hàng, đại lý nào phù hợp');
+                }
+            }
+        });
+    });
+}
+function live_search(key_search) {
+    if (key_search.length > 3) {
+        if (flagSearch) {
+            flagSearch = false;
+            $.ajax({
+                async: true,
+                cache: false,
+                type: 'POST',
+                url: base_url +  'agency/filterAgency',
+                dataType: 'html',
+                data: {key_search: key_search},
+                success: function (data) {
+                    $('.result').html(data);
+                    $('.result').addClass('gogo');
+                    flagSearch = true;
+                }
+            });
+        }
+    }else{
+        $('.result').removeClass('gogo');
+    }
+
+    $(window).click(function (e) {
+        if ($('.result').has(e.target).length == 0 && !$('.result').is(e.target)) {
+            $('.result').removeClass('gogo');
+        }
+    });
+}
