@@ -44,6 +44,26 @@ class Page_model extends STEVEN_Model
     }
   }
 
+  public function getByLayout($layout,$select='*',$lang_code = null){
+
+    $this->db->select($select);
+    $this->db->from($this->table);
+    if(!empty($this->table_trans)) $this->db->join($this->table_trans,"$this->table.id = $this->table_trans.id");
+    $this->db->where("$this->table.layout",$layout);
+    if(empty($this->table_trans)){
+      $query = $this->db->get();
+      return $query->row();
+    }
+
+    if(!empty($lang_code)){
+      $this->db->where("$this->table_trans.language_code",$lang_code);
+      $query = $this->db->get();
+      return $query->row();
+    }else{
+      $query = $this->db->get();
+      return $query->result();
+    }
+  }
   public function slugToId($slug){
     $this->db->select('tb1.id');
     $this->db->from($this->table.' AS tb1');

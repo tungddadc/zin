@@ -6,7 +6,7 @@
   <section class="main-container" style="margin-top: 0">
     <div class="container">
       <div class="top-agency">
-        <img width="100%" src="<?php echo $this->templates_assets ?>images/background_sieu_thi_large.jpg"
+        <img width="100%" src="<?php echo !empty($oneItem->banner)?getImageThumb($oneItem->banner): $this->templates_assets.'images/background_sieu_thi_large.jpg'; ?>"
              alt="Hệ thống siêu thị">
         <div class="top-agency__abs">
           <ul>
@@ -82,21 +82,14 @@
                 <i class="iconshop-staff"></i>&nbsp;Nhân viên thân thiện, nhiệt tình
               </li>
               <li>
-                <i class="iconshop-return"></i><a href="/chinh-sach-bao-hanh-san-pham">&nbsp;Đổi trả sản phẩm trong 1
+                <i class="iconshop-return"></i><a href="/chinh-sach-doi-tra-san-pham.html">&nbsp;Đổi trả sản phẩm trong 1
                   tháng</a>
               </li>
               <li>
-                <i class="iconshop-guarantee"></i><a href="/bao-hanh">&nbsp;Hỗ trợ bảo hành chính hãng</a>
+                <i class="iconshop-guarantee"></i><a href="/chinh-sach-bao-hanh.html">&nbsp;Hỗ trợ bảo hành chính hãng</a>
               </li>
               <li>
-                <i class="iconshop-installment"></i><a href="/tra-gop">&nbsp;Có bán trả góp</a>
-              </li>
-              <li>
-                <i class="iconshop-money"></i><a href="/tien-ich">&nbsp;Thu tiền trả góp, tiền điện, nước, internet, nạp
-                  tiền điện thoại</a>
-              </li>
-              <li>
-                <i class="iconshop-ship"></i><a href="/giao-hang">&nbsp;Có giao hàng tận nơi</a>
+                <i class="iconshop-ship"></i><a href="/don-vi-van-chuyen.html">&nbsp;Có giao hàng tận nơi</a>
               </li>
             </ul>
 

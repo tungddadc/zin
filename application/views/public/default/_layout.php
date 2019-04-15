@@ -298,11 +298,12 @@ switch ($this->_controller) {
 <?php $asset_js[] = 'jquery.form.min.js'; ?>
 <?php $asset_js[] = 'jquery.sticky-kit.min.js'; ?>
 <?php $asset_js[] = 'select2.min.js'; ?>
+<?php $asset_js[] = 'maps.js'; ?>
 <?php $asset_js[] = 'custom.js'; ?>
 <?php $asset_js[] = 'account.js'; ?>
 <?php $this->minify->js($asset_js);
 echo $this->minify->deploy_js(); ?>
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false" type="text/javascript"></script>
+<script src="https://maps.google.com/maps/api/js?key=<?php echo GG_KEY_MAP; ?>&libraries=places" type="text/javascript"></script>
 
 <script type="text/javascript">
     $(document).ready(function () {
