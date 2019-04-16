@@ -15,6 +15,11 @@
         <div id="maps-location" class="branches-map"></div>
         <div class="content">
           <?php echo $oneItem->content ?>
+          <?php
+            if(!empty($agencyNear))
+              echo $this->load->view($this->template_path . 'agency/list_agency', array('data' => $agencyNear, 'location' => true), true);
+
+          ?>
         </div>
         <div class="clearfix"></div>
         <div class="fb-comments" data-href="<?php echo current_url() ?>" width="100%" data-numposts="5"></div>

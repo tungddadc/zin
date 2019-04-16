@@ -34,6 +34,13 @@ class Post extends Admin_Controller
     $data['main_content'] = $this->load->view($this->template_path . $this->_controller . DIRECTORY_SEPARATOR . 'index', $data, TRUE);
     $this->load->view($this->template_main, $data);
   }
+  public function ask()
+  {
+    $data['heading_title'] = "Quản lý bài viết";
+    $data['heading_description'] = "Danh sách bài viết";
+    $data['main_content'] = $this->load->view($this->template_path . $this->_controller . DIRECTORY_SEPARATOR . 'ask', $data, TRUE);
+    $this->load->view($this->template_main, $data);
+  }
 
   public function ajax_list()
   {

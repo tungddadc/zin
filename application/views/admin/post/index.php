@@ -45,7 +45,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                         </label>
                                     </div>
                                     <div class="m-form__control">
-                                        <select class="form-control m-bootstrap-select category" name="category_id" style="width: 100%"></select>
+                                        <select class="form-control m-bootstrap-select filter_category" name="category_id" style="width: 100%"></select>
                                     </div>
                                 </div>
                                 <div class="d-md-none m--margin-bottom-10"></div>

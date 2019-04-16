@@ -67,7 +67,7 @@ class Agency extends Public_Controller
     $data['oneItem']=$oneItem;
     if (empty($oneItem)) show_404();
     if ($this->input->get('lang')) redirect(getUrlPage($oneItem));
-
+    $data['agencyNear'] = $this->_data->getAgenRecent(array('lat' => $oneItem->latitude, 'log' => $oneItem->longitude,'limit'=>5));
     $this->breadcrumbs->push("Trang chủ", base_url());
     $this->breadcrumbs->push($page->title, getUrlPage($page));
     $this->breadcrumbs->push($oneItem->title, getUrlAgency($oneItem));

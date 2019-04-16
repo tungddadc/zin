@@ -228,7 +228,7 @@ function loadCategory(dataSelected) {
     selector.select2({
         placeholder: 'Chọn danh mục',
         allowClear: !0,
-        multiple: !1,
+        multiple: true,
         data: dataSelected,
         ajax: {
             url: url_ajax_load_category,

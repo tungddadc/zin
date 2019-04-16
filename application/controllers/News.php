@@ -31,18 +31,17 @@ class News extends Public_Controller
 
   public function category($id, $page = 1)
   {
-    $oneItem = $this->_data_category->getByIdCached($id);
+    $oneItem = $this->_data_category->getById($id,'*',$this->_lang_code);
     if (empty($oneItem)) show_404();
     if ($oneItem->type !== 'post') show_404();
     $data['category'] = $oneItem;
-
     $data['oneParent'] = $oneParent = $this->_data_category->_recursive_one_parent($this->_all_category, $id);
     if (!empty($oneParent)) $this->_data_category->_recursive_child($this->_all_category, $oneParent->id);
     /*Lay list id con của category*/
     $this->_data_category->_recursive_child_id($this->_all_category, $id);
     $data['listCateId'] = $listCateId = $this->_data_category->_list_category_child_id;
     /*Lay list id con của category*/
-    $limit = 12;
+    $limit = 10;
     $params = array(
       'is_status' => 1, //0: Huỷ, 1: Hiển thị, 2: Nháp
       'lang_code' => $this->_lang_code,
@@ -51,6 +50,17 @@ class News extends Public_Controller
       'page' => $page
     );
     $data['data'] = $this->_data->getData($params);
+    $data['total'] = $this->_data->getTotal($params);
+    /*Pagination*/
+    $this->load->library('pagination');
+    $paging['base_url'] = getUrlCateNews(['slug' => $oneItem->slug, 'id' => $oneItem->id, 'page' => 1]);
+    $paging['first_url'] = getUrlCateNews(['slug' => $oneItem->slug, 'id' => $oneItem->id]);
+    $paging['total_rows'] = $data['total'];
+    $paging['per_page'] = $limit;
+    $this->pagination->initialize($paging);
+    $data['pagination'] = $this->pagination->create_links();
+    /*Pagination*/
+
     //SEO Meta
     $data['SEO'] = [
       'meta_title' => !empty($oneItem->meta_title) ? $oneItem->meta_title : $oneItem->title,

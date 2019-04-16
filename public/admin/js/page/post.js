@@ -67,6 +67,7 @@ $(function() {
     AJAX_CRUD_MODAL.init();
     AJAX_CRUD_MODAL.tinymce();
     SEO.init_slug();
+    loadCategoryFilter();
 
     $('[name="is_status"]').on("change", function () {
         table.search($(this).val(), "is_status")
@@ -127,6 +128,36 @@ $(function() {
 
 function loadCategory(dataSelected) {
     let selector = $('select.category');
+    selector.select2({
+        placeholder: 'Chọn danh mục',
+        allowClear: !0,
+        multiple: true,
+        data: dataSelected,
+        ajax: {
+            url: url_ajax_load_category,
+            dataType: 'json',
+            delay: 250,
+            data: function(e) {
+                return {
+                    q: e.term,
+                    page: e.page
+                }
+            },
+            processResults: function(e, t) {
+                return t.page = t.page || 1, {
+                    results: e,
+                    pagination: {
+                        more: 30 * t.page < e.total_count
+                    }
+                }
+            },
+            cache: !0
+        }
+    });
+    if (typeof dataSelected !== 'undefined') selector.find('> option').prop("selected", "selected").trigger("change");
+}
+function loadCategoryFilter(dataSelected) {
+    let selector = $('select.filter_category');
     selector.select2({
         placeholder: 'Chọn danh mục',
         allowClear: !0,
