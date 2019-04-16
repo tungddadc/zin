@@ -918,8 +918,8 @@ function showLocation(position) {
         url: base_url +  'agency/agencyNear',
         data:{lat:latitude,log:longitude},
         success:function(data){
-            if(msg){
-                $(".list-agency__content").html(msg);
+            if(data){
+                $(".list-agency__content").html(data);
             }else{
                 $(".list-agency__content").html('Not Available');
             }
