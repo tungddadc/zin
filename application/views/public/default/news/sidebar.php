@@ -1,66 +1,88 @@
-<aside class="col-left sidebar col-sm-3 col-xs-12 col-sm-pull-9">
-  <div class="side-banner">
-      <?php $bannerSidebarTop = listBannerByPosition(2);if(!empty($bannerSidebarTop)) foreach ($bannerSidebarTop as $item): ?>
-          <a href="<?php echo $item->url ?>" title="banner sidebar" rel="nofollow">
-              <img src="<?php echo getImageThumb($item->thumbnail,265,425,false,false) ?>" alt="banner sidebar">
-          </a>
-      <?php endforeach; ?>
-  </div>
+<aside class="sidebar col-sm-3 col-xs-12 ">
   <div class="widget_wrapper13" id="secondary" role="complementary">
-    <div class="popular-posts widget widget__sidebar wow bounceInUp animated" id="recent-posts-4">
-      <h3 class="widget-title"><span>Tin nổi bật</span></h3>
+    <div class="popular-posts widget widget__sidebar widget__event wow bounceInUp animated" id="recent-posts-4">
+      <h3 class="widget-title"><span>Sự kiện</span></h3>
       <div class="widget-content">
-        <ul class="posts-list unstyled clearfix">
-          <?php
-          $list_post = getPostNews();
-          if (!empty($list_post)) foreach ($list_post as $item):
-            ?>
-            <li>
-              <figure class="featured-thumb">
-                <a href="<?php echo getUrlNews($item) ?>" title="<?php echo getTitle($item) ?>">
-                  <img width="80" height="53" alt="<?php echo getTitle($item) ?>"
-                       src="<?php echo getImageThumb($item->thumbnail, 80, 53, true) ?>">
-                </a>
-              </figure>
-              <!--featured-thumb-->
-              <h4>
-                <a href="<?php echo getUrlNews($item) ?>"
-                      title="<?php echo getTitle($item) ?>"><?php echo $item->title ?></a>
-              </h4>
-              <p class="post-meta"><i class="icon-calendar"></i>
-                <time class="entry-date" datetime="<?php echo timeAgo($item->created_time,"c") ?>"><?php echo date('d/m/Y') ?></time>
-              </p>
-            </li>
-          <?php endforeach; ?>
-        </ul>
+        <?php
+        $list_post = getPostByCatNews('event', 2);
+        if (!empty($list_post)) foreach ($list_post as $item):
+          ?>
+          <div class="item">
+            <div class="date">
+              <?php echo date('m/y', strtotime($item->date_event)) ?>
+            </div>
+            <div class="info">
+              <h3><?php echo $item->title ?></h3>
+              <div class="location"><i class="fa fa-map-marker"
+                                       aria-hidden="true"></i> <?php echo $item->address_event ?></div>
+            </div>
+          </div>
+        <?php
+        endforeach;
+        ?>
       </div>
       <!--widget-content-->
     </div>
-    <div class="popular-posts widget widget_categories wow bounceInUp animated" id="categories-2">
-      <h3 class="widget-title"><span>Danh mục tin tức</span></h3>
-      <ul>
+    <div class="popular-posts widget widget_categories widget_product_new wow bounceInUp animated" id="categories-2">
+      <h3 class="widget-title"><span>Sản phẩm mới</span></h3>
+      <div class="widget-content">
         <?php
-        $cats = getCategoryByType(0, 'post');
-        if (!empty($cats)) foreach ($cats as $item) {
-          $catsChild=getCategoryByType($item->id, 'post');
+        $listProduct = getProductNew();
+        if (!empty($listProduct)) foreach ($listProduct as $item) {
           ?>
-          <li class="cat-item cat-item-19599">
-            <a title="<?php echo getTitle($item) ?>"
-              href="<?php echo getUrlCateNews($item) ?>"><?php echo $item->title; ?></a></li>
-          <?php
-          if(!empty($catsChild)) foreach ($catsChild as $val){
-            ?>
-            <li class="cat-item cat-item-19599">
-              <a title="<?php echo getTitle($val) ?>"
-                                                   href="<?php echo getUrlCateNews($val) ?>"><?php echo $val->title; ?></a></li>
-            <?php
-          }
+          <div class="item">
+            <div class="img">
+              <a href="<?php echo getUrlProduct($item) ?>">
+                <img src="<?php echo getImageThumb($item->thumbnail, 105, 105, false) ?>"
+                     alt="<?php echo $item->title ?>">
+              </a>
+            </div>
+            <div class="info">
+              <a href="<?php echo getUrlProduct($item) ?>">
+                <h3><?php echo $item->title ?></h3>
+              </a>
+              <div class="price">
+                <?php echo formatMoney($item->price) ?>
+              </div>
+              <?php
+              if (!empty($post_related)) {
+                $count = count(json_decode($item->post_related));
+                echo '<div class="count_news">' . $count . ' bài viết</div>';
+              }
+              ?>
 
+            </div>
+          </div>
+          <?php
         }
         ?>
-
-      </ul>
+      </div>
     </div>
     <!-- Banner Ad Block -->
+
+    <div class="popular-posts widget widget_categories widget_sale wow bounceInUp animated" id="categories-3">
+      <h3 class="widget-title"><span>Khuyến mại</span></h3>
+      <div class="widget-content">
+        <?php
+        $list_post = getPostByCatNews('sale', 5);
+        if (!empty($list_post)) foreach ($list_post as $key => $item) {
+          $img = ($key == 0) ? getImageThumb($item->thumbnail, 570, 320,true) : getImageThumb($item->thumbnail, 280, 150,true);
+          ?>
+          <div class="item">
+            <div class="img">
+              <a href="<?php echo getUrlCateNews($item) ?>">
+                <img src="<?php echo $img ?>" alt="<?php echo $item->title ?>">
+              </a>
+              <a href="<?php echo getUrlProduct($item) ?>">
+                <h3><?php echo $item->title ?></h3>
+              </a>
+            </div>
+          </div>
+          <?php
+        }
+        ?>
+      </div>
+    </div>
+
   </div>
 </aside>

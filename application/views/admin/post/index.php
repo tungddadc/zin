@@ -179,6 +179,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                                 <select name="category_id[]" class="form-control m-select2 category" style="width: 100%;"></select>
                                             </div>
                                         </div>
+                                      <div class="form-group">
+                                        <label>Ngày diễn ta sự kiện:</label>
+                                        <div class="input-group">
+                                          <input type="date" name="date_event" class="form-control">
+                                        </div>
+                                      </div>
+                                      <div class="form-group">
+                                        <label>địa chỉ diễn ta sự kiện:</label>
+                                        <div class="input-group">
+                                          <input type="text" name="address_event" class="form-control">
+                                        </div>
+                                      </div>
                                         <div class="form-group">
                                             <label>Nổi bật:</label>
                                             <div class="m-input">

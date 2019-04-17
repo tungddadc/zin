@@ -23,17 +23,17 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                     <div class="toplinks">
                         <div class="links">
                           <div class="check">
-                            <a title="Tin tức" href="<?php echo base_url('tin-tuc-tong-hop-c555') ?>">
+                            <a title="Tin tức" href="<?php echo base_url('tin-tuc.html') ?>">
                               <span class="hidden-xs">Tin tức</span>
                               <span class="icon_new"><img src="<?php echo $this->templates_assets ?>images/new.png" alt="New"></span>
                             </a>
                           </div>
-                          <div class="check">
-                            <a title="Tin tức" href="<?php echo base_url('hoi-dap-c576') ?>">
-                              <span class="hidden-xs">Hỏi đáp</span>
-                              <span class="icon_new"><img src="<?php echo $this->templates_assets ?>images/new.png" alt="New"></span>
-                            </a>
-                          </div>
+<!--                          <div class="check">-->
+<!--                            <a title="Tin tức" href="--><?php //echo base_url('hoi-dap-c576') ?><!--">-->
+<!--                              <span class="hidden-xs">Hỏi đáp</span>-->
+<!--                              <span class="icon_new"><img src="--><?php //echo $this->templates_assets ?><!--images/new.png" alt="New"></span>-->
+<!--                            </a>-->
+<!--                          </div>-->
 
                             <?php if ($this->session->userdata('is_logged')): ?>
                                 <div class="check">

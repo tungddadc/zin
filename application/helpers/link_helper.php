@@ -51,6 +51,8 @@ if (!function_exists('getUrlPage')) {
       $slug = $optional['slug'];
       $linkReturn .= "$slug.html";
     }
+    if (isset($optional['page'])) $linkReturn .= '/page/';
+
     return $linkReturn;
   }
 }

@@ -85,6 +85,7 @@ $route['tags/(:any)/page/(:num)']   = 'search/tags/$1/$2';
 
 //page
 $route['(:any).html'] = 'page/index/$1';
+$route['(:any).html/page/(:num)'] = 'page/index/$1/$2';
 //page
 /*Route product*/
 $route['(:any)-cp(:num)'] = 'product/category/$2';

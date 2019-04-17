@@ -25,15 +25,18 @@ class Page extends Public_Controller
       $this->_lang_code = $this->session->public_lang_code;
   }
 
-  public function index($slug)
+  public function index($slug,$page=1)
   {
     $id = $this->_data->slugToId($slug);
     $oneItem = $this->_data->getById($id, '', $this->session->public_lang_code);
     if (empty($oneItem)) show_404();
     if ($this->input->get('lang')) redirect(getUrlPage($oneItem));
     $data['oneItem'] = $oneItem;
-    if($oneItem->layout=='daily'){
-      $data['data']=$this->agency();
+    if ($oneItem->layout == 'daily') {
+      $data['data'] = $this->agency();
+    }
+    if ($oneItem->layout == 'news') {
+      $data['dataNews'] = $this->news($oneItem,$page);
     }
 
     //add breadcrumbs
@@ -63,6 +66,30 @@ class Page extends Public_Controller
       'limit' => 100
     );
     $data = $agencyModel->getData($params);
+    return $data;
+  }
+
+  private function news($oneItem, $page = 1)
+  {
+    $this->load->model('post_model');
+    $postModel = new Post_model();
+    $limit = 10;
+    $params = array(
+      'is_status' => 1, //0: Huỷ, 1: Hiển thị, 2: Nháp
+      'lang_code' => $this->_lang_code,
+      'limit' => $limit,
+      'page' => $page
+    );
+    $data['data'] = $postModel->getData($params);
+    $data['total'] = $postModel->getTotal($params);
+    /*Pagination*/
+    $this->load->library('pagination');
+    $paging['base_url'] = getUrlPage(['slug' => $oneItem->slug, 'page' => 1]);
+    $paging['first_url'] = getUrlPage(['slug' => $oneItem->slug]);
+    $paging['total_rows'] = $data['total'];
+    $paging['per_page'] = $limit;
+    $this->pagination->initialize($paging);
+    $data['pagination'] = $this->pagination->create_links();
     return $data;
   }
 
