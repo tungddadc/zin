@@ -2,7 +2,7 @@
 <section class="main-container col2-left-layout">
   <div class="container">
     <div class="row">
-      <div class="col-sm-9 col-sm-push-3">
+      <div class="col-sm-9 ">
         <article class="col-main" id="content_ajax">
           <div class="page-title">
             <h1 style="display: none"><?php echo $category->title ?></h1>
