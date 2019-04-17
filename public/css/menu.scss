@@ -673,7 +673,11 @@ header {
     margin-bottom: 10px;
     border-bottom: 1px solid $color-border;
     padding-bottom: 10px;
+    .featured-thumb{
+      margin: 0;
+    }
     .post-meta {
+      padding-bottom: 0;
       margin-bottom: 0px;
       text-align: left;
       ul{
