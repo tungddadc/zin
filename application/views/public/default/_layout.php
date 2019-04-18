@@ -349,7 +349,7 @@ echo $this->minify->deploy_js(); ?>
 <?php if (GG_CAPTCHA_MODE == true): ?>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <?php endif; ?>
-<?php //echo !empty($this->settings['script_body']) ? $this->settings['script_body'] : '' ?>
+<?php echo !empty($this->settings['script_body']) ? $this->settings['script_body'] : '' ?>
 <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
 <script>
   var OneSignal = window.OneSignal || [];
