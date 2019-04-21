@@ -172,6 +172,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                             <label>Layout style</label>
                                             <input name="layout" placeholder="Layout style" class="form-control" type="text" />
                                         </div>
+                                      <div class="form-group">
+                                            <label>Icon</label>
+                                            <input name="class" placeholder="Icon" class="form-control" type="text" />
+                                        </div>
                                         <div class="form-group">
                                             <label>
                                                 Trạng thái:

@@ -35,8 +35,8 @@ class Category extends Admin_Controller
         $this->get_list($data);
     }
 
-  public function ask(){
-    $data['heading_title'] = "Danh mục ";
+  public function faq(){
+    $data['heading_title'] = "Danh mục hỏi đáp";
     $data['heading_description'] = "Danh sách danh mục";
     $this->get_list($data);
   }
