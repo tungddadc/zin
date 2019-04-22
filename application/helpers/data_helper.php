@@ -429,3 +429,19 @@ if (!function_exists('getPostRelated')) {
     return $data;
   }
 }
+
+if (!function_exists('getFaqFeatured')) {
+  function getFaqFeatured()
+  {
+    $_this =& get_instance();
+    $_this->load->model('faq_model');
+    $postModel = new Faq_model();
+    $params = array(
+      'is_status' => 1,
+      'limit'=>5,
+      'order' => array('faq.is_status'=>'DESC','faq.id' => 'DESC')
+    );
+    $data = $postModel->getData($params);
+    return $data;
+  }
+}

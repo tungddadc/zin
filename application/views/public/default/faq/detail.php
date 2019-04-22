@@ -1,15 +1,11 @@
 <?php if (!empty($oneItem)):
-  $url = getUrlPage($oneItem);
-  extract($dataFaqs);
   ?>
   <!-- Main Container -->
   <section class="main-container col2-left-layout">
     <div class="container">
       <div class="main-faq">
-        <h1><?php echo $oneItem->title ?></h1>
         <div class="row row8">
           <div class="col-md-9">
-            <?php $this->load->view($this->template_path . 'faq/top'); ?>
             <div class="row row8">
               <div class="col-md-3">
                 <?php $this->load->view($this->template_path . 'faq/left'); ?>
@@ -21,14 +17,15 @@
                     <button type="submit">Tìm kiếm</button>
                     <i class="iconask-searchask"></i>
                   </form>
-                  <div class="content">
-                    <h2>HƯỚNG DẪN, THỦ THUẬT MỚI NHẤT</h2>
-                    <?php $this->load->view($this->template_path . 'faq/list-item', array('data' => $data)); ?>
-                    <?php if (!empty($pagination)): ?>
-                      <div class="pages text-center" style="margin-top: 30px">
-                        <?php echo $pagination ?>
-                      </div>
-                    <?php endif; ?>
+                  <div class="content content-detail">
+                    <h1><?php echo $oneItem->title ?></h1>
+                    <div class="rowuser">
+                      <span><?php echo timeAgo($oneItem->created_time) ?></span>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div style="margin-top: 15px">
+                      <?php echo $oneItem->content ?>
+                    </div>
                   </div>
                 </div>
 

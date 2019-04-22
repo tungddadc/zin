@@ -18,6 +18,31 @@ if (!function_exists('getUrlCateNews')) {
   }
 }
 
+if (!function_exists('getUrlCateFaq')) {
+  function getUrlCateFaq($optional)
+  {
+    if (is_object($optional)) $optional = (array)$optional;
+    $id = $optional['id'];
+    $slug = $optional['slug'];
+    $linkReturn = BASE_URL;
+    $linkReturn .= "$slug-cf$id";
+    if (isset($optional['page'])) $linkReturn .= '/page/';
+    return $linkReturn;
+  }
+}
+if (!function_exists('getUrlFaq')) {
+  function getUrlFaq($optional)
+  {
+    if (is_object($optional)) $optional = (array)$optional;
+    $id = $optional['id'];
+    $slug = $optional['slug'];
+    $linkReturn = BASE_URL;
+    $linkReturn .= "$slug-df$id";
+    if (isset($optional['page'])) $linkReturn .= '/page/';
+    return $linkReturn;
+  }
+}
+
 if (!function_exists('getUrlNews')) {
   function getUrlNews($optional)
   {

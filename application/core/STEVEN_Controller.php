@@ -23,7 +23,7 @@ class STEVEN_Controller extends CI_Controller
 
         //Load library
         $this->load->library(array('session', 'form_validation', 'user_agent'));
-        $this->load->helper(array('cookie', 'data', 'security', 'url', 'directory', 'file', 'form', 'datetime', 'language', 'debug'));
+        $this->load->helper(array('cookie', 'data', 'security', 'url', 'directory', 'file', 'form', 'datetime', 'language', 'debug','text'));
         $this->config->load('languages');
         //Load database
         $this->load->database();

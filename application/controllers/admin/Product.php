@@ -193,6 +193,11 @@ class Product extends Admin_Controller
             $idPost = json_decode($oneItem->post_related,true);
             $output['post_related'] = $this->_data_post->getSelect2($idPost,1);
           }
+          if(!empty($oneItem->brand)){
+            $brand = $this->_data_category->getById($oneItem->brand,'*',$this->session->userdata('admin_lang'));
+
+            if(!empty($brand)) $output['data_brand']=[['text'=>$brand->title,'id'=>$brand->id]];
+          }
             $this->returnJson($output);
         }
     }

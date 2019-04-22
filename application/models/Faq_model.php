@@ -26,7 +26,12 @@ class Faq_model extends STEVEN_Model
       $this->db->join($this->table_category,"$this->table.id = $this->table_category.{$this->table}_id");
       $this->db->where_in("$this->table_category.category_id",$category_id);
     }
-
+    if(!empty($key_search)){
+      $this->db->group_start();
+      $this->db->like("$this->table_trans.title",$key_search);
+      $this->db->or_like("$this->table_trans.description",$key_search);
+      $this->db->group_end();
+    }
   }
 
   public function getCategoryByPostId($id, $lang_code = null){

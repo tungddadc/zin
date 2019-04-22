@@ -38,7 +38,9 @@ class Page extends Public_Controller
     if ($oneItem->layout == 'news') {
       $data['dataNews'] = $this->news($oneItem,$page);
     }
-
+    if ($oneItem->layout == 'faq') {
+      $data['dataFaqs'] = $this->faq($oneItem,$page);
+    }
     //add breadcrumbs
     $this->breadcrumbs->push($this->lang->line('home'), base_url());
     $this->breadcrumbs->push($oneItem->title, getUrlPage($oneItem));
@@ -93,6 +95,30 @@ class Page extends Public_Controller
     return $data;
   }
 
+  private function faq($oneItem, $page = 1)
+  {
+    $this->load->model('faq_model');
+    $postModel = new Faq_model();
+    $limit = 10;
+    $params = array(
+      'is_status' => 1, //0: Huỷ, 1: Hiển thị, 2: Nháp
+      'lang_code' => $this->_lang_code,
+      'limit' => $limit,
+      'page' => $page,
+      'key_search'=>!empty($this->input->get('key_search'))?$this->input->get('key_search'):''
+    );
+    $data['data'] = $postModel->getData($params);
+    $data['total'] = $postModel->getTotal($params);
+    /*Pagination*/
+    $this->load->library('pagination');
+    $paging['base_url'] = getUrlPage(['slug' => $oneItem->slug, 'page' => 1]);
+    $paging['first_url'] = getUrlPage(['slug' => $oneItem->slug]);
+    $paging['total_rows'] = $data['total'];
+    $paging['per_page'] = $limit;
+    $this->pagination->initialize($paging);
+    $data['pagination'] = $this->pagination->create_links();
+    return $data;
+  }
   public function _404()
   {
     redirect('404.html', '', '301');

@@ -70,6 +70,11 @@ $route['(:any)-c(:num)/page/(:num)'] = 'news/category/$2/$3';
 $route['(:any)-d(:num)'] = 'news/detail/$2/';
 /*Route post*/
 /*Route post*/
+$route['(:any)-cf(:num)'] = 'faq/category/$2';
+$route['(:any)-cf(:num)/page/(:num)'] = 'faq/category/$2/$3';
+$route['(:any)-df(:num)'] = 'faq/detail/$2/';
+/*Route post*/
+/*Route post*/
 $route['(:any)-b(:num)'] = 'product/brand/$2';
 $route['(:any)-b(:num)/page/(:num)'] = 'product/brand/$2/$3';
 /*Route post*/

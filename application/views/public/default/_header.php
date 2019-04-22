@@ -28,12 +28,12 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                               <span class="icon_new"><img src="<?php echo $this->templates_assets ?>images/new.png" alt="New"></span>
                             </a>
                           </div>
-<!--                          <div class="check">-->
-<!--                            <a title="Tin tức" href="--><?php //echo base_url('hoi-dap-c576') ?><!--">-->
-<!--                              <span class="hidden-xs">Hỏi đáp</span>-->
-<!--                              <span class="icon_new"><img src="--><?php //echo $this->templates_assets ?><!--images/new.png" alt="New"></span>-->
-<!--                            </a>-->
-<!--                          </div>-->
+                          <div class="check">
+                            <a title="Hỏi đáp" href="<?php echo base_url('hoi-dap.html') ?>">
+                              <span class="hidden-xs">Hỏi đáp</span>
+                              <span class="icon_new"><img src="<?php echo $this->templates_assets ?>images/new.png" alt="New"></span>
+                            </a>
+                          </div>
 
                             <?php if ($this->session->userdata('is_logged')): ?>
                                 <div class="check">

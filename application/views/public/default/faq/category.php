@@ -1,6 +1,4 @@
 <?php if (!empty($oneItem)):
-  $url = getUrlPage($oneItem);
-  extract($dataFaqs);
   ?>
   <!-- Main Container -->
   <section class="main-container col2-left-layout">
