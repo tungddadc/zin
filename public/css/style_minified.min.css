@@ -2829,7 +2829,7 @@ h4{display:block;overflow:hidden;font-size:16px;text-transform:uppercase;padding
 a{display:block;overflow:hidden;padding:10px
 0;border-bottom:1px solid #ddd}.main-faq .widget.hotweek a.first-child
 img{float:none;display:block;width:100%;height:auto;margin:0
-0 10px 0}.main-faq .widget.hotweek a
+0 10px 0;max-width:none}.main-faq .widget.hotweek a
 h3{margin-top:0;margin-bottom:0;font-size:16px;display:block;overflow:hidden;line-height:1.3em;color:#333;overflow:hidden;-o-text-overflow:ellipsis;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;line-height:1.2;max-height:calc(1.2 * 3)}.main-faq .widget.hotweek a
 img{float:left;max-width:125px;margin-right:10px}.main-faq .primary
 .search_ask{display:block;height:38px;border:1px
@@ -2853,4 +2853,5 @@ h1{display:block;overflow:hidden;line-height:1.3em;font-size:20px;color:#333;mar
 .rowuser{display:block;overflow:hidden;padding:10px
 0;border-bottom:1px solid #d9d9d9;font-size:12px;color:#999}.main-faq .primary .content.content-detail .rowuser
 span{display:inline-block;vertical-align:middle}.iconask-pic{background-position:-210px 0;width:20px;height:16px;display:block;margin:4px
-auto 0}
+auto 0}.span_time
+i{display:inline-block;margin-left:4px;margin-right:4px;font-size:7px;margin-top:6px;float:left}

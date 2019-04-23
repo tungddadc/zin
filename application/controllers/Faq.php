@@ -121,5 +121,112 @@ class Faq extends Public_Controller
     $this->load->view($this->template_main, $data);
   }
 
+  public function question($id)
+  {
+    $this->load->model('question_model');
+    $questionModel=new Question_model();
+    $data['oneItem']=$oneItem = $questionModel->getById($id);
+    $data['SEO'] = [
+      'meta_title' => !empty($oneItem->title) ? $oneItem->title : $oneItem->title,
+      'meta_description' => !empty($oneItem->title) ? $oneItem->title : $oneItem->title,
+      'meta_keyword' => !empty($oneItem->title) ? $oneItem->title : '',
+      'url' => getUrlQuestion($oneItem),
+      'image' => getImageThumb($oneItem->thumbnail, 400, 200)
+    ];
+    $data['main_content'] = $this->load->view($this->template_path . 'faq/question', $data, TRUE);
+    $this->load->view($this->template_main, $data);
+  }
+  public function add_ask(){
+    $data=$this->_convertData();
+
+    $this->load->model('question_model');
+    $questionModel=new Question_model();
+    $questionModel->save($data);
+    $this->_message = array(
+      'type' => 'success',
+      'message' => 'Đặt đâu hỏi thành công.',
+    );
+    $this->returnJson($this->_message);
+  }
+  private function _validate()
+  {
+    $this->checkRequestPostAjax();
+    $rules = array(
+      array(
+        'field' => "title",
+        'label' => "Tiêu đề",
+        'rules' => "required|trim"
+      )
+    );
+    $this->form_validation->set_rules($rules);
+    if ($this->form_validation->run() === false) {
+      $valid = array();
+      if (!empty($rules)) foreach ($rules as $item) {
+        if (!empty(form_error($item['field']))) $valid[$item['field']] = form_error($item['field']);
+      }
+      $this->_message = array(
+        'type' => 'warning',
+        'message' => 'Tiêu đề không được để trống.',
+      );
+      $this->returnJson($this->_message);
+    }
+    if ($this->form_validation->run() === false) {
+      $valid = array();
+      if (!empty($rules)) foreach ($rules as $item) {
+        if (!empty(form_error($item['field']))) $valid[$item['field']] = form_error($item['field']);
+      }
+      $this->_message = array(
+        'type' => 'warning',
+        'message' => 'Vui lòng kiểm tra lại thông tin vừa nhập.',
+        'validation' => $valid,
+      );
+      $this->returnJson($this->_message);
+    }
+  }
+
+  private function _convertData()
+  {
+    $this->_validate();
+    $data = $this->input->post();
+    $data['is_status'] = 2;
+    $data['account_id']=$this->session->userdata['user_id'];
+    $data['thumbnail']=$this->do_upload();
+    return $data;
+  }
+  public function do_upload()
+  {
+    if (!empty($_FILES)) {
+      $avatar = '';
+      $dir = 'public/media/ask';
+      if (!is_dir($dir)) {
+        mkdir('public/media/ask', '0755');
+      }
+      chmod($dir, 755);
+      $config['upload_path'] = $dir;
+      $config['allowed_types'] = 'gif|jpg|png|jpeg';
+      $config['max_size'] = '0';
+      $config['max_width'] = '0';
+      $config['max_height'] = '0';
+      $config['encrypt_name'] = true;
+
+//        dd($_FILES);
+      $this->load->library('upload', $config);
+      if ($this->upload->do_upload('avatar')) {
+        $data = $this->upload->data();
+        $config['image_library'] = 'gd2';
+        $config['source_image'] = $data['full_path']; //get original image
+        $config['maintain_ratio'] = TRUE;
+        $config['width'] = 1200;
+        $this->load->library('image_lib', $config);
+        if (!$this->image_lib->resize()) {
+          $this->handle_error($this->image_lib->display_errors());
+        }
+        $avatar ='ask/'. $data['file_name'];
+      }
+      return $avatar;
+    } else {
+      return '';
+    }
+  }
 
 }

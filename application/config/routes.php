@@ -73,6 +73,7 @@ $route['(:any)-d(:num)'] = 'news/detail/$2/';
 $route['(:any)-cf(:num)'] = 'faq/category/$2';
 $route['(:any)-cf(:num)/page/(:num)'] = 'faq/category/$2/$3';
 $route['(:any)-df(:num)'] = 'faq/detail/$2/';
+$route['(:any)-dqt(:num)'] = 'faq/question/$2/';
 /*Route post*/
 /*Route post*/
 $route['(:any)-b(:num)'] = 'product/brand/$2';

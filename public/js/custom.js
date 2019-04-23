@@ -897,6 +897,10 @@ jQuery(document).ready(function () {
     })
     getAgencyNear();
     filterAgency();
+    $('#spanImg').on('click',function () {
+        $('.ask_form input[type="file"]').trigger('click');
+    });
+
 });
 
 function getAgencyNear() {

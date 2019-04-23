@@ -43,6 +43,20 @@ if (!function_exists('getUrlFaq')) {
   }
 }
 
+if (!function_exists('getUrlQuestion')) {
+  function getUrlQuestion($optional)
+  {
+    $_this =& get_instance();
+    if (is_object($optional)) $optional = (array)$optional;
+    $id = $optional['id'];
+    $slug = $_this->toSlug($_this->toNormal($optional['title']));
+    $linkReturn = BASE_URL;
+    $linkReturn .= "$slug-dqt$id";
+    if (isset($optional['page'])) $linkReturn .= '/page/';
+    return $linkReturn;
+  }
+}
+
 if (!function_exists('getUrlNews')) {
   function getUrlNews($optional)
   {

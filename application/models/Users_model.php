@@ -35,6 +35,14 @@ class Users_model extends STEVEN_Model
         if (isset($active)) {
             $this->db->where("$this->table.active", $active);
         }
+
+        if(!empty($key_search)){
+          $this->db->group_start();
+          $this->db->like("$this->table.email",$key_search);
+          $this->db->or_like("$this->table.fullname",$key_search);
+          $this->db->or_like("$this->table.username",$key_search);
+          $this->db->group_end();
+        }
     }
 
     public function check_oauth($field, $oauth)

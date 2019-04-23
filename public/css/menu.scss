@@ -1039,6 +1039,7 @@ header {
             width: 100%;
             height: auto;
             margin: 0 0 10px 0;
+            max-width: none;
           }
         }
         h3 {
@@ -1187,4 +1188,14 @@ header {
   height: 16px;
   display: block;
   margin: 4px auto 0;
+}
+.span_time{
+  i{
+    display: inline-block;
+    margin-left: 4px;
+    margin-right: 4px;
+    font-size: 7px;
+    margin-top: 6px;
+    float: left;
+  }
 }

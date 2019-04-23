@@ -1,4 +1,6 @@
 <?php if (!empty($oneItem)):
+  $account=getUserById($oneItem->account_id);
+
   ?>
   <!-- Main Container -->
   <section class="main-container col2-left-layout">
@@ -20,7 +22,8 @@
                   <div class="content content-detail">
                     <h1><?php echo $oneItem->title ?></h1>
                     <div class="rowuser">
-                      <span><?php echo timeAgo($oneItem->created_time) ?></span>
+                      <img src="<?php echo getImageThumb($account->avatar,20,20,true) ?>">
+                      <?php echo $account->fullname ?>  <span class="span_time"><i class="fa fa-circle" aria-hidden="true"></i><?php echo timeAgo($oneItem->created_time) ?></span>
                     </div>
                     <div class="clearfix"></div>
                     <div style="margin-top: 15px; margin-bottom: 10px">

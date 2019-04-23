@@ -268,10 +268,10 @@ class User extends Admin_Controller
         $this->checkRequestGetAjax();
         $term = $this->input->get("q");
         $params = [
-            'search' => $term,
+            'key_search' => $term,
             'limit' => 100
         ];
-        $list = $this->_data->getUserSelect2($params);
+        $list = $this->_data->getData($params);
         $json = [];
         if (!empty($list)) foreach ($list as $item) {
             $item = (object)$item;

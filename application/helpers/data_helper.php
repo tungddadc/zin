@@ -439,7 +439,22 @@ if (!function_exists('getFaqFeatured')) {
     $params = array(
       'is_status' => 1,
       'limit'=>5,
-      'order' => array('faq.is_status'=>'DESC','faq.id' => 'DESC')
+      'order' => array('faq.is_featured'=>'DESC','faq.id' => 'DESC')
+    );
+    $data = $postModel->getData($params);
+    return $data;
+  }
+}
+if (!function_exists('getQuestion')) {
+  function getQuestion()
+  {
+    $_this =& get_instance();
+    $_this->load->model('question_model');
+    $postModel = new Question_model();
+    $params = array(
+      'is_status' => 1,
+      'limit'=>5,
+      'order' => array('question.id' => 'DESC')
     );
     $data = $postModel->getData($params);
     return $data;
