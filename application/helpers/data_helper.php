@@ -225,7 +225,7 @@ if (!function_exists('getListNewsByCateId')) {
 }
 
 if (!function_exists('listBannerByPosition')) {
-  function listBannerByPosition($position_id)
+  function listBannerByPosition($position_id,$limit='')
   {
     $_this =& get_instance();
     $_this->load->model('banner_model');

@@ -2370,3 +2370,133 @@ coccoc-alo-number::-ms-clear {
     margin-top: -13px;
     margin-left: -2px;
 }
+.side-banner{
+    background-color: #f1eff2;
+    padding: 5px;
+    display: block;
+}
+.side-banner figure {
+    display: block;
+    overflow: hidden;
+    border-bottom: 1px solid #efefef;
+    background: #fff;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.side-banner a{
+    color: #333;
+}
+.side-banner h2 {
+    float: left;
+    padding: 10px 20px 10px 10px;
+    background: #fdd504;
+    line-height: 1.3em;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    text-transform: uppercase;
+    text-align: center;
+    position: relative;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.side-banner h2:after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-right: 12px solid #fff;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+}
+.liveevent {
+    position: relative;
+    color: #f33;
+    font-size: 12px;
+    padding-left: 20px;
+    display: inline-block;
+    width: 220px;
+    vertical-align: middle;
+    height: 38px;
+    line-height: 38px;
+    float: right;
+}
+#dot {
+    width: 10px;
+    height: 10px;
+    background-color: #f33;
+    border-radius: 100%;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -5px;
+    display: block;
+}
+#dot .ping {
+    border: 1px solid #f33;
+    width: 10px;
+    height: 10px;
+    opacity: 1;
+    background-color: rgba(238,46,36,.2);
+    border-radius: 100%;
+    -webkit-animation-duration: 1.25s;
+    animation-duration: 1.25s;
+    -webkit-animation-name: sonar;
+    animation-name: sonar;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    display: block;
+    margin: -1px 0 0 -1px;
+}
+.liveevent .text {
+    line-height: 1.4;
+    display: inline-block;
+    vertical-align: middle;
+}
+.side-banner ul {
+    display: block;
+    overflow: hidden;
+    margin-left: 0;
+    padding-left: 0;
+    margin-bottom: 0;
+    background-color: #fff;
+    padding-bottom: 5px;
+}
+.side-banner li {
+    display: block;
+    padding: 10px 10px 5px;
+    /*border-bottom: 1px solid #ededed;*/
+    background: #fff;
+}
+.side-banner li img {
+    float: left;
+    width: 100px;
+    height: 57px;
+    margin: 0 10px 0 0;
+}
+.side-banner li h3 {
+    display: block;
+    overflow: hidden;
+    height: 36px;
+    line-height: 1.3em;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+    margin-top: 0;
+}
+.side-banner li span {
+    float: left;
+    font-size: 12px;
+    color: #999;
+    margin-right: 10px;
+}
+.twobanner img{
+    margin-top: 5px;
+    height: 70px;
+    width: 100%;
+}

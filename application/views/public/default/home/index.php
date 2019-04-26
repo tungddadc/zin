@@ -10,15 +10,37 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     <div class="row">
         <div class="col-md-3 col-md-4 col-sm-3 hidden-xs">
             <div class="side-banner">
-                <?php $bannerSidebarTop = listBannerByPosition(2);if(!empty($bannerSidebarTop)) foreach ($bannerSidebarTop as $item): ?>
+              <aside class="homenews">
+                <figure>
+                  <h2><a href="<?php echo site_url('tin-tuc.html') ?>">Tin công nghệ</a></h2>
+                </figure>
+                <ul>
+                  <li>
+                    <?php
+                      if(!empty($home_news)){
+                        ?>
+                        <a href="<?php getUrlNews($home_news[0]) ?>">
+                          <img width="100" height="70" src="<?php echo getImageThumb($home_news[0]->thumbnail,100,70,true) ?>" alt="<?php echo $home_news[0]->title ?>">
+                          <h3><?php echo $home_news[0]->title ?></h3>
+                          <span><?php echo timeAgo($home_news[0]->created_time) ?></span>
+                        </a>
+                        <?php
+                      }
+                    ?>
+
+                  </li>
+                </ul>
+                <div class="twobanner">
+                  <?php $bannerSidebarTop = listBannerByPosition(2,4);if(!empty($bannerSidebarTop)) foreach ($bannerSidebarTop as $item): ?>
                     <a href="<?php echo $item->url ?>" title="banner sidebar" rel="nofollow">
-                        <img src="<?php echo getImageThumb($item->thumbnail,265,425,true) ?>"
-                             data-src="<?php echo getImageThumb($item->thumbnail,265,425,true) ?>"
-                             class="lazy"
-                             style="height: 100%"
-                             alt="<?php echo getTitle($item) ?>">
+                      <img src="<?php echo getImageThumb($item->thumbnail,398,110,false) ?>"
+                           data-src="<?php echo getImageThumb($item->thumbnail,398,110,true) ?>"
+                           class="lazy" alt="<?php echo getTitle($item) ?>">
                     </a>
-                <?php endforeach; ?>
+                  <?php endforeach; ?>
+                </div>
+
+              </aside>
             </div>
         </div>
         <div class="col-md-9 col-sm-9 col-xs-12 home-slider">
