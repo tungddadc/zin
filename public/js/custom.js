@@ -915,7 +915,7 @@ function getAgencyNear() {
 
     if(typeof ddgannhat!="undefined" && ddgannhat=='1'){
         $('html, body').animate({
-            scrollTop: $('.list-agency').offset().top - 60
+            scrollTop: $('.form_filter').offset().top
         }, 1000, function() {
             // Callback after animation
             // Callback after animation

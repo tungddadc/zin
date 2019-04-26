@@ -49,7 +49,7 @@
             </div>
           </div>
         </form>
-        <div class="list-agency">
+        <div class="list-agency" id="_list_agency">
           <div class="list-agency__title">
             <a href="javascript:;"><i class="fa fa-map-marker" aria-hidden="true"></i> Xem siêu thị gần bạn</a>
           </div>
