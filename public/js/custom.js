@@ -918,7 +918,7 @@ function getAgencyNear() {
             scrollTop: $('.list-agency').offset().top
         }, 1000, function() {
             // Callback after animation
-            $('.list-agency__title a').tringer('click');
+            $('.list-agency__title a').trigger('click');
         });
     }
 }
