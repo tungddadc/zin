@@ -133,7 +133,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                 </div>
                 <!-- End Header Logo -->
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3 hidden-xs category-search-form">
+            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-3 hidden-xs category-search-form">
                 <?php if($this->agent->is_mobile() == false): ?>
                     <div class="search-box">
                         <div id="search_mini_form">
@@ -144,7 +144,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                     </div>
                 <?php endif; ?>
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 card_wishlist_area">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 <div class="mm-toggle-wrap">
                     <div class="mm-toggle"><i class="fa fa-align-justify"></i><span class="mm-label">Menu</span></div>
                 </div>
@@ -174,7 +174,14 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
                 <div class="top-cart-contain">
                     <!-- Top Cart -->
-                    <div class="mini-cart">
+                    <div class="mini-cart1">
+                        <div class="basket1">
+                            <a href="<?php echo site_url('cua-hang-dai-ly.html?near=1') ?>"><span class="price">Tìm cửa hàng</span>
+                              <span class="cart_count hidden-xs">gần bạn</span>
+                            </a>
+                        </div>
+                    </div>
+                  <div class="mini-cart">
                         <div class="basket">
                             <a href="<?php echo base_url('cart') ?>"><span class="price hidden-xs">Giỏ hàng</span>
                                 <span class="cart_count hidden-xs"><?php echo $this->cart->total_items() ?>

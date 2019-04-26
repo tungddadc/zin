@@ -103,3 +103,6 @@
   </section>
   <!-- Main Container End -->
 <?php endif; ?>
+<script !src="">
+  var ddgannhat='<?php if(!empty($this->input->get('near'))) echo 1 ?>';
+</script>

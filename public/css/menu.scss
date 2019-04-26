@@ -310,7 +310,15 @@ header {
   margin-top: -25px;
   display: block;
   position: relative;
-
+  //padding-right: 100px;
+  //background: url("../images/bg_map.jpg");
+  //padding-top: 30px;
+  //padding-bottom: 30px;
+  //img{
+  //  width: 240px;
+  //  margin: auto;
+  //  display: block;
+  //}
   &__abs {
     position: absolute;
     right: 0;
@@ -1197,5 +1205,64 @@ header {
     font-size: 7px;
     margin-top: 6px;
     float: left;
+  }
+}
+.search-box{
+  width: 100%;
+  #search{
+    width: 100%;
+  }
+}
+.top-cart-contain{
+  display: flex;
+  width: 100%;
+  .mini-cart{
+    width: 50%;
+  }
+  .mini-cart1{
+    width: 50%;
+    text-align: left;
+    cursor: pointer;
+    margin: 0px;
+    min-height: 46px;
+    .basket1{
+      a {
+        color: #333;
+        margin: 0px;
+        line-height: 17px;
+        font-size: 13px;
+        letter-spacing: 0.5px;
+        font-weight: 700;
+        padding: 0px;
+        display: block;
+        &:before {
+          content: '\f041';
+          font-family: FontAwesome;
+          font-size: 22px;
+          color: #fff;
+          display: inline-block;
+          text-align: center;
+          font-weight: normal;
+          margin-right: 11px;
+          background-color: rgb(190, 30, 45);
+          padding: 15px 0px;
+          border-radius: 5px;
+          width: 50px;
+          height: 50px;
+          float: left;
+        }
+        span.cart_count {
+          display: block;
+          color: rgb(190, 30, 45);
+          font-size: 13px;
+          text-align: left;
+          margin-left: 5px;
+          padding-left: 0px;
+          font-weight: normal;
+          text-transform: none;
+          font-family: 'Nunito Sans';
+        }
+      }
+    }
   }
 }

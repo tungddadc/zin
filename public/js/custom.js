@@ -912,6 +912,15 @@ function getAgencyNear() {
             alert('Geolocation is not supported by this browser.');
         }
     });
+
+    if(typeof ddgannhat!="undefined" && ddgannhat=='1'){
+        $('html, body').animate({
+            scrollTop: $('.list-agency').offset().top
+        }, 1000, function() {
+            // Callback after animation
+            $('.list-agency__title a').tringer('click');
+        });
+    }
 }
 function showLocation(position) {
 
