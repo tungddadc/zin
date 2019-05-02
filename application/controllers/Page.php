@@ -123,6 +123,79 @@ class Page extends Public_Controller
   {
     redirect('404.html', '', '301');
   }
+  public function ajax_load_comment(){
+    $this->checkRequestPostAjax();
+    $productId = $this->input->post('product_id');
+    $page = $this->input->post('page');
+    $limit = 5;
+    $params = [
+      'is_status' => 1,
+      'product_id' => $productId,
+      'limit' => $limit,
+      'page' => $page,
+      'type'=>'page'
+    ];
+    $this->load->model('comments_model');
+    $commentModel = new Comments_model();
+    $listData = $commentModel->getData($params);
+    $data['data'] = $commentModel->_recursive($listData,0);
+    print $this->load->view($this->template_path . 'product/_ajax_load_comment', $data, TRUE);
+  }
+
+  public function ajax_save_comment(){
+    $this->checkRequestPostAjax();
+    if($this->session->userdata('is_logged') != true){
+      $message['type'] = 'error';
+      $message['message'] = "Bạn phải đăng nhập để thực hiện thao tác này !";
+      $this->returnJson($message);
+    }
+
+    $rules = array(
+      array(
+        'field' => 'email',
+        'label' => 'email',
+        'rules' => 'trim|required|valid_email'
+      ),
+      array(
+        'field' => 'name',
+        'label' => 'Tên',
+        'rules' => 'trim|required'
+      ),
+      array(
+        'field' => 'content',
+        'label' => 'Nội dung',
+        'rules' => 'required|trim'
+      )
+    );
+    $this->form_validation->set_rules($rules);
+    if ($this->form_validation->run() != false) {
+      $data = $this->input->post();
+      if (!empty($data['parent_id'])) $data['is_status'] = 1;
+      $data['type']='page';
+      if (!empty($data)) {
+        $this->load->model('comments_model');
+        $commentModel = new Comments_model();
+        if ($commentModel->save($data)) {
+          $message['type'] = 'success';
+          $message['message'] = "Bạn vừa bình luận thành công.";
+        } else {
+          $message['type'] = 'error';
+          $message['message'] = "Lỗi không bình luận được.";
+        }
+        $this->returnJson($message);
+      }
+    }else{
+      $message['type'] = "warning";
+      $message['message'] = "Vui lòng kiểm tra lại thông tin";
+      $valid = array();
+      if(!empty($rules)) foreach ($rules as $item){
+        if(form_error($item['field'])) $valid[$item['field']] = form_error($item['field']);
+      }
+      $message['validation'] = $valid;
+      $this->returnJson($message);
+    }
+
+  }
 
   public function notfound()
   {

@@ -12,7 +12,14 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
             <div class="side-banner">
               <aside class="homenews">
                 <figure>
-                  <h2><a href="<?php echo site_url('tin-tuc.html') ?>">Tin công nghệ</a></h2>
+                  <h2><a href="<?php echo site_url('tin-tuc.html') ?>">Tin công nghệ</a>
+
+                  </h2>
+                  <div class="_circle">
+                  <div class="circle circle1"></div>
+                  <div class="circle circle2"></div>
+                  <div class="circle circle3"></div>
+                  </div>
                 </figure>
                 <ul>
                   <li>
@@ -51,7 +58,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                     <div id='rev_slider_4' class='rev_slider fullwidthabanner'>
                         <ul>
                             <?php foreach ($home_slider as $item): ?>
-                            <li data-transition='random' data-slotamount='7' data-masterspeed='1000'
+                            <li data-transition='slideright' data-slotamount='7' data-masterspeed='1000'
                                 data-thumb='<?php echo getImageThumb($item->thumbnail,850,440) ?>'>
                                 <img src="<?php echo getImageThumb($item->thumbnail,850,440,true) ?>"
                                      data-src="<?php echo getImageThumb($item->thumbnail,850,440,true) ?>"

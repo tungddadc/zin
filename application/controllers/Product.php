@@ -346,6 +346,7 @@ class Product extends Public_Controller
         $limit = 5;
         $params = [
             'is_status' => 1,
+          'type'=>'product',
             'product_id' => $productId,
             'limit' => $limit,
             'page' => $page
@@ -386,6 +387,7 @@ class Product extends Public_Controller
         if ($this->form_validation->run() != false) {
             $data = $this->input->post();
             if (!empty($data['parent_id'])) $data['is_status'] = 1;
+          $data['type']='product';
             if (!empty($data)) {
                 $this->load->model('comments_model');
                 $commentModel = new Comments_model();

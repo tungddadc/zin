@@ -460,3 +460,31 @@ if (!function_exists('getQuestion')) {
     return $data;
   }
 }
+
+if (!function_exists('countAgency')) {
+  function countAgency()
+  {
+    $_this =& get_instance();
+    $_this->load->model('agency_model');
+    $postModel = new Agency_model();
+    $params = array(
+      'is_status' => 1,
+    );
+    $data = $postModel->getTotal($params);
+    return $data;
+  }
+}
+
+if (!function_exists('countMember')) {
+  function countMember()
+  {
+    $_this =& get_instance();
+    $_this->load->model('users_model');
+    $postModel = new Users_model();
+    $params = array(
+      'active' => 1,
+    );
+    $data = $postModel->getTotal($params);
+    return $data;
+  }
+}

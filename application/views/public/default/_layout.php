@@ -301,6 +301,7 @@ switch ($this->_controller) {
 <?php $asset_js[] = 'maps.js'; ?>
 <?php $asset_js[] = 'custom.js'; ?>
 <?php $asset_js[] = 'account.js'; ?>
+<?php $asset_js[] = 'countdown1.js'; ?>
 <?php $this->minify->js($asset_js);
 echo $this->minify->deploy_js(); ?>
 <script src="https://maps.google.com/maps/api/js?key=<?php echo GG_KEY_MAP; ?>&libraries=places" type="text/javascript"></script>

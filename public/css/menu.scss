@@ -310,15 +310,16 @@ header {
   margin-top: -25px;
   display: block;
   position: relative;
-  //padding-right: 100px;
-  //background: url("../images/bg_map.jpg");
-  //padding-top: 30px;
-  //padding-bottom: 30px;
-  //img{
-  //  width: 240px;
-  //  margin: auto;
-  //  display: block;
-  //}
+  padding-right: 200px;
+  background-color: rgb(251, 175, 63);
+  padding-top: 20px;
+  padding-bottom: 20px;
+  img{
+    width: 240px;
+    margin: auto;
+    display: block;
+    max-height: 380px;
+  }
   &__abs {
     position: absolute;
     right: 0;
@@ -345,6 +346,13 @@ header {
           margin-bottom: 0;
         }
       }
+    }
+  }
+  li{
+    img{
+      width: 100px;
+      float: left;
+      margin-right: 10px;
     }
   }
 }
@@ -1264,5 +1272,68 @@ header {
         }
       }
     }
+  }
+}
+
+._circle{
+  float: right;
+  height: 38px;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  .circle{
+    position: absolute;
+    background:none;
+    border-radius: 50%;
+
+    &.circle1{
+      animation-delay:0.6s;
+      animation-name:grow;
+      animation-iteration-count: infinite;
+      animation-direction: normal;
+      animation-duration:1.5s;
+      background-color: #F20000;
+    }
+    &.circle2{
+      background-color: #F20000;
+      animation-delay:0.4s;
+      width: 14px;
+      height: 14px;
+      top: calc(50% - 7px);
+      left: calc(50% - 7px);
+    }
+    &.circle3{
+      animation-delay:0.2s;
+      position: absolute;
+      background: none;
+      border-radius: 50%;
+      top: calc(50% - 3px);
+      left: calc(50% - 3px);
+      z-index: 4;
+      width: 6px;
+      background-color: #fff;
+      height: 6px;
+    }
+  }
+}
+@-webkit-keyframes grow{
+  0%{
+    width: 14px;
+    height: 14px;
+    top: calc(50% - 7px);
+    left: calc(50% - 7px);
+    opacity:0;
+  }
+  10%{
+    opacity:1;
+  }
+  100%{
+    width: 30px;
+    height: 30px;
+    top: calc(50% - 15px);
+    left: calc(50% - 15px);
+    opacity:0;
   }
 }

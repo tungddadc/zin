@@ -901,6 +901,28 @@ jQuery(document).ready(function () {
         $('.ask_form input[type="file"]').trigger('click');
     });
 
+    if ( $('.top-agency__abs').length > 0) {
+        var options = {
+            useEasing: true,
+            useGrouping: true,
+            separator: '.',
+            decimal: ',',
+            prefix: '',
+            suffix: ''
+        };
+        var total_agency = new CountUp("total_agency", 0, parseInt($('#total_agency').data('val')), 0,5, options);
+        var serve_customer = new CountUp("serve_customer", 0, parseInt($('#serve_customer').data('val')), 0,5, options);
+        // $(window).scroll(function () {
+            var hT = $('.top-banners').offset().top,
+              hH = $('.top-banners').outerHeight(),
+              wH = $(window).height(),
+              wS = $(this).scrollTop();
+            if (wS > (hT + hH - wH)) {
+                setTimeout(total_agency.start(), 1000);
+                setTimeout(serve_customer.start(), 1000);
+            }
+        // });
+    }
 });
 
 function getAgencyNear() {
@@ -988,3 +1010,4 @@ function live_search(key_search) {
         }
     });
 }
+

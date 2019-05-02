@@ -19,7 +19,7 @@ function initialize() {
     position: latlng,
     map: map,
     title: site_name,
-    // icon: "//maps.gstatic.com/mapfiles/api-3/images/spotlight-poi-dotless2.png",
+    icon: base_url+"public/images/Zin-map.png",
     label: {
       color: '#ce171f',
       fontWeight: '700',
@@ -29,7 +29,7 @@ function initialize() {
     },
     icon: {
       labelOrigin: new google.maps.Point(11, 60),
-      url: '//maps.gstatic.com/mapfiles/api-3/images/spotlight-poi-dotless2.png',
+      url: base_url+"public/images/Zin-map.png",
       size: new google.maps.Size(30, 48),
       origin: new google.maps.Point(0, 0),
       anchor: new google.maps.Point(11, 40),
