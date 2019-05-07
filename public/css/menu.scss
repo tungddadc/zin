@@ -1242,6 +1242,9 @@ header {
   #search{
     width: 100%;
   }
+  @media(max-width: 767px){
+    width: calc(100% - 105px);
+  }
 }
 .top-cart-contain{
   display: flex;
@@ -1293,6 +1296,9 @@ header {
           font-family: 'Nunito Sans';
         }
       }
+    }
+    @media(max-width: 767px){
+      display: none;
     }
   }
 }
