@@ -235,13 +235,15 @@ switch ($this->_controller) {
                 </li>
             <?php endif; ?>
             <li>
-                <a title="Checkout" href="<?php echo base_url('wishlisht') ?>">
-                    <span class="hidden-xs">Sản phẩm yêu thích</span>
+                <a href="<?php echo site_url('cua-hang-dai-ly.html?near=1') ?>" title="Tìm cửa hàng gần nhất" class="btn btn-block btn-social btn-google">
+                    <span class="fa fa-location-arrow"></span>
+                    Cửa hàng gần nhất
                 </a>
             </li>
             <li class="last">
-                <a title="Lịch sử đơn hàng" href="<?php echo base_url('cart/history') ?>">
-                    <span class="hidden-xs">Lịch sử đơn hàng</span>
+                <a href="<?php echo base_url('cart') ?>" title="Giỏ hàng" class="btn btn-block btn-social btn-google">
+                    <span class="fa fa-shopping-cart"></span>
+                    Giỏ hàng
                 </a>
             </li>
         </ul>
