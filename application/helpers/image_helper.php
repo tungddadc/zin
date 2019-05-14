@@ -13,7 +13,7 @@ if (!function_exists('getImageThumb')) {
         if(!file_exists($sourceImage)){
             $width = !empty($width)?$width:200;
             $height = !empty($height)?$height:200;
-            $sourceImage = MEDIA_PATH . "no_image.png";
+            $sourceImage = FCPATH . "/public/no_image.png";
         }
         $CI =& get_instance();
         if($width != 0 && $height != 0){
