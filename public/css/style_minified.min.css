@@ -2761,11 +2761,7 @@ img{width:240px;margin:auto;display:block;max-height:380px}.top-agency__abs{posi
 ul{height:100%;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}.top-agency__abs ul
 li{list-style:none;font-size:20px;margin-bottom:55px}.top-agency__abs ul li
 b{font-size:24px}.top-agency__abs ul li:last-child{margin-bottom:0}.top-agency li
-img{width:100px;float:left;margin-right:10px}@media (max-width:767px){.top-agency{margin-top:0}.top-agency__abs{width:210px}.top-agency__abs
-ul{padding-left:14px}.top-agency__abs ul
-li{font-size:16px;margin-bottom:10px;line-height:1.2}.top-agency__abs ul li
-img{display:none}.top-agency__abs ul li
-b{font-style:20px}}.main-agency{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;width:100%}.main-agency
+img{width:100px;float:left;margin-right:10px}.main-agency{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;width:100%}.main-agency
 a{color:#288ad6}.main-agency
 .form_filter{display:block;background:#f8f8f8;padding:15px;border-bottom:1px solid #ddd}.main-agency
 h2{font-weight:bold;font-size:16px;color:#333;text-transform:uppercase;margin-top:0}.main-agency .list-agency{display:block;border:1px
@@ -2876,10 +2872,10 @@ h1{display:block;overflow:hidden;line-height:1.3em;font-size:20px;color:#333;mar
 span{display:inline-block;vertical-align:middle}.iconask-pic{background-position:-210px 0;width:20px;height:16px;display:block;margin:4px
 auto 0}.span_time
 i{display:inline-block;margin-left:4px;margin-right:4px;font-size:7px;margin-top:6px;float:left}.search-box{width:100%}.search-box
-#search{width:100%}@media (max-width:767px){.search-box{width:calc(100% - 105px)}}.top-cart-contain{display:-webkit-box;display:-ms-flexbox;display:flex;width:100%}.top-cart-contain .mini-cart{width:50%}.top-cart-contain .mini-cart1{width:50%;text-align:left;cursor:pointer;margin:0px;min-height:46px}.top-cart-contain .mini-cart1 .basket1
+#search{width:100%}.top-cart-contain{display:-webkit-box;display:-ms-flexbox;display:flex;width:100%}.top-cart-contain .mini-cart{width:50%}.top-cart-contain .mini-cart1{width:50%;text-align:left;cursor:pointer;margin:0px;min-height:46px}.top-cart-contain .mini-cart1 .basket1
 a{color:#333;margin:0px;line-height:17px;font-size:13px;letter-spacing:0.5px;font-weight:700;padding:0px;display:block}.top-cart-contain .mini-cart1 .basket1 a:before{content:'\f041';font-family:FontAwesome;font-size:22px;color:#fff;display:inline-block;text-align:center;font-weight:normal;margin-right:11px;background-color:#be1e2d;padding:15px
 0px;border-radius:5px;width:50px;height:50px;float:left}.top-cart-contain .mini-cart1 .basket1 a
-span.cart_count{display:block;color:#be1e2d;font-size:13px;text-align:left;margin-left:5px;padding-left:0px;font-weight:normal;text-transform:none;font-family:'Nunito Sans'}@media (max-width:767px){.top-cart-contain .mini-cart1{display:none}}._circle{float:right;height:38px;width:50px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;position:relative}._circle
+span.cart_count{display:block;color:#be1e2d;font-size:13px;text-align:left;margin-left:5px;padding-left:0px;font-weight:normal;text-transform:none;font-family:'Nunito Sans'}._circle{float:right;height:38px;width:50px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;position:relative}._circle
 .circle{position:absolute;background:none;border-radius:50%}._circle
 .circle.circle1{-webkit-animation-delay:0.6s;animation-delay:0.6s;-webkit-animation-name:grow;animation-name:grow;-webkit-animation-iteration-count:infinite;animation-iteration-count:infinite;-webkit-animation-direction:normal;animation-direction:normal;-webkit-animation-duration:1.5s;animation-duration:1.5s;background-color:#F20000}._circle
 .circle.circle2{background-color:#F20000;-webkit-animation-delay:0.4s;animation-delay:0.4s;width:14px;height:14px;top:calc(50% - 7px);left:calc(50% - 7px)}._circle
