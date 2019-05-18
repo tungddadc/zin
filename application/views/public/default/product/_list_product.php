@@ -36,13 +36,31 @@
                                 </div>
                             </div>
                             <div class="item-price">
-                                <div class="price-box">
-                                    <?php if(!empty($item->price_sale)): ?>
-                                        <p class="old-price"><span class="price-label">Giá gốc:</span> <span class="price"><?php echo formatMoney($item->price) ?> </span> </p>
-                                        <p class="special-price"><span class="price-label">Giá khuyến mại</span> <span class="price"><?php echo formatMoney($item->price_sale) ?></span> </p>
-                                    <?php else: ?>
-                                        <p class="special-price"><span class="price-label">Giá</span> <span class="price"><?php echo formatMoney($item->price) ?></span> </p>
-                                    <?php endif; ?>
+                                <div class="price-slider owl-carousel">
+                                    <div class="price-item">
+                                        <div class="name">GIÁ LẺ CỬA HÀNG</div>
+                                        <div class="price">
+                                            <span class="value"><?php echo !empty($item->price) ? formatMoney($item->price) : "" ?></span>
+                                        </div>                                        
+                                    </div>
+                                    <div class="price-item">
+                                        <div class="name">GIÁ BUÔN CỬA HÀNG</div>
+                                        <div class="price">
+                                            <span class="value"><?php echo !empty($item->price_sale) ? formatMoney($item->price_sale) : "" ?></span>
+                                        </div>                                        
+                                    </div>
+                                    <div class="price-item">
+                                        <div class="name">GIÁ THAY KHÁCH LẺ</div>
+                                        <div class="price">
+                                            <span class="value"><?php echo !empty($item->price_kl) ? formatMoney($item->price_kl) : "" ?></span>
+                                        </div>
+                                    </div>
+                                    <div class="price-item">
+                                        <div class="name">GIÁ THAY KHÁCH VIP</div>
+                                        <div class="price">
+                                            <span class="value"><?php echo !empty($item->price_ek) ? formatMoney($item->price_ek) : "" ?></span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="action">

@@ -214,12 +214,20 @@
                                     <div id="social-share"></div>
                                 </div>
                                 <div class="product-buy col-lg-3 col-sm-3 col-xs-12">
-                                    <div class="info">
-                                        <p>Thương hiệu: <strong><?php if(!empty($oneBrand)): ?><a href="<?php echo getUrlBrand($oneBrand) ?>" title="<?php echo getTitle($oneBrand) ?>"><?php echo $oneBrand->title ?></a> <?php endif; ?></strong></p>
-                                        <p>Mã sản phẩm: <strong><?php echo $oneItem->model ?></strong></p>
-                                        <p>Mã vạch: <strong><?php echo (string) $oneItem->barcode ?></strong></p>
+                                    <div class="widget__sidebar">
+                                        <h3 class="widget-title"><span>THÔNG TIN SẢN PHẨM</span></h3>
+                                        <div class="info">
+                                            <p>Thương hiệu: <strong><?php if(!empty($oneBrand)): ?><a href="<?php echo getUrlBrand($oneBrand) ?>" title="<?php echo getTitle($oneBrand) ?>"><?php echo $oneBrand->title ?></a> <?php endif; ?></strong></p>
+                                            <p>Mã sản phẩm: <strong><?php echo $oneItem->model ?></strong></p>
+                                            <p>Mã vạch: <strong><?php echo (string) $oneItem->barcode ?></strong></p>
+                                        </div>
                                     </div>
+                                    
                                     <div class="pstock-list">
+                                        <p class="availability in-stock">
+                                            <?php echo $this->session->userdata('is_agency') == true ? '<span class="agency">Đại lý</span>' : ''  ?>
+                                            <?php echo !empty($data_stock[0]->Amount) ? '<span class="instock">Còn hàng</span>' : '<span class="outstock">Hết hàng</span>' ?>
+                                        </p>
                                         <?php if(!empty($data_stock)) foreach ($data_stock as $item): ?>
                                             <p class="pstock-item pstock-item-01 pstock-district-001" style="display: block;">
                                                 <?php echo $item->StockName ?> - <?php echo $item->Amount > 0 ? '<span class="text-primary">Còn hàng '.($this->session->userdata('admin_group_id') == true ? "($item->Amount)" : "").'</span>' : '<span class="text-danger">Hết hàng</span>' ?>

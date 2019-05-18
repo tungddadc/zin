@@ -110,6 +110,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     <?php $asset_css[] = 'blogmate.css'; ?>
     <?php $asset_css[] = 'custom.css'; ?>
     <?php $asset_css[] = 'menu.css'; ?>
+    <?php $asset_css[] = 'custom_ngoc.css'; ?>
 
     <?php
     $this->minify->css($asset_css);
@@ -234,14 +235,22 @@ switch ($this->_controller) {
                     </a>
                 </li>
             <?php endif; ?>
-            <li>
-                <a title="Checkout" href="<?php echo base_url('wishlisht') ?>">
-                    <span class="hidden-xs">Sản phẩm yêu thích</span>
+            <!--<li>
+                <a title="Checkout" href="<?php /*echo base_url('wishlisht') */?>" class="btn btn-block btn-social btn-google">
+                    <span class="fa fa-heart-o"></span>
+                    Sản phẩm yêu thích
                 </a>
-            </li>
+            </li>-->
+            <!--<li>
+                <a title="Lịch sử đơn hàng" href="<?php /*echo base_url('cart/history') */?>" class="btn btn-block btn-social btn-facebook">
+                    <span class="fa fa-history"></span>
+                    Lịch sử đơn hàng
+                </a>
+            </li>-->
             <li class="last">
-                <a title="Lịch sử đơn hàng" href="<?php echo base_url('cart/history') ?>">
-                    <span class="hidden-xs">Lịch sử đơn hàng</span>
+                <a href="<?php echo base_url('cart') ?>" title="Giỏ hàng" class="btn btn-block btn-social btn-google">
+                    <span class="fa fa-shopping-cart"></span>
+                    Giỏ hàng
                 </a>
             </li>
         </ul>
@@ -300,6 +309,8 @@ switch ($this->_controller) {
 <?php $asset_js[] = 'select2.min.js'; ?>
 <?php $asset_js[] = 'custom.js'; ?>
 <?php $asset_js[] = 'account.js'; ?>
+<?php $asset_js[] = 'custom_ngoc.js'; ?>
+
 <?php $this->minify->js($asset_js);
 echo $this->minify->deploy_js(); ?>
 <script type="text/javascript">

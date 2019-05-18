@@ -1,0 +1,38 @@
+.product-buy .availability.in-stock span {
+    width: 100%;
+    text-align: center;
+    line-height: 25px;
+    padding: 0;
+    height: 25px;
+    border-radius: 0;
+}
+.product-buy .availability.in-stock {
+    position: initial;
+}
+.product-buy .widget__sidebar .widget-title {
+    margin-bottom: 10px;
+}
+@media (min-width:1480px){
+	.container, .nav-container {
+		width: 1450px;
+	}
+}
+.mini-promotion .mini-banner-wrap .mini-item {
+    width: 33.33%;
+    display: grid;
+}
+
+.col-main .category-products .products-grid {
+    display: flex;
+    flex-flow: row wrap;
+}
+.products-grid .item .item-inner {
+	border: 1px solid transparent;
+}
+.products-grid .item .item-inner .item-img{
+	height: 250px;
+}
+.products-grid .item .item-img img {
+    height: 235px;
+    object-fit: contain;
+}
