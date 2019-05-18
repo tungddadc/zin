@@ -234,14 +234,22 @@ switch ($this->_controller) {
                     </a>
                 </li>
             <?php endif; ?>
-            <li>
-                <a title="Checkout" href="<?php echo base_url('wishlisht') ?>">
-                    <span class="hidden-xs">Sản phẩm yêu thích</span>
+            <!--<li>
+                <a title="Checkout" href="<?php /*echo base_url('wishlisht') */?>" class="btn btn-block btn-social btn-google">
+                    <span class="fa fa-heart-o"></span>
+                    Sản phẩm yêu thích
                 </a>
-            </li>
+            </li>-->
+            <!--<li>
+                <a title="Lịch sử đơn hàng" href="<?php /*echo base_url('cart/history') */?>" class="btn btn-block btn-social btn-facebook">
+                    <span class="fa fa-history"></span>
+                    Lịch sử đơn hàng
+                </a>
+            </li>-->
             <li class="last">
-                <a title="Lịch sử đơn hàng" href="<?php echo base_url('cart/history') ?>">
-                    <span class="hidden-xs">Lịch sử đơn hàng</span>
+                <a href="<?php echo base_url('cart') ?>" title="Giỏ hàng" class="btn btn-block btn-social btn-google">
+                    <span class="fa fa-shopping-cart"></span>
+                    Giỏ hàng
                 </a>
             </li>
         </ul>
