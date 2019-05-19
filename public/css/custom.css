@@ -2500,3 +2500,58 @@ coccoc-alo-number::-ms-clear {
     height: 70px;
     width: 100%;
 }
+
+
+
+
+/*Main menu*/
+header{
+    min-height: 60px;
+    background-color: rgb(190, 30, 45);
+}
+#main-menu-desktop {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+#main-menu-desktop > li {
+    display: inline-block;
+    padding: 0 5px;
+    line-height: 60px;
+}
+#main-menu-desktop > li > a {
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #fff !important;
+
+}
+
+
+
+/*Menu icon*/
+.menu-icon {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-align: right;
+    position: relative;
+}
+.menu-icon > li {
+    display: inline-block;
+    padding: 0 10px;
+    line-height: 60px;
+    position: sticky;
+}
+.menu-icon > li > a{
+    color: #fff !important;
+}
+.cart-icon{
+    position: relative !important;
+
+}
+.cart_count{
+    position: absolute;
+    top: -10px;
+    right: 0px;
+}

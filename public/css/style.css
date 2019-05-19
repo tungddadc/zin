@@ -843,19 +843,13 @@ div.effect-sadie1 + div.effect-sadie1 {
 
 /* top search*/
 .search-box {
-    margin: auto;
-    margin-top: 16px;
-    float: left;
+    margin-top: 5px;
     position: relative;
     border-radius: 2px;
-    margin-left: 6px;
     border: none;
     background: #fff;
 }
 
-.category-search-form {
-    padding-right: 6px;
-}
 
 .search-box select:focus, .search-box select {
     border: none;
@@ -878,7 +872,7 @@ div.effect-sadie1 + div.effect-sadie1 {
     padding: 0 20px;
     background: none;
     outline: none;
-    border: 1px solid #666;
+    border: 1px solid #fff;
     letter-spacing: 0.5px;
     line-height: 40px
 }
@@ -2158,10 +2152,6 @@ nav.sticky .mega-menu-category{
 
 .top-banners .banner span {
     color: rgb(251, 175, 63)
-}
-
-header {
-    background: rgb(234, 234, 234);
 }
 
 .header-container {
@@ -4894,7 +4884,6 @@ nav {
     font-size: 13px;
     line-height: 1.6em;
     margin-bottom: 1px;
-    padding: 0px;
     font-weight: normal;
     color: #fff;
     margin-top: 6px;

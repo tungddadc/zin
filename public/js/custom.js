@@ -172,6 +172,7 @@ var CART = {
             success: function (response) {
                 if (typeof response.type !== 'undefined') {
                     CART.updateCountHeader();
+                    CART.list_cart();
                     toastr[response.type](response.message);
                 }
             }
@@ -220,7 +221,7 @@ var CART = {
             url: base_url + 'cart/ajax_total',
             dataType: 'json',
             success: function (data) {
-                $('.mini-cart .cart_count').html(data.total_item + ' sản phẩm/' + FUNC.formatMoney(data.total_money))
+                $('.cart_count').html(data.total_item )
             }
         })
     },
@@ -280,7 +281,7 @@ var CART = {
     },
     hover_cart: function () {
         if(mobileDetect == true){
-            $('.mini-cart a').click(function (e) {
+            $('.cart-icon a').click(function (e) {
                 e.preventDefault();
                 if ($('.top-cart-content').length > 0) {
                     $('.top-cart-content').show();
@@ -290,7 +291,7 @@ var CART = {
 
             });
         }else{
-            $('.mini-cart').hover(function () {
+            $('.cart-icon').hover(function () {
                 if ($('.top-cart-content').length > 0) {
                     $('.top-cart-content').show();
                 } else {
@@ -788,7 +789,6 @@ jQuery(document).ready(function () {
         FUNC.showPopupNewsletter(false);
     });
 
-    CART.hover_cart();
     LOC.loadCity();
     LOC.loadDistrict();
 
@@ -1011,3 +1011,4 @@ function live_search(key_search) {
     });
 }
 
+CART.hover_cart();
