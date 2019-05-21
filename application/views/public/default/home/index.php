@@ -8,7 +8,58 @@
 defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 <div class="container">
     <div class="row">
-        <div class="col-md-3 col-md-4 col-sm-3 hidden-xs">
+        
+        <div class="col-md-9 col-sm-8 col-xs-12 home-slider">
+        <?php $home_slider = listBannerByPosition(1); if (!empty($home_slider)): ?>
+            <div id="sync1" class="owl-carousel owl-theme">
+            <?php foreach ($home_slider as $item) : ?>
+                <div class="item">
+                    <a title="<?php echo getTitle($item) ?>" href="<?php echo $item->url ?>">
+                        <img src="<?php echo getImageThumb($item->thumbnail,800,300,true) ?>" alt="<?php echo getTitle($item) ?>">
+                    </a>
+                </div>
+            <?php endforeach; ?>
+
+            </div>
+        <?php endif;?>
+
+        <?php $home_slider = listBannerByPosition(1); if (!empty($home_slider)): ?>
+            <div id="sync2" class="owl-carousel owl-theme">
+                <?php foreach ($home_slider as $item) : ?>
+                    <div class="item">
+                        <div title="<?php echo getTitle($item) ?>" href="<?php echo $item->url ?>"><?php echo getTitle($item) ?><?php echo getTitle($item) ?></div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        <?php endif;?>
+
+
+<!--            --><?php //$home_slider = listBannerByPosition(1); if (!empty($home_slider)): ?>
+<!--            <div class="swiper-container gallery-top">-->
+<!--                <div class="swiper-wrapper">-->
+<!--                --><?php //foreach ($home_slider as $item) : ?>
+<!--                    <div class="swiper-slide">-->
+<!--                        <img src="--><?php //echo getImageThumb($item->thumbnail,850,440,true) ?><!--" alt="">-->
+<!--                    </div>-->
+<!--                --><?php //endforeach;?>
+<!--            </div>-->
+<!--            Add Arrows -->
+<!--                <div class="swiper-button-next swiper-button-dark"></div>-->
+<!--                <div class="swiper-button-prev swiper-button-dark"></div>-->
+<!--             </div>-->
+<!--            <div class="swiper-container gallery-thumbs">-->
+<!--                <div class="swiper-wrapper">-->
+<!--                    --><?php //foreach ($home_slider as $item) : ?>
+<!--                    <a class="swiper-slide" title="--><?php //echo getTitle($item) ?><!--" href="--><?php //echo $item->url ?><!--">--><?php //echo getTitle($item) ?><!--</a>-->
+<!--                    --><?php //endforeach; ?>
+<!--                </div>-->
+<!--            </div>-->
+<!--            --><?php //endif; ?>
+
+        </div>
+
+
+        <div class="col-md-3 col-sm-4 hidden-xs">
             <div class="side-banner">
               <aside class="homenews">
                 <figure>
@@ -49,46 +100,6 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
               </aside>
             </div>
-        </div>
-        <div class="col-md-9 col-sm-9 col-xs-12 home-slider">
-            <?php $home_slider = listBannerByPosition(1); ?>
-            <?php if(!empty($home_slider)): ?>
-            <div id="thm-slideshow" class="thm-slideshow slider-block">
-                <div id='rev_slider_4_wrapper' class='rev_slider_wrapper fullwidthbanner-container'>
-                    <div id='rev_slider_4' class='rev_slider fullwidthabanner'>
-                        <ul>
-                            <?php foreach ($home_slider as $item): ?>
-                            <li data-transition='slideright' data-slotamount='7' data-masterspeed='1000'
-                                data-thumb='<?php echo getImageThumb($item->thumbnail,850,440) ?>'>
-                                <img src="<?php echo getImageThumb($item->thumbnail,850,440,true) ?>"
-                                     data-src="<?php echo getImageThumb($item->thumbnail,850,440,true) ?>"
-                                     class="lazy"
-                                     data-bgposition='left top' data-bgfit='cover' data-bgrepeat='no-repeat'
-                                     alt="<?php echo getTitle($item) ?>">
-
-                                <div class="info">
-                                    <!--<div class='tp-caption ExtraLargeTitle sft  tp-resizeme ' data-endspeed='500'
-                                         data-speed='500' data-start='1100' data-easing='Linear.easeNone'
-                                         data-splitin='none' data-splitout='none' data-elementdelay='0.1'
-                                         data-endelementdelay='0.1'><span><?php /*echo $item->title */?></span>
-                                    </div>
-                                    <div class='tp-caption Title sft  tp-resizeme ' data-endspeed='500' data-speed='500'
-                                         data-start='1450' data-easing='Power2.easeInOut' data-splitin='none'
-                                         data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1'>
-                                        <?php /*echo $item->description */?>
-                                    </div>-->
-                                    <div class='tp-caption sfb  tp-resizeme ' data-endspeed='500' data-speed='500'
-                                         data-start='1500' data-easing='Linear.easeNone' data-splitin='none'
-                                         data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1'>
-                                        <a href='<?php echo $item->url ?>' rel="nofollow" title="Xem chi tiết" class="buy-btn">Xem chi tiết</a></div>
-                                </div>
-                            </li>
-                            <?php endforeach; ?>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <?php endif; ?>
         </div>
     </div>
 </div>

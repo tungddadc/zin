@@ -1,3 +1,5 @@
+
+
 var flagSearch = true;
 var LOC = {
     loadCity: function loadCity(dataSelected) {
@@ -609,64 +611,7 @@ var UI = {
             });
         }
     },
-    sliderHome: function () {
-        if (jQuery('#rev_slider_4').length > 0) {
-            jQuery('#rev_slider_4').show().revolution({
-                dottedOverlay: 'none',
-                delay: 5000,
-                startwidth: 850,
-                startheight: 428,
-                hideThumbs: 200,
-                thumbWidth: 200,
-                thumbHeight: 50,
-                thumbAmount: 2,
-                navigationType: 'thumb',
-                navigationArrows: 'solo',
-                navigationStyle: 'round',
-                touchenabled: 'on',
-                onHoverStop: 'on',
-                swipe_velocity: 0.7,
-                swipe_min_touches: 1,
-                swipe_max_touches: 1,
-                drag_block_vertical: false,
-                spinner: 'spinner0',
-                keyboardNavigation: 'off',
-                navigationHAlign: 'center',
-                navigationVAlign: 'bottom',
-                navigationHOffset: 0,
-                navigationVOffset: 20,
-                soloArrowLeftHalign: 'left',
-                soloArrowLeftValign: 'center',
-                soloArrowLeftHOffset: 20,
-                soloArrowLeftVOffset: 0,
-                soloArrowRightHalign: 'right',
-                soloArrowRightValign: 'center',
-                soloArrowRightHOffset: 20,
-                soloArrowRightVOffset: 0,
-                shadow: 0,
-                fullWidth: 'on',
-                fullScreen: 'off',
-                stopLoop: 'off',
-                stopAfterLoops: -1,
-                stopAtSlide: -1,
-                shuffle: 'off',
-                autoHeight: 'off',
-                forceFullWidth: 'on',
-                fullScreenAlignForce: 'off',
-                minFullScreenHeight: 0,
-                hideNavDelayOnMobile: 1500,
-                hideThumbsOnMobile: 'off',
-                hideBulletsOnMobile: 'off',
-                hideArrowsOnMobile: 'off',
-                hideThumbsUnderResolution: 0,
-                hideSliderAtLimit: 0,
-                hideCaptionAtLimit: 0,
-                hideAllCaptionAtLilmit: 0,
-                startWithSlide: 0,
-                fullScreenOffsetContainer: ''
-            });
-        }
-    },
+
     stickyMenuMain: function(){
         let header = document.getElementById('menu-main');
         let sticky = header.offsetTop;
@@ -735,7 +680,7 @@ var UI = {
         }
     },
     init: function () {
-        UI.stickyMenuMain();
+        // UI.stickyMenuMain();
         UI.activeMenu();
         UI.searchBox();
         UI.stickyBox();
@@ -743,12 +688,87 @@ var UI = {
         UI.voteStar();
         UI.ajaxFormSubmit();
         UI.zoomImageProduct();
-        UI.sliderHome();
         UI.loadComment(1);
         UI.show_random_realtime();
     }
 };
 jQuery(document).ready(function () {
+    var sync1 = $("#sync1");
+    var sync2 = $("#sync2");
+    var slidesPerPage = 4; //globaly define number of elements per page
+    var syncedSecondary = true;
+
+    sync1.owlCarousel({
+        items : 1,
+        slideSpeed : 2000,
+        nav: true,
+        autoplay: true,
+        dots: false,
+        loop: true,
+        responsiveRefreshRate : 200,
+    }).on('changed.owl.carousel', syncPosition);
+
+    sync2
+        .on('initialized.owl.carousel', function () {
+            sync2.find(".owl-item").eq(0).addClass("current");
+        })
+        .owlCarousel({
+            items : slidesPerPage,
+            dots: false,
+            nav: true,
+            smartSpeed: 200,
+            slideSpeed : 500,
+            slideBy: slidesPerPage, //alternatively you can slide by 1, this way the active slide will stick to the first item in the second carousel
+            responsiveRefreshRate : 100
+        }).on('changed.owl.carousel', syncPosition2);
+
+    function syncPosition(el) {
+        //if you set loop to false, you have to restore this next line
+        //var current = el.item.index;
+
+        //if you disable loop you have to comment this block
+        var count = el.item.count-1;
+        var current = Math.round(el.item.index - (el.item.count/2) - .5);
+
+        if(current < 0) {
+            current = count;
+        }
+        if(current > count) {
+            current = 0;
+        }
+
+        //end block
+
+        sync2
+            .find(".owl-item")
+            .removeClass("current")
+            .eq(current)
+            .addClass("current");
+        var onscreen = sync2.find('.owl-item.active').length - 1;
+        var start = sync2.find('.owl-item.active').first().index();
+        var end = sync2.find('.owl-item.active').last().index();
+
+        if (current > end) {
+            sync2.data('owl.carousel').to(current, 100, true);
+        }
+        if (current < start) {
+            sync2.data('owl.carousel').to(current - onscreen, 100, true);
+        }
+    }
+
+    function syncPosition2(el) {
+        if(syncedSecondary) {
+            var number = el.item.index;
+            sync1.data('owl.carousel').to(number, 100, true);
+        }
+    }
+
+    sync2.on("click", ".owl-item", function(e){
+        e.preventDefault();
+        var number = $(this).index();
+        sync1.data('owl.carousel').to(number, 300, true);
+    });
+
     UI.init();
     WISHLIST.init();
     COMPARE.init();

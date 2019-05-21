@@ -6,7 +6,6 @@
  * Time: 12:42 PM
  */
 defined('BASEPATH') OR exit('No direct script access allowed'); ?>
-
 <header>
     <div class="container">
         <div class="row">
@@ -47,51 +46,47 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
         <!--Login, SignIn, SignOut, Cart-->
             <div class="col-md-2 hidden-sm hidden-xs">
                 <ul class="menu-icon">
-
                     <li class="dropdown">
-                        <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
                             <i class="fa fa-user-circle" aria-hidden="true"></i>
-                            <ul class="dropdown-menu">
-                                <?php if ($this->session->userdata('is_logged')) :?>
-                                <li>
-                                    <a title="<?php echo $this->_user_login->fullname ?>" href="<?php echo base_url('profile') ?>">Thông tin tài khoản</a>
-                                </li>
-                                <li>
-                                    <a title="Đăng xuất" href="<?php echo base_url('auth/logout') ?>">Đăng xuất</a>
-                                </li>
-                                <?php else: ?>
-                                <li>
-                                    <a title="Đăng ký Tài khoản" href="<?php echo base_url('auth/register') ?>">
-                                        <i class="fa fa-user-plus" aria-hidden="true"></i>
-                                        <span>Đăng ký</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo redirect_login() ?>" title="Đăng nhập bằng tài khoản">
-                                        <i class="fa fa-sign-in" aria-hidden="true"></i>
-                                        <span>Đăng nhập</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo base_url('auth/window/Facebook') ?>" title="Đăng nhập bằng tài khoản">
-                                        <i class="fa fa-facebook" aria-hidden="true"></i>
-                                        <span>Đăng nhập bằng Facebok</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo base_url('auth/window/Google') ?>" title="Đăng nhập bằng tài khoản">
-                                        <i class="fa fa-google" aria-hidden="true"></i>
-                                        <span>Đăng nhập bằng Google</span>
-                                    </a>
-                                </li>
-                                <?php endif; ?>
-                                
-                            </ul>
                         </a>
+                        <ul class="dropdown-menu">
+                            <?php if ($this->session->userdata('is_logged')) :?>
+                            <li>
+                                <a class="btn btn-block btn-social btn-primary" title="<?php echo $this->_user_login->fullname ?>" href="<?php echo base_url('profile') ?>">Thông tin tài khoản</a>
+                            </li>
+                            <li>
+                                <a class="btn btn-block btn-social btn-danger" title="Đăng xuất" href="<?php echo base_url('auth/logout') ?>">Đăng xuất</a>
+                            </li>
+                            <?php else: ?>
+                            <li>                                    
+                                <a class="btn btn-block btn-social btn-info" title="Đăng ký Tài khoản" class="btn btn-primary btn-block" href="<?php echo base_url('auth/register') ?>">
+                                    Đăng ký tài khoản
+                                </a>
+                            </li>
+                            <li>
+                                <a class="btn btn-block btn-social btn-warning" href="<?php echo redirect_login() ?>" title="Đăng nhập bằng tài khoản">
+                                    Đăng nhập bằng tài khoản
+                                </a>
+                            </li>
+                            <li>
+                                <a class="btn btn-block btn-social btn-primary" href="<?php echo base_url('auth/window/Facebook') ?>" title="Đăng nhập bằng Facebook">
+                                    Đăng nhập bằng Facebok
+                                </a>
+                            </li>
+                            <li>
+                                <a class="btn btn-block btn-social btn-danger" href="<?php echo base_url('auth/window/Google') ?>" title="Đăng nhập bằng Google">
+                                    Đăng nhập bằng Google
+                                </a>
+                            </li>
+                            <?php endif; ?>
+                            
+                        </ul>
 
                     </li>
+
                     <li class="cart-icon">
-                        <a href="<?php echo base_url('cart') ?>">
+                        <a href="<?php echo base_url('cart') ?>" title="Giỏ hàng của bạn">
                             <i class="fa fa-shopping-basket" aria-hidden="true"></i>
                             <span class="cart_count"><?php echo $this->cart->total_items() ?></span>
                         </a>
@@ -104,8 +99,14 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                             <input class="title_shopping_cart" type="hidden" value="Go to shopping cart">
                         </div>
                     </li>
+                    <li class="compare">
+                        <a title="So sánh sản phẩm" href="<?php echo base_url('so-sanh-san-pham') ?>">
+                            <i class="fa fa-compass" aria-hidden="true"></i>
+                        </a>
+
+                    </li>
                     <li class="location-icon">
-                        <a href="<?php echo site_url('cua-hang-dai-ly.html?near=1') ?>">
+                        <a href="<?php echo site_url('cua-hang-dai-ly.html?near=1') ?>" title="Tìm cửa hàng gần đây">
                             <i class="fa fa-map-marker" aria-hidden="true"></i>
                         </a>
                     </li>

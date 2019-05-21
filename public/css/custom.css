@@ -2543,8 +2543,16 @@ header{
     line-height: 60px;
     position: sticky;
 }
-.menu-icon > li > a{
+.menu-icon > li > a, .menu-icon > li > ul > li a{
     color: #fff !important;
+    text-align: center;
+}
+.menu-icon li ul {
+    padding: 10px 5px;
+}
+
+.menu-icon li ul li:not(:last-child) {
+    margin-bottom: 10px;
 }
 .cart-icon{
     position: relative !important;
@@ -2555,3 +2563,21 @@ header{
     top: -10px;
     right: 0px;
 }
+
+
+
+#sync1 .owl-pagination {
+    display: none;
+}
+#sync2 .owl-item{
+    border-right: 1px solid #eee;
+}
+#sync2 .item {
+    text-align: center;
+}
+#sync2 .item div{
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+}
+

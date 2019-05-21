@@ -100,6 +100,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     <?php $asset_css[] = 'revslider.css'; ?>
     <?php $asset_css[] = 'bootstrap-social.css'; ?>
     <?php $asset_css[] = 'fancybox.css'; ?>
+    <?php $asset_css[] = 'swiper.min.css'; ?>
 
     <?php $asset_css[] = '../plugins/jssocials/jssocials.css'; ?>
     <?php $asset_css[] = '../plugins/jssocials/jssocials-theme-flat.css'; ?>
@@ -286,6 +287,7 @@ switch ($this->_controller) {
 <?php $asset_js[] = 'jquery-3.2.1.min.js'; ?>
 <?php $asset_js[] = 'bootstrap.min.js'; ?>
 <?php $asset_js[] = 'revslider.js'; ?>
+<?php $asset_js[] = 'swiper.min.js'; ?>
 <?php $asset_js[] = 'common.js'; ?>
 <?php $asset_js[] = 'owl.carousel.min.js'; ?>
 <?php $asset_js[] = 'jquery.mobile-menu.min.js'; ?>
@@ -302,6 +304,7 @@ switch ($this->_controller) {
 <?php $asset_js[] = 'custom.js'; ?>
 <?php $asset_js[] = 'account.js'; ?>
 <?php $asset_js[] = 'countdown1.js'; ?>
+
 <?php $this->minify->js($asset_js);
 echo $this->minify->deploy_js(); ?>
 <script src="https://maps.google.com/maps/api/js?key=<?php echo GG_KEY_MAP; ?>&libraries=places" type="text/javascript"></script>

@@ -443,7 +443,8 @@ a.button:hover {
 .main-container {
     min-height: 400px;
     padding: 0px;
-    margin-top: 25px
+    margin-top: 25px;
+    position: relative;
 }
 
 /*----------- 3. Header --------------*/

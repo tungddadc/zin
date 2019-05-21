@@ -14,10 +14,6 @@ Text Domain:  Lilac
 /*************************
 	-	CAPTIONS	-
 **************************/
-.home-slider {
-    float: right;
-    
-}
 #thm-slideshow {
 	border: none;
 	padding: 0;
@@ -605,9 +601,7 @@ Text Domain:  Lilac
 .forcefullwidth_wrapper_tp_banner, .fullwidthbanner-container {
 	margin-bottom: 0px !important;
 }
-.home-slider { margin-top:15px;
-    
-}
+
 }
  @media only screen and (min-width: 480px) and (max-width: 767px) {
 .tp-button {
