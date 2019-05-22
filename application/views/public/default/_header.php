@@ -38,7 +38,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
 
         <!--Main menu-->
-            <div class="col-md-5 hidden-sm hidden-xs">
+            <div class="col-md-5 hidden-sm hidden-xs position-static">
                 <?php echo navMenuMain('main-menu','main-menu-desktop') ?>
             </div>
         <!--Main menu-->
@@ -120,3 +120,4 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
         </div>
     </div>
 </header>
+

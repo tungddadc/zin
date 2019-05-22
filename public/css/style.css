@@ -114,6 +114,7 @@ body {
     line-height: 1.55;
     margin: auto;
     font-family: 'Nunito Sans';
+    background: #f0f0f0 !important;
 }
 
 h2, .h2 {
@@ -2697,10 +2698,6 @@ nav {
     display: none;
 }
 
-.owl-item .item {
-    margin: 0 12px;
-}
-
 .slider-items-products .item {
     text-align: center;
     margin-top: 0px !important
@@ -3762,10 +3759,6 @@ nav {
 .product-flexslider .owl-buttons {
     opacity: 0;
     transition: color 300ms ease-in-out 0s, background-color 300ms ease-in-out 0s, background-position 300ms ease-in-out 0s;
-}
-
-.owl-theme .owl-controls .owl-buttons div {
-    background: none !important;
 }
 
 .product-flexslider .owl-buttons {

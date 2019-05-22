@@ -1,81 +1,79 @@
 /**************************************************************************
-* Common js
+ * Common js
 
-**************************************************************************/
+ **************************************************************************/
 jQuery(document).ready(function() {
-   "use strict"; /* Navigation */
-/* Mega Menu */
-	jQuery('.mega-menu-title').on('click',function(){
-		if(jQuery('.mega-menu-category').is(':visible')){
-			jQuery('.mega-menu-category').slideUp();
-		} else {
-			jQuery('.mega-menu-category').slideDown();
-		}
-	});
-    
-    
-    jQuery('.mega-menu-category .nav > li').hover(function(){
-    	jQuery(this).addClass("active");
-    	let ofTop=$(this).offset().top - $('#menu-category').offset().top;
-		jQuery(this).find('.popup').stop(true,true).fadeIn('slow').parent().css('top',ofTop);
-    },function(){
-        jQuery(this).removeClass("active");
-		jQuery(this).find('.popup').stop(true,true).fadeOut('slow');
+    /* Mega Menu */
+    jQuery('.mega-menu-title').on('click',function(){
+        if(jQuery('.mega-menu-category').is(':visible')){
+            jQuery('.mega-menu-category').slideUp();
+        } else {
+            jQuery('.mega-menu-category').slideDown();
+        }
     });
-    
-    
-	jQuery('.mega-menu-category .nav > li.view-more-cat').on('click',function(e){
-		if(jQuery('.mega-menu-category .nav > li.more-menu').is(':visible')){
-			jQuery('.mega-menu-category .nav > li.more-menu').stop().slideUp();
-			jQuery(this).find('a').text('More');
-		} else { 
-			jQuery('.mega-menu-category .nav > li.more-menu').stop().slideDown();
-			jQuery(this).find('a').text('Close menu');
-			 jQuery(this).find('a').addClass('menu-hide');
-			
-		}
-		e.preventDefault();
-	});
+
+
+    jQuery('.mega-menu-category .nav > li').hover(function(){
+        jQuery(this).addClass('active');
+        jQuery(this).find('.popup').stop(true,true).fadeIn('slow');
+    },function(){
+        jQuery(this).removeClass('active');
+        jQuery(this).find('.popup').stop(true,true).fadeOut('slow');
+    });
+
+
+    jQuery('.mega-menu-category .nav > li.view-more-cat').on('click',function(e){
+        if(jQuery('.mega-menu-category .nav > li.more-menu').is(':visible')){
+            jQuery('.mega-menu-category .nav > li.more-menu').stop().slideUp();
+            jQuery(this).find('a').text('More');
+        } else {
+            jQuery('.mega-menu-category .nav > li.more-menu').stop().slideDown();
+            jQuery(this).find('a').text('Close menu');
+            jQuery(this).find('a').addClass('menu-hide');
+
+        }
+        e.preventDefault();
+    });
 
 
     /* Bestsell slider */
-    jQuery("#bestsell-slider .slider-items").owlCarousel({
+    jQuery('#bestsell-slider .slider-items').owlCarousel({
         items: 3, //10 items above 1000px browser width
         itemsDesktop: [1024, 4], //5 items between 1024px and 901px
         itemsDesktopSmall: [768, 3], // 3 items betweem 900px and 601px
         itemsTablet: [767, 2], //2 items between 600 and 0;
         itemsMobile: [360, 1],
         navigation: true,
-        navigationText: ["<a class=\"flex-prev\"></a>", "<a class=\"flex-next\"></a>"],
+        navigationText: ['<a class=\"flex-prev\"></a>', '<a class=\"flex-next\"></a>'],
         slideSpeed: 500,
         pagination: false
     });
     /* Featured slider */
-    jQuery("#featured-slider .slider-items").owlCarousel({
+    jQuery('#featured-slider .slider-items').owlCarousel({
         items: 4, //10 items above 1000px browser width
         itemsDesktop: [1024, 3], //5 items between 1024px and 901px
         itemsDesktopSmall: [900, 3], // 3 items betweem 900px and 601px
         itemsTablet: [768, 2], //2 items between 600 and 0;
         itemsMobile: [360, 1],
         navigation: true,
-        navigationText: ["<a class=\"flex-prev\"></a>", "<a class=\"flex-next\"></a>"],
+        navigationText: ['<a class=\"flex-prev\"></a>', '<a class=\"flex-next\"></a>'],
         slideSpeed: 500,
         pagination: false
     });
     /* New arrivals slider */
-    jQuery("#new-arrivals-slider .slider-items").owlCarousel({
+    jQuery('#new-arrivals-slider .slider-items').owlCarousel({
         items: 4, //10 items above 1000px browser width
         itemsDesktop: [1024, 4], //5 items between 1024px and 901px
         itemsDesktopSmall: [768, 3], // 3 items betweem 900px and 601px
         itemsTablet: [767, 2], //2 items between 600 and 0;
         itemsMobile: [360, 1],
         navigation: true,
-        navigationText: ["<a class=\"flex-prev\"></a>", "<a class=\"flex-next\"></a>"],
+        navigationText: ['<a class=\"flex-prev\"></a>', '<a class=\"flex-next\"></a>'],
         slideSpeed: 500,
         pagination: false
     });
     /* Brand logo slider */
-    jQuery("#brand-logo-slider .slider-items").owlCarousel({
+    jQuery('#brand-logo-slider .slider-items').owlCarousel({
         autoPlay: true,
         items: 6, //10 items above 1000px browser width
         itemsDesktop: [1024, 4], //5 items between 1024px and 901px
@@ -83,12 +81,12 @@ jQuery(document).ready(function() {
         itemsTablet: [600, 2], //2 items between 600 and 0;
         itemsMobile: [320, 1],
         navigation: true,
-        navigationText: ["<a class=\"flex-prev\"></a>", "<a class=\"flex-next\"></a>"],
+        navigationText: ['<a class=\"flex-prev\"></a>', '<a class=\"flex-next\"></a>'],
         slideSpeed: 500,
         pagination: false
     });
     /* Category desc slider */
-    jQuery("#category-desc-slider .slider-items").owlCarousel({
+    jQuery('#category-desc-slider .slider-items').owlCarousel({
         autoPlay: true,
         items: 1, //10 items above 1000px browser width
         itemsDesktop: [1024, 1], //5 items between 1024px and 901px
@@ -96,36 +94,36 @@ jQuery(document).ready(function() {
         itemsTablet: [600, 1], //2 items between 600 and 0;
         itemsMobile: [320, 1],
         navigation: true,
-        navigationText: ["<a class=\"flex-prev\"></a>", "<a class=\"flex-next\"></a>"],
+        navigationText: ['<a class=\"flex-prev\"></a>', '<a class=\"flex-next\"></a>'],
         slideSpeed: 500,
         pagination: false
     });
     /* Related products slider */
-    jQuery("#related-products-slider .slider-items").owlCarousel({
+    jQuery('#related-products-slider .slider-items').owlCarousel({
         items: 4, //10 items above 1000px browser width
         itemsDesktop: [1024, 4], //5 items between 1024px and 901px
         itemsDesktopSmall: [900, 3], // 3 items betweem 900px and 601px
         itemsTablet: [600, 2], //2 items between 600 and 0;
         itemsMobile: [360, 1],
         navigation: true,
-        navigationText: ["<a class=\"flex-prev\"></a>", "<a class=\"flex-next\"></a>"],
+        navigationText: ['<a class=\"flex-prev\"></a>', '<a class=\"flex-next\"></a>'],
         slideSpeed: 500,
         pagination: false
     });
     /* Upsell products slider */
-    jQuery("#upsell-products-slider .slider-items").owlCarousel({
+    jQuery('#upsell-products-slider .slider-items').owlCarousel({
         items: 4, //10 items above 1000px browser width
         itemsDesktop: [1024, 4], //5 items between 1024px and 901px
         itemsDesktopSmall: [900, 3], // 3 items betweem 900px and 601px
         itemsTablet: [600, 2], //2 items between 600 and 0;
         itemsMobile: [360, 1],
         navigation: true,
-        navigationText: ["<a class=\"flex-prev\"></a>", "<a class=\"flex-next\"></a>"],
+        navigationText: ['<a class=\"flex-prev\"></a>', '<a class=\"flex-next\"></a>'],
         slideSpeed: 500,
         pagination: false
     });
     /* testimonials slider */
-    jQuery("#testimonials-slider .slider-items").owlCarousel({
+    jQuery('#testimonials-slider .slider-items').owlCarousel({
         autoPlay: true,
         items: 1,
         itemsDesktop: [1024, 1],
@@ -133,33 +131,31 @@ jQuery(document).ready(function() {
         itemsTablet: [640, 1],
         itemsMobile: [390, 1],
         navigation: false,
-        navigationText: ['<a class="flex-prev"></a>', '<a class="flex-next"></a>'],
+        navigationText: ['<i class="fa fa-angle-left" aria-hidden="true"></i>', '<i class="fa fa-angle-right" aria-hidden="true"></i>'],
         slideSpeed: 500,
         pagination: false
 
     });
-	
-	jQuery(document).ready(function() {
-		"use strict";
-	jQuery("#bestsellers4 .slider-items").owlCarousel({
-		items : 1, //10 items above 1000px browser width
-		itemsDesktop : [1024,1], //5 items between 1024px and 901px
-		itemsDesktopSmall : [900,1], // 3 items betweem 900px and 601px
-		itemsTablet: [767,1], //2 items between 600 and 0;
-		itemsMobile : [360,1],
-		navigation : false,
-		navigationText : ["<a class=\"flex-prev\"></a>","<a class=\"flex-next\"></a>"],
-		slideSpeed : 500,
-		pagination : true
-	});
-	
-	});	
+
+
+    jQuery('#bestsellers4 .slider-items').owlCarousel({
+        items : 1, //10 items above 1000px browser width
+        itemsDesktop : [1024,1], //5 items between 1024px and 901px
+        itemsDesktopSmall : [900,1], // 3 items betweem 900px and 601px
+        itemsTablet: [767,1], //2 items between 600 and 0;
+        itemsMobile : [360,1],
+        navigation : false,
+        navigationText : ["<a class=\"flex-prev\"></a>","<a class=\"flex-next\"></a>"],
+        slideSpeed : 500,
+        pagination : true
+    });
+
 
     /* Mobile menu */
     jQuery("#mobile-menu").mobileMenu({
         MenuWidth: 250,
         SlideSpeed: 300,
-        WindowsMaxWidth: 991,
+        WindowsMaxWidth: 767,
         PagePush: true,
         FromLeft: true,
         Overlay: true,

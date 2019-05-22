@@ -92,15 +92,12 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
         })();
     </script>
     <?php $asset_css[] = 'bootstrap.min.css'; ?>
-    <?php $asset_css[] = 'owl.carousel.css'; ?>
-    <?php $asset_css[] = 'owl.theme.css'; ?>
-    <?php $asset_css[] = 'jquery.bxslider.css'; ?>
+    <?php $asset_css[] = 'owl.theme.default.min.css'; ?>
+    <?php $asset_css[] = 'owl.carousel.min.css'; ?>
     <?php $asset_css[] = 'jquery.mobile-menu.css'; ?>
     <?php $asset_css[] = 'style.css'; ?>
-    <?php $asset_css[] = 'revslider.css'; ?>
     <?php $asset_css[] = 'bootstrap-social.css'; ?>
     <?php $asset_css[] = 'fancybox.css'; ?>
-    <?php $asset_css[] = 'swiper.min.css'; ?>
 
     <?php $asset_css[] = '../plugins/jssocials/jssocials.css'; ?>
     <?php $asset_css[] = '../plugins/jssocials/jssocials-theme-flat.css'; ?>
@@ -286,8 +283,6 @@ switch ($this->_controller) {
 
 <?php $asset_js[] = 'jquery-3.2.1.min.js'; ?>
 <?php $asset_js[] = 'bootstrap.min.js'; ?>
-<?php $asset_js[] = 'revslider.js'; ?>
-<?php $asset_js[] = 'swiper.min.js'; ?>
 <?php $asset_js[] = 'common.js'; ?>
 <?php $asset_js[] = 'owl.carousel.min.js'; ?>
 <?php $asset_js[] = 'jquery.mobile-menu.min.js'; ?>

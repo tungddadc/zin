@@ -660,7 +660,7 @@ nav#menu-main{
     width: 200px;
     height: 200px;
     cursor: pointer;
-    z-index: 200000 !important;
+    z-index: 5 !important;
     -webkit-backface-visibility: hidden;
     -webkit-transform: translateZ(0);
     -webkit-transition: visibility .5s;
@@ -2371,9 +2371,12 @@ coccoc-alo-number::-ms-clear {
     margin-left: -2px;
 }
 .side-banner{
-    background-color: #f1eff2;
+    background-color: #fff;
     padding: 5px;
     display: block;
+    z-index: 0;
+    position: relative;
+    z-index: -1;
 }
 .side-banner figure {
     display: block;
@@ -2565,10 +2568,7 @@ header{
 }
 
 
-
-#sync1 .owl-pagination {
-    display: none;
-}
+/*Custome Owl carousel Home*/
 #sync2 .owl-item{
     border-right: 1px solid #eee;
 }
@@ -2581,3 +2581,82 @@ header{
     cursor: pointer;
 }
 
+#sync1 .owl-prev, #sync1 .owl-next {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#sync1 .owl-next {
+    right: -2%;
+}
+
+#sync1 .owl-prev{
+    left: -2%;
+}
+
+#sync1 .owl-controls .owl-buttons div {
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    font-size: 24px;
+    border-radius: 0px;
+    padding: 0px 14px;
+}
+
+#sync2 .owl-item {
+    padding: 10px 0;
+}
+
+.home-slider {
+    background: #fff;
+}
+
+
+
+/*Main menu*/
+.position-static {
+    position: static;
+}
+.sub-menu {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.main-menu > li > .sub-menu {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: #fff;
+    z-index: -1;
+    line-height: 30px;
+    opacity: 0;
+    transition: all ease .4s;
+    transform: translateY(-5%);
+}
+.main-menu > li > .sub-menu > li {
+    float: left;
+    width: 20%;
+    padding: 0px 5px;
+}
+.main-menu > li:hover > ul.sub-menu  {
+    opacity: 1 !important;
+    transform: translateY(0%);
+    z-index: 6;
+}
+
+.main-menu > li > .sub-menu > li > a {
+    color: #000;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.main-menu > li > .sub-menu > li > .sub-menu {
+    line-height: 20px;
+    padding: 5px 0 10px 0;
+}
+
+.main-menu > li > .sub-menu > li > .sub-menu > li > a {
+    font-size: 13px;
+    font-weight: bold;
+}
