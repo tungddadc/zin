@@ -7,14 +7,16 @@ class Product extends Public_Controller
     protected $_data;
     protected $_data_category;
     protected $category_tree;
+    protected $_data_property;
     protected $_lang_code;
 
     public function __construct()
     {
         parent::__construct();
-        $this->load->model(['category_model', 'product_model']);
+        $this->load->model(['category_model', 'product_model','property_model']);
         $this->_data = new Product_model();
         $this->_data_category = new Category_model();
+        $this->_data_property = new Property_model();
         $this->_lang_code = $this->session->userdata('public_lang_code');
     }
 
@@ -235,6 +237,9 @@ class Product extends Public_Controller
 
     public function detail($slug){
         $oneItem = $this->_data->getBySlugCustom($slug,$this->_lang_code);
+        $allProperty = $this->_data_property->_all_property();
+        $productProperty = $this->_data_property->getByIdCached($allProperty,$oneItem->id);
+        $data['propertyProduct'] = $productProperty;
         if (empty($oneItem)) show_404();
         $id = $oneItem->id;
         $this->flushView($id,$oneItem->viewed);
@@ -254,8 +259,8 @@ class Product extends Public_Controller
         $data['onePrev'] = $this->_data->getPrevById($oneItem->id,'',$this->_lang_code);
         $data['oneNext'] = $this->_data->getNextById($oneItem->id,'',$this->_lang_code);
         $data['data_detail'] = $this->_data->getDetail($id);
-        if(!empty($oneItem->barcode))
-            $data['data_stock'] = $this->getStockApi($oneItem->barcode);
+//        if(!empty($oneItem->barcode))
+//            $data['data_stock'] = $this->getStockApi($oneItem->barcode);
 
 
         if(!empty($oneItem->data_similar)){
@@ -321,7 +326,7 @@ class Product extends Public_Controller
         if(!empty($oneCategoryParent->layout)) $layoutView = '-'.$oneCategoryParent->layout;
         else $layoutView = '';
 
-        $data['main_content'] = $this->load->view($this->template_path . 'product/detail'.$layoutView, $data, TRUE);
+        $data['main_content'] = $this->load->view($this->template_path . 'product/detail_new'.$layoutView, $data, TRUE);
         $this->load->view($this->template_main, $data);
     }
     private function flushView($id, $view){
@@ -755,16 +760,16 @@ class Product extends Public_Controller
     }
 
 
-    private function getStockApi($barcode){
-        $api = "http://112.213.91.39:81/api/Stock?barcode=$barcode";
-        $data = $this->cUrl($api);
-        return json_decode($data);
-    }
-
-    private function getAllProductApi(){
-        $api = "http://112.213.91.39:81/api/Stock/GetAllProducts";
-        $data = $this->cUrl($api);
-        return json_decode($data);
-    }
+//    private function getStockApi($barcode){
+//        $api = "http://112.213.91.39:81/api/Stock?barcode=$barcode";
+//        $data = $this->cUrl($api);
+//        return json_decode($data);
+//    }
+//
+//    private function getAllProductApi(){
+//        $api = "http://112.213.91.39:81/api/Stock/GetAllProducts";
+//        $data = $this->cUrl($api);
+//        return json_decode($data);
+//    }
 
 }

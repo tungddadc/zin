@@ -121,8 +121,6 @@ h2, .h2 {
     font-size: 20px;
 }
 
-html { /*background: url(../images/bg.png) repeat fixed 0 0 rgba(0, 0, 0, 0); */
-}
 
 a {
     color: rgb(190, 30, 45);
@@ -4471,19 +4469,11 @@ nav {
 }
 
 .category-product .navbar {
-    /*	line-height: inherit;
-	margin-bottom: auto;
-	min-height: inherit;
-	border: none;
-	border-radius: 0; */
-
     line-height: inherit;
     margin-bottom: auto;
-    /* min-height: inherit; */
     border: none;
-    /* border-bottom: 4px #e5e5e5 solid; */
     border-radius: 0;
-    min-height: 0px;
+    background-color: #388305;
 
 }
 
@@ -4511,9 +4501,17 @@ nav {
 }
 
 .category-product .navbar-collapse {
-    padding: 0px;
+    padding: 15px 10px;
+}
+.nav-category-title a {
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
+.nav-category-title {
+    margin: 0;
+}
 .category-product .navbar-nav > li {
     float: none;
     display: inline-block;
@@ -4625,65 +4623,6 @@ nav {
 .navbar-nav .new_title {
     border: none;
     padding: 12px 20px 14px 0px;
-}
-
-.box-hover .add-to-links li a {
-    height: 40px;
-    display: block;
-    font-size: 0;
-    color: rgb(190, 30, 45);
-    line-height: 40px;
-    text-align: left;
-    padding: 0;
-    text-transform: uppercase;
-    margin: 0;
-    background: none;
-    font-weight: 700;
-    font-family: 'Nunito Sans';
-    letter-spacing: 1px;
-}
-
-.box-hover .add-to-links li a:after {
-    width: 40px;
-    height: 40px;
-    float: left;
-    background: #fff;
-    content: "";
-    text-align: center;
-    font-family: FontAwesome;
-    font-size: 11px;
-    border-radius: 100px;
-    /*	border: 1px #eee solid;  */
-}
-
-.box-hover .add-to-links li a:hover {
-    background: rgb(190, 30, 45);
-    border-radius: 100px;
-    color: #fff;
-}
-
-.box-hover .add-to-links li a:hover:after {
-    background: rgb(190, 30, 45);
-    border-radius: 100px;
-    color: #fff;
-}
-
-.item .item-inner .item-img .box-hover .add-to-links li a.link-wishlist:after {
-    content: "\f004";
-    font-size: 13px;
-    font-weight: normal;
-}
-
-.item .item-inner .item-img .box-hover .add-to-links li a.link-compare:after {
-    content: "\f005";
-    font-size: 15px;
-    font-weight: normal;
-}
-
-.item .item-inner .item-img .box-hover .add-to-links li a.link-quickview:after {
-    content: "\f00e";
-    font-size: 15px;
-    font-weight: normal;
 }
 
 .box-hover {
@@ -4960,13 +4899,13 @@ nav {
 .products-grid {
     margin: 0;
     list-style: none;
+    padding: 0 10px;
 }
-
-ul.products-grid {
-    padding: 0;
-    margin:
+.products-grid:after,.item-inner:after {
+    content: '';
+    display: block;
+    clear: both;
 }
-
 .category-products ul.products-grid li.item {
     text-align: center;
     margin-top: 10px;
@@ -5093,11 +5032,6 @@ ul.products-grid {
     margin-top: 37px;
 }
 
-.products-grid .item .item-inner {
-    position: relative;
-    text-align: center;
-    overflow: hidden;
-}
 
 .products-grid .item .item-inner .action {
     margin-top: 10px;
@@ -5128,10 +5062,6 @@ ul.products-grid {
 .products-grid .item .item-inner:hover {
     left: 0px;
     top: 0px;
-}
-
-.products-grid .item .item-inner .item-img {
-    position: relative;
 }
 
 .products-grid .item .item-inner .item-img .ico-product {
@@ -5202,11 +5132,16 @@ ul.products-grid {
 
 .products-grid .item .item-inner .item-img {
     margin: 0px auto 0;
-
-    border: 1px #e5e5e5 solid;
     display: block;
     padding: 7px;
-    border-radius: 5px;
+    float: right;
+    width: 35%;
+}
+
+.products-grid .item .item-inner .item-info {
+    float: left;
+    width: 65%;
+    text-align: left;
 }
 
 .products-grid .item .item-inner .item-info .info-inner {
@@ -5677,113 +5612,6 @@ li .list {
     text-transform: uppercase;
 }
 
-.link-wishlist, .link-compare {
-    color: #666;
-    text-shadow: none;
-    border: none;
-    box-shadow: none;
-}
-
-.link-wishlist:hover, .link-compare:hover {
-    color: #666;
-    text-shadow: none;
-    border: none;
-    box-shadow: none;
-    background: none;
-}
-
-.link-wishlist, .link-compare, .link-friend, .link-edit {
-    padding: 0;
-    background: none
-}
-
-.products-list .actions .add-to-links a.link-wishlist:before {
-    content: "\f004";
-    font-weight: normal;
-}
-
-.products-list .actions .add-to-links a.link-compare:before {
-    content: "\f012";
-    font-weight: normal;
-}
-
-.products-list .actions .add-to-links a.link-wishlist {
-    color: #333;
-    font-family: 'FontAwesome';
-    font-size: 11px;
-    font-weight: bold;
-    margin: 0;
-    padding: 10px 15px 7px;
-    text-decoration: none;
-    background-color: #fff;
-    display: inline-block;
-    transition: all 0.3s linear;
-    -moz-transition: all 0.3s linear;
-    -webkit-transition: all 0.3s linear;
-    margin-right: 8px;
-    border: 1px solid #d1d1d1;
-    border-radius: 2px;
-}
-
-.products-list .actions .add-to-links a.link-wishlist span {
-    font-size: 11px;
-    padding: 0px;
-
-    font-weight: bold;
-    letter-spacing: 1px;
-}
-
-.products-list .actions .add-to-links a.link-compare {
-    color: #333;
-    font-family: 'FontAwesome';
-    font-size: 11px;
-    font-weight: bold;
-    margin: 0;
-    padding: 10px 15px 7px;
-    text-decoration: none;
-    background-color: #fff;
-    display: inline-block;
-    transition: all 0.3s linear;
-    -moz-transition: all 0.3s linear;
-    -webkit-transition: all 0.3s linear;
-    margin-right: 8px;
-    letter-spacing: 0.5px;
-    border: 1px solid #d1d1d1;
-    border-radius: 2px;
-}
-
-.products-list .actions .add-to-links a.link-compare span {
-    font-size: 11px;
-    padding: 0px;
-}
-
-.products-list .actions .add-to-links a.link-wishlist:hover {
-    font-family: 'FontAwesome';
-    font-size: 11px;
-    font-weight: bold;
-    text-decoration: none;
-    background-color: rgb(190, 30, 45);
-    color: #FFFFFF !important;
-    display: inline-block;
-    border: 1px rgb(190, 30, 45) solid
-}
-
-.products-list .actions .add-to-links a.link-compare:hover {
-    font-family: 'FontAwesome';
-    font-size: 11px;
-    font-weight: bold;
-    text-decoration: none;
-    background-color: rgb(190, 30, 45);
-    color: #FFFFFF !important;
-    display: inline-block;
-    border: 1px rgb(190, 30, 45) solid
-}
-
-ul.products-grid {
-    padding: 0;
-    margin: 0
-}
-
 a.button.detail-bnt span {
     font-size: 13px;
     text-transform: uppercase;
@@ -6056,10 +5884,8 @@ a.button.detail-bnt span {
     font-size: 26px;
     font-weight: 600;
     line-height: 15px;
-    padding: 0px 0px 14px 0px;
+    padding: 15px 0px;
     position: relative;
-    /*	text-transform: uppercase;  */
-    /*	border-bottom: 4px #e5e5e5 solid; */
     margin-left: 15px;
     margin-right: 15px;
 }
@@ -6531,21 +6357,35 @@ a.button.detail-bnt span {
     margin: 0;
     list-style: none;
     padding: 0;
+    transform: translateY(100%);
+}
+.box-hover .add-to-links a {
+    color: #fff;
 }
 
 .box-hover .add-to-links li {
-    margin: 3px 2px;
     display: inline-block;
-}
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    background: brown;
+    border-radius: 100%;
 
+}
 .box-hover {
     position: absolute;
     bottom: -100%;
-    float: right;
     text-align: center;
-    left: 15%;
+    opacity: 0;
 }
-
+.item-img:hover .box-hover {
+    opacity: 1;
+    height: 100%;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(0,0,0,0.5);
+}
 .image-hover2 a {
     position: relative;
     display: table;
@@ -6626,14 +6466,6 @@ a.button.detail-bnt span {
     margin-top: 15px;
 }
 
-.item .item-inner:hover .item-img .box-hover {
-    /*	left: 15%;
-	bottom: 10px; */
-
-    left: 50%;
-    bottom: 10px;
-    margin-left: -65px;
-}
 
 /*---------	11. Breadcrumbs --------- */
 .breadcrumbs {
@@ -6642,7 +6474,7 @@ a.button.detail-bnt span {
     font-size: 13px;
     color: #333;
     text-align: right;
-    z-index: 10;
+    z-index: 2;
     position: relative;
     float: right;
     width: 100%;
@@ -8932,8 +8764,15 @@ ol#compare-items li.last {
     vertical-align: top
 }
 
-.add-to-cart .btn-cart {
+#product_addtocart_form .add-to-cart .btn-cart, .buy-more .add-to-cart .btn-cart {
     margin-left: 5px;
+}
+
+.custom.related-product-btn {
+    text-align: center;
+}
+.custom.related-product-btn .button.btn-cart {
+    margin-top: 10px;
 }
 
 .qty-input-text {

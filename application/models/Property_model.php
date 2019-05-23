@@ -83,6 +83,8 @@ class Property_model extends STEVEN_Model{
         return !empty($data)?$data->id:null;
     }
 
+
+
     public function getPropertyByType($lang_code = null,$type,$parent_id = 0){
         $this->db->from($this->table);
         if(!empty($this->table_trans)) $this->db->join($this->table_trans,"$this->table.id = $this->table_trans.id");

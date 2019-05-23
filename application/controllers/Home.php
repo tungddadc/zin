@@ -15,58 +15,15 @@ class Home extends Public_Controller
     }
 
     public function index(){
-        $data['home_product_latest'] = $this->listProductLatest();
-        $data['home_product_sale'] = $this->listProductSale();
-        $data['home_product_featured'] = $this->listProductFeatured();
+        $data['home_product'] = $this->listProduct();
         $data['home_news'] = $this->listNews();
         $data['main_content'] = $this->load->view($this->template_path . 'home/index', $data, TRUE);
         $this->load->view($this->template_main, $data);
     }
 
-    private function listProductLatest(){
-        $this->load->model('product_model');
-        $productModel = new Product_model();
-        $params = array(
-            'lang_code' => $this->session->userdata('public_lang_code'),
-            'is_status' => 1,
-            'limit' => 8,
-            'order' => ['created_time', 'DESC']
-        );
-        $data = $productModel->getData($params);
-        return $data;
-    }
-
-    private function listProductSale(){
-        $this->load->model('product_model');
-        $productModel = new Product_model();
-        $params = array(
-            'lang_code' => $this->session->userdata('public_lang_code'),
-            'is_status' => 1,
-            'limit' => 8,
-            'order' => ['created_time', 'DESC']
-        );
-        $data = $productModel->getData($params);
-        return $data;
-    }
-
-    private function listProductFeatured(){
-        $this->load->model('product_model');
-        $productModel = new Product_model();
-        $params = array(
-            'lang_code' => $this->session->userdata('public_lang_code'),
-            'is_status' => 1,
-            'is_featured' => 1,
-            'limit' => 8,
-            'order' => ['created_time', 'DESC']
-        );
-        $data = $productModel->getData($params);
-        return $data;
-    }
-
     private function listNews(){
         $this->load->model(['post_model']);
         $postModel = new Post_model();
-        $categoryModel = new Category_model();
         $params = array(
             'lang_code' => $this->session->userdata('public_lang_code'),
             'is_status' => 1,
@@ -76,11 +33,37 @@ class Home extends Public_Controller
         return $postModel->getData($params);
     }
 
-    private function listProductByCat(){
-        $this->load->model(['category_model','product_model']);
-        $_product_model = new Product_model();
-        $_cat_model = new Category_model();
+    private function listProduct(){
+        $this->load->model('product_model');
+        $categoryModel = new Category_model();
+        $productModel = new Product_model();
+        $allCategoryProduct = $categoryModel->_all_category('product');
+        $listCateChild = $categoryModel->getListChild($allCategoryProduct,0);
+        $listCategory = array();
+        if(!empty($listCateChild)) foreach ($listCateChild as $item){
+            $categoryModel->_list_category_child_id = [];
+            $categoryModel->_recursive_child_id($allCategoryProduct,$item->id);
+            $listCateId = $categoryModel->_list_category_child_id;
+            $params = array(
+                'lang_code' => $this->session->userdata('public_lang_code'),
+                'is_status' => 1,
+                'category_id'=> $listCateId,
+                'limit' => 6
+            );
+            $listCategory[] = $item;
+            $data['listCategoryChild'][$item->id] = $categoryModel->getListChild($allCategoryProduct, $item->id);
+            $keyCacheProduct = "_listProduct_{$item->id}_{$this->session->userdata('public_lang_code')}";
 
+            $listProduct = $this->cache->get($keyCacheProduct);
+            if(empty($listProduct)){
+                $listProduct = $productModel->getData($params);
+                $this->cache->save($keyCacheProduct,$listProduct,60*30);//30 phút
+            }
+            $data['listProduct'][$item->id] = $listProduct;
+            unset($item);
+        }
+        $data['listCategory'] = $listCategory;
+        return $data;
     }
 
 }

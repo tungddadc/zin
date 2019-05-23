@@ -396,10 +396,7 @@
                                                                     <?php endforeach; ?>
                                                                 </ul>
                                                             </div>
-                                                            <!--<div class="actions">
-                                                                <a class="button view-all" id="revies-button"
-                                                                   href="#"><span><span>Xem thêm</span></span></a>
-                                                            </div>-->
+
                                                         </div>
                                                         <div class="clear"></div>
                                                     </div>
@@ -407,43 +404,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="comments" data-id="<?php echo $oneItem->id ?>" class="comment-fr">
-                                        <div class="cmt-head">
-                                            <div class="table">
-                                                <div class="cell">
-                                                    <strong>Bình Luận</strong>
-                                                </div>
-                                                <div class="cell text-right">
-                                                    <select name="comment_sort" style="width: 100px">
-                                                        <option>Mới nhất</option>
-                                                        <option>Cũ nhất</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="cmt-list"></div>
-                                        <?php if($this->session->userdata('is_logged')): ?>
-                                        <?php echo form_open('product/ajax_save_comment',['class'=>'form-input form-comment']) ?>
-                                            <input type="hidden" name="account_id" value="<?php echo $this->session->userdata('user_id') ?>">
-                                            <input type="hidden" name="product_id" value="<?php echo $oneItem->id ?>">
-                                            <div class="clearfix">
-                                                <div class="form-group">
-                                                    <input type="text" name="name" placeholder="Tên của bạn" value="<?php echo $this->_user_login->fullname ?>" class="form-control">
-                                                </div>
-                                                <div class="form-group">
-                                                    <input type="text" name="email" placeholder="Email" value="<?php echo $this->session->userdata('email') ?>" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <textarea name="content" placeholder="Mời bạn để lại bình luận" class="form-control"></textarea>
-                                            </div>
-                                            <div class="fr-photo"></div>
-                                            <div class="fr-ctrl">
-                                                <button type="submit" class="smooth send send_comment">Gửi bình luận</button>
-                                            </div>
-                                        <?php echo form_close() ?>
-                                        <?php endif; ?>
-                                    </div>
+                                    comments
 
                                     <div>Tags: <?php echo getTags($oneItem->meta_keyword) ?></div>
                                 </div>

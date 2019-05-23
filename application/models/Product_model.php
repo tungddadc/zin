@@ -18,6 +18,7 @@ class Product_model extends STEVEN_Model
         $this->table_category   = "product_category";
         $this->table_property   = "product_property";
         $this->table_detail     = "product_detail";
+        $this->table_property_trans = "property_translations";
         $this->column_order     = array("$this->table.id", "$this->table.id", "$this->table_trans.title", "$this->table.is_featured", "$this->table.is_status", "$this->table.created_time", "$this->table.updated_time");
         $this->column_search    = array("$this->table_trans.title");
         $this->order_default    = array("$this->table.created_time" => "DESC");
@@ -75,6 +76,8 @@ class Product_model extends STEVEN_Model
             $this->db->where_in("$this->table_property.property_id",$property_id);
         }
     }
+
+
 
     public function getBySlugCustom($slug, $lang_code = null){
 

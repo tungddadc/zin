@@ -1,6 +1,6 @@
 <ul class="products-grid">
     <?php if(!empty($data)) foreach ($data as $item): ?>
-        <li class="item col-lg-3 col-md-4 col-sm-4 col-xs-6">
+        <li class="item col-lg-4 col-md-3 col-sm-6 col-xs-12">
             <div class="item-inner">
                 <div class="item-img">
                     <div class="item-img-info">
@@ -10,17 +10,34 @@
                                  class="lazy"
                                  alt="<?php echo getTitle($item) ?>">
                         </a>
-                        <?php echo !empty($item->is_new) ? '<div class="new-label new-top-left">New</div>' : '<div class="new-label new-top-left">Đã bán: '.($item->viewed - 555).'</div>' ?>
+<!--                        --><?php //echo !empty($item->is_new) ? '<div class="new-label new-top-left">New</div>' : '<div class="new-label new-top-left">Đã bán: '.($item->viewed - 555).'</div>' ?>
                         <?php echo !empty($item->is_sale) && !empty($item->price) ? '<div class="hot-label hot-top-left">-'.round((($item->price - $item->price_sale)/$item->price)*100).'%</div>' : '' ?>
-                        <div class="box-hover">
-                            <ul class="add-to-links">
-                                <li><a class="link-quickview" data-url="<?php echo getUrlProduct($item) ?>" href="javascript:;" rel="nofollow" title="Xem Quickview"></a> </li>
-                                <li><a class="link-wishlist" data-id="<?php echo $item->id ?>" href="javascript:;" rel="nofollow" title="Yêu thích sản phẩm này"></a> </li>
-                                <li><a class="link-compare" data-id="<?php echo $item->id ?>" href="javascript:;" rel="nofollow" title="So sánh sản phẩm này"></a> </li>
-                            </ul>
-                        </div>
                     </div>
-            </div>
+                    <div class="box-hover">
+                        <ul class="add-to-links">
+                            <li>
+                                <a class="link-quickview" data-url="<?php echo getUrlProduct($item) ?>" href="javascript:;" rel="nofollow" title="Xem Quickview">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="link-wishlist" data-id="<?php echo $item->id ?>" href="javascript:;" rel="nofollow" title="Yêu thích sản phẩm này">
+                                    <i class="fa fa-heart" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="link-compare" data-id="<?php echo $item->id ?>" href="javascript:;" rel="nofollow" title="So sánh sản phẩm này">
+                                    <i class="fa fa-balance-scale" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a class=link-add-to-cart href="javascript:;" onclick="CART.add(<?php echo $item->id ?>,1)" title="Thêm vào giỏ hàng">
+                                    <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
                 <div class="item-info">
                     <div class="info-inner">
                         <div class="item-title">
@@ -45,13 +62,12 @@
                                     <?php endif; ?>
                                 </div>
                             </div>
-                            <div class="action">
-                                <a href="javascript:;" onclick="CART.add(<?php echo $item->id ?>,1)" class="button" title="Thêm vào giỏ hàng"><span>Thêm vào giỏ hàng</span></a>
-                            </div>
                         </div>
                     </div>
                 </div>
+
             </div>
+
         </li>
     <?php endforeach;else echo "<div class='text-center'>Nội dung đang được cập nhật !</div>" ?>
 </ul>

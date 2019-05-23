@@ -100,11 +100,11 @@ jQuery(document).ready(function() {
     });
     /* Related products slider */
     jQuery('#related-products-slider .slider-items').owlCarousel({
-        items: 4, //10 items above 1000px browser width
-        itemsDesktop: [1024, 4], //5 items between 1024px and 901px
-        itemsDesktopSmall: [900, 3], // 3 items betweem 900px and 601px
-        itemsTablet: [600, 2], //2 items between 600 and 0;
-        itemsMobile: [360, 1],
+        items: 1, //10 items above 1000px browser width
+        // itemsDesktop: [1024, 1], //5 items between 1024px and 901px
+        // itemsDesktopSmall: [900, 1], // 3 items betweem 900px and 601px
+        // itemsTablet: [600, 1], //2 items between 600 and 0;
+        // itemsMobile: [360, 1],
         navigation: true,
         navigationText: ['<a class=\"flex-prev\"></a>', '<a class=\"flex-next\"></a>'],
         slideSpeed: 500,
@@ -145,7 +145,7 @@ jQuery(document).ready(function() {
         itemsTablet: [767,1], //2 items between 600 and 0;
         itemsMobile : [360,1],
         navigation : false,
-        navigationText : ["<a class=\"flex-prev\"></a>","<a class=\"flex-next\"></a>"],
+        navigationText: ['<i class="fa fa-angle-left" aria-hidden="true"></i>', '<i class="fa fa-angle-right" aria-hidden="true"></i>'],
         slideSpeed : 500,
         pagination : true
     });
