@@ -36,7 +36,9 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
             </div>
             <!--Search form-->
 
-            <div class="hidden-lg col-md-2 col-sm-1 col-xs-2"><a href="javascript:void(0)" class="btn-menu-mobile hidden-lg"><i class="fa fa-bars" aria-hidden="true"></i></a></div>
+            <div class="hidden-lg col-md-2 col-sm-1 col-xs-2">
+                <a href="javascript:void(0)" class="btn-menu-mobile hidden-lg mm-toggle"><i class="fa fa-bars" aria-hidden="true"></i></a>
+            </div>
 
         <!--Main menu-->
             <div class="col-lg-5 hidden-md hidden-sm hidden-xs position-static">
@@ -121,4 +123,8 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
         </div>
     </div>
 </header>
+
+<div id="mobile-menu" class="hidden-lg">
+    <?php echo navMenuMain('mobile-menu'); ?>
+</div>
 

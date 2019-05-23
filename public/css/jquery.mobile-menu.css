@@ -17,8 +17,8 @@ html {
 	width: 100%;
 }
 #mobile-menu {
-/*	background: none repeat scroll 0 0 #333;  */
-/*	border-right: 1px solid #222; */
+	background: none repeat scroll 0 0 #333;
+	border-right: 1px solid #222;
 	box-shadow: 0 1px 8px #555555;
 	box-sizing: content-box;
 	display: none;
@@ -162,8 +162,8 @@ html {
 	color: #fff !important;
 }
 .mobile-menu .expand {
-/*	border-left: 1px solid #444; */
-	color: #0083c1;
+	border-left: 1px solid #444;
+	color: #fff;
 	margin-left: 20px;
 	padding: 0 10px;
 	position: absolute;
@@ -174,7 +174,7 @@ html {
 	cursor: pointer;
 }
 .mobile-menu li {
-/*	border-top: 1px solid #444;  */
+	border-top: 1px solid #444;
 	display: block;
 	float: left;
 	margin-left: 0;
@@ -186,7 +186,7 @@ html {
 	color: #fff;
 }
 .mobile-menu li a {
-	color: #333;
+	color: #fff;
 	display: block;
 	font-weight: 600;
 	font-size:13px;
@@ -239,19 +239,18 @@ html {
 	overflow: hidden;
 }
 .mm-toggle {
-  
-	
-	background: none repeat scroll 0 0 #fdd922;
-    border-radius: 0;
-    cursor: pointer;
-    display: none;
-    float: left;
-    font-size: 23px;
+
+	/*background: none repeat scroll 0 0 #fdd922;*/
+    /*border-radius: 0;*/
+    /*cursor: pointer;*/
+    /*display: none;*/
+    /*float: left;*/
+    /*font-size: 23px;*/
     /* height: 58px; */
-    margin-left: 15px;
-    padding: 16px 15px 12px 15px;
-    /* padding: 20px 22px; */
-    width: auto; 
+    /*margin-left: 15px;*/
+    /*padding: 16px 15px 12px 15px;*/
+	/*padding: 20px 22px; */
+    /*width: auto; */
 }
 .mm-toggle .mm-label {
 	display: none;
