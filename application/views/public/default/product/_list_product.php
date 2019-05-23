@@ -1,6 +1,6 @@
 <ul class="products-grid">
     <?php if(!empty($data)) foreach ($data as $item): ?>
-        <li class="item col-lg-4 col-md-3 col-sm-6 col-xs-12">
+        <li class="item col-lg-4 col-md-6 col-xs-12">
             <div class="item-inner">
                 <div class="item-img">
                     <div class="item-img-info">
