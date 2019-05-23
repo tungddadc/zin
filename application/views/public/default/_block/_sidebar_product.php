@@ -1,5 +1,5 @@
 <div class="block block-layered-nav">
-    <div class="block-title">Lọc sản phẩm theo: </div>
+    <h2>Lọc sản phẩm theo</h2>
     <div class="block-content">
         <p class="block-subtitle"><a href="<?php echo !empty($oneItem) ? getUrlCateProduct($oneItem) : '' ?>" rel="nofollow" title="Xoá lọc" class="button button-clear"><span>Xóa lọc</span></a></p>
         <dl id="narrow-by-list">

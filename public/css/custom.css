@@ -1830,26 +1830,6 @@ coccoc-alo-number::-ms-clear {
 .category_home {
     text-align: center
 }
-
-.slick-slider .slick-arrow:hover {
-    color: #CD2122
-}
-
-.category_home .slick-next {
-    right: -.4em
-}
-
-.category_home .slick-prev {
-    left: -.4em
-}
-
-.category_home .slick-arrow {
-    font-size: 3.75em;
-    color: #ccc;
-    top: 32%;
-    margin-top: -.5em
-}
-
 .category_home h3.entry-title {
     line-height: 1.5em;
     font-size: 1em;
@@ -2123,110 +2103,6 @@ coccoc-alo-number::-ms-clear {
         margin: 3px 0
     }
 }
-
-.slick-slider {
-    position: relative;
-    display: block;
-    box-sizing: border-box;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    -webkit-touch-callout: none;
-    -khtml-user-select: none;
-    -ms-touch-action: pan-y;
-    touch-action: pan-y;
-    -webkit-tap-highlight-color: transparent
-}
-
-.slick-list {
-    position: relative;
-    display: block;
-    overflow: hidden;
-    margin: 0;
-    padding: 0
-}
-
-.slick-list:focus {
-    outline: none
-}
-
-.slick-list.dragging {
-    cursor: pointer;
-    cursor: hand
-}
-
-.slick-slider .slick-track, .slick-slider .slick-list {
-    -webkit-transform: translate3d(0, 0, 0);
-    -moz-transform: translate3d(0, 0, 0);
-    -ms-transform: translate3d(0, 0, 0);
-    -o-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0)
-}
-
-.slick-track {
-    position: relative;
-    top: 0;
-    left: 0;
-    display: block;
-    margin-left: auto;
-    margin-right: auto
-}
-
-.slick-track:before, .slick-track:after {
-    display: table;
-    content: ''
-}
-
-.slick-track:after {
-    clear: both
-}
-
-.slick-loading .slick-track {
-    visibility: hidden
-}
-
-.slick-slide {
-    display: none;
-    float: left;
-    height: 100%;
-    min-height: 1px
-}
-
-[dir='rtl'] .slick-slide {
-    float: right
-}
-
-.slick-slide img {
-    display: block
-}
-
-.slick-slide.slick-loading img {
-    display: none
-}
-
-.slick-slide.dragging img {
-    pointer-events: none
-}
-
-.slick-initialized .slick-slide {
-    display: block
-}
-
-.slick-loading .slick-slide {
-    visibility: hidden
-}
-
-.slick-vertical .slick-slide {
-    display: block;
-    height: auto;
-    border: 1px solid transparent
-}
-
-.slick-arrow.slick-hidden {
-    display: none
-}
-
 .mfp-wrap{
     z-index: 9999999;
 }
@@ -2318,7 +2194,7 @@ coccoc-alo-number::-ms-clear {
     flex-direction: column;
     background-color: #fff;
 }
-.post_related h2, .product-related h2{
+.post_related h2, .product-related h2, .block-layered-nav h2{
     background-color: #388305;
     line-height: 2;
     font-size: 18px;
@@ -2785,6 +2661,87 @@ header{
 .desc-pr {
     margin: 0 0 20px 0;
     padding: 0;
+    list-style-position: inside;
+}
+.panel-green > .panel-heading {
+    background-color: #388305;
+    color: #fff;
+    text-transform: uppercase;
+    border-radius: 0;
+}
+
+.panel-green {
+    border: 1px solid #388305;
+}
+
+.border-radius-none {
+    border-radius: 0px !important;
+}
+.product-essential:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.product-box-right {
+    background-color: #fff;
+    padding: 7px 15px;
+    margin-bottom: 20px;
+}
+
+.accessories-box, .agency {
+    float: left;
+}
+
+.accessories-box {
+    width: 65%;
+}
+
+.agency {
+    width: 30%;
+    margin-left: 5%;
+}
+#slide2 {
+    float: left;
+}
+
+#slide1 {
+    width: 80%;
+}
+
+#slide2 {
+    width: 20%;
+}
+
+#slide1 {
+    float: right;
+}
+
+.product-img {
+    overflow: hidden;
+}
+#slide2 .slick-slide {
+    padding: 5px;
+}
+.slick-btn-next {
+    right: 1%;
+
+}
+.slick-btn-prev{
+    left: 1%;
+}
+.slick-btn-prev, .slick-btn-next{
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    position: absolute;
+    background: rgba(0,0,0,0.5);
+    z-index: 9;
+    display: block;
+    color: #fff;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
 }
 @media  (min-width: 320px) and (max-width: 768px){
     .nav-category-title, .view-list-child{

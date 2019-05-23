@@ -99,6 +99,9 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     <?php $asset_css[] = 'bootstrap-social.css'; ?>
     <?php $asset_css[] = 'fancybox.css'; ?>
 
+    <?php $asset_css[] = 'slick.css'; ?>
+    <?php $asset_css[] = 'slick-theme.css'; ?>
+
     <?php $asset_css[] = '../plugins/jssocials/jssocials.css'; ?>
     <?php $asset_css[] = '../plugins/jssocials/jssocials-theme-flat.css'; ?>
 
@@ -299,6 +302,7 @@ switch ($this->_controller) {
 <?php $asset_js[] = 'custom.js'; ?>
 <?php $asset_js[] = 'account.js'; ?>
 <?php $asset_js[] = 'countdown1.js'; ?>
+<?php $asset_js[] = 'slick.min.js'; ?>
 
 <?php $this->minify->js($asset_js);
 echo $this->minify->deploy_js(); ?>

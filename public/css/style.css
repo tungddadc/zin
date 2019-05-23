@@ -5015,11 +5015,6 @@ nav {
     margin-bottom: 5px !important
 }
 
-.col-main .category-products .products-grid {
-    margin-left: -12px;
-    margin-right: -12px;
-}
-
 .products-grid .last {
     margin-right: 0;
 }
@@ -6369,9 +6364,11 @@ a.button.detail-bnt span {
     bottom: -100%;
     text-align: center;
     opacity: 0;
+    z-index: -9;
 }
 .item-img:hover .box-hover {
     opacity: 1;
+    z-index: 3;
     height: 100%;
     bottom: 0;
     right: 0;
@@ -6484,9 +6481,7 @@ a.button.detail-bnt span {
 
 .category-page .breadcrumbs {
     text-align: left;
-    float: left;
     width: 100%;
-    margin-left: 15px;
 }
 
 .breadcrumbs span {
@@ -8244,10 +8239,6 @@ ol#compare-items li.last {
 
 .flex-direction-nav, .slider-controls {
     -webkit-transform: translate3d(0, 0, 0)
-}
-
-.product-essential {
-    background-color: #FFFFFF;
 }
 
 .product-collateral .box-collateral {
@@ -12912,8 +12903,7 @@ a.shop-now-btn {
 /* Toolbar */
 .toolbar {
     clear: both;
-    margin-top: 5px;
-    padding: 0px 0 0 0px;
+    padding: 10px;
     display: inline-block;
     width: 100%;
     margin-bottom: 0px;

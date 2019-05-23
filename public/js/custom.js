@@ -1030,4 +1030,24 @@ $(document).ready(function() {
 
     }
 
+    $('#slide1').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: true,
+        dots: false,
+        fade: true,
+        asNavFor: '#slide2',
+        prevArrow:"<a class='slick-btn-prev'><i class='fa fa-angle-left' aria-hidden='true'></i></a>",
+        nextArrow:"<a class='slick-btn-next'><i class='fa fa-angle-right' aria-hidden='true'></i></a>"
+    });
+    $('#slide2').slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        arrows: false,
+        asNavFor: '#slide1',
+        centerMode: true,
+        focusOnSelect: true,
+        vertical: true
+    });
+
 });
