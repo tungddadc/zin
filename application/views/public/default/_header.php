@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     <div class="container">
         <div class="row">
             <!--logo-->
-            <div class="col-md-2 col-sm-4 col-xs-12 logo-block">
+            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 logo-block">
                 <div class="logo">
                     <a title="<?php echo $this->settings['title'] . ' | ' . $this->settings['name'] ?>"
                        href="<?php echo base_url() ?>">
@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
             <!--logo-->
 
             <!--Search form-->
-            <div class="col-md-3 col-sm-8 col-xs-3 hidden-xs category-search-form">
+            <div class="col-lg-3 col-md-8 col-sm-6 col-xs-7 category-search-form">
                 <?php if($this->agent->is_mobile() == false): ?>
                     <div class="search-box">
                         <div id="search_mini_form">
@@ -36,15 +36,16 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
             </div>
             <!--Search form-->
 
+            <div class="hidden-lg col-md-2 col-sm-1 col-xs-2"><a href="javascript:void(0)" class="btn-menu-mobile hidden-lg"><i class="fa fa-bars" aria-hidden="true"></i></a></div>
 
         <!--Main menu-->
-            <div class="col-md-5 hidden-sm hidden-xs position-static">
+            <div class="col-lg-5 hidden-md hidden-sm hidden-xs position-static">
                 <?php echo navMenuMain('main-menu','main-menu-desktop') ?>
             </div>
         <!--Main menu-->
 
         <!--Login, SignIn, SignOut, Cart-->
-            <div class="col-md-2 hidden-sm hidden-xs">
+            <div class="col-lg-2 hidden-md hidden-sm hidden-xs">
                 <ul class="menu-icon">
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
