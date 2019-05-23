@@ -218,12 +218,10 @@ header .our-features-box li {
 .product-buy .agency{
     margin-top: 10px;
 }
-
-.accessories .item{
-}
-
-#fancybox-wrap{
-
+.product-name h1 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 0px;
 }
 .phantrang {
     display: block;
@@ -247,10 +245,10 @@ header .our-features-box li {
 }
 
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{
-    background-color: rgb(251, 175, 63);
+    background-color: #388305;
 }
 .nav-tabs > li > a:hover{
-    background-color: rgb(251, 175, 63);
+    background-color: #388305;
 }
 .accessories .item a{
     display: block;
@@ -268,7 +266,7 @@ header .our-features-box li {
     margin-top: 10px;
 }
 .buy-more .panel-body{
-    max-height: 330px;
+    max-height: 190px;
     overflow: hidden;
     position: relative;
 }
@@ -495,7 +493,9 @@ Comment*/
     margin-bottom: -2px; }
 .comment-fr form.form-comment{
     padding: 5px;
-    border: 1px solid #ccc;
+}
+#comment {
+    padding: 0 10px;
 }
 @media all and (max-width: 767px) {
     .comment-box {
@@ -2316,14 +2316,19 @@ coccoc-alo-number::-ms-clear {
 .post_related{
     display: flex;
     flex-direction: column;
+    background-color: #fff;
 }
-.post_related h2{
-    background-color: rgb(190, 30, 45);
+.post_related h2, .product-related h2{
+    background-color: #388305;
     line-height: 2;
-    font-size: 26px;
+    font-size: 18px;
     color: #fff;
     text-align: center;
-    margin-top: 0;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 5px 10px;
 }
 .post_related .item{
     margin-bottom: 5px;
@@ -2350,6 +2355,12 @@ coccoc-alo-number::-ms-clear {
 }
 .post_related .item a .right h3{
     margin-bottom: 0;
+    margin-top: 0;
+    font-size: 14px;
+    font-weight: bold;
+}
+.widget {
+    margin-bottom: 20px;
 }
 ._post_related h3{
     font-size: 24px;
@@ -2763,8 +2774,18 @@ header{
 .review-company-text li {
     margin-bottom: 20px;
 }
-
-
+.std,.list-tag {
+    padding: 0 10px;
+}
+.list-tag {
+    border-top: 1px dashed #ececec;
+    padding-top: 10px;
+    margin-top: 20px;
+}
+.desc-pr {
+    margin: 0 0 20px 0;
+    padding: 0;
+}
 @media  (min-width: 320px) and (max-width: 768px){
     .nav-category-title, .view-list-child{
         float: none;

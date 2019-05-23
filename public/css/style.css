@@ -2318,7 +2318,6 @@ nav {
 .our-features-box .feature-box .content p {
     margin: 0px
 }
-
 .our-features-box .feature-box span {
     display: inline-block;
     font-size: 18px;
@@ -3737,9 +3736,6 @@ nav {
 }
 
 /*#offer-slider{ border:1px #e5e5e5 solid; background:#fff; padding:25px 12px;}*/
-.product-flexslider {
-    margin: 20px 0px;
-}
 
 .bestsell-pro .product-flexslider .owl-buttons {
     opacity: 1;
@@ -5638,10 +5634,6 @@ a.button.detail-bnt span {
     margin: 1px 3px 0 0;
 }
 
-.ratings .rating-links {
-    margin: 0;
-    display: none;
-}
 
 .ratings .rating-links a {
     margin: 0;
@@ -8764,14 +8756,19 @@ ol#compare-items li.last {
     vertical-align: top
 }
 
-#product_addtocart_form .add-to-cart .btn-cart, .buy-more .add-to-cart .btn-cart {
+#product_addtocart_form .add-to-cart .btn-cart{
     margin-left: 5px;
 }
 
 .custom.related-product-btn {
     text-align: center;
 }
-.custom.related-product-btn .button.btn-cart {
+
+.custom.buy-more-btn {
+    text-align: left;
+}
+
+.custom.related-product-btn .button.btn-cart, .custom.buy-more-btn .button.btn-cart {
     margin-top: 10px;
 }
 
@@ -8854,7 +8851,6 @@ ol#compare-items li.last {
 }
 
 .product-tabs {
-    margin: 25px 0px 0;
     padding: 0px 0px 0px;
     text-align: left;
     width: 100%;
@@ -8863,7 +8859,6 @@ ol#compare-items li.last {
     line-height: inherit;
     margin-bottom: auto;
     min-height: inherit;
-    /*	border-bottom: 4px #e5e5e5 solid;  */
     background: #f8f8f8;
 }
 
@@ -8947,6 +8942,7 @@ ol#compare-items li.last {
     font-size: 16px;
     font-weight: 600;
     letter-spacing: 1px;
+    margin-left: 10px;
 }
 
 .form-add-tags .input-box {
@@ -9228,7 +9224,7 @@ a.button.view-all {
 }
 
 #product-review-table {
-    margin: 10px 0;
+    margin: 10px 0 0 5px;
     border: medium none;
     width: 100%;
 }
@@ -9530,11 +9526,9 @@ button.button.submit:before {
 .related-pro .home-block-inner {
     border-width: 0 !important;
 }
-
-#related-products-slider.product-flexslider {
-    margin: 25px -12px;
+#related-products-slider {
+    background: #fff;
 }
-
 .related-pro .block-title {
     color: #333;
     font-size: 26px;
@@ -10760,8 +10754,17 @@ input.input-text, select,select.form-control, textarea {
     outline: none;
     color: #999;
     border: 1px solid #ddd;
-    border-radius: 0;
+    border-radius: 0 !important;
 }
+.form-review-nickname,.form-review-name {
+    float: left;
+    width: 50%;
+}
+
+.form-review-nickname,.form-review-name,.buttons-set,.form-review-message {
+    padding: 10px;
+}
+
 
 #wishlist-table textarea {
     padding: 8px 10px;

@@ -18,86 +18,81 @@
                 <!-- Breadcrumbs End -->
 
                 <div id="ajax-quickview" class="product-essential">
-                    <div class="product-img-box col-md-7 col-sm-6 col-xs-12">
-
-                        <!-- end: more-images -->
-                        <div class="row">
-                            <div class="col-md-8 col-sm-6 col-xs-12">
-                                <?php if (!empty($data_related)): $totalItem = count($data_related) ?>
-                                    <div class="row clearfix accessories">
-                                        <div class="panel panel-info">
-                                            <div class="panel-heading">
-                                                <h2 class="panel-title">Sản phẩm liên quan</h2>
-                                            </div>
-                                            <div class="panel-body accessories-slider">
-                                                <?php foreach ($data_related as $item): ?>
-                                                    <div class="item add-to-cart">
-                                                        <a href="<?php echo getUrlProduct($item) ?>"
-                                                           title="<?php echo getTitle($item) ?>">
-                                                            <img src="<?php echo getImageThumb($item->thumbnail, 100, 100) ?>"
-                                                                 alt="<?php echo getTitle($item) ?>" class="img-thumbnail">
-                                                            <h2><?php echo $item->title ?></h2>
-                                                        </a>
-                                                        <div class="custom related-product-btn">
-                                                            <button onClick="CART.quantity_reduced(this)"
-                                                                    class="reduced items-count <?php echo $this->session->userdata('is_agency') == true ? 'is-agency' : '' ?>"
-                                                                    type="button">
-                                                                <i class="fa fa-minus">&nbsp;</i>
-                                                            </button>
-                                                            <input autocomplete="disabled"
-                                                                   onkeyup="CART.changeInputQuantity(this)" type="text"
-                                                                   class="input-text qty" title="Số lượng" value="1"
-                                                                   maxlength="<?php echo $item->quantity ?>"
-                                                                   name="quantity">
-                                                            <button onClick="CART.quantity_increase(this)"
-                                                                    class="increase items-count <?php echo $this->session->userdata('is_agency') == true ? 'is-agency' : '' ?>"
-                                                                    type="button">
-                                                                <i class="fa fa-plus">&nbsp;</i>
-                                                            </button>
-                                                            <button onclick="CART.add_more(<?php echo $item->id ?>,this)"
-                                                                    class="button btn-cart"
-                                                                    title="Thêm vào giỏ hàng" type="submit">Thêm vào giỏ
-                                                            </button>
-                                                        </div>
+                    <div class="product-img-box">
+                        <div class="col-md-5 col-sm-6 col-xs-12">
+                            <?php if (!empty($data_related)): $totalItem = count($data_related) ?>
+                                <div class="accessories">
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading">
+                                            <h2 class="panel-title">Sản phẩm liên quan</h2>
+                                        </div>
+                                        <div class="panel-body accessories-slider">
+                                            <?php foreach ($data_related as $item): ?>
+                                                <div class="item add-to-cart">
+                                                    <a href="<?php echo getUrlProduct($item) ?>"
+                                                       title="<?php echo getTitle($item) ?>">
+                                                        <img src="<?php echo getImageThumb($item->thumbnail, 100, 100) ?>"
+                                                             alt="<?php echo getTitle($item) ?>" class="img-thumbnail">
+                                                        <h2><?php echo $item->title ?></h2>
+                                                    </a>
+                                                    <div class="custom related-product-btn">
+                                                        <button onClick="CART.quantity_reduced(this)"
+                                                                class="reduced items-count <?php echo $this->session->userdata('is_agency') == true ? 'is-agency' : '' ?>"
+                                                                type="button">
+                                                            <i class="fa fa-minus">&nbsp;</i>
+                                                        </button>
+                                                        <input autocomplete="disabled"
+                                                               onkeyup="CART.changeInputQuantity(this)" type="text"
+                                                               class="input-text qty" title="Số lượng" value="1"
+                                                               maxlength="<?php echo $item->quantity ?>"
+                                                               name="quantity">
+                                                        <button onClick="CART.quantity_increase(this)"
+                                                                class="increase items-count <?php echo $this->session->userdata('is_agency') == true ? 'is-agency' : '' ?>"
+                                                                type="button">
+                                                            <i class="fa fa-plus">&nbsp;</i>
+                                                        </button>
+                                                        <button onclick="CART.add_more(<?php echo $item->id ?>,this)"
+                                                                class="button btn-cart"
+                                                                title="Thêm vào giỏ hàng" type="submit">Thêm vào giỏ
+                                                        </button>
                                                     </div>
-                                                <?php endforeach; ?>
-                                            </div>
+                                                </div>
+                                            <?php endforeach; ?>
                                         </div>
                                     </div>
-                                <?php endif; ?>
-                            </div>
-                            <div class="col-md-4 col-sm-6 col-xs-12">
-                                <div class="agency">
-                                    <div class="panel panel-info">
-                                        <div class="panel-heading panel-info">
-                                            <h4 class="panel-title">Chính sách đại lý</h4>
-                                        </div>
-                                        <div class="panel-body">
-                                            <a href="<?php echo base_url('dieu-kien-va-chinh-sach-dai-ly.html') ?>"
-                                               class="btn btn-warning btn-block"
-                                               title="Điều kiện và chính sách đại lý">Điều kiện và chính sách
-                                                </a>
-                                            <a href="<?php echo base_url('gia-dai-ly-va-uu-dai.html') ?>"
-                                               class="btn btn-warning btn-block"
-                                               title="Giá đại lý và ưu đãi">Giá đại lý và ưu đãi</a>
-                                        </div>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="agency">
+                                <div class="panel panel-info">
+                                    <div class="panel-heading panel-info">
+                                        <h4 class="panel-title">Chính sách đại lý</h4>
+                                    </div>
+                                    <div class="panel-body">
+                                        <a href="<?php echo base_url('dieu-kien-va-chinh-sach-dai-ly.html') ?>"
+                                           class="btn btn-warning btn-block"
+                                           title="Điều kiện và chính sách đại lý">Điều kiện và chính sách
+                                            </a>
+                                        <a href="<?php echo base_url('gia-dai-ly-va-uu-dai.html') ?>"
+                                           class="btn btn-warning btn-block"
+                                           title="Giá đại lý và ưu đãi">Giá đại lý và ưu đãi</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
-                    <div class="product-shop col-md-5 col-sm-6 col-xs-12">
-                        <div class="product-next-prev">
-                            <?php if (!empty($oneNext)): ?>
-                                <a class="product-next" href="<?php echo getUrlProduct($oneNext) ?>"
-                                   title="<?php echo getTitle($oneNext) ?>"><span></span></a>
-                            <?php endif; ?>
-                            <?php if (!empty($onePrev)): ?>
-                                <a class="product-prev" href="<?php echo getUrlProduct($onePrev) ?>"
-                                   title="<?php echo getTitle($onePrev) ?>"><span></span></a>
-                            <?php endif; ?>
-                        </div>
+                    <div class="product-shop col-md-4 col-sm-6 col-xs-12">
+<!--                        <div class="product-next-prev">-->
+<!--                            --><?php //if (!empty($oneNext)): ?>
+<!--                                <a class="product-next" href="--><?php //echo getUrlProduct($oneNext) ?><!--"-->
+<!--                                   title="--><?php //echo getTitle($oneNext) ?><!--"><span></span></a>-->
+<!--                            --><?php //endif; ?>
+<!--                            --><?php //if (!empty($onePrev)): ?>
+<!--                                <a class="product-prev" href="--><?php //echo getUrlProduct($onePrev) ?><!--"-->
+<!--                                   title="--><?php //echo getTitle($onePrev) ?><!--"><span></span></a>-->
+<!--                            --><?php //endif; ?>
+<!--                        </div>-->
                         <div class="product-name">
                             <h1><?php echo $oneItem->title ?></h1>
                         </div>
@@ -194,7 +189,7 @@
                                                             <h2><a href="<?php echo getUrlProduct($item) ?>"
                                                                    title="<?php echo getTitle($item) ?>"><?php echo $item->title ?></a>
                                                             </h2>
-                                                            <div class="custom pull-left">
+                                                            <div class="custom buy-more-btn">
                                                                 <button onClick="CART.quantity_reduced(this)"
                                                                         class="reduced items-count <?php echo $this->session->userdata('is_agency') == true ? 'is-agency' : '' ?>"
                                                                         type="button">
@@ -211,7 +206,7 @@
                                                                     <i class="fa fa-plus">&nbsp;</i>
                                                                 </button>
                                                                 <button onclick="CART.add_more(<?php echo $item->id ?>,this)"
-                                                                        class="button btn-cart pull-right"
+                                                                        class="button btn-cart"
                                                                         title="Thêm vào giỏ hàng" type="submit">Thêm vào
                                                                     giỏ
                                                                 </button>
@@ -239,67 +234,22 @@
 <!--                        </div>-->
 <!--                    </div>-->
                     <div class="col-xs-12 col-md-8">
-                        <div class="std">
-                            <?php echo $oneItem->content ?>
-                        </div>
-                        <div class="list-tag">
-                            <span>Tags: </span><?php echo getTags($oneItem->meta_keyword) ?>
-                        </div>
-
-<!--                        <div class="box-collateral box-reviews" id="customer-reviews">-->
-<!--                            -->
-<!--                        </div>-->
                         <ul id="product-detail-tab" class="nav nav-tabs product-tabs" role="tablist">
                             <li role="presentation" class="active">
-                                <a href="#comment" aria-controls="home" role="tab" data-toggle="tab">Bình luận</a>
+                                <a href="#content" aria-controls="profile" role="tab" data-toggle="tab">Giới thiệu</a>
                             </li>
                             <li role="presentation">
-                                <a href="#review" aria-controls="profile" role="tab" data-toggle="tab">Đánh giá</a>
+                                <a href="#comment" aria-controls="home" role="tab" data-toggle="tab">Bình luận</a>
                             </li>
                         </ul>
-
-                        <!-- Tab panes -->
                         <div id="productTabContent" class="tab-content">
-                            <div role="tabpanel" class="tab-pane active" id="comment">
-                                <div id="comments" data-id="<?php echo $oneItem->id ?>" class="comment-fr">
-                                    <div class="cmt-head">
-                                        <div class="table">
-                                            <div class="cell">
-                                                <strong>Bình Luận</strong>
-                                            </div>
-                                            <div class="cell text-right">
-                                                <select name="comment_sort" style="width: 100px">
-                                                    <option>Mới nhất</option>
-                                                    <option>Cũ nhất</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="cmt-list"></div>
-                                    <?php if($this->session->userdata('is_logged')): ?>
-                                        <?php echo form_open('product/ajax_save_comment',['class'=>'form-input form-comment']) ?>
-                                        <input type="hidden" name="account_id" value="<?php echo $this->session->userdata('user_id') ?>">
-                                        <input type="hidden" name="product_id" value="<?php echo $oneItem->id ?>">
-                                        <div class="clearfix">
-                                            <div class="form-group">
-                                                <input type="text" name="name" placeholder="Tên của bạn" value="<?php echo $this->_user_login->fullname ?>" class="form-control">
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="text" name="email" placeholder="Email" value="<?php echo $this->session->userdata('email') ?>" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <textarea name="content" placeholder="Mời bạn để lại bình luận" class="form-control"></textarea>
-                                        </div>
-                                        <div class="fr-photo"></div>
-                                        <div class="fr-ctrl">
-                                            <button type="submit" class="smooth send send_comment">Gửi bình luận</button>
-                                        </div>
-                                        <?php echo form_close() ?>
-                                    <?php endif; ?>
+                            <div role="tabpanel" class="tab-pane active" id="content">
+                                <div class="std">
+                                    <?php echo $oneItem->content ?>
                                 </div>
-                            </div>
-                            <div role="tabpanel" class="tab-pane" id="review">
+                                <div class="list-tag">
+                                    <span>Tags: </span><?php echo getTags($oneItem->meta_keyword) ?>
+                                </div>
                                 <div class="box-reviews1">
                                     <div class="form-add">
                                         <?php echo form_open('product/ajax_vote', ['id' => 'review-form']) ?>
@@ -307,7 +257,7 @@
                                         <h3>Phản hồi của khách hàng về sản phẩm
                                             "<?php echo $oneItem->title ?>"</h3>
                                         <fieldset>
-                                            <h4>Bạn đánh giá sản phẩm này như thế nào ? <em class="required">*</em></h4>
+                                            <h4 style="margin-left: 10px;">Bạn đánh giá sản phẩm này như thế nào ? <em class="required">*</em></h4>
                                             <div id="product-review-table">
                                                 <div class="rateit"
                                                      data-id="<?php echo $oneItem->id ?>"
@@ -322,34 +272,35 @@
                                             <div class="review1">
                                                 <ul class="form-list">
                                                     <?php if($this->session->userdata('is_logged') == true): ?>
-                                                        <li>
+                                                        <li class="form-review-nickname">
                                                             <label class="required"
                                                                    for="nickname_field">Tài khoản</label>
                                                             <div class="input-box">
                                                                 <input type="text"
-                                                                       class="input-text"
+                                                                       class="input-text form-control"
                                                                        id="nickname_field"
                                                                        name="username" disabled value="<?php echo $this->_user_login->fullname ?>">
                                                             </div>
                                                         </li>
                                                     <?php endif; ?>
-                                                    <li>
+                                                    <li class="form-review-name">
                                                         <label class="required"
                                                                for="fullname_field">Tên<em>*</em></label>
                                                         <div class="input-box">
                                                             <input type="text"
-                                                                   class="input-text"
+                                                                   class="input-text form-control"
                                                                    id="fullname_field"
                                                                    name="name">
                                                         </div>
                                                     </li>
-                                                    <li>
+                                                    <li class="form-review-message">
                                                         <label class="required "
                                                                for="review_field">Phản
                                                             hồi<em>*</em></label>
                                                         <div class="input-box">
                                                                                 <textarea rows="3" cols="5"
                                                                                           id="review_field"
+                                                                                          class="form-control"
                                                                                           name="message"></textarea>
                                                         </div>
                                                     </li>
@@ -395,9 +346,46 @@
 
                                 </div>
                             </div>
+                            <div role="tabpanel" class="tab-pane" id="comment">
+                                <div id="comments" data-id="<?php echo $oneItem->id ?>" class="comment-fr">
+                                    <div class="cmt-head">
+                                        <div class="table">
+                                            <div class="cell">
+                                                <strong>Bình Luận</strong>
+                                            </div>
+                                            <div class="cell text-right">
+                                                <select name="comment_sort" style="width: 100px">
+                                                    <option>Mới nhất</option>
+                                                    <option>Cũ nhất</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="cmt-list"></div>
+                                    <?php if($this->session->userdata('is_logged')): ?>
+                                        <?php echo form_open('product/ajax_save_comment',['class'=>'form-input form-comment']) ?>
+                                        <input type="hidden" name="account_id" value="<?php echo $this->session->userdata('user_id') ?>">
+                                        <input type="hidden" name="product_id" value="<?php echo $oneItem->id ?>">
+                                        <div class="clearfix">
+                                            <div class="form-group">
+                                                <input type="text" name="name" placeholder="Tên của bạn" value="<?php echo $this->_user_login->fullname ?>" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" name="email" placeholder="Email" value="<?php echo $this->session->userdata('email') ?>" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <textarea name="content" placeholder="Mời bạn để lại bình luận" class="form-control"></textarea>
+                                        </div>
+                                        <div class="fr-photo"></div>
+                                        <div class="fr-ctrl">
+                                            <button type="submit" class="smooth send send_comment">Gửi bình luận</button>
+                                        </div>
+                                        <?php echo form_close() ?>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
                         </div>
-
-
                     </div>
 
                     <div class="col-xs-12 col-md-4">
@@ -406,7 +394,7 @@
                             if (!empty($listId)) : $listPostRelated = getPostRelated($listId);
                                 if (!empty($listPostRelated)) :
                                     ?>
-                                    <div class="post_related">
+                                    <div class="post_related widget">
                                         <h2>Tin tức liên quan</h2>
                                         <?php foreach ($listPostRelated as $item): ?>
                                             <div class="item">
@@ -428,12 +416,8 @@
                         endif;
                         ?>
 
-                        <div class="related-block">
-                            <div class="home-block-inner">
-                                <div class="block-title">
-                                    <h2>So sánh sản phẩm tương          </h2>
-                                </div>
-                            </div>
+                        <div class="product-related widget">
+                            <h2>So sánh sản phẩm tương  đương</h2>
                             <div id="related-products-slider" class="product-flexslider hidden-buttons">
                                 <div class="slider-items slider-width-col4 products-grid block-content">
                                     <?php $this->load->view($this->template_path . 'product/_list_product_slider', ['data' => $listProductBrand]) ?>

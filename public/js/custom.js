@@ -768,7 +768,7 @@ jQuery(document).ready(function () {
 
     CART.payment_collapse();
 
-    if($('.showmore').closest('.panel-body').find('.add-to-box').length <= 3){
+    if($('.showmore').closest('.panel-body').find('.add-to-box').length <= 1){
         $('.showmore').addClass('hidden');
     }
 

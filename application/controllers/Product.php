@@ -525,7 +525,7 @@ class Product extends Public_Controller
             $message['type'] = 'warning';
             $message['message'] = "Bạn đã đánh giá sản phẩm này rồi.";
         }
-        die(json_encode($message));
+        return json_encode($message);
     }
     public function ajax_save_wishlist(){
         $this->checkRequestPostAjax();
