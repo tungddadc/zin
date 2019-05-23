@@ -2678,8 +2678,76 @@ header{
     float: right;
 }
 
-.nav-category:after {
+.nav-category:after,.review-company-text:after {
     display: block;
     content: '';
     clear: both;
+}
+
+
+.review-company {
+    background-color: #fff;
+    padding: 100px 20px 20px;
+}
+
+.review-company-inner {
+    border: 1px solid #ebebeb;
+    position: relative;
+}
+
+.review-company-inner-img {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    top: -15%;
+    right: 50%;
+    transform: translateX(50%);
+}
+.review-company-inner:before {
+    display: block;
+    content: '';
+    position: absolute;
+    right: 50%;
+    width: 30%;
+    height: 10px;
+    transform: translateX(50%);
+    top: -1%;
+    background: #fff;
+}
+
+.review-company-text {
+    padding: 0 20px 0 20px;
+    margin: 50px 0 0 0;
+    list-style: none;
+}
+
+.review-company-text li {
+    float: left;
+    width: 50%;
+    padding: 0 20px;
+}
+
+.review-company-number, .review-company-desc {
+    float: left;
+    position: relative;
+}
+
+.review-company-number {
+    width: 15%;
+    font-size: 40px;
+    font-family: fantasy;
+    color: #388305;
+}
+
+.review-company-desc {
+    width: 85%;
+}
+
+.review-company-desc h4 {font-size: 18px;text-transform: uppercase;font-weight: bold;}
+.review-company-text li:nth-child(1),.review-company-text li:nth-child(2) {
+    margin-top: 70px;
+}
+
+.review-company-text li {
+    margin-bottom: 20px;
 }

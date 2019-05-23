@@ -194,3 +194,6 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     </div>
 </section>
 <!-- End Latest Blog -->
+
+<?php $this->load->view($this->template_path . 'page/page_home_review_company'); ?>
+
