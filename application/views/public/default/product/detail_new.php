@@ -1,12 +1,14 @@
-<?php if (!empty($oneItem)):
+<?php
+
+if (!empty($oneItem)):
     $url = getUrlProduct($oneItem);
     $album = !empty($oneItem->album) ? json_decode($oneItem->album) : [];
     array_push($album, $oneItem->thumbnail);
-//    $arr = get_defined_vars();
-//    dd($arr);
-    ?>
+//    $var = get_defined_vars();
+//    dd($var);
+?>
 
-    <section class="main-container col1-layout">
+<section class="main-container col1-layout">
         <div class="container">
             <div class="row">
                 <!-- Breadcrumbs -->
@@ -38,173 +40,40 @@
                             </div>
 
                         </div>
-                        <div class="accessories-box">
-                            <?php if (!empty($data_related)): $totalItem = count($data_related) ?>
-                            <div class="accessories">
-                                <div class="panel panel-green border-radius-none">
-                                    <div class="panel-heading">
-                                        <h2 class="panel-title">Sản phẩm liên quan</h2>
-                                    </div>
-                                    <div class="panel-body accessories-slider">
-                                        <?php foreach ($data_related as $item): ?>
-                                            <div class="item add-to-cart">
-                                                <a href="<?php echo getUrlProduct($item) ?>"
-                                                   title="<?php echo getTitle($item) ?>">
-                                                    <img src="<?php echo getImageThumb($item->thumbnail, 100, 100) ?>"
-                                                         alt="<?php echo getTitle($item) ?>" class="img-thumbnail">
-                                                    <h2><?php echo $item->title ?></h2>
-                                                </a>
-                                                <div class="custom related-product-btn">
-                                                    <button onClick="CART.quantity_reduced(this)"
-                                                            class="reduced items-count <?php echo $this->session->userdata('is_agency') == true ? 'is-agency' : '' ?>"
-                                                            type="button">
-                                                        <i class="fa fa-minus">&nbsp;</i>
-                                                    </button>
-                                                    <input autocomplete="disabled"
-                                                           onkeyup="CART.changeInputQuantity(this)" type="text"
-                                                           class="input-text qty" title="Số lượng" value="1"
-                                                           maxlength="<?php echo $item->quantity ?>"
-                                                           name="quantity">
-                                                    <button onClick="CART.quantity_increase(this)"
-                                                            class="increase items-count <?php echo $this->session->userdata('is_agency') == true ? 'is-agency' : '' ?>"
-                                                            type="button">
-                                                        <i class="fa fa-plus">&nbsp;</i>
-                                                    </button>
-                                                    <button onclick="CART.add_more(<?php echo $item->id ?>,this)"
-                                                            class="button btn-cart"
-                                                            title="Thêm vào giỏ hàng" type="submit">Thêm vào giỏ
-                                                    </button>
-                                                </div>
+                        <div class="clear-after">
+                            <div class="accessories-box">
+                                <?php if (!empty($data_related)): $totalItem = count($data_related) ?>
+                                    <div class="accessories">
+                                        <div class="panel panel-green border-radius-none">
+                                            <div class="panel-heading">
+                                                <h2 class="panel-title">Sản phẩm liên quan</h2>
                                             </div>
-                                        <?php endforeach; ?>
-                                    </div>
-                                </div>
-                            </div>
-                        <?php endif; ?>
-                        </div>
-                        <div class="agency">
-                            <div class="panel panel-green border-radius-none">
-                                <div class="panel-heading panel-green">
-                                    <h4 class="panel-title">Chính sách đại lý</h4>
-                                </div>
-                                <div class="panel-body">
-                                    <a href="<?php echo base_url('dieu-kien-va-chinh-sach-dai-ly.html') ?>"
-                                       class="btn btn-warning btn-block"
-                                       title="Điều kiện và chính sách đại lý">Điều kiện và chính sách
-                                    </a>
-                                    <a href="<?php echo base_url('gia-dai-ly-va-uu-dai.html') ?>"
-                                       class="btn btn-warning btn-block"
-                                       title="Giá đại lý và ưu đãi">Giá đại lý và ưu đãi</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-6 col-xs-12">
-                        <div class="product-box-right">
-                            <div class="product-name">
-                                <h1><?php echo $oneItem->title ?></h1>
-                            </div>
-                            <div class="ratings">
-                                <div class="rating-box">
-                                    <div style="width:<?php echo round(($oneItem->vote / 5) * 100) ?>%"
-                                         class="rating"></div>
-                                </div>
-                                <p class="rating-links">
-                                    <a href="<?php echo getUrlProduct($oneItem) ?>#reviews_tabs" rel="nofollow"
-                                       title="Phản hồi về sản phẩm">
-                                        <?php echo $oneItem->total_vote ?> lượt phản hồi về sản phẩm này</a>
-                                </p>
-                            </div>
-
-                            <?php echo form_open('cart/add', ['id' => 'product_addtocart_form']) ?>
-                            <input name="product_id" value="<?php echo $oneItem->id ?>" type="hidden">
-                            <input name="image" value="<?php echo getImageThumb($oneItem->thumbnail, 100, 100, true) ?>"
-                                   type="hidden">
-                            <div class="price-block">
-                                <div class="price-box">
-                                    <?php if ($this->session->userdata('is_agency') == true && !empty($oneItem->price_agency)): ?>
-                                        <p class="special-price">
-                                            <span class="price-label">Giá đại lý:</span>
-                                            <span class="price"><?php echo formatMoney($oneItem->price_agency) ?></span>
-                                        </p>
-                                    <?php else: ?>
-                                        <?php if (!empty($oneItem->price_sale)): ?>
-                                            <p class="special-price">
-                                                <span class="price-label">Giá khuyến mại:</span>
-                                                <span class="price"><?php echo formatMoney($oneItem->price_sale) ?></span>
-                                            </p>
-                                            <p class="old-price">
-                                                <span class="price-label">Giá gốc:</span>
-                                                <span class="price"><?php echo formatMoney($oneItem->price) ?></span>
-                                            </p>
-                                        <?php else: ?>
-                                            <p class="special-price">
-                                                <span class="price-label">Giá:</span>
-                                                <span class="price"><?php echo formatMoney($oneItem->price) ?></span>
-                                            </p>
-                                        <?php endif; ?>
-                                    <?php endif; ?>
-                                </div>
-                            </div>
-                            <ul class="desc-pr">
-                                <li><?php echo $oneItem->description; ?></li>
-                            </ul>
-                            <div class="add-to-box">
-                                <div class="add-to-cart" data-id="<?php echo $oneItem->id ?>">
-                                    <div class="pull-left">
-                                        <div class="custom pull-left">
-                                            <span class="qty-label">Số lượng:</span>
-                                            <button onClick="CART.quantity_reduced(this)"
-                                                    class="reduced items-count <?php echo $this->session->userdata('is_agency') == true ? 'is-agency' : '' ?>"
-                                                    type="button">
-                                                <i class="fa fa-minus">&nbsp;</i>
-                                            </button>
-                                            <input onkeyup="CART.changeInputQuantity(this)" type="text"
-                                                   class="input-text qty" title="Số lượng" value="1"
-                                                   maxlength="<?php echo $oneItem->quantity ?>" name="quantity">
-                                            <button onClick="CART.quantity_increase(this)"
-                                                    class="increase items-count <?php echo $this->session->userdata('is_agency') == true ? 'is-agency' : '' ?>"
-                                                    type="button">
-                                                <i class="fa fa-plus">&nbsp;</i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <button class="button btn-cart" title="Thêm vào giỏ hàng" type="submit">Thêm vào giỏ
-                                    </button>
-                                </div>
-                            </div>
-                            <?php echo form_close() ?>
-                            <div id="social-share"></div>
-                        </div>
-                        <?php if (!empty($data_similar)): ?>
-                            <div class="buy-more">
-                                <div class="panel panel-green border-radius-none">
-                                    <div class="panel-heading panel-green">
-                                        <h4 class="panel-title">Sản phẩm cùng loại</h4>
-                                    </div>
-                                    <div class="panel-body">
-                                        <?php foreach ($data_similar as $item): ?>
-                                            <div class="add-to-box">
-                                                <div class="add-to-cart">
-                                                    <div class="row clearfix">
-                                                        <div class="col-xs-3">
-                                                            <img src="<?php echo getImageThumb($item->thumbnail, 75, 75, true) ?>"
-                                                                 alt="<?php echo getTitle($item) ?>">
+                                            <div class="panel-body accessories-slider">
+                                                <?php foreach ($data_related as $item): ?>
+                                                    <div class="item add-to-cart clear-after">
+                                                        <div class="accessories-left">
+                                                            <a href="<?php echo getUrlProduct($item) ?>"
+                                                               title="<?php echo getTitle($item) ?>">
+                                                                <img src="<?php echo getImageThumb($item->thumbnail, 100, 100) ?>"
+                                                                     alt="<?php echo getTitle($item) ?>" class="img-thumbnail">
+                                                            </a>
                                                         </div>
-                                                        <div class="col-xs-9">
-                                                            <h2><a href="<?php echo getUrlProduct($item) ?>"
-                                                                   title="<?php echo getTitle($item) ?>"><?php echo $item->title ?></a>
+                                                        <div class="accessories-right">
+                                                            <h2>
+                                                                <a href="<?php echo getUrlProduct($item) ?>"
+                                                                   title="<?php echo getTitle($item) ?>">
+                                                                    <?php echo $item->title ?>
+                                                                </a>
                                                             </h2>
-                                                            <div class="custom buy-more-btn">
+                                                            <div class="custom related-product-btn">
                                                                 <button onClick="CART.quantity_reduced(this)"
                                                                         class="reduced items-count <?php echo $this->session->userdata('is_agency') == true ? 'is-agency' : '' ?>"
                                                                         type="button">
                                                                     <i class="fa fa-minus">&nbsp;</i>
                                                                 </button>
-                                                                <input onkeyup="CART.changeInputQuantity(this)"
-                                                                       type="text" class="input-text qty"
-                                                                       title="Số lượng" value="1"
+                                                                <input autocomplete="disabled"
+                                                                       onkeyup="CART.changeInputQuantity(this)" type="text"
+                                                                       class="input-text qty" title="Số lượng" value="1"
                                                                        maxlength="<?php echo $item->quantity ?>"
                                                                        name="quantity">
                                                                 <button onClick="CART.quantity_increase(this)"
@@ -214,33 +83,36 @@
                                                                 </button>
                                                                 <button onclick="CART.add_more(<?php echo $item->id ?>,this)"
                                                                         class="button btn-cart"
-                                                                        title="Thêm vào giỏ hàng" type="submit">Thêm vào
-                                                                    giỏ
+                                                                        title="Thêm vào giỏ hàng" type="submit">Thêm vào giỏ
                                                                 </button>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        <?php endforeach; ?>
 
-                                        <div class="showmore"><a class="btn btn-default btn-sm">Xem thêm »</a></div>
+
+                                                    </div>
+                                                <?php endforeach; ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                            <div class="agency">
+                                <div class="panel panel-green border-radius-none">
+                                    <div class="panel-heading panel-green">
+                                        <h4 class="panel-title">Chính sách đại lý</h4>
+                                    </div>
+                                    <div class="panel-body">
+                                        <a href="<?php echo base_url('dieu-kien-va-chinh-sach-dai-ly.html') ?>"
+                                           class="btn btn-warning btn-block"
+                                           title="Điều kiện và chính sách đại lý">Điều kiện và chính sách
+                                        </a>
+                                        <a href="<?php echo base_url('gia-dai-ly-va-uu-dai.html') ?>"
+                                           class="btn btn-warning btn-block"
+                                           title="Giá đại lý và ưu đãi">Giá đại lý và ưu đãi</a>
                                     </div>
                                 </div>
                             </div>
-                        <?php endif; ?>
-                    </div>
-<!--                    <div class="product-buy col-lg-product-buy col-sm-3 col-xs-12">-->
-<!--                        <div class="info">-->
-<!--                            <p>Thương hiệu: <strong>--><?php //if (!empty($oneBrand)): ?><!--<a-->
-<!--                                        href="--><?php //echo getUrlBrand($oneBrand) ?><!--"-->
-<!--                                        title="--><?php //echo getTitle($oneBrand) ?><!--">--><?php //echo $oneBrand->title ?><!--</a> --><?php //endif; ?>
-<!--                                </strong></p>-->
-<!--                            <p>Mã sản phẩm: <strong>--><?php //echo $oneItem->model ?><!--</strong></p>-->
-<!--                            <p>Mã vạch: <strong>--><?php //echo (string)$oneItem->barcode ?><!--</strong></p>-->
-<!--                        </div>-->
-<!--                    </div>-->
-                    <div class="col-xs-12 col-md-8">
+                        </div>
                         <ul id="product-detail-tab" class="nav nav-tabs product-tabs" role="tablist">
                             <li role="presentation" class="active">
                                 <a href="#content" aria-controls="profile" role="tab" data-toggle="tab">Giới thiệu</a>
@@ -248,6 +120,7 @@
                             <li role="presentation">
                                 <a href="#comment" aria-controls="home" role="tab" data-toggle="tab">Bình luận</a>
                             </li>
+
                         </ul>
                         <div id="productTabContent" class="tab-content">
                             <div role="tabpanel" class="tab-pane active" id="content">
@@ -392,10 +265,193 @@
                                     <?php endif; ?>
                                 </div>
                             </div>
+
                         </div>
                     </div>
 
-                    <div class="col-xs-12 col-md-4">
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="product-box-right">
+                            <div class="product-name">
+                                <h1><?php echo $oneItem->title ?></h1>
+                            </div>
+                            <?php echo form_open('cart/add', ['id' => 'product_addtocart_form']) ?>
+                            <input name="product_id" value="<?php echo $oneItem->id ?>" type="hidden">
+                            <input name="image" value="<?php echo getImageThumb($oneItem->thumbnail, 100, 100, true) ?>"
+                                   type="hidden">
+                            <div class="wqp">
+                                <?php
+                                    if (!empty($quality) || !empty($warranty)) :
+                                ?>
+                                <ul class="short-desc">
+                                    <?php if (!empty($quality)) : ?>
+                                    <li>
+                                        <i class="fa fa-check-circle" aria-hidden="true"></i>
+                                        <?php foreach ($quality as $item) : ?>
+                                        <span><?php echo $item->title ?></span>
+                                        <?php endforeach;?>
+                                    </li>
+                                    <?php endif;?>
+
+                                    <?php if (!empty($warranty)) : ?>
+                                    <li>
+                                        <i class="fa fa-shield" aria-hidden="true"></i>
+                                        <?php foreach ($warranty as $item) : ?>
+                                        <span><?php echo $item->description ?></span>
+                                        <?php endforeach;?>
+                                    </li>
+                                    <?php endif;?>
+                                </ul>
+
+                                <?php endif; ?>
+
+                                <div class="price-block">
+                                    <div class="price-box">
+                                        <?php if ($this->session->userdata('is_agency') == true && !empty($oneItem->price_agency)): ?>
+                                            <p class="special-price">
+                                                <span class="price-label">Giá đại lý:</span>
+                                                <span class="price"><?php echo formatMoney($oneItem->price_agency) ?></span>
+                                            </p>
+                                        <?php else: ?>
+                                            <?php if (!empty($oneItem->price_sale)): ?>
+                                                <p class="special-price">
+                                                    <span class="price-label">Giá khuyến mại:</span>
+                                                    <span class="price"><?php echo formatMoney($oneItem->price_sale) ?></span>
+                                                </p>
+                                                <p class="old-price">
+                                                    <span class="price-label">Giá gốc:</span>
+                                                    <span class="price"><?php echo formatMoney($oneItem->price) ?></span>
+                                                </p>
+                                            <?php else: ?>
+                                                <p class="special-price">
+                                                    <span class="price-label">Giá:</span>
+                                                    <span class="price"><?php echo formatMoney($oneItem->price) ?></span>
+                                                </p>
+                                            <?php endif; ?>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <?php if (!empty($endow)) : ?>
+                            <div class="special-promotion">
+                                <h2>Khuyến mại đặc biệt (Số lượng có hạn)</h2>
+                                <ul class="special-promotion-text">
+                                    <?php foreach ($endow as $item) : ?>
+                                    <li>
+                                        <i class="fa fa-check" aria-hidden="true"></i>
+                                        <span><?php echo $item; ?></span>
+                                    </li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </div>
+                            <?php endif; ?>
+
+                            <?php if (!empty($color)) : ?>
+                            <ul class="product-color">
+                                <?php foreach ($color as $item) : ?>
+                                <li class="product-color-item">
+                                    <div class="product-color-code" style="background-color: <?php echo $item->description; ?>">
+                                    </div>
+                                    <div class="product-color-title"><?php echo $item->title; ?></div>
+                                </li>
+                                <?php endforeach; ?>
+                            </ul>
+                            <?php endif ;?>
+                            <div class="add-to-box">
+                                <div class="add-to-cart" data-id="<?php echo $oneItem->id ?>">
+                                    <div class="pull-left">
+                                        <div class="custom pull-left">
+                                            <span class="qty-label">Số lượng:</span>
+                                            <button onClick="CART.quantity_reduced(this)"
+                                                    class="reduced items-count <?php echo $this->session->userdata('is_agency') == true ? 'is-agency' : '' ?>"
+                                                    type="button">
+                                                <i class="fa fa-minus">&nbsp;</i>
+                                            </button>
+                                            <input onkeyup="CART.changeInputQuantity(this)" type="text"
+                                                   class="input-text qty" title="Số lượng" value="1"
+                                                   maxlength="<?php echo $oneItem->quantity ?>" name="quantity">
+                                            <button onClick="CART.quantity_increase(this)"
+                                                    class="increase items-count <?php echo $this->session->userdata('is_agency') == true ? 'is-agency' : '' ?>"
+                                                    type="button">
+                                                <i class="fa fa-plus">&nbsp;</i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <button class="button btn-cart" title="Thêm vào giỏ hàng" type="submit">Thêm vào giỏ
+                                    </button>
+                                </div>
+                            </div>
+                            <?php echo form_close() ?>
+                            <div id="social-share"></div>
+                        </div>
+                        <?php if (!empty($data_similar)): ?>
+                            <div class="buy-more">
+                                <div class="panel panel-green border-radius-none">
+                                    <div class="panel-heading panel-green">
+                                        <h4 class="panel-title">Sản phẩm cùng loại</h4>
+                                    </div>
+                                    <div class="panel-body">
+                                        <?php foreach ($data_similar as $item): ?>
+                                            <div class="add-to-box">
+                                                <div class="add-to-cart">
+                                                    <div class="row clearfix">
+                                                        <div class="col-xs-3">
+                                                            <img src="<?php echo getImageThumb($item->thumbnail, 75, 75, true) ?>"
+                                                                 alt="<?php echo getTitle($item) ?>">
+                                                        </div>
+                                                        <div class="col-xs-9">
+                                                            <h2><a href="<?php echo getUrlProduct($item) ?>"
+                                                                   title="<?php echo getTitle($item) ?>"><?php echo $item->title ?></a>
+                                                            </h2>
+                                                            <div class="custom buy-more-btn">
+                                                                <button onClick="CART.quantity_reduced(this)"
+                                                                        class="reduced items-count <?php echo $this->session->userdata('is_agency') == true ? 'is-agency' : '' ?>"
+                                                                        type="button">
+                                                                    <i class="fa fa-minus">&nbsp;</i>
+                                                                </button>
+                                                                <input onkeyup="CART.changeInputQuantity(this)"
+                                                                       type="text" class="input-text qty"
+                                                                       title="Số lượng" value="1"
+                                                                       maxlength="<?php echo $item->quantity ?>"
+                                                                       name="quantity">
+                                                                <button onClick="CART.quantity_increase(this)"
+                                                                        class="increase items-count <?php echo $this->session->userdata('is_agency') == true ? 'is-agency' : '' ?>"
+                                                                        type="button">
+                                                                    <i class="fa fa-plus">&nbsp;</i>
+                                                                </button>
+                                                                <button onclick="CART.add_more(<?php echo $item->id ?>,this)"
+                                                                        class="button btn-cart"
+                                                                        title="Thêm vào giỏ hàng" type="submit">Thêm vào
+                                                                    giỏ
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <?php endforeach; ?>
+
+                                        <div class="showmore"><a class="btn btn-default btn-sm">Xem thêm »</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+
+                        <?php if (!empty($feature)) : ?>
+                            <div class="feature-widget widget">
+                                <h2>Đặc điểm nổi bật</h2>
+                                <ul class="special-promotion-text">
+                                    <?php foreach ($feature as $item) : ?>
+                                        <li>
+                                            <i class="fa fa-check" aria-hidden="true"></i>
+                                            <span><?php echo $item->title; ?></span>
+                                        </li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </div>
+                        <?php endif; ?>
+
+
                         <?php
                         if (!empty($oneItem->post_related)) : $listId = json_decode($oneItem->post_related, true);
                             if (!empty($listId)) : $listPostRelated = getPostRelated($listId);
@@ -437,5 +493,6 @@
             </div>
         </div>
     </section>
-
 <?php endif; ?>
+
+<?php $this->load->view($this->template_path . 'page/page_home_review_company'); ?>

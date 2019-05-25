@@ -237,13 +237,15 @@ class Product extends Public_Controller
 
     public function detail($slug){
         $oneItem = $this->_data->getBySlugCustom($slug,$this->_lang_code);
-        $allProperty = $this->_data_property->_all_property();
-        $productProperty = $this->_data_property->getByIdCached($allProperty,$oneItem->id);
-        $data['propertyProduct'] = $productProperty;
+
         if (empty($oneItem)) show_404();
         $id = $oneItem->id;
         $this->flushView($id,$oneItem->viewed);
-        //Check xem co chuyen lang hay khong thi redirect ve lang moi
+        $data['color'] = $this->_data->getPropertyByProductId($oneItem->id,'color');
+        $data['quality'] = $this->_data->getPropertyByProductId($oneItem->id,'quality');
+        $data['warranty'] = $this->_data->getPropertyByProductId($oneItem->id,'warranty');
+        $data['endow'] = explode("\r\n",$oneItem->endow);
+        $data['feature'] = $this->_data->getPropertyByProductId($oneItem->id,'feature');
         if ($this->input->get('lang')) {
             redirect(getUrlProduct(['slug' => $oneItem->slug, 'id' => $oneItem->id]));
         }
@@ -351,7 +353,7 @@ class Product extends Public_Controller
         $limit = 5;
         $params = [
             'is_status' => 1,
-          'type'=>'product',
+            'type'=>'product',
             'product_id' => $productId,
             'limit' => $limit,
             'page' => $page
@@ -392,7 +394,7 @@ class Product extends Public_Controller
         if ($this->form_validation->run() != false) {
             $data = $this->input->post();
             if (!empty($data['parent_id'])) $data['is_status'] = 1;
-          $data['type']='product';
+            $data['type']='product';
             if (!empty($data)) {
                 $this->load->model('comments_model');
                 $commentModel = new Comments_model();
@@ -417,6 +419,8 @@ class Product extends Public_Controller
         }
 
     }
+
+
 
     public function ajax_get_detail(){
         $this->checkRequestPostAjax();
@@ -525,7 +529,8 @@ class Product extends Public_Controller
             $message['type'] = 'warning';
             $message['message'] = "Bạn đã đánh giá sản phẩm này rồi.";
         }
-        return json_encode($message);
+        die(json_encode($message));
+
     }
     public function ajax_save_wishlist(){
         $this->checkRequestPostAjax();

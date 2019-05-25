@@ -404,7 +404,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    comments
 
                                     <div>Tags: <?php echo getTags($oneItem->meta_keyword) ?></div>
                                 </div>

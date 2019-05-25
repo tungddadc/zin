@@ -266,7 +266,7 @@ button.button {
     font-weight: bold;
     letter-spacing: 1px;
     line-height: normal;
-    padding: 8px 14px 8px;
+    padding: 10px 14px 8px;
     text-transform: uppercase;
     border: 1px #e5e5e5 solid;
     border-radius: 3px;
@@ -443,6 +443,7 @@ a.button:hover {
     min-height: 400px;
     padding: 0px;
     margin-top: 25px;
+    margin-bottom: 20px;
     position: relative;
 }
 
@@ -5816,10 +5817,8 @@ a.button.detail-bnt span {
 /* Special price */
 .special-price {
     margin: 0;
-    padding: 3px 0;
-    display: inline;
+    display: block;
     font-weight: bold;
-    font-size: 13px;
     font-family: 'Nunito Sans';
 }
 
@@ -5832,8 +5831,8 @@ a.button.detail-bnt span {
 }
 
 .special-price .price {
-    font-size: 13px;
-    color: #456883;
+    font-size: 20px;
+    color: rgb(190, 30, 45);
     font-weight: bold;
 }
 
@@ -8736,7 +8735,7 @@ ol#compare-items li.last {
     background-color: #FFFFFF;
     border: 1px solid #E0E0E0;
     border-radius: 0px;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: bold;
 }
 
@@ -8744,15 +8743,10 @@ ol#compare-items li.last {
     height: 35px;
     text-align: center;
     width: 40px;
-    vertical-align: top
 }
 
 #product_addtocart_form .add-to-cart .btn-cart{
     margin-left: 5px;
-}
-
-.custom.related-product-btn {
-    text-align: center;
 }
 
 .custom.buy-more-btn {
@@ -10755,7 +10749,10 @@ input.input-text, select,select.form-control, textarea {
 .form-review-nickname,.form-review-name,.buttons-set,.form-review-message {
     padding: 10px;
 }
-
+.form-review-message, .buttons-set{
+    float: left;
+    width: 100%;
+}
 
 #wishlist-table textarea {
     padding: 8px 10px;

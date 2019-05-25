@@ -125,6 +125,16 @@ class Product_model extends STEVEN_Model
         return $data;
     }
 
+    public function getPropertyByProductId($productId,$type){
+        $this->db->select();
+        $this->db->from($this->table_property);
+        $this->db->join("property_translations","$this->table_property.property_id = property_translations.id");
+        $this->db->where($this->table_property.".type", $type);
+        $this->db->where($this->table_property.".product_id", $productId);
+        $data = $this->db->get()->result();
+        return $data;
+    }
+
     public function getDetail($id){
         $this->db->select();
         $this->db->from($this->table_detail);

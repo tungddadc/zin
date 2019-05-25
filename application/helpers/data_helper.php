@@ -302,18 +302,7 @@ if (!function_exists('getPropertyById')) {
 }
 
 
-if (!function_exists('getPropertyByProduct')) {
-  function getPropertyByProduct($productId, $type)
-  {
-    $_this =& get_instance();
-    $_this->load->model('product_model');
-    $productModel = new Product_model();
-    $data = $productModel->getPropertyByProduct($productId, $type);
-    return $data;
-  }
-}
-
-if (!function_exists('')) {
+if (!function_exists('checkExistCart')) {
   function checkExistCart($productId)
   {
     $_this =& get_instance();

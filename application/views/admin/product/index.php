@@ -203,11 +203,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                             <label>Mã sản phẩm</label>
                                             <input name="model" placeholder="Mã sản phẩm" class="form-control" type="text" />
                                         </div>
+
                                         <div class="form-group row">
-                                            <!--<div class="col">
-                                                <label>Số lượng</label>
-                                                <input name="quantity" placeholder="Số lượng" value="0" class="form-control" type="text" />
-                                            </div>-->
                                             <div class="col">
                                                 <label>Giá gốc</label>
                                                 <input name="price" placeholder="Giá gốc" class="form-control" type="text" />
@@ -221,6 +218,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                                 <label>Giá đại lý</label>
                                                 <input name="price_agency" placeholder="Giá đại lý" class="form-control" type="text" />
                                             </div>
+
+                                            <div class="col">
+                                                <label>VAT</label>
+                                                <input name="vat" placeholder="Thuế VAT" class="form-control" type="text" />
+                                            </div>                                        </div>
+                                        <div class="form-group">
+                                            <label>Ưu đãi khi mua hàng</label>
+                                            <textarea name="endow" cols="30" rows="10" class="form-control" placeholder="Mỗi ưu đãi là 1 dòng"></textarea>
                                         </div>
                                         <div class="m-separator m-separator--dashed m-separator--lg"></div>
                                         <!--<fieldset class="form-group agency-container">
