@@ -126,5 +126,56 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
 <div id="mobile-menu" class="hidden-lg">
     <?php echo navMenuMain('mobile-menu'); ?>
+    <ul class="mobile-menu-icon">
+        <?php if ($this->session->userdata('is_logged')) :?>
+        <li>
+            <a class="btn btn-block btn-social btn-primary" title="<?php echo $this->_user_login->fullname ?>" href="<?php echo base_url('profile') ?>"><?php echo $this->_user_login->fullname ?></a>
+        </li>
+        <li>
+            <a class="btn btn-block btn-social btn-danger" title="Đăng xuất" href="<?php echo base_url('auth/logout') ?>">Đăng xuất</a>
+        </li>
+        <?php else: ?>
+        <li>
+            <a class="btn btn-block btn-social btn-info" title="Đăng ký Tài khoản" class="btn btn-primary btn-block" href="<?php echo base_url('auth/register') ?>">
+                Đăng ký tài khoản
+            </a>
+        </li>
+        <li>
+            <a class="btn btn-block btn-social btn-warning" href="<?php echo redirect_login() ?>" title="Đăng nhập bằng tài khoản">
+                Đăng nhập bằng tài khoản
+            </a>
+        </li>
+        <li>
+            <a class="btn btn-block btn-social btn-primary" href="<?php echo base_url('auth/window/Facebook') ?>" title="Đăng nhập bằng Facebook">
+                Đăng nhập bằng Facebok
+            </a>
+        </li>
+        <li>
+            <a class="btn btn-block btn-social btn-danger" href="<?php echo base_url('auth/window/Google') ?>" title="Đăng nhập bằng Google">
+                Đăng nhập bằng Google
+            </a>
+        </li>
+
+        <?php endif; ?>
+        <li class="cart-icon">
+            <a href="<?php echo base_url('cart') ?>" title="Giỏ hàng của bạn">
+                <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+                <span class="cart_count"><?php echo $this->cart->total_items() ?> sản phẩm</span>
+            </a>
+        </li>
+        <li class="compare">
+            <a title="So sánh sản phẩm" href="<?php echo base_url('so-sanh-san-pham') ?>">
+                <i class="fa fa-compass" aria-hidden="true"></i>
+                <span>So sánh sản phẩm</span>
+            </a>
+
+        </li>
+        <li class="location-icon">
+            <a href="<?php echo site_url('cua-hang-dai-ly.html?near=1') ?>" title="Tìm cửa hàng gần đây">
+                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                <span>Cửa hàng gần đây</span>
+            </a>
+        </li>
+    </ul>
 </div>
 

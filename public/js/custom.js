@@ -157,8 +157,10 @@ var FUNC = {
                 let resultFind = $(result).find(content_view);
                 if(resultFind.length > 0){
                     container_popup.html(resultFind);
-                    UI.zoomImageProduct();
+                    UI.productCarousel();
                     UI.ajaxFormSubmit();
+                    UI.accessoriesCarousel();
+                    UI.relatedProduct();
                 }
             }
         });
@@ -678,8 +680,129 @@ var UI = {
             },15000);
         }
     },
+    homeSlider : function () {
+        var sync1 = $("#sync1");
+        var sync2 = $("#sync2");
+
+        sync1.owlCarousel({
+            singleItem : true,
+            slideSpeed : 1000,
+            navigation: true,
+            pagination:false,
+            afterAction : syncPosition,
+            responsiveRefreshRate : 200,
+            navigation: true,
+            navigationText: ['<i class="fa fa-angle-left" aria-hidden="true"></i>', '<i class="fa fa-angle-right" aria-hidden="true"></i>'],
+        });
+
+        sync2.owlCarousel({
+            items : 4,
+            itemsDesktop      : [1199,4],
+            itemsDesktopSmall     : [979,4],
+            itemsTablet       : [768,3],
+            itemsMobile       : [479,2],
+            pagination:false,
+            responsiveRefreshRate : 100,
+            afterInit : function(el){
+                el.find(".owl-item").eq(0).addClass("synced");
+            }
+        });
+
+        function syncPosition(el){
+            var current = this.currentItem;
+            $("#sync2")
+                .find(".owl-item")
+                .removeClass("synced")
+                .eq(current)
+                .addClass("synced")
+            if($("#sync2").data("owlCarousel") !== undefined){
+                center(current)
+            }
+        }
+
+        $("#sync2").on("click", ".owl-item", function(e){
+            e.preventDefault();
+            var number = $(this).data("owlItem");
+            sync1.trigger("owl.goTo",number);
+        });
+
+        function center(number){
+            var sync2visible = sync2.data("owlCarousel").owl.visibleItems;
+            var num = number;
+            var found = false;
+            for(var i in sync2visible){
+                if(num === sync2visible[i]){
+                    var found = true;
+                }
+            }
+
+            if(found===false){
+                if(num>sync2visible[sync2visible.length-1]){
+                    sync2.trigger("owl.goTo", num - sync2visible.length+2)
+                }else{
+                    if(num - 1 === -1){
+                        num = 0;
+                    }
+                    sync2.trigger("owl.goTo", num);
+                }
+            } else if(num === sync2visible[sync2visible.length-1]){
+                sync2.trigger("owl.goTo", sync2visible[1])
+            } else if(num === sync2visible[0]){
+                sync2.trigger("owl.goTo", num-1)
+            }
+
+        }
+
+    },
+    productCarousel: function () {
+        $('#slide1').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: true,
+            dots: false,
+            fade: true,
+            asNavFor: '#slide2',
+            prevArrow:"<a class='slick-btn-prev'><i class='fa fa-angle-left' aria-hidden='true'></i></a>",
+            nextArrow:"<a class='slick-btn-next'><i class='fa fa-angle-right' aria-hidden='true'></i></a>"
+        });
+        $('#slide2').slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            arrows: false,
+            asNavFor: '#slide1',
+            centerMode: true,
+            focusOnSelect: true,
+            vertical: true
+        });
+    },
+    accessoriesCarousel : function () {
+        $('.accessories-slider').owlCarousel({
+            items:1,
+            loop:true,
+            responsiveClass:true,
+            nav:true,
+            autoplay:true,
+            autoplayTimeout:3000,
+            autoplayHoverPause:true,
+        })
+    },
+    relatedProduct: function (){
+        /* Related products slider */
+        jQuery('#related-products-slider .slider-items').owlCarousel({
+            items: 1, //10 items above 1000px browser width
+            // itemsDesktop: [1024, 1], //5 items between 1024px and 901px
+            // itemsDesktopSmall: [900, 1], // 3 items betweem 900px and 601px
+            // itemsTablet: [600, 1], //2 items between 600 and 0;
+            // itemsMobile: [360, 1],
+            navigation: true,
+            navigationText: ['<a class=\"flex-prev\"></a>', '<a class=\"flex-next\"></a>'],
+            slideSpeed: 500,
+            pagination: false
+        });
+    },
     init: function () {
-        // UI.stickyMenuMain();
+        UI.homeSlider();
+        UI.productCarousel();
         UI.activeMenu();
         UI.searchBox();
         UI.stickyBox();
@@ -689,7 +812,10 @@ var UI = {
         UI.zoomImageProduct();
         UI.loadComment(1);
         UI.show_random_realtime();
-    }
+        UI.accessoriesCarousel();
+    },
+
+
 };
 jQuery(document).ready(function () {
     UI.init();
@@ -818,15 +944,7 @@ jQuery(document).ready(function () {
         }).stop(true,true).fadeIn('slow');
     });
 
-    $('.accessories-slider').owlCarousel({
-        items:1,
-        loop:true,
-        responsiveClass:true,
-        nav:true,
-        autoplay:true,
-        autoplayTimeout:3000,
-        autoplayHoverPause:true,
-    })
+
     getAgencyNear();
     filterAgency();
     $('#spanImg').on('click',function () {
@@ -855,6 +973,9 @@ jQuery(document).ready(function () {
             }
         // });
     }
+
+
+
 });
 
 function getAgencyNear() {
@@ -945,98 +1066,98 @@ function live_search(key_search) {
 
 CART.hover_cart();
 
-$(document).ready(function() {
-
-    var sync1 = $("#sync1");
-    var sync2 = $("#sync2");
-
-    sync1.owlCarousel({
-        singleItem : true,
-        slideSpeed : 1000,
-        navigation: true,
-        pagination:false,
-        afterAction : syncPosition,
-        responsiveRefreshRate : 200,
-        navigation: true,
-        navigationText: ['<i class="fa fa-angle-left" aria-hidden="true"></i>', '<i class="fa fa-angle-right" aria-hidden="true"></i>'],
-    });
-
-    sync2.owlCarousel({
-        items : 4,
-        itemsDesktop      : [1199,4],
-        itemsDesktopSmall     : [979,4],
-        itemsTablet       : [768,3],
-        itemsMobile       : [479,2],
-        pagination:false,
-        responsiveRefreshRate : 100,
-        afterInit : function(el){
-            el.find(".owl-item").eq(0).addClass("synced");
-        }
-    });
-
-    function syncPosition(el){
-        var current = this.currentItem;
-        $("#sync2")
-            .find(".owl-item")
-            .removeClass("synced")
-            .eq(current)
-            .addClass("synced")
-        if($("#sync2").data("owlCarousel") !== undefined){
-            center(current)
-        }
-    }
-
-    $("#sync2").on("click", ".owl-item", function(e){
-        e.preventDefault();
-        var number = $(this).data("owlItem");
-        sync1.trigger("owl.goTo",number);
-    });
-
-    function center(number){
-        var sync2visible = sync2.data("owlCarousel").owl.visibleItems;
-        var num = number;
-        var found = false;
-        for(var i in sync2visible){
-            if(num === sync2visible[i]){
-                var found = true;
-            }
-        }
-
-        if(found===false){
-            if(num>sync2visible[sync2visible.length-1]){
-                sync2.trigger("owl.goTo", num - sync2visible.length+2)
-            }else{
-                if(num - 1 === -1){
-                    num = 0;
-                }
-                sync2.trigger("owl.goTo", num);
-            }
-        } else if(num === sync2visible[sync2visible.length-1]){
-            sync2.trigger("owl.goTo", sync2visible[1])
-        } else if(num === sync2visible[0]){
-            sync2.trigger("owl.goTo", num-1)
-        }
-
-    }
-
-    $('#slide1').slick({
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: true,
-        dots: false,
-        fade: true,
-        asNavFor: '#slide2',
-        prevArrow:"<a class='slick-btn-prev'><i class='fa fa-angle-left' aria-hidden='true'></i></a>",
-        nextArrow:"<a class='slick-btn-next'><i class='fa fa-angle-right' aria-hidden='true'></i></a>"
-    });
-    $('#slide2').slick({
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        arrows: false,
-        asNavFor: '#slide1',
-        centerMode: true,
-        focusOnSelect: true,
-        vertical: true
-    });
-
-});
+// $(document).ready(function() {
+//
+//     var sync1 = $("#sync1");
+//     var sync2 = $("#sync2");
+//
+//     sync1.owlCarousel({
+//         singleItem : true,
+//         slideSpeed : 1000,
+//         navigation: true,
+//         pagination:false,
+//         afterAction : syncPosition,
+//         responsiveRefreshRate : 200,
+//         navigation: true,
+//         navigationText: ['<i class="fa fa-angle-left" aria-hidden="true"></i>', '<i class="fa fa-angle-right" aria-hidden="true"></i>'],
+//     });
+//
+//     sync2.owlCarousel({
+//         items : 4,
+//         itemsDesktop      : [1199,4],
+//         itemsDesktopSmall     : [979,4],
+//         itemsTablet       : [768,3],
+//         itemsMobile       : [479,2],
+//         pagination:false,
+//         responsiveRefreshRate : 100,
+//         afterInit : function(el){
+//             el.find(".owl-item").eq(0).addClass("synced");
+//         }
+//     });
+//
+//     function syncPosition(el){
+//         var current = this.currentItem;
+//         $("#sync2")
+//             .find(".owl-item")
+//             .removeClass("synced")
+//             .eq(current)
+//             .addClass("synced")
+//         if($("#sync2").data("owlCarousel") !== undefined){
+//             center(current)
+//         }
+//     }
+//
+//     $("#sync2").on("click", ".owl-item", function(e){
+//         e.preventDefault();
+//         var number = $(this).data("owlItem");
+//         sync1.trigger("owl.goTo",number);
+//     });
+//
+//     function center(number){
+//         var sync2visible = sync2.data("owlCarousel").owl.visibleItems;
+//         var num = number;
+//         var found = false;
+//         for(var i in sync2visible){
+//             if(num === sync2visible[i]){
+//                 var found = true;
+//             }
+//         }
+//
+//         if(found===false){
+//             if(num>sync2visible[sync2visible.length-1]){
+//                 sync2.trigger("owl.goTo", num - sync2visible.length+2)
+//             }else{
+//                 if(num - 1 === -1){
+//                     num = 0;
+//                 }
+//                 sync2.trigger("owl.goTo", num);
+//             }
+//         } else if(num === sync2visible[sync2visible.length-1]){
+//             sync2.trigger("owl.goTo", sync2visible[1])
+//         } else if(num === sync2visible[0]){
+//             sync2.trigger("owl.goTo", num-1)
+//         }
+//
+//     }
+//
+//     $('#slide1').slick({
+//         slidesToShow: 1,
+//         slidesToScroll: 1,
+//         arrows: true,
+//         dots: false,
+//         fade: true,
+//         asNavFor: '#slide2',
+//         prevArrow:"<a class='slick-btn-prev'><i class='fa fa-angle-left' aria-hidden='true'></i></a>",
+//         nextArrow:"<a class='slick-btn-next'><i class='fa fa-angle-right' aria-hidden='true'></i></a>"
+//     });
+//     $('#slide2').slick({
+//         slidesToShow: 3,
+//         slidesToScroll: 1,
+//         arrows: false,
+//         asNavFor: '#slide1',
+//         centerMode: true,
+//         focusOnSelect: true,
+//         vertical: true
+//     });
+//
+// });

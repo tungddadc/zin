@@ -4,8 +4,7 @@ if (!empty($oneItem)):
     $url = getUrlProduct($oneItem);
     $album = !empty($oneItem->album) ? json_decode($oneItem->album) : [];
     array_push($album, $oneItem->thumbnail);
-//    $var = get_defined_vars();
-//    dd($var);
+//    dd($endow);
 ?>
 
 <section class="main-container col1-layout">
@@ -332,7 +331,7 @@ if (!empty($oneItem)):
                                 </div>
                             </div>
 
-                            <?php if (!empty($endow)) : ?>
+                            <?php if (!empty($endow) && in_array("",$endow) == FALSE) : ?>
                             <div class="special-promotion">
                                 <h2>Khuyến mại đặc biệt (Số lượng có hạn)</h2>
                                 <ul class="special-promotion-text">

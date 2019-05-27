@@ -245,6 +245,7 @@ class Product extends Public_Controller
         $data['quality'] = $this->_data->getPropertyByProductId($oneItem->id,'quality');
         $data['warranty'] = $this->_data->getPropertyByProductId($oneItem->id,'warranty');
         $data['endow'] = explode("\r\n",$oneItem->endow);
+
         $data['feature'] = $this->_data->getPropertyByProductId($oneItem->id,'feature');
         if ($this->input->get('lang')) {
             redirect(getUrlProduct(['slug' => $oneItem->slug, 'id' => $oneItem->id]));
