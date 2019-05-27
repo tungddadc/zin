@@ -137,22 +137,22 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
         <?php else: ?>
         <li>
             <a class="btn btn-block btn-social btn-info" title="Đăng ký Tài khoản" class="btn btn-primary btn-block" href="<?php echo base_url('auth/register') ?>">
-                Đăng ký tài khoản
+                Đăng ký
             </a>
         </li>
         <li>
             <a class="btn btn-block btn-social btn-warning" href="<?php echo redirect_login() ?>" title="Đăng nhập bằng tài khoản">
-                Đăng nhập bằng tài khoản
+                Đăng nhập
             </a>
         </li>
         <li>
             <a class="btn btn-block btn-social btn-primary" href="<?php echo base_url('auth/window/Facebook') ?>" title="Đăng nhập bằng Facebook">
-                Đăng nhập bằng Facebok
+                Login Facebok
             </a>
         </li>
         <li>
             <a class="btn btn-block btn-social btn-danger" href="<?php echo base_url('auth/window/Google') ?>" title="Đăng nhập bằng Google">
-                Đăng nhập bằng Google
+                Login Google
             </a>
         </li>
 

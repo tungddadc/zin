@@ -1,7 +1,7 @@
 <aside class="sidebar col-sm-3 col-xs-12 ">
   <div class="widget_wrapper13" id="secondary" role="complementary">
-    <div class="popular-posts widget widget__sidebar widget__event wow bounceInUp animated" id="recent-posts-4">
-      <h3 class="widget-title"><span>Sự kiện</span></h3>
+    <div class="popular-posts widget widget__event wow bounceInUp animated" id="recent-posts-4">
+      <h2>Sự kiện</h2>
       <div class="widget-content">
         <?php
         $list_post = getPostByCatNews('event', 2);
@@ -24,7 +24,7 @@
       <!--widget-content-->
     </div>
     <div class="popular-posts widget widget_categories widget_product_new wow bounceInUp animated" id="categories-2">
-      <h3 class="widget-title"><span>Sản phẩm mới</span></h3>
+      <h2>Sản phẩm mới</h2>
       <div class="widget-content">
         <?php
         $listProduct = getProductNew();
@@ -61,7 +61,7 @@
     <!-- Banner Ad Block -->
 
     <div class="popular-posts widget widget_categories widget_sale wow bounceInUp animated" id="categories-3">
-      <h3 class="widget-title"><span>Khuyến mại</span></h3>
+      <h2>Khuyến mại</h2>
       <div class="widget-content">
         <?php
         $list_post = getPostByCatNews('sale', 5);

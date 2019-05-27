@@ -2824,6 +2824,7 @@ header{
     padding: 0 30px;
     list-style: none;
     float: left;
+    width: 100%;
 }
 .mobile-menu-icon > li {
     margin-bottom: 10px;
@@ -2831,6 +2832,7 @@ header{
 
 .mobile-menu-icon > li > a {
     color: #fff;
+    text-align: center;
 }
 .mobile-menu-icon .cart_count {
     position: relative;
@@ -2846,6 +2848,9 @@ header{
 }
 .wqp {
     margin-bottom: 10px;
+}
+#content, .page-title {
+    padding: 20px;
 }
 @media  (min-width: 320px) and (max-width: 768px){
     .nav-category-title, .view-list-child{
