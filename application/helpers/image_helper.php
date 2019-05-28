@@ -1,10 +1,12 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 if (!function_exists('getImageThumb')) {
     function getImageThumb($image = '',$width = '',$height= '', $crop = false, $watermark = false){
+        if(strpos($image,'http')) return $image;
         if(empty($image)) {
             $width = !empty($width)?$width:200;
             $height = !empty($height)?$height:200;
-            $image =  "no_image.png";
+            //$image =  "no_image.png";
+            return "https://via.placeholder.com/{$width}x{$height}.png?text=Ads+{$width}x{$height}";
         }
         $image = str_replace(MEDIA_NAME,'',$image);
         $image = ltrim($image,'/');
@@ -13,7 +15,8 @@ if (!function_exists('getImageThumb')) {
         if(!file_exists($sourceImage)){
             $width = !empty($width)?$width:200;
             $height = !empty($height)?$height:200;
-            $sourceImage = FCPATH . "/public/no_image.png";
+            return "https://via.placeholder.com/{$width}x{$height}.png?text=Ads+{$width}x{$height}";
+            //$sourceImage = dirname(MEDIA_PATH) . DIRECTORY_SEPARATOR . "no_image.png";
         }
         $CI =& get_instance();
         if($width != 0 && $height != 0){
@@ -21,7 +24,7 @@ if (!function_exists('getImageThumb')) {
             $part = explode('.', $image);
             $ext = '.'.end($part);
             $newImage = str_replace($ext,$size.$ext, $image);
-            $newPathImage = MEDIA_PATH_THUMB.$newImage;
+            $newPathImage = MEDIA_PATH . 'thumb/' .$newImage;
             if ( !file_exists( $newPathImage ) ) {
                 if(!is_dir(dirname($newPathImage))){
                     mkdir(dirname($newPathImage), 0755, TRUE);
@@ -34,7 +37,7 @@ if (!function_exists('getImageThumb')) {
                 $config['new_image'] = $newPathImage;
                 $config['maintain_ratio'] = TRUE;
                 $config['create_thumb'] = FALSE;
-                $config['quality'] = "100%";
+                $config['quality'] = "80%";
                 $imageSize = getimagesize($sourceImage);
                 $imageWidth = intval($imageSize[0]);
                 $imageHeight = intval($imageSize[1]);
@@ -55,7 +58,7 @@ if (!function_exists('getImageThumb')) {
                         $config_watermark['image_library']       = 'gd2';
                         $config_watermark['source_image']       = $newPathImage;
                         $config_watermark['wm_type']       = 'overlay';
-                        //$config_watermark['wm_opacity']     = 40;
+                        $config_watermark['wm_opacity']     = 40;
                         //$config_watermark['wm_padding']     = 30;
                         $config_watermark['wm_vrt_alignment'] = 'middle';
                         $config_watermark['wm_hor_alignment'] = 'center';
@@ -70,7 +73,7 @@ if (!function_exists('getImageThumb')) {
                     $image_config['image_library'] = 'gd2';
                     $image_config['source_image'] = $newPathImage;
                     $image_config['new_image'] = $newPathImage;
-                    $image_config['quality'] = "100%";
+                    $image_config['quality'] = "80%";
                     $image_config['maintain_ratio'] = FALSE;
                     $image_config['width'] = $width;
                     $image_config['height'] = $height;
@@ -87,31 +90,14 @@ if (!function_exists('getImageThumb')) {
                     }
                 }
             }
-            return MEDIA_URL.$newImage;
+            return MEDIA_URL . 'thumb' . DIRECTORY_SEPARATOR . $newImage;
         }
         else {
-            $newPathImage = MEDIA_PATH_THUMB.$image;
+            $newPathImage = MEDIA_PATH . 'thumb/' .$image;
             if(!is_dir(dirname($newPathImage))){
                 mkdir(dirname($newPathImage), 0755, TRUE);
             }
             copy($sourceImage, $newPathImage);
-            if(!empty($watermark)){
-                $watermarkImage = getWatermark($width,$height);
-                if(!empty($watermarkImage)){
-                    $CI->load->library('image_lib');
-                    $config_watermark['image_library']       = 'gd2';
-                    $config_watermark['source_image']       = $newPathImage;
-                    $config_watermark['wm_type']       = 'overlay';
-                    $config_watermark['wm_opacity']     = 40;
-                    //$config_watermark['wm_padding']     = 30;
-                    $config_watermark['wm_vrt_alignment'] = 'middle';
-                    $config_watermark['wm_hor_alignment'] = 'center';
-                    $config_watermark['wm_overlay_path'] = getWatermark($width,$height);
-                    $CI->image_lib->initialize($config_watermark);
-                    $CI->image_lib->watermark();
-                    $CI->image_lib->clear();
-                }
-            }
             return MEDIA_URL.$image;
         }
     }
