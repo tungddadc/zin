@@ -126,49 +126,6 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <script type="application/ld+json">
-{
-	"@context": "http://schema.org",
-	"@type": "ElectronicsStore",
-	"name": "Zin Viet Nam Company Limited",
-	"address": {
-		"@type": "PostalAddress",
-		"streetAddress": "241 Le Loi, Minh Khai",
-		"addressLocality": "Phu Ly",
-		"addressRegion": "Hanam",
-		"postalCode": "40000"
-	},
-	"image": "https://zinlinhkien.com.vn/public/media/thumb/ZIN-LOGO-500-260x50.png",
-	"email": "admin@zinlinhkien.com.vn",
-	"telePhone": "1900-299-922",
-	"url": "zinlinhkien.com.vn",
-	"paymentAccepted": [ "cash", "check", "credit card", "invoice", "paypal" ],
-	"openingHours": "Mo,Tu,We,Th,Fr,Sa 08:00-19:00",
-	"openingHoursSpecification": [ {
-		"@type": "OpeningHoursSpecification",
-		"dayOfWeek": [
-			"Monday",
-			"Tuesday",
-			"Wednesday",
-			"Thursday",
-			"Friday",
-			"Saturday"
-		],
-		"opens": "08:00",
-		"closes": "19:00"
-	} ],
-	"geo": {
-		"@type": "GeoCoordinates",
-		"latitude": "20.542285",
-		"longitude": "105.922401"
-	},
-	"priceRange":"$$$$$"
-
-}
-
-    </script>
-
-
     <script>
         var urlCurrentMenu = window.location.href,
             urlCurrent = window.location.href,
@@ -353,7 +310,7 @@ echo $this->minify->deploy_js(); ?>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <?php endif; ?>
 <?php echo !empty($this->settings['script_body']) ? $this->settings['script_body'] : '' ?>
-<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+<!--<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
 <script>
   var OneSignal = window.OneSignal || [];
   OneSignal.push(["init", {
@@ -372,6 +329,6 @@ echo $this->minify->deploy_js(); ?>
   OneSignal.push(function() {
     OneSignal.showHttpPrompt();
   });
-</script>
+</script>-->
 </body>
 </html>
