@@ -963,8 +963,8 @@ jQuery(document).ready(function () {
         var total_agency = new CountUp("total_agency", 0, parseInt($('#total_agency').data('val')), 0,5, options);
         var serve_customer = new CountUp("serve_customer", 0, parseInt($('#serve_customer').data('val')), 0,5, options);
         // $(window).scroll(function () {
-            var hT = $('.top-banners').offset().top,
-              hH = $('.top-banners').outerHeight(),
+            var hT = $('#main-header').offset().top,
+              hH = $('#main-header').outerHeight(),
               wH = $(window).height(),
               wS = $(this).scrollTop();
             if (wS > (hT + hH - wH)) {

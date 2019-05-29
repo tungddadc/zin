@@ -7,7 +7,7 @@
  */
 defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
-<div class="container">
+<div class="container-fluid">
     <div class="row">
 
         <div class="col-md-9 col-sm-8 col-xs-12">
@@ -87,24 +87,25 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                 </aside>
             </div>
         </div>
-        <div class="col-md-12 col-sm-12 hidden-xs">
-            <div class="banner-bottom-slider">
-                <?php $bannerBottomSlider = listBannerByPosition(181, 1);
-                if (!empty($bannerBottomSlider)) foreach ($bannerBottomSlider as $item) : ?>
-                    <a href="<?php echo $item->url ?>" title="banner sidebar" rel="nofollow">
-                        <img src="<?php echo getImageThumb($item->thumbnail, 1200, 75, true) ?>"
-                             data-src="<?php echo getImageThumb($item->thumbnail, 1200, 75, true) ?>"
-                             class="lazy" alt="<?php echo getTitle($item) ?>">
-                    </a>
-                <?php endforeach; ?>
-            </div>
-        </div>
+
     </div>
 </div>
 
 <section class="main-container col2-left-layout">
     <div class="container">
         <div class="row">
+            <div class="col-md-12 col-sm-12 hidden-xs">
+                <div class="banner-bottom-slider">
+                    <?php $bannerBottomSlider = listBannerByPosition(181, 1);
+                    if (!empty($bannerBottomSlider)) foreach ($bannerBottomSlider as $item) : ?>
+                        <a href="<?php echo $item->url ?>" title="banner sidebar" rel="nofollow">
+                            <img src="<?php echo getImageThumb($item->thumbnail, 1200, 75, true) ?>"
+                                 data-src="<?php echo getImageThumb($item->thumbnail, 1200, 75, true) ?>"
+                                 class="lazy" alt="<?php echo getTitle($item) ?>">
+                        </a>
+                    <?php endforeach; ?>
+                </div>
+            </div>
             <div class="col-md-12 col-xs-12">
                 <?php if (!empty($home_product['listCategory'])) foreach ($home_product['listCategory'] as $oneCategory): ?>
                     <div class="content-page">

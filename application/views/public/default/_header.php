@@ -6,7 +6,7 @@
  * Time: 12:42 PM
  */
 defined('BASEPATH') OR exit('No direct script access allowed'); ?>
-<header>
+<header id="main-header">
     <div class="container">
         <div class="row">
             <!--logo-->

@@ -76,7 +76,7 @@
                     </div>
                     <div class="list-agency__un">
                         <h2>CÁC TIỆN ÍCH Ở CỬA HÀNG, ĐẠI LÝ</h2>
-                        <ul>
+                        <ul class="clear-after">
                             <li>
                                 <i class="iconshop-parking"></i>&nbsp;Giữ xe miễn phí
                             </li>

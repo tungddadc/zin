@@ -2444,7 +2444,7 @@ header{
 
 /*Custome Owl carousel Home*/
 #sync2 .owl-item{
-    border-right: 1px solid #eee;
+    border-right: 1px solid #ccc;
 }
 #sync2 .item {
     text-align: center;
@@ -2484,6 +2484,16 @@ header{
 
 .home-slider {
     background: #fff;
+    margin-bottom: 20px;
+}
+.banner-bottom-slider {
+    margin-bottom: 20px;
+}
+.banner-bottom-slider img{
+    display: block;
+    margin: auto;
+    width: 100%;
+    height: auto;
 }
 
 /*Main menu*/
@@ -2919,10 +2929,16 @@ header{
 
 ul {}
 
-.top-agency__abs ul {
+.top-agency__abs ul,.list-agency__un ul {
     padding: 0;
     list-style: none;
     margin-bottom: 0;
+}
+.list-agency__un ul li {
+    float: left;
+    width: 50%;
+    position: relative;
+    display: block;
 }
 
 .top-agency__abs {
@@ -2953,6 +2969,39 @@ ul {}
 
 .top-agency__abs ul li b {
     font-size: 24px;
+}
+
+.form_filter{
+    background-color: #fff;
+    padding: 10px 20px;
+}
+.main-agency h2 {
+    font-weight: bold;
+}
+.list-agency {
+    border: 1px solid #ccc;
+    margin-top: 20px;
+}
+.list-agency__title, .list-agency__content {
+    border-bottom: 1px solid #ccc;
+}
+.list-agency__title,.list-agency__content,.list-agency__un {
+    background: #fff;
+    padding: 10px 20px;
+}
+.list-agency__content ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+.list-agency__content ul li {
+    position: relative;
+    line-height: 30px;
+    border-bottom: 1px solid #ccc;
+}
+.list-agency__content ul li:last-of-type {
+    border-bottom: 0;
 }
 @media  (min-width: 320px) and (max-width: 768px){
     .nav-category-title, .view-list-child{
@@ -3008,6 +3057,9 @@ ul {}
     }
     .top-agency__abs ul li img{
         display: none;
+    }
+    .list-agency__un ul li {
+        width: 100%;
     }
 
 }
