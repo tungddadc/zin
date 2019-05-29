@@ -288,7 +288,6 @@ html {
 	color: #0083c1; 
 }
 #mobile-menu .top-links .links li {
-/*	border-bottom: 1px solid #444; */
 	list-style: outside none none;
 	padding: 7px 15px;
 	font-size:12px;
@@ -302,14 +301,10 @@ html {
 	padding: 0 !important;
 }
 @media (max-width: 767px) {
-.mm-toggle {
-	display: block;
-	color: #333;
-}
-.mm-toggle .fa {
-    font-size: 23px;
-}
+	.mm-toggle {
+		display: block;
+		color: #333;
+	}
 }
 @media (max-width: 480px) {
-	.mobile-menu li a {    padding: 8px 10px 5px 15px;}
 }

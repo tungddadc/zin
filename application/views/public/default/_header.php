@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     <div class="container">
         <div class="row">
             <!--logo-->
-            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 logo-block">
+            <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 logo-block">
                 <div class="logo">
                     <a title="<?php echo $this->settings['title'] . ' | ' . $this->settings['name'] ?>"
                        href="<?php echo base_url() ?>">
@@ -22,31 +22,38 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
             </div>
             <!--logo-->
 
-            <!--Search form-->
-            <div class="col-lg-3 col-md-8 col-sm-6 col-xs-6 category-search-form">
+            <!--Search form desktop-->
+            <div class="col-lg-3 col-md-7 hidden-sm hidden-xs search-form-desktop position-static">
                 <?php if($this->agent->is_mobile() == false): ?>
-                    <div class="search-box">
-                        <div id="search_mini_form">
-                            <input name="search" class="searchbox" id="search" value="<?php echo ($this->_controller === 'search' && !empty($this->uri->segment(2))) ? urldecode($this->uri->segment(2)) : '' ?>" type="text" maxlength="128" autocomplete="off" placeholder="Tìm kiếm sản phẩm...">
-                            <button title="Search" class="search-btn-bg btnSearch" id="submit-button" type="submit"></button>
-                            <div class="product_search"></div>
+                <div class="search-box">
+                    <div id="search_mini_form">
+                        <div class="input-group">
+                            <input name="search" class="form-control"  id="search" value="<?php echo ($this->_controller === 'search' && !empty($this->uri->segment(2))) ? urldecode($this->uri->segment(2)) : '' ?>" type="text" maxlength="128" autocomplete="off" placeholder="Tìm kiếm sản phẩm...">
+                            <div class="input-group-btn">
+                                <button title="Search" class="btn btn-default bg-search" id="submit-button" type="submit">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </button>
+
+                            </div>
                         </div>
+                        <div class="product_search"></div>
                     </div>
+                </div>
                 <?php endif; ?>
             </div>
-            <!--Search form-->
+            <!--Search form desktop-->
 
-            <div class="hidden-lg col-md-2 col-sm-1 col-xs-2">
+            <div class="hidden-lg col-md-2 col-sm-8 col-xs-6 btn-mobile-menu-wrapper">
                 <a href="javascript:void(0)" class="btn-menu-mobile hidden-lg mm-toggle"><i class="fa fa-bars" aria-hidden="true"></i></a>
             </div>
 
-        <!--Main menu-->
+            <!--Main menu-->
             <div class="col-lg-5 hidden-md hidden-sm hidden-xs position-static">
                 <?php echo navMenuMain('main-menu','main-menu-desktop') ?>
             </div>
-        <!--Main menu-->
+            <!--Main menu-->
 
-        <!--Login, SignIn, SignOut, Cart-->
+            <!--Login, SignIn, SignOut, Cart-->
             <div class="col-lg-2 hidden-md hidden-sm hidden-xs">
                 <ul class="menu-icon">
                     <li class="dropdown">
@@ -118,7 +125,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                 </ul>
             </div>
 
-        <!--Login, SignIn, SignOut, Cart-->
+            <!--Login, SignIn, SignOut, Cart-->
 
         </div>
     </div>

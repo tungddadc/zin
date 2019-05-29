@@ -243,7 +243,6 @@ switch ($this->_controller) {
 
 <?php $asset_js[] = 'jquery-3.2.1.min.js'; ?>
 <?php $asset_js[] = 'bootstrap.min.js'; ?>
-<?php $asset_js[] = 'common.js'; ?>
 <?php $asset_js[] = 'owl.carousel.min.js'; ?>
 <?php $asset_js[] = 'jquery.mobile-menu.min.js'; ?>
 <?php $asset_js[] = 'countdown.js'; ?>
@@ -256,10 +255,11 @@ switch ($this->_controller) {
 <?php $asset_js[] = 'jquery.sticky-kit.min.js'; ?>
 <?php $asset_js[] = 'select2.min.js'; ?>
 <?php $asset_js[] = 'maps.js'; ?>
-<?php $asset_js[] = 'custom.js'; ?>
 <?php $asset_js[] = 'account.js'; ?>
 <?php $asset_js[] = 'countdown1.js'; ?>
 <?php $asset_js[] = 'slick.min.js'; ?>
+<?php $asset_js[] = 'custom.js'; ?>
+<?php $asset_js[] = 'common.js'; ?>
 
 <?php $this->minify->js($asset_js);
 echo $this->minify->deploy_js(); ?>
