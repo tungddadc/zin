@@ -6,53 +6,70 @@
  * Time: 5:26 CH
  */
 defined('BASEPATH') OR exit('No direct script access allowed'); ?>
-<?php if (!empty($oneItem)): ?>
-    <section class="main-container col2-left-layout">
-        <div class="container">
+<?php
+    if (!empty($oneItem)):
+    $banner = !empty($oneItem->banner) ? json_decode($oneItem->banner) : [];
+//    dd(get_defined_vars());
+?>
+    <?php if (!empty($banner)) : ?>
+    <div class="category-banner-slider">
+
+
+        <div id="category-desc-slider" class="owl-carousel owl-theme">
+            <?php foreach ($banner as $item): ?>
+                <!-- Item -->
+                <div class="item">
+                    <a href="javascript:;" title="<?php echo getTitle($oneItem) ?>">
+                        <img alt="<?php echo getTitle($oneItem) ?>"
+                             src="<?php echo getImageThumb($item, '', '',false,true) ?>">
+                    </a>
+                </div>
+                <!-- End Item -->
+            <?php endforeach; ?>
+        </div>
+        <?php if (!empty($list_category_child)) : ?>
+        <div id="list-cat" class="owl-carousel owl-theme">
+            <?php foreach ($list_category_child as $item) : ?>
+            <div class="item">
+                <div class="cat-icon">
+                    <a href="<?php echo getUrlCateProduct($item); ?>" title="<?php echo $item->title; ?>">
+                        <img alt="<?php echo $item->title; ?>" src="<?php echo getImageThumb($item->thumbnail,'56','56',true,false); ?>" >
+                    </a>
+                </div>
+                <div class="cat-title">
+                    <h4>
+                        <a href="<?php echo getUrlCateProduct($item); ?>" title="<?php echo $item->title; ?>">
+                            <?php echo $item->title; ?>
+                        </a>
+                    </h4>
+                </div>
+
+            </div>
+            <?php endforeach; ?>
+        </div>
+        <?php endif; ?>
+    </div>
+    <?php endif; ?>
+
+    <section class="main-container">
+        <div class="container-fluid">
             <div class="row">
                 <?php echo form_open('') ?>
-                <div class="col-sm-9 col-sm-push-3">
+                <div class="col-xs-12">
                     <!-- Breadcrumbs -->
                     <div class="breadcrumbs">
                         <?php echo !empty($breadcrumb) ? $breadcrumb : '' ?>
                     </div>
                     <!-- Breadcrumbs End -->
                     <div class="page-title">
-                        <h2 class="page-heading"><span class="page-heading-title"><?php echo $oneItem->title ?></span>
-                        </h2>
+                        <h2 class="page-heading"><?php echo $oneItem->title ?></h2>
                     </div>
-                    <div class="category-description std">
-                        <div class="slider-items-products">
-                            <div id="category-desc-slider" class="product-flexslider hidden-buttons">
-                                <div class="slider-items slider-width-col1 owl-carousel owl-theme">
-                                    <?php if (!empty($oneItem->banner)) foreach (json_decode($oneItem->banner) as $item): ?>
-                                        <!-- Item -->
-                                        <div class="item">
-                                            <a href="javascript:;" title="<?php echo getTitle($oneItem) ?>">
-                                                <img alt="<?php echo getTitle($oneItem) ?>"
-                                                     src="<?php echo getImageThumb($item, 850, 200) ?>">
-                                            </a>
-                                        </div>
-                                        <!-- End Item -->
-                                    <?php endforeach; ?>
-                                </div>
-                            </div>
-                        </div>
-                      <?php if(!empty($oneItem->content)): ?>
-                      <div class="des_cat">
-                        <?php echo $oneItem->content ?>
-                      </div>
-                      <?php endif; ?>
-                    </div>
+
                     <article id="content_ajax" class="col-main">
                         <div class="toolbar">
-                            <div class="display-product-option">
-                                <?php if (!empty($pagination)): ?>
-                                    <div class="pages">
-                                        <label>Trang:</label>
-                                        <?php echo $pagination ?>
-                                    </div>
-                                <?php endif; ?>
+                            <div class="display-product-option clear-after">
+                                <a id="btn-filter" href="javscript:void(0)"><i class="fa fa-filter" aria-hidden="true"></i></a>
+                                <h4>Bộ lọc nhanh</h4>
                                 <div class="product-option-right">
                                     <div id="sort-by" class="filter">
                                         <label class="left">Sắp xếp: </label>
@@ -114,7 +131,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                         </div>
                     </article>
                 </div>
-                <aside class="col-left sidebar col-sm-3 col-xs-12 col-sm-pull-9">
+                <aside id="sidebar-filter" class="sidebar-category">
                     <?php $this->load->view($this->template_path . '_block/_sidebar_product') ?>
                 </aside>
                 <?php echo form_close() ?>

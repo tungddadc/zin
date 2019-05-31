@@ -86,15 +86,26 @@ jQuery(document).ready(function() {
         pagination: false
     });
     /* Category desc slider */
-    jQuery('#category-desc-slider .slider-items').owlCarousel({
+    jQuery('#category-desc-slider').owlCarousel({
         autoPlay: true,
         items: 1, //10 items above 1000px browser width
-        itemsDesktop: [1024, 1], //5 items between 1024px and 901px
-        itemsDesktopSmall: [900, 1], // 3 items betweem 900px and 601px
-        itemsTablet: [600, 1], //2 items between 600 and 0;
-        itemsMobile: [320, 1],
         navigation: true,
-        navigationText: ['<a class=\"flex-prev\"></a>', '<a class=\"flex-next\"></a>'],
+        navigationText: ['<i class="fa fa-angle-left" aria-hidden="true"></i>', '<i class="fa fa-angle-right" aria-hidden="true"></i>'],
+        slideSpeed: 500,
+        pagination: true
+    });
+
+    /* List cat slider */
+    jQuery('#list-cat').owlCarousel({
+        autoPlay: true,
+        items: 10, //10 items above 1000px browser width
+        itemsDesktop: [1024, 10], //5 items between 1024px and 901px
+        itemsDesktopSmall: [768, 5], // 3 items betweem 900px and 601px
+        itemsTablet: [570, 3], //2 items between 600 and 0;
+        itemsMobile: [320, 3],
+        navigation: true,
+        margin: 20,
+        navigationText: ['<i class="fa fa-angle-left" aria-hidden="true"></i>', '<i class="fa fa-angle-right" aria-hidden="true"></i>'],
         slideSpeed: 500,
         pagination: false
     });
@@ -131,7 +142,7 @@ jQuery(document).ready(function() {
         itemsTablet: [640, 1],
         itemsMobile: [390, 1],
         navigation: false,
-        navigationText: ['<i class="fa fa-angle-left" aria-hidden="true"></i>', '<i class="fa fa-angle-right" aria-hidden="true"></i>'],
+        navigationText: ['<a class=\"flex-prev\"></a>', '<a class=\"flex-next\"></a>'],
         slideSpeed: 500,
         pagination: false
 
@@ -145,7 +156,7 @@ jQuery(document).ready(function() {
         itemsTablet: [767,1], //2 items between 600 and 0;
         itemsMobile : [360,1],
         navigation : false,
-        navigationText: ['<i class="fa fa-angle-left" aria-hidden="true"></i>', '<i class="fa fa-angle-right" aria-hidden="true"></i>'],
+        navigationText: ['<a class=\"flex-prev\"></a>', '<a class=\"flex-next\"></a>'],
         slideSpeed : 500,
         pagination : true
     });

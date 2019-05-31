@@ -800,6 +800,25 @@ var UI = {
             pagination: false
         });
     },
+    sideBarFilter: function (){
+        let btn_filter = document.getElementById('btn-filter');
+        let btn_overlay = document.getElementById('overlay');
+        let filter = document.getElementById('sidebar-filter');
+
+        btn_filter.onclick = function () {
+            filter.style.left = 0;
+            filter.style.zIndex = 9;
+            btn_overlay.style.display = 'block';
+            btn_overlay.style.zIndex = 7;
+            btn_overlay.style.height = '100%';
+        }
+
+        btn_overlay.onclick = function () {
+            filter.style.left = '-280px';
+            filter.style.zIndex = -1;
+            btn_overlay.style.display = 'none';
+        }
+    },
     init: function () {
         UI.homeSlider();
         UI.productCarousel();
@@ -813,6 +832,7 @@ var UI = {
         UI.loadComment(1);
         UI.show_random_realtime();
         UI.accessoriesCarousel();
+        UI.sideBarFilter();
     },
 
 
@@ -1066,98 +1086,3 @@ function live_search(key_search) {
 
 CART.hover_cart();
 
-// $(document).ready(function() {
-//
-//     var sync1 = $("#sync1");
-//     var sync2 = $("#sync2");
-//
-//     sync1.owlCarousel({
-//         singleItem : true,
-//         slideSpeed : 1000,
-//         navigation: true,
-//         pagination:false,
-//         afterAction : syncPosition,
-//         responsiveRefreshRate : 200,
-//         navigation: true,
-//         navigationText: ['<i class="fa fa-angle-left" aria-hidden="true"></i>', '<i class="fa fa-angle-right" aria-hidden="true"></i>'],
-//     });
-//
-//     sync2.owlCarousel({
-//         items : 4,
-//         itemsDesktop      : [1199,4],
-//         itemsDesktopSmall     : [979,4],
-//         itemsTablet       : [768,3],
-//         itemsMobile       : [479,2],
-//         pagination:false,
-//         responsiveRefreshRate : 100,
-//         afterInit : function(el){
-//             el.find(".owl-item").eq(0).addClass("synced");
-//         }
-//     });
-//
-//     function syncPosition(el){
-//         var current = this.currentItem;
-//         $("#sync2")
-//             .find(".owl-item")
-//             .removeClass("synced")
-//             .eq(current)
-//             .addClass("synced")
-//         if($("#sync2").data("owlCarousel") !== undefined){
-//             center(current)
-//         }
-//     }
-//
-//     $("#sync2").on("click", ".owl-item", function(e){
-//         e.preventDefault();
-//         var number = $(this).data("owlItem");
-//         sync1.trigger("owl.goTo",number);
-//     });
-//
-//     function center(number){
-//         var sync2visible = sync2.data("owlCarousel").owl.visibleItems;
-//         var num = number;
-//         var found = false;
-//         for(var i in sync2visible){
-//             if(num === sync2visible[i]){
-//                 var found = true;
-//             }
-//         }
-//
-//         if(found===false){
-//             if(num>sync2visible[sync2visible.length-1]){
-//                 sync2.trigger("owl.goTo", num - sync2visible.length+2)
-//             }else{
-//                 if(num - 1 === -1){
-//                     num = 0;
-//                 }
-//                 sync2.trigger("owl.goTo", num);
-//             }
-//         } else if(num === sync2visible[sync2visible.length-1]){
-//             sync2.trigger("owl.goTo", sync2visible[1])
-//         } else if(num === sync2visible[0]){
-//             sync2.trigger("owl.goTo", num-1)
-//         }
-//
-//     }
-//
-//     $('#slide1').slick({
-//         slidesToShow: 1,
-//         slidesToScroll: 1,
-//         arrows: true,
-//         dots: false,
-//         fade: true,
-//         asNavFor: '#slide2',
-//         prevArrow:"<a class='slick-btn-prev'><i class='fa fa-angle-left' aria-hidden='true'></i></a>",
-//         nextArrow:"<a class='slick-btn-next'><i class='fa fa-angle-right' aria-hidden='true'></i></a>"
-//     });
-//     $('#slide2').slick({
-//         slidesToShow: 3,
-//         slidesToScroll: 1,
-//         arrows: false,
-//         asNavFor: '#slide1',
-//         centerMode: true,
-//         focusOnSelect: true,
-//         vertical: true
-//     });
-//
-// });
