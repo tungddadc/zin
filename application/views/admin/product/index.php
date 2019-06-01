@@ -227,6 +227,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                             <label>Ưu đãi khi mua hàng</label>
                                             <textarea name="endow" cols="30" rows="10" class="form-control" placeholder="Mỗi ưu đãi là 1 dòng"></textarea>
                                         </div>
+                                        <div class="form-group">
+                                            <label>Thông số kỹ thuật</label>
+                                            <textarea name="language[<?php echo $lang_code;?>][specifications]" class="form-control tinymce"></textarea>
+                                        </div>
                                         <div class="m-separator m-separator--dashed m-separator--lg"></div>
                                         <!--<fieldset class="form-group agency-container">
                                             <legend>Giá cho đại lý</legend>

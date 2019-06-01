@@ -251,7 +251,9 @@ if (!empty($oneItem)):
 
                                 </div>
                             </div>
-                            <div role="tabpanel" class="tab-pane" id="specifications"></div>
+                            <div role="tabpanel" class="tab-pane" id="specifications">
+                                <?php echo $oneItem->specifications; ?>
+                            </div>
                             <div role="tabpanel" class="tab-pane" id="comment">
                                 <div id="comments" data-id="<?php echo $oneItem->id ?>" class="comment-fr">
                                     <div class="cmt-head">
