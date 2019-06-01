@@ -242,8 +242,6 @@ class Product extends Public_Controller
         $id = $oneItem->id;
         $this->flushView($id,$oneItem->viewed);
         $data['color'] = $this->_data->getPropertyByProductId($oneItem->id,'color');
-        $data['quality'] = $this->_data->getPropertyByProductId($oneItem->id,'quality');
-        $data['warranty'] = $this->_data->getPropertyByProductId($oneItem->id,'warranty');
         $data['endow'] = explode("\r\n",$oneItem->endow);
 
         $data['feature'] = $this->_data->getPropertyByProductId($oneItem->id,'feature');

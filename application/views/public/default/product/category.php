@@ -68,8 +68,6 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                     <article id="content_ajax" class="col-main">
                         <div class="toolbar">
                             <div class="display-product-option clear-after">
-                                <a id="btn-filter" href="javscript:void(0)"><i class="fa fa-filter" aria-hidden="true"></i></a>
-                                <h4>Bộ lọc nhanh</h4>
                                 <div class="product-option-right">
                                     <div id="sort-by" class="filter">
                                         <label class="left">Sắp xếp: </label>
@@ -131,9 +129,6 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                         </div>
                     </article>
                 </div>
-                <aside id="sidebar-filter" class="sidebar-category">
-                    <?php $this->load->view($this->template_path . '_block/_sidebar_product') ?>
-                </aside>
                 <?php echo form_close() ?>
             </div>
         </div>

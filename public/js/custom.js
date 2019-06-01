@@ -637,7 +637,7 @@ var UI = {
     socialShare: function(){
         if($('#social-share').length > 0){
             $('#social-share').jsSocials({
-                shares: ["email", "twitter", "facebook", "googleplus", "pinterest"]
+                shares: [ "facebook", "googleplus","twitter"]
             });
         }
     },
@@ -789,35 +789,16 @@ var UI = {
     relatedProduct: function (){
         /* Related products slider */
         jQuery('#related-products-slider .slider-items').owlCarousel({
-            items: 1, //10 items above 1000px browser width
-            // itemsDesktop: [1024, 1], //5 items between 1024px and 901px
-            // itemsDesktopSmall: [900, 1], // 3 items betweem 900px and 601px
-            // itemsTablet: [600, 1], //2 items between 600 and 0;
-            // itemsMobile: [360, 1],
+            items: 4, //10 items above 1000px browser width
+            itemsDesktop: [1024, 4], //5 items between 1024px and 901px
+            itemsDesktopSmall: [900, 3], // 3 items betweem 900px and 601px
+            itemsTablet: [600, 2], //2 items between 600 and 0;
+            itemsMobile: [320, 1],
             navigation: true,
             navigationText: ['<a class=\"flex-prev\"></a>', '<a class=\"flex-next\"></a>'],
             slideSpeed: 500,
             pagination: false
         });
-    },
-    sideBarFilter: function (){
-        let btn_filter = document.getElementById('btn-filter');
-        let btn_overlay = document.getElementById('overlay');
-        let filter = document.getElementById('sidebar-filter');
-
-        btn_filter.onclick = function () {
-            filter.style.left = 0;
-            filter.style.zIndex = 9;
-            btn_overlay.style.display = 'block';
-            btn_overlay.style.zIndex = 7;
-            btn_overlay.style.height = '100%';
-        }
-
-        btn_overlay.onclick = function () {
-            filter.style.left = '-280px';
-            filter.style.zIndex = -1;
-            btn_overlay.style.display = 'none';
-        }
     },
     init: function () {
         UI.homeSlider();
@@ -832,7 +813,6 @@ var UI = {
         UI.loadComment(1);
         UI.show_random_realtime();
         UI.accessoriesCarousel();
-        UI.sideBarFilter();
     },
 
 

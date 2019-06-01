@@ -250,9 +250,7 @@ header .our-features-box li {
 .nav-tabs > li > a:hover{
     background-color: #388305;
 }
-.buy-more{
-    margin-top: 10px;
-}
+
 .buy-more .panel-body{
     max-height: 190px;
     overflow: hidden;
@@ -2193,12 +2191,20 @@ coccoc-alo-number::-ms-clear {
     padding: 5px 10px;
 }
 .post_related .item{
-    margin-bottom: 5px;
+    margin-top: 5px;
     padding-bottom: 5px;
     border-bottom: 1px solid #E0E0E0;
+    padding: 5px;
 }
-.post_related .item:last-child{
-    border-bottom: 0;
+.post_related .item .left, .post_related .item .right {
+    float: left;
+}
+.post_related .item .left{
+    width: 45%;
+}
+
+.post_related .item .right{
+    width: 55%;
 }
 .post_related .item a{
     cursor: pointer;
@@ -2209,9 +2215,7 @@ coccoc-alo-number::-ms-clear {
 .post_related .item a:hover h3{
     color: rgb(190, 30, 45);
 }
-.post_related .item a .left{
-    flex: 0 0 100px;
-}
+
 .post_related .item a .right{
     padding-left: 10px;
 }
@@ -2686,13 +2690,13 @@ header{
 .review-company-text li {
     margin-bottom: 20px;
 }
-.std,.list-tag {
-    padding: 0 10px;
-}
 .list-tag {
     border-top: 1px dashed #ececec;
     padding-top: 10px;
     margin-top: 20px;
+}
+.form-list .input-box {
+    padding: 5px 15px 10px 0;
 }
 .panel-green > .panel-heading {
     background-color: #388305;
@@ -2715,22 +2719,12 @@ header{
 }
 .product-box-right {
     background-color: #fff;
-    padding: 7px 15px;
+    padding: 6px 15px;
     margin-bottom: 20px;
+    min-height: 550px;
+
 }
 
-.accessories-box, .agency {
-    float: left;
-}
-
-.accessories-box {
-    width: 65%;
-}
-
-.agency {
-    width: 30%;
-    margin-left: 5%;
-}
 #slide2 {
     float: left;
 }
@@ -2774,49 +2768,15 @@ header{
     top: 50%;
     transform: translateY(-50%);
 }
-.product-color,.short-desc {
-    margin: 0 0 10px 0;
-    list-style-type: none;
-    padding: 0;
-}
-.short-desc{
-    float: left;
-    width: 50%;
-}
-.price-block .price-box {
-    margin: 0;
-    padding: 0;
-}
-.price-block {
-    float: left;
-    width: 50%;
-    border: 1px solid #ececec;
-    border-radius: 5px;
-    padding: 5px;
-    text-align: center;
+.slick-arrow {
+    opacity: 0;
+    transition: all ease .3s;
+    visibility: hidden;
 }
 
-.short-desc i {
-    width: 20px;
-    height: 14px;
-    display: inline-block;
-    line-height: 14px;
-    text-align: center;}
-
-.product-color-item {
-    display: inline-block;
-    margin-right: 10px;
-}
-
-.product-color-code {
-    width: 30px;
-    height: 30px;
-    margin: 0 auto;
-    margin-bottom: 5px;
-}
-
-.product-color-title {
-    font-size: 12px;
+#slide1:hover .slick-arrow {
+    visibility: visible;
+    opacity: 0.8;
 }
 .wqp:after,.clear-after:after {
     display: block;
@@ -2833,14 +2793,14 @@ header{
 .special-promotion {
     margin-top: 15px;
     margin-bottom: 20px;
-    border-left: 1px solid #388305;
-    border-right: 1px solid #388305;
-    border-bottom: 1px solid #388305;
 }
 .special-promotion-text {
     margin: 0;
     padding: 10px 0 10px 15px;
     list-style: none;
+    border-left: 1px solid #388305;
+    border-right: 1px solid #388305;
+    border-bottom: 1px solid #388305;
 }
 .special-promotion-text {
     margin: 0;
@@ -2900,8 +2860,8 @@ header{
 .wqp {
     margin-bottom: 10px;
 }
-#content, .page-title {
-    padding: 20px;
+.product-related {
+    margin-top: 20px;
 }
 .page-title {
     text-align: center;
@@ -3006,23 +2966,7 @@ ul {}
 .list-agency__content ul li:last-of-type {
     border-bottom: 0;
 }
-.sidebar-category {
-    position: fixed;
-    top: 0;
-    left: -280px;
-    width: 280px;
-    transition: all ease .4s;
-    height: 100%;
-    background: #fff;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-    box-shadow: -1px 6px 9px 2px;
-}
-#btn-filter {
-    padding: 5px 10px;
-    border: 1px solid #ccc;
-    color: #000;
-    margin-right: 10px;
-}
+
 @media  (min-width: 320px) and (max-width: 768px){
     .nav-category-title, .view-list-child{
         float: none;
@@ -3084,4 +3028,10 @@ ul {}
     .cat-icon{
         padding: 20px;
     }
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
 }

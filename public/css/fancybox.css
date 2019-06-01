@@ -69,7 +69,7 @@
 }
 #fancybox-outer {
 	position: relative;
-	width: 900px;
+	width: 90%;
 	background: #fff;
 	margin: 30px auto;
 	border-radius: 5px;
@@ -82,7 +82,6 @@
 	overflow: hidden;
 	padding: 30px 15px;
 	position: relative;
-	width: 900px !important;
 	z-index: 1102;
 	background: #fff;
 	height: calc(100vh - 50px);
@@ -355,10 +354,6 @@ filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/fancyb
 }
 #fancybox-content .product-view .product-shop {
 	margin: 0;
-}
-#fancybox-content .product-view .product-name h1 {
-	font-size: 22px;
-	margin-top: 0px
 }
 #fancybox-content .cloud-zoom-big {
 	border: 0px solid #ddd;

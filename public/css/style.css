@@ -4932,7 +4932,8 @@ nav {
 .products-grid .item {
     background: #FFF;
     margin-top: 20px;
-    margin-bottom: 5px !important
+    margin-bottom: 5px !important;
+    position: relative;
 }
 
 .products-grid .last {
@@ -5656,13 +5657,9 @@ a.button.detail-bnt span {
 }
 
 .price-box {
-    /*	margin: 0;
-	padding: 0px 0px 0px 0px;  */
 
     padding: 6px 0px 0px 0px;
-    min-height: 28px;
-    margin: 3px 0;
-    margin-bottom: 15px;
+    margin: 0px;
     font-weight: bold;
     color: #456883;
     font-size: 14px;
@@ -6262,7 +6259,11 @@ a.button.detail-bnt span {
     margin: 0;
     list-style: none;
     padding: 0;
-    transform: translateY(100%);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
 }
 .box-hover .add-to-links a {
     color: #fff;
@@ -8255,16 +8256,6 @@ ol#compare-items li.last {
     margin: 0;
 }
 
-.product-view .product-name h1 {
-    font-size: 24px;
-    margin: 0px;
-    text-align: left;
-    padding-bottom: 10px;
-    font-weight: 600;
-    padding-right: 55px;
-    /*	text-transform: uppercase;  */
-}
-
 .product-view .short-description {
     font-size: 13px;
     padding: 10px;
@@ -8757,9 +8748,11 @@ ol#compare-items li.last {
 }
 
 #productTabContent {
-    padding: 5px 0px;
     background: none repeat scroll 0 0 #fff;
     border-top: none;
+}
+.tab-pane {
+    padding: 10px 20px;
 }
 
 .product-tabs li a {
@@ -8836,7 +8829,6 @@ ol#compare-items li.last {
     font-size: 16px;
     font-weight: 600;
     letter-spacing: 1px;
-    margin-left: 10px;
 }
 
 .form-add-tags .input-box {
@@ -10653,10 +10645,6 @@ input.input-text, select,select.form-control, textarea {
 .form-review-nickname,.form-review-name {
     float: left;
     width: 50%;
-}
-
-.form-review-nickname,.form-review-name,.buttons-set,.form-review-message {
-    padding: 10px;
 }
 .form-review-message, .buttons-set{
     float: left;

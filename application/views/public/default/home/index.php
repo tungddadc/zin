@@ -91,8 +91,8 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     </div>
 </div>
 
-<section class="main-container col2-left-layout">
-    <div class="container">
+<section class="main-container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-12 col-sm-12 hidden-xs">
                 <div class="banner-bottom-slider">
@@ -150,10 +150,16 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     </div>
 </section>
 
+<section class="main-container">
 <?php $this->load->view($this->template_path . 'page/page_home_about'); ?>
+</section>
+
+<section class="main-container">
+<?php $this->load->view($this->template_path . 'page/page_home_review_company'); ?>
+</section>
 
 <!-- Latest Blog -->
-<section class="col2-left-layout">
+<section class="main-container">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
@@ -195,6 +201,4 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     </div>
 </section>
 <!-- End Latest Blog -->
-
-<?php $this->load->view($this->template_path . 'page/page_home_review_company'); ?>
 
