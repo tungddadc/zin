@@ -49,7 +49,7 @@ $config['js_file'] = 'script_minified.min.js';
 
 
 // use automatic file names (default value: 'FALSE')
-$config['auto_names'] = FALSE;
+$config['auto_names'] = TRUE;
 
 $config['versioning'] = TRUE;
 

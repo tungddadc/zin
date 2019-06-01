@@ -18,7 +18,7 @@ function compress()
         '<',
         '\\1'
     );
-    if($CI->router->fetch_directory() !== 'admin/'&& DEBUG_MODE != FALSE){
+    if($CI->router->fetch_directory() !== 'admin/'&& DEBUG_MODE == FALSE){
         $buffer = preg_replace($search, $replace, $buffer);
     }
     $CI->output->set_output($buffer);
