@@ -38,10 +38,10 @@ jQuery(document).ready(function() {
 
     /* Bestsell slider */
     jQuery('#bestsell-slider .slider-items').owlCarousel({
-        items: 3, //10 items above 1000px browser width
-        itemsDesktop: [1024, 4], //5 items between 1024px and 901px
-        itemsDesktopSmall: [768, 3], // 3 items betweem 900px and 601px
-        itemsTablet: [767, 2], //2 items between 600 and 0;
+        items: 3,
+        itemsDesktop: [1024, 4],
+        itemsDesktopSmall: [768, 3],
+        itemsTablet: [767, 2],
         itemsMobile: [360, 1],
         navigation: true,
         navigationText: ['<a class=\"flex-prev\"></a>', '<a class=\"flex-next\"></a>'],
@@ -50,10 +50,10 @@ jQuery(document).ready(function() {
     });
     /* Featured slider */
     jQuery('#featured-slider .slider-items').owlCarousel({
-        items: 4, //10 items above 1000px browser width
-        itemsDesktop: [1024, 3], //5 items between 1024px and 901px
-        itemsDesktopSmall: [900, 3], // 3 items betweem 900px and 601px
-        itemsTablet: [768, 2], //2 items between 600 and 0;
+        items: 4,
+        itemsDesktop: [1024, 3],
+        itemsDesktopSmall: [900, 3],
+        itemsTablet: [768, 2],
         itemsMobile: [360, 1],
         navigation: true,
         navigationText: ['<a class=\"flex-prev\"></a>', '<a class=\"flex-next\"></a>'],
@@ -62,10 +62,10 @@ jQuery(document).ready(function() {
     });
     /* New arrivals slider */
     jQuery('#new-arrivals-slider .slider-items').owlCarousel({
-        items: 4, //10 items above 1000px browser width
-        itemsDesktop: [1024, 4], //5 items between 1024px and 901px
-        itemsDesktopSmall: [768, 3], // 3 items betweem 900px and 601px
-        itemsTablet: [767, 2], //2 items between 600 and 0;
+        items: 4,
+        itemsDesktop: [1024, 4],
+        itemsDesktopSmall: [768, 3],
+        itemsTablet: [767, 2],
         itemsMobile: [360, 1],
         navigation: true,
         navigationText: ['<a class=\"flex-prev\"></a>', '<a class=\"flex-next\"></a>'],
@@ -75,10 +75,10 @@ jQuery(document).ready(function() {
     /* Brand logo slider */
     jQuery('#brand-logo-slider .slider-items').owlCarousel({
         autoPlay: true,
-        items: 6, //10 items above 1000px browser width
-        itemsDesktop: [1024, 4], //5 items between 1024px and 901px
-        itemsDesktopSmall: [900, 3], // 3 items betweem 900px and 601px
-        itemsTablet: [600, 2], //2 items between 600 and 0;
+        items: 6,
+        itemsDesktop: [1024, 4],
+        itemsDesktopSmall: [900, 3],
+        itemsTablet: [600, 2],
         itemsMobile: [320, 1],
         navigation: true,
         navigationText: ['<a class=\"flex-prev\"></a>', '<a class=\"flex-next\"></a>'],
@@ -88,7 +88,7 @@ jQuery(document).ready(function() {
     /* Category desc slider */
     jQuery('#category-desc-slider').owlCarousel({
         autoPlay: true,
-        items: 1, //10 items above 1000px browser width
+        items: 1,
         navigation: true,
         navigationText: ['<i class="fa fa-angle-left" aria-hidden="true"></i>', '<i class="fa fa-angle-right" aria-hidden="true"></i>'],
         slideSpeed: 500,
@@ -98,10 +98,10 @@ jQuery(document).ready(function() {
     /* List cat slider */
     jQuery('#list-cat').owlCarousel({
         autoPlay: true,
-        items: 10, //10 items above 1000px browser width
-        itemsDesktop: [1024, 10], //5 items between 1024px and 901px
-        itemsDesktopSmall: [768, 5], // 3 items betweem 900px and 601px
-        itemsTablet: [570, 3], //2 items between 600 and 0;
+        items: 10,
+        itemsDesktop: [1024, 10],
+        itemsDesktopSmall: [768, 5],
+        itemsTablet: [570, 3],
         itemsMobile: [320, 3],
         navigation: true,
         margin: 20,
@@ -111,10 +111,10 @@ jQuery(document).ready(function() {
     });
     /* Related products slider */
     jQuery('#related-products-slider .slider-items').owlCarousel({
-        items: 3, //10 items above 1000px browser width
-        itemsDesktop: [1024, 3], //5 items between 1024px and 901px
-        itemsDesktopSmall: [900, 3], // 3 items betweem 900px and 601px
-        itemsTablet: [600, 2], //2 items between 600 and 0;
+        items: 3,
+        itemsDesktop: [1024, 3],
+        itemsDesktopSmall: [900, 3],
+        itemsTablet: [600, 2],
         itemsMobile: [320, 1],
         navigation: true,
         navigationText: ['<a class=\"flex-prev\"></a>', '<a class=\"flex-next\"></a>'],
@@ -123,10 +123,10 @@ jQuery(document).ready(function() {
     });
     /* Upsell products slider */
     jQuery('#upsell-products-slider .slider-items').owlCarousel({
-        items: 4, //10 items above 1000px browser width
-        itemsDesktop: [1024, 4], //5 items between 1024px and 901px
-        itemsDesktopSmall: [900, 3], // 3 items betweem 900px and 601px
-        itemsTablet: [600, 2], //2 items between 600 and 0;
+        items: 4,
+        itemsDesktop: [1024, 4],
+        itemsDesktopSmall: [900, 3],
+        itemsTablet: [600, 2],
         itemsMobile: [360, 1],
         navigation: true,
         navigationText: ['<a class=\"flex-prev\"></a>', '<a class=\"flex-next\"></a>'],
@@ -150,10 +150,10 @@ jQuery(document).ready(function() {
 
 
     jQuery('#bestsellers4 .slider-items').owlCarousel({
-        items : 1, //10 items above 1000px browser width
-        itemsDesktop : [1024,1], //5 items between 1024px and 901px
-        itemsDesktopSmall : [900,1], // 3 items betweem 900px and 601px
-        itemsTablet: [767,1], //2 items between 600 and 0;
+        items : 1,
+        itemsDesktop : [1024,1],
+        itemsDesktopSmall : [900,1],
+        itemsTablet: [767,1],
         itemsMobile : [360,1],
         navigation : false,
         navigationText: ['<a class=\"flex-prev\"></a>', '<a class=\"flex-next\"></a>'],

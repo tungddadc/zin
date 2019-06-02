@@ -110,8 +110,6 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     <?php $asset_css[] = 'select2.min.css'; ?>
     <?php $asset_css[] = 'blogmate.css'; ?>
     <?php $asset_css[] = 'custom.css'; ?>
-    <?php $asset_css[] = 'menu.css'; ?>
-
     <?php
     $this->minify->css($asset_css);
     echo $this->minify->deploy_css(TRUE);
@@ -247,17 +245,18 @@ switch ($this->_controller) {
 <?php $asset_js[] = 'jquery.mobile-menu.min.js'; ?>
 <?php $asset_js[] = 'countdown.js'; ?>
 <?php $asset_js[] = 'cloud-zoom.js'; ?>
+<?php $asset_js[] = 'slick.min.js'; ?>
 <?php $asset_js[] = 'lazyload.min.js'; ?>
 <?php $asset_js[] = '../plugins/toastr/toastr.min.js'; ?>
 <?php $asset_js[] = '../plugins/rateit/jquery.rateit.min.js'; ?>
 <?php $asset_js[] = '../plugins/jssocials/jssocials.min.js'; ?>
+
 <?php $asset_js[] = 'jquery.form.min.js'; ?>
 <?php $asset_js[] = 'jquery.sticky-kit.min.js'; ?>
 <?php $asset_js[] = 'select2.min.js'; ?>
 <?php $asset_js[] = 'maps.js'; ?>
 <?php $asset_js[] = 'account.js'; ?>
 <?php $asset_js[] = 'countdown1.js'; ?>
-<?php $asset_js[] = 'slick.min.js'; ?>
 <?php $asset_js[] = 'custom.js'; ?>
 <?php $asset_js[] = 'common.js'; ?>
 
