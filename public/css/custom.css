@@ -2966,7 +2966,60 @@ ul {}
 .list-agency__content ul li:last-of-type {
     border-bottom: 0;
 }
+.col-main {
+    padding: 10px 15px;
+}
+.col-main .page-title h1{
+    font-size: 24px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.page-side-bar {
+    background: #fff;
+}
 
+.about-company-widget {
+    padding: 10px;
+}
+.top-news ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.top-news ul li {
+    display: inline-block;
+    padding: 10px;
+}
+
+.top-news {
+    background: #fff;
+    margin-bottom: 20px;
+}
+.popular-posts .img, .popular-posts .info {
+    float: left;
+}
+
+.popular-posts .img {
+    width: 40%;
+}
+
+.popular-posts .info {
+    width: 60%;
+    padding: 0 10px;
+}
+
+.popular-posts .info h3 {
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+}
+
+.popular-posts .item {
+    margin-bottom: 20px;
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 10px;
+}
 @media  (min-width: 320px) and (max-width: 768px){
     .nav-category-title, .view-list-child{
         float: none;

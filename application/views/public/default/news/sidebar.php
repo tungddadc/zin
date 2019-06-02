@@ -1,28 +1,5 @@
 <aside class="sidebar col-sm-3 col-xs-12 ">
   <div class="widget_wrapper13" id="secondary" role="complementary">
-    <div class="popular-posts widget widget__event wow bounceInUp animated" id="recent-posts-4">
-      <h2>Sự kiện</h2>
-      <div class="widget-content">
-        <?php
-        $list_post = getPostByCatNews('event', 2);
-        if (!empty($list_post)) foreach ($list_post as $item):
-          ?>
-          <div class="item">
-            <div class="date">
-              <?php echo date('m/y', strtotime($item->date_event)) ?>
-            </div>
-            <div class="info">
-              <h3><?php echo $item->title ?></h3>
-              <div class="location"><i class="fa fa-map-marker"
-                                       aria-hidden="true"></i> <?php echo $item->address_event ?></div>
-            </div>
-          </div>
-        <?php
-        endforeach;
-        ?>
-      </div>
-      <!--widget-content-->
-    </div>
     <div class="popular-posts widget widget_categories widget_product_new wow bounceInUp animated" id="categories-2">
       <h2>Sản phẩm mới</h2>
       <div class="widget-content">
@@ -30,7 +7,7 @@
         $listProduct = getProductNew();
         if (!empty($listProduct)) foreach ($listProduct as $item) {
           ?>
-          <div class="item">
+          <div class="item clear-after">
             <div class="img">
               <a href="<?php echo getUrlProduct($item) ?>">
                 <img src="<?php echo getImageThumb($item->thumbnail, 105, 105, false) ?>"
@@ -68,14 +45,16 @@
         if (!empty($list_post)) foreach ($list_post as $key => $item) {
           $img = ($key == 0) ? getImageThumb($item->thumbnail, 570, 320,true) : getImageThumb($item->thumbnail, 280, 150,true);
           ?>
-          <div class="item">
+          <div class="item clear-after">
             <div class="img">
               <a href="<?php echo getUrlCateNews($item) ?>">
                 <img src="<?php echo $img ?>" alt="<?php echo $item->title ?>">
               </a>
-              <a href="<?php echo getUrlProduct($item) ?>">
-                <h3><?php echo $item->title ?></h3>
-              </a>
+            </div>
+            <div class="info">
+                <a href="<?php echo getUrlProduct($item) ?>">
+                    <h3><?php echo $item->title ?></h3>
+                </a>
             </div>
           </div>
           <?php
