@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                     <a title="<?php echo $this->settings['title'] . ' | ' . $this->settings['name'] ?>"
                        href="<?php echo base_url() ?>">
                         <img alt="<?php echo $this->settings['title'] . ' | ' . $this->settings['name'] ?>"
-                             src="<?php echo getImageThumb($this->settings['logo'], 260, 50, true, false) ?>">
+                             src="<?php echo getImageThumb($this->settings['logo'], 165, 30, true, false) ?>">
                     </a>
                 </div>
 
