@@ -8350,7 +8350,10 @@ ol#compare-items li.last {
 }
 
 .product-view .product-img-box .product-image .product-full img {
-    width: 100%;
+    width: auto;
+    max-height: 400px;
+    margin: 0 auto;
+    display: block;
 }
 
 .product-view .product-img-box .product-image .product-flexslider {
