@@ -10090,6 +10090,7 @@ a.shop-now-btn {
 .payment-accept img {
     margin: 0px 10px 8px 0px;
     width: 50px;
+	display: inline-block;
 }
 
 .footer-middle h4 {
