@@ -2728,18 +2728,17 @@ header{
 
 #slide2 {
     float: left;
-}
-
-#slide1 {
-    width: 80%;
-}
-
-#slide2 {
     width: 20%;
+    max-height: 550px;
 }
 
 #slide1 {
     float: right;
+    width: 80%;
+}
+
+#slide1 .slick-slide  {
+    max-height: 550px;
 }
 
 .product-img {
@@ -3088,4 +3087,12 @@ img {
     display: block;
     max-width: 100%;
     height: auto;
+}
+
+
+@media (min-width: 1200px) {
+    .container {
+        width: 1260px !important;
+    }
+
 }

@@ -760,6 +760,7 @@ var UI = {
             arrows: true,
             dots: false,
             fade: true,
+            centerMode: true,
             asNavFor: '#slide2',
             prevArrow:"<a class='slick-btn-prev'><i class='fa fa-angle-left' aria-hidden='true'></i></a>",
             nextArrow:"<a class='slick-btn-next'><i class='fa fa-angle-right' aria-hidden='true'></i></a>"
