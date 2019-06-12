@@ -21,22 +21,28 @@ if (!empty($oneItem)):
 
                     <div class="col-md-8 col-sm-7 col-xs-12">
                         <div class="product-img">
-                            <div id="slide1">
-                                <?php if (!empty($album)) foreach ($album as $item): ?>
-                                    <div>
-                                        <img class="img-responsive" src="<?php echo getImageThumb($item, '550', '550',true,true) ?>" alt="<?php echo getTitle($oneItem) ?>">
+                            <div class="row">
+                                <div class="col-xs-2">
+                                    <div id="slide2">
+                                        <?php if (!empty($album)) foreach ($album as $item): ?>
+                                            <div>
+                                                <img class="img-responsive" src="<?php echo getImageThumb($item, '200', '200',true,true) ?>" alt="<?php echo getTitle($oneItem) ?>">
+                                            </div>
+                                        <?php endforeach ?>
                                     </div>
-                                <?php endforeach ?>
-                            </div>
+                                </div>
 
-                            <div id="slide2">
-                                <?php if (!empty($album)) foreach ($album as $item): ?>
-                                    <div>
-                                        <img class="img-responsive" src="<?php echo getImageThumb($item, '200', '200',true,true) ?>" alt="<?php echo getTitle($oneItem) ?>">
+                                <div class="col-xs-10">
+                                    <div id="slide1">
+                                        <?php if (!empty($album)) foreach ($album as $item): ?>
+                                            <div>
+                                                <img class="img-responsive" src="<?php echo getImageThumb($item, '670', '550',true,true) ?>" alt="<?php echo getTitle($oneItem) ?>">
+                                            </div>
+                                        <?php endforeach ?>
                                     </div>
-                                <?php endforeach ?>
-                            </div>
 
+                                </div>
+                            </div>
                         </div>
                     </div>
 

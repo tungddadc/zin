@@ -766,11 +766,10 @@ var UI = {
             nextArrow:"<a class='slick-btn-next'><i class='fa fa-angle-right' aria-hidden='true'></i></a>"
         });
         $('#slide2').slick({
-            slidesToShow: 3,
+            slidesToShow: 5,
             slidesToScroll: 1,
             arrows: false,
             asNavFor: '#slide1',
-            centerMode: true,
             focusOnSelect: true,
             vertical: true
         });

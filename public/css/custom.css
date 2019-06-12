@@ -2726,28 +2726,11 @@ header{
 
 }
 
-#slide2 {
-    float: left;
-    width: 20%;
-    max-height: 550px;
-}
-
-#slide1 {
-    float: right;
-    width: 80%;
-}
-
-#slide1 .slick-slide  {
-    max-height: 550px;
-}
-
 .product-img {
     overflow: hidden;
     margin-bottom: 20px;
 }
-#slide2 .slick-slide {
-    padding: 5px;
-}
+
 .slick-btn-next {
     right: 1%;
 }
@@ -2773,7 +2756,10 @@ header{
     transition: all ease .3s;
     visibility: hidden;
 }
-
+#slide2 .slick-list{
+    max-height: 550px;
+    padding: 0 !important;
+}
 #slide1:hover .slick-arrow {
     visibility: visible;
     opacity: 0.8;
