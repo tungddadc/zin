@@ -1187,7 +1187,7 @@ address{border:medium none;color:#fff;display:block;font-size:13px;font-style:no
 auto 18px;padding-bottom:0px;padding-top:5px;text-align:left;font-weight:500;letter-spacing:0.5px}.contacts-info{margin-top:10px}.footer-logo{text-align:left;margin:10px
 0 8px}.payment-accept{text-align:right}.payment-accept
 img{margin:0px
-10px 8px 0px;width:50px}.footer-middle
+10px 8px 0px;width:50px;display:inline-block}.footer-middle
 h4{color:rgb(251, 175, 63) !important;font-size:15px;font-weight:600;letter-spacing:0.5px;margin:0;padding:0
 0 10px}a.buy-theme{text-transform:uppercase;font-size:13px}.footer-middle
 ul.links{margin:auto;padding:0px}.footer-middle .links
@@ -2643,7 +2643,7 @@ img{float:left;width:100px;height:57px;margin:0
 10px 0 0}.side-banner li
 h3{display:block;overflow:hidden;height:36px;line-height:1.3em;font-size:14px;color:#333;margin-bottom:5px;margin-top:0}.side-banner li
 span{float:left;font-size:12px;color:#999;margin-right:10px}.twobanner
-img{margin-top:5px;height:70px;width:100%}header{min-height:60px;background-color:rgb(190,30,45)}#main-menu-desktop{padding:0;margin:0;list-style:none}#main-menu-desktop>li{display:inline-block;padding:0
+img{margin-top:5px;height:70px;width:100%}header{min-height:60px;background-color:rgb(190,30,45);margin-bottom:10px}#main-menu-desktop{padding:0;margin:0;list-style:none}#main-menu-desktop>li{display:inline-block;padding:0
 5px;line-height:60px}#main-menu-desktop>li:hover{background-color:rgb(251,175,63)}#main-menu-desktop>li>a{text-transform:uppercase;font-weight:bold;color:#fff !important}.menu-icon{padding:0;margin:0;list-style:none;text-align:right;position:relative}.menu-icon>li{display:inline-block;padding:0
 10px;line-height:60px}.menu-icon > li > a, .menu-icon > li > ul > li
 a{color:#fff !important;text-align:center}.menu-icon li

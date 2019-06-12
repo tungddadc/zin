@@ -19,7 +19,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                         <?php foreach ($home_slider as $item) : ?>
                             <div class="item">
                                 <a title="<?php echo getTitle($item) ?>" href="<?php echo $item->url ?>">
-                                    <img src="<?php echo getImageThumb($item->thumbnail, 850, 300, true) ?>"
+                                    <img src="<?php echo getImageThumb($item->thumbnail, 1920, 630, true) ?>"
                                          alt="<?php echo getTitle($item) ?>">
                                 </a>
                             </div>
@@ -33,8 +33,8 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                     <div id="sync2" class="owl-carousel">
                         <?php foreach ($home_slider as $item) : ?>
                             <div class="item">
-                                <div title="<?php echo getTitle($item) ?>"
-                                     href="<?php echo $item->url ?>"><?php echo getTitle($item) ?><?php echo getTitle($item) ?></div>
+                                <a title="<?php echo getTitle($item) ?>"
+                                     href="<?php echo $item->url ?>"><?php echo $item->description ?></a>
                             </div>
                         <?php endforeach; ?>
                     </div>

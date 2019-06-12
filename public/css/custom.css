@@ -2387,6 +2387,7 @@ coccoc-alo-number::-ms-clear {
 header{
     min-height: 60px;
     background-color: rgb(190, 30, 45);
+	margin-bottom: 10px;
 }
 #main-menu-desktop {
     padding: 0;
