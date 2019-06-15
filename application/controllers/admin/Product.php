@@ -324,7 +324,6 @@ class Product extends Admin_Controller
       return $data;
     }
 
-
     public function export_excel(){
         $data = $this->_data->getAll('vi');
         $dataToExports = [];

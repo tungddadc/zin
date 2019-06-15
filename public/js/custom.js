@@ -754,24 +754,27 @@ var UI = {
 
     },
     productCarousel: function () {
-        $('#slide1').slick({
+        $('.slide-nav').slick({
             slidesToShow: 1,
             slidesToScroll: 1,
-            arrows: true,
-            dots: false,
+            arrows: false,
             fade: true,
             centerMode: true,
-            asNavFor: '#slide2',
-            prevArrow:"<a class='slick-btn-prev'><i class='fa fa-angle-left' aria-hidden='true'></i></a>",
-            nextArrow:"<a class='slick-btn-next'><i class='fa fa-angle-right' aria-hidden='true'></i></a>"
+            dots: true,
+            asNavFor: '.slide-for',
+            autoplay: true,
+            autoplaySpeed: 2000,
+            infinite: true,
         });
-        $('#slide2').slick({
-            slidesToShow: 5,
+        $('.slide-for').slick({
+            slidesToShow: 4,
             slidesToScroll: 1,
-            arrows: false,
-            asNavFor: '#slide1',
+            asNavFor: '.slide-nav',
+            dots: true,
+            //centerMode: true,
             focusOnSelect: true,
-            vertical: true
+            vertical: true,
+            infinite: true,
         });
     },
     accessoriesCarousel : function () {
