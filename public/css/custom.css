@@ -2741,13 +2741,13 @@ header{
 .slide-nav {
     max-height: 550px !important;
 }
-.slick-next {
+.slick-btn-next {
     right: 1%;
 }
-.slick-prev{
+.slick-btn-prev{
     left: 1%;
 }
-.slick-prev, .slick-next{
+.slick-btn-prev, .slick-btn-next{
     border-radius: 100%;
     width: 40px;
     height: 40px;

@@ -758,6 +758,8 @@ var UI = {
             slidesToShow: 1,
             slidesToScroll: 1,
             arrows: true,
+            prevArrow: '<a class="slick-btn-prev" href="javscript:void(0)"><i class="fa fa-angle-left" aria-hidden="true"></i></a>',
+            nextArrow: '<a class="slick-btn-next" href="javscript:void(0)"><i class="fa fa-angle-right" aria-hidden="true"></i></a>',
             fade: true,
             centerMode: true,
             dots: true,
