@@ -757,7 +757,7 @@ var UI = {
         $('.slide-nav').slick({
             slidesToShow: 1,
             slidesToScroll: 1,
-            arrows: false,
+            arrows: true,
             fade: true,
             centerMode: true,
             dots: true,
@@ -770,8 +770,8 @@ var UI = {
             slidesToShow: 4,
             slidesToScroll: 1,
             asNavFor: '.slide-nav',
+            arrows: false,
             dots: true,
-            //centerMode: true,
             focusOnSelect: true,
             vertical: true,
             infinite: true,

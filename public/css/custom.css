@@ -2731,13 +2731,23 @@ header{
     margin-bottom: 20px;
 }
 
-.slick-btn-next {
+.slide-for .slick-list {
+    height: 550px !important;
+}
+
+.slide-for .slick-slide {
+    height: 110px !important;
+}
+.slide-nav {
+    max-height: 550px !important;
+}
+.slick-next {
     right: 1%;
 }
-.slick-btn-prev{
+.slick-prev{
     left: 1%;
 }
-.slick-btn-prev, .slick-btn-next{
+.slick-prev, .slick-next{
     border-radius: 100%;
     width: 40px;
     height: 40px;
@@ -2756,11 +2766,7 @@ header{
     transition: all ease .3s;
     visibility: hidden;
 }
-#slide2 .slick-list{
-    max-height: 550px;
-    padding: 0 !important;
-}
-#slide1:hover .slick-arrow {
+.slide-nav:hover .slick-arrow {
     visibility: visible;
     opacity: 0.8;
 }

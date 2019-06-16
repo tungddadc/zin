@@ -29,13 +29,7 @@ if (!empty($oneItem)):
                                             </div>
                                         <?php endforeach ?>
                                     </div>
-<!--                                    <div id="slide2">-->
-<!--                                        --><?php //if (!empty($album)) foreach ($album as $item): ?>
-<!--                                            <div>-->
-<!--                                                <img class="img-responsive" src="--><?php //echo getImageThumb($item, '200', '200',true,true) ?><!--" alt="--><?php //echo getTitle($oneItem) ?><!--">-->
-<!--                                            </div>-->
-<!--                                        --><?php //endforeach ?>
-<!--                                    </div>-->
+
                                 </div>
 
                                 <div class="col-xs-10">
@@ -46,13 +40,6 @@ if (!empty($oneItem)):
                                             </div>
                                         <?php endforeach ?>
                                     </div>
-<!--                                    <div id="slide1">-->
-<!--                                        --><?php //if (!empty($album)) foreach ($album as $item): ?>
-<!--                                            <div>-->
-<!--                                                <img class="img-responsive" src="--><?php //echo getImageThumb($item, '670', '550',true,true) ?><!--" alt="--><?php //echo getTitle($oneItem) ?><!--">-->
-<!--                                            </div>-->
-<!--                                        --><?php //endforeach ?>
-<!--                                    </div>-->
 
                                 </div>
                             </div>
