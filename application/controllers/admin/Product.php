@@ -210,8 +210,8 @@ class Product extends Admin_Controller
         $data_category = $data['category_id'];
         unset($data['language']);
         unset($data['category_id']);
-          $data_property = $data['property_id'];
-          unset($data['property_id']);
+		$data_property = $data['property_id'];
+		unset($data['property_id']);
 
         if($this->_data->update(['id' => $id],$data, $this->_data->table)){
             $this->save_language($id, $data_trans);
@@ -323,7 +323,6 @@ class Product extends Admin_Controller
 
       return $data;
     }
-
 
     public function export_excel(){
         $data = $this->_data->getAll('vi');

@@ -2595,11 +2595,6 @@ header{
     color: rgb(190,30,45);
 }
 
-
-.view-list-child a, .view-list-child {
-    color: #fff;
-}
-
 .view-list-child a {
     margin-right: 10px;
     font-size: 13px;
@@ -2690,6 +2685,7 @@ header{
 
 .review-company-text li {
     margin-bottom: 20px;
+    min-height: 155px;
 }
 .list-tag {
     border-top: 1px dashed #ececec;
@@ -2731,6 +2727,16 @@ header{
     margin-bottom: 20px;
 }
 
+.slide-for .slick-list {
+    height: 550px !important;
+}
+
+.slide-for .slick-slide {
+    height: 110px !important;
+}
+.slide-nav {
+    max-height: 550px !important;
+}
 .slick-btn-next {
     right: 1%;
 }
@@ -2756,11 +2762,7 @@ header{
     transition: all ease .3s;
     visibility: hidden;
 }
-#slide2 .slick-list{
-    max-height: 550px;
-    padding: 0 !important;
-}
-#slide1:hover .slick-arrow {
+.slide-nav:hover .slick-arrow {
     visibility: visible;
     opacity: 0.8;
 }

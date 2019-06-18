@@ -245,7 +245,7 @@ switch ($this->_controller) {
 <?php $asset_js[] = 'jquery.mobile-menu.min.js'; ?>
 <?php $asset_js[] = 'countdown.js'; ?>
 <?php $asset_js[] = 'cloud-zoom.js'; ?>
-<?php $asset_js[] = 'slick.min.js'; ?>
+<?php $asset_js[] = 'slick.js'; ?>
 <?php $asset_js[] = 'lazyload.min.js'; ?>
 <?php $asset_js[] = '../plugins/toastr/toastr.min.js'; ?>
 <?php $asset_js[] = '../plugins/rateit/jquery.rateit.min.js'; ?>
