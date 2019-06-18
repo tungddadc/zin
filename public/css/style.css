@@ -442,7 +442,6 @@ a.button:hover {
 .main-container {
     min-height: 400px;
     padding: 0px;
-    margin-top: 25px;
     margin-bottom: 20px;
     position: relative;
 }
@@ -4405,8 +4404,6 @@ nav {
     margin-bottom: auto;
     border: none;
     border-radius: 0;
-    background-color: #388305;
-
 }
 
 .category-product .new_title.center {
@@ -4436,9 +4433,13 @@ nav {
     padding: 15px 10px;
 }
 .nav-category-title a {
-    color: #fff;
+    color: #000;
     text-transform: uppercase;
     font-weight: bold;
+}
+
+.view-list-child, .view-list-child a{
+    color: rgb(190, 30, 45);
 }
 
 .nav-category-title {

@@ -2595,11 +2595,6 @@ header{
     color: rgb(190,30,45);
 }
 
-
-.view-list-child a, .view-list-child {
-    color: #fff;
-}
-
 .view-list-child a {
     margin-right: 10px;
     font-size: 13px;
@@ -2690,6 +2685,7 @@ header{
 
 .review-company-text li {
     margin-bottom: 20px;
+    min-height: 155px;
 }
 .list-tag {
     border-top: 1px dashed #ececec;
