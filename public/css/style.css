@@ -5182,7 +5182,8 @@ ul.products-grid {
 }
 
 .products-grid .item .item-inner .item-img .item-img-info a.product-image img {
-    width: 100%;
+    width: auto;
+    height: 177px;
 }
 
 .products-grid .item .item-inner .item-img .item-img-info a.product-image img {
@@ -8351,6 +8352,8 @@ ol#compare-items li.last {
 
 .product-view .product-img-box .product-image .product-full img {
     width: 100%;
+    max-height: 400px;
+    object-fit: cover;
 }
 
 .product-view .product-img-box .product-image .product-flexslider {
