@@ -24,7 +24,7 @@
                                     <div class="product-image">
                                         <div class="product-full">
                                             <img id="product-zoom"
-                                                 src="<?php echo getImageThumb($album[0], 371, 371, false,true) ?>"
+                                                 src="<?php echo getImageThumb($album[0], 371, 371, true,true) ?>"
                                                  data-zoom-image="<?php echo getImageThumb($album[0],0,0,false,true) ?>"
                                                  alt="<?php echo getTitle($oneItem) ?>"/>
                                         </div>

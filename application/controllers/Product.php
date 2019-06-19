@@ -681,7 +681,7 @@ class Product extends Public_Controller
                 $data['price_sale'] = $item['PriceSale'];
                 $data['price_agency'] = $item['PriceAgency'];
                 $data_lang['title'] = $item['ProductName'];
-                $data_lang['meta_title'] = $item['ProductName'];
+                //$data_lang['meta_title'] = $item['ProductName'];
 
                 $this->_data->update(['barcode' => $barcode],$data);
                 $result = $this->_data->update(['id' => $id,'language_code' => 'vi'],$data_lang,$this->_data->table_trans);

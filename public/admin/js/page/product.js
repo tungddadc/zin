@@ -120,7 +120,7 @@ $(function() {
     });
 
     $(document).on('click','.btnEdit',function () {
-        slug_disable = false;
+        slug_disable = true;
         let modal_form = modalForm;
         let id = $(this).closest('tr').find('input[type="checkbox"]').val();
         AJAX_CRUD_MODAL.edit(function () {
