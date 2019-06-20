@@ -4981,7 +4981,6 @@ nav {
 
 ul.products-grid {
     padding: 0;
-    margin:
 }
 
 .category-products ul.products-grid li.item {
@@ -8350,10 +8349,7 @@ ol#compare-items li.last {
 }
 
 .product-view .product-img-box .product-image .product-full img {
-    width: auto;
-    max-height: 400px;
-    margin: 0 auto;
-    display: block;
+    width: 100%;
 }
 
 .product-view .product-img-box .product-image .product-flexslider {

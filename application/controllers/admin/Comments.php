@@ -68,12 +68,15 @@ class Comments extends Admin_Controller
         $list = $this->_data->getData($params);
         $data = array();
         if (!empty($list)) foreach ($list as $item) {
+            $this->load->model('product_model');
+            $productModel = new Product_model();
             $oneUser = $this->_data_account->getById($item->account_id, '*', $this->session->admin_lang);
+            $oneProduct = $productModel->getById($item->product_id, '*', $this->session->admin_lang);
             $row = array();
             $row['checkID'] = $item->id;
             $row['id'] = $item->id;
             $row['fullname'] = (!empty($oneUser)) ? $oneUser->fullname : '';
-            $row['content'] = $item->content;
+            $row['content'] = '<a href="'.getUrlProduct($oneProduct).'#comments" target="_blank">'. $item->content.'</a>';
             $row['is_status'] = $item->is_status;
             $row['updated_time'] = $item->updated_time;
             $row['created_time'] = $item->created_time;
