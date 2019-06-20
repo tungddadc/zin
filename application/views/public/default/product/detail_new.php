@@ -12,6 +12,7 @@ if (!empty($oneItem)):
                     <div class="breadcrumbs">
                         <?php echo !empty($breadcrumb) ? $breadcrumb : '' ?>
                     </div>
+					
                 </div>
                 <!-- Breadcrumbs End -->
 
@@ -35,7 +36,7 @@ if (!empty($oneItem)):
                                     <div class="slide-nav">
                                         <?php if (!empty($album)) foreach ($album as $item): ?>
                                             <div>
-                                                <img class="img-responsive" src="<?php echo getImageThumb($item, '670', '550',true,true) ?>" alt="<?php echo getTitle($oneItem) ?>">
+                                                <img class="img-responsive" src="<?php echo getImageThumb($item, '670', '550', true, true) ?>" alt="<?php echo getTitle($oneItem) ?>">
                                             </div>
                                         <?php endforeach ?>
                                     </div>

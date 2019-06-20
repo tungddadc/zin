@@ -40,8 +40,8 @@ class Setting extends Admin_Controller {
         ]);
     }
 
-    public function ajax_clear_cache_image(){
-        if($this->recursiveDelete(MEDIA_PATH_THUMB))
+	public function ajax_clear_cache_image(){
+        if($this->recursiveDelete(MEDIA_PATH . DIRECTORY_SEPARATOR . 'thumb'))
             $this->returnJson([
                 'type' => 'success',
                 'message' => 'Xóa cache ảnh thành công !'
