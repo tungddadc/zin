@@ -659,6 +659,10 @@ class Product extends Public_Controller
                 $data['price'] = $item['Price'];
                 $data['price_sale'] = $item['PriceSale'];
                 $data['price_agency'] = $item['PriceAgency'];
+                $data['price_kl'] = $item['PriceKL'];
+                $data['price_ek'] = $item['PriceEK'];
+                $data['unit'] = $item['UnitNames'];
+                $data['warranty'] = $item['Warranty'];
                 $data['viewed'] = rand(1000,9999);
 
                 $resultId = $this->_data->insert($data);
@@ -680,6 +684,10 @@ class Product extends Public_Controller
                 $data['price'] = $item['Price'];
                 $data['price_sale'] = $item['PriceSale'];
                 $data['price_agency'] = $item['PriceAgency'];
+                $data['price_kl'] = $item['PriceKL'];
+                $data['price_ek'] = $item['PriceEK'];
+                $data['unit'] = $item['UnitNames'];
+                $data['warranty'] = $item['Warranty'];
                 $data_lang['title'] = $item['ProductName'];
                 //$data_lang['meta_title'] = $item['ProductName'];
 

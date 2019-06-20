@@ -169,6 +169,79 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    <!--<div>
+                                        <div class="delay-200ms one_fourth_less pricing-layout-1" style="animation-delay: 200ms;">
+                                            <div class="planbox">
+                                                <div class="title">
+                                                    <h4 class="caps">
+                                                        <strong>Giá lẻ cửa hàng</strong>
+                                                    </h4>
+                                                </div>
+                                                <div class="prices">
+                                                    <strong>
+                                                        <?php /*echo $oneItem->price_sale */?>
+                                                    </strong>
+                                                    <b>
+                                                    </b>
+                                                    <a target="_blank" href="javascript:;">Chọn</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="delay-300ms one_fourth_less pricing-layout-1" style="animation-delay: 300ms;">
+                                            <div class="planbox">
+                                                <div class="title">
+                                                    <h4 class="caps">
+                                                        <strong>Giá buôn cửa hàng</strong>
+                                                    </h4>
+                                                </div>
+                                                <div class="prices">
+                                                    <strong>
+                                                        <?php /*echo $oneItem->price_agency */?>
+                                                    </strong>
+                                                    <b>
+                                                    </b>
+                                                    <a target="_blank" href="javascript:;">Chọn</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="delay-400ms one_fourth_less pricing-layout-1" style="animation-delay: 400ms;">
+                                            <div class="planbox highlight">
+                                                <img width="134" src="https://zinpro.vn/wp-content/themes/arkahost/assets/images/best-seller.png" alt="" class="hiimg">
+                                                <div class="title">
+                                                    <h4 class="caps">
+                                                        <strong>Giá khách lẻ</strong>
+                                                    </h4>
+                                                </div>
+                                                <div class="prices">
+                                                    <strong>
+                                                        <?php /*echo $oneItem->price_kl */?>
+                                                    </strong>
+                                                    <b>
+                                                    </b>
+                                                    <a target="_blank" href="javascript:;">Chọn</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="delay-500ms one_fourth_less last pricing-layout-1" style="animation-delay: 500ms;">
+                                            <div class="planbox">
+                                                <div class="title">
+                                                    <h4 class="caps">
+                                                        <strong>Giá thay khách vip</strong>
+                                                    </h4>
+                                                </div>
+                                                <div class="prices">
+                                                    <strong>
+                                                        <?php /*echo $oneItem->price_kl */?>
+                                                    </strong>
+                                                    <b>
+                                                    </b>
+                                                    <a target="_blank" href="javascript:;">Chọn</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>-->
+
                                     <div style="    border-bottom: 1px #ddd dotted;">
                                         <aside class="onlinepromo">
                                             <b>Thông tin mô tả sản phẩm</b>
