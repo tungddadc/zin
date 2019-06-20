@@ -2,7 +2,6 @@
 if (!empty($oneItem)):
     $url = getUrlProduct($oneItem);
     $album = !empty($oneItem->album) ? json_decode($oneItem->album) : [];
-    array_push($album, $oneItem->thumbnail);
 ?>
 
 <section class="main-container col1-layout">
