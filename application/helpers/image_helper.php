@@ -6,7 +6,7 @@ if (!function_exists('getImageThumb')) {
             $width = !empty($width)?$width:200;
             $height = !empty($height)?$height:200;
             //$image =  "no_image.png";
-            return "https://via.placeholder.com/{$width}x{$height}.png?text=Ads+{$width}x{$height}";
+            return "https://via.placeholder.com/{$width}x{$height}.png?text=Thumbnail+{$width}x{$height}";
         }
         $image = str_replace(MEDIA_NAME,'',$image);
         $image = ltrim($image,'/');
@@ -15,7 +15,7 @@ if (!function_exists('getImageThumb')) {
         if(!file_exists($sourceImage)){
             $width = !empty($width)?$width:200;
             $height = !empty($height)?$height:200;
-            return "https://via.placeholder.com/{$width}x{$height}.png?text=Ads+{$width}x{$height}";
+            return "https://via.placeholder.com/{$width}x{$height}.png?text=Thumbnail+{$width}x{$height}";
             //$sourceImage = dirname(MEDIA_PATH) . DIRECTORY_SEPARATOR . "no_image.png";
         }
         $CI =& get_instance();
