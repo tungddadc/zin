@@ -187,9 +187,9 @@
                                         <div class="col">
                                             <div class="pricing-plan">
                                                 <div class="pricing-head">
-                                                    <img src="<?php /*echo $this->templates_assets */?>images/shape.svg"
+                                                    <img src="<?php echo $this->templates_assets ?>images/shape.svg"
                                                          class="shape" alt="">
-                                                    <img src="<?php /*echo $this->templates_assets */?>images/shape_hover.svg"
+                                                    <img src="<?php echo $this->templates_assets ?>images/shape_hover.svg"
                                                          class="shape_hover" alt="">
                                                     <div class="name">đại lý</div>
                                                     <div class="price">
@@ -209,9 +209,9 @@
                                         <div class="col">
                                             <div class="pricing-plan">
                                                 <div class="pricing-head">
-                                                    <img src="<?php /*echo $this->templates_assets */?>images/shape.svg"
+                                                    <img src="<?php echo $this->templates_assets ?>images/shape.svg"
                                                          class="shape" alt="">
-                                                    <img src="<?php /*echo $this->templates_assets */?>images/shape_hover.svg"
+                                                    <img src="<?php echo $this->templates_assets ?>images/shape_hover.svg"
                                                          class="shape_hover" alt="">
                                                     <div class="name">đại lý</div>
                                                     <div class="price">
@@ -231,9 +231,9 @@
                                         <div class="col">
                                             <div class="pricing-plan">
                                                 <div class="pricing-head">
-                                                    <img src="<?php /*echo $this->templates_assets */?>images/shape.svg"
+                                                    <img src="<?php echo $this->templates_assets ?>images/shape.svg"
                                                          class="shape" alt="">
-                                                    <img src="<?php /*echo $this->templates_assets */?>images/shape_hover.svg"
+                                                    <img src="<?php echo $this->templates_assets ?>images/shape_hover.svg"
                                                          class="shape_hover" alt="">
                                                     <div class="name">đại lý</div>
                                                     <div class="price">
@@ -253,9 +253,9 @@
                                         <div class="col">
                                             <div class="pricing-plan">
                                                 <div class="pricing-head">
-                                                    <img src="<?php /*echo $this->templates_assets */?>images/shape.svg"
+                                                    <img src="<?php echo $this->templates_assets ?>images/shape.svg"
                                                          class="shape" alt="">
-                                                    <img src="<?php /*echo $this->templates_assets */?>images/shape_hover.svg"
+                                                    <img src="<?php echo $this->templates_assets ?>images/shape_hover.svg"
                                                          class="shape_hover" alt="">
                                                     <div class="name">đại lý</div>
                                                     <div class="price">
@@ -275,9 +275,9 @@
                                         <div class="col">
                                             <div class="pricing-plan">
                                                 <div class="pricing-head">
-                                                    <img src="<?php /*echo $this->templates_assets */?>images/shape.svg"
+                                                    <img src="<?php echo $this->templates_assets ?>images/shape.svg"
                                                          class="shape" alt="">
-                                                    <img src="<?php /*echo $this->templates_assets */?>images/shape_hover.svg"
+                                                    <img src="<?php echo $this->templates_assets ?>images/shape_hover.svg"
                                                          class="shape_hover" alt="">
                                                     <div class="name">đại lý</div>
                                                     <div class="price">
@@ -301,24 +301,20 @@
                                         <aside class="onlinepromo">
                                             <b>Thông tin mô tả sản phẩm</b>
                                             <div class="infopr">
-                                                <?php echo $oneItem->description */
-                                    ?>
+                                                <?php echo $oneItem->description ?>
                                             </div>
                                         </aside>
                                     </div>
                                     <div class="add-to-box">
-                                        <div class="add-to-cart" data-id="<?php echo $oneItem->id */
-                                    ?>">
+                                        <div class="add-to-cart" data-id="<?php echo $oneItem->id ?>">
                                             <div class="pull-left">
                                                 <div class="custom pull-left">
                                                     <span class="qty-label">Số lượng:</span>
-                                                    <button onClick="CART.quantity_reduced(this)" class="reduced items-count <?php echo $this->session->userdata('is_agency') == true ? 'is-agency' : ''  */
-                                    ?>" type="button">
+                                                    <button onClick="CART.quantity_reduced(this)" class="reduced items-count <?php echo $this->session->userdata('is_agency') == true ? 'is-agency' : '' ?>" type="button">
                                                         <i class="fa fa-minus">&nbsp;</i>
                                                     </button>
-                                                    <input onkeyup="CART.changeInputQuantity(this)" type="text" class="input-text qty" title="Số lượng" value="1" maxlength="<?php echo $oneItem->quantity */
-                                    ?>" name="quantity">
-                                                    <button onClick="CART.quantity_increase(this)" class="increase items-count <?php echo $this->session->userdata('is_agency') == true ? 'is-agency' : ''  */
+                                                    <input onkeyup="CART.changeInputQuantity(this)" type="text" class="input-text qty" title="Số lượng" value="1" maxlength="<?php echo $oneItem->quantity ?>" name="quantity">
+                                                    <button onClick="CART.quantity_increase(this)" class="increase items-count <?php echo $this->session->userdata('is_agency') == true ? 'is-agency' : ''
                                     ?>" type="button">
                                                         <i class="fa fa-plus">&nbsp;</i>
                                                     </button>
@@ -327,7 +323,7 @@
                                             <button class="button btn-cart" title="Thêm vào giỏ hàng" type="submit">Thêm vào giỏ</button>
                                         </div>
                                     </div>
-                                    <?php echo form_close() */
+                                    <?php echo form_close()
                                     ?>
                                     <div class="short-description">
                                         <h2>Lưu ý</h2>
@@ -702,7 +698,7 @@
                             <!-- End Upsell  Slider -->
                         </div>
                     </article>
-                    <!--	///*///======    End article  ========= //*/// -->
+                    <!--	/////======    End article  ========= //// -->
                 </div>
 
 
