@@ -96,7 +96,7 @@
                                     </div>
                                     <!-- end: more-images -->
                                 </div>
-                                <div class="product-shop col-lg-5 col-sm-5 col-xs-12">
+                                <div class="product-shop col-lg-6 col-sm-6 col-xs-12">
                                     <div class="product-next-prev">
                                         <?php if (!empty($oneNext)): ?>
                                             <a class="product-next" href="<?php echo getUrlProduct($oneNext) ?>"
@@ -183,118 +183,133 @@
                                         </div>
                                     </div>
 
-                                    <!--<div class="d-flex pricing-style1">
+                                    <div class="d-flex pricing-style1">
                                         <div class="col">
-                                            <div class="pricing-plan">
-                                                <div class="pricing-head">
-                                                    <img src="<?php echo $this->templates_assets ?>images/shape.svg"
-                                                         class="shape" alt="">
-                                                    <img src="<?php echo $this->templates_assets ?>images/shape_hover.svg"
-                                                         class="shape_hover" alt="">
-                                                    <div class="name">đại lý</div>
-                                                    <div class="price">
-                                                        <span class="value">$99 / tháng</span>
+                                            <label>
+                                                <input type="radio" name="product-detail-radio">
+                                                <div class="pricing-plan">
+                                                    <div class="pricing-head">
+                                                        <img src="<?php echo $this->templates_assets ?>images/shape.svg"
+                                                             class="shape" alt="">
+                                                        <img src="<?php echo $this->templates_assets ?>images/shape_hover.svg"
+                                                             class="shape_hover" alt="">
+                                                        <div class="name">giá lẻ cửa hàng</div>
+                                                        <div class="price">
+                                                            <span class="value">$$$$</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="pricing-body">
+                                                        <p>Số lượng áp dụng từ 01~05</p>
+                                                        <p>Miễn phí vận chuyển đơn hàng trên 2.000.000 VND</p>
+                                                        <p>Đơn hàng tối thiểu 200.000 VND</p>
+                                                    </div>
+                                                    <div class="pricing-footer">
+                                                        <div class="p-button">Chọn</div>
                                                     </div>
                                                 </div>
-                                                <div class="pricing-body">
-                                                    <p>Số lượng áp dụng từ 01~05</p>
-                                                    <p>Miễn phí vận chuyển đơn hàng trên 2000000</p>
-                                                    <p>Đơn hàng tối thiểu 200000</p>
-                                                </div>
-                                                <div class="pricing-footer">
-                                                    <a href="#" class="p-button">GET PLAN</a>
-                                                </div>
-                                            </div>
+                                            </label>
                                         </div>
                                         <div class="col">
-                                            <div class="pricing-plan">
-                                                <div class="pricing-head">
-                                                    <img src="<?php echo $this->templates_assets ?>images/shape.svg"
-                                                         class="shape" alt="">
-                                                    <img src="<?php echo $this->templates_assets ?>images/shape_hover.svg"
-                                                         class="shape_hover" alt="">
-                                                    <div class="name">đại lý</div>
-                                                    <div class="price">
-                                                        <span class="value">$99 / tháng</span>
+                                            <label>
+                                                <input type="radio" name="product-detail-radio">
+                                                <div class="pricing-plan">
+                                                    <div class="pricing-head">
+                                                        <img src="<?php echo $this->templates_assets ?>images/shape.svg"
+                                                             class="shape" alt="">
+                                                        <img src="<?php echo $this->templates_assets ?>images/shape_hover.svg"
+                                                             class="shape_hover" alt="">
+                                                        <div class="name">giá buôn cửa hàng</div>
+                                                        <div class="price">
+                                                            <span class="value">$99 / tháng</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="pricing-body">
+                                                        <p>Số lượng áp dụng từ 06~15</p>
+                                                        <p>Miễn phí vận chuyển đơn hàng trên 3.000.000 VND</p>
+                                                        <p>Đơn hàng tối thiểu 500.000 VND</p>
+                                                    </div>
+                                                    <div class="pricing-footer">
+                                                        <p class="p-button">Chọn</p>
                                                     </div>
                                                 </div>
-                                                <div class="pricing-body">
-                                                    <p>Số lượng áp dụng từ 01~05</p>
-                                                    <p>Miễn phí vận chuyển đơn hàng trên 2000000</p>
-                                                    <p>Đơn hàng tối thiểu 200000</p>
-                                                </div>
-                                                <div class="pricing-footer">
-                                                    <a href="#" class="p-button">GET PLAN</a>
-                                                </div>
-                                            </div>
+                                            </label>
                                         </div>
                                         <div class="col">
-                                            <div class="pricing-plan">
-                                                <div class="pricing-head">
-                                                    <img src="<?php echo $this->templates_assets ?>images/shape.svg"
-                                                         class="shape" alt="">
-                                                    <img src="<?php echo $this->templates_assets ?>images/shape_hover.svg"
-                                                         class="shape_hover" alt="">
-                                                    <div class="name">đại lý</div>
-                                                    <div class="price">
-                                                        <span class="value">$99 / tháng</span>
+                                            <label>
+                                                <input type="radio" name="product-detail-radio">
+                                                <div class="pricing-plan">
+                                                    <div class="pricing-head">
+                                                        <img src="<?php echo $this->templates_assets ?>images/shape.svg"
+                                                             class="shape" alt="">
+                                                        <img src="<?php echo $this->templates_assets ?>images/shape_hover.svg"
+                                                             class="shape_hover" alt="">
+                                                        <div class="name">đại lý</div>
+                                                        <div class="price">
+                                                            <span class="value">$99 / tháng</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="pricing-body">
+                                                        <p>Số lượng áp dụng lớn hơn 15</p>
+                                                        <p>Bảo hành lưu kho: Dài hạn</p>
+                                                        <p>Hỗ trợ marketing: quảng cáo google, facebook và qua hotline tổng đài</p>
+                                                    </div>
+                                                    <div class="pricing-footer">
+                                                        <p class="p-button">Chọn</p>
                                                     </div>
                                                 </div>
-                                                <div class="pricing-body">
-                                                    <p>Số lượng áp dụng từ 01~05</p>
-                                                    <p>Miễn phí vận chuyển đơn hàng trên 2000000</p>
-                                                    <p>Đơn hàng tối thiểu 200000</p>
-                                                </div>
-                                                <div class="pricing-footer">
-                                                    <a href="#" class="p-button">GET PLAN</a>
-                                                </div>
-                                            </div>
+                                            </label>
                                         </div>
                                         <div class="col">
-                                            <div class="pricing-plan">
-                                                <div class="pricing-head">
-                                                    <img src="<?php echo $this->templates_assets ?>images/shape.svg"
-                                                         class="shape" alt="">
-                                                    <img src="<?php echo $this->templates_assets ?>images/shape_hover.svg"
-                                                         class="shape_hover" alt="">
-                                                    <div class="name">đại lý</div>
-                                                    <div class="price">
-                                                        <span class="value">$99 / tháng</span>
+                                            <label>
+                                                <input type="radio" name="product-detail-radio">
+                                                <div class="pricing-plan">
+                                                    <div class="pricing-head">
+                                                        <img src="<?php echo $this->templates_assets ?>images/shape.svg"
+                                                             class="shape" alt="">
+                                                        <img src="<?php echo $this->templates_assets ?>images/shape_hover.svg"
+                                                             class="shape_hover" alt="">
+                                                        <div class="name">giá thay khách lẻ</div>
+                                                        <div class="price">
+                                                            <span class="value">$99 / tháng</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="pricing-body">
+                                                        <p>Áp dụng cho khách vãng lai</p>
+                                                        <p>Miễn phí bảo dưỡng chi tiết máy</p>
+                                                        <p>Tặng voucher 10% cho lần sửa kế tiếp</p>
+                                                    </div>
+                                                    <div class="pricing-footer">
+                                                        <p class="p-button">Chọn</p>
                                                     </div>
                                                 </div>
-                                                <div class="pricing-body">
-                                                    <p>Số lượng áp dụng từ 01~05</p>
-                                                    <p>Miễn phí vận chuyển đơn hàng trên 2000000</p>
-                                                    <p>Đơn hàng tối thiểu 200000</p>
-                                                </div>
-                                                <div class="pricing-footer">
-                                                    <a href="#" class="p-button">GET PLAN</a>
-                                                </div>
-                                            </div>
+                                            </label>
                                         </div>
                                         <div class="col">
-                                            <div class="pricing-plan">
-                                                <div class="pricing-head">
-                                                    <img src="<?php echo $this->templates_assets ?>images/shape.svg"
-                                                         class="shape" alt="">
-                                                    <img src="<?php echo $this->templates_assets ?>images/shape_hover.svg"
-                                                         class="shape_hover" alt="">
-                                                    <div class="name">đại lý</div>
-                                                    <div class="price">
-                                                        <span class="value">$99 / tháng</span>
+                                            <label>
+                                                <input type="radio" name="product-detail-radio">
+                                                <div class="pricing-plan">
+                                                    <div class="pricing-head">
+                                                        <img src="<?php echo $this->templates_assets ?>images/shape.svg"
+                                                             class="shape" alt="">
+                                                        <img src="<?php echo $this->templates_assets ?>images/shape_hover.svg"
+                                                             class="shape_hover" alt="">
+                                                        <div class="name">giá thay khách vip</div>
+                                                        <div class="price">
+                                                            <span class="value">$99 / tháng</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="pricing-body">
+                                                        <p>Áp dụng cho khách quen có thẻ thành viên</p>
+                                                        <p>Miễn phí bảo dưỡng chi tiết máy</p>
+                                                        <p>Tặng voucher 10% cho lần sửa kế tiếp</p>
+                                                    </div>
+                                                    <div class="pricing-footer">
+                                                        <p class="p-button">Chọn</p>
                                                     </div>
                                                 </div>
-                                                <div class="pricing-body">
-                                                    <p>Số lượng áp dụng từ 01~05</p>
-                                                    <p>Miễn phí vận chuyển đơn hàng trên 2000000</p>
-                                                    <p>Đơn hàng tối thiểu 200000</p>
-                                                </div>
-                                                <div class="pricing-footer">
-                                                    <a href="#" class="p-button">GET PLAN</a>
-                                                </div>
-                                            </div>
+                                            </label>
                                         </div>
-                                    </div>-->
+                                    </div>
 
 
                                     <div style="    border-bottom: 1px #ddd dotted;">
@@ -388,7 +403,7 @@
                                     <?php endif; ?>
                                     <div id="social-share"></div>
                                 </div>
-                                <div class="product-buy col-lg-3 col-sm-3 col-xs-12">
+                                <div class="product-buy col-lg-2 col-sm-2 col-xs-12">
                                     <div class="info">
                                         <p>Thương hiệu: <strong><?php if (!empty($oneBrand)): ?><a
                                                     href="<?php echo getUrlBrand($oneBrand) ?>"
@@ -478,7 +493,7 @@
                                                                        value="<?php echo $oneItem->id ?>">
                                                                 <h3>Phản hồi của khách hàng về sản phẩm
                                                                     "<?php echo $oneItem->title ?>"</h3>
-                                                                <fieldset>
+                                                                <fieldset>-fle
                                                                     <h4>Bạn đánh giá sản phẩm này như thế nào ? <em
                                                                                 class="required">*</em></h4>
                                                                     <div id="product-review-table">
@@ -552,7 +567,7 @@
                                                                     <?php if (!empty($data_vote)) foreach ($data_vote as $k => $item): ?>
                                                                         <li class="<?php echo $k % 2 == 0 ? '' : 'even' ?>">
                                                                             <div class="review">
-                                                                                <h6><a href="#">Excellent</a></h6>
+                                                                                <h6><>Excellent</a></h6>
                                                                                 <div class="rating-box">
                                                                                     <div class="rating"
                                                                                          style="width:<?php echo round(($item->vote / 5) * 100) ?>%;"></div>

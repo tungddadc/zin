@@ -674,8 +674,12 @@ var UI = {
             if (window.pageYOffset > sticky) {
                 header.classList.add("sticky");
                 /*jQuery('.mega-menu-category').slideUp();*/
+                $("#menu-main").closest('header').find('+*').css({
+                    'margin-top': $("#menu-main").height() + 'px'
+                })
             } else {
                 header.classList.remove("sticky");
+                $('#menu-main').closest('header').find('+*').removeAttr('style');
             }
             if(window.pageYOffset == 0){
                 /*jQuery('.mega-menu-category').slideDown();*/
