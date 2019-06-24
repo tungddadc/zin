@@ -142,51 +142,11 @@
                                     <input name="image"
                                            value="<?php echo getImageThumb($oneItem->thumbnail, 100, 100, true) ?>"
                                            type="hidden">
-                                    <div class="price-block">
-                                        <div class="price-box">
-                                            <?php if ($this->session->userdata('is_agency') == true && !empty($oneItem->price_agency)): ?>
-                                                <p class="special-price">
-                                                    <span class="price-label">Giá đại lý:</span>
-                                                    <span class="price"><?php echo formatMoney($oneItem->price_agency) ?></span>
-                                                </p>
-                                            <?php else: ?>
-                                                <?php if (!empty($oneItem->price_sale)): ?>
-                                                    <p class="special-price">
-                                                        <span class="price-label">Giá khuyến mại:</span>
-                                                        <span class="price"><?php echo formatMoney($oneItem->price_sale) ?></span>
-                                                    </p>
-                                                    <p class="old-price">
-                                                        <span class="price-label">Giá gốc:</span>
-                                                        <span class="price"><?php echo formatMoney($oneItem->price) ?></span>
-                                                    </p>
-                                                <?php else: ?>
-                                                    <p class="special-price">
-                                                        <span class="price-label">Giá:</span>
-                                                        <span class="price"><?php echo formatMoney($oneItem->price) ?></span>
-                                                    </p>
-                                                <?php endif; ?>
-                                            <?php endif; ?>
-                                            <p class="availability in-stock pull-right">
-                                                <?php echo $this->session->userdata('is_agency') == true ? '<span class="agency">Đại lý</span>' : '' ?>
-                                                <?php echo !empty($data_stock[0]->Amount) ? '<span class="instock">Còn hàng</span>' : '<span class="outstock">Hết hàng</span>' ?>
-                                            </p>
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <p class="sold pull-left">Lượt xem:
-                                                        <strong><?php echo $oneItem->viewed ?></strong> đã xem. </p>
-                                                    <p class="sold pull-right">Đã bán
-                                                        <strong><?php echo $oneItem->viewed > 1000 ? $oneItem->viewed - 555 : $oneItem->viewed - 333 ?></strong>
-                                                        sản phẩm. </p>
-                                                    <p class="sold clearfix">Tỷ lệ bảo hành: <strong> <5%</strong></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
 
                                     <div class="d-flex pricing-style1">
                                         <div class="col">
                                             <label>
-                                                <input type="radio" name="product-detail-radio">
+                                                    <input type="radio" name="product-detail-radio" value="0" checked>
                                                 <div class="pricing-plan">
                                                     <div class="pricing-head">
                                                         <img src="<?php echo $this->templates_assets ?>images/shape.svg"
@@ -195,7 +155,7 @@
                                                              class="shape_hover" alt="">
                                                         <div class="name">giá lẻ cửa hàng</div>
                                                         <div class="price">
-                                                            <span class="value">$$$$</span>
+                                                            <span class="value"><?php echo !empty($oneItem->price)? formatMoney($oneItem->price) : ""?></span>
                                                         </div>
                                                     </div>
                                                     <div class="pricing-body">
@@ -211,7 +171,7 @@
                                         </div>
                                         <div class="col">
                                             <label>
-                                                <input type="radio" name="product-detail-radio">
+                                                <input type="radio" name="product-detail-radio" value="1">
                                                 <div class="pricing-plan">
                                                     <div class="pricing-head">
                                                         <img src="<?php echo $this->templates_assets ?>images/shape.svg"
@@ -220,7 +180,7 @@
                                                              class="shape_hover" alt="">
                                                         <div class="name">giá buôn cửa hàng</div>
                                                         <div class="price">
-                                                            <span class="value">$99 / tháng</span>
+                                                            <span class="value"><?php echo !empty($oneItem->price_sale)? formatMoney($oneItem->price_sale) : ""?></span>
                                                         </div>
                                                     </div>
                                                     <div class="pricing-body">
@@ -236,7 +196,7 @@
                                         </div>
                                         <div class="col">
                                             <label>
-                                                <input type="radio" name="product-detail-radio">
+                                                <input type="radio" name="product-detail-radio" value="2">
                                                 <div class="pricing-plan">
                                                     <div class="pricing-head">
                                                         <img src="<?php echo $this->templates_assets ?>images/shape.svg"
@@ -245,7 +205,7 @@
                                                              class="shape_hover" alt="">
                                                         <div class="name">đại lý</div>
                                                         <div class="price">
-                                                            <span class="value">$99 / tháng</span>
+                                                            <span class="value"><?php echo !empty($oneItem->price_agency)? formatMoney($oneItem->price_agency) : ""?></span>
                                                         </div>
                                                     </div>
                                                     <div class="pricing-body">
@@ -261,7 +221,7 @@
                                         </div>
                                         <div class="col">
                                             <label>
-                                                <input type="radio" name="product-detail-radio">
+                                                <input type="radio" name="product-detail-radio" value="3">
                                                 <div class="pricing-plan">
                                                     <div class="pricing-head">
                                                         <img src="<?php echo $this->templates_assets ?>images/shape.svg"
@@ -270,7 +230,7 @@
                                                              class="shape_hover" alt="">
                                                         <div class="name">giá thay khách lẻ</div>
                                                         <div class="price">
-                                                            <span class="value">$99 / tháng</span>
+                                                            <span class="value"><?php echo !empty($oneItem->price_kl)? formatMoney($oneItem->price_kl) : ""?></span>
                                                         </div>
                                                     </div>
                                                     <div class="pricing-body">
@@ -286,7 +246,7 @@
                                         </div>
                                         <div class="col">
                                             <label>
-                                                <input type="radio" name="product-detail-radio">
+                                                <input type="radio" name="product-detail-radio" value="4">
                                                 <div class="pricing-plan">
                                                     <div class="pricing-head">
                                                         <img src="<?php echo $this->templates_assets ?>images/shape.svg"
@@ -295,7 +255,7 @@
                                                              class="shape_hover" alt="">
                                                         <div class="name">giá thay khách vip</div>
                                                         <div class="price">
-                                                            <span class="value">$99 / tháng</span>
+                                                            <span class="value"><?php echo !empty($oneItem->price_ek)? formatMoney($oneItem->price_ek) : ""?></span>
                                                         </div>
                                                     </div>
                                                     <div class="pricing-body">
@@ -310,42 +270,31 @@
                                             </label>
                                         </div>
                                     </div>
-
-
-                                    <div style="    border-bottom: 1px #ddd dotted;">
-                                        <aside class="onlinepromo">
-                                            <b>Thông tin mô tả sản phẩm</b>
-                                            <div class="infopr">
-                                                <?php echo $oneItem->description ?>
-                                            </div>
-                                        </aside>
-                                    </div>
                                     <div class="add-to-box">
                                         <div class="add-to-cart" data-id="<?php echo $oneItem->id ?>">
                                             <div class="pull-left">
                                                 <div class="custom pull-left">
                                                     <span class="qty-label">Số lượng:</span>
                                                     <button onClick="CART.quantity_reduced(this)" class="reduced items-count <?php echo $this->session->userdata('is_agency') == true ? 'is-agency' : '' ?>" type="button">
-                                                        <i class="fa fa-minus">&nbsp;</i>
+                                                        -
                                                     </button>
                                                     <input onkeyup="CART.changeInputQuantity(this)" type="text" class="input-text qty" title="Số lượng" value="1" maxlength="<?php echo $oneItem->quantity ?>" name="quantity">
                                                     <button onClick="CART.quantity_increase(this)" class="increase items-count <?php echo $this->session->userdata('is_agency') == true ? 'is-agency' : ''
                                     ?>" type="button">
-                                                        <i class="fa fa-plus">&nbsp;</i>
+                                                        +
                                                     </button>
                                                 </div>
                                             </div>
                                             <button class="button btn-cart" title="Thêm vào giỏ hàng" type="submit">Thêm vào giỏ</button>
                                         </div>
                                     </div>
-                                    <?php echo form_close()
-                                    ?>
-                                    <div class="short-description">
+                                    <?php echo form_close();?>
+                                    <!--<div class="short-description">
                                         <h2>Lưu ý</h2>
                                         <p>Mức giá trên là dành cho cửa hàng. Chúng tôi sẽ có chính sách giá riêng dành cho đại lý linh kiện.
                                         Hân hạnh được hợp tác cùng quý Đại lý trên toàn quốc. Để xem được giá đại lý, quý khách vui lòng tạo tài khoản và gửi yêu cầu
                                         cấp quyền đại lý cho quý khách.</p>
-                                    </div>
+                                    </div>-->
 
 
                                     <?php if (!empty($data_similar)): ?>

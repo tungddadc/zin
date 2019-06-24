@@ -59,11 +59,11 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                         <ul>
                             <?php foreach ($home_slider as $item): ?>
                             <li data-transition='slideright' data-slotamount='7' data-masterspeed='1000'
-                                data-thumb='<?php echo getImageThumb($item->thumbnail,850,440) ?>'>
-                                <img src="<?php echo getImageThumb($item->thumbnail,850,440,true) ?>"
-                                     data-src="<?php echo getImageThumb($item->thumbnail,850,440,true) ?>"
+                                data-thumb='<?php echo getImageThumb($item->thumbnail,975,428) ?>'>
+                                <img src="<?php echo getImageThumb($item->thumbnail,975,428,true) ?>"
+                                     data-src="<?php echo getImageThumb($item->thumbnail,975,428,true) ?>"
                                      class="lazy"
-                                     data-bgposition='left top' data-bgfit='cover' data-bgrepeat='no-repeat'
+                                     data-bgposition='left top' data-bgfit='cover' data-bgrepeat='no-repeat' data-bgsize="cover"
                                      alt="<?php echo getTitle($item) ?>">
 
                                 <div class="info">

@@ -246,7 +246,10 @@ var CART = {
         let result = element.closest('.add-to-cart').find('input[name="quantity"]');
         let product_id = element.closest('.add-to-cart').data('id');
         let qty = parseInt(result.val());
-        if (!isNaN(qty) && qty > 1) result.val(qty - 1);
+        let min = parseInt(result.attr('min'));
+        if (!isNaN(qty) && qty > min){
+            result.val(qty - 1);
+        };
         CART.loadPriceAgency(product_id, qty - 1);
         return false;
     },
@@ -388,7 +391,7 @@ var CART = {
 
             }
         });
-    }
+    },
 };
 var WISHLIST = {
     add: function () {
@@ -926,7 +929,30 @@ jQuery(document).ready(function () {
                 setTimeout(serve_customer.start(), 1000);
             }
         // });
-    }
+    };
+
+    if ($("[name='product-detail-radio']").length > 0){
+        $("[name='product-detail-radio']").click(function () {
+            let val = $(this).val();
+            if (val == 1){
+                $("[name='quantity']")[0].value = $("[name='quantity']")[0].min = 5;
+            } else if (val == 2){
+                $("[name='quantity']")[0].value = $("[name='quantity']")[0].min = 16;
+            } else {
+                $("[name='quantity']")[0].value = $("[name='quantity']")[0].min = 1;
+            }
+        });
+        $("[name='quantity']").keyup(function () {
+            let val = $(this)[0].value;
+            if (val>15){
+                $("[name='product-detail-radio']")[2].attr('checked');
+            } else if (val>5 && val < 16){
+                $("[name='product-detail-radio']")[1].attr('checked');
+            } else{
+                $("[name='product-detail-radio']")[0].attr('checked');
+            }
+        });
+    };
 });
 
 function getAgencyNear() {
