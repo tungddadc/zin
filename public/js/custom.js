@@ -618,6 +618,7 @@ var UI = {
 		sync1.owlCarousel({
 			singleItem : true,
 			slideSpeed : 1000,
+			navigation: true,
 			pagination:false,
 			afterAction : syncPosition,
 			responsiveRefreshRate : 200,

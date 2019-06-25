@@ -12,35 +12,20 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 			<div class="home-slider">
 				<?php $home_slider = listBannerByPosition(1);
 				if (!empty($home_slider)): ?>
-					<div id="myCarousel" class="carousel slide" data-ride="carousel">
-						<ol class="carousel-indicators">
-							<?php for($i=0;$i<count($home_slider);$i++) : ?>
-							<li data-target="#myCarousel" data-slide-to="<?php echo $i?>" <?php echo $i==0 ? "class='active'" : ''?>></li>
-							<?php endfor;?>
-						</ol>
 
-						<div class="carousel-inner">
-							<?php foreach ($home_slider as $k => $item) : ?>
-							<div class="item <?php echo $k == 0 ? 'active' : ''?>">
-								<img src="<?php echo BASE_URL.'public/media/'.$item->thumbnail?>" alt="<?php echo $item->title?>">
-								<div class="carousel-caption">
-									<h3><?php echo $item->title?></h3>
-									<p><?php echo $item->description?></p>
-								</div>
+					<div id="sync1" class="owl-carousel">
+						<?php foreach ($home_slider as $item) : ?>
+							<div class="item">
+								<a title="<?php echo getTitle($item) ?>" href="<?php echo $item->url ?>">
+									<img src="<?php echo getImageThumb($item->thumbnail, 1920, 630, true) ?>"
+										 alt="<?php echo getTitle($item) ?>">
+								</a>
 							</div>
-							<?php endforeach;?>
-						</div>
+						<?php endforeach; ?>
 
-						<a class="left carousel-control" href="#myCarousel" data-slide="prev">
-							<span class="glyphicon glyphicon-chevron-left"></span>
-							<span class="sr-only">Previous</span>
-						</a>
-						<a class="right carousel-control" href="#myCarousel" data-slide="next">
-							<span class="glyphicon glyphicon-chevron-right"></span>
-							<span class="sr-only">Next</span>
-						</a>
 					</div>
 				<?php endif; ?>
+
 				<?php $home_slider = listBannerByPosition(1);
 				if (!empty($home_slider)): ?>
 					<div id="sync2" class="owl-carousel">
