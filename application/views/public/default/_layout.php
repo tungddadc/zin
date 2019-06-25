@@ -92,8 +92,8 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
         })();
     </script>
     <?php $asset_css[] = 'bootstrap.min.css'; ?>
-    <?php $asset_css[] = 'owl.carousel.css'; ?>
-    <?php $asset_css[] = 'owl.theme.css'; ?>
+    <?php $asset_css[] = 'owl.carousel.min.css'; ?>
+    <?php $asset_css[] = 'owl.theme.default.min.css'; ?>
     <?php $asset_css[] = 'jquery.bxslider.css'; ?>
     <?php $asset_css[] = 'jquery.mobile-menu.css'; ?>
     <?php $asset_css[] = 'style.css'; ?>
@@ -295,7 +295,7 @@ switch ($this->_controller) {
     <div id="loader"></div>
 </div>
 
-<?php $asset_js[] = 'jquery-3.2.1.min.js'; ?>
+<?php $asset_js[] = 'jquery.min.js'; ?>
 <?php $asset_js[] = 'bootstrap.min.js'; ?>
 <?php $asset_js[] = 'revslider.js'; ?>
 <?php $asset_js[] = 'common.js'; ?>
