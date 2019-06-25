@@ -105,27 +105,44 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                         </div>
                     <?php endforeach; ?>
                 </div>
-                <div class="content-page">
-                    <div class="category-product">
-                        <div class="navbar nav-menu">
-                            <div class="navbar-collapse">
-                                <div class="new_title">
-                                    <h2>Sản phẩm mới nhất</h2>
+
+                <?php if (!empty($home_product['listCategory'])) foreach ($home_product['listCategory'] as $oneCategory): ?>
+                    <div class="content-page">
+                        <div class="category-product">
+                            <div class="navbar nav-menu">
+                                <div class="navbar-collapse">
+                                    <div class="new_title">
+                                        <h2 class="nav-category-title">
+                                            <a href="<?php echo getUrlCateProduct($oneCategory) ?>" title="<?php echo getTitle($oneCategory) ?>"><?php echo $oneCategory->title ?></a>
+                                        </h2>
+                                        <div class="view-list-child">
+                                            <?php
+                                            $listCategory = $home_product['listCategoryChild'][$oneCategory->id];
+                                            $listCategory = array_slice($listCategory, 0, 5);
+                                            if (!empty($listCategory)) foreach ($listCategory as $itemChild): ?>
+                                                <a href="<?php echo getUrlCateProduct($itemChild) ?>"
+                                                   title="<?php echo getTitle($itemChild) ?>"><?php echo $itemChild->title ?></a>
+                                            <?php endforeach; ?>
+                                            <span class="list-all"><i class="fa fa-angle-double-right"
+                                                                      aria-hidden="true"></i><a
+                                                        href="<?php echo getUrlCateProduct($oneCategory) ?>"
+                                                        title="Xem tất cả sản phẩm trong <?php echo getTitle($oneCategory) ?>">Xem tất cả</a></span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="product-bestseller">
-                            <div class="product-bestseller-content">
-                                <div class="product-bestseller-list">
-                                    <div class="category-products">
-                                        <?php $this->load->view($this->template_path . 'product/_list_product', ['data' => !empty($home_product_latest) ? $home_product_latest : '']) ?>
+                            <div class="product-bestseller">
+                                <div class="product-bestseller-content">
+                                    <div class="product-bestseller-list">
+                                        <div class="category-products">
+                                            <?php $this->load->view($this->template_path . 'product/_list_product', ['data' => $home_product['listProduct'][$oneCategory->id]]) ?>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
+                <?php endforeach; ?>
 
                 <div class="offer-banner">
                     <?php $bannerCenterHome = listBannerByPosition(5);if(!empty($bannerCenterHome)) foreach ($bannerCenterHome as $item): ?>
@@ -133,39 +150,6 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                             <img src="<?php echo getImageThumb($item->thumbnail,410,210,false,false) ?>" alt="banner center home">
                         </a>
                     <?php endforeach; ?>
-                </div>
-                <!-- bestsell slider -->
-                <div class="bestsell-pro">
-                    <div>
-                        <div class="slider-items-products">
-                            <div class="bestsell-block">
-                                <div class="block-title">
-                                    <h2>Sản phẩm bán chạy</h2>
-                                </div>
-                                <div id="bestsell-slider" class="product-flexslider hidden-buttons">
-                                    <div class="slider-items slider-width-col4 products-grid block-content">
-                                        <?php $this->load->view($this->template_path . 'product/_list_product_slider', ['data' => !empty($home_product_sale) ? $home_product_sale : '']) ?>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="featured-pro-block">
-                    <div class="slider-items-products">
-                        <div class="new-arrivals-block">
-                            <div class="block-title">
-                                <h2>Sản phẩm nổi bật</h2>
-                            </div>
-                            <div id="new-arrivals-slider" class="product-flexslider hidden-buttons">
-                                <div class="home-block-inner"></div>
-                                <div class="slider-items slider-width-col4 products-grid block-content">
-                                    <?php $this->load->view($this->template_path . 'product/_list_product_slider', ['data' => !empty($home_product_featured) ? $home_product_featured : '']) ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="col-left sidebar col-sm-3 col-xs-12 col-sm-pull-9">

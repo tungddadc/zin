@@ -3021,3 +3021,18 @@ a, a:hover, a:focus, .btn:focus{
 	border-right: 1px solid #ccc;
 	text-align: center;
 }
+
+.navbar-collapse .new_title{
+  width: 100%;
+}
+.new_title h2{
+  float:left;
+}
+.view-list-child {
+  float:right;
+}
+
+.view-list-child a {
+  margin-right: 10px;
+  font-size: 13px;
+}
