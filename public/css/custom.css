@@ -2016,30 +2016,30 @@ h3.m-b-lg a:hover {
   height: 70px;
   width: 100%; }
 
-.pricing-style1 .pricing-plan, .pricing-style2 .pricing-head, .pricing-style3 .pricing-head, .pricing-style2 .pricing-footer .p-button:hover, .pricing-style3 .pricing-footer .p-button:hover {
-  background: #fcd129; }
-
-.pricing-style1 .pricing-plan {
+.pricing-plan {
   border-radius: 20px;
   margin-bottom: 35px;
   -webkit-transition: .3s ease all;
   transition: .3s ease all; }
+  .pricing-plan:not(:first-child) {
+    margin-left: 1px; }
 
-.pricing-style1 .pricing-head {
+.pricing-head {
   position: relative;
   text-align: center;
   z-index: 11;
   background-color: #e6e5e3;
   border-radius: 18px 18px 0 0; }
 
-.pricing-style1 .pricing-body {
-  padding: 40% 1rem 0; }
+.pricing-body {
+  height: 262px;
+  padding: 40% 1rem 0;
+  border: 1px solid #f2f2f2; }
 
-.pricing-style1 .pricing-footer {
-  /*padding: 20px 40px 40px;*/
+.pricing-footer {
   text-align: center; }
 
-.pricing-style1 .pricing-head img.shape, .pricing-style1 .pricing-head img.shape_hover {
+.pricing-head img.shape, .pricing-head img.shape_hover {
   position: absolute;
   width: 100%;
   left: 50%;
@@ -2052,54 +2052,49 @@ img {
   vertical-align: middle;
   border: 0; }
 
-.pricing-style1 .pricing-head img.shape_hover {
+.pricing-head img.shape_hover {
   display: none; }
 
-.pricing-style1 .pricing-head .name {
-  font-size: 1.5rem;
+.pricing-head .name {
+  height: 40px;
+  font-size: 1.2rem;
   text-transform: uppercase;
   color: #363636;
   line-height: normal;
-  margin-bottom: 10px;
+  padding: 1rem 0;
   font-weight: 700; }
 
-.pricing-style1 .pricing-head .short-desc {
+.pricing-head .short-desc {
   font-size: 12pt;
   line-height: 16pt;
   position: relative;
   padding-bottom: 15px;
   margin-bottom: 10px; }
 
-.pricing-style1 .pricing-head .price {
+.pricing-head .price {
   color: #363636; }
 
-.pricing-style1 .pricing-head span.value {
+.pricing-head span.value {
   display: block;
   font-size: 1.5rem;
   line-height: normal;
   -webkit-transition: all .25s ease;
   transition: all .25s ease; }
 
-.pricing-style1 .pricing-head span.duration {
+.pricing-head span.duration {
   margin-top: 0;
   display: block;
   font-size: 14px; }
-
-.pricing-style1 .pricing-body ul {
-  padding-left: 0;
-  list-style: none;
-  font-size: 14px;
-  color: #363636; }
 
 ol, ul {
   margin-top: 0;
   margin-bottom: 10px; }
 
-.pricing-style1 .pricing-body ul li i {
+.pricing-body ul li i {
   float: right;
   margin-top: 6px; }
 
-.pricing-style1 .pricing-footer .p-button {
+.pricing-footer .p-button {
   display: inline-block;
   font-size: 14px;
   min-width: 120px;
@@ -2127,5 +2122,23 @@ a, a:hover, a:focus, .btn:focus {
   display: none; }
 .pricing-plan:hover img.shape_hover {
   display: inline; }
+
+[name='product-detail-radio'] {
+  visibility: hidden; }
+
+[name="product-detail-radio"]:checked + .pricing-plan .pricing-head {
+  filter: sepia(1) hue-rotate(90deg); }
+[name="product-detail-radio"]:checked + .pricing-plan img.shape {
+  display: none; }
+[name="product-detail-radio"]:checked + .pricing-plan img.shape_hover {
+  display: inline; }
+
+.p-button:hover {
+  cursor: pointer; }
+
+#sync2 .item {
+  padding: 1rem 0;
+  border-right: 1px solid #ccc;
+  text-align: center; }
 
 /*# sourceMappingURL=custom.css.map */

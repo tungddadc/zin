@@ -8,88 +8,83 @@
 defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 <div class="container">
     <div class="row">
-        <div class="col-md-3 col-md-4 col-sm-3 hidden-xs">
-            <div class="side-banner">
-              <aside class="homenews">
-                <figure>
-                  <h2><a href="<?php echo site_url('tin-tuc.html') ?>">Tin công nghệ</a>
+		<div class="col-md-9 col-sm-8 col-xs-12">
+			<div class="home-slider">
+				<?php $home_slider = listBannerByPosition(1);
+				if (!empty($home_slider)): ?>
 
-                  </h2>
-                  <div class="_circle">
-                  <div class="circle circle1"></div>
-                  <div class="circle circle2"></div>
-                  <div class="circle circle3"></div>
-                  </div>
-                </figure>
-                <ul>
-                  <li>
-                    <?php
-                      if(!empty($home_news)){
-                        ?>
-                        <a href="<?php getUrlNews($home_news[0]) ?>">
-                          <img width="100" height="70" src="<?php echo getImageThumb($home_news[0]->thumbnail,100,70,true) ?>" alt="<?php echo $home_news[0]->title ?>">
-                          <h3><?php echo $home_news[0]->title ?></h3>
-                          <span><?php echo timeAgo($home_news[0]->created_time) ?></span>
-                        </a>
-                        <?php
-                      }
-                    ?>
+					<div id="sync1" class="owl-carousel">
+						<?php foreach ($home_slider as $item) : ?>
+							<div class="item">
+								<a title="<?php echo getTitle($item) ?>" href="<?php echo $item->url ?>">
+									<img src="<?php echo getImageThumb($item->thumbnail, 1920, 630, true) ?>"
+										 alt="<?php echo getTitle($item) ?>">
+								</a>
+							</div>
+						<?php endforeach; ?>
 
-                  </li>
-                </ul>
-                <div class="twobanner">
-                  <?php $bannerSidebarTop = listBannerByPosition(2,4);if(!empty($bannerSidebarTop)) foreach ($bannerSidebarTop as $item): ?>
-                    <a href="<?php echo $item->url ?>" title="banner sidebar" rel="nofollow">
-                      <img src="<?php echo getImageThumb($item->thumbnail,398,110,false) ?>"
-                           data-src="<?php echo getImageThumb($item->thumbnail,398,110,true) ?>"
-                           class="lazy" alt="<?php echo getTitle($item) ?>">
-                    </a>
-                  <?php endforeach; ?>
-                </div>
+					</div>
+				<?php endif; ?>
 
-              </aside>
-            </div>
-        </div>
-        <div class="col-md-9 col-sm-9 col-xs-12 home-slider">
-            <?php $home_slider = listBannerByPosition(1); ?>
-            <?php if(!empty($home_slider)): ?>
-            <div id="thm-slideshow" class="thm-slideshow slider-block">
-                <div id='rev_slider_4_wrapper' class='rev_slider_wrapper fullwidthbanner-container'>
-                    <div id='rev_slider_4' class='rev_slider fullwidthabanner'>
-                        <ul>
-                            <?php foreach ($home_slider as $item): ?>
-                            <li data-transition='slideright' data-slotamount='7' data-masterspeed='1000'
-                                data-thumb='<?php echo getImageThumb($item->thumbnail,850,440) ?>'>
-                                <img src="<?php echo getImageThumb($item->thumbnail,850,440,true) ?>"
-                                     data-src="<?php echo getImageThumb($item->thumbnail,850,440,true) ?>"
-                                     class="lazy"
-                                     data-bgposition='left top' data-bgfit='cover' data-bgrepeat='no-repeat'
-                                     alt="<?php echo getTitle($item) ?>">
+				<?php $home_slider = listBannerByPosition(1);
+				if (!empty($home_slider)): ?>
+					<div id="sync2" class="owl-carousel">
+						<?php foreach ($home_slider as $item) : ?>
+							<div class="item">
+								<a title="<?php echo getTitle($item) ?>"
+								   href="<?php echo $item->url ?>"><?php echo $item->description ?></a>
+							</div>
+						<?php endforeach; ?>
+					</div>
+				<?php endif; ?>
 
-                                <div class="info">
-                                    <!--<div class='tp-caption ExtraLargeTitle sft  tp-resizeme ' data-endspeed='500'
-                                         data-speed='500' data-start='1100' data-easing='Linear.easeNone'
-                                         data-splitin='none' data-splitout='none' data-elementdelay='0.1'
-                                         data-endelementdelay='0.1'><span><?php /*echo $item->title */?></span>
-                                    </div>
-                                    <div class='tp-caption Title sft  tp-resizeme ' data-endspeed='500' data-speed='500'
-                                         data-start='1450' data-easing='Power2.easeInOut' data-splitin='none'
-                                         data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1'>
-                                        <?php /*echo $item->description */?>
-                                    </div>-->
-                                    <div class='tp-caption sfb  tp-resizeme ' data-endspeed='500' data-speed='500'
-                                         data-start='1500' data-easing='Linear.easeNone' data-splitin='none'
-                                         data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1'>
-                                        <a href='<?php echo $item->url ?>' rel="nofollow" title="Xem chi tiết" class="buy-btn">Xem chi tiết</a></div>
-                                </div>
-                            </li>
-                            <?php endforeach; ?>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <?php endif; ?>
-        </div>
+			</div>
+		</div>
+		<div class="col-md-3 col-sm-4 hidden-xs">
+			<div class="side-banner">
+				<aside class="homenews">
+					<figure>
+						<h2><a href="<?php echo site_url('tin-tuc.html') ?>">Tin công nghệ</a>
+
+						</h2>
+						<div class="_circle">
+							<div class="circle circle1"></div>
+							<div class="circle circle2"></div>
+							<div class="circle circle3"></div>
+						</div>
+					</figure>
+					<ul>
+						<li>
+							<?php
+							if (!empty($home_news)) {
+								?>
+								<a href="<?php getUrlNews($home_news[0]) ?>">
+									<img width="100" height="70"
+										 src="<?php echo getImageThumb($home_news[0]->thumbnail, 100, 70, true); ?>"
+										 alt="<?php echo $home_news[0]->title ?>">
+									<h3><?php echo $home_news[0]->title ?></h3>
+									<span><?php echo timeAgo($home_news[0]->created_time) ?></span>
+								</a>
+								<?php
+							}
+							?>
+
+						</li>
+					</ul>
+					<div class="twobanner">
+						<?php $bannerSidebarTop = listBannerByPosition(2, 2);
+						if (!empty($bannerSidebarTop)) foreach ($bannerSidebarTop as $item): ?>
+							<a href="<?php echo $item->url ?>" title="banner sidebar" rel="nofollow">
+								<img src="<?php echo getImageThumb($item->thumbnail, 398, 110, true) ?>"
+									 data-src="<?php echo getImageThumb($item->thumbnail, 398, 110, true) ?>"
+									 class="lazy" alt="<?php echo getTitle($item) ?>">
+							</a>
+						<?php endforeach; ?>
+					</div>
+
+				</aside>
+			</div>
+		</div>
     </div>
 </div>
 
