@@ -617,8 +617,8 @@ var UI = {
 
 		sync1.owlCarousel({
 			singleItem : true,
+            nav: true,
 			slideSpeed : 1000,
-			navigation: true,
 			pagination:false,
 			afterAction : syncPosition,
 			responsiveRefreshRate : 200,
@@ -683,6 +683,9 @@ var UI = {
 			}
 
 		}
+		$(".owl-controls").removeClass('clickable');
+		$(".owl-prev .fa-angle-left").text('<');
+		$(".owl-next .fa-angle-right").text('>');
     },
     stickyMenuMain: function(){
         let header = document.getElementById('menu-main');
