@@ -2079,7 +2079,9 @@ img {
   font-size: 1.5rem;
   line-height: normal;
   -webkit-transition: all .25s ease;
-  transition: all .25s ease; }
+  transition: all .25s ease;
+  min-height: 20px;
+}
 
 .pricing-head span.duration {
   margin-top: 0;

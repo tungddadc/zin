@@ -953,7 +953,7 @@ jQuery(document).ready(function () {
         $("[name='product-detail-radio']").click(function () {
             let val = $(this).val();
             if (val == 1){
-                $("[name='quantity']")[0].value = $("[name='quantity']")[0].min = 5;
+                $("[name='quantity']")[0].value = $("[name='quantity']")[0].min = 6;
             } else if (val == 2){
                 $("[name='quantity']")[0].value = $("[name='quantity']")[0].min = 16;
             } else {
@@ -964,7 +964,7 @@ jQuery(document).ready(function () {
             let val = $(this)[0].value;
             if (val>15){
                 $("[name='product-detail-radio']")[2].attr('checked');
-            } else if (val>5 && val < 16){
+            } else if (val>6 && val < 16){
                 $("[name='product-detail-radio']")[1].attr('checked');
             } else{
                 $("[name='product-detail-radio']")[0].attr('checked');

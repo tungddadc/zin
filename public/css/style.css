@@ -8753,9 +8753,6 @@ ol#compare-items li.last {
 
 .availability.in-stock {
     padding: 3px 0px;
-    position: absolute;
-    top: 18px;
-    right: 0px;
 }
 
 .availability.in-stock span {

@@ -146,7 +146,7 @@
                                     <div class="d-flex pricing-style1">
                                         <div class="col">
                                             <label>
-                                                    <input type="radio" name="product-detail-radio" value="0" checked>
+                                                <input type="radio" name="product-detail-radio" value="0" checked>
                                                 <div class="pricing-plan">
                                                     <div class="pricing-head">
                                                         <img src="<?php echo $this->templates_assets ?>images/shape.svg"
@@ -155,7 +155,7 @@
                                                              class="shape_hover" alt="">
                                                         <div class="name">giá lẻ cửa hàng</div>
                                                         <div class="price">
-                                                            <span class="value"><?php echo !empty($oneItem->price)? formatMoney($oneItem->price) : ""?></span>
+                                                            <span class="value"><?php echo !empty($oneItem->price) ? formatMoney($oneItem->price) : "" ?></span>
                                                         </div>
                                                     </div>
                                                     <div class="pricing-body">
@@ -180,7 +180,7 @@
                                                              class="shape_hover" alt="">
                                                         <div class="name">giá buôn cửa hàng</div>
                                                         <div class="price">
-                                                            <span class="value"><?php echo !empty($oneItem->price_sale)? formatMoney($oneItem->price_sale) : ""?></span>
+                                                            <span class="value"><?php echo !empty($oneItem->price_sale) ? formatMoney($oneItem->price_sale) : "" ?></span>
                                                         </div>
                                                     </div>
                                                     <div class="pricing-body">
@@ -194,6 +194,8 @@
                                                 </div>
                                             </label>
                                         </div>
+
+                                        <?php if($this->session->userdata('is_agency') == true && !empty($oneItem->price_agency)): ?>
                                         <div class="col">
                                             <label>
                                                 <input type="radio" name="product-detail-radio" value="2">
@@ -205,13 +207,14 @@
                                                              class="shape_hover" alt="">
                                                         <div class="name">đại lý</div>
                                                         <div class="price">
-                                                            <span class="value"><?php echo !empty($oneItem->price_agency)? formatMoney($oneItem->price_agency) : ""?></span>
+                                                            <span class="value"><?php echo !empty($oneItem->price_agency) ? formatMoney($oneItem->price_agency) : "" ?></span>
                                                         </div>
                                                     </div>
                                                     <div class="pricing-body">
                                                         <p>Số lượng áp dụng lớn hơn 15</p>
                                                         <p>Bảo hành lưu kho: Dài hạn</p>
-                                                        <p>Hỗ trợ marketing: quảng cáo google, facebook và qua hotline tổng đài</p>
+                                                        <p>Hỗ trợ marketing: quảng cáo google, facebook và qua hotline
+                                                            tổng đài</p>
                                                     </div>
                                                     <div class="pricing-footer">
                                                         <p class="p-button">Chọn</p>
@@ -219,6 +222,7 @@
                                                 </div>
                                             </label>
                                         </div>
+                                        <?php endif; ?>
                                         <div class="col">
                                             <label>
                                                 <input type="radio" name="product-detail-radio" value="3">
@@ -230,7 +234,7 @@
                                                              class="shape_hover" alt="">
                                                         <div class="name">giá thay khách lẻ</div>
                                                         <div class="price">
-                                                            <span class="value"><?php echo !empty($oneItem->price_kl)? formatMoney($oneItem->price_kl) : ""?></span>
+                                                            <span class="value"><?php echo !empty($oneItem->price_kl) ? formatMoney($oneItem->price_kl) : "" ?></span>
                                                         </div>
                                                     </div>
                                                     <div class="pricing-body">
@@ -255,7 +259,7 @@
                                                              class="shape_hover" alt="">
                                                         <div class="name">giá thay khách vip</div>
                                                         <div class="price">
-                                                            <span class="value"><?php echo !empty($oneItem->price_ek)? formatMoney($oneItem->price_ek) : ""?></span>
+                                                            <span class="value"><?php echo !empty($oneItem->price_ek) ? formatMoney($oneItem->price_ek) : "" ?></span>
                                                         </div>
                                                     </div>
                                                     <div class="pricing-body">
@@ -275,26 +279,35 @@
                                             <div class="pull-left">
                                                 <div class="custom pull-left">
                                                     <span class="qty-label">Số lượng:</span>
-                                                    <button onClick="CART.quantity_reduced(this)" class="reduced items-count <?php echo $this->session->userdata('is_agency') == true ? 'is-agency' : '' ?>" type="button">
+                                                    <button onClick="CART.quantity_reduced(this)"
+                                                            class="reduced items-count <?php echo $this->session->userdata('is_agency') == true ? 'is-agency' : '' ?>"
+                                                            type="button">
                                                         -
                                                     </button>
-                                                    <input onkeyup="CART.changeInputQuantity(this)" type="text" class="input-text qty" title="Số lượng" value="1" maxlength="<?php echo $oneItem->quantity ?>" name="quantity">
-                                                    <button onClick="CART.quantity_increase(this)" class="increase items-count <?php echo $this->session->userdata('is_agency') == true ? 'is-agency' : ''
-                                    ?>" type="button">
+                                                    <input onkeyup="CART.changeInputQuantity(this)" type="text"
+                                                           class="input-text qty" title="Số lượng" value="1"
+                                                           maxlength="<?php echo $oneItem->quantity ?>" name="quantity">
+                                                    <button onClick="CART.quantity_increase(this)"
+                                                            class="increase items-count <?php echo $this->session->userdata('is_agency') == true ? 'is-agency' : ''
+                                                            ?>" type="button">
                                                         +
                                                     </button>
                                                 </div>
                                             </div>
-                                            <button class="button btn-cart" title="Thêm vào giỏ hàng" type="submit">Thêm vào giỏ</button>
+                                            <button class="button btn-cart" title="Thêm vào giỏ hàng" type="submit">Thêm
+                                                vào giỏ
+                                            </button>
                                         </div>
                                     </div>
-                                    <?php echo form_close();?>
-                                    <!--<div class="short-description">
+                                    <?php echo form_close(); ?>
+                                    <div class="short-description">
                                         <h2>Lưu ý</h2>
-                                        <p>Mức giá trên là dành cho cửa hàng. Chúng tôi sẽ có chính sách giá riêng dành cho đại lý linh kiện.
-                                        Hân hạnh được hợp tác cùng quý Đại lý trên toàn quốc. Để xem được giá đại lý, quý khách vui lòng tạo tài khoản và gửi yêu cầu
-                                        cấp quyền đại lý cho quý khách.</p>
-                                    </div>-->
+                                        <p>Mức giá trên là dành cho cửa hàng. Chúng tôi sẽ có chính sách giá riêng dành
+                                            cho đại lý linh kiện.
+                                            Hân hạnh được hợp tác cùng quý Đại lý trên toàn quốc. Để xem được giá đại
+                                            lý, quý khách vui lòng tạo tài khoản và gửi yêu cầu
+                                            cấp quyền đại lý cho quý khách.</p>
+                                    </div>
 
 
                                     <?php if (!empty($data_similar)): ?>
@@ -360,8 +373,17 @@
                                             </strong></p>
                                         <p>Mã sản phẩm: <strong><?php echo $oneItem->model ?></strong></p>
                                         <p>Mã vạch: <strong><?php echo (string)$oneItem->barcode ?></strong></p>
+                                        <p>Đơn vị: <strong><?php echo (string)$oneItem->unit ?></strong></p>
+                                        <p>Bảo hành: <strong><?php echo (string)$oneItem->warranty ?></strong></p>
+                                        <p class="sold">Lượt xem: <strong><?php echo $oneItem->viewed ?></strong> đã xem. </p>
+                                        <p class="sold">Đã bán <strong><?php echo $oneItem->viewed > 1000 ? $oneItem->viewed - 555 : $oneItem->viewed - 333 ?></strong> sản phẩm. </p>
+                                        <p class="sold">Tỷ lệ bảo hành: <strong> <5%</strong></p>
                                     </div>
                                     <div class="pstock-list">
+                                        <p class="availability in-stock">
+                                            <?php echo $this->session->userdata('is_agency') == true ? '<span class="agency">Đại lý</span>' : ''  ?>
+                                            <?php echo !empty($data_stock[0]->Amount) ? '<span class="instock">Còn hàng</span>' : '<span class="outstock">Hết hàng</span>' ?>
+                                        </p>
                                         <?php if (!empty($data_stock)) foreach ($data_stock as $item): ?>
                                             <p class="pstock-item pstock-item-01 pstock-district-001"
                                                style="display: block;">
@@ -370,7 +392,6 @@
                                             </p>
                                         <?php endforeach; ?>
                                     </div>
-                                    <?php $this->load->view($this->template_path . 'product/_box_features') ?>
                                 </div>
                             </div>
                             <?php if (!empty($data_related)): $totalItem = count($data_related) ?>
