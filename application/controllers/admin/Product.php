@@ -53,6 +53,9 @@ class Product extends Admin_Controller
         if(isset($queryFilter['is_status']) && $queryFilter['is_status'] !== '')
             $params = array_merge($params,['is_status' => $queryFilter['is_status']]);
 
+        if(isset($queryFilter['noimage']) && $queryFilter['noimage'] !== '')
+            $params = array_merge($params,['noimage' => $queryFilter['noimage']]);
+
         $listData = $this->_data->getData($params);
         //ddQuery($this->db);
         if(!empty($listData)) foreach ($listData as $item) {

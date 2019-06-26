@@ -83,6 +83,9 @@ $(function() {
     AJAX_CRUD_MODAL.tinymce();
     SEO.init_slug();
 
+    if(location.search.split('noimage=')[1]){
+        table.search('1', "noimage");
+    }
     $('[name="is_status"]').on("change", function () {
         table.search($(this).val(), "is_status")
     }), $('[name="is_status"]').selectpicker();
