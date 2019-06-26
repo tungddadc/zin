@@ -26,7 +26,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 					</div>
 				<?php endif; ?>
 
-				<?php $home_slider = listBannerByPosition(1);
+				<?php
 				if (!empty($home_slider)): ?>
 					<div id="sync2" class="owl-carousel">
 						<?php foreach ($home_slider as $item) : ?>

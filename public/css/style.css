@@ -5140,6 +5140,7 @@ ul.products-grid {
 
 .products-grid .item .item-inner .item-img {
     position: relative;
+    height: 300px;
 }
 
 .products-grid .item .item-inner .item-img .ico-product {

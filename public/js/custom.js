@@ -684,6 +684,8 @@ var UI = {
 
 		}
 		$(".owl-controls").removeClass('clickable');
+		$(".owl-prev").html('<i class="fa fa-angle-left" aria-hidden="true"></i>');
+		$(".owl-next").html('<i class="fa fa-angle-right" aria-hidden="true"></i>');
     },
     stickyMenuMain: function(){
         let header = document.getElementById('menu-main');
