@@ -3,7 +3,7 @@ if (!function_exists('formatMoney')) {
   function formatMoney($price, $default = true)
   {
     $_this =& get_instance();
-    return !empty($price) ? "<number>" . number_format($price, 0, '', '.') . "</number>đ" : (($default == true) ? 'Liên hệ' : '');
+    return !empty($price) ? "<span>" . number_format($price, 0, '', '.') . "</span>đ" : (($default == true) ? 'Liên hệ' : '');
   }
 }
 

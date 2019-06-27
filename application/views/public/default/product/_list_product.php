@@ -44,6 +44,32 @@
                                         <p class="special-price"><span class="price-label">Giá</span> <span class="price"><?php echo formatMoney($item->price) ?></span> </p>
                                     <?php endif; ?>
                                 </div>
+                                <div class="price-slider owl-carousel">
+                                    <div class="price-item">
+                                        <div class="name">Giá buôn cửa hàng</div>
+                                        <div class="price">
+                                            <span class="value">50.000đ</span>
+                                        </div>                                        
+                                    </div>
+                                    <div class="price-item">
+                                        <div class="name">Đại lý</div>
+                                        <div class="price">
+                                            <span class="value">65.000đ</span>
+                                        </div>
+                                    </div>
+                                    <div class="price-item">
+                                        <div class="name">Giá thay khách lẻ</div>
+                                        <div class="price">
+                                            <span class="value">75.000đ</span>
+                                        </div>
+                                    </div>
+                                    <div class="price-item">
+                                        <div class="name">Giá thay khách vip</div>
+                                        <div class="price">
+                                            <span class="value">45.000đ</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="action">
                                 <a href="javascript:;" onclick="CART.add(<?php echo $item->id ?>,1)" class="button" title="Thêm vào giỏ hàng"><span>Thêm vào giỏ hàng</span></a>
