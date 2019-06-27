@@ -40,7 +40,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
 			</div>
 		</div>
-		<div class="col-md-3 col-sm-4 hidden-xs">
+		<div class="col-md-3 col-sm-4 hidden-xs padding-0">
 			<div class="side-banner">
 				<aside class="homenews">
 					<figure>
@@ -92,20 +92,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     <div class="container">
         <div class="row">
             <div class="col-sm-9 col-sm-push-3">
-                <div class="row">
-                    <?php $bannerHomeTop = listBannerByPosition(4);if(!empty($bannerHomeTop)) foreach ($bannerHomeTop as $item): ?>
-                        <div class="col-sm-6 col-xs-12">
-                            <a href="<?php echo $item->url ?>" title="banner sidebar" rel="nofollow">
-                                <img src="<?php echo getImageThumb($item->thumbnail,410,210,true) ?>"
-                                     data-src="<?php echo getImageThumb($item->thumbnail,410,210,true) ?>"
-                                     class="lazy"
-                                     style="width: 100%"
-                                     alt="<?php echo getTitle($item) ?>">
-                            </a>
-                        </div>
-                    <?php endforeach; ?>
-                </div>
-
+                
                 <?php if (!empty($home_product['listCategory'])) foreach ($home_product['listCategory'] as $oneCategory): ?>
                     <div class="content-page">
                         <div class="category-product">
