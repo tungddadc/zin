@@ -385,6 +385,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
     var url_ajax_load_category = '<?php echo site_admin_url('category/ajax_load/' . $this->_controller) ?>',
         url_ajax_load_property = '<?php echo site_admin_url('property/ajax_load') ?>',
         url_ajax_load_brand = '<?php echo site_admin_url('category/ajax_load/brand') ?>',
-        url_ajax_load_product = '<?php echo site_admin_url('product/ajax_load') ?>';
+        url_ajax_load_product = '<?php echo site_admin_url('product/ajax_load') ?>',
         url_ajax_load_post= '<?php echo site_admin_url('post/ajax_load') ?>';
 </script>

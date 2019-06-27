@@ -116,7 +116,15 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     $this->minify->css($asset_css);
     echo $this->minify->deploy_css(TRUE);
     ?>
-
+<style>
+    .owl-next i, .owl-prev i{
+        width: auto;
+        height: auto;
+        font-size: 15px !important;
+        top: 50%;
+        padding: 15px;
+    }
+</style>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

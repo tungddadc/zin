@@ -48,6 +48,10 @@ class Product_model extends STEVEN_Model
             $this->db->where("$this->table.brand",$brand_id);
         }
 
+        if(!empty($noimage)){
+            $this->db->where("$this->table.thumbnail",null);
+        }
+
         if(!empty($tags)){
             $this->db->select('MATCH (meta_keyword) AGAINST ('.$this->db->escape($tags).' IN BOOLEAN MODE) AS score_tags');
             $this->db->where('MATCH (meta_keyword) AGAINST ('.$this->db->escape($tags).' IN BOOLEAN MODE)', NULL, FALSE);
