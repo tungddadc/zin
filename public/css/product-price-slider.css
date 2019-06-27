@@ -2,6 +2,8 @@
 	background: #be1e2d;
 	color: #fff;
 	line-height: 30px;
+	width: 30px;
+    height: 30px;
 	font-size: 20px;
 	transform: translateY(-30px);
 	-moz-transform: translateY(-30px);
