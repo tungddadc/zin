@@ -36,14 +36,6 @@
                                 </div>
                             </div>
                             <div class="item-price">
-                                <div class="price-box hidden">
-                                    <?php if(!empty($item->price_sale)): ?>
-                                        <p class="old-price"><span class="price-label">Giá gốc:</span> <span class="price"><?php echo formatMoney($item->price) ?> </span> </p>
-                                        <p class="special-price"><span class="price-label">Giá khuyến mại</span> <span class="price"><?php echo formatMoney($item->price_sale) ?></span> </p>
-                                    <?php else: ?>
-                                        <p class="special-price"><span class="price-label">Giá</span> <span class="price"><?php echo formatMoney($item->price) ?></span> </p>
-                                    <?php endif; ?>
-                                </div>
                                 <div class="price-slider owl-carousel">
                                     <div class="price-item">
                                         <div class="name">GIÁ LẺ CỬA HÀNG</div>

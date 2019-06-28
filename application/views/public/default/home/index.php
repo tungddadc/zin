@@ -170,7 +170,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                     </div>
                 </div>
                 <?php endif; ?>
-                <h1><?php echo $this->settings['title']." - ".$this->settings['name'] ?></h1>
+                
                 <div class="side-banner">
                     <?php $bannerSidebar = listBannerByPosition(3);if(!empty($bannerSidebar)) foreach ($bannerSidebar as $item): ?>
                         <a href="<?php echo $item->url ?>" title="banner center home" rel="nofollow">
