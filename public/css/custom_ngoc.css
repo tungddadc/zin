@@ -53,7 +53,7 @@ body {
 	padding: 0;
 }
 nav#menu-main {
-    margin-bottom: 0;
+    margin-bottom: 15px;
 }
 .home-slider .owl-item .item {
     margin: 0;
@@ -81,3 +81,51 @@ nav#menu-main {
 	margin-top: 10px;
 }
 
+.mega-menu-title {
+	height: 48px;
+}
+.side-banner img, .blog-outer-container .entry-thumb img, .offer-banner img {
+	object-fit: fill;
+    width: 100%;
+}
+.image-hover2 a {
+	display: block;
+}
+.blog-preview_title a:hover, .blog-preview_title a:focus {
+	color: #be1e2d;
+}
+.footer .footer-top {
+	padding: 30px 0;
+}
+.footer .footer-middle {
+    padding-bottom: 0;
+}
+.footer ul.nav-link {
+	grid-gap: 5px;
+	padding-bottom: 30px;
+    padding-left: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.footer .footer-link {
+	padding-top: 30px;
+}
+.footer-link ul.nav-link li  {
+	text-align: left;
+}
+@media (min-width: 641px) {
+	.footer .payment-accept {
+		margin-right: 70px;
+	}
+}
+.product-essential .product-image .zoomGalleryActive img {
+	border-color: #be1e2d;
+}
+.product-essential .product-img-box {
+    padding: 0;
+}
+.product-view .product-buy .info {
+	margin-bottom: 15px;
+}
+.nav-tabs.product-tabs > li > a {
+	padding: 15px 9px 12px;
+}

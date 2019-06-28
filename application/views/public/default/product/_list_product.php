@@ -36,7 +36,7 @@
                                 </div>
                             </div>
                             <div class="item-price">
-                                <div class="price-box">
+                                <div class="price-box hidden">
                                     <?php if(!empty($item->price_sale)): ?>
                                         <p class="old-price"><span class="price-label">Giá gốc:</span> <span class="price"><?php echo formatMoney($item->price) ?> </span> </p>
                                         <p class="special-price"><span class="price-label">Giá khuyến mại</span> <span class="price"><?php echo formatMoney($item->price_sale) ?></span> </p>
