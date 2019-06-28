@@ -46,33 +46,27 @@
                                 </div>
                                 <div class="price-slider owl-carousel">
                                     <div class="price-item">
-                                        <div class="name">Giá buôn cửa hàng</div>
+                                        <div class="name">GIÁ LẺ CỬA HÀNG</div>
                                         <div class="price">
-                                            <span class="value">30.000đ</span>
+                                            <span class="value">395.000đ</span>
                                         </div>                                        
                                     </div>
                                     <div class="price-item">
-                                        <div class="name">Giá lẻ cửa hàng</div>
+                                        <div class="name">GIÁ BUÔN CỬA HÀNG</div>
                                         <div class="price">
-                                            <span class="value">40.000đ</span>
+                                            <span class="value">375.000đ</span>
                                         </div>                                        
                                     </div>
                                     <div class="price-item">
-                                        <div class="name">Đại lý</div>
+                                        <div class="name">GIÁ THAY KHÁCH LẺ</div>
                                         <div class="price">
-                                            <span class="value">45.000đ</span>
+                                            <span class="value">600.000đ</span>
                                         </div>
                                     </div>
                                     <div class="price-item">
-                                        <div class="name">Giá thay khách lẻ</div>
+                                        <div class="name">GIÁ THAY KHÁCH VIP</div>
                                         <div class="price">
-                                            <span class="value">55.000đ</span>
-                                        </div>
-                                    </div>
-                                    <div class="price-item">
-                                        <div class="name">Giá thay khách vip</div>
-                                        <div class="price">
-                                            <span class="value">65.000đ</span>
+                                            <span class="value">500.000đ</span>
                                         </div>
                                     </div>
                                 </div>

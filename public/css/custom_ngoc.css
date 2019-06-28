@@ -129,3 +129,33 @@ nav#menu-main {
 .nav-tabs.product-tabs > li > a {
 	padding: 15px 9px 12px;
 }
+.products-grid .rating {
+    text-align: center;
+}
+.products-grid .item .ratings {
+	width: 100%;
+}
+.products-grid .rating-box {
+	position: relative;
+    width: 100%;
+    height: 40px;
+    text-indent: 0;    
+    font-size: inherit;
+}
+.products-grid  .rating-box .rating {
+	background: none;
+}
+.products-grid .rating-box .rating:before {
+    content: "\f005\f005\f005\f005\f005";
+    color: rgb(251, 175, 63);
+    font-family: 'FontAwesome';
+    letter-spacing: 0.1em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.products-grid .item .item-inner .item-info .info-inner .item-title {
+	height: calc(24px * 2);
+	-webkit-line-clamp: 2;
+}
