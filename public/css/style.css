@@ -1091,7 +1091,7 @@ div.effect-sadie1 + div.effect-sadie1 {
     font-size: 14px;
     color: #333333;
     vertical-align: top;
-
+    float:left;
     font-weight: 500;
     letter-spacing: 0.5px;
 }
