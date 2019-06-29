@@ -193,3 +193,16 @@ nav#menu-main {
 	opacity: 1;
 	filter: alpha(opacity=1);
 }
+
+.sidebar .block .block-content {
+    padding: 15px 0 0;
+}
+.sidebar .block .block-content dt {
+    margin-bottom: 5px;
+}
+.sidebar .block .block-content dd {
+    padding: 0;
+}
+.sidebar .block .block-content select {
+    box-shadow: none;
+}
