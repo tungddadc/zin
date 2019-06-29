@@ -155,15 +155,41 @@ nav#menu-main {
     left: 50%;
     transform: translateX(-50%);
 }
+.product-view .rating-box {
+	background: none!important;
+}
 .products-grid .item .item-inner .item-info .info-inner .item-title {
 	height: calc(24px * 2);
 	-webkit-line-clamp: 2;
 }
-.product-buy .availability.in-stock span {
+.product-buy .pstock-list .availability span {
     line-height: 25px;
     padding: 0;
     height: 25px;
     border-radius: 0;
     width: 100%;
     text-align: center;
+}
+.product-buy .pstock-list {
+	max-height: 70vh!important;
+}
+.slider-items-products .owl-buttons i {
+    height: 30px;
+    width: 30px;
+    padding: 0;
+    line-height: 30px;
+}
+#related-products-slider .owl-buttons i:hover {
+	background: #be1e2d;
+	color: #fff;
+}
+#related-products-slider .owl-buttons .owl-prev {
+	right: 55px;
+}
+#related-products-slider .owl-buttons .owl-next {
+    right: 10px;
+}
+#related-products-slider .owl-buttons div {
+	opacity: 1;
+	filter: alpha(opacity=1);
 }

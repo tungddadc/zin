@@ -91,7 +91,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 <section class="main-container col2-left-layout">
     <div class="container">
         <div class="row">
-            <div class="col-sm-9 col-sm-push-3">
+            <div class="col-sm-12">
                 
                 <?php if (!empty($home_product['listCategory'])) foreach ($home_product['listCategory'] as $oneCategory): ?>
                     <div class="content-page">
@@ -131,61 +131,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                     </div>
                 <?php endforeach; ?>
 
-                <div class="offer-banner">
-                    <?php $bannerCenterHome = listBannerByPosition(5);if(!empty($bannerCenterHome)) foreach ($bannerCenterHome as $item): ?>
-                        <a href="<?php echo $item->url ?>" title="banner center home" rel="nofollow">
-                            <img src="<?php echo getImageThumb($item->thumbnail,410,210,false,false) ?>" alt="banner center home">
-                        </a>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-            <div class="col-left sidebar col-sm-3 col-xs-12 col-sm-pull-9">
-                <?php $listFeedback = getFeedback();
-                if(!empty($listFeedback)): ?>
-                <div class="testimonials">
-                    <div class="ts-testimonial-widget">
-                        <div class="slider-items-products">
-                            <div id="testimonials-slider" class="product-flexslider hidden-buttons home-testimonials">
-                                <div class="slider-items slider-width-col4 fadeInUp owl-carousel owl-theme">
-                                    <?php  foreach ($listFeedback as $item): ?>
-                                        <div class="holder">
-                                            <p><?php echo $item->content ?></p>
-                                            <div class="testimonial-arrow-down"></div>
-                                            <div class="thumb">
-                                                <div class="customer-img">
-                                                    <img src="<?php echo getImageThumb($item->thumbnail) ?>" alt="<?php echo $item->name ?>">
-                                                </div>
-                                                <div class="customer-bio">
-                                                    <strong class="name">
-                                                        <a href="javascript:;" title="<?php echo $item->name ?>"><?php echo $item->name ?></a>
-                                                    </strong>
-                                                    <span><strong><?php echo $item->company ?></strong></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    <?php endforeach; ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <?php endif; ?>
                 
-                <div class="side-banner">
-                    <?php $bannerSidebar = listBannerByPosition(3);if(!empty($bannerSidebar)) foreach ($bannerSidebar as $item): ?>
-                        <a href="<?php echo $item->url ?>" title="banner center home" rel="nofollow">
-                            <img src="<?php echo getImageThumb($item->thumbnail,265,500,true) ?>"
-                                 data-src="<?php echo getImageThumb($item->thumbnail,265,500,true) ?>"
-                                 class="lazy hidden-xs"
-                                 alt="<?php echo getTitle($item) ?>">
-                        </a>
-                    <?php endforeach; ?>
-                </div>
-
-                <div class="">
-                    <?php $this->load->view($this->template_path . 'product/_box_features') ?>
-                </div>
-
             </div>
         </div>
     </div>
