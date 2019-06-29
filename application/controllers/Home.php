@@ -36,6 +36,7 @@ class Home extends Public_Controller
             $params = array(
                 'lang_code' => $this->session->userdata('public_lang_code'),
                 'is_status' => 1,
+                'is_featured' => 1,
                 'category_id'=> $listCateId,
                 'limit' => 4
             );
