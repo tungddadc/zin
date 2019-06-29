@@ -159,3 +159,11 @@ nav#menu-main {
 	height: calc(24px * 2);
 	-webkit-line-clamp: 2;
 }
+.product-buy .availability.in-stock span {
+    line-height: 25px;
+    padding: 0;
+    height: 25px;
+    border-radius: 0;
+    width: 100%;
+    text-align: center;
+}

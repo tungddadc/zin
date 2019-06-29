@@ -366,18 +366,21 @@
                                     <div id="social-share"></div>
                                 </div>
                                 <div class="product-buy col-lg-2 col-sm-2 col-xs-12">
-                                    <div class="info">
-                                        <p>Thương hiệu: <strong><?php if (!empty($oneBrand)): ?><a
-                                                    href="<?php echo getUrlBrand($oneBrand) ?>"
-                                                    title="<?php echo getTitle($oneBrand) ?>"><?php echo $oneBrand->title ?></a> <?php endif; ?>
-                                            </strong></p>
-                                        <p>Mã sản phẩm: <strong><?php echo $oneItem->model ?></strong></p>
-                                        <p>Mã vạch: <strong><?php echo (string)$oneItem->barcode ?></strong></p>
-                                        <p>Đơn vị: <strong><?php echo (string)$oneItem->unit ?></strong></p>
-                                        <p>Bảo hành: <strong><?php echo (string)$oneItem->warranty ?></strong></p>
-                                        <p class="sold">Lượt xem: <strong><?php echo $oneItem->viewed ?></strong> đã xem. </p>
-                                        <p class="sold">Đã bán <strong><?php echo $oneItem->viewed > 1000 ? $oneItem->viewed - 555 : $oneItem->viewed - 333 ?></strong> sản phẩm. </p>
-                                        <p class="sold">Tỷ lệ bảo hành: <strong> <5%</strong></p>
+                                    <div class="widget__sidebar">
+                                        <h3 class="widget-title"><span>THÔNG TIN SẢN PHẨM</span></h3>
+                                        <div class="info">                                            
+                                            <p>Thương hiệu: <strong><?php if (!empty($oneBrand)): ?><a
+                                                        href="<?php echo getUrlBrand($oneBrand) ?>"
+                                                        title="<?php echo getTitle($oneBrand) ?>"><?php echo $oneBrand->title ?></a> <?php endif; ?>
+                                                </strong></p>
+                                            <p>Mã sản phẩm: <strong><?php echo $oneItem->model ?></strong></p>
+                                            <p>Mã vạch: <strong><?php echo (string)$oneItem->barcode ?></strong></p>
+                                            <p>Đơn vị: <strong><?php echo (string)$oneItem->unit ?></strong></p>
+                                            <p>Bảo hành: <strong><?php echo (string)$oneItem->warranty ?></strong></p>
+                                            <p class="sold">Lượt xem: <strong><?php echo $oneItem->viewed ?></strong> đã xem. </p>
+                                            <p class="sold">Đã bán <strong><?php echo $oneItem->viewed > 1000 ? $oneItem->viewed - 555 : $oneItem->viewed - 333 ?></strong> sản phẩm. </p>
+                                            <p class="sold">Tỷ lệ bảo hành: <strong> <5%</strong></p>
+                                        </div>
                                     </div>
                                     <div class="pstock-list">
                                         <p class="availability in-stock">
