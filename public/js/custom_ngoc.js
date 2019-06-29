@@ -1,8 +1,8 @@
-jQuery(document).ready(function() {
+$(document).ready(function() {
    "use strict"; /* Navigation */
 
    /*product price slider*/
-    jQuery(".price-slider").owlCarousel({
+    $(".price-slider").owlCarousel({
         autoPlay: true,
         autoplayHoverPause:true,
         loop:true,

@@ -56,7 +56,6 @@ var LOC = {
 var FUNC = {
     ajaxShowRequest: function (formData, jqForm, options) {
         if(jqForm.find('[type="submit"]').length > 0) jqForm.find('[type="submit"]').append(' <i class="fa fa-spinner fa-spin ml-2" style="color: #ffffff;"></i>');
-        //let queryString = $.param(formData);
         return true;
     },
     ajaxShowResponse: function (response, statusText, xhr, $form) {
@@ -76,7 +75,6 @@ var FUNC = {
             } else {
                 $form.find('.form-group').removeClass('has-warning');
                 $form.find('.text-danger').remove();
-                //$form.reset();
                 if (response.type === "success") {
                     switch ($form.attr('id')) {
                         case 'product_addtocart_form':
@@ -324,7 +322,6 @@ var CART = {
         });
     },
     payment_collapse:function () {
-        //payment-collapse
         var pay = $('.payment-collapse');
         if (pay.length > 0) {
             pay.find('.item .head').click(function(e) {
@@ -599,10 +596,10 @@ var UI = {
         if (jQuery('#gallery_01').length > 0) {
             jQuery("#gallery_01 .slider-items").owlCarousel({
                 autoplay: false,
-                items: 4, //10 items above 1000px browser width
-                itemsDesktop: [1024, 3], //5 items between 1024px and 901px
-                itemsDesktopSmall: [900, 2], // 3 items betweem 900px and 601px
-                itemsTablet: [600, 3], //2 items between 600 and 0;
+                items: 4,
+                itemsDesktop: [1024, 3],
+                itemsDesktopSmall: [900, 2],
+                itemsTablet: [600, 3],
                 itemsMobile: [320, 2],
                 navigation: true,
                 navigationText: ["<a class=\"flex-prev\"></a>", "<a class=\"flex-next\"></a>"],
@@ -937,7 +934,6 @@ jQuery(document).ready(function () {
         };
         var total_agency = new CountUp("total_agency", 0, parseInt($('#total_agency').data('val')), 0,5, options);
         var serve_customer = new CountUp("serve_customer", 0, parseInt($('#serve_customer').data('val')), 0,5, options);
-        // $(window).scroll(function () {
             var hT = $('.top-banners').offset().top,
               hH = $('.top-banners').outerHeight(),
               wH = $(window).height(),
@@ -946,7 +942,6 @@ jQuery(document).ready(function () {
                 setTimeout(total_agency.start(), 1000);
                 setTimeout(serve_customer.start(), 1000);
             }
-        // });
     };
 
     if ($("[name='product-detail-radio']").length > 0){
@@ -987,8 +982,6 @@ function getAgencyNear() {
         $('html, body').animate({
             scrollTop: $('.form_filter').offset().top
         }, 1000, function() {
-            // Callback after animation
-            // Callback after animation
             $('.list-agency__title a').trigger('click');
         });
     }
