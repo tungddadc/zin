@@ -50,6 +50,22 @@
         </dl>
     </div>
 </div>
+<div class="agency">
+    <div class="panel panel-danger">
+        <div class="panel-heading panel-danger">
+            <h4 class="panel-title">Ưu đãi dành cho đại lý</h4>
+        </div>
+        <div class="panel-body">
+            <a href="<?php echo base_url('dieu-kien-va-chinh-sach-dai-ly.html') ?>"
+               class="btn btn-warning btn-block"
+               title="Điều kiện và chính sách đại lý">Điều kiện và chính sách
+                đại lý</a>
+            <a href="<?php echo base_url('gia-dai-ly-va-uu-dai.html') ?>"
+               class="btn btn-warning btn-block"
+               title="Giá đại lý và ưu đãi">Giá đại lý và ưu đãi</a>
+        </div>
+    </div>
+</div>
 <div class="side-banner">
     <?php $bannerSidebar = listBannerByPosition(3);if(!empty($bannerSidebar)) foreach ($bannerSidebar as $item): ?>
         <a href="<?php echo $item->url ?>" title="banner center home" rel="nofollow">
