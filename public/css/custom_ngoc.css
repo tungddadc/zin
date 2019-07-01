@@ -228,3 +228,10 @@ nav#menu-main {
 .sidebar .block .block-content select {
     box-shadow: none;
 }
+.alert-cart span {
+    font-size: 14px;
+    color: #c10404;
+    display: inline-block;
+    border: 2px solid #c10404;
+    padding: 10px;
+}

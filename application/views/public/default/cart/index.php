@@ -14,7 +14,8 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                 <article class="col-main">
                     <div class="cart">
                         <div class="page-title">
-                            <h2>Đơn hàng của bạn</h2> - <span style="font-size: 18px;color: red;">Lưu ý: Zin Linh Kiện chấp nhận xử lý đơn hàng tối thiểu từ 200.000đ trở lên! Mong quý khách hàng thông cảm và tiếp tục chọn thêm sản phẩm!</span>
+                            <h2>Đơn hàng của bạn</h2> 
+                            <div class="alert-cart"><span>Lưu ý: Zin Linh Kiện chấp nhận xử lý đơn hàng tối thiểu từ 200.000đ trở lên! Mong quý khách hàng thông cảm và tiếp tục chọn thêm sản phẩm!</span></div>
                         </div>
                         <div class="table-responsive">
                             <?php echo form_open('cart/update'); ?>
