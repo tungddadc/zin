@@ -378,10 +378,10 @@ var CART = {
             success:function (data) {
                 $('.btn-proceed-checkout span').find('i').remove();
                 if(data.type!='success'){
+                    toastr[data.type](data.message);
                     $.each(data.validation,function (key,value) {
                         $('[name="'+key+'"]').closest('.input-box').append(value);
                     });
-                    toastr[data.type](data.message);
                 }else{
                     window.location.href=data.redirect_url;
                 }
