@@ -301,7 +301,7 @@ class Public_Controller extends STEVEN_Controller
         if (MAINTAIN_MODE == TRUE) {
             $this->load->view('public/coming_soon');
         }
-        if(DEBUG_MODE == FALSE) $this->minify->enabled = TRUE;
+        if(DEBUG_MODE == FALSE) $this->minify->enabled = FALSE;
         else $this->minify->enabled = FALSE;
 
         $configBreadcrumb['crumb_divider'] = $this->config->item('frontend_crumb_divider');

@@ -14,7 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                 <article class="col-main">
                     <div class="cart">
                         <div class="page-title">
-                            <h2>Đơn hàng của bạn</h2>
+                            <h2>Đơn hàng của bạn</h2> - <span class="text-danger" style="font-size: 18px">Lưu ý: Đơn hàng phải tối thiểu trên 200.000 đ mới được phép thanh toán !</span>
                         </div>
                         <div class="table-responsive">
                             <?php echo form_open('cart/update'); ?>
