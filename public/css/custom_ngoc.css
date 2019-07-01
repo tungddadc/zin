@@ -55,16 +55,7 @@ body {
 nav#menu-main {
     margin-bottom: 15px;
 }
-header .flex_row .pull-left {
-    float: none!important;
-    text-align: center;
-}
-/*header .flex_row .welcome-msg {
-    float: none!important;
-}*/
-header .top-cart-contain {
-    margin-bottom: 15px;
-}
+
 .home-slider {
     background: #f1eff2;
 }
