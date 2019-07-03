@@ -52,7 +52,7 @@ if (!function_exists('getImageThumb')) {
                     log_message('error',"Error resize image: $sourceImage to $newPathImage =>" . $CI->image_lib->display_errors());
                 }
                 $CI->image_lib->clear();
-                if(!empty($watermark)){
+                /*if(!empty($watermark)){
                     $watermarkImage = getWatermark($width,$height);
                     if(!empty($watermarkImage)){
                         $config_watermark['image_library']       = 'gd2';
@@ -67,7 +67,7 @@ if (!function_exists('getImageThumb')) {
                         $CI->image_lib->watermark();
                         $CI->image_lib->clear();
                     }
-                }
+                }*/
 
                 if($crop == true){
                     $image_config['image_library'] = 'gd2';
