@@ -27,6 +27,7 @@ body {
     border-top: 1px solid #e5e5e5;
     border-bottom: 1px solid #e5e5e5;
     padding: 10px 0;
+    height: 55px;
 }
 .price-slider .price-item .price {
     font-size: 15px;
@@ -228,10 +229,26 @@ nav#menu-main {
 .sidebar .block .block-content select {
     box-shadow: none;
 }
+.alert-cart {
+    margin-top: 10px;
+}
 .alert-cart span {
     font-size: 14px;
     color: #c10404;
     display: inline-block;
     border: 2px solid #c10404;
     padding: 10px;
+}
+
+.category-product .nav-category-title a {
+    color: #000;
+}
+.category-product .view-list-child a {
+    border: 1px solid #adadad;
+    background-color: #e0e0e0;
+    background-image: linear-gradient(#fff, #e0e0e0);
+    padding: 5px 10px;
+    line-height: 1.5;
+    border-radius: 3px;
+    color: #333;
 }
