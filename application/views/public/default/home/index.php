@@ -112,7 +112,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                                                 <a href="<?php echo getUrlCateProduct($itemChild) ?>"
                                                    title="<?php echo getTitle($itemChild) ?>"><?php echo $itemChild->title ?></a>
                                             <?php endforeach; ?>
-                                            <span class="list-all"><i class="fa fa-angle-double-right"
+                                            <span class="list-all"><i class="hidden fa fa-angle-double-right"
                                                                       aria-hidden="true"></i><a
                                                         href="<?php echo getUrlCateProduct($oneCategory) ?>"
                                                         title="Xem tất cả sản phẩm trong <?php echo getTitle($oneCategory) ?>">Xem tất cả</a></span>
