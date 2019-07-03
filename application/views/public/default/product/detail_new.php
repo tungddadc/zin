@@ -25,7 +25,7 @@ if (!empty($oneItem)):
                                     <div class="slide-for">
                                         <?php if (!empty($album)) foreach ($album as $item): ?>
                                             <div>
-                                                <img class="img-responsive" src="<?php echo getImageThumb($item, '200', '200',false,true) ?>" alt="<?php echo getTitle($oneItem) ?>">
+                                                <img class="img-responsive" src="<?php echo getImageThumb($item, '200', '200',true,true) ?>" alt="<?php echo getTitle($oneItem) ?>">
                                             </div>
                                         <?php endforeach ?>
                                     </div>
@@ -36,7 +36,7 @@ if (!empty($oneItem)):
                                     <div class="slide-nav">
                                         <?php if (!empty($album)) foreach ($album as $item): ?>
                                             <div>
-                                                <img class="img-responsive" src="<?php echo getImageThumb($item, '670', '550', false, true) ?>" alt="<?php echo getTitle($oneItem) ?>">
+                                                <img class="img-responsive" src="<?php echo getImageThumb($item, '670', '550', true, true) ?>" alt="<?php echo getTitle($oneItem) ?>">
                                             </div>
                                         <?php endforeach ?>
                                     </div>
@@ -452,25 +452,6 @@ if (!empty($oneItem)):
             </div>
         </div>
     </section>
-<!--    <div class="clear-after">-->
-<!---->
-<!--        <div class="agency">-->
-<!--            <div class="panel panel-green border-radius-none">-->
-<!--                <div class="panel-heading panel-green">-->
-<!--                    <h4 class="panel-title">Chính sách đại lý</h4>-->
-<!--                </div>-->
-<!--                <div class="panel-body">-->
-<!--                    <a href="--><?php //echo base_url('dieu-kien-va-chinh-sach-dai-ly.html') ?><!--"-->
-<!--                       class="btn btn-warning btn-block"-->
-<!--                       title="Điều kiện và chính sách đại lý">Điều kiện và chính sách-->
-<!--                    </a>-->
-<!--                    <a href="--><?php //echo base_url('gia-dai-ly-va-uu-dai.html') ?><!--"-->
-<!--                       class="btn btn-warning btn-block"-->
-<!--                       title="Giá đại lý và ưu đãi">Giá đại lý và ưu đãi</a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
 <?php endif; ?>
 
 <?php $this->load->view($this->template_path . 'page/page_home_review_company'); ?>
