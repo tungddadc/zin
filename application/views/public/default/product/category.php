@@ -52,7 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     <?php endif; ?>
 
     <section class="main-container">
-        <div class="container-fluid">
+        <div class="container">
             <div class="row">
                 <?php echo form_open('') ?>
                 <div class="col-xs-12">

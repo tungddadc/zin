@@ -8,7 +8,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
 <section class="main-banner">
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
 
             <div class="col-md-9 col-sm-8 col-xs-12">
@@ -94,7 +94,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 </section>
 
 <section class="main-container">
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
             <div class="col-md-12 col-sm-12 hidden-xs">
                 <div class="banner-bottom-slider">

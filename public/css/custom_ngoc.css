@@ -1,9 +1,24 @@
 .pl-0 {
     padding-left: 0;
 }
+@media (min-width:1480px){
+	.container, .nav-container {
+		width: 1450px!important;
+	}
+}
 #main-header {
     margin-bottom: 15px;
 }
 .main-banner .twobanner img {
-	height: 100px;
+	height: 75px;
+} 
+
+#sync1 .owl-controls .owl-prev {
+    left: -5px;
+}
+#sync1 .owl-controls .owl-next {
+    right: -5px;
+}
+#sync2 .item {
+    min-height: 56px;
 }
