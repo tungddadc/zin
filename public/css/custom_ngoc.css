@@ -4,7 +4,9 @@
 body {
 	font-family: 'Muli', sans-serif!important;
 }
-
+a:focus, a:hover {
+    text-decoration: none!important;
+}
 .price-slider .owl-buttons .fa {
 	background: transparent;
     color: #be1e2d;
@@ -279,4 +281,7 @@ nav#menu-main {
     height: 3px;
     width: 25px;
     background-color: rgb(251, 175, 63);
+}
+._post_related {
+    font-size: 16px;
 }
