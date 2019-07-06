@@ -35,11 +35,11 @@
                                                         <?php if (!empty($album)) foreach ($album as $item): ?>
                                                             <div class="more-views-items">
                                                                 <a href="javascript:;"
-                                                                   data-image="<?php echo getImageThumb($item, 375, 375, true,true) ?>"
+                                                                   data-image="<?php echo getImageThumb($item, 375, 375, false,true) ?>"
                                                                    data-zoom-image="<?php echo getImageThumb($item,500,600,false,true) ?>"
                                                                    title="<?php echo getTitle($oneItem) ?>">
                                                                     <img id="product-zoom"
-                                                                         src="<?php echo getImageThumb($item, 76, 76,true,true) ?>"
+                                                                         src="<?php echo getImageThumb($item, 76, 76,false,true) ?>"
                                                                          alt="<?php echo getTitle($oneItem) ?>"/>
                                                                 </a>
                                                             </div>

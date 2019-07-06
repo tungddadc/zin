@@ -73,10 +73,10 @@ if (!function_exists('getImageThumb')) {
                     $image_config['image_library'] = 'gd2';
                     $image_config['source_image'] = $newPathImage;
                     $image_config['new_image'] = $newPathImage;
-                    $image_config['quality'] = "80%";
+//                    $image_config['quality'] = "80%";
                     $image_config['maintain_ratio'] = FALSE;
-                    $image_config['width'] = $width;
-                    $image_config['height'] = $height;
+                    $image_config['width'] = $width-10;
+                    $image_config['height'] = $height-10;
                     $imageSize = getimagesize($newPathImage);
                     $imageWidth = intval($imageSize[0]);
                     $imageHeight = intval($imageSize[1]);

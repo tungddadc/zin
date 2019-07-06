@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
             <!--logo-->
 
             <!--Search form desktop-->
-            <div class="col-lg-3 col-md-7 hidden-sm hidden-xs search-form-desktop position-static">
+            <div class="col-lg-2 col-md-7 hidden-sm hidden-xs search-form-desktop position-static">
                 <?php if($this->agent->is_mobile() == false): ?>
                 <div class="search-box">
                     <div id="search_mini_form">
@@ -48,7 +48,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
             </div>
 
             <!--Main menu-->
-            <div class="col-lg-5 hidden-md hidden-sm hidden-xs position-static">
+            <div class="col-lg-6 hidden-md hidden-sm hidden-xs position-static">
                 <?php echo navMenuMain('main-menu','main-menu-desktop') ?>
             </div>
             <!--Main menu-->

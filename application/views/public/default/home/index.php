@@ -77,8 +77,8 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                         <?php $bannerSidebarTop = listBannerByPosition(2, 2);
                         if (!empty($bannerSidebarTop)) foreach ($bannerSidebarTop as $item): ?>
                             <a href="<?php echo $item->url ?>" title="banner sidebar" rel="nofollow">
-                                <img src="<?php echo getImageThumb($item->thumbnail, 398, 110, true) ?>"
-                                     data-src="<?php echo getImageThumb($item->thumbnail, 398, 110, true) ?>"
+                                <img src="<?php echo getImageThumb($item->thumbnail, 398, 110) ?>"
+                                     data-src="<?php echo getImageThumb($item->thumbnail, 398, 110) ?>"
                                      class="lazy" alt="<?php echo getTitle($item) ?>">
                             </a>
                         <?php endforeach; ?>
@@ -99,8 +99,8 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                     <?php $bannerBottomSlider = listBannerByPosition(181, 1);
                     if (!empty($bannerBottomSlider)) foreach ($bannerBottomSlider as $item) : ?>
                         <a href="<?php echo $item->url ?>" title="banner sidebar" rel="nofollow">
-                            <img src="<?php echo getImageThumb($item->thumbnail, 1200, 75, true) ?>"
-                                 data-src="<?php echo getImageThumb($item->thumbnail, 1200, 75, true) ?>"
+                            <img src="<?php echo getImageThumb($item->thumbnail, 1200, 75) ?>"
+                                 data-src="<?php echo getImageThumb($item->thumbnail, 1200, 75) ?>"
                                  class="lazy" alt="<?php echo getTitle($item) ?>">
                         </a>
                     <?php endforeach; ?>

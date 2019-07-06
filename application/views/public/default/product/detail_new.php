@@ -25,7 +25,7 @@ if (!empty($oneItem)):
                                     <div class="slide-for">
                                         <?php if (!empty($album)) foreach ($album as $item): ?>
                                             <div>
-                                                <img class="img-responsive" src="<?php echo getImageThumb($item, '200', '200',false,true) ?>" alt="<?php echo getTitle($oneItem) ?>">
+                                                <img class="img-responsive" src="<?php echo getImageThumb($item, '200', '200',false) ?>" alt="<?php echo getTitle($oneItem) ?>">
                                             </div>
                                         <?php endforeach ?>
                                     </div>
@@ -36,7 +36,7 @@ if (!empty($oneItem)):
                                     <div class="slide-nav">
                                         <?php if (!empty($album)) foreach ($album as $item): ?>
                                             <div>
-                                                <img class="img-responsive" src="<?php echo getImageThumb($item, '670', '550', false, true) ?>" alt="<?php echo getTitle($oneItem) ?>">
+                                                <img class="img-responsive" src="<?php echo getImageThumb($item, '670', '550', false) ?>" alt="<?php echo getTitle($oneItem) ?>">
                                             </div>
                                         <?php endforeach ?>
                                     </div>
