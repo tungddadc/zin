@@ -6,87 +6,89 @@
  * Time: 12:40 PM
  */
 defined('BASEPATH') OR exit('No direct script access allowed'); ?>
-<div class="container">
-    <div class="row">
-		<div class="col-md-9 col-sm-8 col-xs-12">
-			<div class="home-slider">
-				<?php $home_slider = listBannerByPosition(1);
-				if (!empty($home_slider)): ?>
+<section class="main-banner">
+    <div class="container">
+        <div class="row">
+    		<div class="col-md-9 col-sm-8 col-xs-12 column">
+    			<div class="home-slider">
+    				<?php $home_slider = listBannerByPosition(1);
+    				if (!empty($home_slider)): ?>
 
-					<div id="sync1" class="owl-carousel">
-						<?php foreach ($home_slider as $item) : ?>
-							<div class="item">
-								<a title="<?php echo getTitle($item) ?>" href="<?php echo $item->url ?>">
-									<img src="<?php echo getImageThumb($item->thumbnail, 1920, 630, true) ?>"
-										 alt="<?php echo getTitle($item) ?>">
-								</a>
-							</div>
-						<?php endforeach; ?>
+    					<div id="sync1" class="owl-carousel">
+    						<?php foreach ($home_slider as $item) : ?>
+    							<div class="item">
+    								<a title="<?php echo getTitle($item) ?>" href="<?php echo $item->url ?>">
+    									<img src="<?php echo getImageThumb($item->thumbnail, 1920, 630, true) ?>"
+    										 alt="<?php echo getTitle($item) ?>">
+    								</a>
+    							</div>
+    						<?php endforeach; ?>
 
-					</div>
-				<?php endif; ?>
+    					</div>
+    				<?php endif; ?>
 
-				<?php
-				if (!empty($home_slider)): ?>
-					<div id="sync2" class="owl-carousel">
-						<?php foreach ($home_slider as $item) : ?>
-							<div class="item">
-								<a title="<?php echo getTitle($item) ?>"
-								   href="<?php echo $item->url ?>"><?php echo $item->description ?></a>
-							</div>
-						<?php endforeach; ?>
-					</div>
-				<?php endif; ?>
+    				<?php
+    				if (!empty($home_slider)): ?>
+    					<div id="sync2" class="owl-carousel">
+    						<?php foreach ($home_slider as $item) : ?>
+    							<div class="item">
+    								<a title="<?php echo getTitle($item) ?>"
+    								   href="<?php echo $item->url ?>"><?php echo $item->description ?></a>
+    							</div>
+    						<?php endforeach; ?>
+    					</div>
+    				<?php endif; ?>
 
-			</div>
-		</div>
-		<div class="col-md-3 col-sm-4 hidden-xs padding-0">
-			<div class="side-banner">
-				<aside class="homenews">
-					<figure>
-						<h2><a href="<?php echo site_url('tin-tuc.html') ?>">Tin công nghệ</a>
+    			</div>
+    		</div>
+    		<div class="col-md-3 col-sm-4 hidden-xs padding-0 column">
+    			<div class="side-banner">
+    				<aside class="homenews">
+    					<figure>
+    						<h2><a href="<?php echo site_url('tin-tuc.html') ?>">Tin công nghệ</a>
 
-						</h2>
-						<div class="_circle">
-							<div class="circle circle1"></div>
-							<div class="circle circle2"></div>
-							<div class="circle circle3"></div>
-						</div>
-					</figure>
-					<ul>
-						<li>
-							<?php
-							if (!empty($home_news)) {
-								?>
-								<a href="<?php getUrlNews($home_news[0]) ?>">
-									<img width="100" height="70"
-										 src="<?php echo getImageThumb($home_news[0]->thumbnail, 100, 70, true); ?>"
-										 alt="<?php echo $home_news[0]->title ?>">
-									<h3><?php echo $home_news[0]->title ?></h3>
-									<span><?php echo timeAgo($home_news[0]->created_time) ?></span>
-								</a>
-								<?php
-							}
-							?>
+    						</h2>
+    						<div class="_circle">
+    							<div class="circle circle1"></div>
+    							<div class="circle circle2"></div>
+    							<div class="circle circle3"></div>
+    						</div>
+    					</figure>
+    					<ul>
+    						<li>
+    							<?php
+    							if (!empty($home_news)) {
+    								?>
+    								<a href="<?php getUrlNews($home_news[0]) ?>">
+    									<img width="100" height="70"
+    										 src="<?php echo getImageThumb($home_news[0]->thumbnail, 100, 70, true); ?>"
+    										 alt="<?php echo $home_news[0]->title ?>">
+    									<h3><?php echo $home_news[0]->title ?></h3>
+    									<span><?php echo timeAgo($home_news[0]->created_time) ?></span>
+    								</a>
+    								<?php
+    							}
+    							?>
 
-						</li>
-					</ul>
-					<div class="twobanner">
-						<?php $bannerSidebarTop = listBannerByPosition(2, 2);
-						if (!empty($bannerSidebarTop)) foreach ($bannerSidebarTop as $item): ?>
-							<a href="<?php echo $item->url ?>" title="banner sidebar" rel="nofollow">
-								<img src="<?php echo getImageThumb($item->thumbnail, 398, 110, true) ?>"
-									 data-src="<?php echo getImageThumb($item->thumbnail, 398, 110, true) ?>"
-									 class="lazy" alt="<?php echo getTitle($item) ?>">
-							</a>
-						<?php endforeach; ?>
-					</div>
+    						</li>
+    					</ul>
+    					<div class="twobanner">
+    						<?php $bannerSidebarTop = listBannerByPosition(2, 2);
+    						if (!empty($bannerSidebarTop)) foreach ($bannerSidebarTop as $item): ?>
+    							<a href="<?php echo $item->url ?>" title="banner sidebar" rel="nofollow">
+    								<img src="<?php echo getImageThumb($item->thumbnail, 398, 110, true) ?>"
+    									 data-src="<?php echo getImageThumb($item->thumbnail, 398, 110, true) ?>"
+    									 class="lazy" alt="<?php echo getTitle($item) ?>">
+    							</a>
+    						<?php endforeach; ?>
+    					</div>
 
-				</aside>
-			</div>
-		</div>
+    				</aside>
+    			</div>
+    		</div>
+        </div>
     </div>
-</div>
+</section>
 
 <section class="main-container col2-left-layout">
     <div class="container">
@@ -110,7 +112,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                                                 <a href="<?php echo getUrlCateProduct($itemChild) ?>"
                                                    title="<?php echo getTitle($itemChild) ?>"><?php echo $itemChild->title ?></a>
                                             <?php endforeach; ?>
-                                            <span class="list-all"><i class="fa fa-angle-double-right"
+                                            <span class="list-all"><i class="hidden fa fa-angle-double-right"
                                                                       aria-hidden="true"></i><a
                                                         href="<?php echo getUrlCateProduct($oneCategory) ?>"
                                                         title="Xem tất cả sản phẩm trong <?php echo getTitle($oneCategory) ?>">Xem tất cả</a></span>
