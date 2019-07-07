@@ -141,3 +141,4 @@ if (!function_exists('getWatermark')) {
             return false;
         }
     }
+}
