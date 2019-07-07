@@ -1,3 +1,4 @@
+
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 if (!function_exists('getImageThumb')) {
     function getImageThumb($image = '',$width = '',$height= '', $crop = false, $watermark = false){
@@ -52,7 +53,7 @@ if (!function_exists('getImageThumb')) {
                     log_message('error',"Error resize image: $sourceImage to $newPathImage =>" . $CI->image_lib->display_errors());
                 }
                 $CI->image_lib->clear();
-                if(!empty($watermark)){
+                /*if(!empty($watermark)){
                     $watermarkImage = getWatermark($width,$height);
                     if(!empty($watermarkImage)){
                         $config_watermark['image_library']       = 'gd2';
@@ -67,16 +68,16 @@ if (!function_exists('getImageThumb')) {
                         $CI->image_lib->watermark();
                         $CI->image_lib->clear();
                     }
-                }
+                }*/
 
                 if($crop == true){
                     $image_config['image_library'] = 'gd2';
                     $image_config['source_image'] = $newPathImage;
                     $image_config['new_image'] = $newPathImage;
-                    $image_config['quality'] = "80%";
+//                    $image_config['quality'] = "80%";
                     $image_config['maintain_ratio'] = FALSE;
-                    $image_config['width'] = $width;
-                    $image_config['height'] = $height;
+                    $image_config['width'] = $width-10;
+                    $image_config['height'] = $height-10;
                     $imageSize = getimagesize($newPathImage);
                     $imageWidth = intval($imageSize[0]);
                     $imageHeight = intval($imageSize[1]);
@@ -140,4 +141,3 @@ if (!function_exists('getWatermark')) {
             return false;
         }
     }
-}

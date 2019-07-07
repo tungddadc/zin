@@ -230,7 +230,7 @@ if (!function_exists('listBannerByPosition')) {
     $_this =& get_instance();
     $_this->load->model('banner_model');
     $bannerModel = new Banner_model();
-    $data = $bannerModel->getData(['lang_code' => $_this->session->public_lang_code, 'property_id' => $position_id]);
+    $data = $bannerModel->getData(['lang_code' => $_this->session->public_lang_code, 'property_id' => $position_id, 'is_status' => 1]);
     return $data;
   }
 

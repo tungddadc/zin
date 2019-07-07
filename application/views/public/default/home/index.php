@@ -7,89 +7,90 @@
  */
 defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
-<div class="container-fluid">
-    <div class="row">
+<section class="main-banner">
+    <div class="container-fluid">
+        <div class="row">
 
-        <div class="col-md-9 col-sm-8 col-xs-12">
-            <div class="home-slider">
-                <?php $home_slider = listBannerByPosition(1);
-                if (!empty($home_slider)): ?>
+            <div class="col-md-9 col-sm-8 col-xs-12">
+                <div class="home-slider">
+                    <?php $home_slider = listBannerByPosition(1);
+                    if (!empty($home_slider)): ?>
 
-                    <div id="sync1" class="owl-carousel">
-                        <?php foreach ($home_slider as $item) : ?>
-                            <div class="item">
-                                <a title="<?php echo getTitle($item) ?>" href="<?php echo $item->url ?>">
-                                    <img src="<?php echo getImageThumb($item->thumbnail, 1920, 630, true) ?>"
-                                         alt="<?php echo getTitle($item) ?>">
-                                </a>
-                            </div>
-                        <?php endforeach; ?>
+                        <div id="sync1" class="owl-carousel">
+                            <?php foreach ($home_slider as $item) : ?>
+                                <div class="item">
+                                    <a title="<?php echo getTitle($item) ?>" href="<?php echo $item->url ?>">
+                                        <img src="<?php echo getImageThumb($item->thumbnail, 1920, 630, true) ?>"
+                                             alt="<?php echo getTitle($item) ?>">
+                                    </a>
+                                </div>
+                            <?php endforeach; ?>
 
-                    </div>
-                <?php endif; ?>
-
-                <?php $home_slider = listBannerByPosition(1);
-                if (!empty($home_slider)): ?>
-                    <div id="sync2" class="owl-carousel">
-                        <?php foreach ($home_slider as $item) : ?>
-                            <div class="item">
-                                <a title="<?php echo getTitle($item) ?>"
-                                     href="<?php echo $item->url ?>"><?php echo $item->description ?></a>
-                            </div>
-                        <?php endforeach; ?>
-                    </div>
-                <?php endif; ?>
-
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-4 hidden-xs">
-            <div class="side-banner">
-                <aside class="homenews">
-                    <figure>
-                        <h2><a href="<?php echo site_url('tin-tuc.html') ?>">Tin công nghệ</a>
-
-                        </h2>
-                        <div class="_circle">
-                            <div class="circle circle1"></div>
-                            <div class="circle circle2"></div>
-                            <div class="circle circle3"></div>
                         </div>
-                    </figure>
-                    <ul>
-                        <li>
-                            <?php
-                            if (!empty($home_news)) {
-                                ?>
-                                <a href="<?php getUrlNews($home_news[0]) ?>">
-                                    <img width="100" height="70"
-                                         src="<?php echo getImageThumb($home_news[0]->thumbnail, 100, 70, true); ?>"
-                                         alt="<?php echo $home_news[0]->title ?>">
-                                    <h3><?php echo $home_news[0]->title ?></h3>
-                                    <span><?php echo timeAgo($home_news[0]->created_time) ?></span>
-                                </a>
-                                <?php
-                            }
-                            ?>
+                    <?php endif; ?>
 
-                        </li>
-                    </ul>
-                    <div class="twobanner">
-                        <?php $bannerSidebarTop = listBannerByPosition(2, 2);
-                        if (!empty($bannerSidebarTop)) foreach ($bannerSidebarTop as $item): ?>
-                            <a href="<?php echo $item->url ?>" title="banner sidebar" rel="nofollow">
-                                <img src="<?php echo getImageThumb($item->thumbnail, 398, 110, true) ?>"
-                                     data-src="<?php echo getImageThumb($item->thumbnail, 398, 110, true) ?>"
-                                     class="lazy" alt="<?php echo getTitle($item) ?>">
-                            </a>
-                        <?php endforeach; ?>
-                    </div>
+                    <?php $home_slider = listBannerByPosition(1);
+                    if (!empty($home_slider)): ?>
+                        <div id="sync2" class="owl-carousel">
+                            <?php foreach ($home_slider as $item) : ?>
+                                <div class="item">
+                                    <a title="<?php echo getTitle($item) ?>"
+                                       href="<?php echo $item->url ?>"><?php echo $item->description ?></a>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif; ?>
 
-                </aside>
+                </div>
             </div>
-        </div>
+            <div class="col-md-3 col-sm-4 pl-0 hidden-xs">
+                <div class="side-banner">
+                    <aside class="homenews">
+                        <figure>
+                            <h2><a href="<?php echo site_url('tin-tuc.html') ?>">Tin công nghệ</a>
 
+                            </h2>
+                            <div class="_circle">
+                                <div class="circle circle1"></div>
+                                <div class="circle circle2"></div>
+                                <div class="circle circle3"></div>
+                            </div>
+                        </figure>
+                        <ul>
+                            <li>
+                                <?php
+                                if (!empty($home_news)) {
+                                    ?>
+                                    <a href="<?php getUrlNews($home_news[0]) ?>">
+                                        <img width="100" height="70"
+                                             src="<?php echo getImageThumb($home_news[0]->thumbnail, 100, 70, true); ?>"
+                                             alt="<?php echo $home_news[0]->title ?>">
+                                        <h3><?php echo $home_news[0]->title ?></h3>
+                                        <span><?php echo timeAgo($home_news[0]->created_time) ?></span>
+                                    </a>
+                                    <?php
+                                }
+                                ?>
+
+                            </li>
+                        </ul>
+                        <div class="twobanner">
+                            <?php $bannerSidebarTop = listBannerByPosition(2, 2);
+                            if (!empty($bannerSidebarTop)) foreach ($bannerSidebarTop as $item): ?>
+                                <a href="<?php echo $item->url ?>" title="banner sidebar" rel="nofollow">
+                                    <img src="<?php echo getImageThumb($item->thumbnail, 398, 110) ?>"
+                                         data-src="<?php echo getImageThumb($item->thumbnail, 398, 110) ?>"
+                                         class="lazy" alt="<?php echo getTitle($item) ?>">
+                                </a>
+                            <?php endforeach; ?>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+
+        </div>
     </div>
-</div>
+</section>
 
 <section class="main-container">
     <div class="container-fluid">
@@ -99,8 +100,8 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                     <?php $bannerBottomSlider = listBannerByPosition(181, 1);
                     if (!empty($bannerBottomSlider)) foreach ($bannerBottomSlider as $item) : ?>
                         <a href="<?php echo $item->url ?>" title="banner sidebar" rel="nofollow">
-                            <img src="<?php echo getImageThumb($item->thumbnail, 1200, 75, true) ?>"
-                                 data-src="<?php echo getImageThumb($item->thumbnail, 1200, 75, true) ?>"
+                            <img src="<?php echo getImageThumb($item->thumbnail, 1200, 75) ?>"
+                                 data-src="<?php echo getImageThumb($item->thumbnail, 1200, 75) ?>"
                                  class="lazy" alt="<?php echo getTitle($item) ?>">
                         </a>
                     <?php endforeach; ?>
@@ -114,7 +115,8 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                                 <div class="navbar-collapse">
                                     <div class="nav-category">
                                         <h2 class="nav-category-title">
-                                            <a href="<?php echo getUrlCateProduct($oneCategory) ?>" title="<?php echo getTitle($oneCategory) ?>"><?php echo $oneCategory->title ?></a>
+                                            <a href="<?php echo getUrlCateProduct($oneCategory) ?>"
+                                               title="<?php echo getTitle($oneCategory) ?>"><?php echo $oneCategory->title ?></a>
                                         </h2>
 
                                         <div class="view-list-child">
@@ -151,11 +153,11 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 </section>
 
 <section class="main-container">
-<?php $this->load->view($this->template_path . 'page/page_home_about'); ?>
+    <?php $this->load->view($this->template_path . 'page/page_home_about'); ?>
 </section>
 
 <section class="main-container">
-<?php $this->load->view($this->template_path . 'page/page_home_review_company'); ?>
+    <?php $this->load->view($this->template_path . 'page/page_home_review_company'); ?>
 </section>
 
 <!-- Latest Blog -->
@@ -201,4 +203,3 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     </div>
 </section>
 <!-- End Latest Blog -->
-
