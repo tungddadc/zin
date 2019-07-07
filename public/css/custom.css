@@ -2726,7 +2726,9 @@ header{
     overflow: hidden;
     margin-bottom: 20px;
 }
-
+slick-track {
+    transform: translate3d(0px, 0px, 0px) !important;
+}
 .slide-for .slick-list {
     height: 550px !important;
 }
@@ -3069,6 +3071,25 @@ ul {}
     .cat-icon{
         padding: 20px;
     }
+
+    /*Slide*/
+    .product-box-right {
+        background-color: #fff;
+        padding: 6px 15px;
+        margin-bottom: 20px;
+        min-height: 550px;
+
+    }
+
+    .product-img {
+        overflow: hidden;
+        margin-bottom: 20px;
+    }
+
+    .slide-for .slick-list {
+        height: 350px !important;
+    }
+
 }
 
 img {

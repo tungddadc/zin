@@ -3,9 +3,9 @@
 if (!empty($oneItem)):
     $url = getUrlProduct($oneItem);
     $album = !empty($oneItem->album) ? json_decode($oneItem->album) : [];
-?>
+    ?>
 
-<section class="main-container col1-layout">
+    <section class="main-container col1-layout">
         <div class="container">
             <div class="row">
                 <!-- Breadcrumbs -->
@@ -13,7 +13,7 @@ if (!empty($oneItem)):
                     <div class="breadcrumbs">
                         <?php echo !empty($breadcrumb) ? $breadcrumb : '' ?>
                     </div>
-					
+
                 </div>
                 <!-- Breadcrumbs End -->
 
@@ -102,20 +102,20 @@ if (!empty($oneItem)):
                             <div class="add-to-box clear-after">
                                 <div class="add-to-cart clear-after" data-id="<?php echo $oneItem->id ?>">
                                     <div class="custom pull-left">
-                                            <button onClick="CART.quantity_reduced(this)"
-                                                    class="reduced items-count <?php echo $this->session->userdata('is_agency') == true ? 'is-agency' : '' ?>"
-                                                    type="button">
-                                                <i class="fa fa-minus">&nbsp;</i>
-                                            </button>
-                                            <input onkeyup="CART.changeInputQuantity(this)" type="text"
-                                                   class="input-text qty" title="Số lượng" value="1"
-                                                   maxlength="<?php echo $oneItem->quantity ?>" name="quantity">
-                                            <button onClick="CART.quantity_increase(this)"
-                                                    class="increase items-count <?php echo $this->session->userdata('is_agency') == true ? 'is-agency' : '' ?>"
-                                                    type="button">
-                                                <i class="fa fa-plus">&nbsp;</i>
-                                            </button>
-                                        </div>
+                                        <button onClick="CART.quantity_reduced(this)"
+                                                class="reduced items-count <?php echo $this->session->userdata('is_agency') == true ? 'is-agency' : '' ?>"
+                                                type="button">
+                                            <i class="fa fa-minus">&nbsp;</i>
+                                        </button>
+                                        <input onkeyup="CART.changeInputQuantity(this)" type="text"
+                                               class="input-text qty" title="Số lượng" value="1"
+                                               maxlength="<?php echo $oneItem->quantity ?>" name="quantity">
+                                        <button onClick="CART.quantity_increase(this)"
+                                                class="increase items-count <?php echo $this->session->userdata('is_agency') == true ? 'is-agency' : '' ?>"
+                                                type="button">
+                                            <i class="fa fa-plus">&nbsp;</i>
+                                        </button>
+                                    </div>
                                     <button class="button btn-cart" title="Thêm vào giỏ hàng" type="submit">Thêm vào giỏ
                                     </button>
                                 </div>
