@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .pl-0 {
     padding-left: 0;
 }
@@ -6,4 +7,14 @@
 }
 .main-banner .twobanner img {
 	height: 100px;
+=======
+.pl-0 {
+    padding-left: 0;
+}
+#main-header {
+    margin-bottom: 15px;
+}
+.main-banner .twobanner img {
+	height: 100px;
+>>>>>>> 2c16311bf413aa7c1ad04ed59793492495510271
 }

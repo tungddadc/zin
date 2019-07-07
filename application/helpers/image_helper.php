@@ -1,3 +1,4 @@
+
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 if (!function_exists('getImageThumb')) {
     function getImageThumb($image = '',$width = '',$height= '', $crop = false, $watermark = false){
@@ -140,4 +141,3 @@ if (!function_exists('getWatermark')) {
             return false;
         }
     }
-}

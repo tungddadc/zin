@@ -203,4 +203,3 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     </div>
 </section>
 <!-- End Latest Blog -->
-
