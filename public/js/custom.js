@@ -1063,6 +1063,5 @@ function live_search(key_search) {
         }
     });
 }
-
 CART.hover_cart();
 
