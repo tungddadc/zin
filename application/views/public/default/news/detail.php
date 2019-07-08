@@ -29,7 +29,7 @@
                       <div class="entry-content">
                         <?php echo $oneItem->content ?>
                       </div>
-                      <?php if (!empty($list_related)): ?>
+                      <!--<?php if (!empty($list_related)): ?>
                         <div class="_post_related">
                           <h3>Tin tức liên quan</h3>
                           <ul>
@@ -38,7 +38,7 @@
                             endforeach; ?>
                           </ul>
                         </div>
-                      <?php endif; ?>
+                      <?php endif; ?>-->
                     </div>
                   </article>
                   <div class="clearfix"></div>

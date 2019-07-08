@@ -1,3 +1,4 @@
+
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 if (!function_exists('getImageThumb')) {
     function getImageThumb($image = '',$width = '',$height= '', $crop = false, $watermark = false){
@@ -73,10 +74,10 @@ if (!function_exists('getImageThumb')) {
                     $image_config['image_library'] = 'gd2';
                     $image_config['source_image'] = $newPathImage;
                     $image_config['new_image'] = $newPathImage;
-                    $image_config['quality'] = "80%";
+//                    $image_config['quality'] = "80%";
                     $image_config['maintain_ratio'] = FALSE;
-                    $image_config['width'] = $width;
-                    $image_config['height'] = $height;
+                    $image_config['width'] = $width-10;
+                    $image_config['height'] = $height-10;
                     $imageSize = getimagesize($newPathImage);
                     $imageWidth = intval($imageSize[0]);
                     $imageHeight = intval($imageSize[1]);
@@ -104,23 +105,24 @@ if (!function_exists('getImageThumb')) {
 }
 
 if (!function_exists('getWatermark')) {
-    function getWatermark($width = '',$height= ''){
+    function getWatermark($width = '', $height = '')
+    {
         $CI =& get_instance();
         $CI->load->model('setting_model');
         $settings = $CI->setting_model->getAll();
-        $width = intval(250/2);
-        $height = intval(300/2);
+        $width = intval(250 / 2);
+        $height = intval(300 / 2);
         $image = !empty($settings['watermark']) ? $settings['watermark'] : null;
-        $image = ltrim($image,'/');
-        if(!empty($image)){
+        $image = ltrim($image, '/');
+        if (!empty($image)) {
             $source_image = MEDIA_PATH . $image;
             $size = sprintf('-%dx%d', $width, $height);
             $part = explode('.', $image);
-            $ext = '.'.end($part);
-            $newImage = str_replace($ext,$size.$ext, $image);
+            $ext = '.' . end($part);
+            $newImage = str_replace($ext, $size . $ext, $image);
             $newPathImage = MEDIA_PATH . $newImage;
 
-            if(!file_exists($newPathImage)) {
+            if (!file_exists($newPathImage)) {
                 $CI->load->library('image_lib');
                 $config_watermark['image_library'] = 'gd2';
                 $config_watermark['source_image'] = $source_image;
@@ -131,12 +133,12 @@ if (!function_exists('getWatermark')) {
                 $config_watermark['width'] = $width;
                 $CI->image_lib->initialize($config_watermark);
                 if (!$CI->image_lib->resize()) {
-                    log_message('error',"Error watermark image: $newPathImage =>" . $CI->image_lib->display_errors());
+                    log_message('error', "Error watermark image: $newPathImage =>" . $CI->image_lib->display_errors());
                 }
                 $CI->image_lib->clear();
             }
             return $newPathImage;
-        }else{
+        } else {
             return false;
         }
     }

@@ -122,7 +122,6 @@ class Post extends Admin_Controller
     }
 
     private function save_category($id, $data) {
-        dd($data);
         if (!empty($data)) foreach ($data as $category_id) {
             $data_category = ["{$this->_data->table}_id" => $id, 'category_id' => $category_id];
             if (!$this->_data->insertOnUpdate($data_category, $this->_data->table_category)) {
