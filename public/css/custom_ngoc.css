@@ -282,7 +282,7 @@ nav#menu-main {
         left: 0;
         height: 3px;
         width: 25px;
-        background-color: rgb(251, 175, 63);
+        background-color: rgb(251, 175, 63); 
     }
 }
 @media (max-width: 480px) {
@@ -318,4 +318,30 @@ nav#menu-main {
 }
 ._post_related {
     font-size: 16px;
+}
+.coccoc-alo-phone .coccoc-alo-ph-circle-fill {
+    top: 55px;
+    left: 55px;
+    width: 80px;
+    height: 80px;
+}
+.coccoc-alo-phone .coccoc-alo-ph-img-circle {
+    background: none;
+    color: #fff;
+    font-size: 30px;
+    text-align: center;
+    line-height: 50px;
+    width: 50px;
+    height: 50px;
+}
+.coccoc-alo-phone .phone_text {
+    white-space: nowrap;
+    padding: 5px;
+    left: 20px;
+}
+.coccoc-alo-phone .coccoc-alo-ph-circle {
+    width: 140px;
+    height: 140px;
+    top: 25px;
+    left: 25px;
 }

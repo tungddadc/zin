@@ -101,7 +101,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
     <a href="tel:<?php echo $this->settings['hotline'] ?>" title="<?php echo $this->settings['hotline'] ?>" data-original-title="Liên hệ với chúng tôi">
         <div class="coccoc-alo-ph-circle"></div>
         <div class="coccoc-alo-ph-circle-fill"></div>
-        <div class="coccoc-alo-ph-img-circle"></div>
+        <div class="coccoc-alo-ph-img-circle"><i class="fa fa-phone"></i></div>
         <span class="phone_text">Hotline: <?php echo $this->settings['hotline'] ?></span>
     </a>
 </div>
