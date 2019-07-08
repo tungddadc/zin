@@ -36,3 +36,50 @@
     height: 235px;
     object-fit: contain;
 }
+a:focus, a:hover {
+    text-decoration: none!important;
+}
+.price-slider .owl-buttons .fa {
+	background: transparent;
+    color: #be1e2d;
+    line-height: 30px;
+    width: 30px;
+    padding: 0;
+    height: 30px;
+    font-size: 20px!important;
+    position: absolute;
+    top: 50%;
+	transform: translateY(-25px);
+	-moz-transform: translateY(-25px);
+    -webkit-transform: translateY(-25px);
+    -o-transform: translateY(-25px);
+}
+.price-slider .flex-prev .fa {
+	left: 0;
+}
+.price-slider .flex-next .fa {
+	right: 0;
+}
+.price-slider .owl-buttons a:hover .fa,
+.price-slider .owl-buttons a:focus .fa {
+	background: #c70416;
+	color: #fff;
+}
+.price-slider .price-item {
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    padding: 10px 0;
+    height: 60px;
+}
+.price-slider .price-item .price {
+    font-size: 15px;
+    color: #456883;
+    font-weight: bold;
+}
+.price-slider.owl-theme .owl-controls {
+	margin-top: 0;
+}
+.price-slider.owl-theme .owl-controls .owl-buttons div {
+	opacity: 1;
+	filter: alpha(opacity=50);
+}
