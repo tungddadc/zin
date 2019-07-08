@@ -115,9 +115,13 @@ class Product extends Admin_Controller
     }
 
     private function save_category($id, $data){
+        $this->_data->delete([$this->_data->table.'_id'=>$id],$this->_data->table_category);
         if(!empty($data)) foreach ($data as $category_id){
-            $data_category = ["{$this->_data->table}_id" => $id, 'category_id' => $category_id];
-            if(!$this->_data->insertOnUpdate($data_category, $this->_data->table_category)){
+            $tmp = ["{$this->_data->table}_id" => $id, 'category_id' => $category_id];
+            $data_category[] = $tmp;
+        }
+        if(!empty($data_category)){
+            if(!$this->_data->insertMultiple($data_category, $this->_data->table_category)){
                 $message['type'] = 'error';
                 $message['message'] = "Thêm {$this->_data->table_category} thất bại !";
                 log_message('error', $message['message'] . '=>' . json_encode($data_category));
@@ -125,6 +129,7 @@ class Product extends Admin_Controller
             }
         }
     }
+
 
     private function save_property($id, $data){
         $tmpProperty = [];

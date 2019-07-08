@@ -344,15 +344,15 @@ class STEVEN_Model extends CI_Model
 	}
 
 
-	public function insertMultiple($data, $tablename = '')
-	{
-		if ($tablename == '') {
-			$tablename = $this->table;
-		}
-		$this->db->insert_batch($tablename, $data);
+    public function insertMultiple($data, $tablename = '')
+    {
+        if ($tablename == '') {
+            $tablename = $this->table;
+        }
+        $this->db->insert_batch($tablename, $data);
 
-		return $this->db->affected_rows();
-	}
+        return $this->db->affected_rows();
+    }
 
 	public function insertOnUpdate($data, $tablename = '')
 	{
