@@ -20,7 +20,7 @@
 .mini-promotion .mini-banner-wrap .mini-item {
     width: 33.33%;
     display: grid;
-    height: 206px; 
+    /*height: 206px;*/ 
 }
 
 .col-main .category-products .products-grid {
