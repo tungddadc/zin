@@ -66,7 +66,7 @@
                                     </div>
                                     <!-- end: more-images -->
                                 </div>
-                                <div class="product-shop col-lg-5 col-sm-5 col-xs-12">
+                                <div class="product-shop col-lg-6 col-sm-6 col-xs-12">
                                     <div class="product-next-prev">
                                         <?php if (!empty($oneNext)): ?>
                                             <a class="product-next" href="<?php echo getUrlProduct($oneNext) ?>"
@@ -105,41 +105,135 @@
                                     <?php echo form_open('cart/add', ['id' => 'product_addtocart_form']) ?>
                                     <input name="product_id" value="<?php echo $oneItem->id ?>" type="hidden">
                                     <input name="image" value="<?php echo getImageThumb($oneItem->thumbnail,100,100,true) ?>" type="hidden">
-                                    <div class="price-block">
-                                        <div class="price-box">
-                                            <?php if($this->session->userdata('is_agency') == true && !empty($oneItem->price_agency)): ?>
-                                                <p class="special-price">
-                                                    <span class="price-label">Giá đại lý:</span>
-                                                    <span class="price"><?php echo formatMoney($oneItem->price_agency) ?></span>
-                                                </p>
-                                            <?php else: ?>
-                                                <?php if(!empty($oneItem->price_sale)): ?>
-                                                    <p class="special-price">
-                                                        <span class="price-label">Giá khuyến mại:</span>
-                                                        <span class="price"><?php echo formatMoney($oneItem->price_sale) ?></span>
-                                                    </p>
-                                                    <p class="old-price">
-                                                        <span class="price-label">Giá gốc:</span>
-                                                        <span class="price"><?php echo formatMoney($oneItem->price) ?></span>
-                                                    </p>
-                                                <?php else: ?>
-                                                    <p class="special-price">
-                                                        <span class="price-label">Giá:</span>
-                                                        <span class="price"><?php echo formatMoney($oneItem->price) ?></span>
-                                                    </p>
-                                                <?php endif; ?>
-                                            <?php endif; ?>
-                                            <p class="availability in-stock pull-right">
-                                                <?php echo $this->session->userdata('is_agency') == true ? '<span class="agency">Đại lý</span>' : ''  ?>
-                                                <?php echo !empty($data_stock[0]->Amount) ? '<span class="instock">Còn hàng</span>' : '<span class="outstock">Hết hàng</span>' ?>
-                                            </p>
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <p class="sold pull-left">Lượt xem: <strong><?php echo $oneItem->viewed ?></strong> đã xem. </p>
-                                                    <p class="sold pull-right">Đã bán <strong><?php echo $oneItem->viewed > 1000 ? $oneItem->viewed - 555 : $oneItem->viewed - 333 ?></strong> sản phẩm. </p>
-                                                    <p class="sold clearfix">Tỷ lệ bảo hành: <strong> <5%</strong></p>
+                                    <div class="d-flex pricing-style1">
+                                        <div class="col">
+                                            <label>
+                                                <input type="radio" name="product-detail-radio" value="0" checked>
+                                                <div class="pricing-plan">
+                                                    <div class="pricing-head">
+                                                        <img src="<?php echo $this->templates_assets ?>images/shape.svg"
+                                                             class="shape" alt="">
+                                                        <img src="<?php echo $this->templates_assets ?>images/shape_hover.svg"
+                                                             class="shape_hover" alt="">
+                                                        <div class="name">giá lẻ cửa hàng</div>
+                                                        <div class="price">
+                                                            <span class="value"><?php echo !empty($oneItem->price) ? formatMoney($oneItem->price) : "" ?></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="pricing-body">
+                                                        <p>Số lượng áp dụng từ 01~05</p>
+                                                        <p>Miễn phí vận chuyển đơn hàng trên 2.000.000 VND</p>
+                                                        <p>Đơn hàng tối thiểu 200.000 VND</p>
+                                                    </div>
+                                                    <div class="pricing-footer">
+                                                        <div class="p-button">Chọn</div>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            </label>
+                                        </div>
+                                        <div class="col">
+                                            <label>
+                                                <input type="radio" name="product-detail-radio" value="1">
+                                                <div class="pricing-plan">
+                                                    <div class="pricing-head">
+                                                        <img src="<?php echo $this->templates_assets ?>images/shape.svg"
+                                                             class="shape" alt="">
+                                                        <img src="<?php echo $this->templates_assets ?>images/shape_hover.svg"
+                                                             class="shape_hover" alt="">
+                                                        <div class="name">giá buôn cửa hàng</div>
+                                                        <div class="price">
+                                                            <span class="value"><?php echo !empty($oneItem->price_sale) ? formatMoney($oneItem->price_sale) : "" ?></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="pricing-body">
+                                                        <p>Số lượng áp dụng từ 06~15</p>
+                                                        <p>Miễn phí vận chuyển đơn hàng trên 3.000.000 VND</p>
+                                                        <p>Đơn hàng tối thiểu 500.000 VND</p>
+                                                    </div>
+                                                    <div class="pricing-footer">
+                                                        <p class="p-button">Chọn</p>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+
+                                        <?php if($this->session->userdata('is_agency') == true && !empty($oneItem->price_agency)): ?>
+                                        <div class="col">
+                                            <label>
+                                                <input type="radio" name="product-detail-radio" value="2">
+                                                <div class="pricing-plan">
+                                                    <div class="pricing-head">
+                                                        <img src="<?php echo $this->templates_assets ?>images/shape.svg"
+                                                             class="shape" alt="">
+                                                        <img src="<?php echo $this->templates_assets ?>images/shape_hover.svg"
+                                                             class="shape_hover" alt="">
+                                                        <div class="name">đại lý</div>
+                                                        <div class="price">
+                                                            <span class="value"><?php echo !empty($oneItem->price_agency) ? formatMoney($oneItem->price_agency) : "" ?></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="pricing-body">
+                                                        <p>Số lượng áp dụng lớn hơn 15</p>
+                                                        <p>Bảo hành lưu kho: Dài hạn</p>
+                                                        <p>Hỗ trợ marketing: quảng cáo google, facebook và qua hotline
+                                                            tổng đài</p>
+                                                    </div>
+                                                    <div class="pricing-footer">
+                                                        <p class="p-button">Chọn</p>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <?php endif; ?>
+                                        <div class="col">
+                                            <label>
+                                                <input type="radio" name="product-detail-radio" value="3">
+                                                <div class="pricing-plan">
+                                                    <div class="pricing-head">
+                                                        <img src="<?php echo $this->templates_assets ?>images/shape.svg"
+                                                             class="shape" alt="">
+                                                        <img src="<?php echo $this->templates_assets ?>images/shape_hover.svg"
+                                                             class="shape_hover" alt="">
+                                                        <div class="name">giá thay khách lẻ</div>
+                                                        <div class="price">
+                                                            <span class="value"><?php echo !empty($oneItem->price_kl) ? formatMoney($oneItem->price_kl) : "" ?></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="pricing-body">
+                                                        <p>Áp dụng cho khách vãng lai</p>
+                                                        <p>Miễn phí bảo dưỡng chi tiết máy</p>
+                                                        <p>Tặng voucher 10% cho lần sửa kế tiếp</p>
+                                                    </div>
+                                                    <div class="pricing-footer">
+                                                        <p class="p-button">Chọn</p>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div class="col">
+                                            <label>
+                                                <input type="radio" name="product-detail-radio" value="4">
+                                                <div class="pricing-plan">
+                                                    <div class="pricing-head">
+                                                        <img src="<?php echo $this->templates_assets ?>images/shape.svg"
+                                                             class="shape" alt="">
+                                                        <img src="<?php echo $this->templates_assets ?>images/shape_hover.svg"
+                                                             class="shape_hover" alt="">
+                                                        <div class="name">giá thay khách vip</div>
+                                                        <div class="price">
+                                                            <span class="value"><?php echo !empty($oneItem->price_ek) ? formatMoney($oneItem->price_ek) : "" ?></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="pricing-body">
+                                                        <p>Áp dụng cho khách quen có thẻ thành viên</p>
+                                                        <p>Miễn phí bảo dưỡng chi tiết máy</p>
+                                                        <p>Tặng voucher 10% cho lần sửa kế tiếp</p>
+                                                    </div>
+                                                    <div class="pricing-footer">
+                                                        <p class="p-button">Chọn</p>
+                                                    </div>
+                                                </div>
+                                            </label>
                                         </div>
                                     </div>
                                     <div style="    border-bottom: 1px #ddd dotted;">
@@ -213,7 +307,7 @@
                                     <?php endif; ?>
                                     <div id="social-share"></div>
                                 </div>
-                                <div class="product-buy col-lg-3 col-sm-3 col-xs-12">
+                                <div class="product-buy col-lg-2 col-sm-2 col-xs-12">
                                     <div class="widget__sidebar">
                                         <h3 class="widget-title"><span>THÔNG TIN SẢN PHẨM</span></h3>
                                         <div class="info">
