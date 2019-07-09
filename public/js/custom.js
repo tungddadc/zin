@@ -754,29 +754,79 @@ var UI = {
 
     },
     productCarousel: function () {
-        $('.slide-nav').slick({
+        $('.slider-for').slick({
             slidesToShow: 1,
             slidesToScroll: 1,
-            arrows: true,
-            prevArrow: '<a class="slick-btn-prev" href="javscript:void(0)"><i class="fa fa-angle-left" aria-hidden="true"></i></a>',
-            nextArrow: '<a class="slick-btn-next" href="javscript:void(0)"><i class="fa fa-angle-right" aria-hidden="true"></i></a>',
-            fade: true,
-            centerMode: true,
-            dots: true,
-            asNavFor: '.slide-for',
-            autoplay: true,
-            autoplaySpeed: 2000,
-            infinite: true,
-        });
-        $('.slide-for').slick({
-            slidesToShow: 4,
-            slidesToScroll: 1,
-            asNavFor: '.slide-nav',
             arrows: false,
-            dots: true,
-            focusOnSelect: true,
+            fade: true,
+            asNavFor: '.slider-nav'
+        });
+        $('.slider-nav').slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
             vertical: true,
-            infinite: true,
+            verticalSwiping: true,
+            asNavFor: '.slider-for',
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                        infinite: true,
+                        dots: false,
+                        focusOnSelect: true,
+                        vertical: true,
+                        verticalSwiping: true,
+                        arrows: false,
+                        centerMode: true,
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                        dots: false,
+                        focusOnSelect: true,
+                        vertical: false,
+                        verticalSwiping: false,
+                        arrows: false,
+                        centerMode: true,
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1,
+                        dots: false,
+                        focusOnSelect: true,
+                        vertical: false,
+                        verticalSwiping: false,
+                        arrows: false,
+                        centerMode: true,
+                    }
+
+                },
+
+                {
+                    breakpoint: 300,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1,
+                        dots: true,
+                        focusOnSelect: true,
+                        vertical: false,
+                        verticalSwiping: false,
+                        arrows: false,
+                        centerMode: true,
+                    }
+
+                },
+
+
+            ]
         });
     },
     accessoriesCarousel : function () {

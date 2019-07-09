@@ -20,28 +20,23 @@ if (!empty($oneItem)):
                 <div id="ajax-quickview" class="product-essential">
 
                     <div class="col-md-8 col-sm-7 col-xs-12">
-                        <div class="product-img">
-                            <div class="row">
-                                <div class="col-xs-3 col-md-2">
-                                    <div class="slide-for">
-                                        <?php if (!empty($album)) foreach ($album as $item): ?>
-                                            <div>
-                                                <img class="img-responsive" src="<?php echo getImageThumb($item, '200', '200',false) ?>" alt="<?php echo getTitle($oneItem) ?>">
-                                            </div>
-                                        <?php endforeach ?>
-                                    </div>
-
+                        <div class="row">
+                            <div class="col-xs-12 col-md-3">
+                                <div class="slider-nav">
+                                    <?php if (!empty($album)) foreach ($album as $item): ?>
+                                        <div>
+                                            <img class="img-responsive" src="<?php echo getImageThumb($item, '167', '137',false) ?>" alt="<?php echo getTitle($oneItem) ?>">
+                                        </div>
+                                    <?php endforeach ?>
                                 </div>
-
-                                <div class="col-xs-9 col-md-10">
-                                    <div class="slide-nav">
-                                        <?php if (!empty($album)) foreach ($album as $item): ?>
-                                            <div>
-                                                <img class="img-responsive" src="<?php echo getImageThumb($item, '670', '550', false) ?>" alt="<?php echo getTitle($oneItem) ?>">
-                                            </div>
-                                        <?php endforeach ?>
-                                    </div>
-
+                            </div>
+                            <div class="col-xs-12 col-md-9">
+                                <div class="slider-for">
+                                    <?php if (!empty($album)) foreach ($album as $item): ?>
+                                        <div>
+                                            <img class="img-responsive" src="<?php echo getImageThumb($item, '670', '550', false) ?>" alt="<?php echo getTitle($oneItem) ?>">
+                                        </div>
+                                    <?php endforeach ?>
                                 </div>
                             </div>
                         </div>
