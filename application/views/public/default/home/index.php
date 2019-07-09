@@ -94,9 +94,9 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
-                
+                <div class="content-page">
                 <?php if (!empty($home_product['listCategory'])) foreach ($home_product['listCategory'] as $oneCategory): ?>
-                    <div class="content-page">
+                    
                         <div class="category-product">
                             <div class="navbar nav-menu">
                                 <div class="navbar-collapse">
@@ -130,9 +130,9 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    
                 <?php endforeach; ?>
-
+                </div>
                 
             </div>
         </div>
@@ -142,35 +142,37 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 <!-- Latest Blog -->
 <div class="container">
     <div class="row">
-        <div class="blog-outer-container">
-            <div class="block-title">
-                <h2>Tin mới nhất</h2>
-            </div>
-            <div class="blog-inner">
-                <?php if (!empty($home_news)) foreach ($home_news as $item): ?>
-                    <div class="col-lg-4 col-md-4 col-sm-4">
-                        <div class="entry-thumb image-hover2">
-                            <a href="<?php echo getUrlNews($item) ?>" title="<?php echo getTitle($item) ?>">
-                                <img alt="<?php echo getTitle($item) ?>"
-                                     src="<?php echo getImageThumb($item->thumbnail, 340, 160, true, false) ?>">
-                            </a>
-                        </div>
-                        <div class="blog-preview_info">
-                            <h4 class="blog-preview_title">
-                                <a href="<?php echo getUrlNews($item) ?>" title="<?php echo getTitle($item) ?>"><?php echo $item->title ?></a>
-                            </h4>
-                            <ul class="post-meta">
-                                <li><i class="fa fa-eye"></i><?php echo $item->viewed ?></li>
-                                <li><i class="fa fa-clock-o"></i><?php echo timeAgo($item->created_time, 'd/m/Y') ?>
-                                </li>
-                            </ul>
-                            <div class="blog-preview_desc">
-                                <?php echo $item->description ?>
+        <div class="col-sm-12">
+            <div class="blog-outer-container">
+                <div class="block-title">
+                    <h2>Tin mới nhất</h2>
+                </div>
+                <div class="blog-inner">
+                    <?php if (!empty($home_news)) foreach ($home_news as $item): ?>
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                            <div class="entry-thumb image-hover2">
+                                <a href="<?php echo getUrlNews($item) ?>" title="<?php echo getTitle($item) ?>">
+                                    <img alt="<?php echo getTitle($item) ?>"
+                                         src="<?php echo getImageThumb($item->thumbnail, 340, 160, true, false) ?>">
+                                </a>
                             </div>
-                            <a class="blog-preview_btn" href="<?php echo getUrlNews($item) ?>"
-                               title="<?php echo getTitle($item) ?>">Xem thêm</a></div>
-                    </div>
-                <?php endforeach; ?>
+                            <div class="blog-preview_info">
+                                <h4 class="blog-preview_title">
+                                    <a href="<?php echo getUrlNews($item) ?>" title="<?php echo getTitle($item) ?>"><?php echo $item->title ?></a>
+                                </h4>
+                                <ul class="post-meta">
+                                    <li><i class="fa fa-eye"></i><?php echo $item->viewed ?></li>
+                                    <li><i class="fa fa-clock-o"></i><?php echo timeAgo($item->created_time, 'd/m/Y') ?>
+                                    </li>
+                                </ul>
+                                <div class="blog-preview_desc">
+                                    <?php echo $item->description ?>
+                                </div>
+                                <a class="blog-preview_btn" href="<?php echo getUrlNews($item) ?>"
+                                   title="<?php echo getTitle($item) ?>">Xem thêm</a></div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
             </div>
         </div>
     </div>
