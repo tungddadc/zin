@@ -759,7 +759,22 @@ var UI = {
             slidesToScroll: 1,
             arrows: false,
             fade: true,
-            asNavFor: '.slider-nav'
+            asNavFor: '.slider-nav',
+            autoplay: true,
+            autoplaySpeed: 2000,
+            responsive: [
+                {
+                    breakpoint: 576,
+                    settings: {
+                        dots: true,
+                        arrows: true,
+                        prevArrow: '<a class="angle-prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>',
+                        nextArrow: '<a class="angle-next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>',
+                        autoplay: true,
+                        autoplaySpeed: 2000
+                    }
+                }
+            ]
         });
         $('.slider-nav').slick({
             slidesToShow: 3,

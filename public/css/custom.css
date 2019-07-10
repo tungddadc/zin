@@ -2979,9 +2979,6 @@ ul {}
         font-weight: bold;
     }
 
-    .review-company-inner-img {
-        top: -10%;
-    }
     .review-company-text li:nth-child(1){
         margin-top: 100px;
     }
@@ -3025,9 +3022,18 @@ ul {}
     .cat-icon{
         padding: 20px;
     }
-
-
-
+}
+@media  (min-width: 300px) and (max-width: 478px){
+    .review-company-inner-img {
+        top: -5%;
+    }
+    .review-company-text{
+        padding: 0;
+    }
+    .review-company-number, .review-company-desc{
+        float: none;
+        width: 100%;
+    }
 }
 
 img {
@@ -3044,3 +3050,27 @@ img {
 
 }
 
+
+/*Slick Slider*/
+.slider-for{position: relative;}
+.slider-for:hover .angle-prev,
+.slider-for:hover .angle-next{
+    opacity: 1;
+}
+.angle-prev {left: 0;}
+.angle-next {right: 0;}
+.angle-prev, .angle-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background: rgba(0,0,0,0.8);
+    z-index: 9;
+    color: #fff;
+    font-size: 16px;
+    transition: all ease .3s;
+    opacity: 0;
+}
