@@ -43,6 +43,9 @@ a:focus, a:hover {
 	opacity: 1;
 	filter: alpha(opacity=50);
 }
+.d-flex.pricing-style1 .pricing-plan {
+    margin-bottom: 10px;
+}
 @media (max-width: 640px) {
 	.d-flex.pricing-style1 {
 		overflow-x: auto;
@@ -371,4 +374,99 @@ nav#menu-main {
 }
 .upsell-pro .price-slider.owl-theme .owl-controls {
     position: initial;
+}
+.box-same-color {
+    margin-top: 50px;
+}
+.box-same-color .custom {
+    margin-bottom: 15px;
+}
+.box-same-color .block-title {
+    margin-bottom: 30px;
+        font-size: 24px;
+    font-weight: 600;
+}
+.box-same-color .block-title h2 {
+        font-size: 24px;
+    font-weight: 600;
+}
+.block-title {
+    position: relative;
+    padding-bottom: 10px;
+}
+.product-view .product-shop .short-description {
+    border: 0;
+    margin-bottom: 30px;
+}
+.product-view .short-description h2 {
+    text-align: left;    
+}
+.product-view .product-tabs {
+    border-bottom: 4px #fbaf3f solid;
+    background: transparent; 
+}
+.product-view .buy-more {
+    clear: both;
+}
+.buy-more h4 {
+    font-weight: 600;
+    font-size: 18px;
+}
+.product-view  .buy-more .add-to-box {
+    border-color: #ddd!important;
+}
+.product-view .accessories .item .name a {
+    height: calc(24px * 2);
+    -webkit-line-clamp: 2;
+    font-size: 14px;
+    line-height: 24px;
+    overflow: hidden;
+    color: #333;
+}
+.product-view .accessories-slider {
+    margin-right: -12px;
+    margin-left: -12px;
+}
+.product-view .tags {
+    margin-bottom:  40px;
+}
+.product-view .agency {
+    border: 1px #eaeaea solid;
+    margin-bottom: 30px;
+    border-radius: 4px;
+    margin-top: 20px;
+}
+.product-view .agency-title {
+    background: #f2f2f2;
+    margin: 0;
+    padding: 15px;
+    font-weight: 600;
+    color: #be1e2d;
+}
+.product-view .agency-content {
+    padding: 20px;
+}
+.post_related .title {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 18px;
+}
+.post_related .item {
+    display: flex;
+    flex-flow: row wrap;
+}
+.post_related .item .left {
+    padding-right: 15px;
+}
+.post_related .item > div {
+    width: 50%;
+}
+.post_related .item a {
+    color: #333;
+}
+.post_related .item a:hover {
+    color: #be1e2d;
+}
+.product-view .product-shop .price {
+    min-height: 20px;
 }
