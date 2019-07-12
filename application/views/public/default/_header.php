@@ -144,7 +144,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                     </div>
                 <?php endif; ?>
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 header-icon">
                 <div class="mm-toggle-wrap">
                     <div class="mm-toggle"><i class="fa fa-align-justify"></i><span class="mm-label">Menu</span></div>
                 </div>
@@ -205,15 +205,13 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     </div>
     <nav id="menu-main" class="hidden-xs">
         <div class="nav-container">
-            <div class="col-md-3 col-xs-12 col-sm-3">
-                <div class="mega-container visible-lg visible-md visible-sm">
-                    <div class="navleft-container">
-                        <div class="mega-menu-title">
-                            <h3><i class="fa fa-navicon"></i> <span>Thương hiệu</span></h3>
-                        </div>
-                        <div id="menu-category" class="mega-menu-category" style="<?php if ($this->_controller != 'home') echo 'display:none'; ?>">
-                            <?php echo navMenuBrand('nav','','nav') ?>
-                        </div>
+            <div class="mega-container visible-lg visible-md visible-sm">
+                <div class="navleft-container">
+                    <div class="mega-menu-title">
+                        <h3><i class="fa fa-navicon"></i> <span>Thương hiệu</span></h3>
+                    </div>
+                    <div id="menu-category" class="mega-menu-category" style="<?php if ($this->_controller != 'home') echo 'display:none'; ?>">
+                        <?php echo navMenuBrand('nav','','nav') ?>
                     </div>
                 </div>
             </div>
@@ -221,7 +219,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
             <!-- features box -->
             <div class="our-features-box hidden-xs">
                 <div class="features-block">
-                    <div class="col-lg-9 col-md-9 col-xs-12 col-sm-12 offer-block">
+                    <div class="offer-block">
                         <?php echo navMenuMain() ?>
                     </div>
                 </div>
