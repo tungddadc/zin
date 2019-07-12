@@ -132,6 +132,9 @@ nav#menu-main {
     }
 }
 @media (max-width: 640px) {
+    header {
+        margin-bottom: 15px;
+    }
     .header-icon {
         background: #be1e2d;
         padding: 8px 0;
