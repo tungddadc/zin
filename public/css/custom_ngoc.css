@@ -63,7 +63,6 @@ nav#menu-main {
 }
 #menu-main .nav-container {
     display: flex;
-    flex-flow: row wrap;
     justify-content: space-between;
     align-items: flex-start; 
 }
@@ -93,18 +92,81 @@ nav#menu-main {
         font-size: 12px;
     }
 }
-@media (max-width: 992px) {
+@media (max-width: 993px) {        
+    .offer-block {        
+        padding-left: 0px;
+    }
+    
+    .features-block a {
+        padding: 15px 3px;
+    }
+}
+@media (max-width: 769px) {
+    .top-cart-contain .price,
+    .top-cart-contain .mini-cart1 .basket1 a span.cart_count,
+    .mini-cart .basket a span.cart_count {
+        display: none;
+    }
+    #menu-main .mega-container {
+        width: 80px;
+    }
+    .mm-toggle-wrap {
+        width: 85px;
+    }
+    .mm-toggle-wrap,
+    .mm-search {
+        position: initial!important;
+    }
+    .header-icon {
+        display: flex;  
+        justify-content: space-between;
+    }
     .mega-menu-title {
         padding-left: 20px;
         padding-right: 20px;
         width: 53px;
     }
+    .features-block a {
+        padding-top: 5px;
+        padding-bottom: 7px;
+    }
 }
-@media (max-width: 768px) {
-    .top-cart-contain .price,
-    .top-cart-contain .mini-cart1 .basket1 a span.cart_count,
-    .mini-cart .basket a span.cart_count {
-        display: none;
+@media (max-width: 640px) {
+    .header-icon {
+        background: #be1e2d;
+        padding: 8px 0;
+    }
+    .mm-toggle .fa {
+        font-size: 16px;
+    }
+    .mini-cart .basket a:before {
+        background: #fdd922;
+        width: 45px;
+        color: #333;
+        font-size: 16px;
+        height: 45px;
+        padding: 0;
+        line-height: 45px;
+    }
+    .top-cart-contain {
+        margin-top: 0;
+        width: auto;
+    }
+    .header-container .pull-left {
+        width: 100%;
+    }
+    .welcome-msg {
+        float: none;
+        width: 100%;
+        text-align: center;
+    }
+    .mm-toggle {
+        width: 45px;
+        height: 45px;
+        line-height: 45px;
+        padding: 0;
+        text-align: center;
+        border-radius: 5px;
     }
 }
 .home-slider {
@@ -514,14 +576,4 @@ nav#menu-main {
 }
 .product-view .product-shop .price {
     min-height: 20px;
-}
-.header-icon {
-    display: flex;    
-}
-.mm-toggle-wrap,
-.mm-search {
-    position: initial!important;
-}
-.mm-toggle-wrap {
-    width: 100px; 
 }

@@ -151,7 +151,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
 
                 <?php if($this->agent->is_mobile()): ?>
-                    <div class="search-box mm-search">
+                    <div class="search-box mm-search hidden-xs">
                         <div id="search_mini_form">
                             <input name="search" class="searchbox" id="search" value="<?php echo ($this->_controller === 'search' && !empty($this->uri->segment(2))) ? urldecode($this->uri->segment(2)) : '' ?>" type="text" maxlength="128" autocomplete="off" placeholder="Tìm kiếm sản phẩm...">
                             <button title="Search" class="search-btn-bg btnSearch" id="submit-button" type="submit"></button>
