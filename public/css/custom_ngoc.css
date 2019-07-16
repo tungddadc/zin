@@ -580,3 +580,16 @@ nav#menu-main {
 .product-view .product-shop .price {
     min-height: 20px;
 }
+/*dropdown-menu fullwidth*/
+#menu-main .our-features-box .offer-block {
+    position: initial;
+}
+#menu-main ul.sub-menu {
+    width: 100%;
+}
+#menu-main .features-block a {
+    font-weight: 400;
+}
+.zoomContainer {
+    z-index: 10!important;
+}
