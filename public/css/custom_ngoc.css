@@ -192,7 +192,8 @@ nav#menu-main {
     input#search {
         border: 0;
     }
-    #search_mini_form > *{
+    #search_mini_form .searchbox,
+    #search_mini_form .btnSearch {
         height: 46px;
     }
 }
