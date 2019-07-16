@@ -133,7 +133,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                 </div>
                 <!-- End Header Logo -->
             </div>
-            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-3 hidden-xs category-search-form">
+            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-3 category-search-form">
                 <?php if($this->agent->is_mobile() == false): ?>
                     <div class="search-box">
                         <div id="search_mini_form">
