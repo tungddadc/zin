@@ -66,6 +66,8 @@ nav#menu-main {
     justify-content: space-between;
     align-items: flex-start; 
     position: relative;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 #menu-main .mega-container {
     width: 180px;    
