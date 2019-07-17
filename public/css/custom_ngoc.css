@@ -155,3 +155,6 @@
 #mobile-menu + .main-container {
     margin-top: 30px;
 }
+.product-essential .tab-content {
+    display: block;
+}
