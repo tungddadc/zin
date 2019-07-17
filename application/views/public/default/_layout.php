@@ -244,25 +244,37 @@ switch ($this->_controller) {
                 </li>
             <?php endif; ?>
             <li>
-                <a title="Checkout" href="<?php echo base_url('wishlisht') ?>">
-                    <span class="">Sản phẩm yêu thích</span>
-                </a>
-            </li>
-            <li>
-                <a title="Lịch sử đơn hàng" href="<?php echo base_url('cart/history') ?>">
-                    <span class="">Lịch sử đơn hàng</span>
-                </a>
-            </li>
-            <li>
                 <a href="<?php echo site_url('cua-hang-dai-ly.html?near=1') ?>" title="Tìm cửa hàng gần nhất" class="btn btn-block btn-social btn-google">
                     <span class="fa fa-location-arrow"></span>
                     Cửa hàng gần nhất
                 </a>
             </li>
-            <li class="last">
+            <li>
                 <a href="<?php echo base_url('cart') ?>" title="Giỏ hàng" class="btn btn-block btn-social btn-google">
                     <span class="fa fa-shopping-cart"></span>
                     Giỏ hàng
+                </a>
+            </li>
+            <li>
+                <a title="Checkout" href="<?php echo base_url('wishlisht') ?>">
+                    <span class="text-link">Sản phẩm yêu thích</span>
+                </a>
+            </li>
+            <li>
+                <a title="Lịch sử đơn hàng" href="<?php echo base_url('cart/history') ?>">
+                    <span class="text-link">Lịch sử đơn hàng</span>
+                </a>
+            </li>            
+            <li class="check">
+                <a title="Tin tức" href="<?php echo base_url('tin-tuc.html') ?>">
+                  <span class="text-link">Tin tức</span>
+                  <span class="icon_new"><img src="<?php echo $this->templates_assets ?>images/new.png" alt="New"></span>
+                </a>
+            </li>
+            <li class="check last">
+                <a title="Hỏi đáp" href="<?php echo base_url('hoi-dap.html') ?>">
+                  <span class="text-link">Hỏi đáp</span>
+                  <span class="icon_new"><img src="<?php echo $this->templates_assets ?>images/new.png" alt="New"></span>
                 </a>
             </li>
         </ul>
