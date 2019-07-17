@@ -21,8 +21,17 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
             </div>
             <!--logo-->
+           
+            <div class="hidden-lg col-md-2 col-sm-8 col-xs-6 btn-mobile-menu-wrapper">
+                <a href="javascript:void(0)" class="btn-menu-mobile hidden-lg mm-toggle"><i class="fa fa-bars" aria-hidden="true"></i></a>
+            </div>
 
-            <!--Search form desktop-->
+            <!--Main menu-->
+            <div class="col-lg-6 hidden-md hidden-sm hidden-xs position-static">
+                <?php echo navMenuMain('main-menu','main-menu-desktop') ?>
+            </div>
+            <!--Main menu-->
+             <!--Search form desktop-->
             <div class="col-lg-2 col-md-7 hidden-sm hidden-xs search-form-desktop position-static">
                 <?php if($this->agent->is_mobile() == false): ?>
                 <div class="search-box">
@@ -42,16 +51,6 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                 <?php endif; ?>
             </div>
             <!--Search form desktop-->
-
-            <div class="hidden-lg col-md-2 col-sm-8 col-xs-6 btn-mobile-menu-wrapper">
-                <a href="javascript:void(0)" class="btn-menu-mobile hidden-lg mm-toggle"><i class="fa fa-bars" aria-hidden="true"></i></a>
-            </div>
-
-            <!--Main menu-->
-            <div class="col-lg-6 hidden-md hidden-sm hidden-xs position-static">
-                <?php echo navMenuMain('main-menu','main-menu-desktop') ?>
-            </div>
-            <!--Main menu-->
 
             <!--Login, SignIn, SignOut, Cart-->
             <div class="col-lg-2 hidden-md hidden-sm hidden-xs">
