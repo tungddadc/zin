@@ -488,7 +488,7 @@ nav#menu-main {
 }
 .mega-menu-category > ul.nav {
     height: 412px;
-    overflow-y: hidden;
+    /*overflow-y: hidden;*/
 }
 .mega-menu-category {
     position: relative;
