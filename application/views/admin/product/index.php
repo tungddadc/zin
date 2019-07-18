@@ -271,9 +271,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                             <div class="col">
                                                 <label>Giá Buôn:</label>
                                                 <div class="input-group">
-                                                    <select id="item-price" name="Item Price">
-                                                      <option value="show-price-sale">Show Giá Buôn</option>
-                                                      <option value="hide-price-sale">Ẩn Giá Buôn</option>
+                                                    <select id="item-price" name="ItemPrice">
+                                                      <option value="is_disable_price">Show Giá Buôn</option>
+                                                      <option value="is_enable_price">Ẩn Giá Buôn</option>
                                                     </select>
                                                 </div>
                                             </div>
