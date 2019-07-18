@@ -47,8 +47,8 @@ a:focus, a:hover {
     margin-bottom: 10px;
 }
 
-.padding-0 {
-	padding: 0;
+.pl-0 {
+	padding-left: 0;
 }
 nav#menu-main {
     margin-bottom: 15px;
@@ -64,9 +64,9 @@ nav#menu-main {
 #menu-main .mega-container {
     width: 180px;    
 }
-#menu-main .navleft-container {
+/*#menu-main .navleft-container {
     position: initial;
-}
+}*/
 #menu-main .features-block {
     background: transparent;
 }
@@ -468,7 +468,46 @@ nav#menu-main {
     overflow: hidden;
     width: 100%;
 }
-
+.mega-menu-category > .nav > li:hover > .wrap-popup {
+    left: 100%;
+    transition: none;
+}
+.mega-menu-category > .nav > li:hover > .wrap-popup > .popup {
+    display: block!important;
+    height: 412px;
+    position: relative;
+    z-index: 99999;
+}
+.nav > li > .wrap-popup.column1 {
+    width: 1120px;
+    overflow-y: hidden;
+    height: 412px;
+    left: 100%!important;
+    top: 0!important;
+    z-index: initial;
+}
+.mega-menu-category > ul.nav {
+    height: 412px;
+    overflow-y: hidden;
+}
+.mega-menu-category {
+    position: relative;
+}
+.popup .nav {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-row-gap: 5px;
+    grid-column-gap: 20px;
+}
+.popup .nav:before {
+    content: none;
+}
+.banner-menu {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-column-gap: 20px;
+}
 @media (min-width: 1280px) {
     #menu-main .mega-container {
         width: 300px;
