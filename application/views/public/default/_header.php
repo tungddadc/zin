@@ -224,7 +224,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
             </div>
         </div>
     </nav>
-    <div class="banner-menu"> 
+    <div class="banner-menu hidden"> 
         <a class="img">
             <img alt="Banner menu" src="<?php echo $this->templates_assets ?>images/banner-menu1.png">
         </a> 
