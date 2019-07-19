@@ -258,6 +258,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="form-group row option-price">
+                                            <div class="col">
+                                                <label>Giá Buôn:</label>
+                                                <div class="input-group">
+                                                    <select id="item-price" name="is_disable_price">
+                                                      <option value="0">Show Giá</option>
+                                                      <option value="1">Ẩn Giá</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="col-lg-6 col-12">
                                         <div class="form-group">

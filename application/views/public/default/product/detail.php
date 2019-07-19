@@ -124,9 +124,11 @@
                                                         <img src="<?php echo $this->templates_assets ?>images/shape_hover.svg"
                                                              class="shape_hover" alt="">
                                                         <div class="name">giá lẻ cửa hàng</div>
+                                                        <?php if($oneItem->is_disable_price == 0): ?>
                                                         <div class="price">
                                                             <span class="value"><?php echo !empty($oneItem->price) ? formatMoney($oneItem->price) : "" ?></span>
                                                         </div>
+                                                        <?php endif; ?>
                                                     </div>
                                                     <div class="pricing-body">
                                                         <p>Số lượng áp dụng từ 01~05</p>
@@ -139,6 +141,7 @@
                                                 </div>
                                             </label>
                                         </div>
+                                        
                                         <div class="col">
                                             <label>
                                                 <input type="radio" name="product-detail-radio" value="1">
@@ -149,9 +152,11 @@
                                                         <img src="<?php echo $this->templates_assets ?>images/shape_hover.svg"
                                                              class="shape_hover" alt="">
                                                         <div class="name">giá buôn cửa hàng</div>
+                                                        <?php if($oneItem->is_disable_price == 0): ?>
                                                         <div class="price">
                                                             <span class="value"><?php echo !empty($oneItem->price_sale) ? formatMoney($oneItem->price_sale) : "" ?></span>
                                                         </div>
+                                                        <?php endif; ?>
                                                     </div>
                                                     <div class="pricing-body">
                                                         <p>Số lượng áp dụng từ 06~15</p>
@@ -164,6 +169,7 @@
                                                 </div>
                                             </label>
                                         </div>
+                                         
 
                                         <?php if($this->session->userdata('is_agency') == true && !empty($oneItem->price_agency)): ?>
                                         <div class="col">
