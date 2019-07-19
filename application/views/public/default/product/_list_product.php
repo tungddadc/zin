@@ -37,6 +37,7 @@
                             </div>
                             <div class="item-price">
                                 <div class="price-slider owl-carousel">
+                                    <?php if($oneItem->is_disable_price == 0): ?>
                                     <?php if(!empty($item->price)): ?>
                                     <div class="price-item">
                                         <div class="name">GIÁ LẺ CỬA HÀNG</div>
@@ -52,6 +53,7 @@
                                             <span class="value"><?php echo !empty($item->price_sale) ? formatMoney($item->price_sale) : "" ?></span>
                                         </div>                                        
                                     </div>
+                                    <?php endif; ?>
                                     <?php endif; ?>
                                     <?php if(!empty($item->price_kl)): ?>
                                     <div class="price-item">
