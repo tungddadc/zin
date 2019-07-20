@@ -27,7 +27,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
             </div>
 
             <!--Main menu-->
-            <div class="col-lg-6 hidden-md hidden-sm hidden-xs position-static">
+            <div class="col-lg-6 hidden-md hidden-sm hidden-xs position-static padding-0">
                 <?php echo navMenuMain('main-menu','main-menu-desktop') ?>
             </div>
             <!--Main menu-->

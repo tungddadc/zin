@@ -26,7 +26,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
         </div>
     </div>
     <!--newsletter-->
-    <div class="footer-middle footer-top">
+    <div class="footer-middle footer-top footer-menu">
         <div class="container">
             <div class="row">
                 <div class="col-md-3 col-sm-6">

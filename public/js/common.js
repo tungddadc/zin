@@ -113,7 +113,7 @@ jQuery(document).ready(function() {
     jQuery('#related-products-slider .slider-items').owlCarousel({
         items: 3,
         itemsDesktop: [1024, 3],
-        itemsDesktopSmall: [900, 3],
+        itemsDesktopSmall: [900, 2],
         itemsTablet: [600, 2],
         itemsMobile: [320, 1],
         navigation: true,
