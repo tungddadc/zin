@@ -17,4 +17,13 @@ $(document).ready(function() {
         pagination: false
 
     });
+    var parser = new DOMParser();
+    var domString = '<div class="banner-mainmenu banner-menu"><a class="img" href="#"></a><a class="img" href="#"></a><a class="img" href="#"></a></div>';
+    var html = parser.parseFromString(domString, 'text/html'); 
+    $( ".menu_camung .popup" ).append( html.body.firstChild );
+
+    var img = document.createElement("IMG");
+    img.src = base_url+"public/images/banner-menu1.png";
+    $('.banner-menu .img').html(img);
+
 });

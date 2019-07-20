@@ -478,6 +478,7 @@ nav#menu-main {
     height: 412px;
     position: relative;
     z-index: 99999;
+    overflow: hidden;
 }
 .nav > li > .wrap-popup.column1 {
     width: 1130px;
@@ -504,6 +505,11 @@ nav#menu-main {
 }
 .popup .nav:before {
     content: none;
+}
+.popup .nav > li > a:before {
+    font: normal normal normal 10px/1 FontAwesome;
+    padding-right: 5px;
+    content: "\f00c";
 }
 .banner-menu {
     margin-top: 30px;

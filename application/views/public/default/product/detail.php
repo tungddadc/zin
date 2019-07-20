@@ -123,12 +123,12 @@
                                                              class="shape" alt="">
                                                         <img src="<?php echo $this->templates_assets ?>images/shape_hover.svg"
                                                              class="shape_hover" alt="">
-                                                        <div class="name">giá lẻ cửa hàng</div>
-                                                        <?php if($oneItem->is_disable_price == 0): ?>
+                                                        <div class="name">giá lẻ cửa hàng</div>                                                        
                                                         <div class="price">
+                                                            <?php if($oneItem->is_disable_price == 0): ?>
                                                             <span class="value"><?php echo !empty($oneItem->price) ? formatMoney($oneItem->price) : "" ?></span>
-                                                        </div>
-                                                        <?php endif; ?>
+                                                            <?php endif; ?>
+                                                        </div>                                                        
                                                     </div>
                                                     <div class="pricing-body">
                                                         <p>Số lượng áp dụng từ 01~05</p>
@@ -151,12 +151,12 @@
                                                              class="shape" alt="">
                                                         <img src="<?php echo $this->templates_assets ?>images/shape_hover.svg"
                                                              class="shape_hover" alt="">
-                                                        <div class="name">giá buôn cửa hàng</div>
-                                                        <?php if($oneItem->is_disable_price == 0): ?>
+                                                        <div class="name">giá buôn cửa hàng</div>                                                        
                                                         <div class="price">
+                                                            <?php if($oneItem->is_disable_price == 0): ?> 
                                                             <span class="value"><?php echo !empty($oneItem->price_sale) ? formatMoney($oneItem->price_sale) : "" ?></span>
-                                                        </div>
-                                                        <?php endif; ?>
+                                                            <?php endif; ?>
+                                                        </div>                                                        
                                                     </div>
                                                     <div class="pricing-body">
                                                         <p>Số lượng áp dụng từ 06~15</p>
@@ -439,23 +439,23 @@
                                                         </div>
                                                         <div class="item-price text-center">
                                                             <div class="price-slider owl-carousel">
-                                                                <?php if($oneItem->is_disable_price == 0): ?>
-                                                                <?php if(!empty($item->price)): ?>
-                                                                <div class="price-item ">
-                                                                    <div class="name">GIÁ LẺ CỬA HÀNG</div>
-                                                                    <div class="price">
-                                                                        <span class="value"><?php echo !empty($item->price) ? formatMoney($item->price) : "" ?></span>
-                                                                    </div>                                        
-                                                                </div>
-                                                                <?php endif; ?>
-                                                                <?php if(!empty($item->price_sale)): ?>
-                                                                <div class="price-item">
-                                                                    <div class="name">GIÁ BUÔN CỬA HÀNG</div>
-                                                                    <div class="price">
-                                                                        <span class="value"><?php echo !empty($item->price_sale) ? formatMoney($item->price_sale) : "" ?></span>
-                                                                    </div>                                        
-                                                                </div>
-                                                                <?php endif; ?>
+                                                                <?php if($this->session->userdata('is_disable_price') == 0): ?>
+                                                                    <?php if(!empty($item->price)): ?>
+                                                                    <div class="price-item ">
+                                                                        <div class="name">GIÁ LẺ CỬA HÀNG</div>
+                                                                        <div class="price">
+                                                                            <span class="value"><?php echo !empty($item->price) ? formatMoney($item->price) : "" ?></span>
+                                                                        </div>                                        
+                                                                    </div>
+                                                                    <?php endif; ?>
+                                                                    <?php if(!empty($item->price_sale)): ?>
+                                                                    <div class="price-item">
+                                                                        <div class="name">GIÁ BUÔN CỬA HÀNG</div>
+                                                                        <div class="price">
+                                                                            <span class="value"><?php echo !empty($item->price_sale) ? formatMoney($item->price_sale) : "" ?></span>
+                                                                        </div>                                        
+                                                                    </div>
+                                                                    <?php endif; ?>
                                                                 <?php endif; ?>
                                                                 <?php if(!empty($item->price_kl)): ?>
                                                                 <div class="price-item">
