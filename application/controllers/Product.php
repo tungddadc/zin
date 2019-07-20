@@ -51,7 +51,7 @@ class Product extends Public_Controller
         $paramsProperty = [];
         if(!empty($allPropertyType)) foreach ($allPropertyType as $item){
             $itemType = 'filter_'.$item['type'];
-            if($this->input->get($itemType) !== null) array_push($paramsProperty,$this->input->get($itemType));
+            if($this->input->get($itemType)) array_push($paramsProperty,$this->input->get($itemType));
         }
         $paramsFilter['property_id'] = $paramsProperty;
 

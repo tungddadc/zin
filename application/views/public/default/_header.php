@@ -133,16 +133,14 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                 </div>
                 <!-- End Header Logo -->
             </div>
-            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-3 hidden-xs category-search-form">
-                <?php if($this->agent->is_mobile() == false): ?>
-                    <div class="search-box">
-                        <div id="search_mini_form">
-                            <input name="search" class="searchbox" id="search" value="<?php echo ($this->_controller === 'search' && !empty($this->uri->segment(2))) ? urldecode($this->uri->segment(2)) : '' ?>" type="text" maxlength="128" autocomplete="off" placeholder="Tìm kiếm sản phẩm...">
-                            <button title="Search" class="search-btn-bg btnSearch" id="submit-button" type="submit"></button>
-                            <div class="product_search"></div>
-                        </div>
+            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-3 category-search-form">               
+                <div class="search-box">
+                    <div id="search_mini_form">
+                        <input name="search" class="searchbox" id="search" value="<?php echo ($this->_controller === 'search' && !empty($this->uri->segment(2))) ? urldecode($this->uri->segment(2)) : '' ?>" type="text" maxlength="128" autocomplete="off" placeholder="Tìm kiếm sản phẩm...">
+                        <button title="Search" class="search-btn-bg btnSearch" id="submit-button" type="submit"></button>
+                        <div class="product_search"></div>
                     </div>
-                <?php endif; ?>
+                </div>               
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 header-icon">
                 <div class="mm-toggle-wrap">
@@ -226,5 +224,27 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
             </div>
         </div>
     </nav>
+    <div class="banner-mainmenu banner-menu hidden"> 
+        <a class="img">
+            <img alt="Banner menu" src="<?php echo $this->templates_assets ?>images/banner-menu1.png">
+        </a> 
+        <a class="img">
+            <img alt="Banner menu" src="<?php echo $this->templates_assets ?>images/banner-menu2.png">
+        </a>
+        <a class="img">
+            <img alt="Banner menu" src="<?php echo $this->templates_assets ?>images/banner-menu3.png">
+        </a> 
+    </div> 
+    <div class="banner-menuleft banner-menu hidden"> 
+        <a class="img">
+            <img alt="Banner menu" src="<?php echo $this->templates_assets ?>images/banner-menu1.png">
+        </a> 
+        <a class="img">
+            <img alt="Banner menu" src="<?php echo $this->templates_assets ?>images/banner-menu2.png">
+        </a>
+        <a class="img">
+            <img alt="Banner menu" src="<?php echo $this->templates_assets ?>images/banner-menu3.png">
+        </a> 
+    </div> 
 </header>
 <!-- end header -->

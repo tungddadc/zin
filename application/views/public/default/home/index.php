@@ -41,7 +41,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
     			</div>
     		</div>
-    		<div class="col-md-3 col-sm-4 hidden-xs padding-0 column">
+    		<div class="col-md-3 col-sm-4 hidden-xs pl-0 column">
     			<div class="side-banner">
     				<aside class="homenews">
     					<figure>
