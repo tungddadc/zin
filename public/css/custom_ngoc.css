@@ -17,6 +17,7 @@
 } 
 .main-banner .side-banner {
     z-index: auto;
+    margin-bottom: 20px;
 }
 .logo {
     max-width: 165px;
@@ -198,6 +199,27 @@
 .nav-tabs > li.active > a:hover, 
 .nav-tabs > li.active > a:focus {
     padding: 15px 15px 12px;
+}
+#product-detail-tab > li > a {
+    background: #fff;
+    color: #777;
+}
+#product-detail-tab > li > a:hover,
+#product-detail-tab > li > a:focus {
+    background: #388305;
+    color: #fff;
+}
+#product-detail-tab > li.active > a, 
+#product-detail-tab > li.active > a:hover, 
+#product-detail-tab > li.active > a:focus {
+    background: #388305;
+    color: #fff;
+}
+.product-tabs {
+    background: transparent;
+}
+.entry-content img {
+    margin: 0 auto;
 }
 @media (max-width: 1024px) {
     .main-banner .twobanner img {
