@@ -63,7 +63,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                                         $oneProduct = getProductDetail($item['id']);
                                         $total_weight = !empty($oneProduct->weight) ? $total_weight + $oneProduct->weight : 0;
                                         ?>
-                                        <tr class="first odd">
+                                        <tr class="item first odd">
                                             <td class="image">
                                                 <a title="Sample Product" class="<?php echo $item['name'] ?>"
                                                    href="<?php echo getUrlProduct(array('slug' => $item['slug'], 'id' => $item['id'])) ?>">
@@ -90,8 +90,8 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                                             <td class="a-right movewishlist"><span class="cart-price"> <span
                                                             class="price"><?php echo number_format($item['subtotal']) ?>
                                                         đ</span> </span></td>
-                                            <td class="a-center last"><a title="Remove item" class="button remove-item"
-                                                                         href="#"><span><span>Remove item</span></span></a>
+                                            <td class="a-center last"><a title="Remove item" onclick="CART.delete(this,'<?php echo $key ?>')" class="button remove-item"
+                                                                         href="javascript:;"><span><span>Remove item</span></span></a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>

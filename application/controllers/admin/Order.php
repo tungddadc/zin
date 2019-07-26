@@ -247,11 +247,15 @@ class Order extends Admin_Controller
     /*
      * Xóa một bản ghi
      * */
-    public function ajax_delete($id)
+    public function ajax_delete()
     {
-        if ($id == 1) return;
+        $id = $this->input->post('id');
         $this->_data->delete_by_id($id);
-        die(json_encode(array("error" => 0)));
+        $data_mess = array(
+            'type' => "success",
+            'message' => 'Xóa sản phẩm thành công'
+        );
+        $this->returnJson($data_mess);
     }
 
     public function export_excel()
