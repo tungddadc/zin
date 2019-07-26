@@ -10,7 +10,7 @@ if (!empty($oneItem)):
             <div class="row">
                 <!-- Breadcrumbs -->
                 <div class="col-xs-12">
-                    <div class="breadcrumbs">
+                    <div class="breadcrumbs" style="display: block !important;">
                         <?php echo !empty($breadcrumb) ? $breadcrumb : '' ?>
                     </div>
 
