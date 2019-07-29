@@ -159,7 +159,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                       $tmpName = pathinfo($controller);
                       $name = strtolower($tmpName['filename']);
 
-                      if (in_array($name, array('dashboard', 'auth', 'category'))) {
+                      if (in_array($name, array('dashboard', 'auth'))) {
                         continue;
                       }
                       ?>
