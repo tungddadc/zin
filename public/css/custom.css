@@ -3074,3 +3074,7 @@ img {
     transition: all ease .3s;
     opacity: 0;
 }
+
+.slider-for .slick-slide{
+    height: 482px;
+}

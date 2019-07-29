@@ -31,11 +31,11 @@ if (!empty($oneItem)):
                                 </div>
 
                             </div>
-                            <div class="col-xs-12 col-md-10" style="padding-left: 0">
+                            <div class="col-xs-12 col-md-10" style="padding-left: 0;margin-right: 0">
                                 <div class="slider-for">
                                     <?php if (!empty($album)) foreach ($album as $item): ?>
                                         <div>
-                                            <img style="padding-left: 7px;margin: 0;width: 100%" class="img-responsive" src="<?php echo getImageThumb($item, 768,482, false) ?>" alt="<?php echo getTitle($oneItem) ?>">
+                                            <img style="padding-left: 7px;margin: 0;width: 100%;height: auto" class="img-responsive" src="<?php echo getImageThumb($item, 768,482, true) ?>" alt="<?php echo getTitle($oneItem) ?>">
                                         </div>
                                     <?php endforeach ?>
                                 </div>
