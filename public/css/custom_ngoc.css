@@ -221,9 +221,21 @@
 .entry-content img {
     margin: 0 auto;
 }
+.newsletter-wrap {
+    overflow: visible;
+}
+.newsletter-footer .text-danger {
+    background: #f4516c;
+    color: #fff;
+    padding: 10px 20px;
+    top: 100%;
+    right: 50%;
+    transform: translateX(55%);
+}
+
 @media (max-width: 1024px) {
     .main-banner .twobanner img {
-        height: 43px;
+        height: 47px;
     }
 }
 @media (max-width: 768px) {
@@ -263,6 +275,9 @@
     }  
     .review-company-inner:before {
         width: 150px;
+    }
+    .popular-posts img {
+        max-width: 270px;
     }
 }
 @media (max-width: 640px) {
