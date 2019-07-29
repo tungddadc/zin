@@ -149,7 +149,7 @@ header .our-features-box li {
 }
 
 .jssocials{
-   margin: 10px 0;
+   margin: 15px 0;
 }
 .newsletter-footer .text-danger{
     text-align: center;
@@ -219,7 +219,8 @@ header .our-features-box li {
     margin-top: 10px;
 }
 .product-name h1 {
-    font-size: 16px;
+    font-size: 20px;
+    line-height: 28px;
     font-weight: bold;
     margin-top: 0px;
 }
@@ -2716,9 +2717,7 @@ header{
 }
 .product-box-right {
     background-color: #fff;
-    padding: 6px 15px;
-    margin-bottom: 20px;
-    min-height: 550px;
+    min-height: 482px;
 
 }
 
