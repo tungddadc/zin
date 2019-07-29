@@ -28,8 +28,8 @@ if (!empty($this->cart->contents())) {
         </ul>
         <!--actions-->
         <div class="actions">
-            <a href="javascript:;" onclick="CART.hide_cart(this)" rel="nofollow" title="Ẩn giỏ hàng" class="btn-checkout"><span>Ẩn giỏ hàng</span></a>
-            <a class="view-cart" href="<?php echo base_url('cart') ?>"><span>Xem giỏ hàng</span></a>
+            <button onclick="CART.hide_cart(this)" rel="nofollow" title="Ẩn giỏ hàng" class="button btn-checkout"><span>Ẩn giỏ hàng</span></button>
+            <button class="button view-cart" href="<?php echo base_url('cart') ?>"><span>Xem giỏ hàng</span></button>
         </div>
     </div>
     <?php

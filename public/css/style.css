@@ -312,7 +312,7 @@ a.button:hover {
     color: rgb(190, 30, 45);
 }
 
-.button.coupon, .button.btn-continue, .button.continue, .button.login, button.btn-share, .button.create-account {
+.button.coupon, .button.btn-continue, .button.continue, .button.login, button.btn-share, .button.create-account, .btn-checkout,.view-cart {
     background-color: rgb(190, 30, 45);
     color: #fff;
     border: 1px rgb(190, 30, 45) solid;
