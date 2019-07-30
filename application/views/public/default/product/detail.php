@@ -50,17 +50,13 @@
                                             </div>
                                         </div>
                                         <div class="agency">
-                                            <div class="panel panel-danger">
-                                                <div class="panel-heading panel-danger">
-                                                    <h4 class="panel-title">Ưu đãi dành cho đại lý</h4>
-                                                </div>
-                                                <div class="panel-body">
-                                                    <a href="<?php echo base_url('dieu-kien-va-chinh-sach-dai-ly.html') ?>" class="btn btn-warning btn-block"
-                                                       title="Điều kiện và chính sách đại lý">Điều kiện và chính sách
-                                                        đại lý</a>
-                                                    <a href="<?php echo base_url('gia-dai-ly-va-uu-dai.html') ?>" class="btn btn-warning btn-block"
-                                                       title="Giá đại lý và ưu đãi">Giá đại lý và ưu đãi</a>
-                                                </div>
+                                            <h4 class="agency-title">Ưu đãi dành cho đại lý</h4>
+                                            <div class="agency-content">
+                                                <a href="<?php echo base_url('dieu-kien-va-chinh-sach-dai-ly.html') ?>" class="btn btn-warning btn-block"
+                                                   title="Điều kiện và chính sách đại lý">Điều kiện và chính sách
+                                                    đại lý</a>
+                                                <a href="<?php echo base_url('gia-dai-ly-va-uu-dai.html') ?>" class="btn btn-warning btn-block"
+                                                   title="Giá đại lý và ưu đãi">Giá đại lý và ưu đãi</a>
                                             </div>
                                         </div>
                                     </div>
@@ -262,7 +258,7 @@
                                         </div>
                                     </div>
                                     <?php echo form_close() ?>
-                                    <div class="short-description">
+                                    <div class="alert alert-danger short-description">
                                         <h2>Lưu ý</h2>
                                         <p>Mức giá trên là dành cho cửa hàng. Chúng tôi sẽ có chính sách giá riêng dành cho đại lý linh kiện.
                                         Hân hạnh được hợp tác cùng quý Đại lý trên toàn quốc. Để xem được giá đại lý, quý khách vui lòng tạo tài khoản và gửi yêu cầu
@@ -270,8 +266,8 @@
                                     </div>
                                     <?php if(!empty($data_similar)): ?>
                                     <div class="buy-more">
-                                        <div class="panel panel-danger">
-                                            <div class="panel-heading panel-danger">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading panel-default">
                                                 <h4 class="panel-title">Sản phẩm cùng loại khác màu</h4>
                                             </div>
                                             <div class="panel-body">
@@ -334,18 +330,24 @@
                             <?php if(!empty($data_related)): $totalItem = count($data_related) ?>
                             <div class="row clearfix accessories">
                                 <div class="col-lg-12 col-sm-12 col-xs-12">
-                                    <div class="panel panel-danger">
-                                        <div class="panel-heading">
-                                            <h2 class="panel-title">Linh kiện cùng đời máy</h2>
+                                    <div class="box-same-color">
+                                        <div class="block-title">
+                                            <h2>Linh kiện cùng đời máy</h2>
                                         </div>
-                                        <div class="panel-body accessories-slider">
+                                        <div class="accessories-slider">
                                             <?php foreach ($data_related as $item): ?>
                                                 <div class="item add-to-cart">
-                                                    <a href="<?php echo getUrlProduct($item) ?>" title="<?php echo getTitle($item) ?>">
-                                                        <img src="<?php echo getImageThumb($item->thumbnail,100,100) ?>" alt="<?php echo getTitle($item) ?>" class="img-thumbnail">
-                                                        <h2><?php echo $item->title ?></h2>
+                                                    <a href="<?php echo getUrlProduct($item) ?>"
+                                                           title="<?php echo getTitle($item) ?>">
+                                                        <img src="<?php echo getImageThumb($item->thumbnail,320,235,true,true) ?>"
+                                                             alt="<?php echo getTitle($item) ?>"
+                                                             class="img-thumbnail">
                                                     </a>
-                                                    <div class="custom pull-left">
+                                                    <h2 class="name">
+                                                        <a href="<?php echo getUrlProduct($item) ?>" title="<?php echo getTitle($item) ?>">
+                                                        <?php echo $item->title ?></a>
+                                                    </h2>
+                                                    <div class="custom">
                                                         <button onClick="CART.quantity_reduced(this)" class="reduced items-count <?php echo $this->session->userdata('is_agency') == true ? 'is-agency' : ''  ?>" type="button">
                                                             <i class="fa fa-minus">&nbsp;</i>
                                                         </button>
@@ -354,6 +356,42 @@
                                                             <i class="fa fa-plus">&nbsp;</i>
                                                         </button>
                                                         <button onclick="CART.add_more(<?php echo $item->id ?>,this)" class="button btn-cart pull-right" title="Thêm vào giỏ hàng" type="submit">Thêm vào giỏ</button>
+                                                    </div>
+                                                    <div class="item-price text-center">
+                                                        <div class="price-slider owl-carousel">
+                                                            <?php if(!empty($item->price)): ?>
+                                                            <div class="price-item ">
+                                                                <div class="name">GIÁ LẺ CỬA HÀNG</div>
+                                                                <div class="price">
+                                                                    <span class="value"><?php echo !empty($item->price) ? formatMoney($item->price) : "" ?></span>
+                                                                </div>                                        
+                                                            </div>
+                                                            <?php endif; ?>
+                                                            <?php if(!empty($item->price_sale)): ?>
+                                                            <div class="price-item">
+                                                                <div class="name">GIÁ BUÔN CỬA HÀNG</div>
+                                                                <div class="price">
+                                                                    <span class="value"><?php echo !empty($item->price_sale) ? formatMoney($item->price_sale) : "" ?></span>
+                                                                </div>                                        
+                                                            </div>
+                                                            <?php endif; ?>
+                                                            <?php if(!empty($item->price_kl)): ?>
+                                                            <div class="price-item">
+                                                                <div class="name">GIÁ THAY KHÁCH LẺ</div>
+                                                                <div class="price">
+                                                                    <span class="value"><?php echo !empty($item->price_kl) ? formatMoney($item->price_kl) : "" ?></span>
+                                                                </div>
+                                                            </div>
+                                                            <?php endif; ?>
+                                                            <?php if(!empty($item->price_ek)): ?>
+                                                            <div class="price-item">
+                                                                <div class="name">GIÁ THAY KHÁCH VIP</div>
+                                                                <div class="price">
+                                                                    <span class="value"><?php echo !empty($item->price_ek) ? formatMoney($item->price_ek) : "" ?></span>
+                                                                </div>
+                                                            </div>
+                                                            <?php endif; ?>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             <?php endforeach; ?>
