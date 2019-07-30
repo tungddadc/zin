@@ -400,8 +400,8 @@
                                 </div>
                             </div>
                             <?php endif; ?>
-                            <div class="row clearfix">
-                                <div class="col-sm-6 col-xs-12">
+                            <div class="row clearfix tab-info-product">
+                                <div class="col-sm-6 col-xs-12 column">
                                     <div class="product-collateral">
                                         <div class="add_info">
                                             <ul id="product-detail-tab" class="nav nav-tabs product-tabs">
@@ -560,7 +560,7 @@
 
                                     <div>Tags: <?php echo getTags($oneItem->meta_keyword) ?></div>
                                 </div>
-                                <div class="col-sm-6 col-xs-12">
+                                <div class="col-sm-6 col-xs-12 column">
                                     <div class="product-collateral">
                                         <div class="add_info">
                                             <ul id="tab_infomation" class="nav nav-tabs product-tabs">

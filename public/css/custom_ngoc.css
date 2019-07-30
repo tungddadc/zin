@@ -44,6 +44,10 @@
     padding-right: 5px;
     content: "\f00c";
 }
+.breadcrumbs ul {
+  display: block;
+  white-space: initial;
+}
 .product-buy .availability.in-stock span {
     width: 100%;
     text-align: center;
@@ -93,6 +97,7 @@
 .product-view .product-shop .short-description {
     border: 0;
     margin-bottom: 30px;
+    padding: 10px;
 }
 .product-view .short-description h2 {
     text-align: left;    
@@ -384,4 +389,36 @@ a:focus, a:hover {
 }
 .upsell-pro .price-slider.owl-theme .owl-controls {
 	position: initial;
+}
+@media (max-width: 768px) {
+  .product-essential .product-img-box {
+    width: 50%;
+  }
+  .product-essential .product-buy {
+    width: 100%;
+  }
+  .our-features-box .feature-box {
+    display: flex;
+    align-items: center;
+  }
+  .our-features-box .feature-box span {
+    width: 50px;
+    height: 50px;
+  }
+  .product-buy .feature-box .content {
+    text-align: left;
+    padding-left: 20px;
+  }
+  .product-buy .feature-box h3 {
+    margin-top: 0;
+  }
+  .tab-info-product .column {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+}
+@media (max-width: 640px) {
+  .product-view .product-tabs {
+    border-bottom: 0;
+  }
 }
