@@ -454,9 +454,6 @@ Comment*/
       border-bottom: 11px solid #f8f8f8;
       margin-bottom: -2px; }
 
-.comment-fr form.form-comment {
-  padding: 5px;
-  border: 1px solid #ccc; }
 
 @media all and (max-width: 767px) {
   .comment-box {

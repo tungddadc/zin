@@ -265,7 +265,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                                     <select id="item-price" name="is_disable_price" style="height:40px;border:1px solid #ebedf2;padding:0 10px;min-width:110px;">
                                                       <option value="0">Show Giá</option>
                                                       <option value="1">Ẩn Giá</option>
-                                                    </select>
+                                                    </select> 
                                                 </div>
                                             </div>
                                         </div>
