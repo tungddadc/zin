@@ -174,9 +174,9 @@ header .our-features-box li {
 }
 
 .buy-more .add-to-box h2{
-    margin: 0 0 5px;
+    margin: 0 0 15px;
     font-size: 14px;
-    font-weight: 700;
+    line-height: 20px;
     color: #333333;
 }
 
@@ -269,7 +269,7 @@ header .our-features-box li {
     margin-top: 10px;
 }
 .buy-more .panel-body{
-    max-height: 330px;
+    max-height: 200px;
     overflow: hidden;
     position: relative;
 }
@@ -279,7 +279,7 @@ header .our-features-box li {
     bottom: 0px;
     height: 33px;
     text-align: center;
-    width: 94%;
+    width: 100%;
     background-color: #ffffff;
 }
 .buy-more .showmore a{
@@ -494,10 +494,7 @@ Comment*/
     border-right: 10px solid transparent;
     border-bottom: 11px solid #f8f8f8;
     margin-bottom: -2px; }
-.comment-fr form.form-comment{
-    padding: 5px;
-    border: 1px solid #ccc;
-}
+
 @media all and (max-width: 767px) {
     .comment-box {
         padding: 14px; }

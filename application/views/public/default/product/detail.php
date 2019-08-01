@@ -264,11 +264,12 @@
                                         Hân hạnh được hợp tác cùng quý Đại lý trên toàn quốc. Để xem được giá đại lý, quý khách vui lòng tạo tài khoản và gửi yêu cầu
                                         cấp quyền đại lý cho quý khách.</p>
                                     </div>
+                                    <div id="social-share"></div>
                                     <?php if(!empty($data_similar)): ?>
                                     <div class="buy-more">
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading panel-default">
-                                                <h4 class="panel-title">Sản phẩm cùng loại khác màu</h4>
+                                        <div class="box-product-other">
+                                           <div class="block-title"> 
+                                            <h2> Sản phẩm cùng loại khác màu</h2>
                                             </div>
                                             <div class="panel-body">
                                                 <?php foreach ($data_similar as $item): ?>
@@ -276,7 +277,7 @@
                                                         <div class="add-to-cart">
                                                             <div class="row clearfix">
                                                                 <div class="col-xs-3">
-                                                                    <img src="<?php echo getImageThumb($item->thumbnail,75,75,true) ?>" alt="<?php echo getTitle($item) ?>">
+                                                                    <img src="<?php echo getImageThumb($item->thumbnail,150,150,true) ?>" alt="<?php echo getTitle($item) ?>">
                                                                 </div>
                                                                 <div class="col-xs-9">
                                                                     <h2><a href="<?php echo getUrlProduct($item) ?>" title="<?php echo getTitle($item) ?>"><?php echo $item->title ?></a> </h2>
@@ -301,7 +302,7 @@
                                         </div>
                                     </div>
                                     <?php endif; ?>
-                                    <div id="social-share"></div>
+                                    
                                 </div>
                                 <div class="product-buy col-lg-2 col-sm-2 col-xs-12">
                                     <div class="widget__sidebar">
