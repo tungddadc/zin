@@ -110,6 +110,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     <?php $asset_css[] = 'blogmate.css'; ?>
     <?php $asset_css[] = 'custom.css'; ?>
     <?php $asset_css[] = 'menu.css'; ?>
+    <?php $asset_css[] = 'custom_ngoc.css'; ?>
 
     <?php
     $this->minify->css($asset_css);
@@ -308,6 +309,8 @@ switch ($this->_controller) {
 <?php $asset_js[] = 'select2.min.js'; ?>
 <?php $asset_js[] = 'custom.js'; ?>
 <?php $asset_js[] = 'account.js'; ?>
+<?php $asset_js[] = 'custom_ngoc.js'; ?>
+
 <?php $this->minify->js($asset_js);
 echo $this->minify->deploy_js(); ?>
 <script type="text/javascript">

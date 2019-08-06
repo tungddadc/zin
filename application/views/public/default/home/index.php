@@ -17,9 +17,9 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                         <ul>
                             <?php foreach ($home_slider as $item): ?>
                             <li data-transition='random' data-slotamount='7' data-masterspeed='1000'
-                                data-thumb='<?php echo getImageThumb($item->thumbnail,570,330,true) ?>'>
-                                <img src="<?php echo getImageThumb($item->thumbnail,570,330,true) ?>"
-                                     data-src="<?php echo getImageThumb($item->thumbnail,570,330,true) ?>"
+                                data-thumb='<?php echo getImageThumb($item->thumbnail,710,330,true) ?>'>
+                                <img src="<?php echo getImageThumb($item->thumbnail,710,330,true) ?>"
+                                     data-src="<?php echo getImageThumb($item->thumbnail,710,330,true) ?>"
                                      class="lazy"
                                      data-bgposition='left top' data-bgfit='cover' data-bgrepeat='no-repeat'
                                      alt="<?php echo getTitle($item) ?>">
