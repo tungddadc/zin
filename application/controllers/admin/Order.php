@@ -148,7 +148,7 @@ class Order extends Admin_Controller
             $data_store = $this->input->post();
             $data_store['shipped_time'] = $this->input->post('shipped_time');
             $item = $this->_data->get_by_id($this->input->post('id'));
-            if (empty($data_store['shipped_time'])) {
+            if (empty($data_store['shipped_time']) && $data_store['is_status'] == 3) {
                 $message['type'] = 'warning';
                 $message['message'] = "Ngày giao hàng không được để trống";
                 die(json_encode($message));

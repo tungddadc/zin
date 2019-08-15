@@ -125,9 +125,8 @@
                                                              class="shape_hover" alt="">
                                                         <div class="name">giá lẻ cửa hàng</div>                                                        
                                                         <div class="price">
-                                                            <?php if($oneItem->is_disable_price == 0): ?>
                                                             <span class="value"><?php echo !empty($oneItem->price) ? formatMoney($oneItem->price) : "" ?></span>
-                                                            <?php endif; ?>
+                                                          
                                                         </div>                                                        
                                                     </div>
                                                     <div class="pricing-body">
@@ -153,9 +152,9 @@
                                                              class="shape_hover" alt="">
                                                         <div class="name">giá buôn cửa hàng</div>                                                        
                                                         <div class="price">
-                                                            <?php if($oneItem->is_disable_price == 0): ?> 
+                                                           
                                                             <span class="value"><?php echo !empty($oneItem->price_sale) ? formatMoney($oneItem->price_sale) : "" ?></span>
-                                                            <?php endif; ?>
+                                                           
                                                         </div>                                                        
                                                     </div>
                                                     <div class="pricing-body">
@@ -284,12 +283,12 @@
                                             lý, quý khách vui lòng tạo tài khoản và gửi yêu cầu
                                             cấp quyền đại lý cho quý khách.</p>
                                     </div>
-
+                                    <div id="social-share"></div>
                                     <?php if (!empty($data_similar)): ?>
                                     <div class="buy-more">
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading panel-default">
-                                                <h4 class="panel-title">Sản phẩm cùng loại khác màu</h4>
+                                        <div class="box-product-other">
+                                           <div class="block-title"> 
+                                            <h2> Sản phẩm cùng loại khác màu</h2>
                                             </div>
                                             <div class="panel-body">
                                                 <?php foreach ($data_similar as $item): ?>
@@ -297,7 +296,7 @@
                                                         <div class="add-to-cart">
                                                             <div class="row clearfix">
                                                                 <div class="col-xs-3">
-                                                                    <img src="<?php echo getImageThumb($item->thumbnail, 75, 75, true) ?>"
+                                                                    <img src="<?php echo getImageThumb($item->thumbnail, 150, 150, true) ?>"
                                                                          alt="<?php echo getTitle($item) ?>">
                                                                 </div>
                                                                 <div class="col-xs-9">
@@ -332,14 +331,15 @@
                                                     </div>
                                                 <?php endforeach; ?>
 
-                                                <div class="showmore"><a class="btn btn-default btn-sm">Xem thêm
-                                                        »</a></div>
+                                                <div class="showmore">
+                                                    <a class="btn btn-default btn-sm">Xem thêm »</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 <?php endif; ?>
                                     
-                                    <div id="social-share"></div>
+                                    
                                 </div>
                                 <div class="product-buy col-lg-2 col-sm-2 col-xs-12">
                                     <div class="widget__sidebar">
@@ -439,23 +439,21 @@
                                                         </div>
                                                         <div class="item-price text-center">
                                                             <div class="price-slider owl-carousel">
-                                                                <?php if($this->session->userdata('is_disable_price') == 0): ?>
-                                                                    <?php if(!empty($item->price)): ?>
-                                                                    <div class="price-item ">
-                                                                        <div class="name">GIÁ LẺ CỬA HÀNG</div>
-                                                                        <div class="price">
-                                                                            <span class="value"><?php echo !empty($item->price) ? formatMoney($item->price) : "" ?></span>
-                                                                        </div>                                        
-                                                                    </div>
-                                                                    <?php endif; ?>
-                                                                    <?php if(!empty($item->price_sale)): ?>
-                                                                    <div class="price-item">
-                                                                        <div class="name">GIÁ BUÔN CỬA HÀNG</div>
-                                                                        <div class="price">
-                                                                            <span class="value"><?php echo !empty($item->price_sale) ? formatMoney($item->price_sale) : "" ?></span>
-                                                                        </div>                                        
-                                                                    </div>
-                                                                    <?php endif; ?>
+                                                                <?php if(!empty($item->price)): ?>
+                                                                <div class="price-item ">
+                                                                    <div class="name">GIÁ LẺ CỬA HÀNG</div>
+                                                                    <div class="price">
+                                                                        <span class="value"><?php echo !empty($item->price) ? formatMoney($item->price) : "" ?></span>
+                                                                    </div>                                        
+                                                                </div>
+                                                                <?php endif; ?>
+                                                                <?php if(!empty($item->price_sale)): ?>
+                                                                <div class="price-item">
+                                                                    <div class="name">GIÁ BUÔN CỬA HÀNG</div>
+                                                                    <div class="price">
+                                                                        <span class="value"><?php echo !empty($item->price_sale) ? formatMoney($item->price_sale) : "" ?></span>
+                                                                    </div>                                        
+                                                                </div>
                                                                 <?php endif; ?>
                                                                 <?php if(!empty($item->price_kl)): ?>
                                                                 <div class="price-item">
@@ -727,7 +725,7 @@
                             <!-- End Upsell  Slider -->
                         </div>
                     </article>
-                    <!--	/////======    End article  ========= //// -->
+                    <!--    /////======    End article  ========= //// -->
                 </div>
 
 
