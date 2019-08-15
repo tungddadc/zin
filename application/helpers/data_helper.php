@@ -215,15 +215,19 @@ if (!function_exists('getListNewsByCateId')) {
 }
 
 if (!function_exists('listBannerByPosition')) {
-    function listBannerByPosition($position_id)
+    function listBannerByPosition($position_id, $limit = '')
     {
         $_this =& get_instance();
-        $_this->load->model('banner_model');
-        $bannerModel = new Banner_model();
-        $data = $bannerModel->getData(['lang_code' => $_this->session->public_lang_code, 'property_id' => $position_id]);
+        $key = "listbanner_pos_$position_id";
+        $data = $_this->getCache($key);
+        if (empty($data)) {
+            $_this->load->model('banner_model');
+            $bannerModel = new Banner_model();
+            $data = $bannerModel->getData(['lang_code' => $_this->session->public_lang_code, 'property_id' => $position_id]);
+            $_this->setCache($key, $data, 60 * 60);
+        }
         return $data;
     }
-
 }
 if (!function_exists('covertMoney')) {
     function covertMoney($number)

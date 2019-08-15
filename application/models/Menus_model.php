@@ -15,14 +15,11 @@ class Menus_model extends STEVEN_Model
         $this->table = 'menus';
     }
 
-    public function getMenu($location, $lang_code, $parent_id = 0,$clear_cache = TRUE){
-        $data = '';
+    public function getMenu($location, $lang_code, $parent_id = 0){
         $lang_code = $this->session->userdata('public_lang_code');
-        if(CACHE_MODE == TRUE){
-            $key = "_cache_menu_{$lang_code}_{$location}_{$parent_id}";
-            $data = $this->cache->get($key);
-        }
-        if(empty($data) || $clear_cache == true){
+        $key = "_cache_menu_{$lang_code}_{$location}_{$parent_id}";
+        $data = $this->getCache($key);
+        if(empty($data)){
             $this->db->select('*');
             $this->db->from($this->table);
             $this->db->where('location_id',$location);
@@ -30,8 +27,8 @@ class Menus_model extends STEVEN_Model
             $this->db->where('language_code',$lang_code);
             $query = $this->db->get();
             $data = $query->result_array();
+            $this->setCache($key,$data,3600);
         }
-        if(CACHE_MODE == TRUE) $this->cache->save($key,$data,3600);
         return $data;
     }
 
