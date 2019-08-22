@@ -114,6 +114,7 @@
                                            type="hidden">
 
                                     <div class="d-flex pricing-style1">
+                                        <?php if(empty($oneItem->is_disable_price)): ?>
                                         <div class="col">
                                             <label>
                                                 <input type="radio" name="product-detail-radio" value="0" checked>
@@ -140,7 +141,6 @@
                                                 </div>
                                             </label>
                                         </div>
-                                        
                                         <div class="col">
                                             <label>
                                                 <input type="radio" name="product-detail-radio" value="1">
@@ -168,7 +168,7 @@
                                                 </div>
                                             </label>
                                         </div>
-                                         
+                                        <?php endif; ?>
 
                                         <?php if($this->session->userdata('is_agency') == true && !empty($oneItem->price_agency)): ?>
                                         <div class="col">
