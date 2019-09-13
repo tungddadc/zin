@@ -661,7 +661,7 @@
                                                 <li class="active"><a href="#tab_warranty" data-toggle="tab">Thông tin
                                                         bảo hành </a></li>
                                                 <li><a href="#tab_return" data-toggle="tab">Quy định đổi trả</a></li>
-                                                <li><a href="#tab_bank" data-toggle="tab">Tài khoản ngân hàng</a></li>
+                                                <li><a href="#tab_bank" data-toggle="tab">Giao Dịch & Thanh Toán</a></li>
                                             </ul>
                                             <div class="tab-content">
                                                 <div class="tab-pane fade in active" id="tab_warranty">
