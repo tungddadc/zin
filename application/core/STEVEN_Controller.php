@@ -38,6 +38,26 @@ class STEVEN_Controller extends CI_Controller
         if (CACHE_MODE == TRUE) $this->load->driver('cache',array('adapter' => CACHE_ADAPTER, 'backup' => 'file', 'key_prefix' => CACHE_PREFIX_NAME));
 
     }
+    public function setCache($key, $data, $timeOut = 3600)
+    {
+        if (CACHE_MODE == TRUE) {
+            $this->cache->save($key, $data, $timeOut);
+        }
+    }
+
+    public function getCache($key)
+    {
+        if (CACHE_MODE == TRUE) {
+            return $this->cache->get($key);
+        } else return false;
+    }
+
+    public function deleteCache($key)
+    {
+        if (CACHE_MODE == TRUE) {
+            return $this->cache->clean($key);
+        } else return false;
+    }
 
     public function checkRequestGetAjax()
     {

@@ -35,10 +35,30 @@ class STEVEN_Model extends CI_Model
 		$this->order_default    = array("$this->table.created_time" => "DESC");
 
 		//load cache driver
-        if(CACHE_MODE == TRUE) $this->load->driver('cache', array('adapter' => 'file'));
+        if (CACHE_MODE == TRUE) $this->load->driver('cache',array('adapter' => CACHE_ADAPTER, 'backup' => 'file', 'key_prefix' => CACHE_PREFIX_NAME));
 
         if(in_array($this->table,['category','property','product'])) $this->db = $this->db_second;
 	}
+    public function setCache($key, $data, $timeOut = 3600)
+    {
+        if (CACHE_MODE == TRUE) {
+            $this->cache->save($key, $data, $timeOut);
+        }
+    }
+
+    public function getCache($key)
+    {
+        if (CACHE_MODE == TRUE) {
+            return $this->cache->get($key);
+        } else return false;
+    }
+
+    public function deleteCache($key)
+    {
+        if (CACHE_MODE == TRUE) {
+            return $this->cache->clean($key);
+        } else return false;
+    }
 
 	/*Hàm xử lý các tham số truyền từ Datatables Jquery*/
     public function _get_datatables_query(){
