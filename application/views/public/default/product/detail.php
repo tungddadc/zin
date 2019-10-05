@@ -288,7 +288,7 @@
                                     <div class="buy-more">
                                         <div class="box-product-other">
                                            <div class="block-title"> 
-                                            <h2> Sản phẩm cùng loại khác màu</h2>
+                                            <h2>Sản phẩm cùng loại khác màu hoặc cùng thuộc tính, kiểu loại</h2>
                                             </div>
                                             <div class="panel-body">
                                                 <?php foreach ($data_similar as $item): ?>
