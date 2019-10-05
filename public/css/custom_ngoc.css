@@ -408,6 +408,11 @@ nav#menu-main {
   border-bottom: 1px solid #eaeaea;
   margin: 35px 0;
 }
+.accessories .item img {
+  width: 100%;
+    object-fit: contain;
+    height: 250px; 
+}
 .product-view .accessories .item .name a {
     height: calc(24px * 2);
     -webkit-line-clamp: 2;
