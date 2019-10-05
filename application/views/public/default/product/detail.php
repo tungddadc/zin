@@ -269,7 +269,7 @@
                                     <div class="buy-more">
                                         <div class="box-product-other">
                                            <div class="block-title"> 
-                                            <h2> Sản phẩm cùng loại khác màu</h2>
+                                            <h2>Sản phẩm cùng loại khác màu hoặc cùng thuộc tính, kiểu loại</h2>
                                             </div>
                                             <div class="panel-body">
                                                 <?php foreach ($data_similar as $item): ?>
@@ -339,10 +339,13 @@
                                             <?php foreach ($data_related as $item): ?>
                                                 <div class="item add-to-cart">
                                                     <a href="<?php echo getUrlProduct($item) ?>"
-                                                           title="<?php echo getTitle($item) ?>">
-                                                        <img src="<?php echo getImageThumb($item->thumbnail,320,235,true,true) ?>"
-                                                             alt="<?php echo getTitle($item) ?>"
-                                                             class="img-thumbnail">
+                                                       title="<?php echo getTitle($item) ?>"
+                                                       >
+                                                        <img src="<?php echo getImageThumb($item->thumbnail,250,300,true,true) ?>"
+                                                             data-src="<?php echo getImageThumb($item->thumbnail,250,300,true,true) ?>"
+                                                             data-srcset="<?php echo getImageThumb($item->thumbnail,250,300,true,true) ?> 1x, <?php echo getImageThumb($item->thumbnail,250,300,true,true) ?> 2x"
+                                                             class="img-thumbnail"
+                                                             alt="<?php echo getTitle($item) ?>">
                                                     </a>
                                                     <h2 class="name">
                                                         <a href="<?php echo getUrlProduct($item) ?>" title="<?php echo getTitle($item) ?>">

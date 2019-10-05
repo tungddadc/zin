@@ -139,6 +139,11 @@
 .product-view  .buy-more .add-to-box {
   border: 0;
 }
+.accessories .item img {
+  width: 100%;
+    object-fit: contain;
+    height: 250px; 
+}
 .product-view .accessories .item .name a {
   height: calc(24px * 2);
   -webkit-line-clamp: 2;
