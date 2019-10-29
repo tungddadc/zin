@@ -408,6 +408,10 @@ nav#menu-main {
     border: 0;
     padding: 10px 0 !important;
 }
+.product-view .tab-content {
+  font-size: 16px;
+  font-family: 'Arial', sans-serif;
+}
 #social-share .jssocials-shares {
   padding: 15px 0;
   border-top: 1px solid #eaeaea;

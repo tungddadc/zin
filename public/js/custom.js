@@ -897,7 +897,7 @@ jQuery(document).ready(function () {
         }).stop(true,true).fadeIn('slow');
     });
 
-    $('.accessories-slider').owlCarousel({
+    /*$('.accessories-slider').owlCarousel({
         items:4,
         loop:true,
         responsiveClass:true,
@@ -916,7 +916,7 @@ jQuery(document).ready(function () {
                 items:4,
             }
         }
-    })
+    })*/
     getAgencyNear();
     filterAgency();
     $('#spanImg').on('click',function () {
