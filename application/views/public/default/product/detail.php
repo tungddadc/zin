@@ -540,29 +540,7 @@
                                                                 <div class="col-xs-9">
                                                                     <h2><a href="<?php echo getUrlProduct($item) ?>"
                                                                            title="<?php echo getTitle($item) ?>"><?php echo $item->title ?></a>
-                                                                    </h2>
-                                                                    <div class="custom pull-left">
-                                                                        <button onClick="CART.quantity_reduced(this)"
-                                                                                class="reduced items-count <?php echo $this->session->userdata('is_agency') == true ? 'is-agency' : '' ?>"
-                                                                                type="button">
-                                                                            <i class="fa fa-minus">&nbsp;</i>
-                                                                        </button>
-                                                                        <input onkeyup="CART.changeInputQuantity(this)"
-                                                                               type="text" class="input-text qty"
-                                                                               title="Số lượng" value="1"
-                                                                               maxlength="<?php echo $item->quantity ?>"
-                                                                               name="quantity">
-                                                                        <button onClick="CART.quantity_increase(this)"
-                                                                                class="increase items-count <?php echo $this->session->userdata('is_agency') == true ? 'is-agency' : '' ?>"
-                                                                                type="button">
-                                                                            <i class="fa fa-plus">&nbsp;</i>
-                                                                        </button>
-                                                                        <button onclick="CART.add_more(<?php echo $item->id ?>,this)"
-                                                                                class="button btn-cart pull-right"
-                                                                                title="Thêm vào giỏ hàng"
-                                                                                type="submit">Thêm vào giỏ
-                                                                        </button>
-                                                                    </div>
+                                                                    </h2>                                                                    
                                                                 </div>
                                                             </div>
                                                         </div>
