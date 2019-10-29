@@ -125,6 +125,10 @@
 .product-view .buy-more {
   clear: both;
 }
+.product-view .tab-content {
+  font-size: 16px;
+  font-family: 'Arial', sans-serif;
+}
 .buy-more h4 {
   font-weight: 600;
   font-size: 18px;
