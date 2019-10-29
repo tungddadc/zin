@@ -15,7 +15,8 @@
 		"tan5en5/codeigniter-debugbar": "dev-master",
 		"hybridauth/hybridauth": "^2.10",
 		"zaloplatform/zalo-php-sdk": "^1.0",
-		"fabpot/goutte": "^3.2"
+		"fabpot/goutte": "^3.2",
+		"symfony/browser-kit": "3.4.4"
 	},
 	"suggest": {
 		"paragonie/random_compat": "Provides better randomness in PHP 5.x"
