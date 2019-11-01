@@ -38,11 +38,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                                 </div>
                             </div>
                         </div>
-                      <?php if(!empty($oneItem->content)): ?>
-                      <div class="des_cat">
-                        <?php echo $oneItem->content ?>
-                      </div>
-                      <?php endif; ?>
+
                     </div>
                     <article id="content_ajax" class="col-main">
                         <div class="toolbar">
@@ -92,6 +88,31 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                             </div>
                         </div>
                     </article>
+					<div class="category-description std">
+						<div class="slider-items-products">
+							<div id="category-desc-slider" class="product-flexslider hidden-buttons">
+								<div class="slider-items slider-width-col1 owl-carousel owl-theme">
+									<?php if (!empty($oneItem->banner)) foreach (json_decode($oneItem->banner) as $item): ?>
+										<!-- Item -->
+										<div class="item">
+											<a href="javascript:;" title="<?php echo getTitle($oneItem) ?>">
+												<img alt="<?php echo getTitle($oneItem) ?>"
+													 src="<?php echo getImageThumb($item, 850, 200) ?>">
+											</a>
+										</div>
+										<!-- End Item -->
+									<?php endforeach; ?>
+								</div>
+							</div>
+						</div>
+						<?php if(!empty($oneItem->content)): ?>
+							<h2>Thông tin về các sản phẩm thuộc danh mục <?php echo $oneItem->title?></h2>
+							<div class="des_cat">
+								<?php echo $oneItem->content ?>
+							</div>
+						<?php endif; ?>
+					</div>
+
                 </div>
                 <aside class="col-left sidebar col-sm-3 col-xs-12 col-sm-pull-9">
                     <?php $this->load->view($this->template_path . '_block/_sidebar_product') ?>
