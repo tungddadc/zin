@@ -172,9 +172,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                                                 <label>Nội dung</label>
                                                                 <textarea name="language[<?php echo $lang_code;?>][content]" class="form-control tinymce"></textarea>
                                                             </div>
+                                                            <div class="form-group">
+                                                                <label>Nội dung web thanhchimobile</label>
+                                                                <textarea name="language[<?php echo $lang_code;?>][content_thanhchi]" class="form-control tinymce"></textarea>
+                                                            </div>
                                                         </div>
                                                         <div class="col-sm-6 col-xs-12">
-                                                            <?php $this->load->view($this->template_path.'_block/seo_meta',['lang_code'=>$lang_code]) ?>
+                                                            <?php $this->load->view($this->template_path.'_block/seo_meta_product',['lang_code'=>$lang_code]) ?>
                                                         </div>
                                                     </div>
                                                 </div>
