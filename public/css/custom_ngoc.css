@@ -486,6 +486,9 @@ nav#menu-main {
 .product-view .product-shop .price {
     min-height: 20px;
 }
+#customer-reviews h3 {
+    font-weight: 700!important;
+}
 /*dropdown-menu fullwidth*/
 #menu-main .our-features-box .offer-block {
     position: initial;
