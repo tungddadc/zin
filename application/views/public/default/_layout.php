@@ -221,6 +221,12 @@ switch ($this->_controller) {
                 </li>
             <?php else: ?>
                 <li>
+					<a title="Đăng ký Tài khoản" href="<?php echo base_url('auth/register') ?>" class="btn btn-block btn-social btn-warning">
+						<span class="fa fa-user-circle-o"></span>
+						Đăng ký
+					</a>
+                </li>
+				<li>
                     <a href="<?php echo base_url('auth/window/Facebook') ?>" title="Đăng nhập Facebook"
                        class="btn btn-block btn-social btn-facebook">
                         <span class="fa fa-facebook"></span>
