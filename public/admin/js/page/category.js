@@ -85,6 +85,9 @@ $(function() {
                         let lang_code = value.language_code;
                         $.each(value, function( key, val) {
                             let element = modal_form.find('[name="language['+lang_code+']['+key+']"]');
+							if(element.hasClass('tinymce') && val){
+								tinymce.get(element.attr('id')).setContent(val);
+							}
                             element.val(val);
                         });
                     });
