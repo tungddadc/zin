@@ -595,6 +595,9 @@ nav#menu-main {
     grid-template-columns: repeat(3,1fr);
     grid-column-gap: 20px;
 }
+#menu-main .navleft-container {
+    overflow: visible;
+}
 @media (min-width: 1280px) {
     #menu-main .mega-container {
         width: 300px;
