@@ -526,10 +526,10 @@ nav#menu-main {
     height: 412px;
     position: relative;
     z-index: 99999;
-    overflow: hidden;
+    top: 0;
+    /*overflow: hidden;*/
 }
 .nav > li > .wrap-popup.column1 {
-    width: 1130px;
     height: 412px;
     left: 100%!important;
     top: 0!important;
@@ -537,6 +537,36 @@ nav#menu-main {
     margin-left: -10px;
     padding-left: 10px;
     display: none;
+}
+@media screen and (min-width: 768px) {
+    .nav > li > .wrap-popup.column1 {
+        width: calc(750px - 180px);
+    }
+}
+@media screen and (min-width: 992px) {
+    .nav > li > .wrap-popup.column1 {
+        width: calc(970px - 180px);
+    }
+}
+@media screen and (min-width: 1200px) {
+    .nav > li > .wrap-popup.column1 {
+        width: calc(1170px - 180px);
+    }
+}
+@media screen and (min-width: 1280px) {
+    .nav > li > .wrap-popup.column1 {
+        width: calc(1260px - 300px);
+    }
+}
+@media screen and (min-width: 1366px) {
+    .nav > li > .wrap-popup.column1 {
+        width: calc(1340px - 300px);
+    }
+}
+@media screen and (min-width: 1600px) {
+    .nav > li > .wrap-popup.column1 {
+        width: calc(1450px - 300px);
+    }
 }
 .mega-menu-category > ul.nav {
     height: 412px;
