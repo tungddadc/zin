@@ -64,6 +64,12 @@ $route['account'] = 'account/index';
 //Profile
 $route['(:any)-ag(:num)'] = 'agency/detail/$2';
 
+/*Route tags*/
+$route['tags/(:any)-t(:num)']   = 'product/tags/$1';
+$route['tags/(:any)-t(:num)/page/(:num)']   = 'product/tags/$2/$3';
+/*Route tags*/
+
+
 /*Route post*/
 $route['(:any)-c(:num)'] = 'news/category/$2';
 $route['(:any)-c(:num)/page/(:num)'] = 'news/category/$2/$3';
@@ -84,9 +90,7 @@ $route['(:any)-b(:num)/page/(:num)'] = 'product/brand/$2/$3';
 /* Route search */
 $route['search_autocomplete']   = 'search/ajax_autocomplete';
 $route['search/(:any)']   = 'search/index/$1';
-$route['tags/(:any)']   = 'search/tags/$1';
 $route['search/(:any)/page/(:num)']   = 'search/index/$1/$2';
-$route['tags/(:any)/page/(:num)']   = 'search/tags/$1/$2';
 /* Route search*/
 
 //page

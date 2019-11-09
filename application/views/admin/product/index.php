@@ -197,6 +197,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                             </div>
                                         </div>
 
+										<div class="form-group">
+											<label>Tags:</label>
+											<div class="input-group">
+												<select name="data_tags[]" class="form-control m-select2 data_tags" style="width: 100%;"></select>
+											</div>
+										</div>
+
                                         <div class="form-group">
                                             <label>Thương hiệu:</label>
                                             <div class="input-group">
@@ -398,6 +405,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 </div>
 <script type="text/javascript">
     var url_ajax_load_category = '<?php echo site_admin_url('category/ajax_load/' . $this->_controller) ?>',
+        url_ajax_load_tags = '<?php echo site_admin_url('category/ajax_load/tag') ?>',
         url_ajax_load_property = '<?php echo site_admin_url('property/ajax_load') ?>',
         url_ajax_load_brand = '<?php echo site_admin_url('category/ajax_load/brand') ?>',
         url_ajax_load_product = '<?php echo site_admin_url('product/ajax_load') ?>',

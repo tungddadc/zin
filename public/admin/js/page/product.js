@@ -66,6 +66,7 @@ $(function() {
     loadCategoryFilter();
     loadCategory();
     loadBrand();
+    loadTags();
     loadProductRelated();
     loadPostRelated();
     loadProductSimilar();
@@ -154,6 +155,7 @@ $(function() {
                     });
                     loadCategory(response.data_category);
                     loadBrand(response.data_brand);
+                    loadTags(response.data_tags);
                     loadProductRelated(response.data_related);
                     loadPostRelated(response.post_related);
                     loadProductSimilar(response.data_similar);
@@ -329,6 +331,37 @@ function loadProductRelated(dataSelected) {
         data: dataSelected,
         ajax: {
             url: url_ajax_load_product,
+            dataType: 'json',
+            delay: 250,
+            data: function(e) {
+                return {
+                    q: e.term,
+                    page: e.page
+                }
+            },
+            processResults: function(e, t) {
+                return t.page = t.page || 1, {
+                    results: e,
+                    pagination: {
+                        more: 30 * t.page < e.total_count
+                    }
+                }
+            },
+            cache: !0
+        }
+    });
+    if (typeof dataSelected !== 'undefined') selector.find('> option').prop("selected", "selected").trigger("change");
+}
+
+function loadTags(dataSelected) {
+    let selector = $('select.data_tags');
+    selector.select2({
+        placeholder: 'Chọn tags',
+        allowClear: !0,
+        multiple: !0,
+        data: dataSelected,
+        ajax: {
+            url: url_ajax_load_tags,
             dataType: 'json',
             delay: 250,
             data: function(e) {

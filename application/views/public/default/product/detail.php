@@ -519,7 +519,7 @@
                                         <?php endif; ?>
                                     </div>
 
-                                    <div class="tags">Tags: <?php echo getTags($oneItem->meta_keyword) ?></div>
+                                    <div class="tags">Tags: <?php echo getTags($oneItem->data_tags) ?></div>
                                 </div>
                                 <div class="col-sm-3 col-xs-12">
                                     <?php if (!empty($data_similar)): ?>

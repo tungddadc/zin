@@ -194,6 +194,69 @@ class Product extends Public_Controller
 
     }
 
+    public function tags($id, $page = 1){
+    	dd($id);
+        $oneItem = $this->_data_category->getByIdCached($id);
+
+        if (empty($oneItem)) show_404();
+        if ($oneItem->type !== 'tag') show_404();
+
+        $data['oneItem'] = $oneItem;
+
+        switch ($this->input->get('filter_sort')) {
+            case 'oldest':
+                $paramsFilter['order'] = ['created_time' => 'ASC'];
+                break;
+            case 'lowest':
+                $paramsFilter['order'] = ['price_sort' => 'ASC'];
+                break;
+            case 'highest':
+                $paramsFilter['order'] = ['price_sort' => 'DESC'];
+                break;
+            default:
+                $paramsFilter['order'] = ['created_time' => 'DESC'];
+        }
+        $limit = $this->input->get('filter_limit');
+        $data['limit'] = $limit = !empty($limit) ? $limit : 12;
+        $data['page'] = $page;
+        $params = [
+            'is_status' => 1, //0: Huỷ, 1: Hiển thị, 2: Nháp
+            'lang_code' => $this->_lang_code,
+            'brand_id' => $id,
+            'limit' => $limit,
+            'page' => $page
+        ];
+        if(!empty($paramsFilter)) $params = array_merge($params,$paramsFilter);
+        $data['data'] = $this->_data->getData($params);
+        $data['total'] = $this->_data->getTotal($params);
+        /*Pagination*/
+        $this->load->library('pagination');
+        $paging['base_url'] = getUrlBrand(['slug' => $oneItem->slug, 'id' => $oneItem->id, 'page' => 1]);
+        $paging['first_url'] = getUrlBrand(['slug' => $oneItem->slug, 'id' => $oneItem->id]);
+        $paging['total_rows'] = $data['total'];
+        $paging['per_page'] = $limit;
+        $this->pagination->initialize($paging);
+        $data['pagination'] = $this->pagination->create_links();
+        /*Pagination*/
+
+        //add breadcrumbs
+        $this->breadcrumbs->push("Trang chủ", base_url());
+        $this->breadcrumbs->push($oneItem->title, getUrlBrand($oneItem));
+        $data['breadcrumb'] = $this->breadcrumbs->show();
+        //SEO Meta
+        $data['SEO'] = [
+            'meta_title' => !empty($oneItem->meta_title) ? $oneItem->meta_title : $oneItem->title,
+            'meta_description' => !empty($oneItem->meta_description) ? $oneItem->meta_description : $oneItem->description,
+            'meta_keyword' => !empty($oneItem->meta_title) ? $oneItem->meta_keyword : '',
+            'url' => getUrlBrand($oneItem),
+            'image' => getImageThumb($oneItem->thumbnail, 400, 200)
+        ];
+
+        $data['main_content'] = $this->load->view($this->template_path . 'product/tags', $data, TRUE);
+        $this->load->view($this->template_main, $data);
+
+    }
+
     public function wishlist(){
         $data = [];
         if($this->session->userdata('is_logged') == true){

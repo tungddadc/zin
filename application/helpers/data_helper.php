@@ -273,18 +273,14 @@ if (!function_exists('cutString')) {
 }
 
 if (!function_exists('getTags')) {
-    function getTags($keyword)
+    function getTags($data_tags)
     {
+		$data_tags = json_decode($data_tags);
         $tags = '';
-        if (!empty($keyword)) {
-            $listTags = explode(',', trim($keyword));
-            if (!empty($listTags)) foreach ($listTags as $k => $tag) {
-                $tag = trim($tag);
-                if (!empty($tag) && $tag !== '') {
-                    $tags .= $k != 0 ? ', ' : '';
-                    $tags .= '<a href="' . getUrlTag($tag) . '" title="' . $tag . '">' . $tag . '</a>';
-                }
-            }
+        if (!empty($data_tags)) foreach ($data_tags as $k => $tag_id) {
+			$oneTag = getCategoryById($tag_id);
+			$tags .= $k != 0 ? ', ' : '';
+			$tags .= '<a href="' . getUrlTag($oneTag) . '" title="' . $oneTag->title . '">' . $oneTag->title . '</a>';
         }
         return $tags;
     }

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-header( "HTTP/1.1 301 Moved Permanently" );
-header( "Location: ".BASE_URL);
+/*header( "HTTP/1.1 301 Moved Permanently" );
+header( "Location: ".BASE_URL);*/
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
