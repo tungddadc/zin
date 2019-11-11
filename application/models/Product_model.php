@@ -53,9 +53,7 @@ class Product_model extends STEVEN_Model
         }
 
         if(!empty($tags)){
-            $this->db->select('MATCH (meta_keyword) AGAINST ('.$this->db->escape($tags).' IN BOOLEAN MODE) AS score_tags');
-            $this->db->where('MATCH (meta_keyword) AGAINST ('.$this->db->escape($tags).' IN BOOLEAN MODE)', NULL, FALSE);
-            $this->db->order_by('score_tags','DESC');
+			$this->db->like("data_tags", '"'.$tags.'"');
         }
 
         if (!empty($search_custom)) {

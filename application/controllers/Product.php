@@ -195,9 +195,7 @@ class Product extends Public_Controller
     }
 
     public function tags($id, $page = 1){
-    	dd($id);
         $oneItem = $this->_data_category->getByIdCached($id);
-
         if (empty($oneItem)) show_404();
         if ($oneItem->type !== 'tag') show_404();
 
@@ -222,7 +220,7 @@ class Product extends Public_Controller
         $params = [
             'is_status' => 1, //0: Huỷ, 1: Hiển thị, 2: Nháp
             'lang_code' => $this->_lang_code,
-            'brand_id' => $id,
+            'tags' => $id,
             'limit' => $limit,
             'page' => $page
         ];

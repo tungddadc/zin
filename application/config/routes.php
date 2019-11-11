@@ -65,7 +65,7 @@ $route['account'] = 'account/index';
 $route['(:any)-ag(:num)'] = 'agency/detail/$2';
 
 /*Route tags*/
-$route['tags/(:any)-t(:num)']   = 'product/tags/$1';
+$route['tags/(:any)-t(:num)']   = 'product/tags/$2';
 $route['tags/(:any)-t(:num)/page/(:num)']   = 'product/tags/$2/$3';
 /*Route tags*/
 
