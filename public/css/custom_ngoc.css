@@ -440,4 +440,7 @@ a:focus, a:hover {
   .product-view .product-tabs {
     border-bottom: 0;
   }
+  .product-essential .product-img-box {
+    width: 100%;
+  }
 }
