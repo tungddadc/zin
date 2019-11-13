@@ -54,6 +54,10 @@ a:focus, a:hover {
 .pricing-footer {
     margin-top: 10px;
 }
+.pricing-footer .p-button:hover, .pricing-footer .p-button:focus {
+    background: #be1e2d;
+    color: #fff;
+}
 .pl-0 {
     padding-left: 0;
 }
