@@ -187,22 +187,6 @@
 .product-view .accessories-slider {
   margin-right: -12px;
   margin-left: -12px;
-  display: flex;
-  flex-flow: row wrap;
-}
-.accessories .item { 
-  padding: 0 15px;
-}
-@media (min-width: 1024px) {
-  .accessories .item {
-    width: 25%;
-    
-  }
-}
-@media (max-width: 1023px) and (min-width: 481px){
-  .accessories .item {
-    width: 50%;
-  }
 }
 .products-grid .rating-box {
   position: relative;
