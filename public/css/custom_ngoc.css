@@ -46,7 +46,14 @@ a:focus, a:hover {
 .d-flex.pricing-style1 .pricing-plan {
     margin-bottom: 10px;
 }
-
+.pricing-plan .pricing-head .name {
+    padding: 0;
+    margin-bottom: 5px;
+    height: auto;
+}
+.pricing-footer {
+    margin-top: 10px;
+}
 .pl-0 {
     padding-left: 0;
 }
@@ -598,6 +605,8 @@ nav#menu-main {
 #menu-main .navleft-container {
     overflow: visible;
 }
+
+
 @media (min-width: 1280px) {
     #menu-main .mega-container {
         width: 300px;
