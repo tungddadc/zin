@@ -96,6 +96,10 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                             <?php $this->load->view($this->template_path . 'product/_list_product', ['data' => $data]) ?>
                         </div>
                     </article>
+
+					<div class="page-title">
+						<?php echo $oneItem->content ?>
+					</div>
                 </div>
                 <?php echo form_close() ?>
             </div>
