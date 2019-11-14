@@ -46,10 +46,19 @@ a:focus, a:hover {
 .d-flex.pricing-style1 .pricing-plan {
     margin-bottom: 10px;
 }
+.pricing-plan .pricing-head {
+    padding-top: 20px;
+}
 .pricing-plan .pricing-head .name {
     padding: 0;
     margin-bottom: 5px;
     height: auto;
+}
+.pricing-plan .pricing-body {
+    overflow-y: auto;
+}
+.pricing-plan .pricing-body::-webkit-scrollbar {
+    display: none;
 }
 .pricing-footer {
     margin-top: 10px;

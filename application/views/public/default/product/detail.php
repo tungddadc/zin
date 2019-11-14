@@ -127,7 +127,8 @@
                                                         <div class="name">giá lẻ cửa hàng</div>                                                        
                                                         <div class="price">
                                                             <span class="value"><?php echo !empty($oneItem->price) ? formatMoney($oneItem->price) : "" ?></span>
-                                                        </div>                                                        
+                                                        </div> 
+                                                        <div><br></div>                                                       
                                                     </div>
                                                     <div class="pricing-body">
                                                         <p>-Số lượng áp dụng từ 01~05</p>
@@ -160,7 +161,8 @@
                                                         <div class="name">giá buôn cửa hàng</div>                                                        
                                                         <div class="price">
                                                            <span class="value"><?php echo !empty($oneItem->price_sale) ? formatMoney($oneItem->price_sale) : "" ?></span>
-                                                        </div>                                                        
+                                                        </div> 
+                                                        <div><br></div>                                                       
                                                     </div>
                                                     <div class="pricing-body">
                                                         <p>-Số lượng áp dụng từ 06~15</p>
