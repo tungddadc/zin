@@ -540,6 +540,9 @@ nav#menu-main {
     top: 0;
     /*overflow: hidden;*/
 }
+.mega-menu-category .popup::-webkit-scrollbar {
+    display: none;
+}
 .nav > li > .wrap-popup.column1 {
     height: 412px;
     left: 100%!important;
