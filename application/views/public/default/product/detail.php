@@ -229,7 +229,7 @@
                                                         <div style="color:#be1e2d">THAM KHẢO</div>
                                                     </div>
                                                     <div class="pricing-body">
-                                                        <p>- Giá mang tình tham khảo để cửa hàng báo giá cho khách, dựa theo cách tình tỷ suất lợi nhuận chung của các cửa hàng.</p>
+                                                        <p>- Giá mang tính tham khảo để cửa hàng báo giá cho khách, dựa theo cách tính tỷ suất lợi nhuận chung của các cửa hàng.</p>
                                                         <p>- Cam kết: Zin Linh Kiện chỉ bán linh kiện, không phục vụ khách lẻ</p>
                                                         <p>- Áp dụng cho khách vãng lai.</p>
                                                     </div>
@@ -255,7 +255,7 @@
                                                         <div style="color:#be1e2d">THAM KHẢO</div>
                                                     </div>
                                                     <div class="pricing-body">
-                                                        <p>- Giá mang tình tham khảo để cửa hàng báo giá cho khách, dựa theo cách tình tỷ suất lợi nhuận chung của các cửa hàng.</p>
+                                                        <p>- Giá mang tính tham khảo để cửa hàng báo giá cho khách, dựa theo cách tính tỷ suất lợi nhuận chung của các cửa hàng.</p>
                                                         <p>- Cam kết: Zin Linh Kiện chỉ bán linh kiện, không phục vụ khách lẻ</p>
                                                         <p>- Áp dụng cho khách hàng quen, có thẻ thành viên.</p>
                                                     </div>
