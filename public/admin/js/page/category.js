@@ -81,13 +81,16 @@ $(function() {
                         if(key === 'thumbnail' && value) element.closest('.form-group').find('img').attr('src',media_url + value);
                     });
 
-                    $.each(response.data_language, function( i, value ) {
-                        let lang_code = value.language_code;
-                        $.each(value, function( key, val) {
-                            let element = modal_form.find('[name="language['+lang_code+']['+key+']"]');
-                            element.val(val);
-                        });
-                    });
+					$.each(response.data_language, function( i, value ) {
+						let lang_code = value.language_code;
+						$.each(value, function( key, val) {
+							let element = modal_form.find('[name="language['+lang_code+']['+key+']"]');
+							if(element.hasClass('tinymce') && val){
+								tinymce.get(element.attr('id')).setContent(val);
+							}
+							element.val(val);
+						});
+					});
 
                     loadCategory(response.data_category);
                     FUNC.showGallery('#list-album',response.data_info.banner);
