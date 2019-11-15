@@ -246,7 +246,7 @@
     margin-bottom: 15px;
     padding: 15px 0;
 }
-.slide-detail .slick-slide  {
+.slide-detail .slick-vertical .slick-slide  {
     margin-bottom: 8px;
 }
 #product_addtocart_form .add-to-cart .btn-cart {
@@ -256,6 +256,7 @@
     font-weight: 600;
     margin-top: 20px;
     margin-left: 0;
+    border: 0;
 }
 #product_addtocart_form .btn-cart .icon-cart {
     width: 40px;
