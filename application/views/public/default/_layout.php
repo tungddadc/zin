@@ -119,7 +119,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     ?>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
+	<meta name="google-site-verification" content="BSErZ8p6ZL9_zJsASPDReeTu4EQmQ-h1GklsVfXJDb0" />
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -140,6 +140,16 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
         ;
     </script>
     <?php echo !empty($this->settings['script_head']) ? $this->settings['script_head'] : '' ?>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-152077659-1"></script>
+	<script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-152077659-1');
+	</script>
 </head>
 <?php
 switch ($this->_controller) {

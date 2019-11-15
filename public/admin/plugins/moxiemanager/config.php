@@ -163,9 +163,9 @@ require_once $root . "/config.php";
 	$moxieManagerConfig['autoformat.delete_format_images'] = true;
 
 	// AutoRename
-	$moxieManagerConfig['autorename.enabled'] = false;
-	$moxieManagerConfig['autorename.space'] = "_";
-	$moxieManagerConfig['autorename.lowercase'] = false;
+	$moxieManagerConfig['autorename.enabled'] = true;
+	$moxieManagerConfig['autorename.space'] = "-";
+	$moxieManagerConfig['autorename.lowercase'] = true;
 
 	// BasicAuthenticator
 	$moxieManagerConfig['basicauthenticator.users'] = array(

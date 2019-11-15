@@ -5,75 +5,98 @@
     <!-- Main Container -->
     <section class="main-container" style="margin-top: 0">
         <div class="clearfix"></div>
-        <div class="top-agency clear-after">
-            <div class="img-right">
-                <img src="<?php echo !empty($oneItem->banner) ? getImageThumb($oneItem->banner) : $this->templates_assets . 'images/background_sieu_thi_large.jpg'; ?>"
-                 alt="Hệ thống siêu thị">
-            </div>
-            <div class="top-agency__abs">
-                <ul>
-                    <li>
-                        <img src="<?php echo $this->templates_assets . 'images/boy-1299640_960_720.png' ?>" alt=""><b
-                                class="so" id="total_agency"
-                                data-val="<?php echo countAgency() ?>"><?php echo countAgency() ?></b> CỬA HÀNG
-                        <p>Trên toàn quốc</p>
-                    </li>
-                    <li>
-                        <img src="<?php echo $this->templates_assets . 'images/Customer-png.png' ?>" alt=""><b
-                                class="so" id="serve_customer"
-                                data-val="<?php echo countMember() ?>"><?php echo countMember() ?></b> KHÁCH
-                        <p>được phục vụ mỗi ngày</p>
-                    </li>
-                    <li>
-                        <img src="<?php echo $this->templates_assets . 'images/customer_service_png_357586.png' ?>"
-                             alt=""><b><?php echo $this->settings['open_door'] ?></b> MỞ CỬA
-                        <p>kể cả chủ nhật & ngày lễ</p>
-                    </li>
-                </ul>
-            </div>
-        </div>
+        
         <div class="container">
-
-            <div class="main-agency">
-                <form action="#" class="form_filter">
-                    <h2>TÌM CỬA HÀNG, ĐẠI LÝ</h2>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <select name="city_id" class="form-control select2"></select>
+            <div class="section">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="top-agency clear-after">
+                            <div class="img-right">
+                                <img src="public/images/Vietnam-map-big-size.png" alt="Hệ thống siêu thị">
                             </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <select name="district_id" class="form-control select2"></select>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="search_key">
-                                <input type="text" name="text_search" class="form-control"
-                                       placeholder="Nhập tên đường, tỉnh thành, quận huyện"
-                                       onkeyup="live_search(this.value)">
-                                <ul class="result ">
+                            <div class="top-agency__abs">
+                                <ul>
+                                    <li>
+                                        <img src="<?php echo $this->templates_assets . 'images/boy-1299640_960_720.png' ?>" alt="">
+                                        <b class="so" id="total_agency" data-val="<?php echo countAgency() ?>"><?php echo countAgency() ?></b> 
+                                        CỬA HÀNG
+                                        <p>Trên toàn quốc</p>
+                                    </li>
+                                    <li>
+                                        <img src="<?php echo $this->templates_assets . 'images/Customer-png.png' ?>" alt="">
+                                        <b class="so" id="serve_customer" data-val="<?php echo countMember() ?>"><?php echo countMember() ?></b> 
+                                        KHÁCH
+                                        <p>được phục vụ mỗi ngày</p>
+                                    </li>
+                                    <li>
+                                        <img src="<?php echo $this->templates_assets . 'images/customer_service_png_357586.png' ?>" alt="">
+                                        <b><?php echo $this->settings['open_door'] ?></b> 
+                                        MỞ CỬA
+                                        <p>kể cả chủ nhật & ngày lễ</p>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                </form>
+                    <div class="col-md-4 main-agency">
+                        <form action="#" class="form_filter">
+                            <h2>TÌM CỬA HÀNG, ĐẠI LÝ</h2>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <select name="city_id" class="form-control select2"></select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 pl-0">
+                                    <div class="form-group">
+                                        <select name="district_id" class="form-control select2"></select>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="search_key">
+                                        <input type="text" name="text_search" class="form-control"
+                                               placeholder="Nhập tên đường, tỉnh thành, quận huyện"
+                                               onkeyup="live_search(this.value)">
+                                        <ul class="result ">
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="list-agency" id="_list_agency">
+                            <div class="list-agency__title">
+                                <h2><a href="javascript:;"><i class="fa fa-map-marker" aria-hidden="true"></i> Xem siêu thị gần bạn</a></h2>
+                            </div>
+                            <div class="list-agency__content">
+                                <ul>
+                                    <?php if (!empty($data)) foreach ($data as $item): ?>
+                                        <li>
+                                            <h3 class="agency-name">
+                                                <a href="<?php echo getUrlAgency($item) ?>">
+                                                    <?php echo $item->title ?>
+                                                </a>
+                                            </h3>
+                                            <div class="agency-info">
+                                                <i class="fa fa-map-marker"></i> <?php echo $item->address ?>
+                                            </div>
+                                            <div class="agency-info">
+                                                <i class="fa fa-clock-o"></i> <?php echo $item->Open_door ?>
+                                            </div>
+                                            <div class="agency-info">
+                                                <i class="fa fa-phone"></i> <?php echo $item->hotline ?>
+                                            </div>
+                                        </li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </div>
+
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="main-agency">
                 <div class="list-agency" id="_list_agency">
-                    <div class="list-agency__title">
-                        <a href="javascript:;"><i class="fa fa-map-marker" aria-hidden="true"></i> Xem siêu thị gần bạn</a>
-                    </div>
-                    <div class="list-agency__content">
-                        <h2>DANH SÁCH CỬA HÀNG, ĐẠI LÝ</h2>
-                        <ul>
-                            <?php if (!empty($data)) foreach ($data as $item): ?>
-                                <li>
-                                    <a href="<?php echo getUrlAgency($item) ?>"><?php echo $item->title ?>
-                                        , <?php echo $item->address ?></a>
-                                </li>
-                            <?php endforeach; ?>
-                        </ul>
-                    </div>
                     <div class="list-agency__un">
                         <h2>CÁC TIỆN ÍCH Ở CỬA HÀNG, ĐẠI LÝ</h2>
                         <ul class="clear-after">
