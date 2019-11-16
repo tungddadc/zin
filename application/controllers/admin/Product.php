@@ -56,8 +56,11 @@ class Product extends Admin_Controller
         if(isset($queryFilter['noimage']) && $queryFilter['noimage'] !== '')
             $params = array_merge($params,['noimage' => $queryFilter['noimage']]);
 
+        if(isset($queryFilter['nocate']) && $queryFilter['nocate'] !== '')
+            $params = array_merge($params,['nocate' => $queryFilter['nocate']]);
+
         $listData = $this->_data->getData($params);
-        //ddQuery($this->db);
+//        ddQuery($this->db);
         if(!empty($listData)) foreach ($listData as $item) {
             $row = array();
             $row['checkID'] = $item->id;

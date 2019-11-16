@@ -52,6 +52,10 @@ class Product_model extends STEVEN_Model
             $this->db->where("$this->table.thumbnail",null);
         }
 
+        if(!empty($nocate)){
+            $this->db->where("$this->table.id NOT IN (SELECT product_id FROM st_product_category)");
+        }
+
         if(!empty($tags)){
             $this->db->select('MATCH (meta_keyword) AGAINST ('.$this->db->escape($tags).' IN BOOLEAN MODE) AS score_tags');
             $this->db->where('MATCH (meta_keyword) AGAINST ('.$this->db->escape($tags).' IN BOOLEAN MODE)', NULL, FALSE);

@@ -86,6 +86,10 @@ $(function() {
     if(location.search.split('noimage=')[1]){
         table.search('1', "noimage");
     }
+
+    if(location.search.split('nocate=')[1]){
+        table.search('1', "nocate");
+    }
     $('[name="is_status"]').on("change", function () {
         table.search($(this).val(), "is_status")
     }), $('[name="is_status"]').selectpicker();

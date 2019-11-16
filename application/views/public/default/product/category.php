@@ -110,6 +110,9 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 							<div class="des_cat">
 								<?php echo $oneItem->content ?>
 							</div>
+                            <div class="des_cat">
+								<?php echo $oneItem->content ?>
+							</div>
 						<?php endif; ?>
 					</div>
 
