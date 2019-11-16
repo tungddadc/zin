@@ -127,13 +127,21 @@
                                                         <div class="name">giá lẻ cửa hàng</div>                                                        
                                                         <div class="price">
                                                             <span class="value"><?php echo !empty($oneItem->price) ? formatMoney($oneItem->price) : "" ?></span>
-                                                          
-                                                        </div>                                                        
+                                                        </div> 
+                                                        <div><br></div>                                                       
                                                     </div>
                                                     <div class="pricing-body">
-                                                        <p>Số lượng áp dụng từ 01~05</p>
-                                                        <p>Miễn phí vận chuyển đơn hàng trên 2.000.000 VND</p>
-                                                        <p>Đơn hàng tối thiểu 200.000 VND</p>
+                                                        <p>-Số lượng áp dụng từ 01~05</p>
+                                                        <p>
+                                                            - Khách hàng nội thành, nội tỉnh:<br>
+                                                            + Giao hàng siêu tốc trong 20 phút<br>
+                                                            + Miễn phí ship đơn hàng từ 500.000VNĐ
+                                                        </p>
+                                                        <p>
+                                                            - Khách hàng ngoại thành, ngoại tỉnh:<br>
+                                                            + Miễn phí vận chuyển đơn hàng trên 2.000.000 VNĐ<br>
+                                                            + Đơn hàng tối thiểu 200.000VNĐ
+                                                        </p>
                                                     </div>
                                                     <div class="pricing-footer">
                                                         <div class="p-button">Chọn</div>
@@ -152,15 +160,22 @@
                                                              class="shape_hover" alt="">
                                                         <div class="name">giá buôn cửa hàng</div>                                                        
                                                         <div class="price">
-                                                           
-                                                            <span class="value"><?php echo !empty($oneItem->price_sale) ? formatMoney($oneItem->price_sale) : "" ?></span>
-                                                           
-                                                        </div>                                                        
+                                                           <span class="value"><?php echo !empty($oneItem->price_sale) ? formatMoney($oneItem->price_sale) : "" ?></span>
+                                                        </div> 
+                                                        <div><br></div>                                                       
                                                     </div>
                                                     <div class="pricing-body">
-                                                        <p>Số lượng áp dụng từ 06~15</p>
-                                                        <p>Miễn phí vận chuyển đơn hàng trên 3.000.000 VND</p>
-                                                        <p>Đơn hàng tối thiểu 500.000 VND</p>
+                                                        <p>-Số lượng áp dụng từ 06~15</p>
+                                                        <p>
+                                                            - Khách hàng nội thành, nội tỉnh:<br>
+                                                            + Giao hàng siêu tốc trong 20 phút<br>
+                                                            + Miễn phí ship đơn hàng từ 1.000.000VNĐ
+                                                        </p>
+                                                        <p>
+                                                            - Khách hàng ngoại thành, ngoại tỉnh:<br>
+                                                            + Miễn phí vận chuyển đơn hàng trên 3.000.000 VNĐ<br>
+                                                            + Đơn hàng tối thiểu 500.000VNĐ
+                                                        </p>
                                                     </div>
                                                     <div class="pricing-footer">
                                                         <p class="p-button">Chọn</p>
@@ -211,11 +226,12 @@
                                                         <div class="price">
                                                             <span class="value"><?php echo !empty($oneItem->price_kl) ? formatMoney($oneItem->price_kl) : "" ?></span>
                                                         </div>
+                                                        <div style="color:#be1e2d">THAM KHẢO</div>
                                                     </div>
                                                     <div class="pricing-body">
-                                                        <p>Áp dụng cho khách vãng lai</p>
-                                                        <p>Miễn phí bảo dưỡng chi tiết máy</p>
-                                                        <p>Tặng voucher 10% cho lần sửa kế tiếp</p>
+                                                        <p>- Giá mang tính tham khảo để cửa hàng báo giá cho khách, dựa theo cách tính tỷ suất lợi nhuận chung của các cửa hàng.</p>
+                                                        <p>- Cam kết: Zin Linh Kiện chỉ bán linh kiện, không phục vụ khách lẻ</p>
+                                                        <p>- Áp dụng cho khách vãng lai.</p>
                                                     </div>
                                                     <div class="pricing-footer">
                                                         <p class="p-button">Chọn</p>
@@ -236,11 +252,12 @@
                                                         <div class="price">
                                                             <span class="value"><?php echo !empty($oneItem->price_ek) ? formatMoney($oneItem->price_ek) : "" ?></span>
                                                         </div>
+                                                        <div style="color:#be1e2d">THAM KHẢO</div>
                                                     </div>
                                                     <div class="pricing-body">
-                                                        <p>Áp dụng cho khách quen có thẻ thành viên</p>
-                                                        <p>Miễn phí bảo dưỡng chi tiết máy</p>
-                                                        <p>Tặng voucher 10% cho lần sửa kế tiếp</p>
+                                                        <p>- Giá mang tính tham khảo để cửa hàng báo giá cho khách, dựa theo cách tính tỷ suất lợi nhuận chung của các cửa hàng.</p>
+                                                        <p>- Cam kết: Zin Linh Kiện chỉ bán linh kiện, không phục vụ khách lẻ</p>
+                                                        <p>- Áp dụng cho khách hàng quen, có thẻ thành viên.</p>
                                                     </div>
                                                     <div class="pricing-footer">
                                                         <p class="p-button">Chọn</p>
@@ -519,7 +536,7 @@
                                         <?php endif; ?>
                                     </div>
 
-                                    <div class="tags">Tags: <?php echo getTags($oneItem->meta_keyword) ?></div>
+                                    <div class="tags">Tags: <?php echo getTags($oneItem->data_tags) ?></div>
                                 </div>
                                 <div class="col-sm-3 col-xs-12">
                                     <?php if (!empty($data_similar)): ?>

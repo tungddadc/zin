@@ -226,24 +226,24 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     </nav>
     <div class="banner-mainmenu banner-menu hidden"> 
         <a class="img">
-            <img alt="Banner menu" src="<?php echo $this->templates_assets ?>images/banner-menu1.png">
+            <img alt="Banner menu" src="<?php echo $this->templates_assets ?>images/banner-menu1.jpg">
         </a> 
         <a class="img">
-            <img alt="Banner menu" src="<?php echo $this->templates_assets ?>images/banner-menu2.png">
+            <img alt="Banner menu" src="<?php echo $this->templates_assets ?>images/banner-menu2.jpg">
         </a>
         <a class="img">
-            <img alt="Banner menu" src="<?php echo $this->templates_assets ?>images/banner-menu3.png">
+            <img alt="Banner menu" src="<?php echo $this->templates_assets ?>images/banner-menu3.jpg">
         </a> 
     </div> 
     <div class="banner-menuleft banner-menu hidden"> 
         <a class="img">
-            <img alt="Banner menu" src="<?php echo $this->templates_assets ?>images/banner-menu1.png">
+            <img alt="Banner menu" src="<?php echo $this->templates_assets ?>images/banner-menu1.jpg">
         </a> 
         <a class="img">
-            <img alt="Banner menu" src="<?php echo $this->templates_assets ?>images/banner-menu2.png">
+            <img alt="Banner menu" src="<?php echo $this->templates_assets ?>images/banner-menu2.jpg">
         </a>
         <a class="img">
-            <img alt="Banner menu" src="<?php echo $this->templates_assets ?>images/banner-menu3.png">
+            <img alt="Banner menu" src="<?php echo $this->templates_assets ?>images/banner-menu3.jpg">
         </a> 
     </div> 
 </header>

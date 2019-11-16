@@ -6,6 +6,7 @@
  * Time: 12:38 PM
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
+
 class Product extends Admin_Controller
 {
     protected $_data;

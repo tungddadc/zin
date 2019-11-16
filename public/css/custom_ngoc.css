@@ -46,7 +46,27 @@ a:focus, a:hover {
 .d-flex.pricing-style1 .pricing-plan {
     margin-bottom: 10px;
 }
-
+.pricing-plan .pricing-head { 
+    padding-top: 20px;
+}
+.pricing-plan .pricing-head .name {
+    padding: 0;
+    margin-bottom: 5px;
+    height: auto;
+}
+.pricing-plan .pricing-body {
+    overflow-y: auto;
+}
+.pricing-plan .pricing-body::-webkit-scrollbar {
+    display: none;
+}
+.pricing-footer {
+    margin-top: 10px;
+}
+.pricing-footer .p-button:hover, .pricing-footer .p-button:focus {
+    background: #be1e2d;
+    color: #fff;
+}
 .pl-0 {
     padding-left: 0;
 }
@@ -529,6 +549,9 @@ nav#menu-main {
     top: 0;
     /*overflow: hidden;*/
 }
+.mega-menu-category .popup::-webkit-scrollbar {
+    display: none;
+}
 .nav > li > .wrap-popup.column1 {
     height: 412px;
     left: 100%!important;
@@ -598,6 +621,8 @@ nav#menu-main {
 #menu-main .navleft-container {
     overflow: visible;
 }
+
+
 @media (min-width: 1280px) {
     #menu-main .mega-container {
         width: 300px;
