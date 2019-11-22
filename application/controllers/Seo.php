@@ -35,7 +35,7 @@ class Seo extends Public_Controller {
         );
         $allCategory = $categoryModel->_all_category();
         $categorieProduct = $categoryModel->getDataByCategoryType($allCategory,'product');
-        $categorieBrand = $categoryModel->getDataByCategoryType($allCategory,'brand');
+//        $categorieBrand = $categoryModel->getDataByCategoryType($allCategory,'brand');
         $categoriePost = $categoryModel->getDataByCategoryType($allCategory,'post');
         $posts = $postModel->getAll($this->session->public_lang_code,1);
         $products = $productModel->getAll($this->session->public_lang_code,1);
@@ -45,10 +45,10 @@ class Seo extends Public_Controller {
             $url = getUrlCateProduct($item);
             $this->add($url, timeAgo($item->created_time, 'c'), 'weekly', 0.9);
         }
-        if(!empty($categorieBrand)) foreach ($categorieBrand as $item){
+        /*if(!empty($categorieBrand)) foreach ($categorieBrand as $item){
             $url = getUrlBrand($item);
             $this->add($url, timeAgo($item->created_time, 'c'), 'weekly', 0.9);
-        }
+        }*/
         if(!empty($categoriePost)) foreach ($categoriePost as $item){
             $url = getUrlCateNews($item);
             $this->add($url, timeAgo($item->created_time, 'c'), 'weekly', 0.9);
