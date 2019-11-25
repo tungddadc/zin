@@ -520,6 +520,7 @@ var FUNC = {
         return false;
     },
     showGallery: function(element,data){
+    	console.log(data);
         if(data !== null && (data).length > 0) {
             $.each(JSON.parse(data), function (i, v) {
                 $(element).append(FUNC.itemGallery(i + 1,v));
