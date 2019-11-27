@@ -96,24 +96,29 @@ class Seo extends Public_Controller {
      * @return void
      */
     public function output($type = 'urlset') {
-        $xml = new SimpleXMLElement('<?xml version="1.0" encoding="UTF-8" ?><'.$type.'/>');
-        $xml->addAttribute('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9');
-        if ($type == 'urlset') {
-            foreach ($this->urls as $url) {
-                $child = $xml->addChild('url');
-                $child->addChild('loc', strtolower($url->loc));
-                if (isset($url->lastmod)) $child->addChild('lastmod', $url->lastmod);
-                if (isset($url->changefreq)) $child->addChild('changefreq', $url->changefreq);
-                if (isset($url->priority)) $child->addChild('priority', number_format($url->priority, 1));
-            }
-        } elseif ($type == 'sitemapindex') {
-            foreach ($this->urls as $url) {
-                $child = $xml->addChild('sitemap');
-                $child->addChild('loc', strtolower($url->loc));
-                if (isset($url->lastmod)) $child->addChild('lastmod', $url->lastmod);
-            }
-        }
-        $this->output->set_content_type('application/xml')->set_output($xml->asXml());
+		$root = $type . " xmlns='http://www.sitemaps.org/schemas/sitemap/0.9' xmlns:xhtml=\"http://www.w3.org/1999/xhtml\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd\"";
+		if (isset($this->urls[0]->image)) $root .= " xmlns:image='http://www.google.com/schemas/sitemap-image/1.1'";
+		$xml = new SimpleXMLElement('<?xml version="1.0" encoding="UTF-8" ?><'.$root.'/>');
+		if ($type == 'urlset') {
+			foreach ($this->urls as $url) {
+				$child = $xml->addChild('url');
+				$child->addChild('loc', strtolower($url->loc));
+				if (isset($url->image)) {
+					$image = $child->addChild('image:image:image');
+					$image->addChild('image:image:loc',$url->image);
+				}
+				if (isset($url->lastmod)) $child->addChild('lastmod', $url->lastmod);
+				if (isset($url->changefreq)) $child->addChild('changefreq', $url->changefreq);
+				if (isset($url->priority)) $child->addChild('priority', number_format($url->priority, 1));
+			}
+		} elseif ($type == 'sitemapindex') {
+			foreach ($this->urls as $url) {
+				$child = $xml->addChild('sitemap');
+				$child->addChild('loc', strtolower($url->loc));
+				if (isset($url->lastmod)) $child->addChild('lastmod', $url->lastmod);
+			}
+		}
+		$this->output->set_content_type('application/xml')->set_output($xml->asXml());
     }
 
     /**
