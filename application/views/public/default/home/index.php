@@ -143,8 +143,19 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 <div class="container">
     <div class="row">
         <div class="blog-outer-container">
-            <div class="block-title">
+            <div class="new_title">
                 <h2>Tin mới nhất</h2>
+                <div class="top-news view-list-child">
+                    <ul>
+                        <li><a href="<?php echo site_url('tin-moi.html') ?>">Tin mới</a></li>
+                        <?php
+                          $listCats=getCategoryByType(0,'post');
+                          if(!empty($listCats)) foreach ($listCats as $item){
+                            echo '<li><a href="'.getUrlCateNews($item).'">'.$item->title.'</a></li>';
+                          }
+                        ?>
+                    </ul>
+                </div>
             </div>
             <div class="blog-inner">
                 <?php if (!empty($home_news)) foreach ($home_news as $item): ?>
