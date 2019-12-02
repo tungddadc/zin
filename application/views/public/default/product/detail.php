@@ -326,8 +326,10 @@
                                         <p class="availability in-stock">
                                             <?php echo $this->session->userdata('is_agency') == true ? '<span class="agency">Đại lý</span>' : ''  ?>
                                             <?php echo !empty($data_stock[0]->Amount) ? '<span class="instock">Còn hàng</span>' : '<span class="outstock">Hết hàng</span>' ?>
-                                        </p>
-                                        <?php if (!empty($data_stock)) foreach ($data_stock as $item): ?>
+                                        </p> 
+
+                                        <?php if (!empty($data_stock)) foreach ($data_stock as $item): ?>      
+
                                             <p class="pstock-item pstock-item-01 pstock-district-001"
                                                style="display: block;">
                                                 <?php echo $item->StockName ?>

@@ -47,7 +47,6 @@ $url_red = !empty($this->input->get('url')) ? site_url("auth/ajax_register?url="
                            class="input-text required-entry validate-password"
                            type="password">
                   </li>
-
                 </ul>
                 <div class="buttons-set">
                   <button name="send" class="button login"  type="submit"><span>Đăng ký</span></button>
