@@ -374,6 +374,8 @@
                                                 <li class="active"><a href="#product_tabs_description"
                                                                       data-toggle="tab">Đặc tính sản phẩm</a></li>
                                                 <li><a href="#reviews_tabs" data-toggle="tab">Phản hồi đánh giá</a></li>
+                                                <li><a href="#tab_warranty" data-toggle="tab">Thông tin
+                                                        bảo hành </a></li>
                                             </ul>
                                             <div id="productTabContent" class="tab-content">
                                                 <div class="tab-pane fade in active" id="product_tabs_description">
@@ -488,6 +490,11 @@
                                                             </div>-->
                                                         </div>
                                                         <div class="clear"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane fade" id="tab_warranty">
+                                                    <div class="std">
+                                                        <?php echo !empty($this->settings['block']['warranty']) ? $this->settings['block']['warranty'] : '' ?>
                                                     </div>
                                                 </div>
                                             </div>

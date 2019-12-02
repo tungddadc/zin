@@ -150,11 +150,14 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                         <li><a href="<?php echo site_url('tin-moi.html') ?>">Tin mới</a></li>
                         <?php
                           $listCats=getCategoryByType(0,'post');
+
                           $listCats = array_slice($listCats, 0, 5);
+
                           if(!empty($listCats)) foreach ($listCats as $item){
                             echo '<li><a href="'.getUrlCateNews($item).'">'.$item->title.'</a></li>';
                           }
                         ?>
+
                         <a href="<?php echo base_url('tin-tuc.html') ?>" title="Xem tất cả tin tức">Xem tất cả</a></span>
                     </ul>
                 </div>
