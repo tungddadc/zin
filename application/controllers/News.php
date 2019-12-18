@@ -47,6 +47,7 @@ class News extends Public_Controller
       'lang_code' => $this->_lang_code,
       'category_id' => $listCateId,
       'limit' => $limit,
+        'order' => ['created_time' => 'desc'],
       'page' => $page
     );
     $data['data'] = $this->_data->getData($params);
@@ -95,12 +96,14 @@ class News extends Public_Controller
       $data['list_category_child'] = $list_category_child = $this->_data_category->getCategoryChild($data['oneParent']->id, $this->session->public_lang_code);
     }
 
-    $data['oneItem'] = $oneItem;
-    $params['is_status'] = 1;
-    $params['lang_code'] = $this->_lang_code;
-    $params['limit'] = 5;
-    $params['group_by'] = 'id';
-    $params['not_in'] = $id;
+      $data['oneItem'] = $oneItem;
+      $params['is_status'] = 1;
+      $params['category_id'] = $oneCategory->id;
+      $params['lang_code'] = $this->_lang_code;
+      $params['limit'] = 5;
+      $params['group_by'] = 'id';
+      $params['order'] = ['created_time' => 'desc'];
+      $params['not_in'] = $id;
 
     $data['list_related'] = $this->_data->getData(array_merge($params,$list_category_child));
     $params['order'] = array('is_featured' => 'DESC', 'created_time' => 'DESC');

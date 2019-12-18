@@ -57,6 +57,7 @@ class Post extends Admin_Controller
             'category_id' => !empty($queryFilter['category_id']) ? $queryFilter['category_id'] : '',
             'type' => $this->session->userdata('type'),
             'page' => $page,
+            'order' => ['created_time' => 'desc'],
             'limit' => $limit
         ];
         if (isset($queryFilter['is_status']) && $queryFilter['is_status'] !== '')
@@ -121,10 +122,14 @@ class Post extends Admin_Controller
         }
     }
 
-    private function save_category($id, $data) {
-        if (!empty($data)) foreach ($data as $category_id) {
-            $data_category = ["{$this->_data->table}_id" => $id, 'category_id' => $category_id];
-            if (!$this->_data->insertOnUpdate($data_category, $this->_data->table_category)) {
+    private function save_category($id, $data){
+        $this->_data->delete([$this->_data->table.'_id'=>$id],$this->_data->table_category);
+        if(!empty($data)) foreach ($data as $category_id){
+            $tmp = ["{$this->_data->table}_id" => $id, 'category_id' => $category_id];
+            $data_category[] = $tmp;
+        }
+        if(!empty($data_category)){
+            if(!$this->_data->insertMultiple($data_category, $this->_data->table_category)){
                 $message['type'] = 'error';
                 $message['message'] = "Thêm {$this->_data->table_category} thất bại !";
                 log_message('error', $message['message'] . '=>' . json_encode($data_category));
@@ -277,6 +282,8 @@ class Post extends Admin_Controller
         $data = $this->input->post();
         if (!empty($data['is_status'])) $data['is_status'] = 1; else $data['is_status'] = 0;
         if (!empty($data['is_featured'])) $data['is_featured'] = 1; else $data['is_featured'] = 0;
+        if(!empty($data['data_tags'])) $data['data_tags'] = json_encode($data['data_tags']);
+        else $data['data_tags'] ='';
         return $data;
     }
 }

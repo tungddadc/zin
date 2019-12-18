@@ -80,6 +80,7 @@ class Page extends Public_Controller
       'is_status' => 1, //0: Huỷ, 1: Hiển thị, 2: Nháp
       'lang_code' => $this->_lang_code,
       'limit' => $limit,
+        'order' => ['created_time' => 'desc'],
       'page' => $page
     );
     $data['data'] = $postModel->getData($params);
@@ -104,6 +105,7 @@ class Page extends Public_Controller
       'is_status' => 1, //0: Huỷ, 1: Hiển thị, 2: Nháp
       'lang_code' => $this->_lang_code,
       'limit' => $limit,
+        'order' => ['created_time' => 'desc'],
       'page' => $page,
       'key_search'=>!empty($this->input->get('key_search'))?$this->input->get('key_search'):''
     );
