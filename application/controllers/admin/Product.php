@@ -327,6 +327,9 @@ class Product extends Admin_Controller
         else $data['album'] = '';
         if(!empty($data['data_similar'])) $data['data_similar'] = json_encode($data['data_similar']);
         else $data['data_similar'] ='';
+
+        if(!empty($data['data_tags'])) $data['data_tags'] = json_encode($data['data_tags']);
+        else $data['data_tags'] ='';
         if(!empty($data['data_related']))   $data['data_related'] = json_encode($data['data_related']);
         else $data['data_related'] ='';
         if(!empty($data['post_related']))   $data['post_related'] = json_encode($data['post_related']);

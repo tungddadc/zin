@@ -212,6 +212,7 @@ WHERE parent_id IN (SELECT id FROM st_category WHERE parent_id = 0)";
         if (!empty($this->table_trans)) $this->db->join($this->table_trans, "$this->table.id = $this->table_trans.id");
         if (!empty($lang_code)) $this->db->where([
             'type' => $type,
+            'is_status' => 1,
             'language_code' => $lang_code,
             'parent_id' => $parent_id
         ]);

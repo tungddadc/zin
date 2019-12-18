@@ -179,6 +179,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                                 <select name="category_id[]" class="form-control m-select2 category" style="width: 100%;"></select>
                                             </div>
                                         </div>
+                                        <div class="form-group">
+                                            <label>Tags:</label>
+                                            <div class="input-group">
+                                                <select name="data_tags[]" class="form-control m-select2 data_tags" style="width: 100%;"></select>
+                                            </div>
+                                        </div>
                                       <div class="form-group">
                                         <label>Ngày diễn ta sự kiện:</label>
                                         <div class="input-group">
@@ -235,5 +241,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
     </div>
 </div>
 <script type="text/javascript">
-    var url_ajax_load_category = '<?php echo site_admin_url('category/ajax_load/' . $this->_controller) ?>';
+    var url_ajax_load_category = '<?php echo site_admin_url('category/ajax_load/' . $this->_controller) ?>',
+        url_ajax_load_tags = '<?php echo site_admin_url('category/ajax_load/tag') ?>';
 </script>

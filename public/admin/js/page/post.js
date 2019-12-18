@@ -64,6 +64,7 @@ $(function() {
     }];
     AJAX_DATATABLES.init();
     loadCategory();
+    loadTags();
     AJAX_CRUD_MODAL.init();
     AJAX_CRUD_MODAL.tinymce();
     SEO.init_slug();
@@ -111,7 +112,7 @@ $(function() {
                             element.val(val);
                         });
                     });
-
+                    loadTags(response.data_tags);
                     loadCategory(response.data_category);
                     modal_form.modal('show');
                 },
@@ -165,6 +166,37 @@ function loadCategoryFilter(dataSelected) {
         data: dataSelected,
         ajax: {
             url: url_ajax_load_category,
+            dataType: 'json',
+            delay: 250,
+            data: function(e) {
+                return {
+                    q: e.term,
+                    page: e.page
+                }
+            },
+            processResults: function(e, t) {
+                return t.page = t.page || 1, {
+                    results: e,
+                    pagination: {
+                        more: 30 * t.page < e.total_count
+                    }
+                }
+            },
+            cache: !0
+        }
+    });
+    if (typeof dataSelected !== 'undefined') selector.find('> option').prop("selected", "selected").trigger("change");
+}
+
+function loadTags(dataSelected) {
+    let selector = $('select.data_tags');
+    selector.select2({
+        placeholder: 'Chọn tags',
+        allowClear: !0,
+        multiple: !0,
+        data: dataSelected,
+        ajax: {
+            url: url_ajax_load_tags,
             dataType: 'json',
             delay: 250,
             data: function(e) {

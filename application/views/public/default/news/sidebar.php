@@ -70,10 +70,10 @@
           ?>
           <div class="item">
             <div class="img">
-              <a href="<?php echo getUrlCateNews($item) ?>">
+              <a href="<?php echo getUrlNews($item) ?>" title="<?php echo $item->title ?>">
                 <img src="<?php echo $img ?>" alt="<?php echo $item->title ?>">
               </a>
-              <a href="<?php echo getUrlProduct($item) ?>">
+              <a href="<?php echo getUrlNews($item) ?>" title="<?php echo $item->title ?>">
                 <h3><?php echo $item->title ?></h3>
               </a>
             </div>
