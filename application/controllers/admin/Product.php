@@ -193,6 +193,11 @@ class Product extends Admin_Controller
             if(!empty($allPropertyType)) foreach ($allPropertyType as $item){
                 $output['data_property'][$item['type']] = $this->_data->getSelect2Property($id,$item['type'],$this->session->userdata('admin_lang'));
             }
+            if(!empty($oneItem->data_tags)){
+                $idTags = json_decode($oneItem->data_tags);
+                $output['data_tags'] = $this->_data_category->getSelect2($idTags);
+            }
+
             if(!empty($oneItem->data_related)){
                 $idRelated = json_decode($oneItem->data_related);
                 $output['data_related'] = $this->_data->getSelect2($idRelated);
