@@ -28,6 +28,7 @@
                       </header>
                       <div class="entry-content">
                         <?php echo $oneItem->content ?>
+                          <div>Tags: <?php echo getTags($oneItem->data_tags) ?></div>
                       </div>
                       <!--<?php if (!empty($list_related)): ?>
                         <div class="_post_related">

@@ -25,6 +25,7 @@
                     <div class="clearfix"></div>
                     <div style="margin-top: 15px; margin-bottom: 10px">
                       <?php echo $oneItem->content ?>
+                        <div>Tags: <?php echo getTags($oneItem->data_tags) ?></div>
                     </div>
                     <div class="clearfix"></div>
                     <div class="fb-comments" data-href="<?php echo current_url() ?>" width="100%" data-numposts="5"></div>

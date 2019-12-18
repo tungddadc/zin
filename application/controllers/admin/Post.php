@@ -165,9 +165,13 @@ class Post extends Admin_Controller
         $this->checkRequestPostAjax();
         $id = $this->input->post('id');
         if (!empty($id)) {
-            $output['data_info'] = $this->_data->single(['id' => $id], $this->_data->table);
+            $output['data_info'] = $oneItem = $this->_data->single(['id' => $id], $this->_data->table);
             $output['data_language'] = $this->_data->getDataAll(['id' => $id], $this->_data->table_trans);
             $output['data_category'] = $this->_data->getSelect2Category($id, $this->session->userdata('admin_lang'));
+            if(!empty($oneItem->data_tags)){
+                $idTags = json_decode($oneItem->data_tags);
+                $output['data_tags'] = $this->_data_category->getSelect2($idTags);
+            }
             $this->returnJson($output);
         }
     }
