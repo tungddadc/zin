@@ -18,6 +18,7 @@ class Home extends Public_Controller
         $data['home_product'] = $this->listProduct();
         $data['home_news'] = $this->listNews();
         $data['main_content'] = $this->load->view($this->template_path . 'home/index', $data, TRUE);
+        $this->output->cache(10);
         $this->load->view($this->template_main, $data);
     }
 
