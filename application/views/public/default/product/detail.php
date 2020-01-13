@@ -236,7 +236,7 @@
                                         <aside class="onlinepromo">
                                             <b>Thông tin mô tả sản phẩm</b>
                                             <div class="infopr">
-                                                <?php echo $oneItem->description ?>
+                                                <?php echo $oneItem->description_thanhchi ?>
                                             </div>
                                         </aside>
                                     </div>
@@ -445,7 +445,7 @@
                                         <?php endif; ?>
                                     </div>
 
-                                    <div>Tags: <?php echo getTags($oneItem->meta_keyword) ?></div>
+                                    <div>Tags: <?php echo getTags($oneItem->meta_keyword_thanhchi) ?></div>
                                 </div>
                             </div>
                             <!-- Related Slider -->

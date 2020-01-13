@@ -312,7 +312,7 @@ class Product extends Public_Controller
             'meta_title' => !empty($oneItem->meta_title_thanhchi) ? $oneItem->meta_title_thanhchi : (!empty($oneItem->meta_title) ? $oneItem->meta_title : $oneItem->title),
             'meta_description' => !empty($oneItem->meta_description_thanhchi) ? $oneItem->meta_description_thanhchi : (!empty($oneItem->meta_description) ? $oneItem->meta_description : $oneItem->description),
             'meta_keyword' => !empty($oneItem->meta_keyword_thanhchi) ? $oneItem->meta_keyword_thanhchi: (!empty($oneItem->meta_keyword) ? $oneItem->meta_keyword : ''),
-            'url' => getUrlProduct(['slug' => $oneItem->slug, 'id' => $oneItem->id]),
+            'url' => getUrlProduct($oneItem),
             'image' => getImageThumb($oneItem->thumbnail, 400, 200)
         ];
         if(!empty($oneCategoryParent->layout)) $layoutView = '-'.$oneCategoryParent->layout;
