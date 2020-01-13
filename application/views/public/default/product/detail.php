@@ -236,7 +236,7 @@
                                         <aside class="onlinepromo">
                                             <b>Thông tin mô tả sản phẩm</b>
                                             <div class="infopr">
-                                                <?php echo $oneItem->description ?>
+                                                <?php echo $oneItem->description_thanhchi ?>
                                             </div>
                                         </aside>
                                     </div>
@@ -406,7 +406,138 @@
                             <?php endif; ?>
                             <div class="row clearfix tab-info-product">
                                 <div class="col-sm-12 col-xs-12 column">
-                                    
+									<div class="product-collateral">
+										<div class="add_info">
+											<ul id="product-detail-tab" class="nav nav-tabs product-tabs">
+												<li class="active"><a href="#product_tabs_description"
+																	  data-toggle="tab">Đặc tính sản phẩm</a></li>
+												<li><a href="#reviews_tabs" data-toggle="tab">Phản hồi đánh giá</a></li>
+												<li><a href="#tab_warranty" data-toggle="tab">Thông tin
+														bảo hành </a></li>
+											</ul>
+											<div id="productTabContent" class="tab-content">
+												<div class="tab-pane fade in active" id="product_tabs_description">
+													<div class="std">
+														<?php echo $oneItem->content_thanhchi ?>
+													</div>
+												</div>
+												<div class="tab-pane fade" id="reviews_tabs">
+													<div class="box-collateral box-reviews" id="customer-reviews">
+														<div class="box-reviews1">
+															<div class="form-add">
+																<?php echo form_open('product/ajax_vote', ['id' => 'review-form']) ?>
+																<input type="hidden" name="id"
+																	   value="<?php echo $oneItem->id ?>">
+																<h3>Phản hồi của khách hàng về sản phẩm
+																	"<?php echo $oneItem->title_thanhchi ?>"</h3>
+																<fieldset>-fle
+																	<h4>Bạn đánh giá sản phẩm này như thế nào ? <em
+																			class="required">*</em></h4>
+																	<div id="product-review-table">
+																		<div class="rateit"
+																			 data-id="<?php echo $oneItem->id ?>"
+																			 data-rateit-value="0"
+																			 data-rateit-starwidth="16"
+																			 data-rateit-starheight="16"
+																			 data-rateit-min="0"
+																			 data-rateit-max="5"></div>
+																		<input type="hidden" name="vote" value="5">
+																	</div>
+
+																	<div class="review1">
+																		<ul class="form-list">
+																			<?php if ($this->session->userdata('is_logged') == true): ?>
+																				<li>
+																					<label class="required"
+																						   for="nickname_field">Tài
+																						khoản</label>
+																					<div class="input-box">
+																						<input type="text"
+																							   class="input-text"
+																							   id="nickname_field"
+																							   name="username" disabled
+																							   value="<?php echo $this->_user_login->fullname ?>">
+																					</div>
+																				</li>
+																			<?php endif; ?>
+																			<li>
+																				<label class="required"
+																					   for="fullname_field">Tên<em>*</em></label>
+																				<div class="input-box">
+																					<input type="text"
+																						   class="input-text"
+																						   id="fullname_field"
+																						   name="name">
+																				</div>
+																			</li>
+																			<li>
+																				<label class="required "
+																					   for="review_field">Phản
+																					hồi<em>*</em></label>
+																				<div class="input-box">
+                                                                                <textarea rows="3" cols="5"
+																						  id="review_field"
+																						  name="message"></textarea>
+																				</div>
+																			</li>
+																		</ul>
+																		<div class="buttons-set">
+																			<?php if (GG_CAPTCHA_MODE == TRUE): ?>
+																				<div class="form-group m-form__group">
+																					<div class="g-recaptcha"
+																						 data-sitekey="<?php echo GG_CAPTCHA_SITE_KEY ?>"></div>
+																				</div>
+																			<?php endif; ?>
+																			<button class="button submit"
+																					title="Submit Review" type="submit">
+																				<span>Gửi đánh giá</span></button>
+																		</div>
+																	</div>
+																</fieldset>
+																<?php echo form_close() ?>
+															</div>
+														</div>
+														<div class="box-reviews2">
+															<h3>Đánh giá bởi khách hàng</h3>
+															<div class="box visible">
+																<ul>
+																	<?php if (!empty($data_vote)) foreach ($data_vote as $k => $item): ?>
+																		<li class="<?php echo $k % 2 == 0 ? '' : 'even' ?>">
+																			<div class="review">
+																				<h6><>Excellent</a></h6>
+																				<div class="rating-box">
+																					<div class="rating"
+																						 style="width:<?php echo round(($item->vote / 5) * 100) ?>%;"></div>
+																				</div>
+																				<small>
+																					Đánh giá bởi
+																					<span><?php echo $item->name ?> </span>
+																					ngày <?php echo timeAgo($item->created_time, 'd/m/Y') ?>
+																				</small>
+																				<div class="review-txt">
+																					<?php echo $item->message ?>
+																				</div>
+																			</div>
+																		</li>
+																	<?php endforeach; ?>
+																</ul>
+															</div>
+															<!--<div class="actions">
+																<a class="button view-all" id="revies-button"
+																   href="#"><span><span>Xem thêm</span></span></a>
+															</div>-->
+														</div>
+														<div class="clear"></div>
+													</div>
+												</div>
+												<div class="tab-pane fade" id="tab_warranty">
+													<div class="std">
+														<?php echo !empty($this->settings['block']['warranty']) ? $this->settings['block']['warranty'] : '' ?>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
                                     <div id="comments" data-id="<?php echo $oneItem->id ?>" class="comment-fr">
                                         <div class="cmt-head">
                                             <div class="table">
@@ -445,7 +576,7 @@
                                         <?php endif; ?>
                                     </div>
 
-                                    <div>Tags: <?php echo getTags($oneItem->meta_keyword) ?></div>
+                                    <div>Tags: <?php echo getTags($oneItem->meta_keyword_thanhchi) ?></div>
                                 </div>
                             </div>
                             <!-- Related Slider -->

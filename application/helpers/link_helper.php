@@ -66,7 +66,7 @@ if (!function_exists('getUrlProduct')) {
     function getUrlProduct($optional){
         if(is_object($optional)) $optional = (array) $optional;
         $id = $optional['id'];
-        $slug = $optional['slug'];
+        $slug = !empty($optional['slug_thanhchi']) ? $optional['slug_thanhchi'] : $optional['slug'];
         $linkReturn = BASE_URL;
         $linkReturn .= "$slug";
         return $linkReturn;
