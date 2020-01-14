@@ -18,20 +18,5 @@ $(document).ready(function() {
 
     });
 
-     /*linh kien cung doi may*/
-    $(".accessories-slider").owlCarousel({
-        items:4,
-        itemsDesktop: [1024, 4],
-        itemsDesktopSmall: [900, 2],
-        itemsTablet: [640, 1],
-        itemsMobile: [390, 1],
-        loop:true,
-        responsiveClass:true,
-        nav:true,
-        autoplay:true,
-        autoplayTimeout:3000,
-        autoplayHoverPause:true
-        
-        });
-
+   
 });

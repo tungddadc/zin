@@ -232,7 +232,7 @@
                                             </label>
                                         </div>
                                     </div>
-                                    <div style="    border-bottom: 1px #ddd dotted;">
+                                    <div style="border-bottom: 1px #ddd dotted;">
                                         <aside class="onlinepromo">
                                             <b>Thông tin mô tả sản phẩm</b>
                                             <div class="infopr">
@@ -265,43 +265,7 @@
                                         cấp quyền đại lý cho quý khách.</p>
                                     </div>
                                     <div id="social-share"></div>
-                                    <?php if(!empty($data_similar)): ?>
-                                    <div class="buy-more">
-                                        <div class="box-product-other">
-                                           <div class="block-title"> 
-                                            <h2>Sản phẩm cùng loại khác màu hoặc cùng thuộc tính, kiểu loại</h2>
-                                            </div>
-                                            <div class="panel-body">
-                                                <?php foreach ($data_similar as $item): ?>
-                                                    <div class="add-to-box">
-                                                        <div class="add-to-cart">
-                                                            <div class="row clearfix">
-                                                                <div class="col-xs-3">
-                                                                    <img src="<?php echo getImageThumb($item->thumbnail,150,150,true) ?>" alt="<?php echo getTitle($item) ?>">
-                                                                </div>
-                                                                <div class="col-xs-9">
-                                                                    <h2><a href="<?php echo getUrlProduct($item) ?>" title="<?php echo getTitle($item) ?>"><?php echo $item->title ?></a> </h2>
-                                                                    <div class="custom pull-left">
-                                                                        <button onClick="CART.quantity_reduced(this)" class="reduced items-count <?php echo $this->session->userdata('is_agency') == true ? 'is-agency' : ''  ?>" type="button">
-                                                                            <i class="fa fa-minus">&nbsp;</i>
-                                                                        </button>
-                                                                        <input onkeyup="CART.changeInputQuantity(this)" type="text" class="input-text qty" title="Số lượng" value="1" maxlength="<?php echo $item->quantity ?>" name="quantity">
-                                                                        <button onClick="CART.quantity_increase(this)" class="increase items-count <?php echo $this->session->userdata('is_agency') == true ? 'is-agency' : ''  ?>" type="button">
-                                                                            <i class="fa fa-plus">&nbsp;</i>
-                                                                        </button>
-                                                                        <button onclick="CART.add_more(<?php echo $item->id ?>,this)" class="button btn-cart pull-right" title="Thêm vào giỏ hàng" type="submit">Thêm vào giỏ</button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                <?php endforeach; ?>
-
-                                                <div class="showmore"><a class="btn btn-default btn-sm">Xem thêm »</a></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <?php endif; ?>
+                                    
                                     
                                 </div>
                                 <div class="product-buy col-lg-2 col-sm-2 col-xs-12">
@@ -331,254 +295,245 @@
                             <?php if(!empty($data_related)): $totalItem = count($data_related) ?>
                             <div class="row clearfix accessories">
                                 <div class="col-lg-12 col-sm-12 col-xs-12">
-                                    <div class="box-same-color">
-                                        <div class="block-title">
-                                            <h2>Linh kiện cùng đời máy</h2>
-                                        </div>
-                                        <div class="accessories-slider">
-                                            <?php foreach ($data_related as $item): ?>
-                                                <div class="item add-to-cart">
-                                                    <a href="<?php echo getUrlProduct($item) ?>"
-                                                       title="<?php echo getTitle($item) ?>"
-                                                       >
-                                                        <img src="<?php echo getImageThumb($item->thumbnail,250,300,true,true) ?>"
-                                                             data-src="<?php echo getImageThumb($item->thumbnail,250,300,true,true) ?>"
-                                                             data-srcset="<?php echo getImageThumb($item->thumbnail,250,300,true,true) ?> 1x, <?php echo getImageThumb($item->thumbnail,250,300,true,true) ?> 2x"
-                                                             class="img-thumbnail"
-                                                             alt="<?php echo getTitle($item) ?>">
-                                                    </a>
-                                                    <h2 class="name">
-                                                        <a href="<?php echo getUrlProduct($item) ?>" title="<?php echo getTitle($item) ?>">
-                                                        <?php echo $item->title ?></a>
-                                                    </h2>
-                                                    <div class="custom">
-                                                        <button onClick="CART.quantity_reduced(this)" class="reduced items-count <?php echo $this->session->userdata('is_agency') == true ? 'is-agency' : ''  ?>" type="button">
-                                                            <i class="fa fa-minus">&nbsp;</i>
-                                                        </button>
-                                                        <input autocomplete="disabled" onkeyup="CART.changeInputQuantity(this)" type="text" class="input-text qty" title="Số lượng" value="1" maxlength="<?php echo $item->quantity ?>" name="quantity">
-                                                        <button onClick="CART.quantity_increase(this)" class="increase items-count <?php echo $this->session->userdata('is_agency') == true ? 'is-agency' : ''  ?>" type="button">
-                                                            <i class="fa fa-plus">&nbsp;</i>
-                                                        </button>
-                                                        <button onclick="CART.add_more(<?php echo $item->id ?>,this)" class="button btn-cart pull-right" title="Thêm vào giỏ hàng" type="submit">Thêm vào giỏ</button>
+                                    <div class="col-sm-9 col-xs-12">
+                                        <div class="product-collateral">
+                                            <div class="add_info">
+                                                <ul id="product-detail-tab" class="nav nav-tabs product-tabs">
+                                                    <li class="active"><a href="#product_tabs_description"
+                                                                          data-toggle="tab">Đặc tính sản phẩm</a></li>
+                                                    <li><a href="#reviews_tabs" data-toggle="tab">Phản hồi đánh giá</a></li>
+                                                    <li><a href="#tab_warranty" data-toggle="tab">Thông tin
+                                                            bảo hành </a></li>
+                                                </ul>
+                                                <div id="productTabContent" class="tab-content">
+                                                    <div class="tab-pane fade in active" id="product_tabs_description">
+                                                        <div class="std">
+                                                            <?php echo $oneItem->content_thanhchi ?>
+                                                        </div>
                                                     </div>
-                                                    <div class="item-price text-center">
-                                                        <div class="price-slider owl-carousel">
-                                                            <?php if(!empty($item->price)): ?>
-                                                            <div class="price-item ">
-                                                                <div class="name">GIÁ LẺ CỬA HÀNG</div>
-                                                                <div class="price">
-                                                                    <span class="value"><?php echo !empty($item->price) ? formatMoney($item->price) : "" ?></span>
-                                                                </div>                                        
-                                                            </div>
-                                                            <?php endif; ?>
-                                                            <?php if(!empty($item->price_sale)): ?>
-                                                            <div class="price-item">
-                                                                <div class="name">GIÁ BUÔN CỬA HÀNG</div>
-                                                                <div class="price">
-                                                                    <span class="value"><?php echo !empty($item->price_sale) ? formatMoney($item->price_sale) : "" ?></span>
-                                                                </div>                                        
-                                                            </div>
-                                                            <?php endif; ?>
-                                                            <?php if(!empty($item->price_kl)): ?>
-                                                            <div class="price-item">
-                                                                <div class="name">GIÁ THAY KHÁCH LẺ</div>
-                                                                <div class="price">
-                                                                    <span class="value"><?php echo !empty($item->price_kl) ? formatMoney($item->price_kl) : "" ?></span>
+                                                    <div class="tab-pane fade" id="reviews_tabs">
+                                                        <div class="box-collateral box-reviews" id="customer-reviews">
+                                                            <div class="box-reviews1">
+                                                                <div class="form-add">
+                                                                    <?php echo form_open('product/ajax_vote', ['id' => 'review-form']) ?>
+                                                                    <input type="hidden" name="id"
+                                                                           value="<?php echo $oneItem->id ?>">
+                                                                    <h3>Phản hồi của khách hàng về sản phẩm
+                                                                        "<?php echo $oneItem->title_thanhchi ?>"</h3>
+                                                                    <fieldset>-fle
+                                                                        <h4>Bạn đánh giá sản phẩm này như thế nào ? <em
+                                                                                class="required">*</em></h4>
+                                                                        <div id="product-review-table">
+                                                                            <div class="rateit"
+                                                                                 data-id="<?php echo $oneItem->id ?>"
+                                                                                 data-rateit-value="0"
+                                                                                 data-rateit-starwidth="16"
+                                                                                 data-rateit-starheight="16"
+                                                                                 data-rateit-min="0"
+                                                                                 data-rateit-max="5"></div>
+                                                                            <input type="hidden" name="vote" value="5">
+                                                                        </div>
+
+                                                                        <div class="review1">
+                                                                            <ul class="form-list">
+                                                                                <?php if ($this->session->userdata('is_logged') == true): ?>
+                                                                                    <li>
+                                                                                        <label class="required"
+                                                                                               for="nickname_field">Tài
+                                                                                            khoản</label>
+                                                                                        <div class="input-box">
+                                                                                            <input type="text"
+                                                                                                   class="input-text"
+                                                                                                   id="nickname_field"
+                                                                                                   name="username" disabled
+                                                                                                   value="<?php echo $this->_user_login->fullname ?>">
+                                                                                        </div>
+                                                                                    </li>
+                                                                                <?php endif; ?>
+                                                                                <li>
+                                                                                    <label class="required"
+                                                                                           for="fullname_field">Tên<em>*</em></label>
+                                                                                    <div class="input-box">
+                                                                                        <input type="text"
+                                                                                               class="input-text"
+                                                                                               id="fullname_field"
+                                                                                               name="name">
+                                                                                    </div>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <label class="required "
+                                                                                           for="review_field">Phản
+                                                                                        hồi<em>*</em></label>
+                                                                                    <div class="input-box">
+                                                                                    <textarea rows="3" cols="5"
+                                                                                              id="review_field"
+                                                                                              name="message"></textarea>
+                                                                                    </div>
+                                                                                </li>
+                                                                            </ul>
+                                                                            <div class="buttons-set">
+                                                                                <?php if (GG_CAPTCHA_MODE == TRUE): ?>
+                                                                                    <div class="form-group m-form__group">
+                                                                                        <div class="g-recaptcha"
+                                                                                             data-sitekey="<?php echo GG_CAPTCHA_SITE_KEY ?>"></div>
+                                                                                    </div>
+                                                                                <?php endif; ?>
+                                                                                <button class="button submit"
+                                                                                        title="Submit Review" type="submit">
+                                                                                    <span>Gửi đánh giá</span></button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </fieldset>
+                                                                    <?php echo form_close() ?>
                                                                 </div>
                                                             </div>
-                                                            <?php endif; ?>
-                                                            <?php if(!empty($item->price_ek)): ?>
-                                                            <div class="price-item">
-                                                                <div class="name">GIÁ THAY KHÁCH VIP</div>
-                                                                <div class="price">
-                                                                    <span class="value"><?php echo !empty($item->price_ek) ? formatMoney($item->price_ek) : "" ?></span>
+                                                            <div class="box-reviews2">
+                                                                <h3>Đánh giá bởi khách hàng</h3>
+                                                                <div class="box visible">
+                                                                    <ul>
+                                                                        <?php if (!empty($data_vote)) foreach ($data_vote as $k => $item): ?>
+                                                                            <li class="<?php echo $k % 2 == 0 ? '' : 'even' ?>">
+                                                                                <div class="review">
+                                                                                    <h6><>Excellent</a></h6>
+                                                                                    <div class="rating-box">
+                                                                                        <div class="rating"
+                                                                                             style="width:<?php echo round(($item->vote / 5) * 100) ?>%;"></div>
+                                                                                    </div>
+                                                                                    <small>
+                                                                                        Đánh giá bởi
+                                                                                        <span><?php echo $item->name ?> </span>
+                                                                                        ngày <?php echo timeAgo($item->created_time, 'd/m/Y') ?>
+                                                                                    </small>
+                                                                                    <div class="review-txt">
+                                                                                        <?php echo $item->message ?>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                        <?php endforeach; ?>
+                                                                    </ul>
                                                                 </div>
+                                                                <!--<div class="actions">
+                                                                    <a class="button view-all" id="revies-button"
+                                                                       href="#"><span><span>Xem thêm</span></span></a>
+                                                                </div>-->
                                                             </div>
-                                                            <?php endif; ?>
+                                                            <div class="clear"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="tab-pane fade" id="tab_warranty">
+                                                        <div class="std">
+                                                            <?php echo !empty($this->settings['block']['warranty']) ? $this->settings['block']['warranty'] : '' ?>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            <?php endforeach; ?>
+                                            </div>
+                                        </div>
+                                        <div id="comments" data-id="<?php echo $oneItem->id ?>" class="comment-fr">
+                                            <div class="cmt-head">
+                                                <div class="table">
+                                                    <div class="cell">
+                                                        <strong>Bình Luận</strong>
+                                                    </div>
+                                                    <div class="cell text-right">
+                                                        <select name="comment_sort" style="width: 100px">
+                                                            <option>Mới nhất</option>
+                                                            <option>Cũ nhất</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="cmt-list"></div>
+                                            <?php if($this->session->userdata('is_logged')): ?>
+                                            <?php echo form_open('product/ajax_save_comment',['class'=>'form-input form-comment']) ?>
+                                                <input type="hidden" name="account_id" value="<?php echo $this->session->userdata('user_id') ?>">
+                                                <input type="hidden" name="product_id" value="<?php echo $oneItem->id ?>">
+                                                <div class="clearfix">
+                                                    <div class="form-group">
+                                                        <input type="text" name="name" placeholder="Tên của bạn" value="<?php echo $this->_user_login->fullname ?>" class="form-control">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="text" name="email" placeholder="Email" value="<?php echo $this->session->userdata('email') ?>" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <textarea name="content" placeholder="Mời bạn để lại bình luận" class="form-control"></textarea>
+                                                </div>
+                                                <div class="fr-photo"></div>
+                                                <div class="fr-ctrl">
+                                                    <button type="submit" class="smooth send send_comment">Gửi bình luận</button>
+                                                </div>
+                                            <?php echo form_close() ?>
+                                            <?php endif; ?>
+                                        </div>
+
+                                        <div>Tags: <?php echo getTags($oneItem->meta_keyword_thanhchi) ?></div>
+                                    </div>
+                                    <div class="col-sm-3 col-xs-12">
+                                        <?php if(!empty($data_similar)): ?>
+                                        <div class="buy-more">
+                                            <div class="box-product-other">
+                                               <div class="block-title"> 
+                                                <h2>Sản phẩm cùng loại khác màu hoặc cùng thuộc tính, kiểu loại</h2>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <?php foreach ($data_similar as $item): ?>
+                                                        <div class="add-to-box">
+                                                            <div class="add-to-cart">
+                                                                <div class="row clearfix">
+                                                                    <div class="col-xs-3">
+                                                                        <img src="<?php echo getImageThumb($item->thumbnail,150,150,true) ?>" alt="<?php echo getTitle($item) ?>">
+                                                                    </div>
+                                                                    <div class="col-xs-9">
+                                                                        <h2><a href="<?php echo getUrlProduct($item) ?>" title="<?php echo getTitle($item) ?>"><?php echo $item->title ?></a> </h2>                                                                        
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    <?php endforeach; ?>
+
+                                                    <div class="showmore"><a class="btn btn-default btn-sm">Xem thêm »</a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php endif; ?>
+                                        <div class="clearfix accessories">
+                                            <div class="box-same-color">
+                                                <div class="block-title">
+                                                    <h2>Linh kiện cùng đời máy</h2>
+                                                </div>
+                                                <div class="accessories-slider">
+                                                    <?php foreach ($data_related as $item): ?>
+                                                        <div class="item add-to-cart">
+                                                            <div class="row clearfix">
+                                                                <div class="col-xs-3">
+                                                                    <a href="<?php echo getUrlProduct($item) ?>"
+                                                                       title="<?php echo getTitle($item) ?>"
+                                                                       >
+                                                                        <img src="<?php echo getImageThumb($item->thumbnail,250,300,true,true) ?>"
+                                                                             data-src="<?php echo getImageThumb($item->thumbnail,250,300,true,true) ?>"
+                                                                             data-srcset="<?php echo getImageThumb($item->thumbnail,250,300,true,true) ?> 1x, <?php echo getImageThumb($item->thumbnail,250,300,true,true) ?> 2x"
+                                                                             class="img-thumbnail"
+                                                                             alt="<?php echo getTitle($item) ?>">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="col-xs-9">
+                                                                    <h2 class="name">
+                                                                        <a href="<?php echo getUrlProduct($item) ?>" title="<?php echo getTitle($item) ?>">
+                                                                        <?php echo $item->title ?></a>
+                                                                    </h2>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    <?php endforeach; ?>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+                                    
                                 </div>
                             </div>
                             <?php endif; ?>
-                            <div class="row clearfix tab-info-product">
-                                <div class="col-sm-12 col-xs-12 column">
-									<div class="product-collateral">
-										<div class="add_info">
-											<ul id="product-detail-tab" class="nav nav-tabs product-tabs">
-												<li class="active"><a href="#product_tabs_description"
-																	  data-toggle="tab">Đặc tính sản phẩm</a></li>
-												<li><a href="#reviews_tabs" data-toggle="tab">Phản hồi đánh giá</a></li>
-												<li><a href="#tab_warranty" data-toggle="tab">Thông tin
-														bảo hành </a></li>
-											</ul>
-											<div id="productTabContent" class="tab-content">
-												<div class="tab-pane fade in active" id="product_tabs_description">
-													<div class="std">
-														<?php echo $oneItem->content_thanhchi ?>
-													</div>
-												</div>
-												<div class="tab-pane fade" id="reviews_tabs">
-													<div class="box-collateral box-reviews" id="customer-reviews">
-														<div class="box-reviews1">
-															<div class="form-add">
-																<?php echo form_open('product/ajax_vote', ['id' => 'review-form']) ?>
-																<input type="hidden" name="id"
-																	   value="<?php echo $oneItem->id ?>">
-																<h3>Phản hồi của khách hàng về sản phẩm
-																	"<?php echo $oneItem->title_thanhchi ?>"</h3>
-																<fieldset>-fle
-																	<h4>Bạn đánh giá sản phẩm này như thế nào ? <em
-																			class="required">*</em></h4>
-																	<div id="product-review-table">
-																		<div class="rateit"
-																			 data-id="<?php echo $oneItem->id ?>"
-																			 data-rateit-value="0"
-																			 data-rateit-starwidth="16"
-																			 data-rateit-starheight="16"
-																			 data-rateit-min="0"
-																			 data-rateit-max="5"></div>
-																		<input type="hidden" name="vote" value="5">
-																	</div>
-
-																	<div class="review1">
-																		<ul class="form-list">
-																			<?php if ($this->session->userdata('is_logged') == true): ?>
-																				<li>
-																					<label class="required"
-																						   for="nickname_field">Tài
-																						khoản</label>
-																					<div class="input-box">
-																						<input type="text"
-																							   class="input-text"
-																							   id="nickname_field"
-																							   name="username" disabled
-																							   value="<?php echo $this->_user_login->fullname ?>">
-																					</div>
-																				</li>
-																			<?php endif; ?>
-																			<li>
-																				<label class="required"
-																					   for="fullname_field">Tên<em>*</em></label>
-																				<div class="input-box">
-																					<input type="text"
-																						   class="input-text"
-																						   id="fullname_field"
-																						   name="name">
-																				</div>
-																			</li>
-																			<li>
-																				<label class="required "
-																					   for="review_field">Phản
-																					hồi<em>*</em></label>
-																				<div class="input-box">
-                                                                                <textarea rows="3" cols="5"
-																						  id="review_field"
-																						  name="message"></textarea>
-																				</div>
-																			</li>
-																		</ul>
-																		<div class="buttons-set">
-																			<?php if (GG_CAPTCHA_MODE == TRUE): ?>
-																				<div class="form-group m-form__group">
-																					<div class="g-recaptcha"
-																						 data-sitekey="<?php echo GG_CAPTCHA_SITE_KEY ?>"></div>
-																				</div>
-																			<?php endif; ?>
-																			<button class="button submit"
-																					title="Submit Review" type="submit">
-																				<span>Gửi đánh giá</span></button>
-																		</div>
-																	</div>
-																</fieldset>
-																<?php echo form_close() ?>
-															</div>
-														</div>
-														<div class="box-reviews2">
-															<h3>Đánh giá bởi khách hàng</h3>
-															<div class="box visible">
-																<ul>
-																	<?php if (!empty($data_vote)) foreach ($data_vote as $k => $item): ?>
-																		<li class="<?php echo $k % 2 == 0 ? '' : 'even' ?>">
-																			<div class="review">
-																				<h6><>Excellent</a></h6>
-																				<div class="rating-box">
-																					<div class="rating"
-																						 style="width:<?php echo round(($item->vote / 5) * 100) ?>%;"></div>
-																				</div>
-																				<small>
-																					Đánh giá bởi
-																					<span><?php echo $item->name ?> </span>
-																					ngày <?php echo timeAgo($item->created_time, 'd/m/Y') ?>
-																				</small>
-																				<div class="review-txt">
-																					<?php echo $item->message ?>
-																				</div>
-																			</div>
-																		</li>
-																	<?php endforeach; ?>
-																</ul>
-															</div>
-															<!--<div class="actions">
-																<a class="button view-all" id="revies-button"
-																   href="#"><span><span>Xem thêm</span></span></a>
-															</div>-->
-														</div>
-														<div class="clear"></div>
-													</div>
-												</div>
-												<div class="tab-pane fade" id="tab_warranty">
-													<div class="std">
-														<?php echo !empty($this->settings['block']['warranty']) ? $this->settings['block']['warranty'] : '' ?>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-                                    <div id="comments" data-id="<?php echo $oneItem->id ?>" class="comment-fr">
-                                        <div class="cmt-head">
-                                            <div class="table">
-                                                <div class="cell">
-                                                    <strong>Bình Luận</strong>
-                                                </div>
-                                                <div class="cell text-right">
-                                                    <select name="comment_sort" style="width: 100px">
-                                                        <option>Mới nhất</option>
-                                                        <option>Cũ nhất</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="cmt-list"></div>
-                                        <?php if($this->session->userdata('is_logged')): ?>
-                                        <?php echo form_open('product/ajax_save_comment',['class'=>'form-input form-comment']) ?>
-                                            <input type="hidden" name="account_id" value="<?php echo $this->session->userdata('user_id') ?>">
-                                            <input type="hidden" name="product_id" value="<?php echo $oneItem->id ?>">
-                                            <div class="clearfix">
-                                                <div class="form-group">
-                                                    <input type="text" name="name" placeholder="Tên của bạn" value="<?php echo $this->_user_login->fullname ?>" class="form-control">
-                                                </div>
-                                                <div class="form-group">
-                                                    <input type="text" name="email" placeholder="Email" value="<?php echo $this->session->userdata('email') ?>" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <textarea name="content" placeholder="Mời bạn để lại bình luận" class="form-control"></textarea>
-                                            </div>
-                                            <div class="fr-photo"></div>
-                                            <div class="fr-ctrl">
-                                                <button type="submit" class="smooth send send_comment">Gửi bình luận</button>
-                                            </div>
-                                        <?php echo form_close() ?>
-                                        <?php endif; ?>
-                                    </div>
-
-                                    <div>Tags: <?php echo getTags($oneItem->meta_keyword_thanhchi) ?></div>
-                                </div>
-                            </div>
+                            
                             <!-- Related Slider -->
                             <div class="related-pro">
                                 <div class="slider-items-products">
