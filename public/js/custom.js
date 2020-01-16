@@ -613,6 +613,7 @@ var UI = {
 		var sync2 = $("#sync2");
 
 		sync1.owlCarousel({
+            autoplay: true,
 			singleItem : true,
             nav: true,
 			slideSpeed : 1000,
@@ -624,6 +625,7 @@ var UI = {
 		});
 
 		sync2.owlCarousel({
+            autoplay: true,
 			items : 4,
 			itemsDesktop      : [1199,4],
 			itemsDesktopSmall     : [979,4],
