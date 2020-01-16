@@ -610,6 +610,7 @@ var UI = {
     sliderHome: function () {
         if (jQuery('#rev_slider_4').length > 0) {
             jQuery('#rev_slider_4').show().revolution({
+                autoplay: true,
                 dottedOverlay: 'none',
                 delay: 5000,
                 startwidth: 550,
