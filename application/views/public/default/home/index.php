@@ -6,67 +6,68 @@
  * Time: 12:40 PM
  */
 defined('BASEPATH') OR exit('No direct script access allowed'); ?>
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 col-xs-12 home-slider">
-            <?php $home_slider = listBannerByPosition(1); ?>
-            <?php if(!empty($home_slider)): ?>
-            <div id="thm-slideshow" class="thm-slideshow slider-block">
-                <div id='rev_slider_4_wrapper' class='rev_slider_wrapper fullwidthbanner-container'>
-                    <div id='rev_slider_4' class='rev_slider fullwidthabanner'>
-                        <ul>
-                            <?php foreach ($home_slider as $item): ?>
-                            <li data-transition='random' data-slotamount='7' data-masterspeed='1000'
-                                data-thumb='<?php echo getImageThumb($item->thumbnail,710,330,true) ?>'>
-                                <img src="<?php echo getImageThumb($item->thumbnail,710,330,true) ?>"
-                                     data-src="<?php echo getImageThumb($item->thumbnail,710,330,true) ?>"
-                                     class="lazy"
-                                     data-bgposition='left top' data-bgfit='cover' data-bgrepeat='no-repeat'
-                                     alt="<?php echo getTitle($item) ?>">
-                            </li>
-                            <?php endforeach; ?>
-                        </ul>
+
+
+<section class="main-container col2-left-layout">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-xs-12 home-slider">
+                <?php $home_slider = listBannerByPosition(1); ?>
+                <?php if(!empty($home_slider)): ?>
+                <div id="thm-slideshow" class="thm-slideshow slider-block">
+                    <div id='rev_slider_4_wrapper' class='rev_slider_wrapper fullwidthbanner-container'>
+                        <div id='rev_slider_4' class='rev_slider fullwidthabanner'>
+                            <ul>
+                                <?php foreach ($home_slider as $item): ?>
+                                <li data-transition='random' data-slotamount='7' data-masterspeed='1000'
+                                    data-thumb='<?php echo getImageThumb($item->thumbnail,710,330,true) ?>'>
+                                    <img src="<?php echo getImageThumb($item->thumbnail,710,330,true) ?>"
+                                         data-src="<?php echo getImageThumb($item->thumbnail,710,330,true) ?>"
+                                         class="lazy"
+                                         data-bgposition='left top' data-bgfit='cover' data-bgrepeat='no-repeat'
+                                         alt="<?php echo getTitle($item) ?>">
+                                </li>
+                                <?php endforeach; ?>
+                            </ul>
+                        </div>
                     </div>
                 </div>
+                <?php endif; ?>
             </div>
+            <?php if($this->mobile_detect->is_mobile() == false): ?>
+                <div class="col-md-6 col-xs-12 mini-promotion">
+                    <div class="mini-banner-wrap">
+                        <?php $bannerRightSlider = listBannerByPosition(6);if(!empty($bannerRightSlider)) foreach ($bannerRightSlider as $item): ?>
+                            <div class="mini-item">
+                                <a href="<?php echo $item->url ?>" title="banner sidebar" rel="nofollow">
+                                    <img src="<?php echo getImageThumb($item->thumbnail,190,165,true) ?>"
+                                         data-src="<?php echo getImageThumb($item->thumbnail,190,165,true) ?>"
+                                         class="lazy"
+                                         style="width: 100%"
+                                         alt="<?php echo getTitle($item) ?>">
+                                </a>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
             <?php endif; ?>
         </div>
         <?php if($this->mobile_detect->is_mobile() == false): ?>
-            <div class="col-md-6 col-xs-12 mini-promotion">
-                <div class="mini-banner-wrap">
-                    <?php $bannerRightSlider = listBannerByPosition(6);if(!empty($bannerRightSlider)) foreach ($bannerRightSlider as $item): ?>
-                        <div class="mini-item">
-                            <a href="<?php echo $item->url ?>" title="banner sidebar" rel="nofollow">
-                                <img src="<?php echo getImageThumb($item->thumbnail,190,165,true) ?>"
-                                     data-src="<?php echo getImageThumb($item->thumbnail,190,165,true) ?>"
-                                     class="lazy"
-                                     style="width: 100%"
-                                     alt="<?php echo getTitle($item) ?>">
-                            </a>
-                        </div>
-                    <?php endforeach; ?>
-                </div>
+            <div class="row list-banner-bottom">
+                <?php $bannerHomeTop = listBannerByPosition(4);if(!empty($bannerHomeTop)) foreach ($bannerHomeTop as $item): ?>
+                    <div class="col-sm-3 col-xs-12">
+                        <a href="<?php echo $item->url ?>" title="banner sidebar" rel="nofollow">
+                            <img src="<?php echo getImageThumb($item->thumbnail,285,150,true) ?>"
+                                 data-src="<?php echo getImageThumb($item->thumbnail,285,150,true) ?>"
+                                 class="lazy"
+                                 style="width: 100%"
+                                 alt="<?php echo getTitle($item) ?>">
+                        </a>
+                    </div>
+                <?php endforeach; ?>
             </div>
         <?php endif; ?>
     </div>
-    <?php if($this->mobile_detect->is_mobile() == false): ?>
-        <div class="row list-banner-bottom">
-            <?php $bannerHomeTop = listBannerByPosition(4);if(!empty($bannerHomeTop)) foreach ($bannerHomeTop as $item): ?>
-                <div class="col-sm-3 col-xs-12">
-                    <a href="<?php echo $item->url ?>" title="banner sidebar" rel="nofollow">
-                        <img src="<?php echo getImageThumb($item->thumbnail,285,150,true) ?>"
-                             data-src="<?php echo getImageThumb($item->thumbnail,285,150,true) ?>"
-                             class="lazy"
-                             style="width: 100%"
-                             alt="<?php echo getTitle($item) ?>">
-                    </a>
-                </div>
-            <?php endforeach; ?>
-        </div>
-    <?php endif; ?>
-</div>
-
-<section class="main-container col2-left-layout">
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-xs-12">

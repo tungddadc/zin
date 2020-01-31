@@ -474,3 +474,63 @@ a:focus, a:hover {
     bottom: 10px;
   }
 }
+
+header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 200px;
+  height: 164px;
+  background: url("../images/bg-header-left.png") no-repeat scroll 0 0; 
+  background-size: contain;
+}
+header::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  width: 165px;
+  height: 165px;
+  background: url("../images/bg-header-right.png") no-repeat scroll 0 0; 
+  background-size: contain;
+}
+header .container {
+  z-index: 98;
+  position: relative;
+}
+.main-container {
+  position: relative;
+}
+.main-container .container {
+  position: relative;
+   z-index: 98;
+}
+.main-container::before {
+  content: "";
+  position: absolute;
+  top: -25px;
+  left: 0;
+  z-index: 1;
+  width: 191px;
+  height: 623px;
+  background: url("../images/caudoi1.png") no-repeat scroll 0 0; 
+  background-size: contain;
+}
+.main-container::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: -25px;
+  right: 0;
+  width: 191px;
+  height: 623px;
+  background: url("../images/caudoi2.png") no-repeat scroll 0 0; 
+  background-size: contain;
+}
+
+.nav-category {
+  background: url("../images/bg-title.png") no-repeat scroll 0 0 #ca0706; 
+}

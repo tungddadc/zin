@@ -6572,7 +6572,7 @@ a.button.detail-bnt span {
 
 .image-hover2 a {
     position: relative;
-    display: table;
+    display: block;
 }
 
 .image-hover2 a:after {
