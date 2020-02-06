@@ -28,8 +28,9 @@ class Users_model extends STEVEN_Model
     {
         parent::_where_custom();
         extract($args);
+        $this->db->select("$this->table.*");
         if (!empty($group_id)) {
-            $this->db->join($this->table_user_group, "$this->table.id = $this->table_user_group.user_id");
+            $this->db->join($this->table_user_group, "$this->table.id = $this->table_user_group.user_id",'LEFT');
             $this->db->where_in("$this->table_user_group.group_id", $group_id);
         }
         if (isset($active)) {
