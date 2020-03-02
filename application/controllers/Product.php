@@ -127,9 +127,27 @@ class Product extends Public_Controller
         else $layoutView = '';
 
         $data['main_content'] = $this->load->view($this->template_path . 'product/category'.$layoutView, $data, TRUE);
+        $this->output->cache(10);
         $this->load->view($this->template_main, $data);
 
     }
+
+    public function ajax_loadmore_category(){
+    	$this->checkRequestPostAjax();
+    	$category_id = $this->input->post('id');
+    	$page = $this->input->post('page');
+    	$limit = $this->input->post('limit');
+		$limit = !empty($limit) ? $limit : 12;
+		$params = [
+			'is_status' => 1, //0: Huỷ, 1: Hiển thị, 2: Nháp
+			'lang_code' => $this->_lang_code,
+			'category_id' => $category_id,
+			'limit' => $limit,
+			'page' => $page
+		];
+		$data['data'] = $this->_data->getData($params);
+		echo $this->load->view($this->template_path . "product/_ajax_load_more", $data, TRUE);exit;
+	}
 
     public function brand($id, $page = 1){
         $oneItem = $this->_data_category->getByIdCached($id);

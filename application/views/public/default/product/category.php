@@ -78,23 +78,13 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                                             <option value="lowest" <?php echo $this->input->get('filter_sort') === 'lowest' ? 'selected' : '' ?>>Giá thấp nhất</option>
                                         </select>
                                     </div>
-                                    <div class="pager">
-                                        <div id="limiter" class="filter">
-                                            <label>Xem: </label>
-                                            <select name="filter_limit" title="Số sản phẩm">
-                                                <option value="12" <?php echo $this->input->get('filter_limit') === '12' ? 'selected' : '' ?>>12</option>
-                                                <option value="24" <?php echo $this->input->get('filter_limit') === '24' ? 'selected' : '' ?>>24</option>
-                                                <option value="36" <?php echo $this->input->get('filter_limit') === '36' ? 'selected' : '' ?>>36</option>
-                                                <option value="48" <?php echo $this->input->get('filter_limit') === '48' ? 'selected' : '' ?>>48</option>
-                                            </select>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="category-products">
                             <?php $this->load->view($this->template_path . 'product/_list_product', ['data' => $data]) ?>
                         </div>
+						<button type="button" style="font-size: 14px;" class="btn-primary btn-lg center-block btnLoadmoreCategory" title="Xem thêm" data-page="2" data-limit="12" data-id="<?php echo $oneItem->id ?>>">Xem thêm</button>
                     </article>
 
 					<div class="page-title">

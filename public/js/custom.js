@@ -949,6 +949,34 @@ jQuery(document).ready(function () {
         let url = $(this).attr('href');
         FUNC.ajax_load_content_animation(url,'#content_ajax','#content_ajax');
     });
+
+    $('body').on('click','.btnLoadmoreCategory',function (e) {
+        e.preventDefault();
+		let container = $('#content_ajax ul.products-grid');
+		if(container.length > 0){
+			let _this = $(this);
+			let page = parseInt(_this.data('page'));
+			let limit = _this.data('limit');
+			let id = container.data('id');
+			$.ajax({
+				type: 'POST',
+				url: base_url + 'product/ajax_loadmore_category',
+				data: {id: id,page:page,limit:limit},
+				beforeSend: function(){
+					_this.append('<i class="fa fa-spinner fa-spin ml-2" style=" margin-left:5px;color: #be1e2d;"></i>');
+				},
+				success: function (html) {
+					_this.find('i').remove();
+					page = page + 1;
+					_this.attr('data-page',page);
+					container.append(html);
+				}
+
+			})
+		}
+		return false;
+    });
+
     $(document).on('click','.link-quickview',function (e) {
         e.preventDefault();
         let url = $(this).data('url');
