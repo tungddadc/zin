@@ -1,4 +1,4 @@
-<!--<div class="side-banner"><img alt="banner" src="--><?php //echo $this->templates_assets ?><!--images/side-banner.jpg"></div>-->
+<div class="side-banner"><img alt="banner" src="https://zinlinhkien.com.vn/public/images/side-banner.jpg"></div>
 <div class="page-side-bar widget">
     <h2>Thông tin về công ty</h2>
     <div class="about-company-widget">
