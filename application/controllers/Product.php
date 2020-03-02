@@ -254,6 +254,7 @@ class Product extends Public_Controller
     }
 
     public function detail($slug){
+		$this->output->cache(rand(5,20));
         $oneItem = $this->_data->getBySlugCustom($slug,$this->_lang_code);
 
         if (empty($oneItem)) show_404();
