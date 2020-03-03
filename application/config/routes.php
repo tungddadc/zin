@@ -52,7 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'home';
 $route['404.html'] = 'page/notfound';
 $route['translate_uri_dashes'] = FALSE;
-$route['sitemap.xml'] = 'seo/sitemap';
+$route['sitemap_old.xml'] = 'seo/sitemap';
 $route['admin'] = 'admin/dashboard';
 
 $route['profile'] = 'profile/index';

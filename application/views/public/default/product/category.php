@@ -84,7 +84,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                         <div class="category-products">
                             <?php $this->load->view($this->template_path . 'product/_list_product', ['data' => $data]) ?>
                         </div>
-						<button type="button" style="font-size: 14px;" class="btn-primary btn-lg center-block btnLoadmoreCategory" title="Xem thêm" data-page="2" data-limit="12" data-id="<?php echo $oneItem->id ?>>">Xem thêm</button>
+						<button type="button" style="font-size: 14px;" class="btn-primary btn-lg center-block btnLoadmoreCategory" title="Xem thêm" data-page="2" data-limit="12" data-id="<?php echo $oneItem->id ?>">Xem thêm</button>
                     </article>
 
 					<div class="page-title">
