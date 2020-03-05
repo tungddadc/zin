@@ -955,6 +955,7 @@ jQuery(document).ready(function () {
 		if(container.length > 0){
 			let _this = $(this);
 			let page = parseInt(_this.data('page'));
+			console.log(page);
 			let limit = _this.data('limit');
 			let id = _this.data('id');
 			$.ajax({
@@ -967,7 +968,7 @@ jQuery(document).ready(function () {
 				success: function (html) {
 					_this.find('i').remove();
 					page = page + 1;
-					_this.attr('data-page',page);
+					_this.data('page',page);
 					container.append(html);
 				}
 
