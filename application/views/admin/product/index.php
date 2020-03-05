@@ -63,7 +63,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                         </div>
                     </div>
                     <div class="col-xl-4 order-1 order-xl-2 m--align-right">
-                        <a href="<?php echo site_admin_url('product/export_excel') ?>" class="btn btn-default m-btn m-btn--icon m-btn--air m-btn--pill">
+                        <a href="<?php echo site_admin_url('product/export_excel?noimage='.$this->input->get('noimage')) ?>" class="btn btn-default m-btn m-btn--icon m-btn--air m-btn--pill">
                             <span>
                                 <i class="fa fa-file-excel-o"></i>
                                 <span>

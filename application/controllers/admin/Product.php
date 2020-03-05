@@ -346,11 +346,17 @@ class Product extends Admin_Controller
 
 
     public function export_excel(){
-        $data = $this->_data->getAll('vi');
+		$params = [
+			'type'          => 'product',
+			'noimage' 		=>  $this->input->get('noimage'),
+			'limit'         => 10000
+		];
+		$data = $this->_data->getData($params);
         $dataToExports = [];
         if (!empty($data)) foreach ($data as $item) {
             $arrangeData['ID'] = $item->id;
             $arrangeData['Barcode'] = (string) $item->barcode;
+            $arrangeData['Tên sản phẩm'] = $item->title;
             $arrangeData['Mã sản phẩm'] = $item->model;
             $arrangeData['Danh mục'] = getCategoryByProduct($item->id);
             $arrangeData['Thương hiệu'] = $item->brand;
