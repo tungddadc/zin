@@ -40,7 +40,7 @@ class Product_model extends STEVEN_Model
         $this->db->join("(SELECT id AS product_id, COUNT(1) AS total_vote, ROUND( AVG(vote),1) AS vote FROM st_vote GROUP BY product_id) AS tblVote","tblVote.product_id = $this->table.id", "left");
 
         if(!empty($category_id)){
-            $this->db->join($this->table_category,"$this->table.id = $this->table_category.{$this->table}_id");
+            $this->db->join($this->table_category,"$this->table.id = $this->table_category.{$this->table}_id","right");
             $this->db->where_in("$this->table_category.category_id",$category_id);
             $this->db->group_by("$this->table.id");
         }

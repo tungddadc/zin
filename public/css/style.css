@@ -113,7 +113,6 @@ body {
     margin: auto;
     line-height: 1.55;
     margin: auto;
-    font-family: 'Nunito Sans';
     background: #f0f0f0 !important;
 }
 
@@ -750,7 +749,7 @@ div.effect-sadie1 + div.effect-sadie1 {
     padding: 7px 0;
     display: inline-block;
     float: right;
-    letter-spacing: 0.5px
+    
 }
 
 .toplinks .links {
@@ -770,7 +769,7 @@ div.effect-sadie1 + div.effect-sadie1 {
     /*	font-weight: normal;  */
     text-decoration: none;
     font-weight: 500;
-    letter-spacing: 0.5px;
+    ;
 }
 
 .toplinks div.links div a:hover {
@@ -904,7 +903,7 @@ div.effect-sadie1 + div.effect-sadie1 {
     padding: 5px !important;
     width: 220px;
     line-height: 30px;
-    letter-spacing: 0.5px
+    
 }
 .cart-top .dropdown-menu {
     padding: 10px;
@@ -1022,7 +1021,7 @@ div.effect-sadie1 + div.effect-sadie1 {
     vertical-align: top;
 
     font-weight: 500;
-    letter-spacing: 0.5px;
+    ;
 }
 
 /* language &amp; currency */
@@ -1043,7 +1042,7 @@ div.effect-sadie1 + div.effect-sadie1 {
     color: #333333;
     font-size: 13px;
     font-weight: 500;
-    letter-spacing: 0.5px;
+    ;
 }
 
 a.block-language:hover {
@@ -1088,7 +1087,7 @@ a.block-language:focus {
     padding: 3px 10px 3px 10px;
     font-size: 13px;
     font-weight: 500;
-    letter-spacing: 0.5px;
+    ;
 }
 
 .block-language-wrapper .dropdown-menu a:hover {
@@ -1109,7 +1108,7 @@ a.block-language:focus {
     color: #333333;
     font-size: 13px;
     font-weight: 500;
-    letter-spacing: 0.5px;
+    ;
 }
 
 a.block-currency:hover {
@@ -1155,7 +1154,7 @@ a.block-currency:focus {
     padding: 3px 15px 3px 10px;
     font-size: 13px;
     font-weight: 500;
-    letter-spacing: 0.5px;
+    ;
 }
 
 .block-currency-wrapper .dropdown-menu a:hover {
@@ -1264,7 +1263,7 @@ ul.currencies_list li a:hover {
     font-size: 13px;
     line-height: normal;
     font-weight: 500;
-    letter-spacing: 0.5px;
+    ;
 }
 
 .top-cart-content .product-name a:hover {
@@ -1300,7 +1299,7 @@ ul.currencies_list li a:hover {
     margin: 0px;
     line-height: 17px;
     font-size: 13px;
-    letter-spacing: 0.5px;
+    ;
     font-weight: 700;
     padding: 0px;
     display: block;
@@ -1628,7 +1627,7 @@ ul#cart-sidebar {
     display: inline-block;
     transition: color 300ms ease-in-out 0s, background-color 300ms ease-in-out 0s, background-position 300ms ease-in-out 0s;
     float: left;
-    letter-spacing: 0.5px;
+    ;
     width: 145px;
     border-radius: 2px;
     text-decoration: none;
@@ -1658,7 +1657,7 @@ ul#cart-sidebar {
     display: inline-block;
     background: rgb(190, 30, 45);
     color: #fff;
-    letter-spacing: 0.5px;
+    ;
     width: 145px;
     border-radius: 2px;
     text-decoration: none;
@@ -1942,7 +1941,7 @@ nav.sticky .mega-menu-category{
     font-weight: 600;
     margin-top: 10px;
     margin-bottom: 4px;
-    letter-spacing: 0.5px;
+    ;
     color: rgb(84, 86, 86);
 }
 
@@ -1954,7 +1953,7 @@ nav.sticky .mega-menu-category{
     font-size: 13px;
     color: #404040;
     padding: 5px 0;
-    letter-spacing: 0.5px;
+    ;
     font-weight: 300
 }
 
@@ -2077,7 +2076,7 @@ nav.sticky .mega-menu-category{
     background-color: #333333;
     color: #fff;
     font-size: 13px;
-    letter-spacing: 0.5px;
+    ;
 }
 
 .top-banners .banner {
@@ -2247,7 +2246,7 @@ nav {
     text-transform: none;
     color: #999;
     font-size: 13px;
-    letter-spacing: 0.5px
+    
 }
 
 .our-features-box .feature-box .content p {
@@ -2334,7 +2333,7 @@ nav {
     color: #999;
     font-size: 13px;
     font-weight: 500;
-    letter-spacing: 0.5px;
+    ;
 }
 
 .our-features-box .space {
@@ -2853,7 +2852,7 @@ nav {
     display: inline-block;
     line-height: 25px;
     cursor: pointer;
-    letter-spacing: 0.5px
+    
 }
 
 .bestseller-pro .mgk-tabs li > a:hover, .bestseller-pro .mgk-tabs li > a:focus {
@@ -3879,7 +3878,7 @@ nav {
     text-transform: none;
     margin-left: 25px;
     margin-right: 25px;
-    letter-spacing: 0.5px;
+    ;
 }
 
 .bestsell-pro a.view_more_bnt {
@@ -4004,7 +4003,7 @@ nav {
     font-size: 14px;
     color: #fc103b;
     font-weight: 500;
-    letter-spacing: 0.5px;
+    ;
     margin: 10px 0 28px;
 }
 
@@ -4122,7 +4121,7 @@ nav {
     text-transform: none;
     margin-left: 25px;
     margin-right: 25px;
-    letter-spacing: 0.5px;
+    ;
 }
 
 .featured-pro .owl-theme .owl-controls {
@@ -4258,7 +4257,7 @@ nav {
     text-transform: none;
     margin-left: 25px;
     margin-right: 25px;
-    letter-spacing: 0.5px;
+    ;
 }
 
 .new-arrivals-pro .owl-theme .owl-controls {
@@ -5093,7 +5092,7 @@ nav {
     text-decoration: none;
     font-size: 14px;
     font-weight: 500;
-    letter-spacing: 0.5px
+    
 }
 
 .products-grid .item .item-inner .item-info .info-inner .item-title a:hover {
@@ -5446,7 +5445,7 @@ li .list {
     margin-bottom: 15px;
     margin-top: 12px;
     color: #222;
-    letter-spacing: 0.5px;
+    ;
     font-weight: 500;
 }
 
@@ -5454,7 +5453,7 @@ li .list {
     font-size: 13px;
     color: #222;
     line-height: 1.5em;
-    letter-spacing: 0.5px;
+    ;
 }
 
 .products-list .product-shop p.old-price {
@@ -5647,7 +5646,7 @@ a.button.detail-bnt span {
 .ratings-table th {
     font-weight: 600;
     padding-right: 8px;
-    letter-spacing: 0.5px;
+    ;
 }
 
 /* Price */
@@ -6048,7 +6047,7 @@ a.button.detail-bnt span {
     color: #a7a7a7;
     text-transform: none;
     font-weight: 500;
-    letter-spacing: 0.5px;
+    ;
     font-size: 13px;
 }
 
@@ -6109,7 +6108,7 @@ a.button.detail-bnt span {
     font-family: 'Nunito Sans';
     font-size: 16px;
     font-weight: 600;
-    letter-spacing: 0.5px;
+    ;
     line-height: 1.3em;
     margin: auto;
     padding-bottom: 6px;
@@ -6121,7 +6120,7 @@ a.button.detail-bnt span {
     font-size: 13px;
     line-height: 20px;
     padding-bottom: 15px;
-    letter-spacing: 0.5px;
+    ;
 }
 
 .blog-preview_btn {
@@ -6849,7 +6848,7 @@ ul#magicat li .open-close, .block-layered-nav dt .toggleBtn {
     padding-left: 10px;
     color: #222;
     transition: color 300ms ease-in-out 0s, background-color 300ms ease-in-out 0s, background-position 300ms ease-in-out 0s;
-    letter-spacing: 0.5px;
+    ;
 }
 
 .box-category > ul > li ul > li > a:before {
@@ -7453,7 +7452,7 @@ ol#compare-items li a.product-name {
     text-transform: none;
     display: inline-block;
     width: 200px;
-    /*	letter-spacing: 0.5px; */
+    /*	; */
     letter-spacing: 1px;
     font-weight: 500;
 }
@@ -8270,7 +8269,7 @@ ol#compare-items li.last {
     margin: 0px;
     margin-bottom: 10px;
     font-weight: 600;
-    letter-spacing: 0.5px;
+    ;
     text-align: center;
 }
 
@@ -8278,7 +8277,7 @@ ol#compare-items li.last {
     font-size: 13px;
     margin: 0px;
     color: #222;
-    letter-spacing: 0.5px;
+    ;
     line-height: 20px;
     font-weight: 500;
 }
@@ -8809,7 +8808,7 @@ ol#compare-items li.last {
     font-size: 13px;
     line-height: 20px;
     margin-top: 0px;
-    letter-spacing: 0.5px;
+    ;
 }
 
 .tab-content > .active {
@@ -8859,7 +8858,7 @@ ol#compare-items li.last {
 
 .form-add-tags label {
     font-weight: 700;
-    letter-spacing: 0.5px;
+    ;
     text-transform: uppercase;
 }
 
@@ -8998,7 +8997,7 @@ ol#compare-items li.last {
 .box-reviews ul li h6 a {
     color: #333;
     font-weight: 500;
-    letter-spacing: 0.5px;
+    ;
 }
 
 .box-reviews2 ul li {
@@ -9122,7 +9121,7 @@ a.button.view-all {
     font-weight: 700;
     line-height: 20px;
     padding: 8px;
-    letter-spacing: 0.5px;
+    ;
 }
 
 #customer-reviews ul {
@@ -9766,7 +9765,7 @@ a.shop-now-btn {
     cursor: pointer;
     font-weight: bold;
     font-size: 13px;
-    letter-spacing: 0.5px;
+    ;
     line-height: 17px;
     margin-left: 10px;
     overflow: hidden;
@@ -9796,7 +9795,7 @@ a.shop-now-btn {
     padding: 8px 15px 7px;
     width: 40%;
     border-radius: 3px;
-    letter-spacing: 0.5px
+    
 }
 
 .newsletter p#subscriber_content {
@@ -10008,7 +10007,7 @@ a.shop-now-btn {
 
 .footer-middle a {
     font-weight: 500;
-    letter-spacing: 0.5px;
+    ;
     font-size: 13px;
     font-family: 'Nunito Sans';
 }
@@ -10043,7 +10042,7 @@ a.shop-now-btn {
 	background: #444; */
     background: #353D43;
     font-size: 11px;
-    letter-spacing: 0.5px;
+    ;
     text-align: center;
     color: #b1b2b4;
 }
@@ -10072,7 +10071,7 @@ a.shop-now-btn {
     padding-top: 5px;
     text-align: left;
     font-weight: 500;
-    letter-spacing: 0.5px
+    
 }
 
 .contacts-info {
@@ -10098,7 +10097,7 @@ a.shop-now-btn {
     color: rgb(251, 175, 63) !important;
     font-size: 15px;
     font-weight: 600;
-    letter-spacing: 0.5px;
+    ;
     margin: 0;
     padding: 0 0 10px;
     /*	text-transform: uppercase; */
@@ -10308,7 +10307,7 @@ ul.shipping-pro {
     display: inline-block;
     width: 100%;
     font-weight: 500;
-    letter-spacing: 0.5px;
+    ;
 }
 
 ul.shipping-pro li {
@@ -10510,7 +10509,7 @@ ul.shipping-pro li {
 .cart-collaterals {
     margin-top: 20px;
     margin-bottom: 30px;
-    letter-spacing: 0.5px;
+    ;
 }
 
 .cart-collaterals .col2-set {
@@ -10592,7 +10591,7 @@ ul.shipping-pro li {
     cursor: pointer;
     color: #333;
     width: 90%;
-    letter-spacing: 0.5px;
+    ;
 }
 
 select, select.form-control {
@@ -10705,7 +10704,7 @@ input#coupon_code {
     text-decoration: none;
     font-size: 14px;
     font-weight: normal;
-    letter-spacing: 0.5px;
+    ;
     color: #333;
 }
 
@@ -10787,7 +10786,7 @@ input#coupon_code {
 #shopping-cart-table .cart-price .price {
     font-size: 13px;
     font-weight: 500;
-    letter-spacing: 0.5px;
+    ;
     color: #000;
 }
 
@@ -11074,7 +11073,7 @@ button.button.btn-proceed-checkout span {
 .dashboard .welcome-msg strong {
     font-weight: 900;
     font-size: 14px;
-    letter-spacing: 0.5px;
+    ;
     margin-bottom: 5px;
     display: inline-block;
 }
@@ -11622,7 +11621,7 @@ a.button.wishlist {
     font-weight: 600;
     display: inline-block;
     margin-right: -3px;
-    letter-spacing: 0.5px;
+    ;
 }
 
 .checkout-progress li.last {
@@ -11885,7 +11884,7 @@ a.button.wishlist {
     text-decoration: none;
     height: auto;
     font-weight: 600;
-    letter-spacing: 0.5px;
+    ;
 }
 
 .page-not-found .btn-home span {
@@ -12392,7 +12391,7 @@ a.button.wishlist {
     font-weight: 500;
     color: #fff;
     text-transform: none;
-    letter-spacing: 0.5px;
+    ;
     padding-top: 40px;
     background: url(../images/quotes-img.png) no-repeat top center;
 }
@@ -12431,7 +12430,7 @@ a.button.wishlist {
     font-size: 13px;
     display: block;
     color: rgb(190, 30, 45);
-    letter-spacing: 0.5px;
+    ;
 }
 
 .home-testimonials strong.name a {
@@ -13028,7 +13027,7 @@ a.shop-now-btn {
     font-weight: normal;
     margin-right: 10px;
     padding: 5px 0;
-    letter-spacing: 0.5px;
+    ;
 }
 
 .pager {
@@ -13074,7 +13073,7 @@ a.shop-now-btn {
     padding: 5px 0;
     font-size: 14px;
     font-weight: normal;
-    letter-spacing: 0.5px;
+    ;
 }
 
 .sorter .sort-by {
@@ -17096,7 +17095,7 @@ a.shop-now-btn {
     .banner-images li.grid figure.effect h2 strong {
         font-size: 15px;
         padding: 0px;
-        letter-spacing: 0.5px;
+        ;
     }
 
     .banner-images_content {

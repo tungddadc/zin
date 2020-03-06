@@ -686,7 +686,6 @@ var UI = {
         sync1.owlCarousel({
             singleItem : true,
             slideSpeed : 1000,
-            navigation: true,
             pagination:false,
             afterAction : syncPosition,
             responsiveRefreshRate : 200,
@@ -757,19 +756,19 @@ var UI = {
         $('.slider-for').slick({
             slidesToShow: 1,
             slidesToScroll: 1,
-            arrows: false,
+            arrows: true,
             fade: true,
             asNavFor: '.slider-nav',
             autoplay: true,
             autoplaySpeed: 2000,
+			prevArrow: '<a class="angle-prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>',
+			nextArrow: '<a class="angle-next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>',
             responsive: [
                 {
                     breakpoint: 576,
                     settings: {
                         dots: true,
                         arrows: true,
-                        prevArrow: '<a class="angle-prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>',
-                        nextArrow: '<a class="angle-next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>',
                         autoplay: true,
                         autoplaySpeed: 2000
                     }
