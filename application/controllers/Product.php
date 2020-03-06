@@ -83,6 +83,7 @@ class Product extends Public_Controller
         ];
         if(!empty($paramsFilter)) $params = array_merge($params,$paramsFilter);
         $data['data'] = $this->_data->getData($params);
+//		ddQuery($this->db);
         $data['total'] = $this->_data->getTotal($params);
 
         /*List product viewed*/
@@ -143,9 +144,11 @@ class Product extends Public_Controller
 			'lang_code' => $this->_lang_code,
 			'category_id' => $category_id,
 			'limit' => $limit,
-			'page' => $page
+			'page' => $page,
+			'order' => ['created_time' => 'DESC']
 		];
 		$data['data'] = $this->_data->getData($params);
+//		ddQuery($this->db);
 		echo $this->load->view($this->template_path . "product/_ajax_load_more", $data, TRUE);exit;
 	}
 
