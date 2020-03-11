@@ -776,7 +776,7 @@ var UI = {
             ]
         });
         $('.slider-nav').slick({
-            slidesToShow: 3,
+            slidesToShow: 5,
             slidesToScroll: 1,
             vertical: true,
             verticalSwiping: true,
@@ -785,7 +785,7 @@ var UI = {
                 {
                     breakpoint: 1024,
                     settings: {
-                        slidesToShow: 3,
+                        slidesToShow: 5,
                         slidesToScroll: 1,
                         infinite: true,
                         dots: false,
