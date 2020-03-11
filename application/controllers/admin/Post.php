@@ -150,7 +150,6 @@ class Post extends Admin_Controller
         if ($id = $this->_data->save($data)) {
             $this->save_language($id, $data_trans);
             $this->save_category($id, $data_category);
-            sendMessage($id);
             $message['type'] = 'success';
             $message['message'] = "Thêm mới thành công !";
         } else {
