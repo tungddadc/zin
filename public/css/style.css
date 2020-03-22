@@ -5046,14 +5046,9 @@ nav {
     margin: 0px auto 0;
     display: block;
     padding: 7px;
-    float: right;
-    width: 35%;
 }
 
 .products-grid .item .item-inner .item-info {
-    float: left;
-    width: 65%;
-    text-align: left;
 }
 
 .products-grid .item .item-inner .item-info .info-inner {
@@ -5082,16 +5077,16 @@ nav {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     line-height: 24px;
-    height: calc(24px * 3);
+    height: calc(24px * 2);
 }
 
 .products-grid .item .item-inner .item-info .info-inner .item-title a {
     text-decoration: none;
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 15px;
+    font-weight: 600;
     
 }
 
@@ -6259,11 +6254,6 @@ a.button.detail-bnt span {
     margin: 0;
     list-style: none;
     padding: 0;
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    transform: translateY(-50%);
 }
 .box-hover .add-to-links a {
     color: #fff;
@@ -6271,18 +6261,14 @@ a.button.detail-bnt span {
 
 .box-hover .add-to-links li {
     display: inline-block;
-    width: 45px;
-    height: 45px;
-    line-height: 45px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
     background: brown;
     border-radius: 100%;
 
 }
 .box-hover {
-    position: absolute;
-    bottom: -100%;
-    text-align: center;
-    opacity: 0;
     z-index: -9;
 }
 .item-img:hover .box-hover {
