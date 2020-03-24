@@ -16,7 +16,7 @@ require_once $root . "/config.php";
 	// Filesystem
 	$moxieManagerConfig['filesystem.rootpath'] = '';
 	$moxieManagerConfig['filesystem.include_directory_pattern'] = '';
-	$moxieManagerConfig['filesystem.exclude_directory_pattern'] = '/^mcith$/i';
+	$moxieManagerConfig['filesystem.exclude_directory_pattern'] = '/^mcith|thumb$/i';
 	$moxieManagerConfig['filesystem.include_file_pattern'] = '';
 	$moxieManagerConfig['filesystem.exclude_file_pattern'] = '';
 	$moxieManagerConfig['filesystem.extensions'] = 'jpg,ico,jpeg,png,gif,html,htm,txt,docx,doc,zip,pdf';
