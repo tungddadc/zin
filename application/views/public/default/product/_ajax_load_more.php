@@ -4,8 +4,8 @@
 			<div class="item-img">
 				<div class="item-img-info">
 					<a href="<?php echo getUrlProduct($item) ?>" title="<?php echo getTitle($item) ?>" class="product-image">
-						<img src="<?php echo getImageThumb($item->thumbnail,768,482,true,true) ?>"
-							 data-src="<?php echo getImageThumb($item->thumbnail,768,482,true,true) ?>"
+						<img src="<?php echo getImageThumb($item->thumbnail,379,238,true,true) ?>"
+							 data-src="<?php echo getImageThumb($item->thumbnail,379,238,true,true) ?>"
 							 class="lazy"
 							 alt="<?php echo getTitle($item) ?>">
 					</a>

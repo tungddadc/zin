@@ -42,66 +42,64 @@ if (!function_exists('getImageThumb')) {
 				if (!empty($imageSize)) {
 					$imageWidth = intval($imageSize[0]);
 					$imageHeight = intval($imageSize[1]);
-				} else {
-					$imageWidth = $width;
-					$imageHeight = $height;
-				}
 
-
-				$dim = ($imageWidth / $imageHeight) - ($width / $height);
-				if($imageWidth > $width || $imageHeight > $height){
-					$config['master_dim'] = ($dim > 0) ? "height" : "width";
-					$config['height'] = $height;
-					$config['width'] = $width;
-				}
-				$CI->image_lib->initialize($config);
-				if (!$CI->image_lib->resize()) {
-					log_message('error',"Error resize image: $sourceImage to $newPathImage =>" . $CI->image_lib->display_errors());
-				}
-				$CI->image_lib->clear();
-				if(!empty($watermark)){
-					$watermarkImage = getWatermark($width,$height);
-					if(!empty($watermarkImage)){
-						$config_watermark['image_library']       = 'gd2';
-						$config_watermark['source_image']       = $newPathImage;
-						$config_watermark['wm_type']       = 'overlay';
-						$config_watermark['wm_opacity']     = 40;
-						//$config_watermark['wm_padding']     = 30;
-						$config_watermark['wm_vrt_alignment'] = 'middle';
-						$config_watermark['wm_hor_alignment'] = 'center';
-						$config_watermark['wm_overlay_path'] = getWatermark($width,$height);
-						$CI->image_lib->initialize($config_watermark);
-						$CI->image_lib->watermark();
+					if($imageWidth > $width && $imageHeight > $height){
+						$dim = ($imageWidth / $imageHeight) - ($width / $height);
+						if($imageWidth > $width || $imageHeight > $height){
+							$config['master_dim'] = ($dim > 0) ? "height" : "width";
+							$config['height'] = $height;
+							$config['width'] = $width;
+						}
+						$CI->image_lib->initialize($config);
+						if (!$CI->image_lib->resize()) {
+							log_message('error',"Error resize image: $sourceImage to $newPathImage =>" . $CI->image_lib->display_errors());
+						}
 						$CI->image_lib->clear();
-					}
-				}
+						if(!empty($watermark)){
+							$watermarkImage = getWatermark($width,$height);
+							if(!empty($watermarkImage)){
+								$config_watermark['image_library']       = 'gd2';
+								$config_watermark['source_image']       = $newPathImage;
+								$config_watermark['wm_type']       = 'overlay';
+								$config_watermark['wm_opacity']     = 40;
+								//$config_watermark['wm_padding']     = 30;
+								$config_watermark['wm_vrt_alignment'] = 'middle';
+								$config_watermark['wm_hor_alignment'] = 'center';
+								$config_watermark['wm_overlay_path'] = getWatermark($width,$height);
+								$CI->image_lib->initialize($config_watermark);
+								$CI->image_lib->watermark();
+								$CI->image_lib->clear();
+							}
+						}
 
-				if($crop == true){
-					$image_config['image_library'] = 'gd2';
-					$image_config['source_image'] = $newPathImage;
-					$image_config['new_image'] = $newPathImage;
-					$image_config['quality'] = "100%";
-					$image_config['maintain_ratio'] = FALSE;
-					$image_config['width'] = $width;
-					$image_config['height'] = $height;
-					if (!file_exists($newPathImage)) {
-						$imageWidth = $width;
-						$imageHeight = $height;
-					} else {
-						$imageSize = getimagesize($newPathImage);
-						$imageWidth = intval($imageSize[0]);
-						$imageHeight = intval($imageSize[1]);
-					}
+						if($crop == true){
+							$image_config['image_library'] = 'gd2';
+							$image_config['source_image'] = $newPathImage;
+							$image_config['new_image'] = $newPathImage;
+							$image_config['quality'] = "100%";
+							$image_config['maintain_ratio'] = FALSE;
+							$image_config['width'] = $width;
+							$image_config['height'] = $height;
+							if (!file_exists($newPathImage)) {
+								$imageWidth = $width;
+								$imageHeight = $height;
+							} else {
+								$imageSize = getimagesize($newPathImage);
+								$imageWidth = intval($imageSize[0]);
+								$imageHeight = intval($imageSize[1]);
+							}
 
 
 
-					$cropStartX = ( $imageWidth / 2) - ( $width /2 );
-					$cropStartY = ( $imageHeight/ 2) - ( $height/2 );
-					$image_config['x_axis'] = $cropStartX;
-					$image_config['y_axis'] = $cropStartY;
-					$CI->image_lib->initialize($image_config);
-					if (!$CI->image_lib->crop()) {
-						log_message('error',"Error crop image: $newPathImage =>" . $CI->image_lib->display_errors());
+							$cropStartX = ( $imageWidth / 2) - ( $width /2 );
+							$cropStartY = ( $imageHeight/ 2) - ( $height/2 );
+							$image_config['x_axis'] = $cropStartX;
+							$image_config['y_axis'] = $cropStartY;
+							$CI->image_lib->initialize($image_config);
+							if (!$CI->image_lib->crop()) {
+								log_message('error',"Error crop image: $newPathImage =>" . $CI->image_lib->display_errors());
+							}
+						}
 					}
 				}
 			}
