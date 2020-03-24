@@ -196,6 +196,7 @@
     padding: 0;
 }
 #related-products-slider .owl-item {
+	text-align: center;
     padding: 0 15px;
 }
 .nav-tabs > li.active > a, 

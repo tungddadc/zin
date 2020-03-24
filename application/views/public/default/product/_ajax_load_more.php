@@ -12,30 +12,7 @@
 					<!--                        --><?php //echo !empty($item->is_new) ? '<div class="new-label new-top-left">New</div>' : '<div class="new-label new-top-left">Đã bán: '.($item->viewed - 555).'</div>' ?>
 					<?php echo !empty($item->is_sale) && !empty($item->price) ? '<div class="hot-label hot-top-left">-'.round((($item->price - $item->price_sale)/$item->price)*100).'%</div>' : '' ?>
 				</div>
-				<div class="box-hover">
-					<ul class="add-to-links">
-						<li>
-							<a class="link-quickview" data-url="<?php echo getUrlProduct($item) ?>" href="javascript:;" rel="nofollow" title="Xem Quickview">
-								<i class="fa fa-search" aria-hidden="true"></i>
-							</a>
-						</li>
-						<li>
-							<a class="link-wishlist" data-id="<?php echo $item->id ?>" href="javascript:;" rel="nofollow" title="Yêu thích sản phẩm này">
-								<i class="fa fa-heart" aria-hidden="true"></i>
-							</a>
-						</li>
-						<li>
-							<a class="link-compare" data-id="<?php echo $item->id ?>" href="javascript:;" rel="nofollow" title="So sánh sản phẩm này">
-								<i class="fa fa-balance-scale" aria-hidden="true"></i>
-							</a>
-						</li>
-						<li>
-							<a class=link-add-to-cart href="javascript:;" onclick="CART.add(<?php echo $item->id ?>,1)" title="Thêm vào giỏ hàng">
-								<i class="fa fa-cart-plus" aria-hidden="true"></i>
-							</a>
-						</li>
-					</ul>
-				</div>
+
 			</div>
 			<div class="item-info">
 				<div class="info-inner">
@@ -43,13 +20,29 @@
 						<a href="<?php echo getUrlProduct($item) ?>" title="<?php echo getTitle($item) ?>"><?php echo $item->title ?></a>
 					</div>
 					<div class="item-content">
-						<div class="rating">
-							<div class="ratings">
-								<div class="rating-box">
-									<div style="width:<?php echo round(($item->vote/5)*100) ?>%" class="rating"></div>
-								</div>
-								<p class="rating-links"> <a href="<?php echo getUrlProduct($item).'#tab_reviews' ?>"><?php echo $item->total_vote ?> đánh giá</a></p>
-							</div>
+						<div class="box-hover">
+							<ul class="add-to-links">
+								<li>
+									<a class="link-quickview" data-url="<?php echo getUrlProduct($item) ?>" href="javascript:;" rel="nofollow" title="Xem Quickview">
+										<i class="fa fa-search" aria-hidden="true"></i>
+									</a>
+								</li>
+								<li>
+									<a class="link-wishlist" data-id="<?php echo $item->id ?>" href="javascript:;" rel="nofollow" title="Yêu thích sản phẩm này">
+										<i class="fa fa-heart" aria-hidden="true"></i>
+									</a>
+								</li>
+								<li>
+									<a class="link-compare" data-id="<?php echo $item->id ?>" href="javascript:;" rel="nofollow" title="So sánh sản phẩm này">
+										<i class="fa fa-balance-scale" aria-hidden="true"></i>
+									</a>
+								</li>
+								<li>
+									<a class=link-add-to-cart href="javascript:;" onclick="CART.add(<?php echo $item->id ?>,1)" title="Thêm vào giỏ hàng">
+										<i class="fa fa-cart-plus" aria-hidden="true"></i>
+									</a>
+								</li>
+							</ul>
 						</div>
 						<div class="item-price">
 							<div class="price-box">
@@ -62,6 +55,7 @@
 							</div>
 						</div>
 					</div>
+
 				</div>
 			</div>
 
