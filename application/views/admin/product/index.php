@@ -164,6 +164,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                                                 <label>Tiêu đề</label>
                                                                 <input name="language[<?php echo $lang_code;?>][title]" placeholder="Tiêu đề (<?php echo $lang_name ?>)" class="form-control" type="text" />
                                                             </div>
+
+															<div class="form-group">
+                                                                <label>Tên để tìm kiếm</label>
+                                                                <input name="language[<?php echo $lang_code;?>][title_search]" placeholder="Tên để tìm kiếm (<?php echo $lang_name ?>)" class="form-control" type="text" />
+                                                            </div>
                                                             <div class="form-group">
                                                                 <label>Tóm tắt</label>
                                                                 <textarea name="language[<?php echo $lang_code;?>][description]" placeholder="Tóm tắt (<?php echo $lang_name ?>)" class="form-control" rows="5"></textarea>

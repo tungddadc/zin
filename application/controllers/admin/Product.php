@@ -357,6 +357,7 @@ class Product extends Admin_Controller
             $arrangeData['ID'] = $item->id;
             $arrangeData['Barcode'] = (string) $item->barcode;
             $arrangeData['Tên sản phẩm'] = $item->title;
+            $arrangeData['Tên để search'] = $item->title_keyword;
             $arrangeData['Mã sản phẩm'] = $item->model;
             $arrangeData['Danh mục'] = getCategoryByProduct($item->id);
             $arrangeData['Thương hiệu'] = $item->brand;
