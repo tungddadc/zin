@@ -24,7 +24,7 @@
                                     <div class="product-image">
                                         <div class="product-full">
                                             <img id="product-zoom"
-                                                 src="<?php echo getImageThumb($album[0], 768,482, false,true) ?>"
+                                                 src="<?php echo getImageThumb($album[0], 654,410, false,true) ?>"
                                                  data-zoom-image="<?php echo getImageThumb($album[0],0,0,false,true) ?>"
                                                  alt="<?php echo getTitle($oneItem) ?>"/>
                                         </div>
@@ -36,8 +36,8 @@
                                                         <?php if (!empty($album)) foreach ($album as $item): ?>
                                                             <div class="more-views-items">
                                                                 <a href="javascript:;"
-                                                                   data-image="<?php echo getImageThumb($item, 768,482, true,true) ?>"
-                                                                   data-zoom-image="<?php echo getImageThumb($item,768,482,false,true) ?>"
+                                                                   data-image="<?php echo getImageThumb($item, 654,410, true,true) ?>"
+                                                                   data-zoom-image="<?php echo getImageThumb($item,654,410,false,true) ?>"
                                                                    title="<?php echo getTitle($oneItem) ?>">
                                                                     <img id="product-zoom"
                                                                          src="<?php echo getImageThumb($item, 76, 76,true,true) ?>"

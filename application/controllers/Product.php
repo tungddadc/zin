@@ -309,12 +309,13 @@ class Product extends Public_Controller
         $data['data_vote'] = $voteModel->getVoteById($id);
 
         /*List product related*/
-        $params['is_status'] = 1;
-        $params['lang_code'] = $this->_lang_code;
-        $params['not_in'] = $id;
-        $params['brand_id'] = $oneItem->brand;
-        $params['limit'] = 8;
-        $data['listProductBrand'] = $this->_data->getData($params);
+        $data['listProductBrand'] = $this->_data->getData([
+        	'is_status' => 1,
+			'lang_code' => $this->_lang_code,
+			'not_in' => $id,
+			'category_id' => $oneCategory->id,
+			'limit' => 8
+		]);
         /*List product related*/
 
         /*List product viewed*/

@@ -340,25 +340,14 @@ echo $this->minify->deploy_js(); ?>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <?php endif; ?>
 <?php echo !empty($this->settings['script_body']) ? $this->settings['script_body'] : '' ?>
-<!--<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
 <script>
-  var OneSignal = window.OneSignal || [];
-  OneSignal.push(["init", {
-    appId: "23da72ca-689d-4b93-ba2f-fc4856c58a9f",
-    autoRegister: false,
-    notifyButton: {
-      enable: true
-    },
-    promptOptions: {
-      siteName: "Thành chi Mobile",
-      actionMessage: "Bạn có muốn nhận thông báo khi chúng tôi có tin mới hay không?",
-      acceptButtonText: "ĐỒNG Ý",
-      cancelButtonText: "KHÔNG, CẢM ƠN",
-    }
-  }]);
-  OneSignal.push(function() {
-    OneSignal.showHttpPrompt();
-  });
-</script>-->
+	var OneSignal = window.OneSignal || [];
+	OneSignal.push(function() {
+		OneSignal.init({
+			appId: "9902115e-db5f-4d71-b1a4-68c71da8221c",
+		});
+	});
+</script>
 </body>
 </html>

@@ -36,7 +36,7 @@ if (!function_exists('getImageThumb')) {
 				$config['new_image'] = $newPathImage;
 				$config['maintain_ratio'] = TRUE;
 				$config['create_thumb'] = FALSE;
-				$config['quality'] = "80%";
+				$config['quality'] = "100%";
 
 				$imageSize = getimagesize($sourceImage);
 				if (!empty($imageSize)) {

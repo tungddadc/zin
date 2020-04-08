@@ -34,7 +34,7 @@ if (!empty($oneItem)):
                                 <div class="slider-for">
                                     <?php if (!empty($album)) foreach ($album as $item): ?>
                                         <div>
-                                            <img style="margin: 0;width: 100%;height: auto" class="img-responsive" src="<?php echo getImageThumb($item, 768,482, true) ?>" alt="<?php echo getTitle($oneItem) ?>">
+                                            <img style="margin: 0;width: 100%;height: auto" class="img-responsive" src="<?php echo getImageThumb($item, 654,410, true) ?>" alt="<?php echo getTitle($oneItem) ?>">
                                         </div>
                                     <?php endforeach ?>
                                 </div>
