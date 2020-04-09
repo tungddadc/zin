@@ -59,7 +59,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     							<?php
     							if (!empty($home_news)) {
     								?>
-    								<a href="<?php getUrlNews($home_news[0]) ?>">
+    								<a href="<?php echo getUrlNews($home_news[0]) ?>" title="<?php echo $home_news[0]->title ?>">
     									<img width="100" height="70"
     										 src="<?php echo getImageThumb($home_news[0]->thumbnail, 100, 70, true); ?>"
     										 alt="<?php echo $home_news[0]->title ?>">
