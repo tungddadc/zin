@@ -131,6 +131,16 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 </header>
 
 <div id="mobile-menu" class="hidden-lg">
+	<div class="search-box">
+		<div class="input-group">
+			<input name="search" class="form-control" value="<?php echo ($this->_controller === 'search' && !empty($this->uri->segment(2))) ? urldecode($this->uri->segment(2)) : '' ?>" type="text" maxlength="128" autocomplete="off" placeholder="Tìm kiếm sản phẩm...">
+			<div class="input-group-btn">
+				<button title="Search" class="btn btn-default bg-search btnSearch" type="button">
+					<i class="fa fa-search" aria-hidden="true"></i>
+				</button>
+			</div>
+		</div>
+	</div>
     <?php echo navMenuMain('mobile-menu'); ?>
     <ul class="mobile-menu-icon">
         <?php if ($this->session->userdata('is_logged')) :?>
@@ -142,7 +152,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
         </li>
         <?php else: ?>
         <li>
-            <a class="btn btn-block btn-social btn-info" title="Đăng ký Tài khoản" class="btn btn-primary btn-block" href="<?php echo base_url('auth/register') ?>">
+            <a class="btn btn-block btn-social btn-info" title="Đăng ký Tài khoản" href="<?php echo base_url('auth/register') ?>">
                 Đăng ký
             </a>
         </li>

@@ -533,10 +533,10 @@ var UI = {
         }
     },
     searchBox: function(){
-        let container  = $('#search_mini_form');
-        $('header').find('button.btnSearch').click(function(e) {
+        let container  = $('.search-box');
+        $('body').find('button.btnSearch').click(function(e) {
             e.preventDefault();
-            let inputElement = $(this).parent().parent().find('input[name="search"]');
+            let inputElement = $(this).closest('.search-box').find('input[name="search"]');
             UI.search(inputElement);
         });
 
