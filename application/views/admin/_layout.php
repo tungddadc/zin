@@ -128,7 +128,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 <script src="<?php echo $this->templates_assets ?>plugins/moxiemanager/js/moxman.loader.min.js" type="text/javascript"></script>
 
 
-<script src="<?php echo $this->templates_assets ?>js/main.js" type="text/javascript"></script>
+<script src="<?php echo $this->templates_assets ?>js/main.js?v=1.001" type="text/javascript"></script>
 <?php if(!empty($this->_controller)): ?><script src="<?php echo $this->templates_assets ?>js/page/<?php echo $this->_controller ?>.js" type="text/javascript"></script><?php endif; ?>
 <!--end::Page Snippets -->
 </body>

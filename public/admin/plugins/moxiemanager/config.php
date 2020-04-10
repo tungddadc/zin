@@ -19,7 +19,7 @@ require_once $root . "/config.php";
 	$moxieManagerConfig['filesystem.exclude_directory_pattern'] = '/^mcith|thumb$/i';
 	$moxieManagerConfig['filesystem.include_file_pattern'] = '';
 	$moxieManagerConfig['filesystem.exclude_file_pattern'] = '';
-	$moxieManagerConfig['filesystem.extensions'] = 'jpg,ico,jpeg,png,gif,html,htm,txt,docx,doc,zip,pdf';
+	$moxieManagerConfig['filesystem.extensions'] = 'svg,jpg,ico,jpeg,png,gif,html,htm,txt,docx,doc,zip,pdf';
 	$moxieManagerConfig['filesystem.readable'] = true;
 	$moxieManagerConfig['filesystem.writable'] = true;
 	$moxieManagerConfig['filesystem.overwrite_action'] = "";

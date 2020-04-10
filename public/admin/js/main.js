@@ -482,7 +482,7 @@ var FUNC = {
     chooseImage: function(_this){
         moxman.browse({
             view: 'thumbs',
-            extensions:'jpg,jpeg,png,gif,ico',
+            extensions:'jpg,jpeg,png,gif,ico,svg',
             no_host: true,
             upload_auto_close: true,
             oninsert: function(args) {
