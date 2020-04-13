@@ -127,8 +127,8 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                 <div class="logo">
                     <a title="<?php echo $this->settings['title'] . ' | ' . $this->settings['name'] ?>"
                        href="<?php echo base_url() ?>">
-                        <img alt="<?php echo $this->settings['title'] . ' | ' . $this->settings['name'] ?>"
-                             src="<?php echo getImageThumb($this->settings['logo'], 260, 50, false, false) ?>">
+                        <img width="300" height="55" alt="<?php echo $this->settings['title'] . ' | ' . $this->settings['name'] ?>"
+                             src="<?php echo getImageThumb($this->settings['logo']) ?>">
                     </a>
                 </div>
                 <!-- End Header Logo -->
