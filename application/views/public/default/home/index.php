@@ -18,7 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                             <?php foreach ($home_slider as $item) : ?>
                                 <div class="item">
                                     <a title="<?php echo getTitle($item) ?>" href="<?php echo $item->url ?>">
-                                        <img src="<?php echo getImageThumb($item->thumbnail, 1920, 630, true) ?>"
+                                        <img src="<?php echo getImageThumb($item->thumbnail, 1900, 600, true) ?>"
                                              alt="<?php echo getTitle($item) ?>">
                                     </a>
                                 </div>

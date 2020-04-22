@@ -23,10 +23,10 @@ $config['crumb_last_open'] = '<li class="m-nav__item">';
 $config['crumb_close'] = '</li>';
 
 $config['frontend_crumb_divider'] = '<span>/</span>';
-$config['frontend_tag_open'] = '<ul vocab="http://schema.org/" typeof="BreadcrumbList">';
+$config['frontend_tag_open'] = '<ul>';
 $config['frontend_tag_close'] = '</ul>';
-$config['frontend_crumb_open'] = '<li property="itemListElement" typeof="ListItem">';
-$config['frontend_crumb_last_open'] = '<li property="itemListElement" typeof="ListItem" class="active">';
+$config['frontend_crumb_open'] = '<li>';
+$config['frontend_crumb_last_open'] = '<li class="active">';
 $config['frontend_crumb_close'] = '</li>';
 /* End of file breadcrumbs.php */
 /* Location: ./application/config/breadcrumbs.php */
