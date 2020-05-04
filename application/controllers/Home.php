@@ -48,6 +48,7 @@ class Home extends Public_Controller
                 'lang_code' => $this->session->userdata('public_lang_code'),
                 'is_status' => 1,
                 'category_id'=> $listCateId,
+                'order' => ['created_time' => 'DESC'],
                 'limit' => 6
             );
             $listCategory[] = $item;
