@@ -836,4 +836,14 @@ class Product extends Public_Controller
         return json_decode($data);
     }
 
+    public function AllProductAPI(){
+		$data = $this->getAllProductApi();
+		$arrBarcode = [];
+		if(!empty($data)) foreach ($data as $item){
+			$arrBarcode[] = $item->BarCode;
+		}
+
+		$result = $this->_data->getDataByBarcodeNotIn($arrBarcode);
+		dd($result);
+	}
 }

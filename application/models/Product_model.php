@@ -182,4 +182,10 @@ class Product_model extends STEVEN_Model
         $data = $this->db->get()->row();
         return !empty($data) ? $data->category_id : null;
     }
+
+	public function getDataByBarcodeNotIn($arrBarcode = [])
+	{
+		if(!empty($arrBarcode)) $this->db->where_not_in("barcode",$arrBarcode);
+		return $this->db->delete($this->table);
+	}
 }
