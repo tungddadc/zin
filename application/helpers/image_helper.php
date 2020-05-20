@@ -19,7 +19,6 @@ if (!function_exists('getImageThumb')) {
 			$pathThumb = str_replace('//', '/', $pathThumb);
 			if (!file_exists($pathThumb)) {
 				try {
-					if (!file_exists($imageOrigin) && isset($_SERVER['HTTP_HOST']) && $_SERVER['HTTP_HOST'] == DOMAIN_ROOT) return  base_url() . 'public/images/lazy-300x180.jpg';
 					if (!is_dir(dirname($pathThumb))) {
 						mkdir(dirname($pathThumb), 0755, TRUE);
 					}
@@ -31,6 +30,7 @@ if (!function_exists('getImageThumb')) {
 					$image = Image::make($imageOrigin)->fit(intval($width), intval($height));
 					$image->save($pathThumb);
 				} catch (Exception $e) {
+					dd($e);
 				}
 			}
 			return MEDIA_URL . 'thumb/' . ltrim($newImage, '/');
