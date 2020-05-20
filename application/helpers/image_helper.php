@@ -1,120 +1,41 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+
+use Intervention\Image\ImageManagerStatic as Image;
+
 if (!function_exists('getImageThumb')) {
-	function getImageThumb($image = '',$width = '',$height= '', $crop = false, $watermark = false){
-		if(strpos($image,'http')) return $image;
-		if(empty($image)) {
-			$width = !empty($width) ? $width : 200;
-			$height = !empty($height) ? $height : 200;
-			return "https://via.placeholder.com/{$width}x{$height}.png?text=Thumbnail+{$width}x{$height}";
+	function getImageThumb($image = '', $width = '', $height = '', $crop = false, $watermark = false)
+	{
+		if (empty($image)) {
+			return MEDIA_URL . "no-image.jpg";
 		}
-		$image = str_replace(MEDIA_NAME,'',$image);
-		$image = ltrim($image,'/');
-		$sourceImage = MEDIA_PATH . $image;
-
-		if(!file_exists($sourceImage)){
-			$width = !empty($width)?$width:200;
-			$height = !empty($height)?$height:200;
-			return "https://via.placeholder.com/{$width}x{$height}.png?text=Thumbnail+{$width}x{$height}";
-			//$sourceImage = dirname(MEDIA_PATH) . DIRECTORY_SEPARATOR . "no_image.png";
-		}
-		$CI =& get_instance();
-		if($width != 0 && $height != 0){
-			$size = sprintf('-%dx%d', $width, $height);
-			$part = explode('.', $image);
-			$ext = '.'.end($part);
-			$newImage = str_replace($ext,$size.$ext, $image);
-			$newPathImage = MEDIA_PATH . 'thumb/' .$newImage;
-			if ( !file_exists( $newPathImage ) ) {
-				if(!is_dir(dirname($newPathImage))){
-					mkdir(dirname($newPathImage), 0755, TRUE);
-				}
-
-				// CONFIGURE IMAGE LIBRARY
-				$CI->load->library(['image_lib','user_agent']);
-				$config['image_library'] = 'gd2';
-				$config['source_image'] = $sourceImage;
-				$config['new_image'] = $newPathImage;
-				$config['maintain_ratio'] = TRUE;
-				$config['create_thumb'] = FALSE;
-				$config['quality'] = "100%";
-
-				$imageSize = getimagesize($sourceImage);
-				if (!empty($imageSize)) {
-					$imageWidth = intval($imageSize[0]);
-					$imageHeight = intval($imageSize[1]);
-
-					if($imageWidth > $width && $imageHeight > $height){
-						$dim = ($imageWidth / $imageHeight) - ($width / $height);
-						if($imageWidth > $width || $imageHeight > $height){
-							$config['master_dim'] = ($dim > 0) ? "height" : "width";
-							$config['height'] = $height;
-							$config['width'] = $width;
-						}
-						$CI->image_lib->initialize($config);
-						if (!$CI->image_lib->resize()) {
-							log_message('error',"Error resize image: $sourceImage to $newPathImage =>" . $CI->image_lib->display_errors());
-						}
-						$CI->image_lib->clear();
-						if(!empty($watermark)){
-							$watermarkImage = getWatermark($width,$height);
-							if(!empty($watermarkImage)){
-								$config_watermark['image_library']       = 'gd2';
-								$config_watermark['source_image']       = $newPathImage;
-								$config_watermark['wm_type']       = 'overlay';
-								$config_watermark['wm_opacity']     = 40;
-								//$config_watermark['wm_padding']     = 30;
-								$config_watermark['wm_vrt_alignment'] = 'middle';
-								$config_watermark['wm_hor_alignment'] = 'center';
-								$config_watermark['wm_overlay_path'] = getWatermark($width,$height);
-								$CI->image_lib->initialize($config_watermark);
-								$CI->image_lib->watermark();
-								$CI->image_lib->clear();
-							}
-						}
-
-						if($crop == true){
-							$image_config['image_library'] = 'gd2';
-							$image_config['source_image'] = $newPathImage;
-							$image_config['new_image'] = $newPathImage;
-							$image_config['quality'] = "100%";
-							$image_config['maintain_ratio'] = FALSE;
-							$image_config['width'] = $width;
-							$image_config['height'] = $height;
-							if (!file_exists($newPathImage)) {
-								$imageWidth = $width;
-								$imageHeight = $height;
-							} else {
-								$imageSize = getimagesize($newPathImage);
-								$imageWidth = intval($imageSize[0]);
-								$imageHeight = intval($imageSize[1]);
-							}
-
-
-
-							$cropStartX = ( $imageWidth / 2) - ( $width /2 );
-							$cropStartY = ( $imageHeight/ 2) - ( $height/2 );
-							$image_config['x_axis'] = $cropStartX;
-							$image_config['y_axis'] = $cropStartY;
-							$CI->image_lib->initialize($image_config);
-							if (!$CI->image_lib->crop()) {
-								log_message('error',"Error crop image: $newPathImage =>" . $CI->image_lib->display_errors());
-							}
-						}
+		$image = trim($image);
+		if (strpos($image, 'http')) return trim($image);
+		$imageOrigin = MEDIA_PATH . "/" . $image;
+		if (!empty($width) && !empty($height) && $crop == true) {
+			$sizeText = sprintf('-%dx%d', $width, $height);
+			$ext = pathinfo($image, PATHINFO_EXTENSION);
+			$newImage = str_replace(".$ext", "$sizeText.$ext", $image);
+			$pathThumb = MEDIA_PATH . '/thumb/' . $newImage;
+			$pathThumb = str_replace('//', '/', $pathThumb);
+			if (!file_exists($pathThumb)) {
+				try {
+					if (!file_exists($imageOrigin) && isset($_SERVER['HTTP_HOST']) && $_SERVER['HTTP_HOST'] == DOMAIN_ROOT) return  base_url() . 'public/images/lazy-300x180.jpg';
+					if (!is_dir(dirname($pathThumb))) {
+						mkdir(dirname($pathThumb), 0755, TRUE);
 					}
+					// import the Intervention Image Manager Class
+					// configure with favored image driver (gd by default)
+					Image::configure(array('driver' => 'gd'));
+
+					// and you are ready to go ...
+					$image = Image::make($imageOrigin)->fit(intval($width), intval($height));
+					$image->save($pathThumb);
+				} catch (Exception $e) {
 				}
 			}
-			return MEDIA_URL . 'thumb' . '/' . $newImage;
+			return MEDIA_URL . 'thumb/' . ltrim($newImage, '/');
 		}
-		else {
-			$newPathImage = MEDIA_PATH . 'thumb/' .$image;
-			if(!is_dir(dirname($newPathImage))){
-				mkdir(dirname($newPathImage), 0755, TRUE);
-			}
-			if(!file_exists($newPathImage)) {
-				copy($sourceImage, $newPathImage);
-			}
-			return MEDIA_URL.$image;
-		}
+		return MEDIA_URL . $image;
 	}
 }
 
