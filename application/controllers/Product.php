@@ -26,6 +26,8 @@ class Product extends Public_Controller
             redirect(getUrlCateProduct(['slug' => $oneItem->slug, 'id' => $oneItem->id]));
         }
 
+        if (!empty($_GET['q'])) $data['q'] = $_GET['q']; else $data['q'] = '';
+
         $data['oneItem'] = $oneItem;
         $data['oneParent'] = $oneParent = $this->_data_category->_recursive_one_parent($this->_data_category->_all_category(),$id);
         /*$this->_data_category->_recursive_child($this->_data_category->_all_category(),$oneParent->id);

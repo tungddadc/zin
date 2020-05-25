@@ -17,9 +17,13 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                         <?php echo !empty($breadcrumb) ? $breadcrumb : '' ?>
                     </div>
                     <!-- Breadcrumbs End -->
-                    <div class="page-title">
-                        <h2 class="page-heading"><span class="page-heading-title"><?php echo $oneItem->title ?></span>
+                    <div class="d-flex place-content-around">
+                        <h2 class="m-0"><span class="page-heading-title font-24 font-weight-bold"><?php echo $oneItem->title ?></span>
                         </h2>
+                        <form action="/" method="GET" class="d-inline">
+                            <input type="text" placeholder="Tìm kiếm trong trang">
+                            <button><i class="fa fa-search"></i></button>
+                        </form>
                     </div>
                     <div class="category-description std">
                         <div class="slider-items-products">

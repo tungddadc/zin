@@ -70,6 +70,18 @@ a:focus, a:hover {
 .pl-0 {
     padding-left: 0;
 }
+.m-0{
+    margin: 0;
+}
+.font-24{
+    font-size: 24px;
+}
+.font-weight-bold{
+    font-weight: bold;
+}
+.place-content-around{
+    place-content: space-around;
+}
 nav#menu-main {
     margin-bottom: 15px;
 }
