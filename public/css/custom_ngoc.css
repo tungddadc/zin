@@ -73,6 +73,13 @@ a:focus, a:hover {
 .m-0{
     margin: 0;
 }
+.mt-3{
+    margin-top: 1rem;
+}
+.search-cate p{
+    padding: 0 0.5rem;
+    color: gray;
+}
 .font-24{
     font-size: 24px;
 }

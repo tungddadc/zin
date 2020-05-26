@@ -1,3 +1,8 @@
+<?php if (!empty($cate)) foreach ($cate as $item):?>
+<div class="search-cate">
+    <p><a href="<?php echo getUrlCateProduct($item)?>"><?php echo $item->title?></a> trong <a href="<?php echo getUrlCateProduct($oneParent)?>"><?php echo $oneParent->title?></a></p>
+</div>
+<?php endforeach;?>
 <?php if(!empty($data)) foreach ($data as $item): ?>
     <div class="product_add">
         <div class="images_product">

@@ -26,7 +26,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 					</div>
 
 					<?php if (!empty($q)):?>
-					<p>Kết quả tìm kiếm cho: "<?php echo $q?>" - <?php echo $total?> Kết Quả</p>
+					<p class="mt-3">Kết quả tìm kiếm cho: "<?php echo $q?>" - <?php echo $total?> Kết Quả</p>
 					<?php endif?>
 					<div class="category-description std">
 						<div class="slider-items-products">

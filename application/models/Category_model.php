@@ -30,7 +30,15 @@ class Category_model extends STEVEN_Model
         extract($args);
         if (!empty($type)) $this->db->where("$this->table.type", $type);
         if (!empty($parent_id)) $this->db->where("$this->table.parent_id", $parent_id);
-
+        if (!empty($search_custom)){
+            if (is_array($search_custom)){
+                foreach ($search_custom as $i){
+                    $this->db->like('title'," $i ");
+                }
+            }
+            else $this->db->like('title',$search_custom);
+        }
+        if (!empty($not_parent_id)) $this->db->where("$this->table.parent_id !=", $not_parent_id);
     }
 
     public function recusive_parent()

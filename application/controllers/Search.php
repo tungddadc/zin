@@ -151,6 +151,22 @@ class Search extends Public_Controller {
             'limit'         => 10,
             'page'          => !empty($page) ? $page : 1
         ];
+        if ($params['page'] == 1){
+            $this->load->model("Category_model");
+            $this->_data_category = new Category_model();
+            $paramsCate = [
+                'is_status'     => 1, //0: Huỷ, 1: Hiển thị, 2: Nháp
+                'lang_code'     => $this->_lang_code,
+                'search_custom' => explode(' ',$keyword),
+                'not_parent_id' => 0,
+                'limit'         => 5,
+            ];
+            $oneCate = $this->_data_category->getData($paramsCate);
+            if (!empty($oneCate)) {
+                $data['cate'] = $oneCate;
+                $data['oneParent'] = $this->_data_category->getById($oneCate[0]->parent_id)[0];
+            }
+        }
         $data['data'] = $this->_data_product->getData($params);
         print $this->load->view($this->template_path.'search/ajax_autocomplete', $data, TRUE);
         exit;
