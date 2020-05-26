@@ -81,6 +81,7 @@ class Product extends Public_Controller
             'limit' => $limit,
             'page' => $page
         ];
+        if (!empty($data['q'])) $params['search_custom'] = $data['q'];
         if(!empty($paramsFilter)) $params = array_merge($params,$paramsFilter);
         $data['data'] = $this->_data->getData($params);
         $data['total'] = $this->_data->getTotal($params);
