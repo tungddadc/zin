@@ -89,6 +89,9 @@ a:focus, a:hover {
 .place-content-around{
     place-content: space-around;
 }
+.place-content-between{
+	place-content: space-between;
+}
 nav#menu-main {
     margin-bottom: 15px;
 }

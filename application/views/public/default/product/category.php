@@ -16,7 +16,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 						<?php echo !empty($breadcrumb) ? $breadcrumb : '' ?>
 					</div>
 					<!-- Breadcrumbs End -->
-					<div class="d-flex place-content-around">
+					<div class="d-flex place-content-between">
 						<h2 class="m-0"><span class="page-heading-title font-24 font-weight-bold"><?php echo $oneItem->title ?></span>
 						</h2>
 						<form action="" method="GET" class="d-inline">
